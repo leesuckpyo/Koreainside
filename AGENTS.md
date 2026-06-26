@@ -35,6 +35,44 @@ Responsive only.
 
 ---
 
+## UI/UX Work Rules
+
+Apply these rules to every new page and every improvement to an existing page.
+
+Korea Inside is Mobile First by default.
+
+Mobile users want fast solutions more than long explanations.
+
+Every core screen must make its purpose understandable within 3 seconds.
+
+Do not make card UI excessively large in width, height or spacing.
+
+Prefer short Step formats over long sentences.
+
+When explaining a procedure, use this format whenever possible:
+
+1 : Open Settings
+2 : Go to Cellular
+3 : Add eSIM
+4 : Scan QR Code
+5 : Activate eSIM
+
+Do not repeat the same infographic content below the infographic as long cards.
+
+Keep explanations to one line or less by default.
+
+Reduce text width on mobile so the user's eyes do not need to travel too far left and right.
+
+Preserve existing design colors, fonts, icons and button styles.
+
+Do not create a new design. Make the existing design smaller, clearer and easier to read.
+
+All core information must be provided as visible HTML text, not only inside images.
+
+Desktop layouts should naturally expand the mobile structure.
+
+---
+
 ## HTML Rules
 
 HTML is the source of truth.
