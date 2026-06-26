@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="How to use eSIM in Korea. Compare international eSIM, Korean eSIM, Korea SIM, Korean phone number, passport verification, calls, SMS and mobile data." name="description"/>
+<title>How To Use eSIM In Korea — Korea Inside</title>
+<link href="style.css" rel="stylesheet"/>
+
+<style>
+/* eSIM page v2.0 — Mobile-first, HTML-first */
+.esim-page {
+  --ki-blue: #0b5cff;
+  --ki-blue-dark: #0a2540;
+  --ki-text: #132238;
+  --ki-muted: #5c6b82;
+  --ki-line: #dbe7ff;
+  --ki-soft: #f4f8ff;
+  --ki-green: #0f9f6e;
+  --ki-orange: #f59e0b;
+}
+.esim-hero {
+  background: linear-gradient(180deg, #f7fbff 0%, #fff 100%);
+  border-bottom: 1px solid #e5edf8;
+  padding: 48px 0 36px;
+}
+.esim-hero__grid {
+  display: grid;
+  gap: 28px;
+  align-items: center;
+}
+.esim-breadcrumb {
+  font-size: .875rem;
+  color: #7a8ba3;
+  margin-bottom: 18px;
+}
+.esim-title {
+  font-size: clamp(2rem, 8vw, 4.25rem);
+  line-height: 1.05;
+  letter-spacing: -.06em;
+  color: var(--ki-blue-dark);
+  margin: 0 0 14px;
+}
+.esim-lead {
+  font-size: 1.05rem;
+  color: var(--ki-muted);
+  max-width: 680px;
+  margin: 0 0 22px;
+}
+.esim-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.esim-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: .75rem 1rem;
+  border-radius: 999px;
+  font-weight: 800;
+  border: 1px solid #cfe0ff;
+  background: #fff;
+}
+.esim-btn--primary {
+  background: var(--ki-blue);
+  color: #fff;
+  border-color: var(--ki-blue);
+}
+.esim-btn--primary:hover { color: #fff; }
+.esim-media-card,
+.esim-visual-card {
+  border: 1px solid var(--ki-line);
+  border-radius: 24px;
+  background: #fff;
+  padding: 12px;
+  box-shadow: 0 14px 36px rgba(10, 37, 64, .08);
+}
+.esim-media-card img,
+.esim-visual-card img {
+  border-radius: 18px;
+  width: 100%;
+}
+.esim-tap {
+  font-size: .82rem;
+  color: #64748b;
+  text-align: center;
+  margin-top: 8px;
+}
+.esim-section {
+  padding: 44px 0;
+  border-bottom: 1px solid #edf2f7;
+}
+.esim-section:last-child { border-bottom: 0; }
+.esim-section__head {
+  margin-bottom: 22px;
+}
+.esim-section h2 {
+  font-size: clamp(1.45rem, 5.5vw, 2.2rem);
+  letter-spacing: -.04em;
+  line-height: 1.12;
+  color: var(--ki-blue-dark);
+  margin: 0 0 10px;
+}
+.esim-section p {
+  color: var(--ki-muted);
+  margin: 0 0 14px;
+}
+.esim-quick {
+  border-left: 4px solid var(--ki-blue);
+  background: #eef5ff;
+  border-radius: 16px;
+  padding: 16px 18px;
+  margin: 22px 0;
+}
+.esim-quick strong {
+  display: block;
+  color: var(--ki-blue-dark);
+  margin-bottom: 4px;
+}
+.esim-grid {
+  display: grid;
+  gap: 16px;
+}
+.esim-grid--2,
+.esim-grid--3,
+.esim-grid--4 {
+  grid-template-columns: 1fr;
+}
+.esim-card {
+  border: 1px solid #dfe9f8;
+  background: #fff;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 8px 22px rgba(10, 37, 64, .05);
+}
+.esim-card--blue { background: linear-gradient(180deg, #f5f9ff 0%, #fff 100%); }
+.esim-card--green { background: linear-gradient(180deg, #f4fff9 0%, #fff 100%); }
+.esim-card--amber { background: linear-gradient(180deg, #fffaf0 0%, #fff 100%); }
+.esim-card h3 {
+  color: var(--ki-blue-dark);
+  font-size: 1.15rem;
+  margin: 0 0 10px;
+  letter-spacing: -.02em;
+}
+.esim-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #eaf2ff;
+  font-size: 1.35rem;
+  margin-bottom: 12px;
+}
+.esim-list {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+}
+.esim-list li {
+  position: relative;
+  padding-left: 24px;
+  color: #243246;
+}
+.esim-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--ki-blue);
+  font-weight: 900;
+}
+.esim-steps {
+  display: grid;
+  gap: 12px;
+  counter-reset: step;
+}
+.esim-step {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 12px;
+  align-items: start;
+  border: 1px solid #dfe9f8;
+  border-radius: 18px;
+  padding: 16px;
+  background: #fff;
+}
+.esim-step::before {
+  counter-increment: step;
+  content: counter(step);
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  background: var(--ki-blue);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+}
+.esim-step strong {
+  display: block;
+  color: var(--ki-blue-dark);
+  margin-bottom: 4px;
+}
+.esim-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid #dfe9f8;
+  border-radius: 18px;
+  margin: 16px 0;
+}
+.esim-table {
+  width: 100%;
+  min-width: 720px;
+  border-collapse: collapse;
+  background: #fff;
+}
+.esim-table th,
+.esim-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #e8eef7;
+  text-align: left;
+  vertical-align: top;
+}
+.esim-table th {
+  background: #f3f7ff;
+  color: var(--ki-blue-dark);
+  font-weight: 800;
+}
+.esim-table tr:last-child td { border-bottom: 0; }
+.esim-provider {
+  display: grid;
+  gap: 16px;
+}
+.esim-provider__group {
+  border: 1px solid #dfe9f8;
+  border-radius: 20px;
+  padding: 18px;
+  background: #fff;
+}
+.esim-coming {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 999px;
+  padding: .45rem .75rem;
+  background: #e2e8f0;
+  color: #64748b;
+  font-size: .78rem;
+  font-weight: 800;
+  cursor: not-allowed;
+  white-space: nowrap;
+}
+.esim-note {
+  border: 1px solid #fecaca;
+  background: #fff7f7;
+  color: #7f1d1d;
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin-top: 16px;
+}
+.esim-note--info {
+  border-color: #bfdbfe;
+  background: #eff6ff;
+  color: #0f2f58;
+}
+.esim-faq details {
+  border: 1px solid #dfe9f8;
+  border-radius: 16px;
+  background: #fff;
+  margin-bottom: 10px;
+  padding: 14px 16px;
+}
+.esim-faq summary {
+  cursor: pointer;
+  font-weight: 800;
+  color: var(--ki-blue-dark);
+}
+.esim-faq details p {
+  margin: 10px 0 0;
+}
+.esim-related {
+  display: grid;
+  gap: 12px;
+}
+.esim-related a {
+  display: block;
+  border: 1px solid #dfe9f8;
+  border-radius: 18px;
+  padding: 18px;
+  background: #fff;
+}
+.esim-related span {
+  display: block;
+  color: var(--ki-blue);
+  font-weight: 800;
+  font-size: .8rem;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+.esim-related h3 {
+  margin: 4px 0 6px;
+  color: var(--ki-blue-dark);
+}
+.mobile-summary {
+  display: grid;
+  gap: 10px;
+  margin-top: 16px;
+}
+.mobile-summary .esim-step {
+  grid-template-columns: 36px 1fr;
+  padding: 14px;
+}
+@media (min-width: 769px) {
+  .esim-hero { padding: 72px 0 58px; }
+  .esim-hero__grid { grid-template-columns: 0.9fr 1.1fr; gap: 38px; }
+  .esim-grid--2 { grid-template-columns: repeat(2, 1fr); }
+  .esim-grid--3 { grid-template-columns: repeat(3, 1fr); }
+  .esim-grid--4 { grid-template-columns: repeat(4, 1fr); }
+  .esim-steps { grid-template-columns: repeat(5, 1fr); }
+  .esim-step { grid-template-columns: 1fr; }
+  .esim-step::before { margin-bottom: 4px; }
+  .esim-provider { grid-template-columns: 1fr; }
+  .esim-related { grid-template-columns: repeat(4, 1fr); }
+  .mobile-summary { display: none; }
+  .esim-tap { display: none; }
+}
+@media (max-width: 768px) {
+  .esim-hero { padding: 34px 0 28px; }
+  .esim-title { font-size: 2.1rem; }
+  .esim-media-card, .esim-visual-card { padding: 10px; border-radius: 20px; box-shadow: 0 8px 22px rgba(10,37,64,.06); }
+  .esim-section { padding: 34px 0; }
+  .esim-visual-card { margin-bottom: 18px; }
+  .esim-table { min-width: 620px; }
+  .esim-table th, .esim-table td { padding: 12px; font-size: .92rem; }
+  .esim-card { padding: 18px; }
+}
+</style>
+
+</head>
+<body>
+<header class="header">
+<div class="container header__inner">
+<a class="logo" href="index.html">
+<span class="logo__mark">KI</span>
+        Korea Inside
+      </a>
+<button aria-controls="main-nav" aria-expanded="false" aria-label="Open menu" class="nav-toggle">
+<span class="nav-toggle__bar"></span>
+<span class="nav-toggle__bar"></span>
+<span class="nav-toggle__bar"></span>
+</button>
+<nav class="nav" id="main-nav">
+<ul class="nav__list">
+<li><a class="nav__link" href="index.html">Home</a></li>
+<li><a class="nav__link" href="airport.html">Airport</a></li>
+<li><a class="nav__link" href="tmoney.html">T-money</a></li>
+<li><a class="nav__link" href="wowpass.html">WOWPASS</a></li>
+<li><a class="nav__link nav__link--active" href="esim.html">eSIM</a></li>
+<li><a class="nav__link" href="payments.html">Payments</a></li>
+<li><a class="nav__link" href="maps.html">Maps</a></li>
+<li><a class="nav__link" href="apps.html">Apps</a></li>
+<li><a class="nav__link" href="checklist.html">Checklist</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main class="esim-page">
+<section class="esim-hero">
+  <div class="container esim-hero__grid">
+    <div>
+      <p class="esim-breadcrumb"><a href="index.html">Home</a> / Mobile &amp; eSIM</p>
+      <h1 class="esim-title">How To Use eSIM In Korea</h1>
+      <p class="esim-lead">Choose the right mobile option before arriving in Korea. Use this guide to decide between data-only eSIM, Korean number eSIM, and physical Korea SIM.</p>
+      <div class="esim-actions">
+        <a class="esim-btn esim-btn--primary" href="#phone-support">Check Compatibility</a>
+        <a class="esim-btn" href="#mobile-options">Compare Options</a>
+      </div>
+    </div>
+    <a class="esim-media-card" href="images/esim/hero-esim.png" target="_blank" aria-label="Open eSIM hero image">
+      <img src="images/esim/hero-esim.png" alt="Illustration of eSIM connection in Korea with smartphone, QR code and Seoul skyline">
+      <p class="esim-tap">Tap image to enlarge</p>
+    </a>
+  </div>
+</section>
+
+<section class="esim-section">
+  <div class="container">
+    <div class="esim-section__head">
+      <h2>Quick Answer</h2>
+      <p>For most short-term travelers, a data eSIM is enough. Choose a Korean number eSIM or Korea SIM only when you need calls, SMS, delivery-driver contact, reservations, or longer stay support.</p>
+    </div>
+    <div class="esim-grid esim-grid--3">
+      <div class="esim-card esim-card--blue">
+        <span class="esim-icon">🌐</span>
+        <h3>Internet only</h3>
+        <p>Use maps, messaging apps, SNS and translation.</p>
+        <ul class="esim-list"><li>International eSIM is usually easiest</li><li>Often no passport verification</li></ul>
+      </div>
+      <div class="esim-card esim-card--green">
+        <span class="esim-icon">📞</span>
+        <h3>Korean number needed</h3>
+        <p>Useful for local calls, SMS and some services.</p>
+        <ul class="esim-list"><li>Check Korean eSIM plans</li><li>Passport verification may be required</li></ul>
+      </div>
+      <div class="esim-card esim-card--amber">
+        <span class="esim-icon">🧳</span>
+        <h3>Longer stay</h3>
+        <p>If you stay longer, compare Korean eSIM and physical SIM.</p>
+        <ul class="esim-list"><li>Better for local services</li><li>Check activation and refund rules</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="esim-section">
+  <div class="container">
+    <div class="esim-section__head">
+      <h2>What is eSIM?</h2>
+      <p>An eSIM is a digital SIM built into your phone. You install a mobile plan by scanning a QR code or entering an activation code instead of inserting a physical SIM card.</p>
+    </div>
+    <div class="esim-grid esim-grid--2">
+      <div class="esim-card">
+        <h3>Why it helps in Korea</h3>
+        <ul class="esim-list">
+          <li>Prepare internet before landing</li>
+          <li>No need to change your physical SIM</li>
+          <li>Keep your home SIM active on supported phones</li>
+          <li>Use maps, messaging, translation and web search after arrival</li>
+        </ul>
+      </div>
+      <div class="esim-card">
+        <h3>Important difference</h3>
+        <p>Not all eSIM plans include the same features. Some are data-only. Some Korean eSIM plans may include a Korean phone number, voice calls and SMS.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="esim-section">
+  <div class="container">
+    <div class="esim-section__head">
+      <h2>How eSIM Works</h2>
+      <p>The image gives a quick visual overview. The actual steps should always follow your provider's instructions.</p>
+    </div>
+    <a class="esim-visual-card" href="images/esim/how-esim-works.png" target="_blank">
+      <img src="images/esim/how-esim-works.png" alt="Visual overview of buying, receiving QR code, installing, activating and connecting with eSIM">
+      <p class="esim-tap">Tap image to enlarge</p>
+    </a>
+    <div class="mobile-summary">
+      <div class="esim-step"><div><strong>Buy eSIM</strong><p>Choose a plan online before your trip.</p></div></div>
+      <div class="esim-step"><div><strong>Receive QR Code</strong><p>Your provider sends a QR code or activation code.</p></div></div>
+      <div class="esim-step"><div><strong>Install eSIM</strong><p>Add the eSIM to your phone.</p></div></div>
+      <div class="esim-step"><div><strong>Activate in Korea</strong><p>Turn on the eSIM line and data roaming if required.</p></div></div>
+      <div class="esim-step"><div><strong>Connected</strong><p>Use mobile data after the plan is active.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="esim-section" id="phone-support">
+  <div class="container">
+    <div class="esim-section__head">
+      <h2>Does Your Phone Support eSIM?</h2>
+      <p>Before buying, confirm that your exact model supports eSIM and is unlocked for overseas mobile plans.</p>
+    </div>
+    <div class="esim-grid esim-grid--4">
+      <div class="esim-card"><span class="esim-icon"></span><h3>iPhone</h3><p>iPhone XS, XR and later models generally support eSIM.</p></div>
+      <div class="esim-card"><span class="esim-icon">📱</span><h3>Samsung Galaxy</h3><p>Recent Galaxy S, Z Fold and Z Flip models usually support eSIM.</p></div>
+      <div class="esim-card"><span class="esim-icon">G</span><h3>Google Pixel</h3><p>Most recent Pixel phones support eSIM.</p></div>
+      <div class="esim-card"><span class="esim-icon">⚠️</span><h3>Region models</h3><p>Some regional or carrier-locked models may not support eSIM.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="esim-section">
+  <div class="container">
+    <div class="esim-grid esim-grid--2">
+      <div>
+        <h2>Install eSIM on iPhone</h2>
+        <a class="esim-visual-card" href="images/esim/iphone-install.png" target="_blank">
+          <img src="images/esim/iphone-install.png" alt="Visual guide for installing eSIM on iPhone">
+          <p class="esim-tap">Tap image to enlarge</p>
+        </a>
+        <div class="esim-steps">
+          <div class="esim-step"><div><strong>Open Settings</strong><p>Open the Settings app.</p></div></div>
+          <div class="esim-step"><div><strong>Go to Cellular</strong><p>Tap Cellular or Mobile Data.</p></div></div>
+          <div class="esim-step"><div><strong>Add eSIM</strong><p>Select Add eSIM and use the provider QR code.</p></div></div>
+          <div class="esim-step"><div><strong>Scan QR</strong><p>Scan the QR code or enter details manually.</p></div></div>
+          <div class="esim-step"><div><strong>Turn on</strong><p>Set the eSIM line for mobile data.</p></div></div>
+        </div>
+      </div>
+      <div>
+        <h2>Install eSIM on Android</h2>
+        <a class="esim-visual-card" href="images/esim/android-install.png" target="_blank">
+          <img src="images/esim/android-install.png" alt="Visual guide for installing eSIM on Android">
+          <p class="esim-tap">Tap image to enlarge</p>
+        </a>
+        <div class="esim-steps">
+          <div class="esim-step"><div><strong>Open Settings</strong><p>Open the Settings app.</p></div></div>
+          <div class="esim-step"><div><strong>Connections</strong><p>Go to Connections or Network &amp; Internet.</p></div></div>
+          <div class="esim-step"><div><strong>SIM Manager</strong><p>Open SIM Manager or SIMs.</p></div></div>
+          <div class="esim-step"><div><strong>Add eSIM</strong><p>Select Add eSIM and scan the QR code.</p></div></div>
+          <div class="esim-step"><div><strong>Turn on</strong><p>Use the eSIM line for mobile data.</p></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="esim-note esim-note--info"><strong>Tip:</strong> Menu names vary by phone model and Android version. Always follow your provider's setup guide.</div>
+  </div>
+</section>
+
+<section class="esim-section" id="mobile-options">
+  <div class="container">
+    <div class="esim-section__head">
+      <h2>International eSIM vs Korean eSIM vs Korea SIM</h2>
+      <p>The best option depends on whether you need only mobile data or a Korean phone number with calls and SMS.</p>
+    </div>
+    <div class="esim-grid esim-grid--3">
+      <div class="esim-card esim-card--blue"><span class="esim-icon">🌍</span><h3>International eSIM</h3><p>Best for short trips and internet-only use.</p><ul class="esim-list"><li>Easy online purchase</li><li>Often data-focused</li><li>Korean number depends on plan</li></ul></div>
+      <div class="esim-card esim-card--green"><span class="esim-icon">🇰🇷</span><h3>Korean eSIM</h3><p>Best when a Korean number may be useful.</p><ul class="esim-list"><li>Korean number may be available</li><li>Calls and SMS may be included</li><li>Passport verification may be required</li></ul></div>
+      <div class="esim-card esim-card--amber"><span class="esim-icon">💳</span><h3>Korea SIM</h3><p>Physical SIM card option for local number use.</p><ul class="esim-list"><li>Physical SIM required</li><li>Local calls and SMS usually available</li><li>Good for longer stay</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="esim-section">
+  <div class="container">
+    <div class="esim-section__head">
+      <h2>Popular eSIM Providers For Korea</h2>
+      <p>Korea Inside does not rank providers at this stage. This section helps travelers understand common provider types and what to check before buying.</p>
+    </div>
+    <div class="esim-provider">
+      <div class="esim-provider__group">
+        <h3>International eSIM Providers</h3>
+        <p>Usually convenient for short-term travelers who mainly need mobile data.</p>
+        <div class="esim-table-wrap"><table class="esim-table"><thead><tr><th>Provider</th><th>Best For</th><th>Korean Number</th><th>Voice / SMS</th><th>Action</th></tr></thead><tbody>
+          <tr><td>Airalo</td><td>First-time visitors</td><td>Plan dependent</td><td>Plan dependent</td><td><button class="esim-coming" disabled>Check Plans · Coming Soon</button></td></tr>
+          <tr><td>Nomad</td><td>Value travelers</td><td>Plan dependent</td><td>Plan dependent</td><td><button class="esim-coming" disabled>Check Plans · Coming Soon</button></td></tr>
+          <tr><td>Holafly</td><td>Heavy data users</td><td>Plan dependent</td><td>Plan dependent</td><td><button class="esim-coming" disabled>Check Plans · Coming Soon</button></td></tr>
+          <tr><td>Saily</td><td>Multi-country trips</td><td>Plan dependent</td><td>Plan dependent</td><td><button class="esim-coming" disabled>Check Plans · Coming Soon</button></td></tr>
+        </tbody></table></div>
+      </div>
+      <div class="esim-provider__group">
+        <h3>Korean eSIM / SIM Providers</h3>
+        <p>Korean eSIM or SIM plans may include a Korean phone number, calls and SMS depending on the provider and plan.</p>
+        <div class="esim-table-wrap"><table class="esim-table"><thead><tr><th>Provider</th><th>Korean Number</th><th>Voice Calls</th><th>SMS</th><th>Passport Verification</th><th>Action</th></tr></thead><tbody>
+          <tr><td>SKT eSIM / SIM</td><td>Available on some plans</td><td>Available on some plans</td><td>Available on some plans</td><td>May be required</td><td><button class="esim-coming" disabled>Check Plans · Coming Soon</button></td></tr>
+          <tr><td>KT eSIM / SIM</td><td>Available on some plans</td><td>Available on some plans</td><td>Available on some plans</td><td>May be required</td><td><button class="esim-coming" disabled>Check Plans · Coming Soon</button></td></tr>
+          <tr><td>LG U+ eSIM / SIM</td><td>Available on some plans</td><td>Available on some plans</td><td>Available on some plans</td><td>May be required</td><td><button class="esim-coming" disabled>Check Plans · Coming Soon</button></td></tr>
+        </tbody></table></div>
+      </div>
+    </div>
+    <div class="esim-note esim-note--info"><strong>Before buying, always check:</strong> data allowance, validity period, Korean number availability, voice calls, SMS, passport verification, hotspot/tethering, refund rules and activation timing.</div>
+  </div>
+</section>
+
+<section class="esim-section">
+  <div class="container">
+    <div class="esim-section__head">
+      <h2>Do You Need a Korean Phone Number?</h2>
+      <p>Many travelers only need mobile data. A Korean phone number may be useful if you plan to receive delivery driver calls, use SMS verification, make reservations, contact local businesses or stay longer.</p>
+    </div>
+    <a class="esim-visual-card" href="images/esim/korean-phone-number.png" target="_blank">
+      <img src="images/esim/korean-phone-number.png" alt="Illustration explaining when a Korean phone number may be useful">
+      <p class="esim-tap">Tap image to enlarge</p>
+    </a>
+    <div class="esim-grid esim-grid--4">
+      <div class="esim-card"><span class="esim-icon">🍜</span><h3>Food Delivery</h3><p>A Korean number can make delivery-driver contact easier.</p></div>
+      <div class="esim-card"><span class="esim-icon">💬</span><h3>SMS Verification</h3><p>Some apps may ask for SMS verification.</p></div>
+      <div class="esim-card"><span class="esim-icon">🍽️</span><h3>Reservations</h3><p>Local bookings may be easier with a Korean number.</p></div>
+      <div class="esim-card"><span class="esim-icon">📞</span><h3>Local Calls</h3><p>Useful for businesses, hotels and travel partners.</p></div>
+    </div>
+    <div class="esim-note"><strong>Important:</strong> A Korean phone number does not automatically guarantee access to all verification or identity-check services. Requirements vary by service and provider.</div>
+  </div>
+</section>
+
+<section class="esim-section">
+  <div class="container">
+    <div class="esim-section__head">
+      <h2>When Is a Korean Phone Number Helpful?</h2>
+      <p>This table separates internet-only use from local-number use.</p>
+    </div>
+    <div class="esim-table-wrap"><table class="esim-table"><thead><tr><th>Situation</th><th>Data eSIM</th><th>Korean Number eSIM</th></tr></thead><tbody>
+      <tr><td>Navigation Apps</td><td>Good</td><td>Good</td></tr>
+      <tr><td>Messaging Apps</td><td>Good</td><td>Good</td></tr>
+      <tr><td>WhatsApp Calls</td><td>Good</td><td>Good</td></tr>
+      <tr><td>Food Delivery</td><td>Sometimes limited</td><td>Usually easier</td></tr>
+      <tr><td>Restaurant Reservations</td><td>Sometimes limited</td><td>Usually easier</td></tr>
+      <tr><td>SMS Verification</td><td>Limited</td><td>Plan dependent</td></tr>
+      <tr><td>Local Calls</td><td>Not available</td><td>Available on supported plans</td></tr>
+      <tr><td>Long-Term Stay</td><td>Possible</td><td>More convenient</td></tr>
+    </tbody></table></div>
+  </div>
+</section>
+
+<section class="esim-section">
+  <div class="container">
+    <div class="esim-section__head">
+      <h2>Passport Verification for Korean Number eSIM</h2>
+      <p>Some Korean number eSIM plans require passport verification before voice calls, SMS or a Korean phone number can be fully activated.</p>
+    </div>
+    <a class="esim-visual-card" href="images/esim/passport-verification.png" target="_blank">
+      <img src="images/esim/passport-verification.png" alt="Passport verification process for Korean number eSIM">
+      <p class="esim-tap">Tap image to enlarge</p>
+    </a>
+    <div class="esim-steps">
+      <div class="esim-step"><div><strong>Purchase</strong><p>Buy the eSIM plan.</p></div></div>
+      <div class="esim-step"><div><strong>Install</strong><p>Add the eSIM to your phone.</p></div></div>
+      <div class="esim-step"><div><strong>Arrive</strong><p>Enter Korea and connect to the local network.</p></div></div>
+      <div class="esim-step"><div><strong>Verify</strong><p>Provider checks passport and entry information.</p></div></div>
+      <div class="esim-step"><div><strong>Activate</strong><p>Voice calls and SMS become available if included.</p></div></div>
+    </div>
+    <div class="esim-note esim-note--info"><strong>Activation timing:</strong> Depending on the provider, you may upload your passport before traveling. However, final activation of voice calls, SMS or your Korean phone number may only be completed after you arrive in Korea and your entry record has been verified. Procedures vary by provider.</div>
+  </div>
+</section>
+
+<section class="esim-section">
+  <div class="container">
+    <div class="esim-section__head">
+      <h2>How eSIM Data Works in Korea</h2>
+      <p>Data-only eSIM is usually enough for maps, messaging, translation, SNS and web browsing.</p>
+    </div>
+    <a class="esim-visual-card" href="images/esim/esim-data-guide.png" target="_blank">
+      <img src="images/esim/esim-data-guide.png" alt="Visual guide about eSIM data use in Korea">
+      <p class="esim-tap">Tap image to enlarge</p>
+    </a>
+    <div class="esim-grid esim-grid--3">
+      <div class="esim-card"><h3>What you can do</h3><ul class="esim-list"><li>Use maps and navigation</li><li>Browse the web</li><li>Use WhatsApp, LINE, KakaoTalk and translation apps</li></ul></div>
+      <div class="esim-card"><h3>Plan types</h3><ul class="esim-list"><li>Daily plans</li><li>Fixed data allowance</li><li>Unlimited-style plans may have fair usage policy</li></ul></div>
+      <div class="esim-card"><h3>Keep in mind</h3><ul class="esim-list"><li>Turn on data roaming if required</li><li>Check hotspot and validity rules</li><li>Download offline maps before your trip</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="esim-section">
+  <div class="container">
+    <div class="esim-section__head">
+      <h2>Common eSIM Problems</h2>
+      <p>Most issues come from activation timing, wrong SIM line settings, disabled data roaming or provider-specific instructions.</p>
+    </div>
+    <div class="esim-grid esim-grid--3">
+      <div class="esim-card"><h3>No Service</h3><p>Restart your phone and check that the eSIM line is turned on.</p></div>
+      <div class="esim-card"><h3>Data not working</h3><p>Some providers require Data Roaming ON for the eSIM line.</p></div>
+      <div class="esim-card"><h3>Calls or SMS not working</h3><p>Your plan may be data-only, or passport verification may not be complete.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="esim-section">
+  <div class="container">
+    <div class="esim-section__head">
+      <h2>FAQ</h2>
+      <p>Short answers to common Korea eSIM questions.</p>
+    </div>
+    <div class="esim-faq">
+      <details><summary>Does my phone support eSIM?</summary><p>Recent iPhone, Samsung Galaxy and Google Pixel models often support eSIM, but always check your exact model and carrier lock status.</p></details>
+      <details><summary>Should I buy eSIM before arriving in Korea?</summary><p>For data-only travel eSIMs, buying before arrival is often convenient. Activation rules depend on provider.</p></details>
+      <details><summary>Do I need Wi-Fi to install eSIM?</summary><p>Yes, use stable Wi-Fi or mobile data to install the eSIM before switching mobile data to the eSIM line.</p></details>
+      <details><summary>Can I keep my home SIM card?</summary><p>On dual SIM supported phones, you can often keep your home SIM active and use the eSIM for Korean data.</p></details>
+      <details><summary>Can I use WhatsApp with eSIM?</summary><p>Yes. WhatsApp, LINE, KakaoTalk and similar apps work with mobile data.</p></details>
+      <details><summary>Can I make phone calls with eSIM in Korea?</summary><p>Only if your plan includes voice calls. Many travel eSIM plans are data-only.</p></details>
+      <details><summary>Can I get a Korean phone number with eSIM?</summary><p>Yes, some Korean eSIM plans may include a Korean number. Check the provider details before buying.</p></details>
+      <details><summary>Do I need passport verification?</summary><p>Data-only eSIM plans generally do not require passport verification. Korean number eSIM plans may require it.</p></details>
+      <details><summary>Why does my eSIM show No Service?</summary><p>The eSIM may not be activated, your phone may not be connected to the correct network, or the eSIM line may be turned off.</p></details>
+      <details><summary>Should Data Roaming be ON?</summary><p>Many travel eSIM providers require Data Roaming ON for the eSIM line. Follow your provider's instructions.</p></details>
+      <details><summary>Can I use food delivery apps without a Korean phone number?</summary><p>Some delivery services may work without a Korean phone number, but having one can make driver communication and local services easier. Requirements change by service and provider.</p></details>
+    </div>
+    <div class="esim-note"><strong>Before buying:</strong> Plan details differ by provider. Confirm data allowance, validity, Korean phone number, calls, SMS, passport verification, hotspot and refund rules.</div>
+  </div>
+</section>
+
+<section class="esim-section">
+  <div class="container">
+    <div class="esim-section__head">
+      <h2>Recommended Next Guides</h2>
+      <p>After mobile connection, check airport arrival, transport, payment and navigation basics.</p>
+    </div>
+    <div class="esim-related">
+      <a href="arrival.html"><span>Airport</span><h3>Arrival Guide</h3><p>What to do after landing in Korea.</p></a>
+      <a href="tmoney.html"><span>Transport</span><h3>T-money Guide</h3><p>Use subways, buses and taxis.</p></a>
+      <a href="wowpass.html"><span>Payment</span><h3>WOWPASS Guide</h3><p>Compare payment and travel card options.</p></a>
+      <a href="maps.html"><span>Navigation</span><h3>Maps Guide</h3><p>Choose the right map app in Korea.</p></a>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="footer">
+<div class="container">
+<div class="footer__grid">
+<div>
+<p class="footer__brand">Korea Inside</p>
+<p class="footer__tagline">Understand how Korea really works.</p>
+</div>
+<div>
+<p class="footer__heading">Guides</p>
+<ul class="footer__links">
+<li><a href="tmoney.html">T-money</a></li>
+<li><a href="esim.html">eSIM</a></li>
+<li><a href="airport.html">Airport</a></li>
+<li><a href="payments.html">Payments</a></li>
+</ul>
+</div>
+<div>
+<p class="footer__heading">More</p>
+<ul class="footer__links">
+<li><a href="maps.html">Maps</a></li>
+<li><a href="apps.html">Apps</a></li>
+<li><a href="checklist.html">Checklist</a></li>
+</ul>
+</div>
+</div>
+<div class="footer__bottom">
+<p>© 2026 Korea Inside.</p>
+</div>
+</div>
+</footer>
+<script>
+const toggle = document.querySelector('.nav-toggle');
+const nav = document.querySelector('.nav');
+if (toggle && nav) {
+  toggle.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', !open);
+    nav.classList.toggle('is-open');
+  });
+  document.querySelectorAll('.nav__link').forEach(link => {
+    link.addEventListener('click', () => {
+      toggle.setAttribute('aria-expanded', 'false');
+      nav.classList.remove('is-open');
+    });
+  });
+}
+</script>
+</body>
+</html>

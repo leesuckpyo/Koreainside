@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="560" viewBox="0 0 900 560">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eff6ff"/>
+      <stop offset="1" stop-color="#ffffff"/>
+    </linearGradient>
+    <linearGradient id="machine" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f8fafc"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="560" rx="34" fill="url(#bg)"/>
+  <rect x="90" y="54" width="720" height="452" rx="28" fill="url(#machine)" stroke="#dbe3ef" stroke-width="3"/>
+  <rect x="150" y="98" width="600" height="110" rx="20" fill="#0a2540"/>
+  <text x="450" y="145" text-anchor="middle" font-family="Inter, Arial" font-size="34" font-weight="800" fill="#ffffff">T-money Recharge Machine</text>
+  <text x="450" y="178" text-anchor="middle" font-family="Inter, Arial" font-size="20" fill="#bfdbfe">Choose English • Place card • Add cash • Check balance</text>
+  <rect x="150" y="244" width="260" height="166" rx="18" fill="#e8f0fe" stroke="#bfd7ff" stroke-width="2"/>
+  <text x="280" y="294" text-anchor="middle" font-family="Inter, Arial" font-size="28" font-weight="800" fill="#1a56db">CARD AREA</text>
+  <rect x="218" y="320" width="124" height="72" rx="14" fill="#ffffff" stroke="#1a56db" stroke-width="3"/>
+  <circle cx="248" cy="356" r="12" fill="#f97316"/>
+  <rect x="276" y="344" width="42" height="8" rx="4" fill="#0a2540"/>
+  <rect x="276" y="362" width="32" height="8" rx="4" fill="#425466"/>
+  <rect x="490" y="244" width="260" height="166" rx="18" fill="#fff7ed" stroke="#fed7aa" stroke-width="2"/>
+  <text x="620" y="294" text-anchor="middle" font-family="Inter, Arial" font-size="28" font-weight="800" fill="#c2410c">CASH SLOT</text>
+  <rect x="552" y="333" width="136" height="30" rx="15" fill="#ffffff" stroke="#f97316" stroke-width="3"/>
+  <text x="620" y="455" text-anchor="middle" font-family="Inter, Arial" font-size="20" fill="#425466">Tip: If a machine does not accept foreign cards, use cash or recharge at a convenience store.</text>
+</svg>

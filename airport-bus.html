@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Step-by-step guide to finding airport bus routes, buying tickets and choosing airport bus instead of AREX or taxi.">
+  <title>How to Use Airport Bus — Korea Inside</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container header__inner">
+      <a href="index.html" class="logo"><span class="logo__mark">KI</span>Korea Inside</a>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="main-nav">
+        <span class="nav-toggle__bar"></span><span class="nav-toggle__bar"></span><span class="nav-toggle__bar"></span>
+      </button>
+      <nav class="nav" id="main-nav">
+        <ul class="nav__list">
+          <li><a href="index.html" class="nav__link">Home</a></li>
+          <li><a href="airport.html" class="nav__link nav__link--active">Airport</a></li>
+          <li><a href="tmoney.html" class="nav__link">T-money</a></li>
+          <li><a href="wowpass.html" class="nav__link">WOWPASS</a></li>
+          <li><a href="esim.html" class="nav__link">eSIM</a></li>
+          <li><a href="payments.html" class="nav__link">Payments</a></li>
+          <li><a href="maps.html" class="nav__link">Maps</a></li>
+          <li><a href="apps.html" class="nav__link">Apps</a></li>
+          <li><a href="checklist.html" class="nav__link">Checklist</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="page-hero">
+      <div class="container">
+        <p class="page-hero__breadcrumb"><a href="index.html">Home</a> / <a href="airport.html">Airport</a> / Airport Bus</p>
+        <h1 class="page-hero__title">How to Use Airport Bus</h1>
+        <p class="page-hero__desc">Step-by-step guide to finding airport bus routes, buying tickets and choosing airport bus instead of AREX or taxi.</p>
+      </div>
+    </div>
+    <article class="guide-content">
+      <div class="container">
+        <div class="tip-box"><p class="tip-box__label">Quick answer</p><p>Airport buses are often easier than trains when your hotel is near a bus stop or when you have heavy luggage.</p></div>
+        <h2>When should I use the airport bus?</h2><p>Choose the airport bus if your destination is far from Seoul Station, if your hotel is close to an airport bus stop, or if you want fewer transfers with luggage.</p>
+        <h2>What to do</h2><ol><li>After exiting arrivals, follow signs for <strong>Airport Bus</strong>.</li><li>Check your destination or hotel area on the route board.</li><li>Buy a ticket at a staffed counter or ticket machine.</li><li>Confirm the bus number, platform and last bus time.</li></ol>
+        <h2>Common mistakes</h2><ul><li>Choosing a bus only by district name without checking the exact stop.</li><li>Not checking the last bus time after late-night arrival.</li><li>Putting luggage on the wrong bus without confirming the destination.</li></ul>
+        <h2>FAQ</h2><details><summary>Is airport bus better than AREX?</summary><p>It depends on your hotel location. AREX is predictable, but airport buses can be easier for hotels away from subway stations.</p></details><details><summary>Can I pay with a foreign card?</summary><p>Some counters and machines may accept foreign cards, but prepare a backup payment method.</p></details><details><summary>Can I take large luggage?</summary><p>Yes. Airport buses are usually convenient for large luggage.</p></details>
+        <div class="related-links"><p class="related-links__title">Related guides</p><a href="airport.html" class="chip">Airport hub</a><a href="payments.html" class="chip">Payments</a><a href="maps.html" class="chip">Maps</a><a href="taxi.html" class="chip">Taxi backup</a></div>
+      </div>
+    </article>
+  </main>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div><p class="footer__brand">Korea Inside</p><p class="footer__tagline">Understand how Korea really works.</p></div>
+        <div><p class="footer__heading">Airport guides</p><ul class="footer__links"><li><a href="airport.html">Airport</a></li><li><a href="arex.html">AREX</a></li><li><a href="airport-bus.html">Airport Bus</a></li><li><a href="taxi.html">Taxi</a></li></ul></div>
+        <div><p class="footer__heading">More</p><ul class="footer__links"><li><a href="rental-car.html">Rental Car</a></li><li><a href="payments.html">Payments</a></li><li><a href="maps.html">Maps</a></li><li><a href="tmoney.html">T-money</a></li></ul></div>
+      </div>
+      <div class="footer__bottom"><p>&copy; 2026 Korea Inside. Practical guides for foreigners in Korea.</p></div>
+    </div>
+  </footer>
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('.nav');
+    toggle.addEventListener('click', () => {
+      const open = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', !open);
+      nav.classList.toggle('is-open');
+    });
+    document.querySelectorAll('.nav__link').forEach(link => {
+      link.addEventListener('click', () => {
+        toggle.setAttribute('aria-expanded', 'false');
+        nav.classList.remove('is-open');
+      });
+    });
+  </script>
+</body>
+</html>

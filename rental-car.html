@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Practical guide to deciding whether a rental car makes sense in Korea, especially for regional travel outside Seoul.">
+  <title>How to Rent a Car in Korea — Korea Inside</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container header__inner">
+      <a href="index.html" class="logo"><span class="logo__mark">KI</span>Korea Inside</a>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="main-nav">
+        <span class="nav-toggle__bar"></span><span class="nav-toggle__bar"></span><span class="nav-toggle__bar"></span>
+      </button>
+      <nav class="nav" id="main-nav">
+        <ul class="nav__list">
+          <li><a href="index.html" class="nav__link">Home</a></li>
+          <li><a href="airport.html" class="nav__link nav__link--active">Airport</a></li>
+          <li><a href="tmoney.html" class="nav__link">T-money</a></li>
+          <li><a href="wowpass.html" class="nav__link">WOWPASS</a></li>
+          <li><a href="esim.html" class="nav__link">eSIM</a></li>
+          <li><a href="payments.html" class="nav__link">Payments</a></li>
+          <li><a href="maps.html" class="nav__link">Maps</a></li>
+          <li><a href="apps.html" class="nav__link">Apps</a></li>
+          <li><a href="checklist.html" class="nav__link">Checklist</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="page-hero">
+      <div class="container">
+        <p class="page-hero__breadcrumb"><a href="index.html">Home</a> / <a href="airport.html">Airport</a> / Rental Car</p>
+        <h1 class="page-hero__title">How to Rent a Car in Korea</h1>
+        <p class="page-hero__desc">Practical guide to deciding whether a rental car makes sense in Korea, especially for regional travel outside Seoul.</p>
+      </div>
+    </div>
+    <article class="guide-content">
+      <div class="container">
+        <div class="tip-box"><p class="tip-box__label">Quick answer</p><p>Rental cars are usually not needed for Seoul-only travel. They make more sense for regional trips, long stays or road trips outside Seoul.</p></div>
+        <h2>When does a rental car make sense?</h2><p>Consider renting a car if you plan to visit multiple cities, rural areas or places with limited public transport. For Seoul, public transport and taxis are usually easier.</p>
+        <h2>What to check before booking</h2><ol><li>International driving permit requirements.</li><li>Insurance coverage and deductible.</li><li>Pickup and return location.</li><li>Parking conditions at your hotel.</li><li>Toll road and navigation setup.</li></ol>
+        <h2>Common mistakes</h2><ul><li>Renting a car for Seoul city travel only.</li><li>Not checking parking availability.</li><li>Assuming every foreign license is accepted without an international driving permit.</li></ul>
+        <h2>FAQ</h2><details><summary>Should I rent a car at Incheon Airport?</summary><p>Only if your trip needs it. For Seoul, AREX, airport bus and taxi are usually easier.</p></details><details><summary>Is driving in Seoul easy?</summary><p>Not for first-time visitors. Traffic, parking and navigation can be stressful.</p></details><details><summary>What is the best alternative?</summary><p>Use AREX, airport bus or taxi for Seoul. Rent a car only for regional travel.</p></details>
+        <div class="related-links"><p class="related-links__title">Related guides</p><a href="airport.html" class="chip">Airport hub</a><a href="maps.html" class="chip">Maps</a><a href="payments.html" class="chip">Payments</a><a href="taxi.html" class="chip">Taxi</a></div>
+      </div>
+    </article>
+  </main>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div><p class="footer__brand">Korea Inside</p><p class="footer__tagline">Understand how Korea really works.</p></div>
+        <div><p class="footer__heading">Airport guides</p><ul class="footer__links"><li><a href="airport.html">Airport</a></li><li><a href="arex.html">AREX</a></li><li><a href="airport-bus.html">Airport Bus</a></li><li><a href="taxi.html">Taxi</a></li></ul></div>
+        <div><p class="footer__heading">More</p><ul class="footer__links"><li><a href="rental-car.html">Rental Car</a></li><li><a href="payments.html">Payments</a></li><li><a href="maps.html">Maps</a></li><li><a href="tmoney.html">T-money</a></li></ul></div>
+      </div>
+      <div class="footer__bottom"><p>&copy; 2026 Korea Inside. Practical guides for foreigners in Korea.</p></div>
+    </div>
+  </footer>
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('.nav');
+    toggle.addEventListener('click', () => {
+      const open = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', !open);
+      nav.classList.toggle('is-open');
+    });
+    document.querySelectorAll('.nav__link').forEach(link => {
+      link.addEventListener('click', () => {
+        toggle.setAttribute('aria-expanded', 'false');
+        nav.classList.remove('is-open');
+      });
+    });
+  </script>
+</body>
+</html>
