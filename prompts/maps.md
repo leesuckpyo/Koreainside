@@ -604,7 +604,7 @@ Korea Inside can outperform competitors by doing these things:
 6. Include a Google + Naver workflow for reviews and navigation.
 7. Include a Korean-name search workaround.
 8. Include official app links and last-reviewed dates.
-9. Keep every infographic mirrored by visible HTML text.
+9. Write core information as visible HTML text first; use images only as decorative or supporting visuals.
 10. Link maps to eSIM, T-money, arrival, apps, and checklist pages.
 
 ## Page Structure Specification
@@ -627,6 +627,10 @@ Hero body:
 
 Google Maps, Naver Map and KakaoMap all work differently in Korea. This guide helps you choose the right map app before and during your trip.
 
+Hero image:
+
+Use `images/maps/map_01.png` as a decorative hero image only. The image must not be the source of any essential information.
+
 Buttons:
 
 - Compare Maps
@@ -634,7 +638,7 @@ Buttons:
 
 Design requirement:
 
-Use existing Korea Inside hero style. Do not redesign. Do not create a marketing-style hero. Keep the first screen practical and readable on mobile.
+Use existing Korea Inside hero style. Do not redesign. Do not create a marketing-style hero. Keep the first screen practical and readable on mobile. Do not use hero animation. Do not add a duplicate title or description above the hero.
 
 ### 2. Quick Answer
 
@@ -802,11 +806,11 @@ Purpose:
 
 Give an action sequence that users can complete before arrival.
 
-Infographic concept:
+Optional visual concept:
 
 Download -> Allow Location -> Search Destination -> Start Navigation -> Arrive
 
-Visible HTML equivalent:
+Visible HTML source of truth:
 
 1. Download the app before arriving in Korea.
 2. Allow location permission.
@@ -873,7 +877,7 @@ Checklist:
 
 Purpose:
 
-Capture long-tail search intent and answer practical travel situations.
+Make the FAQ the core page structure for long-tail search intent and practical travel situations. Non-FAQ sections should stay compact and support fast scanning.
 
 Minimum target:
 
@@ -1180,6 +1184,8 @@ Layout:
 - Full-width section using existing page hero style.
 - Breadcrumb above H1.
 - H1, subtitle/body text, two CTA buttons or chips.
+- Decorative hero image using `images/maps/map_01.png`.
+- No duplicate title or description above the hero.
 
 Component:
 
@@ -1194,6 +1200,7 @@ Mobile behavior:
 
 - CTA buttons wrap if needed.
 - H1 remains readable without oversized hero typography.
+- Hero image remains decorative and must not push the quick answer too far down.
 
 ### Quick Answer
 
@@ -1540,35 +1547,35 @@ Recommended H2s:
 - Frequently Asked Questions
 - Sources & Last Reviewed
 
-## Required Infographics
+## Optional Visual Aids
 
 Important:
 
-All infographic information must also appear as visible semantic HTML text. Infographics are visual aids only.
+Core information must be written as visible semantic HTML text first. Images and visual aids are decorative or supporting only. Do not put explanatory copy inside images as the source of truth, and do not duplicate nonessential image text in HTML.
 
-### Infographic 1: Google Maps vs Naver Map vs KakaoMap
+### Visual Aid 1: Google Maps vs Naver Map vs KakaoMap
 
 Goal:
 
 Show the three-app comparison at a glance.
 
-Must include:
+Visible HTML must include:
 
 - Google Maps: planning and reviews
 - Naver Map: most travelers
 - KakaoMap: backup/local alternative
 
-HTML equivalent:
+HTML source of truth:
 
-Provide a visible table with the same comparison.
+Provide a visible table with the comparison.
 
-### Infographic 2: Which Map Should I Choose?
+### Visual Aid 2: Which Map Should I Choose?
 
 Goal:
 
 Help users pick one app by situation.
 
-Must include:
+Visible HTML must include:
 
 - First-time visitor: Naver Map
 - Public transport: Naver Map
@@ -1576,45 +1583,45 @@ Must include:
 - Reviews: Google Maps + Naver Map
 - Backup: KakaoMap
 
-HTML equivalent:
+HTML source of truth:
 
 Provide visible cards or table.
 
-### Infographic 3: Install Guide
+### Visual Aid 3: Install Guide
 
 Goal:
 
 Show the pre-arrival setup flow.
 
-Must include:
+Visible HTML must include:
 
 Download -> Allow Location -> Search Destination -> Start Navigation -> Arrive
 
-HTML equivalent:
+HTML source of truth:
 
 Provide numbered steps.
 
-### Infographic 4: Search -> Navigate -> Arrive
+### Visual Aid 4: Search -> Navigate -> Arrive
 
 Goal:
 
 Show the hybrid Google/Naver workflow.
 
-Must include:
+Visible HTML must include:
 
 Search on Google or Naver -> Copy Korean name if needed -> Navigate in Naver or Kakao -> Arrive
 
-HTML equivalent:
+HTML source of truth:
 
 Provide a short step list.
 
-### Infographic 5: Before You Travel Checklist
+### Visual Aid 5: Before You Travel Checklist
 
 Goal:
 
 Make pre-arrival tasks scannable.
 
-Must include:
+Visible HTML must include:
 
 - Install Naver Map
 - Keep Google Maps
@@ -1624,7 +1631,7 @@ Must include:
 - Save airport
 - Prepare eSIM
 
-HTML equivalent:
+HTML source of truth:
 
 Provide a visible checklist.
 
@@ -2001,17 +2008,22 @@ The Maps guide must preserve the Korea Inside design language. The page should f
 - Icons should support scanning, not decorate the page excessively.
 - Do not place essential information only in image icons.
 
-### Maps Hero Reference, Logos, And Animation
+### Maps Hero Image And Logos
 
-- The approved Maps hero visual reference is `images/maps-hero-v1.png`.
-- The actual hero must be recreated with HTML and CSS, not embedded as one image.
-- The Maps hero app cards require official logo image files in `images/maps/`.
+- The approved Maps hero image is `images/maps/map_01.png`.
+- The hero image is decorative only.
+- Do not animate the hero.
+- All core hero information must be visible HTML text outside the image.
+- Do not add a duplicate title or description above the hero.
+- Do not duplicate nonessential explanatory text from the image into HTML.
+- Google Maps, Naver Map, and KakaoMap logos must use official original image files in `images/maps/`.
 - Required logo filenames:
   - `google-maps-logo.png`
   - `naver-map-logo.png`
   - `kakaomap-logo.png`
+- Use official logo images as-is.
+- Do not modify, recolor, crop, stretch, distort, recreate, or change the proportions of logo images.
 - Do not use stylized G, N, or K fallback icons as visual logo replacements.
-- Hero animation must run once on page load.
 - If official logo files are missing, keep the `img` elements pointing to the expected paths with meaningful alt text and report the missing files. Do not invent or visually replace the logos.
 
 ### Tables
@@ -2091,7 +2103,7 @@ Accessibility is part of the content strategy because Korea Inside serves travel
 
 - Informative images must have meaningful alt text.
 - Decorative images should use empty alt text if implemented.
-- Infographic alt text is not enough for translation or SEO; the same information must appear as visible HTML text.
+- Image alt text is not enough for translation or SEO. Core information must appear as visible HTML text, and decorative image text should not be treated as required content.
 
 ### Color Contrast
 
@@ -2123,7 +2135,7 @@ The Maps guide should load quickly on mobile data because users may open it whil
 - Prefer WebP for photographic or raster images if images are added later.
 - Use responsive images for any large visual assets.
 - Avoid heavy hero images unless they add clear practical value.
-- All infographics must have visible text equivalents.
+- Visual aids must not be the only source of core information.
 
 ### Lazy Loading
 
@@ -2270,7 +2282,7 @@ Use this checklist before publishing or after each meaningful update.
 - [ ] FAQ accordions are keyboard accessible.
 - [ ] Links have descriptive text.
 - [ ] Images have appropriate alt text.
-- [ ] Infographic content exists as visible text.
+- [ ] Core information around visual aids exists as visible semantic HTML text.
 - [ ] Color contrast is sufficient.
 - [ ] Focus states are visible.
 - [ ] Browser translation can translate all essential information.
@@ -2318,7 +2330,7 @@ The Maps guide must be maintained as time-sensitive content because map function
 - Recheck Korean government map-data announcements.
 - Recheck competitor pages for content gaps.
 - Recheck current traveler experiences on Reddit for recurring issues.
-- Recheck screenshots or infographics if used.
+- Recheck screenshots or visual aids if used.
 - Recheck structured data after content changes.
 
 ### Update Rules
@@ -2344,9 +2356,14 @@ The Maps guide must be maintained as time-sensitive content because map function
 ## Design Decisions
 
 - Keep all essential information as visible HTML text.
+- Use `images/maps/map_01.png` as a decorative hero image.
+- Do not animate the hero.
 - Use official download links only.
+- Use official original Google Maps, Naver Map, and KakaoMap logo images without modification.
 - Keep the page mobile-first.
+- Build the page around FAQ-led practical answers.
 - Avoid duplicate content.
+- Do not duplicate nonessential explanatory image text in HTML.
 - Recommend Naver Map without criticizing Google Maps.
 - Keep explanations practical and concise.
 - Follow the Korea Inside design language used in eSIM and T-money pages.
@@ -2377,9 +2394,11 @@ The final implemented page should satisfy these criteria:
 13. The page has a canonical URL.
 14. The page includes sources and last-reviewed information.
 15. All external links open safely in a new tab in the implementation.
-16. All infographic content has visible semantic HTML equivalents.
+16. All core map guidance exists as visible semantic HTML; images are decorative or supporting only.
 17. Mobile layout has no page-level horizontal overflow.
 18. Design remains consistent with Korea Inside.
+19. The hero uses `images/maps/map_01.png` without animation.
+20. Official map-app logos are used as-is without visual modification.
 
 ## Approval Status
 
