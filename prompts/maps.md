@@ -2001,6 +2001,19 @@ The Maps guide must preserve the Korea Inside design language. The page should f
 - Icons should support scanning, not decorate the page excessively.
 - Do not place essential information only in image icons.
 
+### Maps Hero Reference, Logos, And Animation
+
+- The approved Maps hero visual reference is `images/maps-hero-v1.png`.
+- The actual hero must be recreated with HTML and CSS, not embedded as one image.
+- The Maps hero app cards require official logo image files in `images/maps/`.
+- Required logo filenames:
+  - `google-maps-logo.png`
+  - `naver-map-logo.png`
+  - `kakaomap-logo.png`
+- Do not use stylized G, N, or K fallback icons as visual logo replacements.
+- Hero animation must run once on page load.
+- If official logo files are missing, keep the `img` elements pointing to the expected paths with meaningful alt text and report the missing files. Do not invent or visually replace the logos.
+
 ### Tables
 
 - Tables should be semantic.

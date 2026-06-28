@@ -215,30 +215,6 @@
         },
         {
           "@type": "Question",
-          "name": "Should I search in Korean?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Use Korean names when English search fails, when finding small local businesses or when showing a destination to a taxi driver."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Do I need mobile data to use map apps in Korea?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. Mobile data makes live routes, location, bus arrivals, subway details and walking navigation much more reliable."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can I use map apps with eSIM?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. An eSIM with mobile data is enough for map search, live routes and navigation."
-          }
-        },
-        {
-          "@type": "Question",
           "name": "Should I install more than one map app?",
           "acceptedAnswer": {
             "@type": "Answer",
@@ -276,30 +252,6 @@
             "@type": "Answer",
             "text": "Naver Map is the best first choice for most visitors. KakaoMap is a strong backup for bus information."
           }
-        },
-        {
-          "@type": "Question",
-          "name": "Can I show a taxi driver a Naver Map or KakaoMap destination?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. Showing the Korean place name or address from Naver Map or KakaoMap can help a taxi driver confirm the destination."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can I search places in English?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, especially for major attractions, hotels and popular restaurants. Smaller businesses may be easier to find with the Korean name."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Should I test route search before my flight?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. Search your hotel, airport route and first destination before departure so you know the app works for your trip."
-          }
         }
       ]
     }
@@ -336,80 +288,114 @@
   </header>
 
   <main>
-    <section class="page-hero">
+    <section class="page-hero maps-hero">
       <div class="container">
-        <nav class="page-hero__breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a> / Maps</nav>
-        <h1 class="page-hero__title">Which Map Should You Use in Korea?</h1>
-        <p class="page-hero__desc">Use Naver Map for navigation, Google Maps for planning, and KakaoMap as a backup.</p>
-        <div class="maps-hero-decision" aria-label="Recommended map app setup">
-          <div class="maps-hero-decision__main">
-            <span>Best Choice</span>
-            <strong>Naver Map</strong>
-            <p>Best for most travelers in Korea</p>
+        <div class="maps-hero__panel">
+          <p class="maps-hero__badge">MAP GUIDE FOR KOREA</p>
+          <h1 class="maps-hero__title">Which map app should you use in Korea?</h1>
+          <p class="maps-hero__subtitle">Each map app has its own strengths.<br>Choose the best one for your trip in Korea.</p>
+
+          <div class="maps-hero__apps" aria-label="Map apps for Korea travel">
+            <article class="maps-hero__app-card">
+              <span class="maps-hero__app-logo maps-hero__app-logo--google">
+                <img src="images/maps/Maps_logo_lockup_Hor_New_L3k9Idf.png" alt="Google Maps logo" onerror="this.hidden=true">
+              </span>
+              <p>Plan &middot; Explore &middot; Worldwide</p>
+            </article>
+            <article class="maps-hero__app-card">
+              <span class="maps-hero__app-logo maps-hero__app-logo--wordmark">
+                <img src="images/maps/naver_map.png" alt="Naver Map logo" onerror="this.hidden=true">
+                <img class="maps-hero__wordmark-image" src="images/maps/naver_map_wordmark.svg" alt="Naver Map wordmark" onerror="this.hidden=true">
+              </span>
+              <p>Korea&rsquo;s No.1 &middot; Detailed &middot; Accurate</p>
+            </article>
+            <article class="maps-hero__app-card">
+              <span class="maps-hero__app-logo">
+                <img src="images/maps/kakaomap_horizontal_en.png" alt="KakaoMap logo" onerror="this.hidden=true">
+              </span>
+              <p>Fast &middot; Simple &middot; Local Info</p>
+            </article>
           </div>
-          <div class="maps-hero-decision__secondary">
-            <div><strong>Google Maps</strong><span>Planning &amp; Reviews</span></div>
-            <div><strong>KakaoMap</strong><span>Backup Local Map</span></div>
+
+          <p class="maps-trademark-note">Google Maps, Naver Map and KakaoMap names and logos are trademarks of their respective owners. Korea Inside is not affiliated with or endorsed by Google, NAVER or Kakao.</p>
+
+          <div class="maps-hero__features" aria-label="Map app benefits">
+            <article class="maps-hero__feature">
+              <span aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false">
+                  <path d="M5 12L19 5L12 19L10 14L5 12Z"></path>
+                </svg>
+              </span>
+              <div>
+                <strong>Find your way</strong>
+                <p>Navigate with confidence</p>
+              </div>
+            </article>
+            <article class="maps-hero__feature">
+              <span aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false">
+                  <path d="M12 21S6 15.5 6 10A6 6 0 0 1 18 10C18 15.5 12 21 12 21Z"></path>
+                  <circle cx="12" cy="10" r="2"></circle>
+                </svg>
+              </span>
+              <div>
+                <strong>Local information</strong>
+                <p>Discover real local spots</p>
+              </div>
+            </article>
+            <article class="maps-hero__feature">
+              <span aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false">
+                  <rect x="6" y="4" width="12" height="14" rx="2"></rect>
+                  <path d="M6 9H18"></path>
+                  <path d="M9 18L8 20"></path>
+                  <path d="M15 18L16 20"></path>
+                  <circle cx="9" cy="15" r="1"></circle>
+                  <circle cx="15" cy="15" r="1"></circle>
+                </svg>
+              </span>
+              <div>
+                <strong>Public transport</strong>
+                <p>Get where you need to go</p>
+              </div>
+            </article>
+            <article class="maps-hero__feature">
+              <span aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false">
+                  <path d="M12 4L14.5 9L20 9.8L16 13.7L17 19L12 16.4L7 19L8 13.7L4 9.8L9.5 9L12 4Z"></path>
+                </svg>
+              </span>
+              <div>
+                <strong>Better experience</strong>
+                <p>Travel smarter in Korea</p>
+              </div>
+            </article>
           </div>
-        </div>
-        <div class="maps-actions" aria-label="Page actions">
-          <a href="#download-apps" class="chip">Download Naver Map</a>
-          <a href="#compare" class="chip">Compare Apps</a>
+
+          <p class="maps-hero__bottom"><span aria-hidden="true"></span> One destination, many ways to get there. <strong>Find the map that works best for you.</strong></p>
         </div>
       </div>
     </section>
 
     <article class="guide-content">
       <div class="container">
-        <section id="quick-answer" aria-labelledby="quick-answer-title">
-          <h2 id="quick-answer-title">Choose by Situation</h2>
-          <div class="maps-choice-grid" aria-label="Recommended map app by situation">
-            <article class="maps-choice-card"><span>S</span><h3>Subway</h3><p><strong>Naver Map</strong> shows routes and exits.</p></article>
-            <article class="maps-choice-card"><span>B</span><h3>Bus</h3><p><strong>Naver Map</strong> is the safest first choice.</p></article>
-            <article class="maps-choice-card"><span>W</span><h3>Walking</h3><p><strong>Naver Map</strong> is best for final routes.</p></article>
-            <article class="maps-choice-card"><span>R</span><h3>Restaurants</h3><p><strong>Google Maps + Naver Map</strong> for reviews and routes.</p></article>
-            <article class="maps-choice-card"><span>T</span><h3>Taxi destination</h3><p><strong>Naver Map / KakaoMap</strong> for Korean place names.</p></article>
-            <article class="maps-choice-card"><span>P</span><h3>Trip planning</h3><p><strong>Google Maps</strong> for saved places.</p></article>
-            <article class="maps-choice-card"><span>K</span><h3>Backup route</h3><p><strong>KakaoMap</strong> for another local route.</p></article>
-          </div>
-        </section>
-
         <section id="choose-map" aria-labelledby="setup-title">
           <h2 id="setup-title">The Simple Setup</h2>
           <div class="maps-stack-grid">
-            <article class="maps-stack-card maps-stack-card--best">
-              <span class="maps-badge">Best Overall</span>
-              <h3>Naver Map</h3>
-              <p>Use for:</p>
-              <ul>
-                <li>Walking</li>
-                <li>Subway</li>
-                <li>Bus</li>
-                <li>Local search</li>
-              </ul>
-              <a href="#download-apps" class="chip">Download Naver Map</a>
-            </article>
             <article class="maps-stack-card">
               <span class="maps-badge">Planning &amp; Reviews</span>
               <h3>Google Maps</h3>
-              <p>Use for:</p>
-              <ul>
-                <li>Saved places</li>
-                <li>Reviews</li>
-                <li>Sharing</li>
-              </ul>
-              <a href="#download-apps" class="chip">Keep Google Maps</a>
+              <p>Use for saved places, reviews and sharing.</p>
+            </article>
+            <article class="maps-stack-card maps-stack-card--best">
+              <span class="maps-badge">Best Overall</span>
+              <h3>Naver Map</h3>
+              <p>Main app for walking, subway, bus and local search.</p>
             </article>
             <article class="maps-stack-card">
               <span class="maps-badge">Backup</span>
               <h3>KakaoMap</h3>
-              <p>Use for:</p>
-              <ul>
-                <li>Alternate routes</li>
-                <li>Bus details</li>
-                <li>Local backup</li>
-              </ul>
-              <a href="#download-apps" class="chip">Download KakaoMap</a>
+              <p>Keep as backup for alternate routes and bus details.</p>
             </article>
           </div>
         </section>
@@ -550,25 +536,15 @@
 
         <section aria-labelledby="why-google-maps">
           <h2 id="why-google-maps">Why Google Maps Is Different</h2>
-          <p>Google Maps is useful in Korea, especially for planning, reviews, saved places and sharing. However, some navigation features may be limited or less reliable than local map apps. Naver Map and KakaoMap usually provide more complete local route information for walking, subway, bus and driving. Google Maps may improve over time, so check current functionality before relying on it.</p>
+          <p>Google Maps works in Korea, but some navigation features can be limited because detailed Korean map data has historically been restricted from being exported to overseas servers for national security reasons. For accurate walking, subway, bus and driving routes inside Korea, Naver Map or KakaoMap is usually more reliable.</p>
         </section>
 
         <section aria-labelledby="travel-checklist">
           <h2 id="travel-checklist">Before You Travel Checklist</h2>
-          <div class="maps-prep-visual" aria-label="Before you travel visual summary">
-            <div class="maps-prep-visual__item"><span>N</span><strong>Install Naver Map</strong></div>
-            <div class="maps-prep-visual__item"><span>G</span><strong>Keep Google Maps</strong></div>
-            <div class="maps-prep-visual__item"><span>K</span><strong>Install KakaoMap</strong></div>
-            <div class="maps-prep-visual__item"><span>L</span><strong>Enable Location</strong></div>
-            <div class="maps-prep-visual__item"><span>H</span><strong>Save Hotel</strong></div>
-            <div class="maps-prep-visual__item"><span>e</span><strong>Prepare eSIM</strong></div>
-          </div>
           <div class="checklist">
             <label class="checklist__item"><input class="checklist__checkbox" type="checkbox"><span class="checklist__label">Install Naver Map.</span></label>
-            <label class="checklist__item"><input class="checklist__checkbox" type="checkbox"><span class="checklist__label">Keep Google Maps installed.</span></label>
+            <label class="checklist__item"><input class="checklist__checkbox" type="checkbox"><span class="checklist__label">Keep Google Maps for planning.</span></label>
             <label class="checklist__item"><input class="checklist__checkbox" type="checkbox"><span class="checklist__label">Install KakaoMap as backup.</span></label>
-            <label class="checklist__item"><input class="checklist__checkbox" type="checkbox"><span class="checklist__label">Enable location permission.</span></label>
-            <label class="checklist__item"><input class="checklist__checkbox" type="checkbox"><span class="checklist__label">Save your hotel.</span></label>
             <label class="checklist__item"><input class="checklist__checkbox" type="checkbox"><span class="checklist__label">Prepare mobile data or eSIM.</span></label>
           </div>
           <div class="maps-actions" aria-label="Checklist related action">
@@ -673,30 +649,6 @@
           <details>
             <summary>24. Do map apps show when to get off the bus or subway?</summary>
             <p>Naver Map and KakaoMap can provide public transport route guidance and get-on or get-off details. Check the route before boarding.</p>
-          </details>
-          <details>
-            <summary>25. Can I show a taxi driver a Naver Map or KakaoMap destination?</summary>
-            <p>Yes. Showing the Korean place name or address from Naver Map or KakaoMap can help a taxi driver confirm the destination.</p>
-          </details>
-          <details>
-            <summary>26. Can I search places in English?</summary>
-            <p>Yes, especially for major attractions, hotels and popular restaurants. Smaller businesses may be easier to find with the Korean name.</p>
-          </details>
-          <details>
-            <summary>27. Should I search in Korean?</summary>
-            <p>Use Korean names when English search fails, when finding small local businesses or when showing a destination to a taxi driver.</p>
-          </details>
-          <details>
-            <summary>28. Do I need mobile data to use map apps in Korea?</summary>
-            <p>Yes. Mobile data makes live routes, location, bus arrivals, subway details and walking navigation much more reliable.</p>
-          </details>
-          <details>
-            <summary>29. Can I use map apps with eSIM?</summary>
-            <p>Yes. An eSIM with mobile data is enough for map search, live routes and navigation.</p>
-          </details>
-          <details>
-            <summary>30. Should I test route search before my flight?</summary>
-            <p>Yes. Search your hotel, airport route and first destination before departure so you know the app works for your trip.</p>
           </details>
         </section>
 
