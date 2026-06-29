@@ -250,3 +250,118 @@ common/
 ---
 
 Always preserve the Korea Inside design language.
+
+---
+
+## Codex Development Rules
+
+### Approval Policy
+
+Automatic Approval:
+
+* Markdown
+* New HTML
+* Documentation
+* Reports
+* Database Documents
+
+Require Approval:
+
+* Existing HTML modification
+* Navigation
+* Common CSS
+* URL changes
+* Redirects
+* File deletion
+
+Commit Policy:
+
+* Approved automatic tasks should be committed immediately to the local Git repository.
+* Push remains manual.
+
+### 1. 작업 범위
+
+* 한 번의 작업은 하나의 기능 또는 하나의 페이지만 수행한다.
+* 승인된 범위를 벗어난 파일은 수정하지 않는다.
+
+### 2. 수정 가능한 파일 수
+
+* HTML 최대 2개
+* CSS 최대 1개
+* JavaScript 최대 1개
+* Markdown 제한 없음
+
+초과 시 작업을 중단하고 승인 요청한다.
+
+### 3. 기존 페이지 보호
+
+기존 HTML, CSS, 디자인, 레이아웃, SEO는 승인 없이 수정하지 않는다.
+
+### 4. 신규 페이지 우선
+
+새 기능은 신규 HTML과 Markdown으로 먼저 구현한다.
+
+기존 페이지 연결은 별도 승인 후 진행한다.
+
+### 5. Navigation
+
+전체 Navigation 수정 금지.
+메뉴 변경은 승인 후 진행한다.
+
+### 6. CSS
+
+style.css 전체 수정 금지.
+가능하면 별도 CSS를 사용한다.
+
+### 7. SEO
+
+기존 URL 삭제 금지.
+Redirect Stub을 우선 사용한다.
+
+### 8. Markdown
+
+코드 수정 시 관련 Markdown을 반드시 함께 수정한다.
+
+### 9. Commit
+
+승인 전 Commit, Push, Merge 금지.
+
+### 10. 보고
+
+작업 완료 후
+
+* 변경 파일
+* 수정된 Markdown
+* Diff 요약
+* 영향받는 페이지
+* 잠재적 문제
+  를 반드시 보고한다.
+
+### 11. 승인 필수 작업
+
+* 프로젝트 구조 변경
+* 메뉴 변경
+* 공통 CSS 수정
+* URL 변경
+* 파일 삭제
+* Redirect 추가
+* 디자인 변경
+
+### 12. 절대 금지
+
+승인 없이
+
+* 프로젝트 전체 수정
+* 전체 리팩터링
+* 전체 CSS 수정
+* 전체 Navigation 수정
+* 전체 치환
+  을 수행하지 않는다.
+
+### 13. 개발 철학
+
+빠른 개발보다
+안전한 개발
+작은 단위 개발
+검토 후 승인
+원칙을 우선한다.
