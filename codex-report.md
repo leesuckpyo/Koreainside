@@ -2,17 +2,11 @@
 
 ## Work Summary
 
-Updated `docs/hotel-database.md` with one completed hotel entry:
+Created `docs/data-dictionary.md`.
 
-- RYSE, Autograph Collection Seoul
+The new document defines shared field meanings, data types, validation rules, and naming rules for the Korea Inside recommendation engine and related databases.
 
-The entry fills every requested field while avoiding unsupported claims.
-
-Information that requires further confirmation is marked as `Verification Needed`.
-
-The entry uses the Hotel Scoring Rules structure and keeps scores as Korea Inside editorial recommendation scores, not official hotel ratings.
-
-Automatic approval rules apply because this is a documentation/database document task.
+Automatic approval rules apply because this is a new documentation task.
 
 Local Git commit was created as required.
 
@@ -20,11 +14,10 @@ GitHub Push was not performed.
 
 ## Created Files
 
-- None
+- `docs/data-dictionary.md`
 
 ## Modified Files
 
-- `docs/hotel-database.md`
 - `codex-report.md`
 
 ## Deleted Files
@@ -33,78 +26,103 @@ GitHub Push was not performed.
 
 ## Diff Summary
 
-### `docs/hotel-database.md`
+### `docs/data-dictionary.md`
 
-- Updated the Hongdae target list item from `RYSE Hotel` to `RYSE, Autograph Collection Seoul`.
-- Added a completed hotel entry for `RYSE, Autograph Collection Seoul`.
-- Added source status and verified source reference:
-  - Marriott official hotel page
-  - last checked date
-- Filled requested hotel fields:
-  - Hotel Name
+- Added document purpose.
+- Added Data Types:
+  - Text
+  - Integer
+  - Boolean
+  - Score (1~5)
+  - Tag
+  - Array
+- Added Area Fields:
   - Area
+  - District
+  - Nearest Station
+  - Airport Access
+  - Subway Access
+  - Walking Difficulty
+  - Nightlife
+  - Shopping
+  - Food
+  - Cafes
+  - Luxury
+  - Budget
+  - Quiet Stay
+  - Traditional Culture
+  - Family Friendly
+- Added Hotel Fields:
+  - Hotel Name
   - Hotel Class
+  - Area
   - Luxury Level
   - Airport Access
   - Suitcase Friendly
   - Family Friendly
   - Business Friendly
-  - Quiet Stay
-  - Night Noise
-  - Shopping
-  - Food
-  - Cafes
-  - Subway Access
   - Walking Difficulty
+  - Noise Level
   - Budget Level
   - Best For
   - Not Ideal For
-  - Strengths
-  - Weaknesses
-  - Recommendation Notes
-  - Suggested Alternatives
-  - Recommended For
-  - Verification Needed
-- Added Review Summary fields:
+- Added Review Fields:
   - Strengths
   - Weaknesses
   - Frequently Praised
   - Common Complaints
   - Korea Inside Notes
-- Marked unverified or review-dependent information as `Verification Needed`.
-- Renumbered later document sections after adding the completed hotel entry.
+- Added Decision Engine Fields:
+  - Travel Purpose
+  - Priority
+  - Recommended Area
+  - Recommended Hotel
+  - Alternative Area
+  - Alternative Hotel
+  - Recommendation Reason
+  - Next Action
+- Added validation rules for:
+  - allowed values
+  - required fields
+  - optional fields
+  - future fields
+- Added naming rules and production rules.
 
 ### `codex-report.md`
 
-- Updated this report for the RYSE hotel database task.
+- Updated this report for the Data Dictionary task.
 
 ## Verification Results
 
 - Ran `git status --short` before editing.
-- Confirmed working tree was clean before this task.
-- Modified only the allowed database document: `docs/hotel-database.md`.
+- Confirmed `docs/data-dictionary.md` did not exist before creation.
+- Created only the allowed new document file: `docs/data-dictionary.md`.
 - Updated only the allowed report file: `codex-report.md`.
 - HTML files were not modified.
 - CSS files were not modified.
 - JavaScript files were not modified.
 - Navigation was not modified.
 - README was not modified.
-- Other Markdown files were not modified.
+- Existing Markdown files were not modified except `codex-report.md`.
 - Images were not modified.
-- No Push was performed.
+- URLs were not changed.
+- Redirects were not added.
+- Reference documents `docs/hotel-research-methodology.md` and `docs/review-tag-system.md` were not present in the workspace.
 - Local Git commit was created.
+- GitHub Push was not performed.
 
 ## Potential Issues
 
-- The RYSE entry still requires full review analysis before production use.
-- Current pricing, booking availability, cancellation policy, airport bus operation, and room-specific noise risk require re-verification.
-- Review Summary fields are intentionally not filled with copied review text.
-- Some scores may need adjustment after checking Google Reviews, Booking, Agoda, Reddit, and current route details.
+- Two referenced documents were not found:
+  - `docs/hotel-research-methodology.md`
+  - `docs/review-tag-system.md`
+- The dictionary may need future updates after those documents are created.
+- `Night Noise` appears in some existing planning documents, while this dictionary standardizes hotel-level noise as `Noise Level`.
+- Future implementation should align database fields with this dictionary.
 
 ## Next Suggestions
 
-- Verify the RYSE walking route from Hongik University Station with luggage.
-- Verify the current Airport Limousine Bus #6002 stop and operation.
-- Analyze recurring foreigner review patterns without copying review text.
-- Compare RYSE against L7 Hongdae and Holiday Inn Express Seoul Hongdae.
-- Complete the next hotel entry only after RYSE verification is reviewed.
+- Create `docs/hotel-research-methodology.md`.
+- Create `docs/review-tag-system.md`.
+- Align `docs/hotel-database.md` field names with the Data Dictionary.
+- Add source tracking fields after the research methodology is approved.
