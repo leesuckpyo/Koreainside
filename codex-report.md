@@ -2,9 +2,11 @@
 
 ## Work Summary
 
-Created `docs/data-dictionary.md`.
+Created `docs/content-where-to-stay-in-seoul.md`.
 
-The new document defines shared field meanings, data types, validation rules, and naming rules for the Korea Inside recommendation engine and related databases.
+The new document is the master SEO and decision-making content source for a future page titled `Where Should I Stay in Seoul?`.
+
+It is written for foreign visitors planning their first or second trip to Korea.
 
 Automatic approval rules apply because this is a new documentation task.
 
@@ -14,7 +16,7 @@ GitHub Push was not performed.
 
 ## Created Files
 
-- `docs/data-dictionary.md`
+- `docs/content-where-to-stay-in-seoul.md`
 
 ## Modified Files
 
@@ -26,77 +28,54 @@ GitHub Push was not performed.
 
 ## Diff Summary
 
-### `docs/data-dictionary.md`
+### `docs/content-where-to-stay-in-seoul.md`
 
-- Added document purpose.
-- Added Data Types:
-  - Text
-  - Integer
-  - Boolean
-  - Score (1~5)
-  - Tag
-  - Array
-- Added Area Fields:
-  - Area
-  - District
-  - Nearest Station
-  - Airport Access
-  - Subway Access
-  - Walking Difficulty
-  - Nightlife
-  - Shopping
-  - Food
-  - Cafes
+- Added Introduction answering `Where should I stay in Seoul?`.
+- Added Quick Recommendation table by travel style:
+  - First Time
+  - Family
+  - Couple
+  - Solo
+  - Business
   - Luxury
   - Budget
-  - Quiet Stay
+  - Shopping
+  - Nightlife
+  - Food
   - Traditional Culture
-  - Family Friendly
-- Added Hotel Fields:
-  - Hotel Name
-  - Hotel Class
-  - Area
-  - Luxury Level
-  - Airport Access
-  - Suitcase Friendly
-  - Family Friendly
-  - Business Friendly
-  - Walking Difficulty
-  - Noise Level
-  - Budget Level
+- Added Area Comparison sections for:
+  - Hongdae
+  - Myeongdong
+  - Gangnam
+  - Insadong
+  - Seoul Station
+  - Dongdaemun
+  - Jamsil
+  - Seongsu
+  - Mapo / Gongdeok
+- For each area, added:
   - Best For
-  - Not Ideal For
-- Added Review Fields:
-  - Strengths
-  - Weaknesses
-  - Frequently Praised
-  - Common Complaints
-  - Korea Inside Notes
-- Added Decision Engine Fields:
-  - Travel Purpose
-  - Priority
-  - Recommended Area
-  - Recommended Hotel
-  - Alternative Area
-  - Alternative Hotel
-  - Recommendation Reason
-  - Next Action
-- Added validation rules for:
-  - allowed values
-  - required fields
-  - optional fields
-  - future fields
-- Added naming rules and production rules.
+  - Advantages
+  - Disadvantages
+  - Airport Access
+  - Shopping
+  - Food
+  - Nightlife
+  - Suitcase Friendliness
+- Added `Which Area Should You Avoid?` section.
+- Added 12 example scenarios with recommended areas and reasons.
+- Added 18 FAQ questions and answers.
+- Added Korea Inside Recommendation section explaining how users should choose an area before selecting a hotel.
 
 ### `codex-report.md`
 
-- Updated this report for the Data Dictionary task.
+- Updated this report for the Where Should I Stay in Seoul content task.
 
 ## Verification Results
 
 - Ran `git status --short` before editing.
-- Confirmed `docs/data-dictionary.md` did not exist before creation.
-- Created only the allowed new document file: `docs/data-dictionary.md`.
+- Confirmed `docs/content-where-to-stay-in-seoul.md` did not exist before creation.
+- Created only the allowed new document file: `docs/content-where-to-stay-in-seoul.md`.
 - Updated only the allowed report file: `codex-report.md`.
 - HTML files were not modified.
 - CSS files were not modified.
@@ -107,22 +86,19 @@ GitHub Push was not performed.
 - Images were not modified.
 - URLs were not changed.
 - Redirects were not added.
-- Reference documents `docs/hotel-research-methodology.md` and `docs/review-tag-system.md` were not present in the workspace.
 - Local Git commit was created.
 - GitHub Push was not performed.
 
 ## Potential Issues
 
-- Two referenced documents were not found:
-  - `docs/hotel-research-methodology.md`
-  - `docs/review-tag-system.md`
-- The dictionary may need future updates after those documents are created.
-- `Night Noise` appears in some existing planning documents, while this dictionary standardizes hotel-level noise as `Noise Level`.
-- Future implementation should align database fields with this dictionary.
+- This is a master content document only. It has not been converted into an HTML page.
+- Area recommendations are editorial guidance based on internal draft documents, not live hotel availability.
+- Exact hotel selection, current prices, and booking details still require separate verification.
+- Future HTML implementation should preserve visible text for SEO and browser translation.
 
 ## Next Suggestions
 
-- Create `docs/hotel-research-methodology.md`.
-- Create `docs/review-tag-system.md`.
-- Align `docs/hotel-database.md` field names with the Data Dictionary.
-- Add source tracking fields after the research methodology is approved.
+- Review the content for tone and SEO targeting.
+- Convert this source document into a future HTML page after approval.
+- Add internal links only in a separate approved task.
+- Connect future hotel recommendations after hotel database verification.
