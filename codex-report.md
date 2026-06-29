@@ -1,153 +1,136 @@
 # Codex Report
 
-## 1. Work Summary
+## Work Summary
 
-Updated `docs/hotel-database.md` as a hotel research and evaluation template for the Korea Inside Stay Guide recommendation engine.
+Created `docs/hotel-scoring-rules.md`.
 
-This revision does not confirm actual hotel scores.
+The new document defines standard evaluation criteria for the Korea Inside Stay Guide hotel recommendation engine.
 
-The document now focuses on:
+It covers editorial principles, score scale, scoring categories, Best For rules, Not Ideal For rules, review summary rules, verification sources, scoring workflow, and future expansion.
 
-- document purpose
-- hotel database use purpose
-- initial 20 target hotels
-- hotel-by-hotel evaluation template
-- evaluation items
-- review summary fields
-- Recommended For fields
-- Verification Needed fields
-- future research procedure
+Automatic approval rules apply because this is a new documentation task.
 
-Commit and Push were not performed.
+Local Git commit was created as required.
 
-## 2. Created Files
+GitHub Push was not performed.
 
-- None
+## Created Files
 
-## 3. Modified Files
+- `docs/hotel-scoring-rules.md`
 
-- `docs/hotel-database.md`
+## Modified Files
+
 - `codex-report.md`
 
-## 4. Deleted Files
+## Deleted Files
 
 - None
 
-## 5. Diff Summary
+## Diff Summary
 
-### `docs/hotel-database.md`
+### `docs/hotel-scoring-rules.md`
 
-- Reworked the document from a scored draft into a research and evaluation template.
-- Added clear statement that real hotel scores are not confirmed yet.
-- Added Korea Inside Editorial Database Draft notice.
-- Added Hotel Database use purpose for Stay Guide recommendation logic.
-- Added initial 20 target hotel list:
-  - RYSE Hotel
-  - L7 Hongdae
-  - Holiday Inn Express Seoul Hongdae
-  - L7 Myeongdong
-  - Nine Tree Premier Hotel Myeongdong 2
-  - Sotetsu Fresa Inn Seoul Myeong-dong
-  - Grand InterContinental Seoul Parnas
-  - L7 Gangnam
-  - Hotel Peyto Samseong
-  - Orakai Insadong Suites
-  - NINE TREE BY PARNAS Seoul Insadong
-  - Amid Hotel Seoul
-  - Four Points by Sheraton Josun Seoul Station
-  - ENA Suite Hotel Namdaemun
-  - Signiel Seoul
-  - Sofitel Ambassador Seoul
-  - Hotel POCO Seongsu
-  - H Avenue Hotel Seongsu
-  - Mondrian Seoul Itaewon
-  - Imperial Palace Boutique Hotel
-- Added hotel evaluation template fields:
-  - Area
-  - Hotel Class
-  - Luxury Level
+- Added Document Purpose.
+- Added Editorial Principles:
+  - User First
+  - Recommendation Before Affiliate
+  - Same Input = Same Result
+  - Explain Every Recommendation
+  - No Review Copying
+  - Editorial Scoring Only
+- Added Score Scale:
+  - 5 = Excellent
+  - 4 = Good
+  - 3 = Average
+  - 2 = Weak
+  - 1 = Poor
+- Added detailed scoring rules for:
   - Airport Access
   - Suitcase Friendly
   - Family Friendly
   - Business Friendly
+  - Quiet Stay
   - Night Noise
+  - Luxury
+  - Budget
   - Shopping
   - Food
   - Cafes
   - Subway Access
   - Walking Difficulty
-  - Budget Level
-  - Best For
-  - Not Ideal For
-  - Strengths
-  - Weaknesses
-  - Korea Inside Notes
-  - Verification Needed
-- Added Review Summary fields:
-  - Review Strengths
-  - Review Weaknesses
-  - Common Complaints
-  - Frequently Praised
-  - Korea Inside Notes
-- Added Recommended For fields:
+- Added Best For rules:
   - First Time
-  - Family
   - Couple
+  - Family
   - Solo
   - Business
   - Luxury
   - Budget
+  - Shopping
   - Food Trip
   - Nightlife
-  - Shopping
   - Long Stay
-- Added Verification Needed checklist.
-- Added future research procedure.
-- Added production use rule stating the document is not a final recommendation database.
+- Added Not Ideal For rules.
+- Added Review Summary rules for:
+  - Strengths
+  - Weaknesses
+  - Frequently Praised
+  - Common Complaints
+  - Korea Inside Notes
+- Added Verification Sources:
+  - Official Website
+  - Google Maps
+  - Booking
+  - Agoda
+  - Google Reviews
+  - Reddit
+  - Public Travel Blogs
+- Added Scoring Workflow:
+  - Hotel Research
+  - Verification
+  - Scoring
+  - Review Summary
+  - Decision Engine
+  - Stay Guide
+- Added Future Expansion items:
+  - Hotel Database
+  - Review Tag Database
+  - User Feedback Database
+  - AI Review Summary
+  - Affiliate Integration
 
 ### `codex-report.md`
 
-- Updated this report for the Hotel Database template revision task.
+- Updated this report for the Hotel Scoring Rules task.
 
-## 6. Verification Results
+## Verification Results
 
 - Ran `git status --short` before editing.
-- Confirmed `docs/hotel-database.md` existed before this task.
-- Modified only the allowed document file: `docs/hotel-database.md`.
+- Confirmed `docs/hotel-scoring-rules.md` did not exist before creation.
+- Created only the allowed new document file: `docs/hotel-scoring-rules.md`.
 - Updated only the allowed report file: `codex-report.md`.
 - HTML files were not modified.
-- CSS files were not modified.
+- `style.css` was not modified.
 - JavaScript files were not modified.
-- Navigation files were not modified.
-- README was not modified.
-- Other existing Markdown documents were not modified.
-- Image files were not modified.
-- Commit and Push were not performed.
+- Navigation was not modified.
+- `README.md` was not modified.
+- Existing Markdown files were not modified except `codex-report.md`.
+- Images were not modified.
+- URLs were not changed.
+- Redirects were not added.
+- Local Git commit was created.
+- GitHub Push was not performed.
 
-## 7. Potential Issues
+## Potential Issues
 
-- `docs/hotel-database.md` is now a template and target list only.
-- Actual hotel scores remain unconfirmed by design.
-- No real hotel review analysis has been completed yet.
-- Hotel names, addresses, transport access, prices, reviews, and operating status still require verification.
-- Existing repository changes from earlier tasks remain in the working tree and were not modified during this task.
+- The scoring rules are editorial standards and still need validation against real hotel research.
+- Category definitions may need refinement after the first hotel scoring batch.
+- Verification sources are listed, but no live verification was performed in this task.
+- AI Review Summary is listed as future expansion only and is not implemented.
 
-## 8. Approval Required
+## Next Suggestions
 
-Approval is required before any of the following:
-
-- Adding confirmed hotel scores.
-- Adding real review summaries.
-- Using the hotel database in a live recommendation engine.
-- Publishing hotel recommendations to users.
-- Adding Booking or Agoda links.
-- Adding affiliate links.
-- Modifying HTML, CSS, JavaScript, navigation, README, existing Markdown documents, or images.
-
-## 9. Next Work Suggestions
-
-- Review the hotel research template.
-- Confirm exact hotel identities and official names.
-- Add source tracking fields if needed.
-- Research hotels in small batches by area.
-- Fill Verification Needed fields before assigning any final recommendation scores.
+- Apply these rules to a small pilot batch of hotels.
+- Add source-tracking fields to the Hotel Database template.
+- Create sample scoring examples for 3 to 5 hotels.
+- Review whether Walking Difficulty should be interpreted as higher score = easier walking in all future documents.
