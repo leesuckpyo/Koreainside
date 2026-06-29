@@ -2,13 +2,11 @@
 
 ## Work Summary
 
-Created `where-to-stay-in-seoul.html`.
+Created `hongdae-vs-myeongdong.html`.
 
-The new page is an SEO content page for `Where Should I Stay in Seoul?`.
+The new page is an SEO comparison page for `Hongdae vs Myeongdong: Which Area Should You Stay In?`.
 
-It helps foreign visitors choose the best Seoul area before selecting a hotel.
-
-It is not a hotel listing page.
+It helps foreign visitors choose between Hongdae and Myeongdong before booking a hotel.
 
 Automatic approval rules apply because this is a new HTML page.
 
@@ -18,7 +16,7 @@ GitHub Push was not performed.
 
 ## Created Files
 
-- `where-to-stay-in-seoul.html`
+- `hongdae-vs-myeongdong.html`
 
 ## Modified Files
 
@@ -30,42 +28,48 @@ GitHub Push was not performed.
 
 ## Diff Summary
 
-### `where-to-stay-in-seoul.html`
+### `hongdae-vs-myeongdong.html`
 
 - Added SEO metadata:
-  - title: `Where Should I Stay in Seoul? - Korea Inside`
-  - meta description for Seoul area comparison
-  - canonical URL: `https://getkoreainside.com/where-to-stay-in-seoul.html`
+  - title: `Hongdae vs Myeongdong: Where Should You Stay? - Korea Inside`
+  - meta description comparing Hongdae and Myeongdong
+  - canonical URL: `https://getkoreainside.com/hongdae-vs-myeongdong.html`
   - exactly one `h1`
 - Added Hero section:
   - H1
   - subtitle
-  - CTA links to `stay-guide.html` and `#area-comparison`
+  - CTA links to `#quick-comparison` and `stay-guide.html`
 - Added Quick Answer section.
-- Added Quick Recommendation table with travel style, best area and reason.
-- Added Area Comparison sections for:
-  - Hongdae
-  - Myeongdong
-  - Gangnam
-  - Insadong
-  - Seoul Station
-  - Dongdaemun
-  - Jamsil
-  - Seongsu
-  - Itaewon
-  - Mapo / Gongdeok
-- For each area, added:
+- Added Quick Comparison table covering:
+  - Airport Access
+  - Shopping
+  - Food
+  - Cafes
+  - Nightlife
+  - Quiet Stay
+  - Family Friendly
+  - Large Suitcases
+  - Subway Access
   - Best For
-  - Why stay here
-  - Watch out
-  - Airport access
-  - Suitcase friendliness
-  - Not ideal for
-- Added How to Choose section.
-- Added Common Mistakes section.
+  - Not Ideal For
+- Added Choose Hongdae If section.
+- Added Choose Myeongdong If section.
+- Added Category Comparison sections:
+  - Airport Access
+  - Shopping
+  - Food and Cafes
+  - Nightlife
+  - Quietness
+  - Families
+  - Large Suitcases
+  - First-Time Visitors
+  - Budget
+  - Luxury
 - Added 8 Example Scenarios.
-- Added 15 FAQ items.
+- Added Common Mistakes section.
+- Added 14 FAQ items.
 - Added Final Recommendation section with links to:
+  - `where-to-stay-in-seoul.html`
   - `stay-guide.html`
   - `airport-transfer.html`
 - Used existing CSS classes only.
@@ -73,13 +77,13 @@ GitHub Push was not performed.
 
 ### `codex-report.md`
 
-- Updated this report for the `where-to-stay-in-seoul.html` page creation task.
+- Updated this report for the `hongdae-vs-myeongdong.html` page creation task.
 
 ## Verification Results
 
 - Ran `git status --short` before editing.
-- Confirmed `where-to-stay-in-seoul.html` did not exist before creation.
-- Created only the allowed new HTML file: `where-to-stay-in-seoul.html`.
+- Confirmed `hongdae-vs-myeongdong.html` did not exist before creation.
+- Created only the allowed new HTML file: `hongdae-vs-myeongdong.html`.
 - Updated only the allowed report file: `codex-report.md`.
 - Existing HTML files were not modified.
 - `style.css` was not modified.
@@ -110,4 +114,4 @@ GitHub Push was not performed.
 - Review the new page content in browser.
 - Perform visual verification at 375px, 768px and 1440px.
 - Add navigation or internal links in a separate approved task.
-- Connect hotel-level recommendations only after database verification.
+- Add related comparison pages for other high-intent Seoul area pairs.
