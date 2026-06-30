@@ -3589,18 +3589,25 @@ ul, ol {
 
 /* Stay Cluster unified design system */
 .stay-cluster .airport-page-hero {
-  padding: 40px 0 24px;
+  padding: 38px 0 22px;
+  overflow: hidden;
 }
 
 .stay-cluster .airport-page-hero__grid {
-  align-items: start;
+  align-items: center;
   gap: 18px;
   grid-template-columns: minmax(0, 1fr);
+}
+
+.stay-cluster .airport-page-hero__copy,
+.stay-cluster .airport-page-hero__grid > .airport-transport-card {
+  min-width: 0;
 }
 
 .stay-cluster .airport-page-hero__title {
   max-width: 780px;
   line-height: 1.04;
+  margin-bottom: 14px;
   overflow-wrap: anywhere;
 }
 
@@ -3608,12 +3615,13 @@ ul, ol {
   max-width: 680px;
   font-size: 1.02rem;
   line-height: 1.55;
+  margin-bottom: 0;
   overflow-wrap: anywhere;
 }
 
 .stay-cluster .airport-quick-links {
   gap: 12px;
-  margin-top: 18px;
+  margin-top: 16px;
   max-width: 100%;
 }
 
@@ -3627,25 +3635,33 @@ ul, ol {
 }
 
 .stay-cluster .airport-section {
-  padding: 56px 0;
+  padding: 54px 0;
 }
 
 .stay-cluster .airport-page-hero + .stay-decision-strip {
-  padding-top: 36px;
+  padding-top: 32px;
 }
 
 .stay-cluster .section__header {
   max-width: 820px;
-  margin-bottom: 24px;
+  margin-bottom: 22px;
 }
 
 .stay-cluster .section__subtitle {
   max-width: 760px;
+  line-height: 1.62;
+  overflow-wrap: anywhere;
 }
 
 .stay-cluster .section__header--center .section__subtitle {
   margin-left: auto;
   margin-right: auto;
+}
+
+.stay-cluster .section__title,
+.stay-cluster .section__title--lg {
+  line-height: 1.16;
+  overflow-wrap: anywhere;
 }
 
 .stay-cluster .airport-transport-grid,
@@ -3660,6 +3676,7 @@ ul, ol {
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
   min-width: 0;
+  transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
 }
 
 .stay-cluster .airport-transport-card,
@@ -3673,6 +3690,7 @@ ul, ol {
 .stay-cluster .stay-decision-card:hover {
   border-color: rgba(26, 86, 219, .28);
   box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
 }
 
 .stay-cluster .airport-transport-card h3,
@@ -3681,6 +3699,37 @@ ul, ol {
   line-height: 1.25;
   overflow-wrap: anywhere;
   hyphens: auto;
+}
+
+.stay-cluster .airport-transport-card p,
+.stay-cluster .airport-transport-card li,
+.stay-cluster .guide-card p,
+.stay-cluster .stay-decision-card p {
+  overflow-wrap: anywhere;
+}
+
+.stay-cluster .airport-page-hero__grid > .airport-transport-card {
+  align-self: center;
+  width: 100%;
+}
+
+.stay-cluster .airport-page-hero__grid > .airport-transport-card .section__title {
+  font-size: clamp(1.35rem, 2.2vw, 1.85rem);
+  line-height: 1.18;
+}
+
+.stay-cluster .stay-hero-media,
+.stay-cluster .airport-page-hero__media {
+  min-width: 0;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+}
+
+.stay-cluster .stay-hero-media img,
+.stay-cluster .airport-page-hero__media img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .stay-decision-grid {
@@ -3715,13 +3764,15 @@ ul, ol {
 .stay-cluster table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 760px;
+  min-width: 780px;
+  table-layout: auto;
 }
 
 .stay-cluster .airport-transport-card:has(table) {
   max-width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+  overscroll-behavior-inline: contain;
 }
 
 .stay-cluster th,
@@ -3743,14 +3794,50 @@ ul, ol {
   color: var(--blue-muted);
   font-size: .93rem;
   line-height: 1.5;
-  overflow-wrap: normal;
+  overflow-wrap: break-word;
+  word-break: normal;
 }
 
 .stay-cluster .guide-card {
   min-height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .stay-cluster .guide-card p {
+  overflow-wrap: anywhere;
+}
+
+.stay-cluster .guide-card a {
+  overflow-wrap: anywhere;
+}
+
+.stay-cluster #related-guides .guide-grid {
+  align-items: stretch;
+}
+
+.stay-cluster #related-guides .guide-card h3 {
+  font-size: 1.02rem;
+}
+
+.stay-cluster .airport-faq {
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.stay-cluster .airport-faq details {
+  border-radius: var(--radius-lg);
+  padding: 18px 20px;
+  min-width: 0;
+}
+
+.stay-cluster .airport-faq summary {
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+.stay-cluster .airport-faq p {
+  line-height: 1.62;
   overflow-wrap: anywhere;
 }
 
@@ -3763,40 +3850,501 @@ ul, ol {
 @media (min-width: 960px) {
   .stay-cluster .airport-page-hero__grid {
     grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
+    gap: 28px;
   }
 
   .stay-cluster .airport-page-hero {
     min-height: auto;
     display: flex;
-    align-items: flex-start;
-    padding: 44px 0 28px;
+    align-items: center;
+    padding: 42px 0 26px;
   }
 
   .stay-cluster .airport-section {
-    padding: 72px 0;
+    padding: 68px 0;
+  }
+
+  .stay-cluster .airport-page-hero + .stay-decision-strip {
+    padding-top: 36px;
   }
 }
 
 @media (max-width: 719px) {
   .stay-cluster .airport-page-hero {
-    padding: 30px 0 20px;
+    padding: 28px 0 18px;
   }
 
   .stay-cluster .airport-page-hero__title {
     font-size: clamp(2.2rem, 12vw, 3.2rem);
+    line-height: 1.05;
   }
 
   .stay-cluster .airport-section {
-    padding: 44px 0;
+    padding: 42px 0;
   }
 
   .stay-cluster .airport-page-hero + .stay-decision-strip {
-    padding-top: 28px;
+    padding-top: 26px;
+  }
+
+  .stay-cluster .airport-quick-links {
+    gap: 10px;
+  }
+
+  .stay-cluster .airport-pill {
+    flex: 1 1 150px;
+    padding: 10px 14px;
   }
 
   .stay-cluster .airport-transport-card,
   .stay-cluster .guide-card,
   .stay-cluster .stay-decision-card {
     padding: 18px;
+  }
+
+  .stay-cluster th,
+  .stay-cluster td {
+    padding: 12px 14px;
+  }
+}
+
+/* Korea Inside Intelligence dashboard */
+.kii-dashboard-page {
+  background: #f6f8fb;
+}
+
+.kii-dashboard-page main {
+  background:
+    radial-gradient(circle at top left, rgba(26, 86, 219, .08), transparent 32rem),
+    linear-gradient(180deg, #f8fbff 0%, #f6f8fb 48%, #ffffff 100%);
+}
+
+.kii-hero {
+  padding: 56px 0 34px;
+  border-bottom: 1px solid rgba(10, 37, 64, .08);
+}
+
+.kii-hero__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  align-items: center;
+}
+
+.kii-hero h1 {
+  max-width: 780px;
+  color: var(--blue-deep);
+  font-size: clamp(2.35rem, 8vw, 4.5rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  margin: 8px 0 14px;
+}
+
+.kii-hero p {
+  color: var(--blue-muted);
+  font-size: 1.08rem;
+}
+
+.kii-privacy-card,
+.kii-panel,
+.kii-metric-card,
+.kii-rank-card,
+.kii-insight-card,
+.kii-partner-card {
+  min-width: 0;
+  background: rgba(255, 255, 255, .94);
+  border: 1px solid rgba(10, 37, 64, .08);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.kii-privacy-card {
+  padding: 24px;
+}
+
+.kii-privacy-card h2,
+.kii-panel h2,
+.kii-section-header h2,
+.kii-toolbar h2 {
+  color: var(--blue-deep);
+  line-height: 1.16;
+  overflow-wrap: anywhere;
+}
+
+.kii-privacy-card h2 {
+  font-size: 1.35rem;
+  margin: 8px 0 10px;
+}
+
+.kii-privacy-card p,
+.kii-panel p,
+.kii-section-header p,
+.kii-rank-card p,
+.kii-insight-card p,
+.kii-small-note {
+  color: var(--blue-muted);
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.kii-card-label {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: var(--blue-light);
+  color: var(--blue-accent);
+  font-size: .76rem;
+  font-weight: 800;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+.kii-section {
+  padding: 56px 0;
+}
+
+.kii-section--tight {
+  padding: 32px 0 18px;
+}
+
+.kii-section--gray {
+  background: rgba(249, 250, 251, .8);
+}
+
+.kii-section-header {
+  max-width: 760px;
+  margin-bottom: 24px;
+}
+
+.kii-section-header h2,
+.kii-toolbar h2 {
+  font-size: clamp(1.55rem, 5vw, 2.25rem);
+  margin: 4px 0 10px;
+}
+
+.kii-toolbar {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+  padding: 20px;
+  background: var(--white);
+  border: 1px solid rgba(10, 37, 64, .08);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.kii-filter-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.kii-filter-button,
+.kii-report-list button {
+  min-height: 44px;
+  border: 1px solid rgba(26, 86, 219, .18);
+  border-radius: 999px;
+  background: var(--white);
+  color: var(--blue-accent);
+  font: inherit;
+  font-weight: 800;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: background var(--transition), border-color var(--transition), color var(--transition), transform var(--transition);
+  white-space: normal;
+}
+
+.kii-filter-button:hover,
+.kii-filter-button--active,
+.kii-report-list button:hover {
+  background: var(--blue-accent);
+  border-color: var(--blue-accent);
+  color: var(--white);
+  transform: translateY(-1px);
+}
+
+.kii-metric-grid,
+.kii-insight-grid,
+.kii-partner-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.kii-metric-card {
+  padding: 22px;
+}
+
+.kii-metric-card span,
+.kii-partner-card span {
+  display: block;
+  color: var(--blue-muted);
+  font-size: .86rem;
+  font-weight: 800;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.kii-metric-card strong {
+  display: block;
+  color: var(--blue-deep);
+  font-size: clamp(2rem, 8vw, 3.1rem);
+  line-height: 1;
+  margin: 14px 0 10px;
+}
+
+.kii-metric-card p {
+  color: var(--blue-muted);
+}
+
+.kii-metric-card--accent {
+  background: linear-gradient(135deg, var(--blue-deep), var(--blue-accent));
+}
+
+.kii-metric-card--accent span,
+.kii-metric-card--accent strong,
+.kii-metric-card--accent p {
+  color: var(--white);
+}
+
+.kii-two-column {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 22px;
+}
+
+.kii-country-list {
+  display: grid;
+  gap: 12px;
+}
+
+.kii-rank-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 6px 14px;
+  padding: 18px;
+}
+
+.kii-rank-card span {
+  grid-row: span 2;
+  color: var(--blue-accent);
+  font-weight: 900;
+}
+
+.kii-rank-card strong,
+.kii-insight-card h3 {
+  color: var(--blue-deep);
+  font-size: 1.08rem;
+}
+
+.kii-panel {
+  padding: 24px;
+}
+
+.kii-panel h2 {
+  margin: 12px 0 18px;
+}
+
+.kii-flow-list {
+  display: grid;
+  gap: 12px;
+  list-style: none;
+}
+
+.kii-flow-list li {
+  position: relative;
+  padding-left: 28px;
+}
+
+.kii-flow-list li::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 11px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--blue-accent);
+  box-shadow: 0 0 0 5px var(--blue-light);
+}
+
+.kii-flow-list li + li::after {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: -12px;
+  width: 2px;
+  height: 18px;
+  background: var(--gray-200);
+}
+
+.kii-flow-list span {
+  display: block;
+  padding: 12px 14px;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-md);
+  background: var(--gray-50);
+  color: var(--blue-deep);
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+
+.kii-insight-card {
+  padding: 20px;
+}
+
+.kii-insight-card p {
+  margin: 10px 0 16px;
+}
+
+.kii-progress {
+  height: 8px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--gray-100);
+}
+
+.kii-progress__bar {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--blue-accent), #38bdf8);
+}
+
+.kii-progress__bar--82 { width: 82%; }
+.kii-progress__bar--68 { width: 68%; }
+.kii-progress__bar--61 { width: 61%; }
+.kii-progress__bar--54 { width: 54%; }
+.kii-progress__bar--39 { width: 39%; }
+.kii-progress__bar--47 { width: 47%; }
+
+.kii-table-wrap {
+  max-width: 100%;
+  overflow-x: auto;
+  border: 1px solid rgba(10, 37, 64, .08);
+  border-radius: var(--radius-lg);
+  background: var(--white);
+  box-shadow: var(--shadow-sm);
+  -webkit-overflow-scrolling: touch;
+}
+
+.kii-table {
+  width: 100%;
+  min-width: 760px;
+  border-collapse: collapse;
+}
+
+.kii-table th,
+.kii-table td {
+  padding: 15px 16px;
+  border-bottom: 1px solid var(--gray-200);
+  text-align: left;
+  vertical-align: top;
+}
+
+.kii-table th {
+  background: var(--gray-50);
+  color: var(--blue-deep);
+  font-size: .85rem;
+  font-weight: 900;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.kii-table td {
+  color: var(--blue-muted);
+  line-height: 1.5;
+}
+
+.kii-table tr:last-child td {
+  border-bottom: 0;
+}
+
+.kii-partner-grid {
+  grid-template-columns: 1fr;
+}
+
+.kii-partner-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 20px;
+}
+
+.kii-partner-card strong {
+  color: var(--blue-deep);
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.kii-panel--reports {
+  align-self: start;
+}
+
+.kii-report-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.kii-small-note {
+  margin-top: 16px;
+  font-size: .92rem;
+}
+
+@media (min-width: 720px) {
+  .kii-metric-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .kii-insight-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .kii-partner-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 960px) {
+  .kii-hero {
+    padding: 72px 0 42px;
+  }
+
+  .kii-hero__grid,
+  .kii-two-column,
+  .kii-toolbar {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+  }
+
+  .kii-section {
+    padding: 72px 0;
+  }
+
+  .kii-section--tight {
+    padding: 36px 0 20px;
+  }
+}
+
+@media (max-width: 719px) {
+  .kii-hero {
+    padding: 40px 0 28px;
+  }
+
+  .kii-toolbar,
+  .kii-privacy-card,
+  .kii-panel,
+  .kii-metric-card,
+  .kii-rank-card,
+  .kii-insight-card {
+    padding: 18px;
+  }
+
+  .kii-filter-button,
+  .kii-report-list button {
+    flex: 1 1 140px;
   }
 }

@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Korea Inside Intelligence dashboard foundation for anonymous traveler decision insights, partner interest and seasonal analysis.">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Korea Inside Intelligence Dashboard</title>
+  <link rel="canonical" href="kii-dashboard.html">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="kii-dashboard-page">
+  <header class="header">
+    <div class="container header__inner">
+      <a href="index.html" class="logo">
+        <span class="logo__mark">KI</span>
+        Korea Inside
+      </a>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="main-nav">
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </button>
+      <nav class="nav" id="main-nav">
+        <ul class="nav__list">
+          <li><a href="index.html" class="nav__link">Home</a></li>
+          <li><a href="airport.html" class="nav__link">Airport</a></li>
+          <li><a href="tmoney.html" class="nav__link">T-money</a></li>
+          <li><a href="wowpass.html" class="nav__link">WOWPASS</a></li>
+          <li><a href="esim.html" class="nav__link">eSIM</a></li>
+          <li><a href="payments.html" class="nav__link">Payments</a></li>
+          <li><a href="maps.html" class="nav__link">Maps</a></li>
+          <li><a href="apps.html" class="nav__link">Apps</a></li>
+          <li><a href="checklist.html" class="nav__link">Checklist</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="kii-hero">
+      <div class="container kii-hero__grid">
+        <div>
+          <p class="eyebrow">Decision intelligence dashboard</p>
+          <h1>Korea Inside Intelligence</h1>
+          <p>Understand How Travelers Decide</p>
+        </div>
+        <article class="kii-privacy-card">
+          <span class="kii-card-label">Data principle</span>
+          <h2>Anonymous aggregated insight only</h2>
+          <p>
+            KII v1 uses mock data and is designed to avoid personal data, raw IP addresses and individual traveler tracking.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="kii-section kii-section--tight" aria-labelledby="period-filter-title">
+      <div class="container">
+        <div class="kii-toolbar">
+          <div>
+            <p class="eyebrow">Period filter</p>
+            <h2 id="period-filter-title">Analyze traveler decisions by period</h2>
+          </div>
+          <div class="kii-filter-group" role="group" aria-label="Dashboard period filter">
+            <button type="button" class="kii-filter-button kii-filter-button--active">Today</button>
+            <button type="button" class="kii-filter-button">7 Days</button>
+            <button type="button" class="kii-filter-button">30 Days</button>
+            <button type="button" class="kii-filter-button">This Year</button>
+            <button type="button" class="kii-filter-button">Season</button>
+            <button type="button" class="kii-filter-button">Custom</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="kii-section" aria-labelledby="core-metrics-title">
+      <div class="container">
+        <div class="kii-section-header">
+          <p class="eyebrow">Core metrics</p>
+          <h2 id="core-metrics-title">Decision funnel snapshot</h2>
+          <p>Placeholder numbers show the planned dashboard structure before real analytics are connected.</p>
+        </div>
+        <div class="kii-metric-grid">
+          <article class="kii-metric-card">
+            <span>Visitors</span>
+            <strong>24,800</strong>
+            <p>Anonymous sessions</p>
+          </article>
+          <article class="kii-metric-card">
+            <span>Page Views</span>
+            <strong>68,420</strong>
+            <p>Public guide views</p>
+          </article>
+          <article class="kii-metric-card">
+            <span>Decision Events</span>
+            <strong>9,760</strong>
+            <p>Guide choices and comparisons</p>
+          </article>
+          <article class="kii-metric-card">
+            <span>Partner Clicks</span>
+            <strong>1,284</strong>
+            <p>Outbound interest events</p>
+          </article>
+          <article class="kii-metric-card kii-metric-card--accent">
+            <span>CTR</span>
+            <strong>5.2%</strong>
+            <p>Partner clicks / guide sessions</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="kii-section kii-section--gray" aria-labelledby="countries-title">
+      <div class="container kii-two-column">
+        <div>
+          <div class="kii-section-header">
+            <p class="eyebrow">Top countries</p>
+            <h2 id="countries-title">Where decision demand comes from</h2>
+            <p>Country data is shown as aggregated market-level insight only.</p>
+          </div>
+          <div class="kii-country-list">
+            <article class="kii-rank-card">
+              <span>01</span>
+              <strong>USA</strong>
+              <p>High interest in stay areas, eSIM and airport transfers.</p>
+            </article>
+            <article class="kii-rank-card">
+              <span>02</span>
+              <strong>Japan</strong>
+              <p>Strong shopping, short-stay and seasonal planning intent.</p>
+            </article>
+            <article class="kii-rank-card">
+              <span>03</span>
+              <strong>Taiwan</strong>
+              <p>Family, shopping and transport convenience decisions.</p>
+            </article>
+            <article class="kii-rank-card">
+              <span>04</span>
+              <strong>Germany</strong>
+              <p>Detailed route planning and practical infrastructure questions.</p>
+            </article>
+            <article class="kii-rank-card">
+              <span>05</span>
+              <strong>France</strong>
+              <p>Accommodation style, neighborhoods and cultural route interest.</p>
+            </article>
+          </div>
+        </div>
+
+        <article class="kii-panel" aria-labelledby="decision-flow-title">
+          <span class="kii-card-label">Decision flow</span>
+          <h2 id="decision-flow-title">Sample traveler path</h2>
+          <ol class="kii-flow-list">
+            <li><span>Google</span></li>
+            <li><span>Stay Guide</span></li>
+            <li><span>Accommodation Type</span></li>
+            <li><span>Apartment</span></li>
+            <li><span>Hongdae</span></li>
+            <li><span>Partner Click</span></li>
+          </ol>
+        </article>
+      </div>
+    </section>
+
+    <section class="kii-section" aria-labelledby="accommodation-title">
+      <div class="container">
+        <div class="kii-section-header">
+          <p class="eyebrow">Accommodation insights</p>
+          <h2 id="accommodation-title">How travelers compare stay types</h2>
+          <p>Use this section to understand trade-offs before adding hotel-level partner integrations.</p>
+        </div>
+        <div class="kii-insight-grid">
+          <article class="kii-insight-card">
+            <h3>Hotel</h3>
+            <p>Best for first-time visitors who want predictable service, front desk support and easy booking conditions.</p>
+            <div class="kii-progress"><span class="kii-progress__bar kii-progress__bar--82"></span></div>
+          </article>
+          <article class="kii-insight-card">
+            <h3>Budget Hotel</h3>
+            <p>Best for travelers balancing privacy, location and price without accepting hostel-style trade-offs.</p>
+            <div class="kii-progress"><span class="kii-progress__bar kii-progress__bar--68"></span></div>
+          </article>
+          <article class="kii-insight-card">
+            <h3>Apartment</h3>
+            <p>Best for longer stays, couples or travelers who value laundry, extra space and neighborhood routines.</p>
+            <div class="kii-progress"><span class="kii-progress__bar kii-progress__bar--61"></span></div>
+          </article>
+          <article class="kii-insight-card">
+            <h3>Serviced Apartment</h3>
+            <p>Best for families, business stays and travelers who want apartment comfort with hotel-like reliability.</p>
+            <div class="kii-progress"><span class="kii-progress__bar kii-progress__bar--54"></span></div>
+          </article>
+          <article class="kii-insight-card">
+            <h3>Hanok Stay</h3>
+            <p>Best for experience-led travelers who accept limited space, older buildings or stricter house rules.</p>
+            <div class="kii-progress"><span class="kii-progress__bar kii-progress__bar--39"></span></div>
+          </article>
+          <article class="kii-insight-card">
+            <h3>Hostel</h3>
+            <p>Best for solo and budget travelers who prioritize price, social energy and central access.</p>
+            <div class="kii-progress"><span class="kii-progress__bar kii-progress__bar--47"></span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="kii-section kii-section--gray" aria-labelledby="seasonal-title">
+      <div class="container">
+        <div class="kii-section-header">
+          <p class="eyebrow">Seasonal analysis</p>
+          <h2 id="seasonal-title">Seasonal decision patterns</h2>
+          <p>Seasonal mock data helps define future reports for market demand, area interest and partner planning.</p>
+        </div>
+        <div class="kii-table-wrap">
+          <table class="kii-table">
+            <thead>
+              <tr>
+                <th>Season</th>
+                <th>Top country</th>
+                <th>Top stay type</th>
+                <th>Top area</th>
+                <th>Partner interest</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Spring</td>
+                <td>Japan</td>
+                <td>Hotel</td>
+                <td>Myeongdong</td>
+                <td>Shopping and transport passes</td>
+              </tr>
+              <tr>
+                <td>Summer</td>
+                <td>USA</td>
+                <td>Serviced Apartment</td>
+                <td>Hongdae</td>
+                <td>eSIM and airport pickup</td>
+              </tr>
+              <tr>
+                <td>Autumn</td>
+                <td>Taiwan</td>
+                <td>Hotel</td>
+                <td>Insadong</td>
+                <td>Accommodation and local transport</td>
+              </tr>
+              <tr>
+                <td>Winter</td>
+                <td>Germany</td>
+                <td>Apartment</td>
+                <td>Gangnam</td>
+                <td>Long stay and airport transfer</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="kii-section" aria-labelledby="partner-title">
+      <div class="container kii-two-column">
+        <div>
+          <div class="kii-section-header">
+            <p class="eyebrow">Partner insights</p>
+            <h2 id="partner-title">Commercial intent by service type</h2>
+            <p>Partner reporting should explain user suitability before revenue. These are mock interest scores.</p>
+          </div>
+          <div class="kii-partner-grid">
+            <article class="kii-partner-card"><span>Booking interest</span><strong>72</strong></article>
+            <article class="kii-partner-card"><span>Agoda interest</span><strong>66</strong></article>
+            <article class="kii-partner-card"><span>eSIM interest</span><strong>81</strong></article>
+            <article class="kii-partner-card"><span>Airport pickup interest</span><strong>58</strong></article>
+            <article class="kii-partner-card"><span>Transport pass interest</span><strong>63</strong></article>
+          </div>
+        </div>
+
+        <article class="kii-panel kii-panel--reports" aria-labelledby="reports-title">
+          <span class="kii-card-label">Reports</span>
+          <h2 id="reports-title">Decision intelligence reports</h2>
+          <div class="kii-report-list">
+            <button type="button">Weekly Report</button>
+            <button type="button">Monthly Report</button>
+            <button type="button">Seasonal Report</button>
+            <button type="button">Yearly Report</button>
+            <button type="button">Export PDF</button>
+            <button type="button">Export Excel</button>
+          </div>
+          <p class="kii-small-note">
+            Export actions are placeholders in v1. Future exports should use aggregated data only.
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <p class="footer__brand">Korea Inside</p>
+          <p class="footer__tagline">Understand how Korea really works.</p>
+        </div>
+        <div>
+          <p class="footer__heading">Guides</p>
+          <ul class="footer__links">
+            <li><a href="tmoney.html">T-money</a></li>
+            <li><a href="esim.html">eSIM</a></li>
+            <li><a href="airport.html">Airport</a></li>
+            <li><a href="payments.html">Payments</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__heading">More</p>
+          <ul class="footer__links">
+            <li><a href="maps.html">Maps</a></li>
+            <li><a href="apps.html">Apps</a></li>
+            <li><a href="checklist.html">Checklist</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2026 Korea Inside.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('.nav');
+    toggle.addEventListener('click', () => {
+      const open = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', !open);
+      nav.classList.toggle('is-open');
+    });
+    document.querySelectorAll('.nav__link').forEach(link => {
+      link.addEventListener('click', () => {
+        toggle.setAttribute('aria-expanded', 'false');
+        nav.classList.remove('is-open');
+      });
+    });
+  </script>
+</body>
+</html>
