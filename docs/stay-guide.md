@@ -326,3 +326,24 @@ Rules:
 - Do not add decorative animations.
 - Do not introduce new CSS that affects non-Stay pages.
 - Do not replace decision-support content with image-only design.
+
+## 12. Stay Cluster Polish Pass
+
+The Stay Cluster polish pass keeps all stay pages visually consistent while preserving content meaning, SEO metadata, URLs and one `h1` per page.
+
+Applied standards:
+
+- Keep Stay Cluster refinements scoped under `.stay-cluster` in `style.css`.
+- Keep hero sections compact so the `Quick decision` section appears earlier.
+- Use consistent hero-to-Quick Decision spacing across all Stay Cluster pages.
+- Allow CTA buttons, card headings, card descriptions and Related Guide titles to wrap safely for browser translation.
+- Keep comparison tables horizontally scrollable on mobile instead of squeezing translated text.
+- Keep FAQ blocks, cards and Related Guides visually consistent with the existing Korea Inside design system.
+- Prepare optional hero media hooks for future image integration without inserting images during this pass.
+
+Rules:
+
+- Do not change visible content meaning during polish-only work.
+- Do not add affiliate links, external links, hreflang or translations as part of visual polish.
+- Prefer shared CSS over duplicated page-level styles.
+- Keep all important information as visible HTML text.
