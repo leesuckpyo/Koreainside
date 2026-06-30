@@ -284,3 +284,21 @@ Decision rules:
 - Use neutral price levels and price ranges.
 - Mention that prices vary by season, room type, location, booking timing, cancellation policy, holidays, and special events.
 - Prioritize subway access, airport access, luggage route, bathroom type, elevator availability, and late-night movement over headline price.
+
+## 10. Stay Cluster Internal Linking
+
+All Stay Cluster pages should use a standardized `Related Guides` section near the bottom of the page.
+
+Purpose:
+
+- Improve SEO crawl paths across the stay content cluster.
+- Help users continue from a broad stay question to a more specific decision page.
+- Link every Stay Cluster page back to `where-to-stay-in-seoul.html`.
+- Use descriptive internal link text instead of generic text such as `Read more`.
+
+Design rules:
+
+- Use existing card-style components such as `guide-grid` and `guide-card`.
+- Keep card copy short and decision-focused.
+- Do not add external links, affiliate links, navigation changes, or new CSS for this section.
+- Keep all link labels and descriptions as visible HTML text for SEO and browser translation.
