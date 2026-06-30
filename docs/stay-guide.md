@@ -249,3 +249,38 @@ Future implementation requires approval before adding:
 - new navigation links
 - common CSS changes
 - URL changes
+
+## 9. Stay Cluster Page: Budget Travelers
+
+The Budget Travelers stay cluster page should help users choose a budget-friendly Seoul area without treating the cheapest room as the best answer.
+
+Primary page:
+
+- `best-area-for-budget-travelers-seoul.html`
+
+Purpose:
+
+- Compare budget areas by total trip value.
+- Explain accommodation price ranges as planning ranges, not fixed hotel prices.
+- Highlight hidden costs such as distance from subway exits, no elevator, hills, shared bathrooms, luggage storage, late-night taxis, non-refundable rates, and weekend price jumps.
+- Keep the page decision-focused rather than hotel-ranking-focused.
+
+Recommended structure:
+
+1 : Hero
+2 : What budget means in Seoul
+3 : Budget area comparison
+4 : Traveler-type decision cards
+5 : Hidden costs
+6 : Average budget per night
+7 : Money-saving tips
+8 : Common mistakes
+9 : FAQ
+10 : Related guides
+
+Decision rules:
+
+- Do not claim one area is universally best.
+- Use neutral price levels and price ranges.
+- Mention that prices vary by season, room type, location, booking timing, cancellation policy, holidays, and special events.
+- Prioritize subway access, airport access, luggage route, bathroom type, elevator availability, and late-night movement over headline price.

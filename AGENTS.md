@@ -2,54 +2,264 @@
 
 # Korea Inside AI Development Guide
 
-## Project Goal
+Korea Inside is a long-term production platform that helps international visitors solve practical problems, understand how Korea works, and make better decisions while traveling in Korea.
 
-Korea Inside helps foreign visitors solve practical problems when using services in Korea.
-
-This is not a simple tourism site or a destination guide.
-It is a problem-solving platform for understanding and using Korea.
+This is not a simple tourism site, hotel booking website, or destination guide. It is a decision-support and problem-solving platform.
 
 Always prioritize:
 
 1. Accuracy
-2. User experience
-3. SEO
-4. Mobile usability
-5. Browser translation
+2. User value
+3. Reliability
+4. Maintainability
+5. SEO
+6. Mobile usability
+7. Browser translation
+8. Performance
+9. Monetization
+
+Never sacrifice long-term trust or quality for short-term speed or revenue.
+
+Codex should act as a project guardian: protect the long-term quality and stability of Korea Inside as a production system, not merely generate code.
 
 ---
 
-## General Rules
+## Project Philosophy
 
-Never redesign pages.
+Help users choose. Do not simply recommend.
 
-Keep the existing visual design.
+Explain:
 
-Keep spacing, typography, colors and layout.
+- Why an option fits
+- Why another option may fit better
+- Advantages
+- Limitations
+- Trade-offs
+- Suitable users
+- Unsuitable users
 
-Do not change the design, colors, spacing, typography or layout unless the user explicitly requests that change.
+Reduce uncertainty and mistakes. Focus on practical information instead of tourism marketing.
 
-Mobile First.
+For accommodation content, explain decision criteria such as airport access, subway access, walking convenience, suitcase friendliness, noise, family suitability, budget suitability, nightlife, and shopping access.
 
-Responsive only.
+For transportation content, help users choose based on arrival time, destination, number of travelers, luggage, and budget.
+
+Every new feature should answer this question:
+
+"Does this help the visitor make a better decision?"
+
+Long-term goal: become the world's most trusted guide for understanding how Korea works.
 
 ---
 
-## UI/UX Work Rules
+## Development Workflow
 
-Apply these rules to every new page and every improvement to an existing page.
+Before implementing any task:
 
-Korea Inside is Mobile First by default.
+1. Understand the user's actual objective.
+2. Identify the user goal, constraints, existing architecture, and possible side effects.
+3. Ask whether the change is necessary, whether a simpler solution exists, and whether existing behavior is preserved.
+4. Check possible effects on SEO, user experience, multilingual support, accessibility, maintainability, and future scalability.
+5. If multiple approaches exist, compare complexity, maintainability, performance, scalability, SEO impact, and future maintenance.
+6. Recommend the simplest safe approach.
+7. Create a short implementation plan when the task affects existing functionality, multiple files, protected files, URLs, shared components, or project strategy.
+8. List affected files and risks when relevant.
 
-Mobile users want fast solutions more than long explanations.
+Implementation rules:
 
-Every core screen must make its purpose understandable within 3 seconds.
+- Prefer small, reviewable changes.
+- Work on one feature or one page per task.
+- Avoid unrelated modifications.
+- Avoid large batches of unrelated changes.
+- Implement the smallest change necessary.
+- Protect existing work.
+- If instructions are ambiguous, stop and ask instead of making assumptions.
+- If a requested change is technically possible but likely harmful, explain the risks and safer alternatives before implementation, then wait for approval.
+- If technical debt must be introduced, explain it explicitly.
 
-Do not make card UI excessively large in width, height or spacing.
+File scope limits per task unless explicitly approved:
 
-Prefer short Step formats over long sentences.
+- HTML: maximum 2 files
+- CSS: maximum 1 file
+- JavaScript: maximum 1 file
+- Markdown: no strict limit
 
-When explaining a procedure, use this format whenever possible:
+Stop and request approval if the task needs to exceed these limits.
+
+---
+
+## Approval & Git Workflow
+
+Always show the complete diff before finishing a task.
+
+After showing the diff:
+
+- Stop and wait for explicit user approval.
+- Never assume approval.
+- Never create a commit before approval.
+- Never push to GitHub.
+- Never sync automatically.
+- Never publish automatically.
+
+After explicit approval:
+
+- Create a local commit only if the user asks for or approves a commit.
+- Use a clear commit message describing the implemented task.
+- Stop immediately after the local commit.
+
+GitHub pushes are always performed manually by the project owner using GitHub Desktop.
+
+If a task includes both commit and push, perform only the approved local commit and stop. Never push unless the project owner explicitly requests a GitHub push in a separate instruction.
+
+---
+
+## Existing File Protection
+
+Korea Inside contains stable production pages. Protected files are stable by default.
+
+Protected files and areas:
+
+- All existing HTML pages
+- `style.css`
+- Shared JavaScript files
+- Navigation
+- Header
+- Footer
+- Common components
+- Existing URLs
+- Existing images
+
+Modification rules:
+
+- Do not modify protected files unless explicitly requested.
+- Do not modify navigation without approval.
+- Do not modify `style.css` without approval.
+- Do not modify shared JavaScript without approval.
+- Do not rename, move, or delete existing files without approval.
+- Do not delete or replace images unless requested.
+- Do not rewrite working code without a clear approved benefit.
+
+If a requested implementation requires modifying a protected file:
+
+1. Explain why the modification is necessary.
+2. List every affected file.
+3. Explain the expected impact.
+4. Identify technical, SEO, maintenance, and user experience risks when relevant.
+5. Show the complete diff.
+6. Wait for approval.
+
+Whenever possible, create new HTML pages or Markdown documentation instead of modifying existing production pages.
+
+---
+
+## Architecture Rules
+
+Respect the existing project structure. Do not reorganize folders, rename files, move files, change URLs, or introduce redirects without explicit approval.
+
+Existing URLs are stable. If a URL change is necessary:
+
+- Explain the reason.
+- Explain the SEO impact.
+- Suggest a migration strategy.
+- Wait for approval.
+
+Prefer extending the existing architecture instead of replacing it.
+
+Avoid unnecessary frameworks, dependencies, abstractions, and refactoring.
+
+Large refactoring requires:
+
+- Impact analysis
+- Affected file list
+- Risk assessment
+- Approval
+
+Before modifying a shared component:
+
+- Explain which pages will be affected.
+- Explain possible side effects.
+- Show the complete diff.
+- Wait for approval.
+
+Each page owns its own assets. Current structure includes:
+
+- `images/`
+- `home/`
+- `arrival/`
+- `esim/`
+- `maps/`
+- `wowpass/`
+- `tmoney/`
+- `apps/`
+- `common/`
+
+The architecture should support years of continuous growth without requiring major restructuring.
+
+---
+
+## SEO & Content Standards
+
+Korea Inside is a search-first content platform, but content must be written for real users first.
+
+Content principles:
+
+- Do not create content only for SEO.
+- Answer practical questions.
+- Prioritize accuracy over quantity.
+- Never invent facts.
+- Clearly state uncertainty when information cannot be verified.
+- Explain trade-offs.
+- Avoid exaggerated recommendations.
+- Remain objective and trustworthy.
+- Avoid unnecessary travel descriptions.
+
+Every page should include:
+
+- A unique, meaningful `title`
+- One non-empty `meta name="description"`
+- A canonical URL
+- Exactly one `h1`
+- Logical heading hierarchy
+- Meaningful `alt` text for informative images
+- Internal links where useful
+- Descriptive anchor text
+- Open Graph tags when applicable
+
+HTML content rules:
+
+- HTML is the source of truth.
+- Important information must be visible HTML text.
+- Images are visual aids only.
+- Never place essential information only inside images.
+- Do not rely on `alt`, `title`, or `figcaption` alone for browser translation.
+- Every meaningful phrase, instruction, label, comparison, and warning in an infographic must also exist as visible semantic HTML near the image.
+- Before finishing an infographic change, verify a one-to-one mapping between important image text and visible HTML text.
+
+Use semantic HTML whenever appropriate:
+
+- `header`
+- `nav`
+- `main`
+- `section`
+- `article`
+- `aside`
+- `footer`
+- `h1` through `h4`
+- `p`
+- `ul`
+- `li`
+- `table`
+
+Readability:
+
+- Prefer short paragraphs.
+- Prefer short step formats for procedures.
+- Use tables when comparing options.
+- Use bullet lists where appropriate.
+- Avoid unnecessary repetition.
+- Keep explanations to one line or less by default on mobile.
+
+Recommended step format:
 
 1 : Open Settings
 2 : Go to Cellular
@@ -57,311 +267,300 @@ When explaining a procedure, use this format whenever possible:
 4 : Scan QR Code
 5 : Activate eSIM
 
-Do not repeat the same infographic content below the infographic as long cards.
-
-Keep explanations to one line or less by default.
-
-Reduce text width on mobile so the user's eyes do not need to travel too far left and right.
-
-Preserve existing design colors, fonts, icons and button styles.
-
-Do not create a new design. Make the existing design smaller, clearer and easier to read.
-
-All core information must be provided as visible HTML text, not only inside images.
-
-Desktop layouts should naturally expand the mobile structure.
-
 ---
 
-## HTML Rules
+## UX, Design & Responsive Standards
 
-HTML is the source of truth.
+Korea Inside is mobile first by default.
 
-Images are visual illustrations only.
+Mobile users want fast solutions more than long explanations. Every core screen must make its purpose understandable within 3 seconds.
 
-Important information must never exist only inside images.
+Design rules:
 
-Every infographic must have equivalent semantic HTML.
+- Never redesign pages unless explicitly requested.
+- Keep the existing visual design, spacing, typography, colors, icons, buttons, and layout.
+- Make existing designs smaller, clearer, and easier to read when improvement is requested.
+- Do not make card UI excessively large in width, height, or spacing.
+- Do not repeat the same infographic content below the infographic as long cards.
+- Reduce text width on mobile so the user's eyes do not travel too far left and right.
+- Desktop layouts should naturally expand the mobile structure.
+- Respect the current Korea Inside design system.
 
-Every meaningful phrase, instruction, label, comparison and warning in an infographic must also appear as visible semantic HTML near that infographic.
+CSS rules:
 
-Before finishing an infographic change, verify a one-to-one mapping between its important image text and visible HTML text.
+- Reuse existing CSS whenever possible.
+- Avoid unnecessary new classes.
+- Avoid duplicated styles.
+- Avoid unnecessary selectors.
+- Avoid inline CSS.
+- Keep mobile first.
 
-Use:
-
-- h1~h4
-- p
-- ul
-- li
-- table
-- section
-- article
-
-whenever appropriate.
-
----
-
-## Translation Rules
-
-Support browser automatic translation.
-
-Do not place important information inside images.
-
-Do not solve translation problems using only:
-
-- alt
-- title
-- figcaption
-
-Those are accessibility helpers only.
-
-The same information must exist as visible HTML.
-
-`alt`, `title` and `figcaption` alone do not satisfy automatic-translation support.
-
----
-
-## SEO Rules
-
-Use semantic HTML.
-
-Keep heading hierarchy.
-
-Every page must have:
-
-- a unique, meaningful `title`
-- one non-empty `meta name="description"`
-- a canonical URL
-- exactly one `h1`
-- meaningful `alt` text for informative images
-
-Write meaningful alt text.
-
-Avoid duplicated content.
-
-Preserve internal links.
-
-Do not remove metadata.
-
----
-
-## Content Freshness Rules
-
-Transportation, fares, travel cards, telecom plans, airport procedures and other changeable information must be checked against an official source.
-
-Maintain the official source URL and last-reviewed date for each changeable claim or content section.
-
-Do not present time-sensitive details as permanent facts when their availability, policy, price or operating conditions can change.
-
----
-
-## CSS Rules
-
-Reuse existing CSS whenever possible.
-
-Avoid unnecessary new classes.
-
-Avoid inline styles.
-
-Keep Mobile First.
-
----
-
-## Images
-
-Never delete images unless requested.
-
-Never replace images unless requested.
-
-Images are visual aids.
-
-HTML provides searchable and translatable content.
-
----
-
-## Safety
-
-Never overwrite user work.
-
-Before editing, run `git status --short` or inspect the changed-file state.
-
-If the requested edit overlaps existing user changes, stop and ask for confirmation before modifying that area.
-
-Ask before destructive changes.
-
-Always explain modified files.
-
-Show diff before finishing.
-
----
-
-## Visual Verification
-
-Verify visual changes at these viewport widths:
+Responsive verification for visual changes:
 
 - Mobile: 375px
 - Tablet: 768px
 - Desktop: 1440px
 
-Confirm that existing design, colors, spacing, typography, layout and responsive behavior remain unchanged unless the user explicitly approved a design change.
+Confirm that existing design, colors, spacing, typography, layout, and responsive behavior remain unchanged unless a design change was explicitly approved.
 
 ---
 
-## Project Structure
+## Multilingual Strategy
 
-Each page owns its own assets.
+English is the master language.
 
-images/
+Rules:
 
-home/
+- All new content must be written in English first.
+- Translations must always be based on English.
+- Never translate directly from another translated language.
+- English remains the source of truth.
+- Do not implement translations until explicitly requested.
+- Prepare architecture so future multilingual expansion does not require rebuilding the website.
 
-arrival/
+Target language structure:
 
-esim/
+- `/en/`
+- `/ja/`
+- `/fr/`
+- `/de/`
+- `/zh-tw/`
 
-maps/
+URL rules:
 
-wowpass/
+- Every translated page must have its own URL.
+- Prefer language subdirectories.
+- Do not use query-string language switching.
 
-tmoney/
+Content consistency:
 
-apps/
+- All language versions must use the same HTML structure.
+- Keep section order identical.
+- Keep heading hierarchy identical.
+- Keep internal linking structure consistent.
 
-common/
+Every future language page should eventually include:
+
+- `hreflang`
+- Canonical URL
+- Language-specific metadata
+- Language-specific sitemap entry
+
+Important content must remain HTML text, never image-only. Avoid hard-coded content patterns that prevent future multilingual expansion.
 
 ---
 
-## Preferred Workflow
+## Decision Engine
 
-1. Analyze
+Recommendations must be rule-based, transparent, and consistent.
 
-2. Explain plan
+Before making recommendations, identify:
 
-3. Wait for approval
+- User goal
+- User constraints
+- User priorities
 
-4. Modify files
+Do not recommend the highest-rated or most popular option by default.
 
-5. Verify layout at 375px, 768px and 1440px
+Consider:
 
-6. Explain changes
+- Convenience
+- Cost
+- Travel style
+- Accessibility
+- Time
+- Practicality
+- Reliability
+- User suitability
 
-7. Show diff
+Whenever appropriate, compare options side by side with tables instead of long paragraphs.
+
+Never hide disadvantages. Always explain both strengths and weaknesses.
+
+The same inputs should produce the same outputs. Avoid subjective or random recommendations.
 
 ---
+
+## Data & Research
+
+Korea Inside must provide reliable, evidence-based information.
+
+Never invent facts. Never guess. If information cannot be verified, clearly state that verification is required.
+
+Use sources in this priority order:
+
+1. Official government sources
+2. Official company websites
+3. Public transportation operators
+4. Airport authorities
+5. Official tourism organizations
+6. Official documentation
+
+Community discussions may be used only as supplementary information.
+
+Transportation, fares, travel cards, telecom plans, airport procedures, operating hours, prices, and policy details must be checked against official sources.
+
+Maintain the official source URL and last-reviewed date for each changeable claim or content section.
+
+Prioritize practical information such as:
+
+- Airport transfer times
+- Subway accessibility
+- Elevator availability
+- Large suitcase friendliness
+- Walking difficulty
+- Station exits
+- Ticket rules
+- Payment methods
+- Business hours
+
+If information is estimated, label it as an estimate. If information is verified, state that it is based on official sources.
+
+If official information changes frequently, design pages so updates are easy and avoid duplicating the same information across multiple pages.
+
+---
+
+## Affiliate Policy
+
+Affiliate revenue is important, but user trust always comes first.
+
+Rules:
+
+- Never recommend a product or service only because it has an affiliate program.
+- Recommend affiliate products only when they genuinely help the user.
+- Explain advantages and disadvantages.
+- Do not hide limitations.
+- Provide objective comparisons.
+- Whenever possible, provide multiple suitable options.
+- Avoid forcing users toward a single affiliate product.
+- Clearly disclose affiliate links according to applicable regulations.
+
+Recommendation priority:
+
+1. User suitability
+2. Reliability
+3. Convenience
+4. Value
+5. Affiliate relationship
+
+Affiliate status must never become the primary ranking factor.
+
+Education comes before monetization. Revenue is the result of trust, not the goal of content.
+
+---
+
+## Documentation Standards
+
+Every significant implementation must include or update corresponding Markdown documentation inside `docs/`.
+
+When code changes behavior, update related Markdown documentation. If no documentation is required, explain why.
+
+Whenever major research is performed, create or update a Markdown document inside `docs/` with:
+
+- Sources
+- Research date
+- Important findings
+- Assumptions
+- Items requiring future verification
+
+After completing a task, report:
+
+- Modified files
+- New files
+- Deleted files
+- Markdown documentation updated
+- Diff summary
+- Affected pages
+- Potential issues
+
+---
+
+## Code Quality
+
+HTML:
+
+- Use semantic HTML whenever possible.
+- Avoid unnecessary `div` nesting.
+- Use proper heading hierarchy.
+- Never skip heading levels.
+- Keep HTML clean and organized.
+
+Accessibility:
+
+- Images must include descriptive alt attributes.
+- Buttons must include accessible labels when needed.
+- Keep important content visible as text.
+
+CSS:
+
+- Avoid unnecessary CSS.
+- Avoid duplicated styles.
+- Preserve existing layout.
+- Preserve mobile and desktop layouts.
+- Use consistent class naming.
+
+JavaScript:
+
+- Avoid unnecessary JavaScript.
+- Avoid unused code.
+- Avoid duplicated logic.
+- Preserve existing functionality.
+- Include proper error handling where relevant.
+
+Performance and maintainability:
+
+- Minimize duplicated code.
+- Prefer reusable structures when similar layouts appear repeatedly.
+- Avoid inline JavaScript.
+- Prefer simple solutions.
+- Keep the project understandable for future maintenance.
+
+Before requesting approval, review:
+
+- Requested feature fully implemented
+- Existing behavior preserved
+- No unrelated behavior modified
+- No existing links broken
+- SEO maintained
+- Accessibility maintained
+- Responsive layout verified when visual changes are made
+- Documentation updated or documented as not required
+- No unnecessary changes
+
+Never skip self-review.
+
+---
+
+## Final Engineering Principles
+
+Think before coding.
+
+Prefer simple solutions.
+
+Protect existing work.
+
+Favor stability over novelty.
+
+Preserve existing design.
+
+Preserve stable URLs.
+
+Avoid unnecessary complexity.
+
+Avoid unnecessary refactoring.
+
+Favor maintainability over short-term convenience.
+
+Favor readability over abstraction.
+
+Favor user trust over short-term gains.
+
+Clearly distinguish between facts, assumptions, and recommendations.
+
+Respect existing project decisions. Do not reintroduce rejected approaches unless explicitly requested.
 
 Always preserve the Korea Inside design language.
 
----
+Every implementation should make Korea Inside easier to maintain one year from now.
 
-## Codex Development Rules
-
-### Approval Policy
-
-Automatic Approval:
-
-* Markdown
-* New HTML
-* Documentation
-* Reports
-* Database Documents
-
-Require Approval:
-
-* Existing HTML modification
-* Navigation
-* Common CSS
-* URL changes
-* Redirects
-* File deletion
-
-Commit Policy:
-
-* Approved automatic tasks should be committed immediately to the local Git repository.
-* Push remains manual.
-
-### 1. 작업 범위
-
-* 한 번의 작업은 하나의 기능 또는 하나의 페이지만 수행한다.
-* 승인된 범위를 벗어난 파일은 수정하지 않는다.
-
-### 2. 수정 가능한 파일 수
-
-* HTML 최대 2개
-* CSS 최대 1개
-* JavaScript 최대 1개
-* Markdown 제한 없음
-
-초과 시 작업을 중단하고 승인 요청한다.
-
-### 3. 기존 페이지 보호
-
-기존 HTML, CSS, 디자인, 레이아웃, SEO는 승인 없이 수정하지 않는다.
-
-### 4. 신규 페이지 우선
-
-새 기능은 신규 HTML과 Markdown으로 먼저 구현한다.
-
-기존 페이지 연결은 별도 승인 후 진행한다.
-
-### 5. Navigation
-
-전체 Navigation 수정 금지.
-메뉴 변경은 승인 후 진행한다.
-
-### 6. CSS
-
-style.css 전체 수정 금지.
-가능하면 별도 CSS를 사용한다.
-
-### 7. SEO
-
-기존 URL 삭제 금지.
-Redirect Stub을 우선 사용한다.
-
-### 8. Markdown
-
-코드 수정 시 관련 Markdown을 반드시 함께 수정한다.
-
-### 9. Commit
-
-승인 전 Commit, Push, Merge 금지.
-
-### 10. 보고
-
-작업 완료 후
-
-* 변경 파일
-* 수정된 Markdown
-* Diff 요약
-* 영향받는 페이지
-* 잠재적 문제
-  를 반드시 보고한다.
-
-### 11. 승인 필수 작업
-
-* 프로젝트 구조 변경
-* 메뉴 변경
-* 공통 CSS 수정
-* URL 변경
-* 파일 삭제
-* Redirect 추가
-* 디자인 변경
-
-### 12. 절대 금지
-
-승인 없이
-
-* 프로젝트 전체 수정
-* 전체 리팩터링
-* 전체 CSS 수정
-* 전체 Navigation 수정
-* 전체 치환
-  을 수행하지 않는다.
-
-### 13. 개발 철학
-
-빠른 개발보다
-안전한 개발
-작은 단위 개발
-검토 후 승인
-원칙을 우선한다.
+The responsibility is not simply to complete tasks, but to keep Korea Inside reliable, scalable, maintainable, and trustworthy for many years.
