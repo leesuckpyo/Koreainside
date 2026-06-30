@@ -302,3 +302,27 @@ Design rules:
 - Keep card copy short and decision-focused.
 - Do not add external links, affiliate links, navigation changes, or new CSS for this section.
 - Keep all link labels and descriptions as visible HTML text for SEO and browser translation.
+
+## 11. Stay Cluster Design System
+
+Stay Cluster pages should use a unified visual system so the cluster feels like one premium decision-support experience.
+
+Applied page scope:
+
+- Use `body class="stay-cluster"` on Stay Cluster pages only.
+- Keep styling scoped under `.stay-cluster` to avoid changing unrelated Korea Inside pages.
+
+Design standards:
+
+- Use consistent hero spacing, CTA layout, section rhythm, card padding, card radius, card shadows and table styling.
+- Add a compact `Quick decision` section near the top of each Stay Cluster page.
+- Use real HTML text for decision factors such as budget level, airport access, quietness, nightlife, family fit and shopping convenience.
+- Keep comparison tables readable on mobile with horizontal overflow support.
+- Keep Related Guides sections on the existing `guide-grid` and `guide-card` pattern.
+
+Rules:
+
+- Do not change SEO metadata or heading intent when applying visual improvements.
+- Do not add decorative animations.
+- Do not introduce new CSS that affects non-Stay pages.
+- Do not replace decision-support content with image-only design.
