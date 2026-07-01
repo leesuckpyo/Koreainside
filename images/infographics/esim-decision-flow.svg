@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 1120" role="img" aria-labelledby="title desc">
+  <title id="title">eSIM decision flow for Korea travelers</title>
+  <desc id="desc">A decision flow that helps travelers choose between data-only eSIM, Korean number eSIM, physical SIM, and roaming before visiting Korea.</desc>
+  <style>
+    .bg { fill: #ffffff; }
+    .navy { fill: #0F2747; }
+    .teal { fill: #16B6B0; }
+    .soft { fill: #F3FAFA; }
+    .line { fill: none; stroke: #0F2747; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+    .line-teal { fill: none; stroke: #16B6B0; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+    .card { fill: #ffffff; stroke: #D7E4E8; stroke-width: 2; }
+    .card-accent { fill: #F3FAFA; stroke: #16B6B0; stroke-width: 2; }
+    .title { font: 800 34px Inter, Arial, sans-serif; fill: #0F2747; }
+    .subtitle { font: 500 17px Inter, Arial, sans-serif; fill: #4E6476; }
+    .label { font: 800 22px Inter, Arial, sans-serif; fill: #0F2747; }
+    .body { font: 500 16px Inter, Arial, sans-serif; fill: #4E6476; }
+    .small { font: 800 14px Inter, Arial, sans-serif; fill: #ffffff; letter-spacing: .04em; }
+    .tag { font: 800 15px Inter, Arial, sans-serif; fill: #0F2747; }
+  </style>
+
+  <rect class="bg" width="720" height="1120"/>
+
+  <g transform="translate(56 48)">
+    <rect class="soft" x="0" y="0" width="608" height="128" rx="12"/>
+    <circle class="teal" cx="56" cy="64" r="28"/>
+    <path class="line" d="M48 54h16m-16 10h16m-16 10h16"/>
+    <text class="title" x="104" y="54">Choose Your Korea eSIM</text>
+    <text class="subtitle" x="104" y="86">Use this flow before buying mobile data for Korea.</text>
+  </g>
+
+  <g transform="translate(86 220)">
+    <rect class="card" width="548" height="118" rx="12"/>
+    <g transform="translate(26 29)">
+      <rect class="soft" x="0" y="0" width="54" height="60" rx="12"/>
+      <rect class="line-teal" x="15" y="8" width="24" height="44" rx="5"/>
+      <circle class="teal" cx="27" cy="44" r="2.5"/>
+    </g>
+    <text class="label" x="104" y="46">Is your phone eSIM compatible?</text>
+    <text class="body" x="104" y="78">Check phone model and carrier lock before buying.</text>
+  </g>
+
+  <path class="line" d="M360 338v48"/>
+  <circle class="teal" cx="360" cy="362" r="5"/>
+
+  <g transform="translate(86 386)">
+    <rect class="card-accent" width="548" height="116" rx="12"/>
+    <rect class="teal" x="28" y="30" width="64" height="28" rx="14"/>
+    <text class="small" x="50" y="49" text-anchor="middle">NO</text>
+    <text class="label" x="116" y="46">Consider physical SIM or roaming</text>
+    <text class="body" x="116" y="78">Use this path if your phone cannot install eSIM.</text>
+  </g>
+
+  <path class="line" d="M360 502v48"/>
+  <circle class="teal" cx="360" cy="526" r="5"/>
+
+  <g transform="translate(86 550)">
+    <rect class="card" width="548" height="118" rx="12"/>
+    <g transform="translate(26 31)">
+      <rect class="soft" x="0" y="0" width="54" height="54" rx="12"/>
+      <path class="line-teal" d="M19 18h16m-16 10h16m-16 10h10"/>
+      <path class="line" d="M37 19l5 5-5 5"/>
+    </g>
+    <text class="label" x="104" y="46">Do you need a Korean phone number?</text>
+    <text class="body" x="104" y="78">Useful for calls, delivery contact, SMS, and some reservations.</text>
+  </g>
+
+  <g transform="translate(86 722)">
+    <rect class="card-accent" width="260" height="132" rx="12"/>
+    <rect class="teal" x="24" y="24" width="64" height="28" rx="14"/>
+    <text class="small" x="56" y="43" text-anchor="middle">NO</text>
+    <text class="label" x="24" y="78">Data-only eSIM</text>
+    <text class="body" x="24" y="106">Usually enough for maps, messaging, translation, and browsing.</text>
+  </g>
+
+  <g transform="translate(374 722)">
+    <rect class="card" width="260" height="132" rx="12"/>
+    <rect class="navy" x="24" y="24" width="64" height="28" rx="14"/>
+    <text class="small" x="56" y="43" text-anchor="middle">YES</text>
+    <text class="label" x="24" y="78">Number plan</text>
+    <text class="body" x="24" y="106">Compare Korean number eSIM and physical SIM options.</text>
+  </g>
+
+  <path class="line" d="M360 668v36"/>
+  <path class="line" d="M216 704h288"/>
+  <path class="line" d="M216 704v18"/>
+  <path class="line" d="M504 704v18"/>
+
+  <path class="line" d="M504 854v56"/>
+  <circle class="teal" cx="504" cy="882" r="5"/>
+
+  <g transform="translate(86 910)">
+    <rect class="card" width="548" height="118" rx="12"/>
+    <g transform="translate(26 30)">
+      <rect class="soft" x="0" y="0" width="54" height="56" rx="12"/>
+      <circle class="line-teal" cx="27" cy="22" r="9"/>
+      <path class="line-teal" d="M15 44c4-8 20-8 24 0"/>
+    </g>
+    <text class="label" x="104" y="46">Do you need Korean identity verification?</text>
+    <text class="body" x="104" y="78">A phone number alone may not be enough for every Korean app.</text>
+  </g>
+
+  <path class="line" d="M360 1028v34"/>
+
+  <g transform="translate(86 1062)">
+    <rect class="navy" width="548" height="10" rx="5"/>
+    <text class="tag" x="274" y="40" text-anchor="middle">Check provider rules: activation, passport, calls, SMS, hotspot, refund.</text>
+  </g>
+</svg>

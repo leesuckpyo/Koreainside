@@ -3,38 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Practical guides and tools for foreigners visiting or living in Korea. Understand how Korea really works.">
-  <title>Korea Inside — Understand how Korea really works.</title>
+  <meta name="description" content="KR Inside helps visitors prepare for Korea with practical guides to arrival, eSIM, T-money, WOWPASS, maps, payments and accommodation decisions.">
+  <title>KR Inside | Everything You Need Before Visiting Korea</title>
+  <link rel="canonical" href="https://getkoreainside.com/index.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="page-home">
-  <header class="header header--hero">
+  <header class="header header--hero" data-common-header>
     <div class="container header__inner">
-      <a href="index.html" class="logo">
-        <span class="logo__mark">KI</span>
-        Korea Inside
+      <a href="index.html" class="brand" aria-label="Go Inside KR Inside home">
+        <span class="brand__parent">Go Inside</span>
+        <span class="brand__service">KR Inside</span>
       </a>
       <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="main-nav">
         <span class="nav-toggle__bar"></span>
         <span class="nav-toggle__bar"></span>
         <span class="nav-toggle__bar"></span>
       </button>
-      <nav class="nav" id="main-nav">
+      <nav class="nav" id="main-nav" aria-label="Primary navigation">
         <ul class="nav__list">
           <li><a href="index.html" class="nav__link nav__link--active">Home</a></li>
-          <li><a href="airport.html" class="nav__link">Airport</a></li>
-          <li><a href="tmoney.html" class="nav__link">T-money</a></li>
-          <li><a href="wowpass.html" class="nav__link">WOWPASS</a></li>
-          <li><a href="esim.html" class="nav__link">eSIM</a></li>
-          <li><a href="payments.html" class="nav__link">Payments</a></li>
+          <li><a href="arrival.html" class="nav__link">Arrival</a></li>
+          <li><a href="airport-transfer.html" class="nav__link">Transportation</a></li>
+          <li><a href="esim.html" class="nav__link">Connectivity</a></li>
+          <li><a href="payments.html" class="nav__link">Money</a></li>
+          <li><a href="where-to-stay-in-seoul.html" class="nav__link">Accommodation</a></li>
           <li><a href="maps.html" class="nav__link">Maps</a></li>
-          <li><a href="apps.html" class="nav__link">Apps</a></li>
-          <li><a href="checklist.html" class="nav__link">Checklist</a></li>
+          <li><a href="checklist.html" class="nav__link">Travel Tips</a></li>
         </ul>
       </nav>
+      <div class="language-switcher" aria-label="Language selector" data-supported-languages="EN JP KR TW VN">
+        <button class="language-switcher__button" type="button" aria-disabled="true" disabled>
+          <span class="language-switcher__current">EN</span>
+          <span class="language-switcher__label">Language</span>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -53,62 +59,122 @@
       </picture>
       <div class="hero-banner__overlay" aria-hidden="true"></div>
       <div class="container hero-banner__content">
-        <p class="hero-banner__eyebrow">Practical guides for foreigners in Korea</p>
-        <h1 class="hero-banner__title">Know what to do before you land in Korea.</h1>
+        <p class="hero-banner__eyebrow">Practical Korea travel decisions</p>
+        <h1 class="hero-banner__title">
+          <span>KR Inside</span>
+          <span>Everything You Need</span>
+          <span>Before Visiting Korea</span>
+        </h1>
         <p class="hero-banner__subtitle">
-          Airport arrival, eSIM, T-money, maps, payments and essential apps — explained step by step for first-time visitors.
+          Practical information to check before your Korea trip: airport arrival, transportation cards, eSIM setup, payments, WOWPASS and local map apps. Built for solving travel problems, not listing tourist spots.
         </p>
         <div class="hero-banner__actions">
-          <a href="airport.html" class="btn btn--primary">Start with Airport Guide</a>
-          <a href="esim.html" class="btn btn--ghost">Check eSIM setup</a>
+          <a href="arrival.html" class="btn btn--primary">Start with Arrival</a>
+          <a href="esim.html" class="btn btn--ghost">Check eSIM Guide</a>
+        </div>
+        <div class="hero-entry-grid" aria-label="Key Korea travel guides">
+          <a href="arrival.html" class="hero-entry-card">
+            <span class="hero-entry-card__label">Arrival</span>
+            <span class="hero-entry-card__text">Airport steps, transport choices and first-hour setup.</span>
+          </a>
+          <a href="esim.html" class="hero-entry-card">
+            <span class="hero-entry-card__label">eSIM</span>
+            <span class="hero-entry-card__text">Mobile data options before landing or at the airport.</span>
+          </a>
+          <a href="tmoney.html" class="hero-entry-card">
+            <span class="hero-entry-card__label">T-money</span>
+            <span class="hero-entry-card__text">Subway and bus card basics for getting around Korea.</span>
+          </a>
+          <a href="wowpass.html" class="hero-entry-card">
+            <span class="hero-entry-card__label">WOWPASS</span>
+            <span class="hero-entry-card__text">Prepaid card and payment setup for foreign visitors.</span>
+          </a>
         </div>
       </div>
     </section>
 
-    <section class="section" id="start-here">
+    <section class="home-trust" aria-labelledby="home-trust-title">
       <div class="container">
-        <div class="section__header">
-          <p class="eyebrow">Start here</p>
-          <h2 class="section__title section__title--lg">Choose what you need before or right after arriving in Korea.</h2>
-          <p class="section__subtitle">Start with the guide that matches your first problem: airport arrival, internet, transport, maps, payments or essential apps.</p>
+        <div class="home-trust__header">
+          <p class="eyebrow">Why this guide exists</p>
+          <h2 id="home-trust-title" class="home-trust__title">Why KR Inside exists</h2>
+          <p class="home-trust__intro">
+            Travelers in Korea often get stuck on how things actually work, not on which landmark to visit. Airport arrival, transportation cards, eSIM setup, payments, maps and booking habits can all be different from home. KR Inside helps foreign visitors compare options, understand limits and make better decisions in Korea.
+          </p>
         </div>
 
-        <div class="cards-grid cards-grid--spaced">
-          <a href="airport.html" class="card card--premium">
-            <div class="card__icon">🛬</div>
-            <h3 class="card__title">Airport Arrival Guide</h3>
-            <p class="card__desc">What to do in your first 30 minutes at Incheon Airport.</p>
-            <span class="card__arrow" aria-hidden="true">→</span>
+        <div class="home-trust__grid">
+          <article class="home-trust-card">
+            <span class="home-trust-card__accent" aria-hidden="true"></span>
+            <h3 class="home-trust-card__title">Practical, not promotional</h3>
+            <p class="home-trust-card__text">
+              We focus on real usage standards, cautions and choice criteria instead of promotional recommendations.
+            </p>
+          </article>
+          <article class="home-trust-card">
+            <span class="home-trust-card__accent" aria-hidden="true"></span>
+            <h3 class="home-trust-card__title">Before you arrive</h3>
+            <p class="home-trust-card__text">
+              Prepare the eSIM, transportation card, payment method and map app information you need before airport arrival.
+            </p>
+          </article>
+          <article class="home-trust-card">
+            <span class="home-trust-card__accent" aria-hidden="true"></span>
+            <h3 class="home-trust-card__title">Better decisions in Korea</h3>
+            <p class="home-trust-card__text">
+              See strengths, limitations and conditions clearly so you can compare options and choose for yourself.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-features" id="essential-guides" aria-labelledby="home-features-title">
+      <div class="container">
+        <div class="home-features__header">
+          <p class="eyebrow">Essential guides</p>
+          <h2 id="home-features-title" class="home-features__title">Essential guides for visiting Korea</h2>
+          <p class="home-features__subtitle">
+            Practical information you need before and after visiting Korea, including airport arrival, connectivity, transportation, payments, maps and accommodation decisions.
+          </p>
+        </div>
+
+        <div class="home-feature-grid">
+          <a href="airport.html" class="home-feature-card">
+            <span class="home-feature-card__label">Arrival</span>
+            <h3 class="home-feature-card__title">Arrival Guide</h3>
+            <p class="home-feature-card__text">Terminal steps, transport choices and first things to prepare after airport arrival.</p>
+            <span class="home-feature-card__link">Learn more about arrival</span>
           </a>
-          <a href="esim.html" class="card card--premium">
-            <div class="card__icon">📶</div>
-            <h3 class="card__title">Get Internet / eSIM</h3>
-            <p class="card__desc">Set up mobile data before you land or at the airport.</p>
-            <span class="card__arrow" aria-hidden="true">→</span>
+          <a href="esim.html" class="home-feature-card">
+            <span class="home-feature-card__label">Connectivity</span>
+            <h3 class="home-feature-card__title">eSIM Guide</h3>
+            <p class="home-feature-card__text">Compare data-only eSIMs, Korean phone numbers and SIM choices before you buy.</p>
+            <span class="home-feature-card__link">Learn more about eSIM</span>
           </a>
-          <a href="tmoney.html" class="card card--premium">
-            <div class="card__icon">💳</div>
-            <h3 class="card__title">T-money Card</h3>
-            <p class="card__desc">Learn how to use Korea’s transport card for subway and buses.</p>
-            <span class="card__arrow" aria-hidden="true">→</span>
+          <a href="tmoney.html" class="home-feature-card">
+            <span class="home-feature-card__label">Transport</span>
+            <h3 class="home-feature-card__title">T-money Guide</h3>
+            <p class="home-feature-card__text">How to buy, recharge and use Korea's transport card for subways and buses.</p>
+            <span class="home-feature-card__link">Learn more about T-money</span>
           </a>
-          <a href="maps.html" class="card card--premium">
-            <div class="card__icon">🗺️</div>
-            <h3 class="card__title">Maps in Korea</h3>
-            <p class="card__desc">Use Naver Map or KakaoMap when Google Maps is not enough.</p>
-            <span class="card__arrow" aria-hidden="true">→</span>
+          <a href="wowpass.html" class="home-feature-card">
+            <span class="home-feature-card__label">Money</span>
+            <h3 class="home-feature-card__title">WOWPASS Guide</h3>
+            <p class="home-feature-card__text">Understand the visitor payment card, currency exchange and transport features.</p>
+            <span class="home-feature-card__link">Learn more about WOWPASS</span>
           </a>
-          <a href="payments.html" class="card card--premium">
-            <div class="card__icon">💵</div>
-            <h3 class="card__title">Payments in Korea</h3>
-            <p class="card__desc">Know which cards work and why some foreign cards fail.</p>
-            <span class="card__arrow" aria-hidden="true">→</span>
+          <a href="maps.html" class="home-feature-card">
+            <span class="home-feature-card__label">Maps</span>
+            <h3 class="home-feature-card__title">Maps Guide</h3>
+            <p class="home-feature-card__text">Why Google Maps can be limited in Korea and which local map apps to use instead.</p>
+            <span class="home-feature-card__link">Learn more about maps</span>
           </a>
-          <a href="apps.html" class="card card--premium">
-            <div class="card__icon">📱</div>
-            <h3 class="card__title">Essential Apps</h3>
-            <p class="card__desc">Apps for maps, taxis, translation and daily travel.</p>
-            <span class="card__arrow" aria-hidden="true">→</span>
+          <a href="accommodation.html" class="home-feature-card">
+            <span class="home-feature-card__label">Accommodation</span>
+            <h3 class="home-feature-card__title">Accommodation Guide</h3>
+            <p class="home-feature-card__text">Choose by location, transit access, suitcase movement and practical stay criteria.</p>
+            <span class="home-feature-card__link">Learn more about accommodation</span>
           </a>
         </div>
       </div>
@@ -263,67 +329,53 @@
     </section>
   </main>
 
-  <footer class="footer">
+  <footer class="footer" id="site-footer">
     <div class="container">
       <div class="footer__grid">
-        <div>
-          <p class="footer__brand">Korea Inside</p>
-          <p class="footer__tagline">Understand how Korea really works.<br>Practical guides for foreigners visiting or living in Korea.</p>
+        <div class="footer__brand-block">
+          <p class="footer__parent-brand">Go Inside</p>
+          <p class="footer__brand">KR Inside</p>
+          <p class="footer__tagline">Don't just visit. Go Inside.</p>
         </div>
-        <div>
+        <nav class="footer__group" aria-label="Footer guides">
           <p class="footer__heading">Guides</p>
           <ul class="footer__links">
-            <li><a href="tmoney.html">T-money</a></li>
+            <li><a href="arrival.html">Arrival</a></li>
             <li><a href="esim.html">eSIM</a></li>
-            <li><a href="airport.html">Airport</a></li>
-            <li><a href="payments.html">Payments</a></li>
-          </ul>
-        </div>
-        <div>
-          <p class="footer__heading">More</p>
-          <ul class="footer__links">
+            <li><a href="tmoney.html">T-money</a></li>
+            <li><a href="wowpass.html">WOWPASS</a></li>
             <li><a href="maps.html">Maps</a></li>
-            <li><a href="apps.html">Apps</a></li>
-            <li><a href="checklist.html">Checklist</a></li>
+            <li><a href="accommodation.html">Accommodation</a></li>
           </ul>
-        </div>
+        </nav>
+        <nav class="footer__group" aria-label="Footer platform">
+          <p class="footer__heading">Platform</p>
+          <ul class="footer__links">
+            <li><span class="footer__text-link" aria-disabled="true">About</span></li>
+            <li><a href="checklist.html">Travel Tips</a></li>
+            <li><span class="footer__text-link" aria-disabled="true">Contact</span></li>
+          </ul>
+        </nav>
+        <nav class="footer__group" aria-label="Footer language">
+          <p class="footer__heading">Language</p>
+          <ul class="footer__links">
+            <li><a href="index.html">English</a></li>
+            <li><span class="footer__text-link" aria-disabled="true">Japanese</span></li>
+            <li><span class="footer__text-link" aria-disabled="true">Korean</span></li>
+            <li><span class="footer__text-link" aria-disabled="true">Traditional Chinese</span></li>
+            <li><span class="footer__text-link" aria-disabled="true">Vietnamese</span></li>
+          </ul>
+        </nav>
       </div>
       <div class="footer__bottom">
-        <p>&copy; 2026 Korea Inside. Not a travel booking site — a practical guide for daily life in Korea.</p>
+        <p>&copy; 2026 Go Inside. KR Inside is part of the Go Inside platform.</p>
+        <p>Information is provided for travel planning purposes and should be checked with official sources when necessary.</p>
       </div>
     </div>
   </footer>
 
+  <script src="common.js"></script>
   <script>
-    const toggle = document.querySelector('.nav-toggle');
-    const nav = document.querySelector('.nav');
-    const header = document.querySelector('.header');
-
-    toggle.addEventListener('click', () => {
-      const open = toggle.getAttribute('aria-expanded') === 'true';
-      toggle.setAttribute('aria-expanded', !open);
-      nav.classList.toggle('is-open');
-      if (header.classList.contains('header--hero')) {
-        header.classList.toggle('header--menu-open', !open);
-      }
-    });
-
-    document.querySelectorAll('.nav__link').forEach(link => {
-      link.addEventListener('click', () => {
-        toggle.setAttribute('aria-expanded', 'false');
-        nav.classList.remove('is-open');
-        header.classList.remove('header--menu-open');
-      });
-    });
-
-    if (header.classList.contains('header--hero')) {
-      const onScroll = () => {
-        header.classList.toggle('header--scrolled', window.scrollY > 40);
-      };
-      window.addEventListener('scroll', onScroll, { passive: true });
-      onScroll();
-    }
-
     const searchInput = document.querySelector('.search-box__input');
     const routes = {
       't-money': 'tmoney.html', 'tmoney': 'tmoney.html', 'transport': 'tmoney.html', 'subway': 'tmoney.html', 'bus': 'tmoney.html',

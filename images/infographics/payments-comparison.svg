@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-labelledby="title desc">
+  <title id="title">How to Pay in Korea</title>
+  <desc id="desc">A visual comparison of foreign cards, cash, T-money, and WOWPASS for foreign travelers paying in Korea.</desc>
+  <style>
+    .bg { fill: #FFFFFF; }
+    .soft { fill: #F7FAFC; }
+    .navy { fill: #0F2747; }
+    .teal { fill: #16B6B0; }
+    .border { stroke: #DDE6EE; stroke-width: 2; }
+    .card { fill: #FFFFFF; stroke: #DDE6EE; stroke-width: 2; }
+    .line { fill: none; stroke: #0F2747; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+    .line-teal { fill: none; stroke: #16B6B0; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+    .title { font: 800 44px Arial, Inter, system-ui, sans-serif; fill: #0F2747; }
+    .subtitle { font: 500 20px Arial, Inter, system-ui, sans-serif; fill: #52677A; }
+    .card-title { font: 800 25px Arial, Inter, system-ui, sans-serif; fill: #0F2747; }
+    .label { font: 800 15px Arial, Inter, system-ui, sans-serif; fill: #16B6B0; letter-spacing: .04em; }
+    .body { font: 500 18px Arial, Inter, system-ui, sans-serif; fill: #52677A; }
+    .footer { font: 700 16px Arial, Inter, system-ui, sans-serif; fill: #0F2747; }
+  </style>
+
+  <rect class="bg" width="1200" height="620"/>
+  <rect class="soft" x="40" y="34" width="1120" height="552" rx="12"/>
+
+  <g transform="translate(80 76)">
+    <circle class="teal" cx="30" cy="30" r="30"/>
+    <path class="line" d="M18 25h24m-24 11h18"/>
+    <text class="title" x="78" y="34">How to Pay in Korea</text>
+    <text class="subtitle" x="78" y="66">Compare common payment methods before you travel.</text>
+  </g>
+
+  <g transform="translate(80 180)">
+    <rect class="card" x="0" y="0" width="245" height="330" rx="12"/>
+    <g transform="translate(28 26)">
+      <rect class="soft border" x="0" y="0" width="66" height="52" rx="10"/>
+      <path class="line-teal" d="M10 18h46"/>
+      <path class="line" d="M12 35h18m10 0h12"/>
+    </g>
+    <text class="card-title" x="28" y="112">Foreign Card</text>
+    <text class="label" x="28" y="158">BEST FOR</text>
+    <text class="body" x="28" y="188">Hotels, chains,</text>
+    <text class="body" x="28" y="214">restaurants</text>
+    <text class="label" x="28" y="268">LIMITS</text>
+    <text class="body" x="28" y="298">May fail online or</text>
+    <text class="body" x="28" y="324">at small shops</text>
+  </g>
+
+  <g transform="translate(352 180)">
+    <rect class="card" x="0" y="0" width="245" height="330" rx="12"/>
+    <g transform="translate(28 26)">
+      <rect class="soft border" x="0" y="0" width="70" height="46" rx="8"/>
+      <circle class="line-teal" cx="35" cy="23" r="10"/>
+      <path class="line" d="M10 12h8m34 22h8"/>
+    </g>
+    <text class="card-title" x="28" y="112">Cash</text>
+    <text class="label" x="28" y="158">BEST FOR</text>
+    <text class="body" x="28" y="188">Markets, small</text>
+    <text class="body" x="28" y="214">vendors, backup</text>
+    <text class="label" x="28" y="268">LIMITS</text>
+    <text class="body" x="28" y="298">Less convenient</text>
+    <text class="body" x="28" y="324">for daily use</text>
+  </g>
+
+  <g transform="translate(624 180)">
+    <rect class="card" x="0" y="0" width="245" height="330" rx="12"/>
+    <g transform="translate(28 26)">
+      <rect class="soft border" x="0" y="0" width="66" height="52" rx="10"/>
+      <path class="line-teal" d="M17 17h32m-26 18h20"/>
+      <path class="line" d="M13 44h40"/>
+    </g>
+    <text class="card-title" x="28" y="112">T-money</text>
+    <text class="label" x="28" y="158">BEST FOR</text>
+    <text class="body" x="28" y="188">Subway, bus,</text>
+    <text class="body" x="28" y="214">some taxis</text>
+    <text class="label" x="28" y="268">LIMITS</text>
+    <text class="body" x="28" y="298">Not for general</text>
+    <text class="body" x="28" y="324">shopping</text>
+  </g>
+
+  <g transform="translate(896 180)">
+    <rect class="card" x="0" y="0" width="245" height="330" rx="12"/>
+    <g transform="translate(28 26)">
+      <rect class="soft border" x="0" y="0" width="66" height="52" rx="10"/>
+      <path class="line-teal" d="M12 18h42m-42 14h26"/>
+      <circle class="line" cx="48" cy="37" r="6"/>
+    </g>
+    <text class="card-title" x="28" y="112">WOWPASS</text>
+    <text class="label" x="28" y="158">BEST FOR</text>
+    <text class="body" x="28" y="188">Payment, exchange,</text>
+    <text class="body" x="28" y="214">transport</text>
+    <text class="label" x="28" y="268">LIMITS</text>
+    <text class="body" x="28" y="298">Check fees and</text>
+    <text class="body" x="28" y="324">availability</text>
+  </g>
+
+  <g transform="translate(80 550)">
+    <rect class="navy" x="0" y="0" width="1040" height="2" rx="1"/>
+    <text class="footer" x="520" y="30" text-anchor="middle">Use more than one payment method: card for convenience, cash for backup, T-money for transport.</text>
+  </g>
+</svg>
