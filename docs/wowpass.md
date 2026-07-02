@@ -194,3 +194,5 @@ Estimated page strategy quality before this documentation update: 72/100.
 Estimated page strategy quality after this documentation update: 90/100.
 
 Remaining gap: `wowpass.html` itself still uses a VS-first structure. A future approved HTML task can update the page order and add a Korean money recognition section without removing existing useful sections.
+
+Comparison section order updated to match the page title.

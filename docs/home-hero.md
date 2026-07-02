@@ -1,6 +1,6 @@
 # Home Hero
 
-Last updated: July 1, 2026
+Last updated: July 2, 2026
 
 ## Purpose
 
@@ -23,6 +23,8 @@ Before Visiting Korea
 ```
 
 The hero brand text is HTML text. Do not place the approved message inside an image.
+
+The `KR Inside` brand text may use inline HTML spans for visual emphasis: `K` in red, `R` in blue, and `Inside` in navy. The letters must remain real HTML text inside the single home-page `h1`.
 
 ## Supporting Message Direction
 
@@ -64,6 +66,7 @@ The home hero includes four fast-entry cards:
 - Existing hero image may remain as support, but the message must not depend on the image.
 - Avoid adding new heavy visual assets unless they improve user decisions.
 - Keep the hero compact enough that desktop screens do not feel empty.
+- If cinematic motion is used, animate only the hero image with a subtle one-time CSS transform and disable it with `prefers-reduced-motion`.
 
 ## SEO Requirements
 
