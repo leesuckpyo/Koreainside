@@ -234,7 +234,7 @@
       </div>
     </section>
 
-    <section class="home-trust" id="why-korea-works" aria-labelledby="why-korea-works-title">
+    <section class="home-trust home-trust--compact" id="why-korea-works" aria-labelledby="why-korea-works-title">
       <div class="container">
         <div class="home-trust__story">
           <div class="home-trust__visual" role="img" aria-label="Placeholder for a future Why Korea Works infographic">
@@ -242,33 +242,11 @@
           </div>
           <div class="home-trust__header">
             <p class="eyebrow">HOW KOREA WORKS</p>
-            <h2 id="why-korea-works-title" class="home-trust__title">Why Korea Works</h2>
+            <h2 id="why-korea-works-title" class="home-trust__title">Understand Korea faster</h2>
             <p class="home-trust__intro">
-              Korea works differently than many visitors expect.<br><br>
-              We explain how transportation, mobile service, payments, and everyday systems actually work&mdash;before you arrive.<br><br>
-              Less confusion.<br>
-              Less stress.<br>
-              Better decisions.
+              Korea's transport, payment, mobile, and map systems may work differently from what visitors expect. Korea Inside helps you understand those differences quickly, then choose the right guide for the decision you need to make.
             </p>
           </div>
-        </div>
-
-        <div class="home-trust__grid">
-          <article class="home-trust-card">
-            <span class="home-trust-card__number">01</span>
-            <span class="home-trust-card__accent" aria-hidden="true"></span>
-            <h3 class="home-trust-card__title">Practical Guides</h3>
-          </article>
-          <article class="home-trust-card">
-            <span class="home-trust-card__number">02</span>
-            <span class="home-trust-card__accent" aria-hidden="true"></span>
-            <h3 class="home-trust-card__title">Before You Arrive</h3>
-          </article>
-          <article class="home-trust-card">
-            <span class="home-trust-card__number">03</span>
-            <span class="home-trust-card__accent" aria-hidden="true"></span>
-            <h3 class="home-trust-card__title">Make Better Decisions</h3>
-          </article>
         </div>
       </div>
     </section>
@@ -374,59 +352,6 @@
       </div>
     </section>
 
-    <section class="section section--gray" id="categories">
-      <div class="container">
-        <div class="section__header">
-          <p class="eyebrow">Explore guides</p>
-          <h2 class="section__title section__title--lg">Everything you need for daily life</h2>
-          <p class="section__subtitle">Find what you need, solve problems, and enjoy your life in Korea.</p>
-        </div>
-
-        <div class="search-box search-box--wide">
-          <svg class="search-box__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-          <input type="search" class="search-box__input" placeholder="Ask about T-money, eSIM, maps, payments..." aria-label="Search guides">
-        </div>
-
-        <div class="cards-grid cards-grid--spaced">
-          <a href="tmoney.html" class="card card--premium">
-            <div class="card__icon">&#128647;</div>
-            <h3 class="card__title">Transportation</h3>
-            <p class="card__desc">T-money cards, subways, buses, and getting around the city without confusion.</p>
-            <span class="card__arrow" aria-hidden="true">&rarr;</span>
-          </a>
-          <a href="payments.html" class="card card--premium">
-            <div class="card__icon">&#128179;</div>
-            <h3 class="card__title">Payments</h3>
-            <p class="card__desc">Which cards work, cash vs. mobile pay, and how to pay like a local.</p>
-            <span class="card__arrow" aria-hidden="true">&rarr;</span>
-          </a>
-          <a href="esim.html" class="card card--premium">
-            <div class="card__icon">&#128241;</div>
-            <h3 class="card__title">Mobile &amp; eSIM</h3>
-            <p class="card__desc">Get connected fast with the right eSIM or SIM plan for your stay.</p>
-            <span class="card__arrow" aria-hidden="true">&rarr;</span>
-          </a>
-          <a href="maps.html" class="card card--premium">
-            <div class="card__icon">&#128506;&#65039;</div>
-            <h3 class="card__title">Navigation</h3>
-            <p class="card__desc">Why Google Maps can be limited in Korea and which local apps help more.</p>
-            <span class="card__arrow" aria-hidden="true">&rarr;</span>
-          </a>
-          <a href="apps.html" class="card card--premium">
-            <div class="card__icon">&#127836;</div>
-            <h3 class="card__title">Food &amp; Ordering</h3>
-            <p class="card__desc">Delivery apps, restaurant ordering, and eating out without language barriers.</p>
-            <span class="card__arrow" aria-hidden="true">&rarr;</span>
-          </a>
-          <a href="checklist.html" class="card card--premium">
-            <div class="card__icon">&#127384;</div>
-            <h3 class="card__title">Emergency</h3>
-            <p class="card__desc">Emergency numbers, hospital visits, and your arrival checklist.</p>
-            <span class="card__arrow" aria-hidden="true">&rarr;</span>
-          </a>
-        </div>
-      </div>
-    </section>
   </main>
 
   <footer class="footer" id="site-footer">
@@ -475,24 +400,5 @@
   </footer>
 
   <script src="common.js"></script>
-  <script>
-    const searchInput = document.querySelector('.search-box__input');
-    const routes = {
-      't-money': 'tmoney.html', 'tmoney': 'tmoney.html', 'transport': 'tmoney.html', 'subway': 'tmoney.html', 'bus': 'tmoney.html',
-      'esim': 'esim.html', 'sim': 'esim.html', 'mobile': 'esim.html', 'phone': 'esim.html',
-      'airport': 'airport.html', 'incheon': 'airport.html', 'arrival': 'airport.html',
-      'payment': 'payments.html', 'payments': 'payments.html', 'card': 'payments.html', 'pay': 'payments.html',
-      'map': 'maps.html', 'maps': 'maps.html', 'navigation': 'maps.html', 'naver': 'maps.html', 'kakao': 'maps.html',
-      'app': 'apps.html', 'apps': 'apps.html', 'food': 'apps.html', 'delivery': 'apps.html', 'order': 'apps.html',
-      'checklist': 'checklist.html', 'emergency': 'checklist.html', 'hospital': 'checklist.html'
-    };
-    searchInput.addEventListener('keydown', (e) => {
-      if (e.key !== 'Enter') return;
-      const q = searchInput.value.toLowerCase().trim();
-      for (const [key, url] of Object.entries(routes)) {
-        if (q.includes(key)) { window.location.href = url; return; }
-      }
-    });
-  </script>
 </body>
 </html>

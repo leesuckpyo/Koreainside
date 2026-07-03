@@ -865,6 +865,10 @@ ul, ol {
   margin-bottom: 40px;
 }
 
+.home-trust--compact .home-trust__story {
+  margin-bottom: 0;
+}
+
 .home-trust__visual {
   position: relative;
   display: grid;
@@ -3674,56 +3678,9 @@ ul, ol {
 }
 /* ── End home page preparation sections ── */
 
-#categories.section--gray {
-  background: linear-gradient(180deg, var(--white) 0%, #fbfdff 100%);
-  padding-top: 92px;
-  padding-bottom: 96px;
-}
-
-#categories .section__header--center {
-  margin-bottom: 48px;
-}
-
-#categories .section__title {
-  line-height: 1.08;
-}
-
-#categories .section__subtitle {
-  line-height: 1.68;
-}
-
-#categories .cards-grid {
-  align-items: stretch;
-}
-
-#categories .card--premium {
-  display: flex;
-  flex-direction: column;
-  min-height: 100%;
-  padding: 30px;
-  border-color: rgba(148, 163, 184, 0.24);
-  box-shadow: var(--shadow-sm);
-}
-
-#categories .card--premium:hover {
-  transform: translateY(-1px);
-}
-
-#categories .card--premium .card__title {
-  font-size: 1.1875rem;
-  line-height: 1.25;
-}
-
-#categories .card--premium .card__desc {
-  font-size: 0.96875rem;
-  line-height: 1.6;
-  padding-right: 26px;
-}
-
 @media (min-width: 768px) {
   .section--compare,
-  .home-prep-section,
-  #categories.section--gray {
+  .home-prep-section {
     padding-top: 116px;
     padding-bottom: 116px;
   }
@@ -3732,9 +3689,6 @@ ul, ol {
     padding: 38px 34px;
   }
 
-  #categories .card--premium {
-    padding: 32px;
-  }
 }
 
 /* Airport official interactive map link */
