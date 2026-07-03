@@ -1,6 +1,6 @@
 # eSIM Guide Page Review
 
-Date: 2026-07-01
+Date: 2026-07-03
 
 ## Scope
 
@@ -48,6 +48,7 @@ Provider buttons are placeholders only. No affiliate or outbound provider links 
 - The comparison table includes a visible `caption`.
 - Provider placeholders are disabled buttons, not misleading purchase links.
 - Focus-visible styles are retained for eSIM-specific links, summaries, and controls.
+- The hero background image is decorative and supports recognition only; important eSIM decision content remains visible HTML text.
 
 ## QA Checklist
 
@@ -57,7 +58,7 @@ Provider buttons are placeholders only. No affiliate or outbound provider links 
   - `#phone-compatibility`
   - `#compare-options`
 - Provider buttons are intentionally disabled placeholders.
-- The page does not use content images; important content is visible HTML text.
+- The hero background uses `images/esim/hero-esim.webp`; important content is still visible HTML text and does not depend on the image.
 - The comparison table uses horizontal overflow for small mobile widths instead of compressing columns.
 - Responsive targets to verify visually:
   - 360px mobile
@@ -74,8 +75,18 @@ Static checks completed:
 - Hero H1 text confirmed as `How to Use eSIM in Korea`.
 - FAQ count confirmed as 8.
 - Provider links confirmed as disabled placeholder buttons with no outbound provider URLs.
-- No image dependencies found in `esim.html`.
+- No content image dependency found in `esim.html`; the hero image is applied through CSS as a background.
 - FAQPage and BreadcrumbList JSON-LD are present.
+
+## Hero Image Update
+
+Updated on 2026-07-03.
+
+- Applied approved hero image: `images/esim/hero-esim.webp`.
+- Moved source asset from `images/hero-esim.webp`.
+- Hero layout, copy, buttons, and overlay gradient were preserved.
+- Verification level: Level 1 - Quick Verify.
+- Known QA limitation: Desktop responsive mode is only a simulation. Final mobile approval must be based on Product Owner testing on Galaxy S25+.
 
 ## Future Verification
 

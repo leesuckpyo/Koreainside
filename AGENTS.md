@@ -92,6 +92,8 @@ Stop and request approval if the task needs to exceed these limits.
 
 Always show the complete diff before finishing a task.
 
+For documentation-rule changes, show the proposed diff before applying the file edit and wait for Product Owner approval.
+
 After showing the diff:
 
 - Stop and wait for explicit user approval.
@@ -295,13 +297,112 @@ CSS rules:
 - Avoid inline CSS.
 - Keep mobile first.
 
-Responsive verification for visual changes:
+Responsive verification for visual changes must follow the Codex QA / Verification Rules below.
 
-- Mobile: 375px
-- Tablet: 768px
-- Desktop: 1440px
+- Do not run full responsive QA for minor visual changes unless the Product Owner requests it.
+- Use the smallest verification level that matches the change scope and risk.
+- Preserve existing design, colors, spacing, typography, layout, and responsive behavior unless a design change was explicitly approved.
+- For Level 3 Release QA, use the standard responsive viewports: mobile 375px, tablet 768px, desktop 1440px.
 
-Confirm that existing design, colors, spacing, typography, layout, and responsive behavior remain unchanged unless a design change was explicitly approved.
+---
+
+## Codex QA / Verification Rules
+
+### Core Principle
+
+Verification must be proportional to the scope and risk of the change.
+
+### Level 1 - Quick Verify
+
+Use this for:
+
+- Text changes
+- CSS color changes
+- Spacing changes
+- Font changes
+- Icon changes
+- Image replacement
+- Minor visual polish
+
+Required checks:
+
+- Check only the modified page or component.
+- Confirm there are no obvious console errors.
+- Capture or confirm one desktop view if relevant.
+- Capture or confirm one mobile view if relevant.
+- Do not run full-site QA.
+
+### Level 2 - Feature Verify
+
+Use this for:
+
+- Hamburger menu
+- Navigation
+- JavaScript changes
+- CTA behavior
+- Journey links
+- Animation
+- Interactive elements
+
+Required checks:
+
+- Test the changed feature directly.
+- Test only related pages affected by the feature.
+- Check desktop and mobile behavior.
+- Check console errors.
+- Do not run release-level QA unless requested.
+
+### Level 3 - Release QA
+
+Use this only for:
+
+- Final release check
+- Multiple page changes
+- Major layout changes
+- Navigation-wide changes
+- Product Owner request
+
+Required checks:
+
+- Desktop, tablet, and mobile responsive check.
+- Main page links.
+- Navigation flow.
+- Console errors.
+- Obvious layout breakage.
+- Critical user journey.
+
+### QA Stop Rule
+
+Stop QA and report as "Known QA Limitation" when:
+
+- Browser tooling is unavailable.
+- Playwright or headless browser fails due to environment issue.
+- The issue is unrelated to the current change.
+- The Product Owner has already confirmed the result on a real device.
+- Additional QA would not change the implementation decision.
+
+### Product Owner Priority
+
+If the Product Owner confirms the result, do not continue repeating QA unless explicitly requested.
+
+### Reporting Format
+
+For every task, report:
+
+- Impact
+- Time
+- Priority
+- Changed files
+- Verification level used
+- QA result
+- Known QA limitations, if any
+
+Important:
+
+- Do not perform full QA for minor changes.
+- Do not delay implementation with excessive verification.
+- Time is also a quality factor.
+- Always show diff first and wait for Product Owner approval before applying document changes.
 
 ---
 
@@ -465,13 +566,15 @@ Whenever major research is performed, create or update a Markdown document insid
 
 After completing a task, report:
 
-- Modified files
-- New files
-- Deleted files
-- Markdown documentation updated
+- Impact
+- Time
+- Priority
+- Changed files
 - Diff summary
 - Affected pages
-- Potential issues
+- Verification level used
+- QA result
+- Known QA limitations, if any
 
 ---
 
@@ -523,7 +626,7 @@ Before requesting approval, review:
 - No existing links broken
 - SEO maintained
 - Accessibility maintained
-- Responsive layout verified when visual changes are made
+- Verification level selected according to Codex QA / Verification Rules
 - Documentation updated or documented as not required
 - No unnecessary changes
 

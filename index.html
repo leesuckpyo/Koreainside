@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -26,11 +26,11 @@
       <nav class="nav" id="main-nav" aria-label="Primary navigation">
         <ul class="nav__list">
           <li><a href="index.html" class="nav__link nav__link--active">Home</a></li>
+          <li><a href="where-to-stay-in-seoul.html" class="nav__link">Accommodation</a></li>
+          <li><a href="esim.html" class="nav__link">Connectivity</a></li>
           <li><a href="arrival.html" class="nav__link">Arrival</a></li>
           <li><a href="airport-transfer.html" class="nav__link">Transportation</a></li>
-          <li><a href="esim.html" class="nav__link">Connectivity</a></li>
           <li><a href="payments.html" class="nav__link">Money</a></li>
-          <li><a href="where-to-stay-in-seoul.html" class="nav__link">Accommodation</a></li>
           <li><a href="maps.html" class="nav__link">Maps</a></li>
           <li><a href="checklist.html" class="nav__link">Travel Tips</a></li>
         </ul>
@@ -47,11 +47,11 @@
   <main>
     <section class="hero-banner">
       <picture class="hero-banner__media">
-        <source media="(min-width: 768px)" srcset="images/home/hero-seoul.jpg">
+        <source media="(min-width: 768px)" srcset="images/home/hero-home-airport.webp" type="image/webp">
         <img
           class="hero-banner__image"
-          src="images/home/hero-seoul.jpg"
-          alt="Seoul skyline at dusk with Namsan Tower"
+          src="images/home/hero-home-airport.webp"
+          alt="Incheon Airport terminal interior for Korea arrival preparation"
           width="1920"
           height="1080"
           fetchpriority="high"
@@ -61,40 +61,128 @@
       <div class="container hero-banner__content">
         <p class="hero-banner__eyebrow">Practical Korea travel decisions</p>
         <h1 class="hero-banner__title">
-          <span class="hero-banner__brand">
-            <span class="hero-banner__brand-k">K</span><span class="hero-banner__brand-r">R</span><span class="hero-banner__brand-inside"> Inside</span>
-          </span>
+          <span class="hero-banner__brand">Korea Inside</span>
           <span>Everything You Need</span>
           <span>Before Visiting Korea</span>
         </h1>
         <p class="hero-banner__subtitle">
           Practical information to check before your Korea trip: airport arrival, transportation cards, eSIM setup, payments, WOWPASS and local map apps. Built for solving travel problems, not listing tourist spots.
         </p>
-        <div class="hero-banner__actions">
-          <a href="arrival.html" class="btn btn--primary">Start with Arrival</a>
-          <a href="esim.html" class="btn btn--ghost">Check eSIM Guide</a>
+      </div>
+    </section>
+
+    <section class="home-journey" aria-labelledby="home-journey-title">
+      <div class="container">
+        <div class="home-journey__header">
+          <p class="eyebrow">Journey preview</p>
+          <h2 id="home-journey-title">Plan your Korea trip in the right order</h2>
+          <p>
+            Start with where you will stay, then prepare connection, arrival, transportation, payments and local map decisions.
+          </p>
         </div>
-        <div class="hero-entry-grid" aria-label="Korea travel starting steps">
-          <a href="arrival.html" class="hero-entry-card">
-            <span class="hero-entry-card__step">Step 1</span>
-            <span class="hero-entry-card__label">Arrival</span>
-            <span class="hero-entry-card__text">Airport steps, transport choices and first-hour setup.</span>
-          </a>
-          <a href="esim.html" class="hero-entry-card">
-            <span class="hero-entry-card__step">Step 2</span>
-            <span class="hero-entry-card__label">Internet</span>
-            <span class="hero-entry-card__text">eSIM and mobile data options before landing or at the airport.</span>
-          </a>
-          <a href="tmoney.html" class="hero-entry-card">
-            <span class="hero-entry-card__step">Step 3</span>
-            <span class="hero-entry-card__label">Transportation</span>
-            <span class="hero-entry-card__text">T-money basics for subway and bus travel around Korea.</span>
-          </a>
-          <a href="wowpass.html" class="hero-entry-card">
-            <span class="hero-entry-card__step">Step 4</span>
-            <span class="hero-entry-card__label">Payments</span>
-            <span class="hero-entry-card__text">WOWPASS prepaid card and payment setup for foreign visitors.</span>
-          </a>
+
+        <div class="home-journey__grid">
+          <article class="home-journey-card">
+            <div class="home-journey-card__media">
+              <img
+                class="home-journey-card__image"
+                src="images/accommodation-card.webp"
+                alt="Accommodation planning card for choosing where to stay in Korea"
+                loading="lazy"
+              >
+            </div>
+            <div class="home-journey-card__body">
+              <span class="home-journey-card__step">Step 1</span>
+              <h3>Accommodation</h3>
+              <p>Choose an area before comparing transport, budget and daily routes. The right base makes every other Korea decision easier.</p>
+              <a href="where-to-stay-in-seoul.html" class="btn home-journey-card__button">Learn More</a>
+            </div>
+          </article>
+
+          <article class="home-journey-card">
+            <div class="home-journey-card__media">
+              <img
+                class="home-journey-card__image"
+                src="images/esim/hero-esim.png"
+                alt="Mobile data setup for staying connected in Korea"
+                loading="lazy"
+              >
+            </div>
+            <div class="home-journey-card__body">
+              <span class="home-journey-card__step">Step 2</span>
+              <h3>Internet</h3>
+              <p>Prepare mobile data before you rely on maps, messages or bookings. Compare eSIM choices based on setup, coverage and timing.</p>
+              <a href="esim.html" class="btn home-journey-card__button">Learn More</a>
+            </div>
+          </article>
+
+          <article class="home-journey-card">
+            <div class="home-journey-card__media">
+              <img
+                class="home-journey-card__image"
+                src="images/home/arrival-guide.png"
+                alt="Airport arrival guide for first steps after landing in Korea"
+                loading="lazy"
+              >
+            </div>
+            <div class="home-journey-card__body">
+              <span class="home-journey-card__step">Step 3</span>
+              <h3>Arrival</h3>
+              <p>Know what to handle after landing so your first hour is calmer. Review airport steps, transport choices and setup priorities.</p>
+              <a href="arrival.html" class="btn home-journey-card__button">Learn More</a>
+            </div>
+          </article>
+
+          <article class="home-journey-card">
+            <div class="home-journey-card__media">
+              <img
+                class="home-journey-card__image"
+                src="images/tmoney/tmoney-card.png"
+                alt="T-money card for subway and bus transportation in Korea"
+                loading="lazy"
+              >
+            </div>
+            <div class="home-journey-card__body">
+              <span class="home-journey-card__step">Step 4</span>
+              <h3>Transportation</h3>
+              <p>Choose the right way to leave the airport based on time, luggage, destination and budget. Compare AREX, buses, taxis and other transfer options.</p>
+              <a href="airport-transfer.html" class="btn home-journey-card__button">Learn More</a>
+            </div>
+          </article>
+
+          <article class="home-journey-card">
+            <div class="home-journey-card__media">
+              <img
+                class="home-journey-card__image home-journey-card__image--payments"
+                src="/images/wowpass-card.webp"
+                alt="WOWPASS card for visitor payments in Korea"
+                loading="lazy"
+              >
+            </div>
+            <div class="home-journey-card__body">
+              <span class="home-journey-card__step">Step 5</span>
+              <h3>Payments</h3>
+              <p>Prepare a payment method that fits foreign visitors. Compare cards, cash, prepaid options and backup plans before you arrive.</p>
+              <a href="payments.html" class="btn home-journey-card__button">Learn More</a>
+            </div>
+          </article>
+
+          <article class="home-journey-card">
+            <div class="home-journey-card__media">
+              <img
+                class="home-journey-card__image"
+                src="images/maps/map_01.png"
+                alt="Map app search for navigating places in Korea"
+                loading="lazy"
+              >
+            </div>
+            <div class="home-journey-card__body">
+              <span class="home-journey-card__step">Step 6</span>
+              <h3>Maps</h3>
+              <p>Use local map apps to find places, routes and transit details more reliably. Choose the right app before your first full day.</p>
+              <a href="maps.html" class="btn home-journey-card__button">Learn More</a>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -233,12 +321,12 @@
               <li>Open Naver Map or KakaoMap</li>
               <li>Choose AREX, airport bus, taxi or pickup</li>
             </ol>
-            <a href="airport.html" class="btn btn--text">View full airport guide →</a>
+            <a href="airport.html" class="btn btn--text">View full airport guide &rarr;</a>
           </div>
 
           <aside class="home-esim-card">
             <p class="home-esim-card__label">Before landing</p>
-            <div class="card__icon">📶</div>
+            <div class="card__icon">&#128246;</div>
             <h3>Get internet before you land</h3>
             <p>An eSIM can save time at the airport. See setup steps and options before arrival.</p>
             <a href="esim.html" class="chip">Check eSIM setup</a>
@@ -265,19 +353,19 @@
             </div>
             <ul class="compare-list">
               <li class="compare-list__item compare-list__item--bad">
-                <span class="compare-list__mark" aria-hidden="true">✕</span>
+                <span class="compare-list__mark" aria-hidden="true">&times;</span>
                 You may not know which transport app to trust
               </li>
               <li class="compare-list__item compare-list__item--bad">
-                <span class="compare-list__mark" aria-hidden="true">✕</span>
+                <span class="compare-list__mark" aria-hidden="true">&times;</span>
                 You may land before checking mobile data options
               </li>
               <li class="compare-list__item compare-list__item--bad">
-                <span class="compare-list__mark" aria-hidden="true">✕</span>
+                <span class="compare-list__mark" aria-hidden="true">&times;</span>
                 You may not know when T-money, cash, or card is better
               </li>
               <li class="compare-list__item compare-list__item--bad">
-                <span class="compare-list__mark" aria-hidden="true">✕</span>
+                <span class="compare-list__mark" aria-hidden="true">&times;</span>
                 You may need to solve arrival problems under time pressure
               </li>
             </ul>
@@ -294,19 +382,19 @@
             </div>
             <ul class="compare-list">
               <li class="compare-list__item compare-list__item--good">
-                <span class="compare-list__mark" aria-hidden="true">✓</span>
+                <span class="compare-list__mark" aria-hidden="true">&#10003;</span>
                 Know when to use Naver Map, KakaoMap, or other tools
               </li>
               <li class="compare-list__item compare-list__item--good">
-                <span class="compare-list__mark" aria-hidden="true">✓</span>
+                <span class="compare-list__mark" aria-hidden="true">&#10003;</span>
                 Understand which payment options fit your trip
               </li>
               <li class="compare-list__item compare-list__item--good">
-                <span class="compare-list__mark" aria-hidden="true">✓</span>
+                <span class="compare-list__mark" aria-hidden="true">&#10003;</span>
                 Prepare T-money, eSIM, and airport arrival decisions
               </li>
               <li class="compare-list__item compare-list__item--good">
-                <span class="compare-list__mark" aria-hidden="true">✓</span>
+                <span class="compare-list__mark" aria-hidden="true">&#10003;</span>
                 Follow practical checklists for your first days
               </li>
             </ul>
@@ -330,40 +418,40 @@
 
         <div class="cards-grid cards-grid--spaced">
           <a href="tmoney.html" class="card card--premium">
-            <div class="card__icon">🚇</div>
+            <div class="card__icon">&#128647;</div>
             <h3 class="card__title">Transportation</h3>
             <p class="card__desc">T-money cards, subways, buses, and getting around the city without confusion.</p>
-            <span class="card__arrow" aria-hidden="true">→</span>
+            <span class="card__arrow" aria-hidden="true">&rarr;</span>
           </a>
           <a href="payments.html" class="card card--premium">
-            <div class="card__icon">💳</div>
+            <div class="card__icon">&#128179;</div>
             <h3 class="card__title">Payments</h3>
             <p class="card__desc">Which cards work, cash vs. mobile pay, and how to pay like a local.</p>
-            <span class="card__arrow" aria-hidden="true">→</span>
+            <span class="card__arrow" aria-hidden="true">&rarr;</span>
           </a>
           <a href="esim.html" class="card card--premium">
-            <div class="card__icon">📱</div>
+            <div class="card__icon">&#128241;</div>
             <h3 class="card__title">Mobile &amp; eSIM</h3>
             <p class="card__desc">Get connected fast with the right eSIM or SIM plan for your stay.</p>
-            <span class="card__arrow" aria-hidden="true">→</span>
+            <span class="card__arrow" aria-hidden="true">&rarr;</span>
           </a>
           <a href="maps.html" class="card card--premium">
-            <div class="card__icon">🗺️</div>
+            <div class="card__icon">&#128506;&#65039;</div>
             <h3 class="card__title">Navigation</h3>
             <p class="card__desc">Why Google Maps can be limited in Korea and which local apps help more.</p>
-            <span class="card__arrow" aria-hidden="true">→</span>
+            <span class="card__arrow" aria-hidden="true">&rarr;</span>
           </a>
           <a href="apps.html" class="card card--premium">
-            <div class="card__icon">🍜</div>
+            <div class="card__icon">&#127836;</div>
             <h3 class="card__title">Food &amp; Ordering</h3>
             <p class="card__desc">Delivery apps, restaurant ordering, and eating out without language barriers.</p>
-            <span class="card__arrow" aria-hidden="true">→</span>
+            <span class="card__arrow" aria-hidden="true">&rarr;</span>
           </a>
           <a href="checklist.html" class="card card--premium">
-            <div class="card__icon">🆘</div>
+            <div class="card__icon">&#127384;</div>
             <h3 class="card__title">Emergency</h3>
             <p class="card__desc">Emergency numbers, hospital visits, and your arrival checklist.</p>
-            <span class="card__arrow" aria-hidden="true">→</span>
+            <span class="card__arrow" aria-hidden="true">&rarr;</span>
           </a>
         </div>
       </div>

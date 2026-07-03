@@ -1,6 +1,6 @@
 # Home Hero
 
-Last updated: July 2, 2026
+Last updated: July 3, 2026
 
 ## Purpose
 
@@ -17,14 +17,23 @@ It should make the service clear within a few seconds on mobile:
 Use this `h1` structure on the home page:
 
 ```text
-KR Inside
+Korea Inside
 Everything You Need
 Before Visiting Korea
 ```
 
 The hero brand text is HTML text. Do not place the approved message inside an image.
 
-The `KR Inside` brand text may use inline HTML spans for visual emphasis: `K` in red, `R` in blue, and `Inside` in navy. The letters must remain real HTML text inside the single home-page `h1`.
+The hero brand line should display `Korea Inside` only, in white, as a smaller brand line above the main title. Do not use the red/blue `KR` mark in the home hero.
+
+The main title remains:
+
+```text
+Everything You Need
+Before Visiting Korea
+```
+
+The eyebrow, brand line and main title should read as one compact hero group. Keep the spacing between `Practical Korea Travel Decisions` and `Korea Inside` tighter than the previous version, and keep the spacing between `Korea Inside` and the main title slightly reduced so the hierarchy feels intentional.
 
 ## Supporting Message Direction
 
@@ -64,9 +73,21 @@ The home hero includes four fast-entry cards:
 - Important text remains visible semantic HTML.
 - Navy base with teal accents.
 - Existing hero image may remain as support, but the message must not depend on the image.
+- Hero image, overlay, one-time image animation, subtitle, CTA buttons and entry cards should remain unchanged during brand rhythm refinements.
 - Avoid adding new heavy visual assets unless they improve user decisions.
 - Keep the hero compact enough that desktop screens do not feel empty.
 - If cinematic motion is used, animate only the hero image with a subtle one-time CSS transform and disable it with `prefers-reduced-motion`.
+
+## July 3, 2026 Brand Rhythm Refinement
+
+- Removed the red/blue `KR` point from the Home Hero brand line.
+- Kept `Korea Inside` as the only brand text above the main title.
+- Kept `Korea Inside` white for readability over the hero image.
+- Reduced the spacing between the eyebrow and brand line by about 40%.
+- Slightly reduced the spacing between the brand line and the main title.
+- Left Hero image, overlay, animation, CTA buttons, subtitle, navigation and Journey cards unchanged.
+- Verification level: Level 1 - Quick Visual Check only.
+- Final mobile approval remains based on Product Owner testing on Galaxy S25+.
 
 ## SEO Requirements
 

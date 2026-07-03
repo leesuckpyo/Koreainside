@@ -1,6 +1,6 @@
 # Common Header
 
-Last updated: July 1, 2026
+Last updated: July 3, 2026
 
 ## Purpose
 
@@ -85,3 +85,13 @@ Home-page hero header behavior:
 `common.js` initializes header behavior only when it finds `[data-common-header]`. This allows existing pages to keep their current inline scripts until they are migrated.
 
 Future page migrations should reuse the same header classes and include `common.js`.
+
+## Mobile Menu QA Record
+
+### July 3, 2026 - Airport mobile menu fix
+
+- Scope: `airport.html`, `common.js`, `style.css`.
+- Change: migrate the airport header to the common mobile menu behavior and strengthen mobile menu stacking/scroll behavior.
+- Verification level: Level 2 - Feature Verify.
+- QA result: Static and DOM-stub verification passed. Confirmed airport header uses `data-common-header`, loads `common.js`, removes the duplicated inline toggle script, opens on toggle click, closes on second click, closes on menu-link click, closes on Escape, and closes when switching to the desktop breakpoint.
+- Known QA limitation: In-app browser discovery returned no available browsers, so live 390px click testing, desktop visual confirmation, and browser console inspection could not be completed in this environment.
