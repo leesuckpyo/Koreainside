@@ -187,49 +187,65 @@
       </div>
     </section>
 
-    <section class="home-trust" aria-labelledby="home-trust-title">
+    <section class="home-trust home-guide-hub" aria-labelledby="home-guide-hub-title">
       <div class="container">
-        <div class="home-trust__story">
-          <div class="home-trust__visual" aria-hidden="true">
-            <span class="home-trust__signal">Airport arrival</span>
-            <span class="home-trust__signal">T-money gate</span>
-            <span class="home-trust__signal">Local maps</span>
-            <span class="home-trust__signal">Card payment</span>
-          </div>
-          <div class="home-trust__header">
-            <p class="eyebrow">Why this guide exists</p>
-            <h2 id="home-trust-title" class="home-trust__title">Korea works differently than you expect.</h2>
-            <p class="home-trust__intro">
-              Travelers in Korea often get stuck on how things actually work, not on which landmark to visit. Airport arrival, transportation cards, eSIM setup, payments, maps and booking habits can all be different from home. KR Inside helps foreign visitors compare options, understand limits and make better decisions in Korea.
-            </p>
-          </div>
+        <div class="home-guide-hub__header">
+          <p class="eyebrow">START WITH WHAT YOU NEED</p>
+          <h2 id="home-guide-hub-title" class="home-trust__title">Choose the guide that matches your first problem.</h2>
+          <p class="home-trust__intro">
+            Airport arrival, mobile data, payments, maps and transport all work a little differently in Korea. Start with the issue you need to solve first.
+          </p>
         </div>
 
-        <div class="home-trust__grid">
-          <article class="home-trust-card">
+        <div class="home-trust__grid home-guide-hub__grid" aria-label="Korea Inside guide categories">
+          <a class="home-trust-card home-guide-card" href="arrival.html">
             <span class="home-trust-card__number">01</span>
             <span class="home-trust-card__accent" aria-hidden="true"></span>
-            <h3 class="home-trust-card__title">Practical, not promotional</h3>
+            <h3 class="home-trust-card__title">Arrival</h3>
             <p class="home-trust-card__text">
-              We focus on real usage standards, cautions and choice criteria instead of promotional recommendations.
+              Airport, terminal and arrival flow
             </p>
-          </article>
-          <article class="home-trust-card">
+          </a>
+          <a class="home-trust-card home-guide-card" href="esim.html">
             <span class="home-trust-card__number">02</span>
             <span class="home-trust-card__accent" aria-hidden="true"></span>
-            <h3 class="home-trust-card__title">Before you arrive</h3>
+            <h3 class="home-trust-card__title">eSIM</h3>
             <p class="home-trust-card__text">
-              Prepare the eSIM, transportation card, payment method and map app information you need before airport arrival.
+              Mobile data, eSIM and USIM choices
             </p>
-          </article>
-          <article class="home-trust-card">
+          </a>
+          <a class="home-trust-card home-guide-card" href="payments.html">
             <span class="home-trust-card__number">03</span>
             <span class="home-trust-card__accent" aria-hidden="true"></span>
-            <h3 class="home-trust-card__title">Better decisions in Korea</h3>
+            <h3 class="home-trust-card__title">Payments</h3>
             <p class="home-trust-card__text">
-              See strengths, limitations and conditions clearly so you can compare options and choose for yourself.
+              Cards, cash, WOWPASS and local payment limits
             </p>
-          </article>
+          </a>
+          <a class="home-trust-card home-guide-card" href="maps.html">
+            <span class="home-trust-card__number">04</span>
+            <span class="home-trust-card__accent" aria-hidden="true"></span>
+            <h3 class="home-trust-card__title">Maps</h3>
+            <p class="home-trust-card__text">
+              Naver Map, Kakao Map and Google Maps limits
+            </p>
+          </a>
+          <a class="home-trust-card home-guide-card" href="airport-transfer.html">
+            <span class="home-trust-card__number">05</span>
+            <span class="home-trust-card__accent" aria-hidden="true"></span>
+            <h3 class="home-trust-card__title">Transportation</h3>
+            <p class="home-trust-card__text">
+              Subway, bus, taxi and transport cards
+            </p>
+          </a>
+          <a class="home-trust-card home-guide-card" href="accommodation.html">
+            <span class="home-trust-card__number">06</span>
+            <span class="home-trust-card__accent" aria-hidden="true"></span>
+            <h3 class="home-trust-card__title">Accommodation</h3>
+            <p class="home-trust-card__text">
+              Area, access, luggage and booking checks
+            </p>
+          </a>
         </div>
       </div>
     </section>
@@ -237,9 +253,26 @@
     <section class="home-trust home-trust--compact" id="why-korea-works" aria-labelledby="why-korea-works-title">
       <div class="container">
         <div class="home-trust__story">
-          <div class="home-trust__visual" role="img" aria-label="Placeholder for a future Why Korea Works infographic">
-            <span class="home-trust__signal">Infographic placeholder</span>
-          </div>
+          <figure class="home-trust__visual home-why-animation">
+            <div class="home-why-animation__stage">
+              <img class="home-why-animation__image" src="images/home/airport.webp" alt="Airport guide in Korea" width="1254" height="1254" loading="lazy" decoding="async">
+              <img class="home-why-animation__image" src="images/home/esim-usim-guide.webp" alt="eSIM and USIM guide for Korea" width="1254" height="1254" loading="lazy" decoding="async">
+              <img class="home-why-animation__image" src="images/home/payment-guide.webp" alt="Payment guide in Korea" width="1254" height="1254" loading="lazy" decoding="async">
+              <img class="home-why-animation__image" src="images/home/transportation.webp" alt="Transportation guide in Korea" width="1254" height="1254" loading="lazy" decoding="async">
+              <img class="home-why-animation__image" src="images/home/maps.webp" alt="Maps guide in Korea" width="1254" height="1254" loading="lazy" decoding="async">
+              <img class="home-why-animation__image" src="images/home/youre-ready.webp" alt="Korea travel ready guide" width="1254" height="1254" loading="lazy" decoding="async">
+            </div>
+            <figcaption class="home-why-animation__caption">
+              <ol class="home-why-animation__labels">
+                <li>Airport</li>
+                <li>eSIM + uSIM</li>
+                <li>Payment</li>
+                <li>Transportation</li>
+                <li>Maps</li>
+                <li>You're Ready</li>
+              </ol>
+            </figcaption>
+          </figure>
           <div class="home-trust__header">
             <p class="eyebrow">HOW KOREA WORKS</p>
             <h2 id="why-korea-works-title" class="home-trust__title">Understand Korea faster</h2>
