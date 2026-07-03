@@ -524,11 +524,22 @@ ul, ol {
   color: var(--blue-muted);
 }
 
+@media (max-width: 959px) {
+  .header--hero .nav {
+    position: absolute;
+    bottom: auto;
+    height: calc(100vh - var(--header-height));
+    height: calc(100dvh - var(--header-height));
+    max-height: calc(100vh - var(--header-height));
+    max-height: calc(100dvh - var(--header-height));
+  }
+}
+
 .page-home .header--hero + main {
   padding-top: 0;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 960px) {
   .header--hero.header--menu-open .nav {
     background: none;
   }
