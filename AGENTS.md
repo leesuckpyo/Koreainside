@@ -77,6 +77,15 @@ Implementation rules:
 - If a requested change is technically possible but likely harmful, explain the risks and safer alternatives before implementation, then wait for approval.
 - If technical debt must be introduced, explain it explicitly.
 
+Scope control rules:
+
+- Only edit the files explicitly requested by the user.
+- Do not modify unrelated pages or components.
+- Do not modify Header, Footer, Hero, navigation, shared JavaScript, common CSS, or shared components unless explicitly requested.
+- Do not refactor unrelated CSS or rename unrelated classes.
+- Do not move, rename, delete, or reorganize files unless explicitly requested and approved.
+- Stop and ask when the requested scope is unclear.
+
 File scope limits per task unless explicitly approved:
 
 - HTML: maximum 2 files
@@ -90,18 +99,31 @@ Stop and request approval if the task needs to exceed these limits.
 
 ## Approval & Git Workflow
 
-Always show the complete diff before finishing a task.
+For every implementation:
+
+1. Analyze the request.
+2. Show the proposed diff before editing.
+3. Stop and wait for explicit user approval.
+4. Apply only the approved changes.
+5. Stop immediately after the requested task is complete.
 
 For documentation-rule changes, show the proposed diff before applying the file edit and wait for Product Owner approval.
 
-After showing the diff:
+Approval rules:
 
 - Stop and wait for explicit user approval.
 - Never assume approval.
+- Never proceed to the next task without approval.
 - Never create a commit before approval.
 - Never push to GitHub.
 - Never sync automatically.
 - Never publish automatically.
+
+Completion rules:
+
+- After applying the approved change, perform only the minimum verification required by the selected QA level, report the result, and stop immediately.
+- Do not continue into automatic QA, screenshot generation, extra verification, extra improvements, refactoring, commits, pushes, or another task unless the user explicitly requests it.
+- Do not proceed to the next task without a new user instruction.
 
 After explicit approval:
 
@@ -237,6 +259,12 @@ HTML content rules:
 - Every meaningful phrase, instruction, label, comparison, and warning in an infographic must also exist as visible semantic HTML near the image.
 - Before finishing an infographic change, verify a one-to-one mapping between important image text and visible HTML text.
 
+HTML First Policy:
+
+- When the user requests removal of a section, delete the HTML itself.
+- Do not hide removed sections with CSS such as `display: none` unless the user explicitly requests it.
+- Keep important content as visible semantic HTML text.
+
 Use semantic HTML whenever appropriate:
 
 - `header`
@@ -297,7 +325,7 @@ CSS rules:
 - Avoid inline CSS.
 - Keep mobile first.
 
-Responsive verification for visual changes must follow the Codex QA / Verification Rules below.
+Responsive verification for visual changes must follow the Codex QA / Verification Rules below and must not use automated screenshots, Chrome CDP, or scroll verification unless explicitly requested.
 
 - Do not run full responsive QA for minor visual changes unless the Product Owner requests it.
 - Use the smallest verification level that matches the change scope and risk.
@@ -308,68 +336,130 @@ Responsive verification for visual changes must follow the Codex QA / Verificati
 
 ## Codex QA / Verification Rules
 
-### Core Principle
+### QA Efficiency Rule
 
 Verification must be proportional to the scope and risk of the change.
 
-### Level 1 - Quick Verify
+The primary objective is to complete the requested implementation efficiently. Verification supports implementation and must never become the main task.
+
+For every implementation:
+
+1. Complete the approved change.
+2. Perform only the minimum verification required by the selected QA level.
+3. Report the result.
+4. Stop immediately.
+
+Do not delay task completion with unnecessary verification.
+
+User browser verification has priority. Codex should not repeatedly automate checks that the user can verify directly in the browser.
+
+If the Product Owner will verify the result directly in the browser, skip automated visual QA and report:
+
+"User browser verification requested."
+
+Unless the Product Owner explicitly requests it, do not:
+
+- Generate screenshots.
+- Perform full responsive QA.
+- Test unrelated pages.
+- Repeat browser verification.
+- Retry Chrome CDP multiple times.
+- Perform scroll-position verification.
+- Verify sections that were not modified.
+
+### Screenshot Rule
+
+Screenshots are optional.
+
+Generate screenshots only when explicitly requested by the Product Owner.
+
+Default:
+
+- No screenshots.
+- No repeated captures.
+- No full-page captures.
+
+When screenshots are requested:
+
+- Desktop: one screenshot.
+- Mobile: one screenshot.
+
+If screenshot generation fails:
+
+- Report the failure.
+- Mark it as "Known QA Limitation".
+- Stop.
+
+### Chrome CDP Rule
+
+Chrome CDP is optional.
+
+If Chrome CDP or browser automation fails once:
+
+- Report the failure.
+- Mark it as "Known QA Limitation".
+- Stop.
+
+Never repeatedly retry browser automation unless explicitly requested.
+
+### QA Scope Rules
+
+#### Level 1 - Quick Verify
 
 Use this for:
 
 - Text changes
-- CSS color changes
-- Spacing changes
-- Font changes
+- CSS spacing
+- Font adjustments
 - Icon changes
 - Image replacement
-- Minor visual polish
+- Minor visual improvements
+- Single-section HTML edits
 
-Required checks:
+Verification:
 
 - Check only the modified page or component.
-- Confirm there are no obvious console errors.
-- Capture or confirm one desktop view if relevant.
-- Capture or confirm one mobile view if relevant.
-- Do not run full-site QA.
+- Do not inspect unrelated pages.
+- Do not generate screenshots unless the user explicitly requests them.
+- Do not run responsive QA.
+- Stop after confirming there are no obvious implementation errors.
 
-### Level 2 - Feature Verify
+#### Level 2 - Feature Verify
 
 Use this for:
 
-- Hamburger menu
 - Navigation
+- Hamburger menu
 - JavaScript changes
+- Interactive components
 - CTA behavior
-- Journey links
-- Animation
-- Interactive elements
 
-Required checks:
+Verification:
 
-- Test the changed feature directly.
-- Test only related pages affected by the feature.
-- Check desktop and mobile behavior.
-- Check console errors.
-- Do not run release-level QA unless requested.
+- Test only the affected feature.
+- Verify desktop and mobile behavior.
+- Check console errors if applicable.
+- Do not perform release-level QA.
 
-### Level 3 - Release QA
+#### Level 3 - Release QA
 
-Use this only for:
+Use only when:
 
+- Explicitly requested by the Product Owner
 - Final release check
-- Multiple page changes
-- Major layout changes
-- Navigation-wide changes
-- Product Owner request
+- Large multi-page implementation
+- Navigation-wide or architecture changes
 
-Required checks:
+Verification:
 
-- Desktop, tablet, and mobile responsive check.
-- Main page links.
+- Desktop.
+- Tablet.
+- Mobile.
 - Navigation flow.
-- Console errors.
-- Obvious layout breakage.
 - Critical user journey.
+- Console errors.
+
+Do not use Level 3 for ordinary feature development.
 
 ### QA Stop Rule
 
@@ -381,14 +471,16 @@ Stop QA and report as "Known QA Limitation" when:
 - The Product Owner has already confirmed the result on a real device.
 - Additional QA would not change the implementation decision.
 
-### Product Owner Priority
+### Product Owner / User Verification Priority
 
-If the Product Owner confirms the result, do not continue repeating QA unless explicitly requested.
+If the Product Owner confirms the result or will verify the browser directly, do not repeat automated visual checks unless explicitly requested.
 
 ### Reporting Format
 
 For every task, report:
 
+- Whether approval was received before applying changes.
+- Whether the task stopped after the approved change.
 - Impact
 - Time
 - Priority
@@ -403,6 +495,8 @@ Important:
 - Do not delay implementation with excessive verification.
 - Time is also a quality factor.
 - Always show diff first and wait for Product Owner approval before applying document changes.
+- After the approved implementation and required verification level are complete, report the result and stop immediately.
+- Do not continue with additional QA, screenshots, improvements, refactoring, commits, pushes, or another task unless explicitly requested by the Product Owner.
 
 ---
 
