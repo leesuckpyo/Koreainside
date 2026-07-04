@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Accommodation Admin v1.2 | Korea Inside Admin</title>
+  <link rel="stylesheet" href="accommodation-analyzer.css">
+</head>
+<body>
+  <header class="admin-header">
+    <div class="admin-shell admin-header__inner">
+      <a class="admin-brand" href="../index.html" aria-label="Korea Inside home">
+        <span class="admin-brand__parent">Korea Inside</span>
+        <span class="admin-brand__service">Accommodation Admin</span>
+      </a>
+      <span class="admin-badge">Internal Tool v1.2</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="admin-hero">
+      <div class="admin-shell admin-hero__grid">
+        <div>
+          <p class="eyebrow">Accommodation database admin</p>
+          <h1>Korea Inside Accommodation Admin</h1>
+          <p>
+            Build and review Korea Inside accommodation data, not just hotel lists.
+          </p>
+        </div>
+        <article class="principle-card">
+          <span class="card-label">Core principle</span>
+          <h2>CSV is only the input. Korea Inside criteria are the database.</h2>
+          <p>
+            v1.2 builds accommodation detail records from CSV rows, then adds rule-based Korea Inside
+            suggestions for administrator review.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="admin-section admin-section--summary" aria-labelledby="dashboard-summary-title">
+      <div class="admin-shell">
+        <div class="section-header">
+          <p class="eyebrow">Dashboard summary</p>
+          <h2 id="dashboard-summary-title">Current accommodation dataset</h2>
+        </div>
+        <div class="dashboard-grid" id="dashboardSummary">
+          <article class="stat-card">
+            <span>Total Accommodations</span>
+            <strong id="statTotal">0</strong>
+          </article>
+          <article class="stat-card">
+            <span>Core</span>
+            <strong id="statCore">0</strong>
+          </article>
+          <article class="stat-card">
+            <span>Walkable</span>
+            <strong id="statWalkable">0</strong>
+          </article>
+          <article class="stat-card">
+            <span>Extended</span>
+            <strong id="statExtended">0</strong>
+          </article>
+          <article class="stat-card">
+            <span>Nearby</span>
+            <strong id="statNearby">0</strong>
+          </article>
+          <article class="stat-card stat-card--attention">
+            <span>Needs Review</span>
+            <strong id="statNeedsReview">0</strong>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="admin-section admin-section--muted">
+      <div class="admin-shell admin-main">
+        <nav class="admin-tabs" aria-label="Accommodation admin sections">
+          <button class="tab-button tab-button--active" type="button" data-tab-target="dashboard">Dashboard</button>
+          <button class="tab-button" type="button" data-tab-target="list">Accommodation List</button>
+          <button class="tab-button" type="button" data-tab-target="detail">Accommodation Detail</button>
+          <button class="tab-button" type="button" data-tab-target="csv">CSV Import</button>
+          <button class="tab-button" type="button" data-tab-target="export">Export</button>
+        </nav>
+
+        <div class="tab-panels">
+          <section class="tab-panel tab-panel--active" id="tab-dashboard" data-tab-panel="dashboard" aria-labelledby="dashboard-panel-title">
+            <div class="section-header">
+              <p class="eyebrow">Workflow</p>
+              <h2 id="dashboard-panel-title">Build the accommodation database in review order</h2>
+              <p>Import CSV rows, analyze location fit, review Korea Inside criteria per property, then export structured records.</p>
+            </div>
+
+            <div class="workflow-grid">
+              <article class="workflow-card">
+                <span>1</span>
+                <h3>CSV Import</h3>
+                <p>Upload an accommodation CSV and map columns.</p>
+              </article>
+              <article class="workflow-card">
+                <span>2</span>
+                <h3>Automatic Analysis</h3>
+                <p>Calculate HRP distance, walking time and Korea Inside zone.</p>
+              </article>
+              <article class="workflow-card">
+                <span>3</span>
+                <h3>Accommodation List</h3>
+                <p>Sort, filter and choose rows that need review.</p>
+              </article>
+              <article class="workflow-card">
+                <span>4</span>
+                <h3>Detail Review</h3>
+                <p>Review suggested Korea Inside criteria, adjust final values and save notes.</p>
+              </article>
+              <article class="workflow-card">
+                <span>5</span>
+                <h3>Export</h3>
+                <p>Download CSV or JSON for database migration or future public pages.</p>
+              </article>
+            </div>
+
+            <div class="stats-layout">
+              <article class="panel">
+                <h3>Type count</h3>
+                <div class="stats-list" id="typeStats"></div>
+              </article>
+              <article class="panel">
+                <h3>Zone count</h3>
+                <div class="stats-list" id="zoneStats"></div>
+              </article>
+            </div>
+          </section>
+
+          <section class="tab-panel" id="tab-list" data-tab-panel="list" aria-labelledby="list-panel-title" hidden>
+            <div class="section-header section-header--with-actions">
+              <div>
+                <p class="eyebrow">Accommodation list</p>
+                <h2 id="list-panel-title">Review imported accommodation rows</h2>
+                <p>CSV analysis results appear here as the working accommodation database.</p>
+              </div>
+              <button class="button button--primary" type="button" data-tab-jump="csv">Import CSV</button>
+            </div>
+
+            <div class="table-toolbar">
+              <label>Search <input id="tableSearch" type="search" placeholder="Hotel, type, address"></label>
+              <label>Zone <select id="zoneFilter"><option value="all">All zones</option></select></label>
+              <label>Type <select id="typeFilter"><option value="all">All types</option></select></label>
+              <button class="button button--secondary" id="clearFiltersBtn" type="button">Clear Filters</button>
+            </div>
+
+            <div class="table-wrap">
+              <table class="result-table">
+                <thead>
+                  <tr>
+                    <th><button type="button" data-sort="hotelName">Hotel Name</button></th>
+                    <th><button type="button" data-sort="zone">Zone</button></th>
+                    <th><button type="button" data-sort="distanceMeters">Distance</button></th>
+                    <th><button type="button" data-sort="walkingMinutes">Walking Time</button></th>
+                    <th><button type="button" data-sort="type">Type</button></th>
+                    <th><button type="button" data-sort="rating">Rating</button></th>
+                    <th><button type="button" data-sort="reviewCount">Review Count</button></th>
+                    <th><button type="button" data-sort="reviewStatus">Review Status</button></th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="resultBody"></tbody>
+              </table>
+            </div>
+            <p class="small-note" id="tableCount">No accommodation rows imported yet.</p>
+          </section>
+
+          <section class="tab-panel" id="tab-detail" data-tab-panel="detail" aria-labelledby="detail-panel-title" hidden>
+            <div class="section-header section-header--with-actions">
+              <div>
+                <p class="eyebrow">Accommodation detail</p>
+                <h2 id="detail-panel-title">Review one auto-built accommodation record</h2>
+                <p id="detailHint">Select a row from Accommodation List to review imported data and Korea Inside suggestions.</p>
+              </div>
+              <button class="button button--secondary" id="clearSelectionBtn" type="button">Clear Selection</button>
+            </div>
+
+            <div class="detail-empty" id="detailEmpty">
+              <h3>No accommodation selected</h3>
+              <p>Use the Review button in Accommodation List to open a property here.</p>
+            </div>
+
+            <form class="detail-form" id="detailForm" hidden>
+              <fieldset id="detailFormFields">
+                <legend id="selectedAccommodationTitle">Selected accommodation</legend>
+
+                <div class="detail-grid">
+                  <article class="panel">
+                    <h3>CSV Imported Data</h3>
+                    <p class="small-note">Source fields mapped from the uploaded CSV row.</p>
+                    <dl class="detail-list" id="basicInfoList"></dl>
+                  </article>
+
+                  <article class="panel">
+                    <h3>Korea Inside Automatic Judgment</h3>
+                    <p class="small-note">Calculated from HRP distance, walking time and zone rules.</p>
+                    <dl class="detail-list" id="calculationInfoList"></dl>
+                  </article>
+                </div>
+
+                <article class="panel">
+                  <h3>Korea Inside Criteria</h3>
+                  <p class="small-note">Suggested values are rule-based first-pass scores. Admin final value is the saved review value.</p>
+                  <div class="criteria-grid" id="criteriaFields">
+                    <div class="criteria-field">
+                      <div class="criteria-field__top">
+                        <span>Luggage Convenience</span>
+                        <span class="suggestion-pill">Suggested <strong data-suggestion-key="luggageConvenience">N/A</strong></span>
+                      </div>
+                      <label>Admin final value
+                        <select data-criteria-key="luggageConvenience">
+                          <option value="">Not scored</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                        </select>
+                      </label>
+                    </div>
+                    <div class="criteria-field">
+                      <div class="criteria-field__top">
+                        <span>Hill Risk</span>
+                        <span class="suggestion-pill">Suggested <strong data-suggestion-key="hillRisk">Manual</strong></span>
+                      </div>
+                      <label>Admin final value
+                        <select data-criteria-key="hillRisk">
+                          <option value="">Not scored</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                        </select>
+                      </label>
+                    </div>
+                    <div class="criteria-field">
+                      <div class="criteria-field__top">
+                        <span>Station Access</span>
+                        <span class="suggestion-pill">Suggested <strong data-suggestion-key="stationAccess">N/A</strong></span>
+                      </div>
+                      <label>Admin final value
+                        <select data-criteria-key="stationAccess">
+                          <option value="">Not scored</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                        </select>
+                      </label>
+                    </div>
+                    <div class="criteria-field">
+                      <div class="criteria-field__top">
+                        <span>Airport Access</span>
+                        <span class="suggestion-pill">Suggested <strong data-suggestion-key="airportAccess">N/A</strong></span>
+                      </div>
+                      <label>Admin final value
+                        <select data-criteria-key="airportAccess">
+                          <option value="">Not scored</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                        </select>
+                      </label>
+                    </div>
+                    <div class="criteria-field">
+                      <div class="criteria-field__top">
+                        <span>Noise Risk</span>
+                        <span class="suggestion-pill">Suggested <strong data-suggestion-key="noiseRisk">N/A</strong></span>
+                      </div>
+                      <label>Admin final value
+                        <select data-criteria-key="noiseRisk">
+                          <option value="">Not scored</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                        </select>
+                      </label>
+                    </div>
+                    <div class="criteria-field">
+                      <div class="criteria-field__top">
+                        <span>Family Friendly</span>
+                        <span class="suggestion-pill">Suggested <strong data-suggestion-key="familyFriendly">N/A</strong></span>
+                      </div>
+                      <label>Admin final value
+                        <select data-criteria-key="familyFriendly">
+                          <option value="">Not scored</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                        </select>
+                      </label>
+                    </div>
+                    <div class="criteria-field">
+                      <div class="criteria-field__top">
+                        <span>Nightlife Access</span>
+                        <span class="suggestion-pill">Suggested <strong data-suggestion-key="nightlifeAccess">N/A</strong></span>
+                      </div>
+                      <label>Admin final value
+                        <select data-criteria-key="nightlifeAccess">
+                          <option value="">Not scored</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                        </select>
+                      </label>
+                    </div>
+                    <div class="criteria-field">
+                      <div class="criteria-field__top">
+                        <span>Shopping Access</span>
+                        <span class="suggestion-pill">Suggested <strong data-suggestion-key="shoppingAccess">N/A</strong></span>
+                      </div>
+                      <label>Admin final value
+                        <select data-criteria-key="shoppingAccess">
+                          <option value="">Not scored</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                        </select>
+                      </label>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="panel">
+                  <h3>Admin review</h3>
+                  <div class="review-grid">
+                    <label>Admin Note
+                      <textarea id="adminNote" rows="5" placeholder="Record practical review notes, uncertainty or follow-up checks."></textarea>
+                    </label>
+                    <label>Review Status
+                      <select id="reviewStatus">
+                        <option value="Needs Review">Needs Review</option>
+                        <option value="Reviewed">Reviewed</option>
+                        <option value="Approved">Approved</option>
+                        <option value="Excluded">Excluded</option>
+                      </select>
+                    </label>
+                  </div>
+                  <div class="button-row detail-actions">
+                    <button class="button button--primary" id="saveReviewBtn" type="button">Save Review</button>
+                    <button class="button button--secondary" id="clearSelectionBtnSecondary" type="button">Clear Selection</button>
+                  </div>
+                </article>
+              </fieldset>
+            </form>
+          </section>
+
+          <section class="tab-panel" id="tab-csv" data-tab-panel="csv" aria-labelledby="csv-panel-title" hidden>
+            <div class="section-header">
+              <p class="eyebrow">CSV import module</p>
+              <h2 id="csv-panel-title">Import and analyze source accommodation data</h2>
+              <p>Keep CSV as the input step, then manage Korea Inside criteria in the list and detail modules.</p>
+            </div>
+
+            <div class="upload-card" id="dropZone" tabindex="0" role="button" aria-label="Upload CSV file">
+              <input class="visually-hidden" id="csvInput" type="file" accept=".csv,text/csv">
+              <div>
+                <p class="eyebrow">CSV upload</p>
+                <h2>Drop a Booking.com CSV here</h2>
+                <p id="uploadHelp">
+                  Expected fields include hotel name, type, address, latitude, longitude, booking URL,
+                  rating, review count and price. Similar column names are auto-detected.
+                </p>
+              </div>
+              <button class="button button--primary" id="chooseFileBtn" type="button">Choose CSV</button>
+            </div>
+            <p class="status-message" id="statusMessage">Waiting for a CSV file.</p>
+
+            <div class="csv-workspace" id="workspace" hidden>
+              <article class="panel">
+                <div class="panel__header">
+                  <div>
+                    <p class="eyebrow">Column mapping</p>
+                    <h2>Review detected CSV columns</h2>
+                  </div>
+                  <button class="button button--secondary" id="applyMappingBtn" type="button">Apply Mapping</button>
+                </div>
+                <div class="mapping-grid" id="mappingFields"></div>
+              </article>
+
+              <article class="panel">
+                <div class="panel__header">
+                  <div>
+                    <p class="eyebrow">HRP settings</p>
+                    <h2>Hongdae Reference Point</h2>
+                  </div>
+                  <button class="button button--secondary" id="recalculateHrpBtn" type="button">Recalculate HRP</button>
+                </div>
+
+                <div class="reference-grid">
+                  <fieldset class="field-group">
+                    <legend>Hongik Univ. Station Exit 9</legend>
+                    <label>Latitude <input id="pointALat" type="number" step="0.000001" value="37.55667"></label>
+                    <label>Longitude <input id="pointALng" type="number" step="0.000001" value="126.92361"></label>
+                  </fieldset>
+                  <fieldset class="field-group">
+                    <legend>Hongdae Red Road Entrance</legend>
+                    <label>Latitude <input id="pointBLat" type="number" step="0.000001" value="37.55598"></label>
+                    <label>Longitude <input id="pointBLng" type="number" step="0.000001" value="126.92295"></label>
+                  </fieldset>
+                </div>
+
+                <div class="hrp-edit">
+                  <label>Final HRP latitude <input id="hrpLat" type="number" step="0.000001"></label>
+                  <label>Final HRP longitude <input id="hrpLng" type="number" step="0.000001"></label>
+                </div>
+                <p class="small-note">Default HRP is calculated as the midpoint between the two reference coordinates.</p>
+              </article>
+
+              <article class="panel">
+                <div class="panel__header">
+                  <div>
+                    <p class="eyebrow">Zone criteria</p>
+                    <h2>Korea Inside zones</h2>
+                  </div>
+                  <button class="button button--primary" id="analyzeBtn" type="button">Analyze</button>
+                </div>
+                <div class="threshold-grid">
+                  <label>Core max minutes <input id="coreMax" type="number" min="1" step="0.5" value="5"></label>
+                  <label>Walkable max minutes <input id="walkableMax" type="number" min="1" step="0.5" value="10"></label>
+                  <label>Extended max minutes <input id="extendedMax" type="number" min="1" step="0.5" value="15"></label>
+                </div>
+                <p class="small-note">Walking time uses 80 meters per minute as the v1.2 default.</p>
+              </article>
+            </div>
+          </section>
+
+          <section class="tab-panel" id="tab-export" data-tab-panel="export" aria-labelledby="export-panel-title" hidden>
+            <div class="section-header section-header--with-actions">
+              <div>
+                <p class="eyebrow">Export</p>
+                <h2 id="export-panel-title">Export reviewed accommodation data</h2>
+                <p>Exports include raw imported data, automatic suggestions, final criteria, admin note and review status.</p>
+              </div>
+              <div class="button-row">
+                <button class="button button--secondary" id="exportJsonBtn" type="button" disabled>Export JSON</button>
+                <button class="button button--secondary" id="exportCsvBtn" type="button" disabled>Export CSV</button>
+              </div>
+            </div>
+
+            <article class="panel">
+              <h3>Export contents</h3>
+              <ul class="export-list">
+                <li>rawImportedData from the original CSV row</li>
+                <li>HRP distance, estimated walking time and Korea Inside zone</li>
+                <li>autoSuggestions generated from v1.2 rules</li>
+                <li>finalCriteria saved by the administrator</li>
+                <li>Admin Note and Review Status</li>
+              </ul>
+              <p class="small-note" id="exportStatus">Import and analyze a CSV before exporting.</p>
+            </article>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="accommodation-analyzer.js" defer></script>
+</body>
+</html>
