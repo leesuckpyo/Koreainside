@@ -5202,6 +5202,25 @@ ul, ol {
   padding-top: 32px;
 }
 
+.stay-cluster .stay-decision-strip--area-factors .section__header {
+  max-width: 780px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.stay-cluster .stay-decision-strip--area-factors .section__title--lg {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: clamp(1.5rem, 7vw, 2.75rem);
+  line-height: 1.16;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: manual;
+}
+
 .stay-cluster .section__header {
   max-width: 820px;
   margin-bottom: 22px;
