@@ -5153,6 +5153,47 @@ ul, ol {
   overflow: hidden;
 }
 
+.accommodation-page .accommodation-hero {
+  min-height: clamp(460px, 56vw, 680px);
+  display: flex;
+  align-items: center;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.78) 0%,
+      rgba(255, 255, 255, 0.58) 30%,
+      rgba(255, 255, 255, 0.22) 60%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    url("images/Accommodation/accommodation-hero-v1.webp") center / cover no-repeat;
+}
+
+.accommodation-page .accommodation-hero .airport-page-hero__copy {
+  max-width: 680px;
+}
+
+.accommodation-page .accommodation-area-intro {
+  padding: 34px 0 28px;
+  background: var(--white);
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.accommodation-page .accommodation-area-intro__inner {
+  max-width: 780px;
+}
+
+.accommodation-page .accommodation-area-intro .section__title {
+  margin-bottom: 10px;
+  font-size: clamp(1.45rem, 2.4vw, 1.9rem);
+}
+
+.accommodation-page .accommodation-area-intro p {
+  color: var(--blue-muted);
+  font-size: 1rem;
+  line-height: 1.68;
+  max-width: 720px;
+}
+
 .stay-cluster .airport-page-hero__grid {
   align-items: center;
   gap: 18px;
@@ -5285,6 +5326,38 @@ ul, ol {
 .stay-cluster .guide-card p,
 .stay-cluster .stay-decision-card p {
   overflow-wrap: anywhere;
+}
+
+.stay-cluster .stay-area-card--hongdae .stay-area-ratings {
+  display: grid;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.stay-cluster .stay-area-card--hongdae .stay-area-ratings div {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  color: var(--blue-muted);
+  font-size: .92rem;
+  line-height: 1.45;
+}
+
+.stay-cluster .stay-area-card--hongdae .stay-area-ratings dt {
+  font-weight: 700;
+}
+
+.stay-cluster .stay-area-card--hongdae .stay-area-ratings dd {
+  color: var(--blue-accent);
+  white-space: nowrap;
+}
+
+.stay-cluster .stay-area-card--hongdae .stay-area-card__link {
+  display: inline-flex;
+  margin-top: 14px;
+  color: var(--blue-accent);
+  font-size: .92rem;
+  font-weight: 800;
 }
 
 .stay-cluster .airport-page-hero__grid > .airport-transport-card {

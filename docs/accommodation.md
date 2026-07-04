@@ -2,6 +2,38 @@
 
 Date: 2026-07-01
 
+## Accommodation Hero Image Policy
+
+Accommodation Hero role:
+
+- The hero introduces area selection, not hotel booking.
+- Core message: choose the area first, then choose the hotel.
+
+Design rule:
+
+- The hero should stay simple and image-led.
+- Detailed decision support belongs below the hero, not inside the hero.
+
+Information rule:
+
+- Keep practical comparison and decision details in body sections below the hero.
+
+Travel style table rule:
+
+- The travel style table uses `Recommended Areas` instead of `Best Area`.
+- Reason: Korea Inside supports comparison and informed choice, not absolute recommendations.
+
+Official Accommodation hero image:
+
+- `images/Accommodation/accommodation-hero-v1.webp`
+
+This image is shared between the Home Accommodation entry card and the `accommodation.html` hero.
+
+Purpose:
+
+- Maintain visual continuity from the Landing Page to the Accommodation page: the Home Accommodation card and Accommodation Hero use the same official image.
+- Keep the image as visual support only. All important Accommodation guidance must remain visible HTML text.
+
 ## Scope
 
 Updated `accommodation.html` from a redirect placeholder into a practical decision-support guide for foreign visitors choosing accommodation in Korea.
