@@ -33,13 +33,34 @@ Area-specific images are used where available. Dongdaemun and Mapo / Gongdeok te
 
 ### Information Architecture
 
-The Travel Style table remains on the Accommodation page because it helps visitors choose by trip purpose before comparing specific areas.
+The Travel Style table was removed from the main Accommodation page to reduce duplicated decision content and keep the page focused on fast area comparison.
 
 Detailed information such as transport trade-offs, suitcase friendliness, nightlife noise, hotel advice, family suitability and limitations should be moved to Area Detail pages or focused supporting guides.
 
 ### UX Rationale
 
 The Accommodation page should reduce scanning effort. Visitors comparing many Seoul areas need a fast, consistent card format before choosing where to read more.
+
+## Accommodation Main Simplification and Internal Guides
+
+The Accommodation main page should move users quickly from area comparison to the next practical travel preparation step.
+
+Changes recorded for this structure:
+
+- Removed the Travel Style recommendation table from `accommodation.html`.
+- Removed the How to Choose section from `accommodation.html`.
+- Changed Complete Your Korea Trip into a compact bottom internal navigation banner below FAQ and above the final recommendation.
+- Kept Quick Decision, Quick Answer, Common Mistakes, Scenarios, FAQ, Related Guides and Final Recommendation sections unchanged for this phase.
+- Connected users to related guides without distracting from the Accommodation page.
+
+Purpose:
+
+- Keep Accommodation focused on choosing a Seoul stay area.
+- Reduce duplicated decision information on the main page.
+- Move detailed travel-problem explanations into dedicated guide pages over time.
+- Prevent the page from becoming a dead end.
+- Keep related guide navigation compact so it does not compete with Accommodation area cards.
+- Support Korea Inside as one connected travel platform.
 
 ## Accommodation Hero Image Policy
 

@@ -5147,6 +5147,66 @@ ul, ol {
   }
 }
 
+.accommodation-page .complete-trip-guides {
+  padding: 34px 0;
+}
+
+.accommodation-page .complete-trip-guides__header {
+  margin-bottom: 16px;
+}
+
+.accommodation-page .complete-trip-guides__header h2 {
+  color: var(--blue-deep);
+  font-size: 1.28rem;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.accommodation-page .trip-guide-banner__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.accommodation-page .trip-guide-banner__card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 10px;
+  min-height: 50px;
+  padding: 12px 14px;
+}
+
+.accommodation-page .trip-guide-banner__icon {
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.accommodation-page .trip-guide-banner__title {
+  color: var(--blue-deep);
+  font-size: .95rem;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+@media (min-width: 540px) {
+  .accommodation-page .trip-guide-banner__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .accommodation-page .trip-guide-banner__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1180px) {
+  .accommodation-page .trip-guide-banner__grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
 /* Stay Cluster unified design system */
 .stay-cluster .airport-page-hero {
   padding: 38px 0 22px;

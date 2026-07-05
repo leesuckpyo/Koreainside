@@ -38,7 +38,7 @@ GitHub Push was not performed.
 - Added Hero section:
   - H1
   - subtitle
-  - CTA links to `#quick-answer`, `#area-comparison`, and `stay-guide.html`
+  - CTA links to `#quick-answer` and `#area-comparison`
 - Added Quick Answer section.
 - Added Quick Recommendation table with family situations.
 - Added Area Comparison sections for:
@@ -65,7 +65,6 @@ GitHub Push was not performed.
 - Added final recommendation section with links to:
   - `where-to-stay-in-seoul.html`
   - `best-area-for-first-time-visitors-seoul.html`
-  - `stay-guide.html`
   - `airport-transfer.html`
 - Used existing CSS classes only.
 - No images were added.

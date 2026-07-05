@@ -190,3 +190,78 @@ arrival-terminal.webp
 공통 컴포넌트를 먼저 검토한다.
 
 필요한 경우에만 신규 파일을 생성한다.
+
+---
+
+## 12. Internal Navigation Principle
+
+### Core Principle
+
+Every page should help users solve the next travel problem.
+
+Korea Inside is not a collection of independent pages.
+
+It is one connected travel platform.
+
+Each page should naturally guide users to the next relevant step in their journey.
+
+Every core Korea Inside page must connect users to other relevant Korea Inside guides.
+
+No major page should become a dead end. Users should always have a clear next step.
+
+### Required Pattern
+
+Every major page should include a near-bottom internal navigation section such as:
+
+- Complete Your Korea Trip
+- Related Korea Guides
+- Continue Your Journey
+
+This section should contain navigation cards linking to relevant Korea Inside pages.
+
+### Purpose
+
+- Prevent dead-end pages.
+- Improve the user journey.
+- Increase internal linking.
+- Improve SEO.
+- Increase page views.
+- Help users solve the next travel problem naturally.
+- Build Korea Inside as one connected platform instead of isolated pages.
+
+### Guide Selection Rules
+
+Each page should display only guides that are relevant to that page.
+
+Recommended guide categories include:
+
+- Airport Arrival
+- eSIM
+- T-money
+- WOWPASS / Payments
+- Transportation
+- Maps
+- Accommodation
+
+Example relationships:
+
+- Accommodation pages may link to Airport Arrival, eSIM, T-money, Transportation and Maps.
+- Airport Arrival pages may link to eSIM, Transportation, T-money, Maps and Accommodation.
+- eSIM pages may link to Airport Arrival, T-money, Payments and Accommodation.
+- Maps pages may link to Transportation, Accommodation, T-money and Airport Arrival.
+
+### Design Rules
+
+- Use consistent card design across the site.
+- Keep spacing and layout identical.
+- Use a maximum of 6 cards.
+- Keep the layout mobile-first and responsive.
+- Use short titles.
+- Use one-line descriptions.
+- Include an icon and clear CTA for each card.
+
+### Implementation Standard
+
+Before adding or editing a major page, confirm that it has a relevant internal navigation section near the bottom.
+
+Do not add random link blocks. Links must support the user's next practical travel decision.
