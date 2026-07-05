@@ -5328,13 +5328,30 @@ ul, ol {
   overflow-wrap: anywhere;
 }
 
-.stay-cluster .stay-area-card--hongdae .stay-area-ratings {
-  display: grid;
-  gap: 6px;
-  margin-top: 8px;
+.accommodation-page #area-comparison .stay-area-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.stay-cluster .stay-area-card--hongdae .stay-area-ratings div {
+.accommodation-page #area-comparison .stay-area-card__image {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+}
+
+.accommodation-page #area-comparison .stay-area-card h3 {
+  margin: 0;
+}
+
+.accommodation-page #area-comparison .stay-area-ratings {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+}
+
+.accommodation-page #area-comparison .stay-area-ratings div {
   display: flex;
   justify-content: space-between;
   gap: 16px;
@@ -5343,21 +5360,27 @@ ul, ol {
   line-height: 1.45;
 }
 
-.stay-cluster .stay-area-card--hongdae .stay-area-ratings dt {
+.accommodation-page #area-comparison .stay-area-ratings dt {
   font-weight: 700;
 }
 
-.stay-cluster .stay-area-card--hongdae .stay-area-ratings dd {
+.accommodation-page #area-comparison .stay-area-ratings dd {
   color: var(--blue-accent);
   white-space: nowrap;
 }
 
-.stay-cluster .stay-area-card--hongdae .stay-area-card__link {
+.accommodation-page #area-comparison .stay-area-card__link {
   display: inline-flex;
-  margin-top: 14px;
+  margin-top: auto;
   color: var(--blue-accent);
   font-size: .92rem;
   font-weight: 800;
+}
+
+@media (min-width: 720px) and (max-width: 959px) {
+  .accommodation-page #area-comparison .airport-transport-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .stay-cluster .airport-page-hero__grid > .airport-transport-card {

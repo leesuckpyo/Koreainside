@@ -1,6 +1,45 @@
 # Accommodation Guide Page Review
 
 Date: 2026-07-01
+Latest update: 2026-07-05
+
+## Accommodation Card v2.0
+
+Accommodation Card v2.0 makes `accommodation.html` a comparison-first page. The Area Cards are designed for quick scanning, while detailed area explanations belong on Area Detail pages or the closest focused area guide.
+
+### Simplified Cards
+
+Each Area Card contains only:
+
+- Representative image.
+- Area name.
+- Quick ratings.
+- Explore link.
+
+Removed from Area Cards:
+
+- Long descriptions.
+- Why Stay Here sections.
+- Watch Out sections.
+- Transportation explanations.
+- Hotel explanations.
+- Duplicated detailed content.
+
+### Representative Image Policy
+
+Use existing project images only. Do not reference image filenames that do not exist.
+
+Area-specific images are used where available. Dongdaemun and Mapo / Gongdeok temporarily use the existing accommodation placeholder image until dedicated representative images are added.
+
+### Information Architecture
+
+The Travel Style table remains on the Accommodation page because it helps visitors choose by trip purpose before comparing specific areas.
+
+Detailed information such as transport trade-offs, suitcase friendliness, nightlife noise, hotel advice, family suitability and limitations should be moved to Area Detail pages or focused supporting guides.
+
+### UX Rationale
+
+The Accommodation page should reduce scanning effort. Visitors comparing many Seoul areas need a fast, consistent card format before choosing where to read more.
 
 ## Accommodation Hero Image Policy
 
