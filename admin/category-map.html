@@ -4,388 +4,418 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
-  <title>Korea Inside Project Explorer v1.2 | Admin</title>
+  <title>Korea Inside Project Explorer v1.4 | Admin</title>
   <link rel="stylesheet" href="category-map.css">
 </head>
 <body>
   <header class="explorer-header">
     <div>
-      <p class="eyebrow">관리자 구조 검증 <span>Admin structure review</span></p>
+      <p class="eyebrow">관리자 파일 구조 검증 <span>Admin file-structure review</span></p>
       <h1>Korea Inside Project Explorer</h1>
-      <p class="header-note">Phase 1은 링크 이동 없이 전체 프로젝트 구조를 Windows 탐색기 방식으로 검증합니다. <span>Category Map v1.2 · Project Explorer Tree</span></p>
-    </div>
-    <div class="legend" aria-label="상태 표시 기준">
-      <span class="badge badge--done">Done</span>
-      <span class="badge badge--planned">Planned</span>
-      <span class="badge badge--core">Core</span>
-      <span class="badge badge--affiliate">Affiliate</span>
-      <span class="badge badge--admin">Admin</span>
+      <p class="header-note">왼쪽 트리는 실제 파일명만 보여주고, 설명과 상태는 오른쪽 Detail Panel에서 확인합니다. <span>Category Map v1.4 · VS Code Explorer style</span></p>
     </div>
   </header>
 
   <main class="explorer-page" aria-labelledby="explorer-title">
     <section class="explorer-shell">
-      <aside class="explorer-sidebar" aria-label="Project Explorer controls">
-        <h2 id="explorer-title">Korea Inside</h2>
-        <p>전체 펼침 상태가 기본입니다. Phase 2 전까지 항목은 이동 링크가 아니라 구조 검증용 노드입니다.</p>
-        <div class="toolbar" aria-label="Tree controls">
-          <button type="button" id="expandAllBtn">전체 펼침 <span>Expand all</span></button>
-          <button type="button" id="collapseAllBtn">전체 접기 <span>Collapse all</span></button>
+      <aside class="explorer-pane" aria-label="Project Explorer tree">
+        <div class="pane-head">
+          <h2 id="explorer-title">Explorer</h2>
+          <div class="toolbar" aria-label="Tree controls">
+            <button type="button" id="expandAllBtn">Expand</button>
+            <button type="button" id="collapseAllBtn">Collapse</button>
+          </div>
+        </div>
+
+        <div class="tree-root" data-tree-root>
+          <section class="tree-group" data-tree-group>
+            <div class="tree-line tree-line--root">
+              <button class="tree-twist" type="button" aria-label="Toggle Korea Inside" aria-expanded="true">▾</button>
+              <button class="tree-entry is-selected" type="button"
+                data-name="Korea Inside"
+                data-type="Folder"
+                data-description="프로젝트 루트"
+                data-status="Done"
+                data-tags="Core"
+                data-notes="Korea Inside 전체 프로젝트의 실제 파일과 주요 폴더를 확인하는 루트입니다.">
+                <span class="tree-icon" aria-hidden="true">📁</span>
+                <span class="tree-name">Korea Inside</span>
+              </button>
+            </div>
+
+            <div class="tree-children">
+              <div class="tree-line">
+                <span class="tree-spacer" aria-hidden="true"></span>
+                <button class="tree-entry" type="button"
+                  data-name="index.html"
+                  data-type="Page"
+                  data-description="홈 / 랜딩페이지"
+                  data-status="Done"
+                  data-tags="Core"
+                  data-notes="Korea Inside의 첫 진입 페이지입니다.">
+                  <span class="tree-icon" aria-hidden="true">📄</span>
+                  <span class="tree-name">index.html</span>
+                </button>
+              </div>
+
+              <div class="tree-line">
+                <span class="tree-spacer" aria-hidden="true"></span>
+                <button class="tree-entry" type="button"
+                  data-name="style.css"
+                  data-type="CSS"
+                  data-description="공통 스타일"
+                  data-status="Done"
+                  data-tags="Shared"
+                  data-notes="여러 public 페이지가 의존하는 공통 스타일 파일입니다.">
+                  <span class="tree-icon" aria-hidden="true">📄</span>
+                  <span class="tree-name">style.css</span>
+                </button>
+              </div>
+
+              <div class="tree-line">
+                <span class="tree-spacer" aria-hidden="true"></span>
+                <button class="tree-entry" type="button"
+                  data-name="common.js"
+                  data-type="JS"
+                  data-description="공통 스크립트"
+                  data-status="Done"
+                  data-tags="Shared"
+                  data-notes="공통 UI 동작에 사용하는 루트 스크립트입니다.">
+                  <span class="tree-icon" aria-hidden="true">📄</span>
+                  <span class="tree-name">common.js</span>
+                </button>
+              </div>
+
+              <div class="tree-line">
+                <span class="tree-spacer" aria-hidden="true"></span>
+                <button class="tree-entry" type="button"
+                  data-name="accommodation.html"
+                  data-type="Page"
+                  data-description="숙소 메인 페이지"
+                  data-status="Done"
+                  data-tags="Core"
+                  data-notes="숙소 선택 흐름의 핵심 public 페이지입니다.">
+                  <span class="tree-icon" aria-hidden="true">📄</span>
+                  <span class="tree-name">accommodation.html</span>
+                </button>
+              </div>
+
+              <div class="tree-line">
+                <span class="tree-spacer" aria-hidden="true"></span>
+                <button class="tree-entry" type="button"
+                  data-name="arrival.html"
+                  data-type="Page"
+                  data-description="입국 / 공항 가이드"
+                  data-status="Done"
+                  data-tags="Core"
+                  data-notes="입국 직후 필요한 공항 및 첫 단계 안내 페이지입니다.">
+                  <span class="tree-icon" aria-hidden="true">📄</span>
+                  <span class="tree-name">arrival.html</span>
+                </button>
+              </div>
+
+              <div class="tree-line">
+                <span class="tree-spacer" aria-hidden="true"></span>
+                <button class="tree-entry" type="button"
+                  data-name="airport-transfer.html"
+                  data-type="Page"
+                  data-description="공항 이동"
+                  data-status="Done"
+                  data-tags="Core, Shared"
+                  data-notes="입국/공항과 교통 흐름에서 함께 참조되는 단일 public 페이지입니다.">
+                  <span class="tree-icon" aria-hidden="true">📄</span>
+                  <span class="tree-name">airport-transfer.html</span>
+                </button>
+              </div>
+
+              <div class="tree-line">
+                <span class="tree-spacer" aria-hidden="true"></span>
+                <button class="tree-entry" type="button"
+                  data-name="apps.html"
+                  data-type="Page"
+                  data-description="한국 여행 필수 앱"
+                  data-status="Done"
+                  data-tags="Shared"
+                  data-notes="Maps와 How Korea Works 사이의 Bridge Guide 역할을 합니다.">
+                  <span class="tree-icon" aria-hidden="true">📄</span>
+                  <span class="tree-name">apps.html</span>
+                </button>
+              </div>
+
+              <div class="tree-line">
+                <span class="tree-spacer" aria-hidden="true"></span>
+                <button class="tree-entry" type="button"
+                  data-name="maps.html"
+                  data-type="Page"
+                  data-description="지도 / 길찾기"
+                  data-status="Done"
+                  data-tags="Core"
+                  data-notes="한국 지도 앱과 길찾기 의사결정을 돕는 핵심 페이지입니다.">
+                  <span class="tree-icon" aria-hidden="true">📄</span>
+                  <span class="tree-name">maps.html</span>
+                </button>
+              </div>
+
+              <div class="tree-line">
+                <span class="tree-spacer" aria-hidden="true"></span>
+                <button class="tree-entry" type="button"
+                  data-name="payments.html"
+                  data-type="Page"
+                  data-description="결제 기본"
+                  data-status="Done"
+                  data-tags="Core"
+                  data-notes="카드, 현금, 선불카드, 교통카드의 기본 차이를 설명하는 페이지입니다.">
+                  <span class="tree-icon" aria-hidden="true">📄</span>
+                  <span class="tree-name">payments.html</span>
+                </button>
+              </div>
+
+              <div class="tree-line">
+                <span class="tree-spacer" aria-hidden="true"></span>
+                <button class="tree-entry" type="button"
+                  data-name="tmoney.html"
+                  data-type="Page"
+                  data-description="T-money"
+                  data-status="Done"
+                  data-tags="Core, Shared"
+                  data-notes="결제와 교통 양쪽에서 참조되는 단일 public 페이지입니다.">
+                  <span class="tree-icon" aria-hidden="true">📄</span>
+                  <span class="tree-name">tmoney.html</span>
+                </button>
+              </div>
+
+              <div class="tree-line">
+                <span class="tree-spacer" aria-hidden="true"></span>
+                <button class="tree-entry" type="button"
+                  data-name="wowpass.html"
+                  data-type="Page"
+                  data-description="WOWPASS"
+                  data-status="Done"
+                  data-tags="Affiliate"
+                  data-notes="제휴 수익 가능성이 있는 결제 관련 public 페이지입니다.">
+                  <span class="tree-icon" aria-hidden="true">📄</span>
+                  <span class="tree-name">wowpass.html</span>
+                </button>
+              </div>
+
+              <div class="tree-line">
+                <span class="tree-spacer" aria-hidden="true"></span>
+                <button class="tree-entry" type="button"
+                  data-name="taxi.html"
+                  data-type="Page"
+                  data-description="택시"
+                  data-status="Done"
+                  data-tags=""
+                  data-notes="교통 관련 public 페이지입니다.">
+                  <span class="tree-icon" aria-hidden="true">📄</span>
+                  <span class="tree-name">taxi.html</span>
+                </button>
+              </div>
+
+              <div class="tree-line">
+                <span class="tree-spacer" aria-hidden="true"></span>
+                <button class="tree-entry" type="button"
+                  data-name="rental-car.html"
+                  data-type="Page"
+                  data-description="렌터카"
+                  data-status="Done"
+                  data-tags=""
+                  data-notes="교통 관련 public 페이지입니다.">
+                  <span class="tree-icon" aria-hidden="true">📄</span>
+                  <span class="tree-name">rental-car.html</span>
+                </button>
+              </div>
+
+              <section class="tree-group" data-tree-group>
+                <div class="tree-line">
+                  <button class="tree-twist" type="button" aria-label="Toggle admin folder" aria-expanded="true">▾</button>
+                  <button class="tree-entry" type="button"
+                    data-name="admin"
+                    data-type="Folder"
+                    data-description="관리자 도구 폴더"
+                    data-status="Done"
+                    data-tags="Admin"
+                    data-notes="내부 운영 도구와 관리자 전용 페이지가 있는 실제 폴더입니다.">
+                    <span class="tree-icon" aria-hidden="true">📁</span>
+                    <span class="tree-name">admin</span>
+                  </button>
+                </div>
+                <div class="tree-children">
+                  <div class="tree-line">
+                    <span class="tree-spacer" aria-hidden="true"></span>
+                    <button class="tree-entry" type="button"
+                      data-name="accommodation-analyzer.html"
+                      data-type="Admin Tool"
+                      data-description="숙소 분석 관리자"
+                      data-status="Done"
+                      data-tags="Admin"
+                      data-notes="숙소 데이터 분석과 검토를 위한 내부 운영 도구입니다.">
+                      <span class="tree-icon" aria-hidden="true">🛠</span>
+                      <span class="tree-name">accommodation-analyzer.html</span>
+                    </button>
+                  </div>
+                  <div class="tree-line">
+                    <span class="tree-spacer" aria-hidden="true"></span>
+                    <button class="tree-entry" type="button"
+                      data-name="category-map.html"
+                      data-type="Admin Tool"
+                      data-description="Project Explorer 관리자 페이지"
+                      data-status="Done"
+                      data-tags="Admin"
+                      data-notes="현재 Project Explorer 구조를 관리하는 내부 페이지입니다.">
+                      <span class="tree-icon" aria-hidden="true">🛠</span>
+                      <span class="tree-name">category-map.html</span>
+                    </button>
+                  </div>
+                  <div class="tree-line">
+                    <span class="tree-spacer" aria-hidden="true"></span>
+                    <button class="tree-entry" type="button"
+                      data-name="category-map.css"
+                      data-type="CSS"
+                      data-description="Project Explorer 스타일"
+                      data-status="Done"
+                      data-tags="Admin"
+                      data-notes="Project Explorer 전용 스타일 파일입니다.">
+                      <span class="tree-icon" aria-hidden="true">📄</span>
+                      <span class="tree-name">category-map.css</span>
+                    </button>
+                  </div>
+                </div>
+              </section>
+
+              <section class="tree-group" data-tree-group>
+                <div class="tree-line">
+                  <button class="tree-twist" type="button" aria-label="Toggle docs folder" aria-expanded="true">▾</button>
+                  <button class="tree-entry" type="button"
+                    data-name="docs"
+                    data-type="Folder"
+                    data-description="문서 폴더"
+                    data-status="Done"
+                    data-tags="Shared"
+                    data-notes="프로젝트 운영 기준과 소스 오브 트루스 문서를 보관하는 실제 폴더입니다.">
+                    <span class="tree-icon" aria-hidden="true">📁</span>
+                    <span class="tree-name">docs</span>
+                  </button>
+                </div>
+                <div class="tree-children">
+                  <div class="tree-line">
+                    <span class="tree-spacer" aria-hidden="true"></span>
+                    <button class="tree-entry" type="button"
+                      data-name="accommodation.md"
+                      data-type="Markdown"
+                      data-description="숙소 문서"
+                      data-status="Done"
+                      data-tags=""
+                      data-notes="Accommodation 관련 작업의 기준 문서입니다.">
+                      <span class="tree-icon" aria-hidden="true">📄</span>
+                      <span class="tree-name">accommodation.md</span>
+                    </button>
+                  </div>
+                  <div class="tree-line">
+                    <span class="tree-spacer" aria-hidden="true"></span>
+                    <button class="tree-entry" type="button"
+                      data-name="category-map.md"
+                      data-type="Markdown"
+                      data-description="Project Explorer 문서"
+                      data-status="Done"
+                      data-tags="Admin"
+                      data-notes="이 관리자용 Project Explorer의 운영 기준 문서입니다.">
+                      <span class="tree-icon" aria-hidden="true">📄</span>
+                      <span class="tree-name">category-map.md</span>
+                    </button>
+                  </div>
+                </div>
+              </section>
+
+              <section class="tree-group" data-tree-group>
+                <div class="tree-line">
+                  <button class="tree-twist" type="button" aria-label="Toggle images folder" aria-expanded="true">▾</button>
+                  <button class="tree-entry" type="button"
+                    data-name="images"
+                    data-type="Image Folder"
+                    data-description="이미지 자산 폴더"
+                    data-status="Done"
+                    data-tags="Shared"
+                    data-notes="공개 페이지에서 사용하는 이미지 자산이 들어 있는 실제 폴더입니다.">
+                    <span class="tree-icon" aria-hidden="true">📁</span>
+                    <span class="tree-name">images</span>
+                  </button>
+                </div>
+                <div class="tree-children">
+                  <div class="tree-line">
+                    <span class="tree-spacer" aria-hidden="true"></span>
+                    <button class="tree-entry" type="button"
+                      data-name="Accommodation"
+                      data-type="Image Folder"
+                      data-description="숙소 이미지 자산"
+                      data-status="Done"
+                      data-tags="Shared"
+                      data-notes="Accommodation 관련 이미지가 들어 있는 하위 폴더입니다.">
+                      <span class="tree-icon" aria-hidden="true">📁</span>
+                      <span class="tree-name">Accommodation</span>
+                    </button>
+                  </div>
+                  <div class="tree-line">
+                    <span class="tree-spacer" aria-hidden="true"></span>
+                    <button class="tree-entry" type="button"
+                      data-name="home"
+                      data-type="Image Folder"
+                      data-description="홈 이미지 자산"
+                      data-status="Done"
+                      data-tags="Shared"
+                      data-notes="홈 화면 관련 이미지가 들어 있는 하위 폴더입니다.">
+                      <span class="tree-icon" aria-hidden="true">📁</span>
+                      <span class="tree-name">home</span>
+                    </button>
+                  </div>
+                  <div class="tree-line">
+                    <span class="tree-spacer" aria-hidden="true"></span>
+                    <button class="tree-entry" type="button"
+                      data-name="maps"
+                      data-type="Image Folder"
+                      data-description="지도 이미지 자산"
+                      data-status="Done"
+                      data-tags="Shared"
+                      data-notes="Maps 관련 이미지가 들어 있는 하위 폴더입니다.">
+                      <span class="tree-icon" aria-hidden="true">📁</span>
+                      <span class="tree-name">maps</span>
+                    </button>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </section>
         </div>
       </aside>
 
-      <section class="explorer-tree" aria-label="Korea Inside project tree">
-        <div class="tree-root">
-          <div class="tree-row tree-row--root">
-            <span class="tree-icon" aria-hidden="true">📁</span>
-            <span class="tree-label">Korea Inside</span>
-            <span class="tree-sub">Project root</span>
-            <span class="badge badge--core">Core</span>
+      <section class="detail-panel" aria-label="Selected item detail">
+        <p class="eyebrow">Detail Panel <span>Selected file or folder</span></p>
+        <dl class="detail-list">
+          <div>
+            <dt>Name</dt>
+            <dd id="detailName">Korea Inside</dd>
           </div>
-
-          <div class="tree-children tree-children--root">
-            <section class="tree-group" data-tree-group>
-              <button class="tree-row tree-toggle" type="button" aria-expanded="true">
-                <span class="twisty" aria-hidden="true">▾</span>
-                <span class="tree-icon" aria-hidden="true">📁</span>
-                <span class="tree-label">숙소</span>
-                <span class="tree-sub">Accommodation</span>
-                <span class="badge badge--done">Done</span>
-                <span class="badge badge--core">Core</span>
-              </button>
-              <div class="tree-children">
-                <div class="tree-row tree-item">
-                  <span class="tree-icon" aria-hidden="true">📄</span>
-                  <span class="tree-label">숙소 가이드</span>
-                  <span class="tree-sub">Accommodation Guide</span>
-                  <span class="badge badge--done">Done</span>
-                  <span class="badge badge--core">Core</span>
-                </div>
-                <div class="tree-row tree-item">
-                  <span class="tree-icon" aria-hidden="true">📄</span>
-                  <span class="tree-label">서울 숙소 지역 선택</span>
-                  <span class="tree-sub">Where to Stay in Seoul</span>
-                  <span class="badge badge--done">Done</span>
-                  <span class="badge badge--core">Core</span>
-                </div>
-                <section class="tree-group" data-tree-group>
-                  <button class="tree-row tree-toggle" type="button" aria-expanded="true">
-                    <span class="twisty" aria-hidden="true">▾</span>
-                    <span class="tree-icon" aria-hidden="true">📁</span>
-                    <span class="tree-label">지역 선택</span>
-                    <span class="tree-sub">Area Selection</span>
-                    <span class="badge badge--planned">Planned</span>
-                    <span class="badge badge--core">Core</span>
-                  </button>
-                  <div class="tree-children">
-                    <div class="tree-row tree-item">
-                      <span class="tree-icon" aria-hidden="true">📄</span>
-                      <span class="tree-label">홍대</span>
-                      <span class="tree-sub">Hongdae</span>
-                      <span class="badge badge--planned">Planned</span>
-                    </div>
-                    <div class="tree-row tree-item">
-                      <span class="tree-icon" aria-hidden="true">📄</span>
-                      <span class="tree-label">명동</span>
-                      <span class="tree-sub">Myeongdong</span>
-                      <span class="badge badge--planned">Planned</span>
-                    </div>
-                    <div class="tree-row tree-item">
-                      <span class="tree-icon" aria-hidden="true">📄</span>
-                      <span class="tree-label">강남</span>
-                      <span class="tree-sub">Gangnam</span>
-                      <span class="badge badge--planned">Planned</span>
-                    </div>
-                    <div class="tree-row tree-item">
-                      <span class="tree-icon" aria-hidden="true">📄</span>
-                      <span class="tree-label">종로</span>
-                      <span class="tree-sub">Jongno</span>
-                      <span class="badge badge--planned">Planned</span>
-                    </div>
-                    <div class="tree-row tree-item">
-                      <span class="tree-icon" aria-hidden="true">📄</span>
-                      <span class="tree-label">성수</span>
-                      <span class="tree-sub">Seongsu</span>
-                      <span class="badge badge--planned">Planned</span>
-                    </div>
-                  </div>
-                </section>
-                <div class="tree-row tree-item">
-                  <span class="tree-icon" aria-hidden="true">📄</span>
-                  <span class="tree-label">호텔</span>
-                  <span class="tree-sub">Hotel</span>
-                  <span class="badge badge--planned">Planned</span>
-                </div>
-                <div class="tree-row tree-item">
-                  <span class="tree-icon" aria-hidden="true">💰</span>
-                  <span class="tree-label">예약 제휴</span>
-                  <span class="tree-sub">Booking Affiliate</span>
-                  <span class="badge badge--planned">Planned</span>
-                  <span class="badge badge--affiliate">Affiliate</span>
-                </div>
-              </div>
-            </section>
-
-            <section class="tree-group" data-tree-group>
-              <button class="tree-row tree-toggle" type="button" aria-expanded="true">
-                <span class="twisty" aria-hidden="true">▾</span>
-                <span class="tree-icon" aria-hidden="true">📁</span>
-                <span class="tree-label">통신</span>
-                <span class="tree-sub">Connectivity</span>
-                <span class="badge badge--done">Done</span>
-              </button>
-              <div class="tree-children">
-                <div class="tree-row tree-item">
-                  <span class="tree-icon" aria-hidden="true">📄</span>
-                  <span class="tree-label">eSIM</span>
-                  <span class="tree-sub">eSIM</span>
-                  <span class="badge badge--done">Done</span>
-                  <span class="badge badge--affiliate">Affiliate</span>
-                </div>
-                <div class="tree-row tree-item">
-                  <span class="tree-icon" aria-hidden="true">📄</span>
-                  <span class="tree-label">한국 SIM</span>
-                  <span class="tree-sub">Korean SIM</span>
-                  <span class="badge badge--planned">Planned</span>
-                </div>
-                <div class="tree-row tree-item">
-                  <span class="tree-icon" aria-hidden="true">📄</span>
-                  <span class="tree-label">Wi-Fi</span>
-                  <span class="tree-sub">Wi-Fi</span>
-                  <span class="badge badge--planned">Planned</span>
-                </div>
-              </div>
-            </section>
-
-            <section class="tree-group" data-tree-group>
-              <button class="tree-row tree-toggle" type="button" aria-expanded="true">
-                <span class="twisty" aria-hidden="true">▾</span>
-                <span class="tree-icon" aria-hidden="true">📁</span>
-                <span class="tree-label">결제</span>
-                <span class="tree-sub">Payment</span>
-                <span class="badge badge--done">Done</span>
-                <span class="badge badge--core">Core</span>
-              </button>
-              <div class="tree-children">
-                <div class="tree-row tree-item">
-                  <span class="tree-icon" aria-hidden="true">💰</span>
-                  <span class="tree-label">WOWPASS</span>
-                  <span class="tree-sub">WOWPASS</span>
-                  <span class="badge badge--done">Done</span>
-                  <span class="badge badge--affiliate">Affiliate</span>
-                </div>
-                <div class="tree-row tree-item">
-                  <span class="tree-icon" aria-hidden="true">📄</span>
-                  <span class="tree-label">T-money</span>
-                  <span class="tree-sub">T-money</span>
-                  <span class="badge badge--done">Done</span>
-                  <span class="badge badge--core">Core</span>
-                </div>
-                <div class="tree-row tree-item">
-                  <span class="tree-icon" aria-hidden="true">📄</span>
-                  <span class="tree-label">결제 기본</span>
-                  <span class="tree-sub">Payments</span>
-                  <span class="badge badge--done">Done</span>
-                  <span class="badge badge--core">Core</span>
-                </div>
-              </div>
-            </section>
-
-            <section class="tree-group" data-tree-group>
-              <button class="tree-row tree-toggle" type="button" aria-expanded="true">
-                <span class="twisty" aria-hidden="true">▾</span>
-                <span class="tree-icon" aria-hidden="true">📁</span>
-                <span class="tree-label">입국</span>
-                <span class="tree-sub">Arrival</span>
-                <span class="badge badge--done">Done</span>
-                <span class="badge badge--core">Core</span>
-              </button>
-              <div class="tree-children">
-                <div class="tree-row tree-item">
-                  <span class="tree-icon" aria-hidden="true">📄</span>
-                  <span class="tree-label">입국 가이드</span>
-                  <span class="tree-sub">Arrival Guide</span>
-                  <span class="badge badge--done">Done</span>
-                  <span class="badge badge--core">Core</span>
-                </div>
-                <div class="tree-row tree-item">
-                  <span class="tree-icon" aria-hidden="true">📄</span>
-                  <span class="tree-label">공항 이동</span>
-                  <span class="tree-sub">Airport Transfer</span>
-                  <span class="badge badge--done">Done</span>
-                  <span class="badge badge--core">Core</span>
-                </div>
-                <div class="tree-row tree-item">
-                  <span class="tree-icon" aria-hidden="true">📄</span>
-                  <span class="tree-label">여행 체크리스트</span>
-                  <span class="tree-sub">Travel Checklist</span>
-                  <span class="badge badge--planned">Planned</span>
-                </div>
-              </div>
-            </section>
-
-            <section class="tree-group" data-tree-group>
-              <button class="tree-row tree-toggle" type="button" aria-expanded="true">
-                <span class="twisty" aria-hidden="true">▾</span>
-                <span class="tree-icon" aria-hidden="true">📁</span>
-                <span class="tree-label">지도 / 길찾기</span>
-                <span class="tree-sub">Maps &amp; Navigation</span>
-                <span class="badge badge--done">Done</span>
-                <span class="badge badge--core">Core</span>
-              </button>
-              <div class="tree-children">
-                <div class="tree-row tree-item">
-                  <span class="tree-icon" aria-hidden="true">📄</span>
-                  <span class="tree-label">지도 가이드</span>
-                  <span class="tree-sub">Maps Guide</span>
-                  <span class="badge badge--done">Done</span>
-                  <span class="badge badge--core">Core</span>
-                </div>
-                <div class="tree-row tree-item">
-                  <span class="tree-icon" aria-hidden="true">📄</span>
-                  <span class="tree-label">앱 브리지 가이드</span>
-                  <span class="tree-sub">Apps Bridge Guide</span>
-                  <span class="badge badge--done">Done</span>
-                </div>
-                <div class="tree-row tree-item">
-                  <span class="tree-icon" aria-hidden="true">📄</span>
-                  <span class="tree-label">네이버 지도</span>
-                  <span class="tree-sub">Naver Map</span>
-                  <span class="badge badge--planned">Planned</span>
-                </div>
-                <div class="tree-row tree-item">
-                  <span class="tree-icon" aria-hidden="true">📄</span>
-                  <span class="tree-label">카카오맵</span>
-                  <span class="tree-sub">Kakao Map</span>
-                  <span class="badge badge--planned">Planned</span>
-                </div>
-                <div class="tree-row tree-item">
-                  <span class="tree-icon" aria-hidden="true">📄</span>
-                  <span class="tree-label">구글 지도</span>
-                  <span class="tree-sub">Google Maps</span>
-                  <span class="badge badge--planned">Planned</span>
-                </div>
-              </div>
-            </section>
-
-            <section class="tree-group" data-tree-group>
-              <button class="tree-row tree-toggle" type="button" aria-expanded="true">
-                <span class="twisty" aria-hidden="true">▾</span>
-                <span class="tree-icon" aria-hidden="true">📁</span>
-                <span class="tree-label">교통</span>
-                <span class="tree-sub">Transportation</span>
-                <span class="badge badge--planned">Planned</span>
-              </button>
-              <div class="tree-children">
-                <div class="tree-row tree-item">
-                  <span class="tree-icon" aria-hidden="true">📄</span>
-                  <span class="tree-label">지하철</span>
-                  <span class="tree-sub">Subway</span>
-                  <span class="badge badge--planned">Planned</span>
-                </div>
-                <div class="tree-row tree-item">
-                  <span class="tree-icon" aria-hidden="true">📄</span>
-                  <span class="tree-label">버스</span>
-                  <span class="tree-sub">Bus</span>
-                  <span class="badge badge--planned">Planned</span>
-                </div>
-                <div class="tree-row tree-item">
-                  <span class="tree-icon" aria-hidden="true">📄</span>
-                  <span class="tree-label">택시</span>
-                  <span class="tree-sub">Taxi</span>
-                  <span class="badge badge--planned">Planned</span>
-                </div>
-                <div class="tree-row tree-item">
-                  <span class="tree-icon" aria-hidden="true">📄</span>
-                  <span class="tree-label">KTX</span>
-                  <span class="tree-sub">KTX</span>
-                  <span class="badge badge--planned">Planned</span>
-                </div>
-                <div class="tree-row tree-item">
-                  <span class="tree-icon" aria-hidden="true">📄</span>
-                  <span class="tree-label">렌터카</span>
-                  <span class="tree-sub">Rental Car</span>
-                  <span class="badge badge--planned">Planned</span>
-                </div>
-              </div>
-            </section>
-
-            <section class="tree-group" data-tree-group>
-              <button class="tree-row tree-toggle" type="button" aria-expanded="true">
-                <span class="twisty" aria-hidden="true">▾</span>
-                <span class="tree-icon" aria-hidden="true">📁</span>
-                <span class="tree-label">한국 사용법</span>
-                <span class="tree-sub">How Korea Works</span>
-                <span class="badge badge--planned">Planned</span>
-              </button>
-              <div class="tree-children">
-                <div class="tree-row tree-item">
-                  <span class="tree-icon" aria-hidden="true">📄</span>
-                  <span class="tree-label">실전 시스템</span>
-                  <span class="tree-sub">Practical Systems</span>
-                  <span class="badge badge--planned">Planned</span>
-                </div>
-                <div class="tree-row tree-item">
-                  <span class="tree-icon" aria-hidden="true">📄</span>
-                  <span class="tree-label">예절</span>
-                  <span class="tree-sub">Etiquette</span>
-                  <span class="badge badge--planned">Planned</span>
-                </div>
-                <div class="tree-row tree-item">
-                  <span class="tree-icon" aria-hidden="true">📄</span>
-                  <span class="tree-label">쇼핑</span>
-                  <span class="tree-sub">Shopping</span>
-                  <span class="badge badge--planned">Planned</span>
-                </div>
-                <div class="tree-row tree-item">
-                  <span class="tree-icon" aria-hidden="true">📄</span>
-                  <span class="tree-label">응급 상황</span>
-                  <span class="tree-sub">Emergency</span>
-                  <span class="badge badge--planned">Planned</span>
-                </div>
-                <div class="tree-row tree-item">
-                  <span class="tree-icon" aria-hidden="true">📄</span>
-                  <span class="tree-label">흔한 실수</span>
-                  <span class="tree-sub">Common Mistakes</span>
-                  <span class="badge badge--planned">Planned</span>
-                </div>
-              </div>
-            </section>
-
-            <section class="tree-group" data-tree-group>
-              <button class="tree-row tree-toggle" type="button" aria-expanded="true">
-                <span class="twisty" aria-hidden="true">▾</span>
-                <span class="tree-icon" aria-hidden="true">📁</span>
-                <span class="tree-label">관리자 도구</span>
-                <span class="tree-sub">Admin Tools</span>
-                <span class="badge badge--admin">Admin</span>
-              </button>
-              <div class="tree-children">
-                <div class="tree-row tree-item">
-                  <span class="tree-icon" aria-hidden="true">🛠</span>
-                  <span class="tree-label">숙소 분석기</span>
-                  <span class="tree-sub">Accommodation Analyzer</span>
-                  <span class="badge badge--done">Done</span>
-                  <span class="badge badge--admin">Admin</span>
-                </div>
-                <div class="tree-row tree-item">
-                  <span class="tree-icon" aria-hidden="true">🛠</span>
-                  <span class="tree-label">카테고리 맵 / 프로젝트 탐색기</span>
-                  <span class="tree-sub">Category Map / Project Explorer</span>
-                  <span class="badge badge--done">Done</span>
-                  <span class="badge badge--admin">Admin</span>
-                </div>
-                <div class="tree-row tree-item">
-                  <span class="tree-icon" aria-hidden="true">🛠</span>
-                  <span class="tree-label">향후 데이터 도구</span>
-                  <span class="tree-sub">Future Data Tools</span>
-                  <span class="badge badge--planned">Planned</span>
-                  <span class="badge badge--admin">Admin</span>
-                </div>
-              </div>
-            </section>
+          <div>
+            <dt>Type</dt>
+            <dd id="detailType">Folder</dd>
           </div>
-        </div>
+          <div>
+            <dt>Korean description</dt>
+            <dd id="detailDescription">프로젝트 루트</dd>
+          </div>
+          <div>
+            <dt>Status</dt>
+            <dd id="detailStatus"><span class="badge badge--done">Done</span></dd>
+          </div>
+          <div>
+            <dt>Tags</dt>
+            <dd id="detailTags"><span class="badge badge--core">Core</span></dd>
+          </div>
+          <div>
+            <dt>Notes</dt>
+            <dd id="detailNotes">Korea Inside 전체 프로젝트의 실제 파일과 주요 폴더를 확인하는 루트입니다.</dd>
+          </div>
+        </dl>
       </section>
     </section>
   </main>
@@ -395,26 +425,74 @@
       "use strict";
 
       const groups = Array.from(document.querySelectorAll("[data-tree-group]"));
+      const entries = Array.from(document.querySelectorAll(".tree-entry"));
       const expandAllButton = document.getElementById("expandAllBtn");
       const collapseAllButton = document.getElementById("collapseAllBtn");
+      const detailName = document.getElementById("detailName");
+      const detailType = document.getElementById("detailType");
+      const detailDescription = document.getElementById("detailDescription");
+      const detailStatus = document.getElementById("detailStatus");
+      const detailTags = document.getElementById("detailTags");
+      const detailNotes = document.getElementById("detailNotes");
+
+      function badgeClass(value) {
+        const normalized = value.toLowerCase().replace(/\s+/g, "-");
+        if (normalized === "needs-check") return "badge--check";
+        return `badge--${normalized}`;
+      }
+
+      function renderBadges(container, values) {
+        container.textContent = "";
+        const items = values.split(",").map(function (item) {
+          return item.trim();
+        }).filter(Boolean);
+
+        if (!items.length) {
+          container.textContent = "None";
+          return;
+        }
+
+        items.forEach(function (item) {
+          const badge = document.createElement("span");
+          badge.className = `badge ${badgeClass(item)}`;
+          badge.textContent = item;
+          container.appendChild(badge);
+        });
+      }
+
+      function selectEntry(entry) {
+        entries.forEach(function (item) {
+          item.classList.toggle("is-selected", item === entry);
+        });
+
+        detailName.textContent = entry.dataset.name || "";
+        detailType.textContent = entry.dataset.type || "";
+        detailDescription.textContent = entry.dataset.description || "";
+        detailNotes.textContent = entry.dataset.notes || "";
+        renderBadges(detailStatus, entry.dataset.status || "");
+        renderBadges(detailTags, entry.dataset.tags || "");
+      }
 
       function setGroupExpanded(group, expanded) {
-        const toggle = group.querySelector(":scope > .tree-toggle");
-        if (!toggle) return;
+        const twist = group.querySelector(":scope > .tree-line .tree-twist");
+        if (!twist) return;
         group.classList.toggle("is-collapsed", !expanded);
-        toggle.setAttribute("aria-expanded", String(expanded));
-        const twisty = toggle.querySelector(".twisty");
-        if (twisty) {
-          twisty.textContent = expanded ? "▾" : "▸";
-        }
+        twist.setAttribute("aria-expanded", String(expanded));
+        twist.textContent = expanded ? "▾" : "▸";
       }
 
       groups.forEach(function (group) {
-        const toggle = group.querySelector(":scope > .tree-toggle");
-        if (!toggle) return;
-        toggle.addEventListener("click", function () {
-          const expanded = toggle.getAttribute("aria-expanded") === "true";
+        const twist = group.querySelector(":scope > .tree-line .tree-twist");
+        if (!twist) return;
+        twist.addEventListener("click", function () {
+          const expanded = twist.getAttribute("aria-expanded") === "true";
           setGroupExpanded(group, !expanded);
+        });
+      });
+
+      entries.forEach(function (entry) {
+        entry.addEventListener("click", function () {
+          selectEntry(entry);
         });
       });
 

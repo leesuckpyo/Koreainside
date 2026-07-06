@@ -1,12 +1,17 @@
-# Korea Inside Project Explorer Tree v1.2
+# Korea Inside Project Explorer v1.4
 
 Date: 2026-07-06
 
 ## Purpose
 
-Category Map v1.2 converts the admin architecture map into a Project Explorer Tree.
+Project Explorer v1.4 changes the admin architecture map into a VS Code Explorer-style interface.
 
-The v1.1 card and architecture-diagram layout was useful for journey thinking, but it was not the right structure-validation tool. v1.2 prioritizes a Windows Explorer-style folder tree so Korea Inside can review the whole project structure quickly and consistently.
+The v1.3 tree showed file names, descriptions and badges in the same row. That made long file names wrap and made the tree hard to scan.
+
+v1.4 separates structure from metadata:
+
+- Left side: file and folder names only.
+- Right side: Detail Panel with description, status, tags and notes.
 
 The HTML map lives at:
 
@@ -19,236 +24,164 @@ The page is admin-only and must remain:
 
 ## Phase 1 Rule
 
-v1.2 is Phase 1: structure validation.
+v1.4 remains Phase 1: structure validation.
 
 Rules:
 
-- No page navigation links.
-- No public-page edits.
-- No admin analyzer edits.
+- The Explorer Tree is not navigation.
+- No `<a>` tags are used.
+- No page movement behavior is allowed.
 - No external libraries.
 - No localStorage.
 - Default state is fully expanded.
-- Collapse and expand may use vanilla JavaScript only.
-- Print view must show the full tree.
-
-The tree is an operating map, not a public navigation menu.
+- Folder collapse and expand use vanilla JavaScript only.
+- File and folder names must not wrap.
+- Descriptions, status, tags, notes and badges appear only in the Detail Panel.
 
 ## Phase 2 Direction
 
-Phase 2 can begin after page ownership and page readiness are clearer.
+Phase 2 may add real links or admin dashboard behavior after the structure is approved.
 
 Possible Phase 2 additions:
 
-- Add links to completed pages.
-- Add links to admin tools.
-- Add management dashboard states.
-- Add page ownership and review dates.
+- Link completed nodes to public pages.
+- Link admin nodes to internal tools.
 - Add source-of-truth document links.
+- Add ownership, review status and last-reviewed dates.
+- Add dashboard filters for status or category.
 
-Phase 2 should not start until the structure itself is approved.
+Phase 2 must keep Phase 1's structure readable before adding behavior.
 
-## Why Explorer Tree
+## VS Code Explorer Layout
 
-Explorer Tree is preferred over card or family-tree layouts for this admin map because:
+```text
+┌──────────────────────────────┬───────────────────────────────────┐
+│ Project Explorer              │ Detail Panel                       │
+│                               │                                    │
+│ ▾ Korea Inside                │ Name: index.html                   │
+│   📄 index.html               │ Type: Page                         │
+│   📄 style.css                │ Description: 홈 / 랜딩페이지       │
+│   📄 common.js                │ Status: Done                       │
+│   📄 accommodation.html       │ Tags: Core                         │
+│   📄 arrival.html             │ Notes: Korea Inside의 첫 진입 페이지│
+│   📁 admin                    │                                    │
+│   📁 docs                     │                                    │
+│   📁 images                   │                                    │
+└──────────────────────────────┴───────────────────────────────────┘
+```
 
-- It is easier to scan many pages vertically.
-- Parent and child relationships are clearer.
-- Planned pages can sit beside completed pages without visual noise.
-- Admin can collapse categories while reviewing one branch.
-- It resembles a project filesystem, which matches how the site will grow.
-- It avoids implying that every node is a public navigation link.
+## Explorer Tree Rules
 
-Card layouts are better for presentation. Explorer Tree is better for structure governance.
+The left Explorer Tree must show only:
 
-## Tree Structure
+- Folder icon
+- File icon
+- Folder or file name
+- Folder twisty for collapse and expand
+
+The left Explorer Tree must not show:
+
+- Korean descriptions
+- Long sentences
+- Status badges
+- Tags
+- Notes
+- Table-like columns
+
+File names must use:
+
+- `white-space: nowrap`
+- hidden overflow or horizontal scroll
+- no mid-word wrapping
+
+## Detail Panel Rules
+
+The right Detail Panel is the only place for metadata.
+
+Required fields:
+
+| Field | Meaning |
+|---|---|
+| Name | File or folder name |
+| Type | Folder, Page, CSS, JS, Markdown, Image Folder or Admin Tool |
+| Korean description | Human-readable Korean explanation |
+| Status | Done, Planned or Needs Check |
+| Tags | Core, Shared, Affiliate or Admin |
+| Notes | Operational notes |
+
+Example:
+
+```text
+Name: index.html
+Type: Page
+Korean description: 홈 / 랜딩페이지
+Status: Done
+Tags: Core
+Notes: Korea Inside의 첫 진입 페이지
+```
+
+Example:
+
+```text
+Name: where-to-stay-in-seoul.html
+Type: Page
+Korean description: 서울 숙소 지역 선택 페이지
+Status: Needs Check
+Tags: Core
+Notes: 문서에는 언급되었으나 실제 파일 존재 여부 재확인 필요
+```
+
+## Current Tree Scope
+
+v1.4 removes logical `pages/` grouping from the left tree.
+
+The left tree should focus on actual root files and actual folders:
 
 ```text
 Korea Inside
-├─ Accommodation
-│  ├─ Accommodation Guide
-│  ├─ Where to Stay in Seoul
-│  ├─ Area Selection
-│  │  ├─ Hongdae
-│  │  ├─ Myeongdong
-│  │  ├─ Gangnam
-│  │  ├─ Jongno
-│  │  └─ Seongsu
-│  ├─ Hotel
-│  └─ Booking Affiliate
-│
-├─ Connectivity
-│  ├─ eSIM
-│  ├─ Korean SIM
-│  └─ Wi-Fi
-│
-├─ Payment
-│  ├─ WOWPASS
-│  ├─ T-money
-│  └─ Payments
-│
-├─ Arrival
-│  ├─ Arrival Guide
-│  ├─ Airport Transfer
-│  └─ Travel Checklist
-│
-├─ Maps & Navigation
-│  ├─ Maps Guide
-│  ├─ Apps Bridge Guide
-│  ├─ Naver Map
-│  ├─ Kakao Map
-│  └─ Google Maps
-│
-├─ Transportation
-│  ├─ Subway
-│  ├─ Bus
-│  ├─ Taxi
-│  ├─ KTX
-│  └─ Rental Car
-│
-├─ How Korea Works
-│  ├─ Practical Systems
-│  ├─ Etiquette
-│  ├─ Shopping
-│  ├─ Emergency
-│  └─ Common Mistakes
-│
-└─ Admin Tools
-   ├─ Accommodation Analyzer
-   ├─ Category Map / Project Explorer
-   └─ Future Data Tools
+├─ index.html
+├─ style.css
+├─ common.js
+├─ accommodation.html
+├─ arrival.html
+├─ airport-transfer.html
+├─ apps.html
+├─ maps.html
+├─ payments.html
+├─ tmoney.html
+├─ wowpass.html
+├─ taxi.html
+├─ rental-car.html
+├─ admin
+├─ docs
+└─ images
 ```
 
-## Branch Notes
+## Status And Tag Rules
 
-### Accommodation
+Status values:
 
-Accommodation remains the highest-priority content branch.
-
-Accommodation should contain:
-
-- Accommodation Guide
-- Where to Stay in Seoul
-- Area Selection
-- Area pages such as Hongdae, Myeongdong, Gangnam, Jongno and Seongsu
-- Hotel evaluation layer
-- Booking Affiliate revenue layer
-
-Booking Affiliate must stay below decision support. It should not appear before area and hotel choice.
-
-### Connectivity
-
-Connectivity contains practical connection setup.
-
-Current and planned nodes:
-
-- eSIM
-- Korean SIM
-- Wi-Fi
-
-### Payment
-
-Payment contains payment decision support.
-
-Current nodes:
-
-- WOWPASS
-- T-money
-- Payments
-
-T-money can also be related to Transportation, but in Phase 1 the tree keeps one visible node in Payment to avoid duplicate-link behavior.
-
-### Arrival
-
-Arrival contains first-entry preparation.
-
-Current and planned nodes:
-
-- Arrival Guide
-- Airport Transfer
-- Travel Checklist
-
-Travel Checklist remains Planned in this structure.
-
-### Maps & Navigation
-
-Maps & Navigation contains both map guidance and app behavior.
-
-Apps Bridge Guide is not an independent top-level category. It belongs inside Maps & Navigation as the bridge toward How Korea Works.
-
-Current and planned nodes:
-
-- Maps Guide
-- Apps Bridge Guide
-- Naver Map
-- Kakao Map
-- Google Maps
-
-### Transportation
-
-Transportation is a broader movement branch.
-
-Planned nodes:
-
-- Subway
-- Bus
-- Taxi
-- KTX
-- Rental Car
-
-### How Korea Works
-
-How Korea Works contains practical systems that do not fit neatly into single travel-task pages.
-
-Planned nodes:
-
-- Practical Systems
-- Etiquette
-- Shopping
-- Emergency
-- Common Mistakes
-
-### Admin Tools
-
-Admin Tools is separate from public user-facing content.
-
-Current and planned nodes:
-
-- Accommodation Analyzer
-- Category Map / Project Explorer
-- Future Data Tools
-
-Admin pages must remain `noindex, nofollow`.
-
-## Status Badge Rules
-
-| Badge | Meaning |
+| Status | Meaning |
 |---|---|
-| Done | Exists and is usable in its current role |
-| Planned | Planned or structurally expected but not complete |
-| Core | Primary decision-support content |
+| Done | File exists or the feature is usable in its current role |
+| Planned | File or feature is planned but does not currently exist |
+| Needs Check | Existence, ownership or readiness is unclear |
+
+Tags:
+
+| Tag | Meaning |
+|---|---|
+| Core | Primary decision-support page or foundation file |
+| Shared | A single file is used by multiple pages or categories |
 | Affiliate | Revenue-related path or affiliate opportunity |
 | Admin | Internal operating tool or internal architecture page |
 
-Multiple badges may appear on one node.
+Tags and status are displayed as badges only in the Detail Panel.
 
-Examples:
+## Governance Notes
 
-- Accommodation Guide: Done / Core
-- Booking Affiliate: Planned / Affiliate
-- Accommodation Analyzer: Done / Admin
-- Category Map / Project Explorer: Done / Admin
+Actual public files must not be moved, renamed or reorganized by this map.
 
-## UI Rules
+The map is a planning and governance surface only.
 
-The admin page should behave like a project explorer:
-
-- Folder and page icons are visible.
-- Korean labels are primary.
-- English labels are smaller support labels.
-- Nodes are not links in Phase 1.
-- Default state is fully expanded.
-- Collapse and expand should not persist after refresh.
-- Print should show the full expanded tree.
-
-The Project Explorer is a structure governance tool. It should help Korea Inside decide what exists, what is planned and where each piece belongs before public navigation is expanded.
+Phase 2 may connect nodes to files, pages, documents or dashboards, but Phase 1 must remain no-link and structure-first.
