@@ -1,14 +1,12 @@
-# Korea Inside Master Architecture Map v1.1
+# Korea Inside Project Explorer Tree v1.2
 
 Date: 2026-07-06
 
 ## Purpose
 
-Category Map v1.1 is the internal architecture map for Korea Inside.
+Category Map v1.2 converts the admin architecture map into a Project Explorer Tree.
 
-The v1.0 map showed the site as parallel categories. v1.1 changes the architecture principle to User Journey First.
-
-The map should show the order in which a traveler actually prepares for Korea, not merely the internal content categories.
+The v1.1 card and architecture-diagram layout was useful for journey thinking, but it was not the right structure-validation tool. v1.2 prioritizes a Windows Explorer-style folder tree so Korea Inside can review the whole project structure quickly and consistently.
 
 The HTML map lives at:
 
@@ -19,249 +17,238 @@ The page is admin-only and must remain:
 - `noindex, nofollow`
 - `translate="no"`
 
-## Architecture Principle
+## Phase 1 Rule
 
-Korea Inside should first answer:
+v1.2 is Phase 1: structure validation.
 
-What does the traveler need to decide next?
+Rules:
 
-The top-level structure follows the travel preparation sequence:
+- No page navigation links.
+- No public-page edits.
+- No admin analyzer edits.
+- No external libraries.
+- No localStorage.
+- Default state is fully expanded.
+- Collapse and expand may use vanilla JavaScript only.
+- Print view must show the full tree.
 
-1. Home
-2. Travel Planning
-3. Accommodation
-4. Connectivity
-5. Payment
-6. Arrival
-7. Airport Transfer
-8. Maps
-9. Transportation
-10. How Korea Works
+The tree is an operating map, not a public navigation menu.
 
-This does not remove categories. It changes their visual priority. Categories exist under a journey order.
+## Phase 2 Direction
 
-## User Journey First Structure
+Phase 2 can begin after page ownership and page readiness are clearer.
+
+Possible Phase 2 additions:
+
+- Add links to completed pages.
+- Add links to admin tools.
+- Add management dashboard states.
+- Add page ownership and review dates.
+- Add source-of-truth document links.
+
+Phase 2 should not start until the structure itself is approved.
+
+## Why Explorer Tree
+
+Explorer Tree is preferred over card or family-tree layouts for this admin map because:
+
+- It is easier to scan many pages vertically.
+- Parent and child relationships are clearer.
+- Planned pages can sit beside completed pages without visual noise.
+- Admin can collapse categories while reviewing one branch.
+- It resembles a project filesystem, which matches how the site will grow.
+- It avoids implying that every node is a public navigation link.
+
+Card layouts are better for presentation. Explorer Tree is better for structure governance.
+
+## Tree Structure
 
 ```text
 Korea Inside
-  ↓
-Home (Landing)
-  ↓
-Travel Planning
-  ↓
-① Accommodation
-  ↓
-② Connectivity (eSIM)
-  ↓
-③ Payment
-  ↓
-④ Arrival
-  ↓
-⑤ Airport Transfer
-  ↓
-⑥ Maps
-  ↓
-⑦ Transportation
-  ↓
-⑧ How Korea Works
+├─ Accommodation
+│  ├─ Accommodation Guide
+│  ├─ Where to Stay in Seoul
+│  ├─ Area Selection
+│  │  ├─ Hongdae
+│  │  ├─ Myeongdong
+│  │  ├─ Gangnam
+│  │  ├─ Jongno
+│  │  └─ Seongsu
+│  ├─ Hotel
+│  └─ Booking Affiliate
+│
+├─ Connectivity
+│  ├─ eSIM
+│  ├─ Korean SIM
+│  └─ Wi-Fi
+│
+├─ Payment
+│  ├─ WOWPASS
+│  ├─ T-money
+│  └─ Payments
+│
+├─ Arrival
+│  ├─ Arrival Guide
+│  ├─ Airport Transfer
+│  └─ Travel Checklist
+│
+├─ Maps & Navigation
+│  ├─ Maps Guide
+│  ├─ Apps Bridge Guide
+│  ├─ Naver Map
+│  ├─ Kakao Map
+│  └─ Google Maps
+│
+├─ Transportation
+│  ├─ Subway
+│  ├─ Bus
+│  ├─ Taxi
+│  ├─ KTX
+│  └─ Rental Car
+│
+├─ How Korea Works
+│  ├─ Practical Systems
+│  ├─ Etiquette
+│  ├─ Shopping
+│  ├─ Emergency
+│  └─ Common Mistakes
+│
+└─ Admin Tools
+   ├─ Accommodation Analyzer
+   ├─ Category Map / Project Explorer
+   └─ Future Data Tools
 ```
 
-## Accommodation Priority
+## Branch Notes
 
-Accommodation is the most important decision area in the v1.1 architecture.
+### Accommodation
 
-Reason:
+Accommodation remains the highest-priority content branch.
 
-- Stay area affects airport transfer choice.
-- Stay area affects subway convenience.
-- Stay area affects luggage burden.
-- Stay area affects nightlife, shopping, family suitability and noise.
-- Hotel booking can become an affiliate revenue path only after area choice is clear.
+Accommodation should contain:
 
-Accommodation structure:
+- Accommodation Guide
+- Where to Stay in Seoul
+- Area Selection
+- Area pages such as Hongdae, Myeongdong, Gangnam, Jongno and Seongsu
+- Hotel evaluation layer
+- Booking Affiliate revenue layer
 
-```text
-Accommodation
-  ↓
-Where to stay in Seoul
-  ↓
-Area Selection
-  ├─ Hongdae
-  ├─ Myeongdong
-  ├─ Gangnam
-  ├─ Jongno
-  └─ Seongsu
-  ↓
-Hotel
-  ↓
-Booking (Affiliate)
-```
+Booking Affiliate must stay below decision support. It should not appear before area and hotel choice.
 
-Current and planned pages:
+### Connectivity
 
-| Node | URL | Status | Notes |
-|---|---|---|---|
-| Accommodation Main | `accommodation.html` | Done / Core | Main accommodation decision entry |
-| Where to stay in Seoul | `where-to-stay-in-seoul.html` | Done / Core | Seoul area decision guide |
-| Area Selection | Future structured area layer | Core | Must come before hotel recommendation |
-| Hotel | Future property layer | Planned | Specific hotel evaluation |
-| Booking | Future affiliate path | Planned / Affiliate | Revenue path after decision support |
+Connectivity contains practical connection setup.
 
-## Arrival Structure
+Current and planned nodes:
 
-Arrival should be shown as a journey sequence, not as an isolated category.
+- eSIM
+- Korean SIM
+- Wi-Fi
 
-```text
-Arrival
-  ↓
-Arrival Guide
-  ↓
-Airport Transfer
-  ↓
-Hotel Check-in
-```
+### Payment
 
-Current and planned pages:
+Payment contains payment decision support.
 
-| Node | URL | Status | Notes |
-|---|---|---|---|
-| Arrival Guide | `arrival.html` | Done / Core | Arrival preparation and first-step guide |
-| Airport Transfer | `airport-transfer.html` | Done / Core | Also appears as its own journey step |
-| Hotel Check-in | Future | Planned | Connects arrival back to Accommodation |
+Current nodes:
 
-## Payment Structure
+- WOWPASS
+- T-money
+- Payments
 
-Payment connects directly to Transportation because T-money belongs to both payment and movement decisions.
+T-money can also be related to Transportation, but in Phase 1 the tree keeps one visible node in Payment to avoid duplicate-link behavior.
 
-```text
-Payment
-  ↓
-WOWPASS
-  ↓
-T-money
-  ↓
-Payments
-  ↓
-Transportation
-```
+### Arrival
 
-Current pages:
+Arrival contains first-entry preparation.
 
-| Node | URL | Status | Notes |
-|---|---|---|---|
-| WOWPASS | `wowpass.html` | Done / Affiliate | Prepaid card guide |
-| T-money | `tmoney.html` | Done / Core | One actual page shared with Transportation |
-| Payments | `payments.html` | Done / Core | General payment guide |
-| Transportation | Multiple pages | Core | Connected because T-money is also transit infrastructure |
+Current and planned nodes:
 
-## Connectivity
+- Arrival Guide
+- Airport Transfer
+- Travel Checklist
 
-Connectivity is the second practical preparation step after Accommodation.
+Travel Checklist remains Planned in this structure.
 
-Current page:
+### Maps & Navigation
 
-| Node | URL | Status | Notes |
-|---|---|---|---|
-| eSIM | `esim.html` | Done / Affiliate | Data setup before arrival |
+Maps & Navigation contains both map guidance and app behavior.
 
-## Maps, Apps and How Korea Works
+Apps Bridge Guide is not an independent top-level category. It belongs inside Maps & Navigation as the bridge toward How Korea Works.
 
-Apps is not an independent top-level category in v1.1.
+Current and planned nodes:
 
-Apps becomes a Bridge Guide between Maps and How Korea Works.
+- Maps Guide
+- Apps Bridge Guide
+- Naver Map
+- Kakao Map
+- Google Maps
 
-```text
-Maps
-  ↓
-Apps Bridge Guide
-  ↓
-How Korea Works
-```
+### Transportation
 
-Current pages:
+Transportation is a broader movement branch.
 
-| Node | URL | Status | Notes |
-|---|---|---|---|
-| Maps | `maps.html` | Done / Core | Navigation guide |
-| Apps Bridge Guide | `apps.html` | Done | Bridge between map behavior and Korea practical systems |
-| How Korea Works | Future hub | Planned | Practical systems, norms and usage patterns |
+Planned nodes:
 
-## Transportation
+- Subway
+- Bus
+- Taxi
+- KTX
+- Rental Car
 
-Transportation remains a journey step after Maps because users often understand where they are going before choosing detailed transit behavior.
+### How Korea Works
 
-Current and planned pages:
+How Korea Works contains practical systems that do not fit neatly into single travel-task pages.
 
-| Node | URL | Status | Notes |
-|---|---|---|---|
-| T-money | `tmoney.html` | Done / Core | Shared with Payment |
-| Airport Transfer | `airport-transfer.html` | Done / Core | Shared with Arrival |
-| Subway | Future | Planned | City transit guide |
-| Taxi | Future | Planned | Taxi decision guide |
+Planned nodes:
 
-## Admin Tools
+- Practical Systems
+- Etiquette
+- Shopping
+- Emergency
+- Common Mistakes
 
-Admin remains a separate management area.
+### Admin Tools
 
-Admin tools are not part of the public user journey, but they can manage a public journey area.
+Admin Tools is separate from public user-facing content.
 
-Current admin structure:
+Current and planned nodes:
 
-| Tool | URL | Status | Managed area |
-|---|---|---|---|
-| Accommodation Analyzer | `admin/accommodation-analyzer.html` | Admin / Done | Accommodation |
-| Category Map | `admin/category-map.html` | Admin / Done | Overall architecture |
+- Accommodation Analyzer
+- Category Map / Project Explorer
+- Future Data Tools
 
-The map must show that Accommodation Analyzer manages Accommodation data.
+Admin pages must remain `noindex, nofollow`.
 
-## Status Rules
+## Status Badge Rules
 
-| Status | Meaning |
+| Badge | Meaning |
 |---|---|
-| Done | The page or admin tool exists and is usable in its current role |
-| Planned | The page, data structure, or feature is expected but not treated as completed |
-| Affiliate | The page can support affiliate revenue, but user suitability and trust remain first |
-| Admin | Internal tool or internal operating document, not a public user-facing page |
-| Core | A primary decision-support page for visitor problem solving |
+| Done | Exists and is usable in its current role |
+| Planned | Planned or structurally expected but not complete |
+| Core | Primary decision-support content |
+| Affiliate | Revenue-related path or affiliate opportunity |
+| Admin | Internal operating tool or internal architecture page |
 
-## Shared Page Rules
+Multiple badges may appear on one node.
 
-Shared pages can appear in more than one journey area, but the actual URL remains one page.
+Examples:
 
-Current shared-page rules:
+- Accommodation Guide: Done / Core
+- Booking Affiliate: Planned / Affiliate
+- Accommodation Analyzer: Done / Admin
+- Category Map / Project Explorer: Done / Admin
 
-- `tmoney.html` belongs to both Payment and Transportation.
-- `airport-transfer.html` belongs to both Arrival and Airport Transfer.
-- `apps.html` is a bridge between Maps and How Korea Works, not an independent top-level category.
+## UI Rules
 
-## Future Expansion Rules
+The admin page should behave like a project explorer:
 
-### Home Menu
+- Folder and page icons are visible.
+- Korean labels are primary.
+- English labels are smaller support labels.
+- Nodes are not links in Phase 1.
+- Default state is fully expanded.
+- Collapse and expand should not persist after refresh.
+- Print should show the full expanded tree.
 
-Home should reflect the strongest user journey paths, not the full internal sitemap.
-
-Accommodation should receive the highest priority in Home-level architecture because it is the strongest travel decision and future revenue path.
-
-### Hamburger Menu
-
-The hamburger menu may expose more categories than Home, but its order should still follow the user journey:
-
-Accommodation before Connectivity, Payment, Arrival, Airport Transfer, Maps, Transportation and How Korea Works.
-
-### Admin Page Expansion
-
-New admin tools should live under `admin/` and remain `noindex, nofollow`.
-
-Admin tools should clearly state which public journey area they manage.
-
-### Affiliate Expansion
-
-Affiliate revenue should appear after decision support, not before it.
-
-For Accommodation, the correct order is:
-
-```text
-Area decision → Hotel decision → Booking affiliate
-```
-
-Affiliate status must not determine whether a page is Core. Core status depends on user value, practical importance and decision impact.
+The Project Explorer is a structure governance tool. It should help Korea Inside decide what exists, what is planned and where each piece belongs before public navigation is expanded.
