@@ -64,10 +64,11 @@ a {
 
 .eyebrow span,
 .header-note span,
-h2 span,
-.root-node span,
-.page-node span,
-.bridge-card span {
+.journey-root span,
+.journey-node span,
+.tree-node span,
+.panel-heading span,
+.management-note span {
   display: block;
   margin-top: 2px;
   color: var(--muted);
@@ -94,6 +95,7 @@ h2 span,
   display: inline-flex;
   align-items: center;
   min-height: 24px;
+  margin: 6px 4px 0 0;
   padding: 3px 8px;
   border: 1px solid currentColor;
   border-radius: 999px;
@@ -131,23 +133,20 @@ h2 span,
 }
 
 .map-canvas {
-  position: relative;
-  min-width: 2260px;
-  padding: 26px 28px 34px;
+  min-width: 2380px;
+  padding: 28px;
   border: 1px solid var(--border);
   border-radius: var(--radius);
   background:
-    linear-gradient(rgba(159, 176, 200, 0.18) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(159, 176, 200, 0.18) 1px, transparent 1px),
+    linear-gradient(rgba(159, 176, 200, 0.16) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(159, 176, 200, 0.16) 1px, transparent 1px),
     #fff;
   background-size: 32px 32px;
   box-shadow: var(--shadow);
 }
 
-.root-node {
-  position: relative;
-  z-index: 2;
-  width: 390px;
+.journey-root {
+  width: 440px;
   margin: 0 auto;
   padding: 18px 22px;
   border: 2px solid var(--ink);
@@ -156,185 +155,266 @@ h2 span,
   text-align: center;
 }
 
-.root-node p {
+.journey-root p {
   margin: 0;
   font-size: 2rem;
   font-weight: 900;
 }
 
-.root-line {
+.journey-flow {
   position: relative;
-  width: calc(100% - 220px);
-  height: 62px;
-  margin: 0 auto;
-  border-bottom: 3px solid var(--line);
+  display: grid;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 58px;
 }
 
-.root-line::before {
+.journey-flow::before {
   position: absolute;
-  top: 0;
-  left: 50%;
-  width: 3px;
-  height: 62px;
+  top: -34px;
+  left: 5%;
+  right: 5%;
+  height: 4px;
   background: var(--line);
   content: "";
 }
 
-.category-row {
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  gap: 18px;
-  align-items: start;
-}
-
-.category {
-  position: relative;
-}
-
-.category::before {
+.journey-flow::after {
   position: absolute;
-  top: -62px;
+  top: -82px;
   left: 50%;
-  width: 3px;
-  height: 62px;
+  width: 4px;
+  height: 48px;
   background: var(--line);
   content: "";
 }
 
-.category-head {
+.journey-node {
   position: relative;
-  min-height: 104px;
-  padding: 16px 14px;
-  border: 2px solid var(--line);
-  border-radius: var(--radius);
-  background: var(--panel);
-  box-shadow: var(--shadow);
-}
-
-.category-head h2 {
-  margin: 0;
-  font-size: 1.25rem;
-  line-height: 1.18;
-}
-
-.connector-down {
-  position: absolute;
-  left: 50%;
-  bottom: -30px;
-  width: 3px;
-  height: 30px;
-  background: var(--line);
-}
-
-.node-stack {
-  display: grid;
-  gap: 12px;
-  margin-top: 30px;
-}
-
-.page-node {
-  display: block;
-  min-height: 112px;
-  padding: 13px 13px 12px;
+  min-height: 238px;
+  padding: 14px;
   border: 1px solid var(--border);
-  border-left: 5px solid var(--blue);
+  border-top: 6px solid var(--blue);
   border-radius: var(--radius);
   background: var(--panel);
   box-shadow: 0 4px 14px rgba(19, 34, 56, 0.06);
 }
 
-.page-node strong {
-  display: block;
-  font-size: 1rem;
-  line-height: 1.22;
+.journey-node::before {
+  position: absolute;
+  top: -34px;
+  left: 50%;
+  width: 4px;
+  height: 34px;
+  background: var(--line);
+  content: "";
 }
 
-.page-node em {
-  display: block;
-  margin: 8px 0 10px;
+.journey-node h2 {
+  margin: 8px 0 4px;
+  font-size: 1.12rem;
+  line-height: 1.18;
+}
+
+.journey-node p {
+  margin: 10px 0 8px;
   color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.journey-node a {
+  display: block;
+  margin-top: 8px;
+  color: var(--blue);
   font-size: 0.78rem;
-  font-style: normal;
+  font-weight: 800;
   overflow-wrap: anywhere;
 }
 
-.page-node--planned {
-  border-left-color: var(--amber);
-  background: #fffaf1;
+.node-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 38px;
+  min-height: 32px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: #fff;
+  font-weight: 900;
 }
 
-.page-node--shared {
+.journey-node--home {
+  border-top-color: var(--teal);
+}
+
+.journey-node--planning {
+  border-top-color: var(--amber);
+}
+
+.journey-node--priority {
+  min-height: 268px;
+  border: 3px solid var(--green);
+  border-top-width: 8px;
+  background: #f3fff8;
+}
+
+.journey-node--priority h2 {
+  font-size: 1.3rem;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 0.8fr 0.8fr 0.8fr 1fr;
+  gap: 18px;
+  margin-top: 42px;
+  align-items: start;
+}
+
+.tree-panel {
+  position: relative;
+  min-height: 420px;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: var(--shadow);
+}
+
+.tree-panel--accommodation {
+  border: 3px solid var(--green);
+  background: #f8fffb;
+}
+
+.tree-panel--admin {
+  border: 2px solid var(--violet);
+}
+
+.panel-heading {
+  min-height: 82px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 18px;
+  padding-bottom: 14px;
+}
+
+.panel-heading h2 {
+  margin: 6px 0 0;
+  font-size: 1.45rem;
+}
+
+.tree,
+.bridge-chain,
+.admin-grid {
+  display: grid;
+  gap: 26px;
+}
+
+.tree--vertical .tree-node,
+.bridge-chain .tree-node {
+  position: relative;
+}
+
+.tree--vertical .tree-node + .tree-node::before,
+.bridge-chain .tree-node + .tree-node::before {
+  position: absolute;
+  top: -26px;
+  left: 50%;
+  width: 3px;
+  height: 26px;
+  background: var(--line);
+  content: "";
+}
+
+.tree-node {
+  display: block;
+  min-height: 96px;
+  padding: 13px;
+  border: 1px solid var(--border);
+  border-left: 5px solid var(--blue);
+  border-radius: var(--radius);
+  background: var(--panel);
+}
+
+.tree-node strong {
+  display: block;
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+.tree-node--branch {
+  border-left-color: var(--green);
+}
+
+.tree-node--affiliate {
+  border-left-color: var(--rose);
+  background: #fff7f9;
+}
+
+.tree-node--shared {
   border-left-color: var(--teal);
   background: #f1fbf9;
 }
 
-.page-node--bridge {
+.tree-node--bridge {
   border-left-color: var(--violet);
   background: #f7f3ff;
 }
 
-.category--arrival .category-head {
-  border-color: #2563eb;
-}
-
-.category--stay .category-head {
-  border-color: #0f766e;
-}
-
-.category--connectivity .category-head {
-  border-color: #0891b2;
-}
-
-.category--payment .category-head {
-  border-color: #be123c;
-}
-
-.category--transport .category-head {
-  border-color: #ea580c;
-}
-
-.category--maps .category-head {
-  border-color: #4f46e5;
-}
-
-.category--korea .category-head {
-  border-color: #7c3aed;
-}
-
-.category--admin .category-head {
-  border-color: #111827;
-}
-
-.bridge-row {
+.area-row {
+  position: relative;
   display: grid;
-  grid-template-columns: 1fr 140px 1fr;
-  align-items: center;
-  width: 920px;
-  margin: 34px auto 0;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  margin-top: -8px;
 }
 
-.bridge-card {
-  min-height: 112px;
-  padding: 16px;
-  border: 1px dashed var(--teal);
-  border-radius: var(--radius);
-  background: #f8fffd;
-}
-
-.bridge-card strong {
-  display: block;
-  font-size: 1.05rem;
-}
-
-.bridge-card p {
-  margin: 10px 0 0;
-  color: var(--muted);
-  font-size: 0.92rem;
-}
-
-.bridge-line {
+.area-row::before {
+  position: absolute;
+  top: -18px;
+  left: 10%;
+  right: 10%;
   height: 3px;
-  background: repeating-linear-gradient(90deg, var(--teal), var(--teal) 12px, transparent 12px, transparent 20px);
+  background: var(--line);
+  content: "";
+}
+
+.area-row span {
+  position: relative;
+  display: grid;
+  min-height: 54px;
+  place-items: center;
+  border: 1px solid #b7d9c4;
+  border-radius: var(--radius);
+  background: #fff;
+  color: var(--ink);
+  font-size: 0.82rem;
+  font-weight: 900;
+  text-align: center;
+}
+
+.area-row span::before {
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  width: 3px;
+  height: 18px;
+  background: var(--line);
+  content: "";
+}
+
+.management-line {
+  width: 3px;
+  height: 34px;
+  margin: 18px auto 0;
+  background: var(--violet);
+}
+
+.management-note {
+  padding: 12px;
+  border: 1px dashed var(--violet);
+  border-radius: var(--radius);
+  background: #fbf8ff;
+  text-align: center;
 }
 
 @page {
@@ -360,15 +440,14 @@ h2 span,
   }
 
   .map-canvas {
-    min-width: 2100px;
+    min-width: 2300px;
     box-shadow: none;
-    break-inside: avoid;
   }
 
-  .page-node,
-  .category-head,
-  .root-node,
-  .bridge-card {
+  .journey-node,
+  .tree-panel,
+  .tree-node,
+  .journey-root {
     break-inside: avoid;
     box-shadow: none;
   }
