@@ -340,6 +340,15 @@ a {
   color: #b91c1c;
 }
 
+.draft-status--saved {
+  color: var(--green-accent);
+  font-weight: 800;
+}
+
+.draft-status--empty {
+  color: var(--blue-muted);
+}
+
 .csv-workspace {
   display: grid;
   gap: 18px;

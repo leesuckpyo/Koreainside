@@ -46,8 +46,9 @@ The v1.2 tool has five main modules:
 9. Compare suggested Korea Inside criteria with the admin final values.
 10. Adjust final values, Admin Note and Review Status.
 11. Save the review.
-12. Go to `Export`.
+12. Check `Export` > `Local draft` to confirm the latest local save time.
 13. Export JSON or CSV.
+14. Use `Clear local draft` only when the browser recovery copy is no longer needed.
 
 ## Expected CSV Columns
 
@@ -167,10 +168,28 @@ JSON rows include:
 
 CSV exports include raw imported data as a JSON string column, automatic suggestion columns, final criteria columns, Admin Note and Review Status.
 
+## Local Draft Saving
+
+The tool saves a local browser draft after CSV analysis, HRP or threshold changes, and admin review saves.
+
+The local draft includes:
+
+- CSV analysis results
+- Column mapping
+- HRP and zone threshold settings
+- Admin final criteria values
+- Admin Note
+- Review Status
+- Last saved time
+
+When `admin/accommodation-analyzer.html` is reopened or refreshed in the same browser, the draft is restored automatically. The restored data remains local to that browser and is not uploaded to a server.
+
+Use `Clear local draft` in the Export module to remove the saved browser recovery copy. Clearing the draft does not immediately clear the current on-screen data.
+
 ## v1.2 Limitations
 
 - No server storage.
-- Browser refresh clears unsaved in-memory review data.
+- Browser refresh can restore the latest local draft in the same browser, but localStorage is not a database or cross-device storage.
 - No database connection.
 - No map preview.
 - No geocoding. Latitude and longitude must exist in the CSV.
@@ -184,7 +203,6 @@ CSV exports include raw imported data as a JSON string column, automatic suggest
 ## Possible v1.3 Features
 
 - Local file re-import of previous JSON exports.
-- Browser localStorage draft saving.
 - Map preview using imported coordinates.
 - Manual route and slope review fields.
 - Duplicate accommodation detection.

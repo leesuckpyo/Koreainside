@@ -3,6 +3,7 @@
 
   const WALKING_METERS_PER_MINUTE = 80;
   const EARTH_RADIUS_METERS = 6371000;
+  const DRAFT_STORAGE_KEY = "koreaInsideAccommodationAdminDraftV12";
 
   const FIELD_DEFS = [
     { key: "hotelName", label: "Hotel Name", aliases: ["hotel name", "property name", "accommodation name", "name", "hotel"] },
@@ -97,17 +98,22 @@
     clearSelectionBtnSecondary: document.getElementById("clearSelectionBtnSecondary"),
     exportJsonBtn: document.getElementById("exportJsonBtn"),
     exportCsvBtn: document.getElementById("exportCsvBtn"),
-    exportStatus: document.getElementById("exportStatus")
+    exportStatus: document.getElementById("exportStatus"),
+    draftSavedAt: document.getElementById("draftSavedAt"),
+    clearLocalDraftBtn: document.getElementById("clearLocalDraftBtn")
   };
 
   initialize();
 
   function initialize() {
     calculateDefaultHrp();
+    restoreLocalDraft();
     bindEvents();
     renderDashboard();
     renderAccommodationList();
     renderDetail();
+    updateExportState();
+    updateDraftStatus();
   }
 
   function bindEvents() {
@@ -177,12 +183,16 @@
     els.recalculateHrpBtn.addEventListener("click", function () {
       calculateDefaultHrp();
       analyzeRows();
+      saveLocalDraft();
     });
 
     els.analyzeBtn.addEventListener("click", analyzeRows);
 
     [els.hrpLat, els.hrpLng, els.coreMax, els.walkableMax, els.extendedMax].forEach(function (input) {
-      input.addEventListener("change", analyzeRows);
+      input.addEventListener("change", function () {
+        analyzeRows();
+        saveLocalDraft();
+      });
     });
 
     els.tableSearch.addEventListener("input", function () {
@@ -229,6 +239,7 @@
     els.clearSelectionBtnSecondary.addEventListener("click", clearSelection);
     els.exportJsonBtn.addEventListener("click", exportJson);
     els.exportCsvBtn.addEventListener("click", exportCsv);
+    els.clearLocalDraftBtn.addEventListener("click", clearLocalDraft);
   }
 
   function showTab(target) {
@@ -269,6 +280,7 @@
         els.workspace.hidden = false;
         setStatus(`Loaded ${parsed.rows.length} rows from ${file.name}. Review mapping, then analyze.`, "ok");
         analyzeRows();
+        saveLocalDraft();
       } catch (error) {
         setStatus(`CSV parsing failed: ${error.message}`, "error");
       }
@@ -528,6 +540,7 @@
     renderDetail();
     updateExportState();
     setStatus(`Analyzed ${state.analyzedRows.length} accommodations using HRP ${hrp.lat.toFixed(6)}, ${hrp.lng.toFixed(6)}.`, "ok");
+    saveLocalDraft();
     showTab("list");
   }
 
@@ -933,6 +946,7 @@
     renderDetail();
     updateExportState();
     setStatus(`Saved review for ${row.hotelName}.`, "ok");
+    saveLocalDraft();
   }
 
   function clearSelection() {
@@ -953,6 +967,148 @@
     els.exportStatus.textContent = hasRows
       ? `${state.analyzedRows.length} accommodation rows ready for export.`
       : "Import and analyze a CSV before exporting.";
+  }
+
+  function saveLocalDraft() {
+    const payload = {
+      version: "1.2",
+      savedAt: new Date().toISOString(),
+      fileName: state.fileName,
+      headers: state.headers,
+      rawRows: state.rawRows,
+      mapping: state.mapping,
+      analyzedRows: state.analyzedRows,
+      selectedRowId: state.selectedRowId,
+      sortKey: state.sortKey,
+      sortDirection: state.sortDirection,
+      filters: state.filters,
+      settings: {
+        pointALat: els.pointALat.value,
+        pointALng: els.pointALng.value,
+        pointBLat: els.pointBLat.value,
+        pointBLng: els.pointBLng.value,
+        hrpLat: els.hrpLat.value,
+        hrpLng: els.hrpLng.value,
+        coreMax: els.coreMax.value,
+        walkableMax: els.walkableMax.value,
+        extendedMax: els.extendedMax.value
+      }
+    };
+
+    try {
+      localStorage.setItem(DRAFT_STORAGE_KEY, JSON.stringify(payload));
+      updateDraftStatus(payload.savedAt);
+    } catch (error) {
+      setStatus(`Local draft could not be saved: ${error.message}`, "error");
+    }
+  }
+
+  function restoreLocalDraft() {
+    let payload = null;
+
+    try {
+      const stored = localStorage.getItem(DRAFT_STORAGE_KEY);
+      if (!stored) {
+        return;
+      }
+      payload = JSON.parse(stored);
+    } catch (error) {
+      setStatus(`Local draft could not be restored: ${error.message}`, "error");
+      return;
+    }
+
+    if (!payload || payload.version !== "1.2") {
+      return;
+    }
+
+    state.fileName = payload.fileName || "";
+    state.headers = Array.isArray(payload.headers) ? payload.headers : [];
+    state.rawRows = Array.isArray(payload.rawRows) ? payload.rawRows : [];
+    state.mapping = payload.mapping || {};
+    state.analyzedRows = Array.isArray(payload.analyzedRows) ? payload.analyzedRows.map(normalizeRestoredRow) : [];
+    state.selectedRowId = payload.selectedRowId || null;
+    state.sortKey = payload.sortKey || "distanceMeters";
+    state.sortDirection = payload.sortDirection === "desc" ? "desc" : "asc";
+    state.filters = Object.assign({ search: "", zone: "all", type: "all" }, payload.filters || {});
+
+    applyRestoredSettings(payload.settings || {});
+
+    if (state.headers.length) {
+      renderMappingFields();
+      els.workspace.hidden = false;
+    }
+
+    updateFilters();
+    els.tableSearch.value = state.filters.search || "";
+    els.zoneFilter.value = state.filters.zone || "all";
+    els.typeFilter.value = state.filters.type || "all";
+    setStatus(`Restored local draft${state.fileName ? ` from ${state.fileName}` : ""}.`, "ok");
+    updateDraftStatus(payload.savedAt);
+  }
+
+  function normalizeRestoredRow(row) {
+    const restored = Object.assign({}, row);
+    restored.rawImportedData = copyRawImportedData(row.rawImportedData || {});
+    restored.autoSuggestions = cloneCriteria(row.autoSuggestions);
+    restored.finalCriteria = cloneCriteria(row.finalCriteria);
+    restored.adminNote = row.adminNote || "";
+    restored.reviewStatus = REVIEW_STATUSES.includes(row.reviewStatus) ? row.reviewStatus : "Needs Review";
+    restored.identityKey = row.identityKey || createIdentityKey(restored);
+    return restored;
+  }
+
+  function applyRestoredSettings(settings) {
+    [
+      "pointALat",
+      "pointALng",
+      "pointBLat",
+      "pointBLng",
+      "hrpLat",
+      "hrpLng",
+      "coreMax",
+      "walkableMax",
+      "extendedMax"
+    ].forEach(function (key) {
+      if (settings[key] != null && els[key]) {
+        els[key].value = settings[key];
+      }
+    });
+  }
+
+  function clearLocalDraft() {
+    try {
+      localStorage.removeItem(DRAFT_STORAGE_KEY);
+      updateDraftStatus();
+      setStatus("Local draft cleared. Current on-screen data remains until refresh or new import.", "ok");
+    } catch (error) {
+      setStatus(`Local draft could not be cleared: ${error.message}`, "error");
+    }
+  }
+
+  function updateDraftStatus(savedAt) {
+    let timestamp = savedAt;
+
+    if (!timestamp) {
+      try {
+        const stored = localStorage.getItem(DRAFT_STORAGE_KEY);
+        timestamp = stored ? JSON.parse(stored).savedAt : "";
+      } catch (error) {
+        timestamp = "";
+      }
+    }
+
+    if (timestamp) {
+      const date = new Date(timestamp);
+      els.draftSavedAt.textContent = `Last saved: ${date.toLocaleString("en-US", { dateStyle: "medium", timeStyle: "short" })}`;
+      els.draftSavedAt.classList.add("draft-status--saved");
+      els.draftSavedAt.classList.remove("draft-status--empty");
+      els.clearLocalDraftBtn.disabled = false;
+    } else {
+      els.draftSavedAt.textContent = "No local draft saved yet.";
+      els.draftSavedAt.classList.add("draft-status--empty");
+      els.draftSavedAt.classList.remove("draft-status--saved");
+      els.clearLocalDraftBtn.disabled = true;
+    }
   }
 
   function exportJson() {
