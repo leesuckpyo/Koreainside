@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ko" translate="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Korea Inside Category Map v1.0 | Admin</title>
+  <link rel="stylesheet" href="category-map.css">
+</head>
+<body>
+  <header class="map-header">
+    <div>
+      <p class="eyebrow">관리자 설계도 <span>Admin architecture</span></p>
+      <h1>Korea Inside</h1>
+      <p class="header-note">전체 카테고리 구조와 페이지 상태를 한눈에 보는 내부 운영용 지도입니다. <span>Master Architecture Map v1.0</span></p>
+    </div>
+    <div class="legend" aria-label="상태 표시 기준">
+      <span class="badge badge--done">Done</span>
+      <span class="badge badge--planned">Planned</span>
+      <span class="badge badge--affiliate">Affiliate</span>
+      <span class="badge badge--admin">Admin</span>
+      <span class="badge badge--core">Core</span>
+    </div>
+  </header>
+
+  <main class="map-viewport" aria-label="Korea Inside category architecture map">
+    <section class="map-canvas" aria-labelledby="map-title">
+      <div class="root-node">
+        <p id="map-title">Korea Inside</p>
+        <span>Decision-support platform for Korea travel</span>
+      </div>
+
+      <div class="root-line" aria-hidden="true"></div>
+
+      <section class="category-row" aria-label="1차 카테고리">
+        <article class="category category--arrival">
+          <div class="category-head">
+            <h2>입국 / 공항 <span>Arrival &amp; Airport</span></h2>
+            <div class="connector-down" aria-hidden="true"></div>
+          </div>
+          <div class="node-stack">
+            <a class="page-node" href="../arrival.html">
+              <strong>입국 준비</strong>
+              <span>Arrival guide</span>
+              <em>arrival.html</em>
+              <b class="badge badge--done">Done</b>
+              <b class="badge badge--core">Core</b>
+            </a>
+            <a class="page-node page-node--shared" href="../airport-transfer.html">
+              <strong>공항 이동</strong>
+              <span>Airport transfer</span>
+              <em>airport-transfer.html · shared with Transportation</em>
+              <b class="badge badge--done">Done</b>
+              <b class="badge badge--core">Core</b>
+            </a>
+            <div class="page-node page-node--planned">
+              <strong>여행 체크리스트</strong>
+              <span>Travel checklist</span>
+              <em>checklist.html · not core yet</em>
+              <b class="badge badge--planned">Planned</b>
+            </div>
+          </div>
+        </article>
+
+        <article class="category category--stay">
+          <div class="category-head">
+            <h2>숙소 <span>Accommodation</span></h2>
+            <div class="connector-down" aria-hidden="true"></div>
+          </div>
+          <div class="node-stack">
+            <a class="page-node" href="../accommodation.html">
+              <strong>숙소 메인</strong>
+              <span>Accommodation main</span>
+              <em>accommodation.html</em>
+              <b class="badge badge--done">Done</b>
+              <b class="badge badge--core">Core</b>
+            </a>
+            <a class="page-node" href="../where-to-stay-in-seoul.html">
+              <strong>서울 숙소 지역 선택</strong>
+              <span>Where to stay in Seoul</span>
+              <em>where-to-stay-in-seoul.html</em>
+              <b class="badge badge--done">Done</b>
+              <b class="badge badge--core">Core</b>
+            </a>
+            <div class="page-node page-node--planned">
+              <strong>숙소 지역 데이터베이스</strong>
+              <span>Stay area database</span>
+              <em>future structured data</em>
+              <b class="badge badge--planned">Planned</b>
+            </div>
+            <div class="page-node page-node--planned">
+              <strong>호텔 평가 규칙</strong>
+              <span>Hotel scoring rules</span>
+              <em>future decision engine</em>
+              <b class="badge badge--planned">Planned</b>
+            </div>
+          </div>
+        </article>
+
+        <article class="category category--connectivity">
+          <div class="category-head">
+            <h2>통신 <span>Connectivity</span></h2>
+            <div class="connector-down" aria-hidden="true"></div>
+          </div>
+          <div class="node-stack">
+            <a class="page-node" href="../esim.html">
+              <strong>eSIM</strong>
+              <span>Mobile data setup</span>
+              <em>esim.html</em>
+              <b class="badge badge--done">Done</b>
+              <b class="badge badge--affiliate">Affiliate</b>
+            </a>
+            <div class="page-node page-node--planned">
+              <strong>SIM / Wi-Fi 비교</strong>
+              <span>SIM and Wi-Fi comparison</span>
+              <em>future guide</em>
+              <b class="badge badge--planned">Planned</b>
+              <b class="badge badge--affiliate">Affiliate</b>
+            </div>
+          </div>
+        </article>
+
+        <article class="category category--payment">
+          <div class="category-head">
+            <h2>결제 <span>Payment</span></h2>
+            <div class="connector-down" aria-hidden="true"></div>
+          </div>
+          <div class="node-stack">
+            <a class="page-node" href="../payments.html">
+              <strong>결제 기본</strong>
+              <span>Payment basics</span>
+              <em>payments.html</em>
+              <b class="badge badge--done">Done</b>
+              <b class="badge badge--core">Core</b>
+            </a>
+            <a class="page-node" href="../wowpass.html">
+              <strong>WOWPASS</strong>
+              <span>Prepaid card guide</span>
+              <em>wowpass.html</em>
+              <b class="badge badge--done">Done</b>
+              <b class="badge badge--affiliate">Affiliate</b>
+            </a>
+            <a class="page-node page-node--shared" href="../tmoney.html">
+              <strong>T-money</strong>
+              <span>Transit and payment card</span>
+              <em>tmoney.html · one page shared with Transportation</em>
+              <b class="badge badge--done">Done</b>
+              <b class="badge badge--core">Core</b>
+            </a>
+          </div>
+        </article>
+
+        <article class="category category--transport">
+          <div class="category-head">
+            <h2>교통 <span>Transportation</span></h2>
+            <div class="connector-down" aria-hidden="true"></div>
+          </div>
+          <div class="node-stack">
+            <a class="page-node page-node--shared" href="../tmoney.html">
+              <strong>T-money</strong>
+              <span>Same public page as Payment</span>
+              <em>tmoney.html · shared page</em>
+              <b class="badge badge--done">Done</b>
+              <b class="badge badge--core">Core</b>
+            </a>
+            <a class="page-node page-node--shared" href="../airport-transfer.html">
+              <strong>공항 이동</strong>
+              <span>Same public page as Arrival &amp; Airport</span>
+              <em>airport-transfer.html · shared page</em>
+              <b class="badge badge--done">Done</b>
+            </a>
+            <div class="page-node page-node--planned">
+              <strong>지하철</strong>
+              <span>Subway guide</span>
+              <em>future guide</em>
+              <b class="badge badge--planned">Planned</b>
+            </div>
+            <div class="page-node page-node--planned">
+              <strong>택시</strong>
+              <span>Taxi guide</span>
+              <em>future guide</em>
+              <b class="badge badge--planned">Planned</b>
+            </div>
+          </div>
+        </article>
+
+        <article class="category category--maps">
+          <div class="category-head">
+            <h2>지도 / 길찾기 <span>Maps &amp; Navigation</span></h2>
+            <div class="connector-down" aria-hidden="true"></div>
+          </div>
+          <div class="node-stack">
+            <a class="page-node" href="../maps.html">
+              <strong>지도 앱</strong>
+              <span>Maps and navigation</span>
+              <em>maps.html</em>
+              <b class="badge badge--done">Done</b>
+              <b class="badge badge--core">Core</b>
+            </a>
+            <a class="page-node page-node--bridge" href="../apps.html">
+              <strong>한국 여행 필수 앱</strong>
+              <span>Essential Korea travel apps</span>
+              <em>apps.html · bridge to How Korea Works</em>
+              <b class="badge badge--done">Done</b>
+            </a>
+            <div class="page-node page-node--planned">
+              <strong>역 출구 / 길찾기</strong>
+              <span>Station exits</span>
+              <em>future practical guide</em>
+              <b class="badge badge--planned">Planned</b>
+            </div>
+          </div>
+        </article>
+
+        <article class="category category--korea">
+          <div class="category-head">
+            <h2>한국 사용법 <span>How Korea Works</span></h2>
+            <div class="connector-down" aria-hidden="true"></div>
+          </div>
+          <div class="node-stack">
+            <a class="page-node page-node--bridge" href="../apps.html">
+              <strong>한국 여행 필수 앱</strong>
+              <span>Shared support guide from Maps</span>
+              <em>apps.html · bridge page</em>
+              <b class="badge badge--done">Done</b>
+            </a>
+            <div class="page-node page-node--planned">
+              <strong>한국 생활 시스템</strong>
+              <span>Practical systems</span>
+              <em>future hub</em>
+              <b class="badge badge--planned">Planned</b>
+            </div>
+            <div class="page-node page-node--planned">
+              <strong>예절 / 이용 방식</strong>
+              <span>Etiquette and usage norms</span>
+              <em>future guide</em>
+              <b class="badge badge--planned">Planned</b>
+            </div>
+            <div class="page-node page-node--planned">
+              <strong>쇼핑 / 응급 상황</strong>
+              <span>Shopping and emergency basics</span>
+              <em>future guides</em>
+              <b class="badge badge--planned">Planned</b>
+            </div>
+          </div>
+        </article>
+
+        <article class="category category--admin">
+          <div class="category-head">
+            <h2>관리자 <span>Admin Tools</span></h2>
+            <div class="connector-down" aria-hidden="true"></div>
+          </div>
+          <div class="node-stack">
+            <a class="page-node" href="accommodation-analyzer.html">
+              <strong>숙소 분석기</strong>
+              <span>Accommodation Analyzer</span>
+              <em>admin/accommodation-analyzer.html</em>
+              <b class="badge badge--admin">Admin</b>
+              <b class="badge badge--done">Done</b>
+            </a>
+            <a class="page-node" href="category-map.html">
+              <strong>카테고리 설계도</strong>
+              <span>Category Map</span>
+              <em>admin/category-map.html</em>
+              <b class="badge badge--admin">Admin</b>
+              <b class="badge badge--done">Done</b>
+            </a>
+            <div class="page-node page-node--planned">
+              <strong>데이터 운영 도구</strong>
+              <span>Future data tools</span>
+              <em>future admin</em>
+              <b class="badge badge--admin">Admin</b>
+              <b class="badge badge--planned">Planned</b>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="bridge-row" aria-label="중복 연결 및 보조 연결">
+        <div class="bridge-card">
+          <strong>중복 연결 원칙</strong>
+          <span>Shared-page rule</span>
+          <p>T-money와 Airport Transfer는 여러 카테고리에 연결되지만 실제 public page는 각각 하나입니다.</p>
+        </div>
+        <div class="bridge-line" aria-hidden="true"></div>
+        <div class="bridge-card">
+          <strong>Apps 보조 연결</strong>
+          <span>Apps bridge</span>
+          <p>Apps는 통신 전용이 아니라 지도 / 길찾기와 한국 사용법 사이를 보조하는 실용 가이드입니다.</p>
+        </div>
+      </section>
+    </section>
+  </main>
+</body>
+</html>

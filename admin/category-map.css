@@ -1,0 +1,375 @@
+:root {
+  --ink: #132238;
+  --muted: #5b677a;
+  --line: #9fb0c8;
+  --paper: #f7f9fc;
+  --panel: #ffffff;
+  --blue: #1a56db;
+  --green: #15803d;
+  --amber: #b45309;
+  --violet: #6d28d9;
+  --rose: #be123c;
+  --teal: #0f766e;
+  --border: #d9e1ec;
+  --shadow: 0 10px 28px rgba(19, 34, 56, 0.08);
+  --radius: 8px;
+  --font: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--paper);
+  font-family: var(--font);
+  line-height: 1.5;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.map-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  min-width: 1180px;
+  padding: 22px 32px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 2px 12px rgba(19, 34, 56, 0.05);
+}
+
+.eyebrow,
+.header-note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.eyebrow {
+  color: var(--blue);
+  font-weight: 800;
+}
+
+.eyebrow span,
+.header-note span,
+h2 span,
+.root-node span,
+.page-node span,
+.bridge-card span {
+  display: block;
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 0.72em;
+  font-weight: 700;
+}
+
+.map-header h1 {
+  margin: 4px 0 6px;
+  color: var(--ink);
+  font-size: 2.2rem;
+  line-height: 1;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+  max-width: 420px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 3px 8px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  background: #fff;
+  font-size: 0.72rem;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.badge--done {
+  color: var(--green);
+}
+
+.badge--planned {
+  color: var(--amber);
+}
+
+.badge--affiliate {
+  color: var(--rose);
+}
+
+.badge--admin {
+  color: var(--violet);
+}
+
+.badge--core {
+  color: var(--blue);
+}
+
+.map-viewport {
+  overflow-x: auto;
+  padding: 26px 32px 48px;
+}
+
+.map-canvas {
+  position: relative;
+  min-width: 2260px;
+  padding: 26px 28px 34px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background:
+    linear-gradient(rgba(159, 176, 200, 0.18) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(159, 176, 200, 0.18) 1px, transparent 1px),
+    #fff;
+  background-size: 32px 32px;
+  box-shadow: var(--shadow);
+}
+
+.root-node {
+  position: relative;
+  z-index: 2;
+  width: 390px;
+  margin: 0 auto;
+  padding: 18px 22px;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  background: var(--panel);
+  text-align: center;
+}
+
+.root-node p {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 900;
+}
+
+.root-line {
+  position: relative;
+  width: calc(100% - 220px);
+  height: 62px;
+  margin: 0 auto;
+  border-bottom: 3px solid var(--line);
+}
+
+.root-line::before {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 3px;
+  height: 62px;
+  background: var(--line);
+  content: "";
+}
+
+.category-row {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.category {
+  position: relative;
+}
+
+.category::before {
+  position: absolute;
+  top: -62px;
+  left: 50%;
+  width: 3px;
+  height: 62px;
+  background: var(--line);
+  content: "";
+}
+
+.category-head {
+  position: relative;
+  min-height: 104px;
+  padding: 16px 14px;
+  border: 2px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+  box-shadow: var(--shadow);
+}
+
+.category-head h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  line-height: 1.18;
+}
+
+.connector-down {
+  position: absolute;
+  left: 50%;
+  bottom: -30px;
+  width: 3px;
+  height: 30px;
+  background: var(--line);
+}
+
+.node-stack {
+  display: grid;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.page-node {
+  display: block;
+  min-height: 112px;
+  padding: 13px 13px 12px;
+  border: 1px solid var(--border);
+  border-left: 5px solid var(--blue);
+  border-radius: var(--radius);
+  background: var(--panel);
+  box-shadow: 0 4px 14px rgba(19, 34, 56, 0.06);
+}
+
+.page-node strong {
+  display: block;
+  font-size: 1rem;
+  line-height: 1.22;
+}
+
+.page-node em {
+  display: block;
+  margin: 8px 0 10px;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-style: normal;
+  overflow-wrap: anywhere;
+}
+
+.page-node--planned {
+  border-left-color: var(--amber);
+  background: #fffaf1;
+}
+
+.page-node--shared {
+  border-left-color: var(--teal);
+  background: #f1fbf9;
+}
+
+.page-node--bridge {
+  border-left-color: var(--violet);
+  background: #f7f3ff;
+}
+
+.category--arrival .category-head {
+  border-color: #2563eb;
+}
+
+.category--stay .category-head {
+  border-color: #0f766e;
+}
+
+.category--connectivity .category-head {
+  border-color: #0891b2;
+}
+
+.category--payment .category-head {
+  border-color: #be123c;
+}
+
+.category--transport .category-head {
+  border-color: #ea580c;
+}
+
+.category--maps .category-head {
+  border-color: #4f46e5;
+}
+
+.category--korea .category-head {
+  border-color: #7c3aed;
+}
+
+.category--admin .category-head {
+  border-color: #111827;
+}
+
+.bridge-row {
+  display: grid;
+  grid-template-columns: 1fr 140px 1fr;
+  align-items: center;
+  width: 920px;
+  margin: 34px auto 0;
+}
+
+.bridge-card {
+  min-height: 112px;
+  padding: 16px;
+  border: 1px dashed var(--teal);
+  border-radius: var(--radius);
+  background: #f8fffd;
+}
+
+.bridge-card strong {
+  display: block;
+  font-size: 1.05rem;
+}
+
+.bridge-card p {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.bridge-line {
+  height: 3px;
+  background: repeating-linear-gradient(90deg, var(--teal), var(--teal) 12px, transparent 12px, transparent 20px);
+}
+
+@page {
+  size: A3 landscape;
+  margin: 10mm;
+}
+
+@media print {
+  body {
+    background: #fff;
+  }
+
+  .map-header {
+    position: static;
+    min-width: 0;
+    padding: 0 0 12px;
+    box-shadow: none;
+  }
+
+  .map-viewport {
+    overflow: visible;
+    padding: 0;
+  }
+
+  .map-canvas {
+    min-width: 2100px;
+    box-shadow: none;
+    break-inside: avoid;
+  }
+
+  .page-node,
+  .category-head,
+  .root-node,
+  .bridge-card {
+    break-inside: avoid;
+    box-shadow: none;
+  }
+}
