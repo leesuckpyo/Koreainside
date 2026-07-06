@@ -1,7 +1,7 @@
 # Accommodation Guide Page Review
 
 Date: 2026-07-01
-Latest update: 2026-07-05
+Latest update: 2026-07-06
 
 ## Accommodation Card v2.0
 
@@ -160,8 +160,17 @@ Additional supporting sections:
 - Twitter card metadata added.
 - WebPage JSON-LD added.
 - BreadcrumbList JSON-LD added.
-- FAQPage JSON-LD added with 12 questions.
+- FAQPage JSON-LD added and kept aligned with visible FAQ content.
 - The old meta refresh redirect was removed so the page can function as an indexable guide.
+
+## FAQ Expansion Notes
+
+Latest FAQ expansion adds practical decision-support questions about:
+
+- Choosing a hotel near an airport bus stop.
+- Staying near Incheon Airport versus staying in Seoul.
+- Whether a central location is worth paying more for.
+- Staying in one hotel versus splitting a stay between areas.
 
 ## UX Notes
 
