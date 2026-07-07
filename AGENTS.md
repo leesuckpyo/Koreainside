@@ -24,6 +24,157 @@ Codex should act as a project guardian: protect the long-term quality and stabil
 
 ---
 
+## User Instruction First and Scope Control
+
+### User Instruction First Rule
+
+Codex must follow the user's explicit instruction first.
+
+Codex may create, modify, delete, move, rename, refactor, optimize, format, document, or reorganize only what the user explicitly instructed.
+
+Codex must not perform extra work proactively, automatically, or as a helpful improvement.
+
+If Codex believes an additional action is necessary, Codex must stop, explain why the action is needed, and wait for explicit user approval.
+
+### Scope Control Rule
+
+Each task is limited to the files, sections, and actions explicitly approved in the current instruction.
+
+Files not named in the current instruction are out of scope.
+
+Sections not named in the current instruction are out of scope.
+
+Actions not named in the current instruction are out of scope.
+
+### User-Directed Change Exception
+
+Existing features, SEO structure, FAQ, content, navigation, CSS, JavaScript, assets, and documentation are protected by default.
+
+However, if the user explicitly instructs deletion, replacement, restructuring, or modification, Codex may perform that action within the approved scope only.
+
+This means:
+
+- Do not delete or change existing work by default.
+- Do delete or change existing work when the user explicitly instructs it.
+- If the instruction is unclear, stop and ask for approval.
+
+### Creation Rule
+
+Codex must create files, folders, pages, documents, components, assets, or projects only when the user explicitly instructs it to do so.
+
+If creation appears necessary to complete the task, Codex must not create it automatically.
+
+Codex must report the reason and wait for explicit user approval.
+
+### Modification Rule
+
+Codex must modify only the files and sections explicitly requested by the user.
+
+Do not edit, refactor, rename, reformat, optimize, clean up, or improve unrelated files, pages, components, CSS rules, JavaScript code, navigation structures, documentation files, assets, or metadata.
+
+Even if Codex finds an issue outside the requested scope, Codex must not fix it automatically.
+
+Codex must report the issue separately and wait for user approval.
+
+### No Helpful Extra Work Rule
+
+Codex must not make helpful improvements outside the requested task.
+
+The following actions require explicit user instruction:
+
+- Creating files
+- Creating folders
+- Creating pages
+- Creating documents
+- Modifying unrelated files
+- Editing shared CSS
+- Editing shared JavaScript
+- Changing navigation
+- Changing SEO metadata
+- Renaming classes
+- Moving sections
+- Adding sections
+- Deleting sections
+- Rewriting page structure
+- Normalizing code style
+- Applying backup files
+- Applying patch files
+- Restoring from older Git versions
+- Updating multiple pages for consistency
+
+### Markdown Cleanup and Conflict Reporting Rule
+
+Markdown documentation is not an append-only file.
+
+When editing Markdown documentation, Codex must first read the existing document structure and existing rules.
+
+When editing Markdown documentation, Codex must not simply add new rules on top of existing conflicting, duplicated, unnecessary, outdated, overbroad, or ambiguous rules.
+
+If existing Markdown text is problematic, Codex must report it during the Markdown modification task.
+
+Problematic Markdown text includes:
+
+- Duplicated rules
+- Rules that conflict with the current user instruction
+- Outdated project rules
+- Unnecessary rules
+- Overbroad absolute prohibitions
+- Ambiguous instructions
+- Rules that may cause future task conflicts
+- Rules that no longer match the current Korea Inside workflow
+
+For each problematic text or section, Codex must report:
+
+1. The problematic text or section
+2. The reason it is a problem
+3. The proposed action: delete, replace, merge, or keep
+4. Whether the action is included in the diff
+
+Codex must not silently keep conflicting rules and add another rule above them.
+
+When the current user instruction explicitly asks for Markdown cleanup, Codex may delete, replace, or merge problematic Markdown text within the approved files only.
+
+Codex must show all deletions, replacements, and merges in the diff.
+
+Codex must not commit before explicit user approval.
+
+### Backup and Restore Rule
+
+Backup ZIPs, older Git versions, patch files, and external files are reference materials only unless the user explicitly approves their use.
+
+Codex must not overwrite current project files from any backup, ZIP, patch, or older version without:
+
+1. Comparing against the current file
+2. Showing the diff
+3. Receiving explicit user approval
+
+### Required Work Sequence
+
+For every task, Codex must follow this sequence:
+
+1. Run `git status`.
+2. Confirm the working tree state.
+3. Read the relevant Markdown documentation.
+4. Identify the exact files and actions allowed by the current user instruction.
+5. Modify only the approved files and sections.
+6. Show the full diff without abbreviation.
+7. Wait for user approval.
+8. Commit only after explicit user approval.
+
+### Stop Conditions
+
+Codex must stop and ask for approval if:
+
+- The requested task requires editing additional files.
+- The requested task requires creating new files, folders, pages, documents, components, assets, or projects not explicitly instructed.
+- The Markdown documentation appears outdated or incorrect.
+- The current file conflicts with the documented rule.
+- The requested change affects shared layout, navigation, CSS, JavaScript, SEO, or multiple pages.
+- The task requires restoring from backup, ZIP, patch, or Git history.
+- Codex is unsure whether a file or action is within scope.
+
+---
+
 ## Project Philosophy
 
 Help users choose. Do not simply recommend.
@@ -69,7 +220,7 @@ Implementation rules:
 
 - Prefer small, reviewable changes.
 - Work on one feature or one page per task.
-- Avoid unrelated modifications.
+- Keep work limited to the current user instruction.
 - Avoid large batches of unrelated changes.
 - Implement the smallest change necessary.
 - Protect existing work.
@@ -79,11 +230,11 @@ Implementation rules:
 
 Scope control rules:
 
-- Only edit the files explicitly requested by the user.
-- Do not modify unrelated pages or components.
-- Do not modify Header, Footer, Hero, navigation, shared JavaScript, common CSS, or shared components unless explicitly requested.
-- Do not refactor unrelated CSS or rename unrelated classes.
-- Do not move, rename, delete, or reorganize files unless explicitly requested and approved.
+- Edit the files and sections explicitly requested or approved in the current user instruction.
+- Treat unrelated pages and components as out of scope unless the user explicitly includes them.
+- Treat Header, Footer, Hero, navigation, shared JavaScript, common CSS, and shared components as out of scope unless the user explicitly includes them.
+- Refactor CSS or rename classes only when the user explicitly instructs or approves that action.
+- Move, rename, delete, or reorganize files only when explicitly instructed or approved.
 - Stop and ask when the requested scope is unclear.
 
 File scope limits per task unless explicitly approved:
@@ -102,22 +253,22 @@ Stop and request approval if the task needs to exceed these limits.
 For every implementation:
 
 1. Analyze the request.
-2. Show the proposed diff before editing.
-3. Stop and wait for explicit user approval.
-4. Apply only the approved changes.
-5. Stop immediately after the requested task is complete.
+2. Identify the exact files, sections, and actions approved by the current user instruction.
+3. Modify only the approved files and sections.
+4. Show the full diff without abbreviation.
+5. Wait for explicit user approval before commit or follow-up work.
+6. Stop immediately after the requested task is complete.
 
-For documentation-rule changes, show the proposed diff before applying the file edit and wait for Product Owner approval.
+For documentation-rule changes, limit edits to named documents, show the full diff without abbreviation, and wait for Product Owner approval before commit or follow-up work.
 
 Approval rules:
 
 - Stop and wait for explicit user approval.
-- Never assume approval.
-- Never proceed to the next task without approval.
-- Never create a commit before approval.
-- Never push to GitHub.
-- Never sync automatically.
-- Never publish automatically.
+- Treat approval as explicit only when the Product Owner clearly gives it.
+- Proceed to the next task only after a new user instruction.
+- Create a local commit only when the user asks for or approves a commit.
+- Push to GitHub only when the project owner explicitly requests it in a separate instruction.
+- Sync or publish only when explicitly instructed.
 
 Completion rules:
 
@@ -125,15 +276,14 @@ Completion rules:
 - Do not continue into automatic QA, screenshot generation, extra verification, extra improvements, refactoring, commits, pushes, or another task unless the user explicitly requests it.
 - Do not proceed to the next task without a new user instruction.
 
-After explicit approval:
+After explicit commit approval:
 
-- Create a local commit only if the user asks for or approves a commit.
 - Use a clear commit message describing the implemented task.
 - Stop immediately after the local commit.
 
 GitHub pushes are always performed manually by the project owner using GitHub Desktop.
 
-If a task includes both commit and push, perform only the approved local commit and stop. Never push unless the project owner explicitly requests a GitHub push in a separate instruction.
+If a task includes both commit and push, perform only the approved local commit and stop. Push to GitHub only after the project owner explicitly requests a GitHub push in a separate instruction.
 
 ---
 
@@ -155,13 +305,13 @@ Protected files and areas:
 
 Modification rules:
 
-- Do not modify protected files unless explicitly requested.
-- Do not modify navigation without approval.
-- Do not modify `style.css` without approval.
-- Do not modify shared JavaScript without approval.
-- Do not rename, move, or delete existing files without approval.
-- Do not delete or replace images unless requested.
-- Do not rewrite working code without a clear approved benefit.
+- Modify protected files only when explicitly requested.
+- Modify navigation only with approval.
+- Modify `style.css` only with approval.
+- Modify shared JavaScript only with approval.
+- Rename, move, or delete existing files only with approval.
+- Delete or replace images only when requested.
+- Rewrite working code only when the user approves the specific benefit.
 
 If a requested implementation requires modifying a protected file:
 
@@ -172,13 +322,13 @@ If a requested implementation requires modifying a protected file:
 5. Show the complete diff.
 6. Wait for approval.
 
-Whenever possible, create new HTML pages or Markdown documentation instead of modifying existing production pages.
+When the user explicitly approves creating new content, prefer new HTML pages or Markdown documentation instead of modifying existing production pages whenever that is the safer option.
 
 ---
 
 ## Architecture Rules
 
-Respect the existing project structure. Do not reorganize folders, rename files, move files, change URLs, or introduce redirects without explicit approval.
+Respect the existing project structure. Reorganize folders, rename files, move files, change URLs, or introduce redirects only with explicit approval.
 
 Existing URLs are stable. If a URL change is necessary:
 
@@ -494,7 +644,7 @@ Important:
 - Do not perform full QA for minor changes.
 - Do not delay implementation with excessive verification.
 - Time is also a quality factor.
-- Always show diff first and wait for Product Owner approval before applying document changes.
+- For document changes, modify only the named documents and sections, show the full diff without abbreviation, and wait for Product Owner approval before commit or follow-up work.
 - After the approved implementation and required verification level are complete, report the result and stop immediately.
 - Do not continue with additional QA, screenshots, improvements, refactoring, commits, pushes, or another task unless explicitly requested by the Product Owner.
 
@@ -646,11 +796,11 @@ Education comes before monetization. Revenue is the result of trust, not the goa
 
 ## Documentation Standards
 
-Every significant implementation must include or update corresponding Markdown documentation inside `docs/`.
+When documentation is explicitly requested or approved for a significant implementation, update the corresponding Markdown documentation inside `docs/`.
 
-When code changes behavior, update related Markdown documentation. If no documentation is required, explain why.
+When code changes behavior, update related Markdown documentation only if the user explicitly requests or approves that documentation action. If no documentation update is included, explain why.
 
-Whenever major research is performed, create or update a Markdown document inside `docs/` with:
+Whenever major research documentation is explicitly requested or approved, create or update a Markdown document inside `docs/` with:
 
 - Sources
 - Research date
@@ -721,7 +871,7 @@ Before requesting approval, review:
 - SEO maintained
 - Accessibility maintained
 - Verification level selected according to Codex QA / Verification Rules
-- Documentation updated or documented as not required
+- Documentation action matches the current user instruction or approval
 - No unnecessary changes
 
 Never skip self-review.
