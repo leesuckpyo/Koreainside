@@ -15,7 +15,7 @@ Korea Inside OS v1.0은 지금까지 생성된 Standards, Handbooks, Playbooks, 
 
 ## 1. 모든 문서 목록
 
-현재 `docs/`에는 70개의 Markdown 문서가 있다. (2026-07-07 기준)
+현재 `docs/`에는 71개의 Markdown 문서가 있다. (2026-07-07 기준)
 
 ### Core / Governance
 
@@ -88,6 +88,7 @@ Root 기준:
 - `wowpass.md`
 - `esim.md`
 - `payments.md`
+- `tmoney.md`
 - `apps.md`
 - `accommodation.md`
 - `airport-transfer.md`
@@ -284,6 +285,7 @@ docs/
     wowpass.md
     esim.md
     payments.md
+    tmoney.md
     apps.md
     accommodation.md
     airport-transfer.md
