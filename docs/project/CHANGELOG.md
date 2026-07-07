@@ -1,14 +1,14 @@
 # Korea Inside Changelog
 
-## v0.5 - eSIM and T-money Completed
-- Landing page completed
-- Arrival guide completed
-- WOWPASS guide completed
-- T-money guide completed
-- eSIM guide completed
-- Improved eSIM provider comparison
-- Removed duplicate eSIM content
-- Added eSIM FAQ
-- Improved T-money FAQ
-- Added mobile T-money / NFC guidance
-- Updated T-money purchase guidance
+## v0.5 - eSIM and T-money Guide Updates
+- Completed the landing page.
+- Completed the Arrival guide.
+- Completed the WOWPASS guide.
+- Completed the T-money guide.
+- Completed the eSIM guide.
+- Improved the eSIM provider comparison.
+- Removed duplicate eSIM content.
+- Added the eSIM FAQ.
+- Improved the T-money FAQ.
+- Added mobile T-money / NFC guidance.
+- Updated T-money purchase guidance.

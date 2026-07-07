@@ -1,14 +1,10 @@
 # Korea Inside History
 
 ## 2026-06-27
-Completed major improvements to the eSIM Guide and T-money Guide.
+The eSIM Guide and T-money Guide were completed as core travel-essential guides.
 
-Key outcomes:
-- eSIM Guide reached completion level.
-- T-money Guide reached completion level.
-- Duplicate content was removed.
-- FAQ sections were improved.
+Why this mattered:
 - Korea Inside content direction became clearer.
+- The project moved closer to a practical decision-support structure for Korea travel essentials.
 
-Next focus:
-Maps Guide.
+Detailed change items are tracked in `CHANGELOG.md`.
