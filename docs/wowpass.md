@@ -4,11 +4,11 @@ Last updated: 2026-07-07
 
 ## Purpose
 
-This document records the revised UX and content strategy for `wowpass.html`.
+This document defines the WOWPASS-first page standard for `wowpass.html`.
 
 WOWPASS should not be explained as a product only. The page should explain WOWPASS as one money-management option for travelers in Korea: useful for some visitors, unnecessary for others, and best understood through real Korean money, real kiosks, real cards, and short decision guidance.
 
-This is documentation only. This task does not modify `wowpass.html`, `style.css`, `common.js`, routes, navigation, or image assets.
+The page must remain a dedicated WOWPASS guide, not a broad `WOWPASS vs T-money` comparison page.
 
 ## Current Page Direction
 
@@ -20,7 +20,7 @@ Current `wowpass.html` already has useful content that should be preserved:
 - Practical warnings that availability and supported services can change.
 - Related links to T-money, arrival, payments, maps, and eSIM guides.
 
-Future updates should improve and reorder the existing content rather than removing sections or reducing useful information.
+HTML updates should improve and reorder the existing content rather than removing sections or reducing useful information.
 
 ## Approved Page Identity
 
@@ -28,11 +28,12 @@ As of 2026-07-07, `wowpass.html` is approved as a dedicated WOWPASS guide page.
 
 - VS-first framing is no longer approved for `wowpass.html`.
 - WOWPASS must remain the main page topic in the title, metadata, hero and H1.
-- Any WOWPASS and T-money comparison should remain supporting content only, or move to a separate comparison page in a future approved task.
+- Any WOWPASS and T-money comparison must remain short supporting context only.
+- Do not turn this page into a detailed WOWPASS and T-money comparison page.
 
 ## Revised UX Principle
 
-The page should help travelers quickly understand why WOWPASS may be useful before comparing detailed features.
+The page should help travelers quickly understand why WOWPASS may be useful before any short supporting comparison.
 
 Preferred user flow:
 
@@ -44,11 +45,11 @@ Preferred user flow:
 6. Give short guidance on who may need it and who may not.
 7. Keep FAQ for detailed questions.
 
-Avoid making the page feel like a broad `WOWPASS vs T-money` battle. T-money comparison is still useful, but it should support a decision instead of defining the entire page.
+Avoid making the page feel like a broad `WOWPASS vs T-money` battle. T-money context is useful only when it helps explain WOWPASS, and it must not define the page.
 
 ## Korean Money Concept
 
-The WOWPASS page should introduce Korean money before explaining card charging and spending. This helps users understand why KRW numbers look large and what a top-up amount roughly means.
+Korean money recognition is a supporting section for the WOWPASS guide. Keep it short and use it only to help users understand why KRW numbers look large and what a top-up amount roughly means before explaining card charging and spending.
 
 Use actual or official/reference banknote images if available. If banknote images are not available during implementation, use a clear placeholder with descriptive alt text and a TODO note until proper assets are added.
 
@@ -77,12 +78,12 @@ Official money source:
 
 | Order | Section intent | Image role | Content guidance |
 |---|---|---|---|
-| 1 | Korean money recognition | Recognition + value image | Show KRW banknotes first. Explain that Korean prices often look large because prices are written in won. |
-| 2 | Approximate value feeling | Value image | Give rounded USD/EUR/GBP/AUD/JPY values and a visible exchange-rate-change note. |
+| 1 | Korean money recognition | Recognition + value image | Briefly show KRW banknotes. Explain that Korean prices often look large because prices are written in won. |
+| 2 | Approximate value feeling | Value image | Give rounded USD/EUR/GBP/AUD/JPY values and a visible exchange-rate-change note. Keep this section concise. |
 | 3 | Home cards still work for many travelers | Decision guidance | Explain that many visitors can use home credit/debit cards in Korea, but card acceptance, foreign transaction fees, issuer blocks, and exchange rates depend on the card. |
 | 4 | Why some travelers choose WOWPASS | Recognition + decision image | Present WOWPASS as a prepaid budgeting and spending option, not a required item. |
 | 5 | How WOWPASS works | Usage image | Show card, kiosk, app, and payment flow with short text. Prefer image, short meaning, practical explanation, next action. |
-| 6 | Who may need it / who may not | Decision cards or compact table | Keep this short. The goal is decision clarity, not a long comparison page. |
+| 6 | Who may need it / who may not | Decision cards or compact table | Keep this short. The goal is decision clarity, not a comparison page. |
 | 7 | FAQ | Existing FAQ component | Preserve FAQ and keep visible FAQ text aligned with FAQ JSON-LD. |
 
 ## WOWPASS Positioning
@@ -174,11 +175,12 @@ Future HTML work should preserve:
 - Existing URL: `wowpass.html`.
 - Existing canonical URL unless the site URL changes by approved project strategy.
 - Existing useful FAQ content.
-- Visible, semantic HTML for every important instruction, comparison, warning, and value.
+- Visible, semantic HTML for every important instruction, short supporting comparison, warning, and value.
 
 Approved title direction:
 
-- Use a WOWPASS-first guide frame rather than a pure `WOWPASS vs T-money` title, while still covering T-money comparison where it supports traveler decisions.
+- Use a WOWPASS-first guide frame. Do not use a `WOWPASS vs T-money` title or page frame.
+- T-money references should explain WOWPASS use, limits, or suitability in brief supporting context only.
 
 No metadata should be changed without reviewing SEO impact and showing the complete diff first.
 
@@ -195,12 +197,8 @@ Sources to verify before future HTML implementation:
 - Wise KRW to AUD reference: https://wise.com/gb/currency-converter/krw-to-aud-rate
 - Wise KRW to JPY reference: https://wise.com/gb/currency-converter/krw-to-jpy-rate
 
-## Quality Notes
+## Maintenance Notes
 
-Estimated page strategy quality before this documentation update: 72/100.
+Future HTML changes should stay inside the WOWPASS guide scope: use, features, issuing, top-up, exchange, payments, transportation function, refunds, limits, and practical warnings.
 
-Estimated page strategy quality after this documentation update: 90/100.
-
-Resolved identity gap: `wowpass.html` is approved as a WOWPASS-first guide page. A future approved HTML task can add a Korean money recognition section without removing existing useful sections.
-
-Comparison section order updated to match the page title.
+If the live page includes a strong visual comparison or detailed table, reduce it to short supporting context inside the WOWPASS page rather than expanding comparison content.
