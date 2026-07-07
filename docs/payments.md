@@ -1,14 +1,14 @@
-# Payments Guide Page Review
+# Payments Guide Page Standard
 
-Date: 2026-07-01
+Last reviewed: 2026-07-01
 
 ## Scope
 
-Updated `payments.html` as a practical payment decision guide for visitors to Korea. The page now compares foreign credit cards, cash, T-money, WOWPASS and Korean mobile payment apps.
+`payments.html` should remain a practical payment decision guide for visitors to Korea. The page should compare foreign credit cards, cash, T-money, WOWPASS and Korean mobile payment apps.
 
-## Preservation Policy
+## Content Preservation Requirements
 
-No existing section was intentionally removed. Existing content areas were retained and expanded:
+`payments.html` should retain these content areas unless a separate approved task changes the page scope:
 
 - Quick answer / short answer
 - Foreign cards - what works
@@ -19,21 +19,21 @@ No existing section was intentionally removed. Existing content areas were retai
 - For long-term residents
 - Related guides
 
-Encoding-damaged punctuation and broken Korean snippets were corrected into readable English or romanized text.
+Korean terms and payment-related names should remain readable in English or romanized text.
 
-## Structural Changes
+## Required Structure
 
-- Updated the H1 to `How to Pay in Korea`.
-- Added CTA links to the comparison and common-problems sections.
-- Added a payment options comparison table.
-- Added a situation-based payment method section.
-- Added common payment problems.
-- Added dedicated WOWPASS and T-money connection panels.
-- Added visible FAQ content with 8 questions.
-- Added BreadcrumbList JSON-LD.
-- Added FAQPage JSON-LD.
+- Keep the H1 as `How to Pay in Korea`.
+- Include CTA links to the comparison and common-problems sections.
+- Include a payment options comparison table.
+- Include a situation-based payment method section.
+- Include common payment problems.
+- Include dedicated WOWPASS and T-money connection panels.
+- Keep visible FAQ content with 8 questions.
+- Keep BreadcrumbList JSON-LD.
+- Keep FAQPage JSON-LD.
 
-## SEO Notes
+## SEO Requirements
 
 - Title: `How to Pay in Korea | Credit Cards, Cash, WOWPASS and T-money`
 - Meta description focuses on payment choices for visitors in Korea.
@@ -41,24 +41,24 @@ Encoding-damaged punctuation and broken Korean snippets were corrected into read
 - H1 count should remain one.
 - Important text is visible HTML text, not image-only content.
 
-## UX Notes
+## UX Requirements
 
 - The page remains text-first and problem-solving focused.
 - The comparison table uses the existing scrollable table pattern.
-- Payment situation cards help users choose by real travel context.
+- Payment situation cards should help users choose by real travel context.
 - WOWPASS and T-money sections link to their deeper guides without turning the page into a sales page.
 
-## QA Checklist
+## Implementation Verification Requirements
 
-- Confirm H1 count is one.
-- Confirm FAQ count is at least 8.
-- Confirm internal links:
+- H1 count should be one.
+- FAQ count should be at least 8.
+- Internal links should include:
   - `wowpass.html`
   - `tmoney.html`
   - `apps.html`
   - `airport.html`
-- Confirm no images were added.
-- Confirm 360px, 768px and 1440px layouts when a browser is available.
+- Images should remain absent unless separately approved.
+- 360px, 768px and 1440px layouts should be checked when a browser is available.
 
 ## Remaining Risk
 

@@ -1,4 +1,4 @@
-# Stay Guide
+# Stay Guide Page Standard
 
 ## 1. Page Purpose
 
@@ -13,7 +13,7 @@ Korea Inside should help users:
 - choose the best area
 - understand why that area fits their trip
 - compare hotel suitability
-- continue booking through Booking or Agoda
+- decide the next accommodation-check step
 
 ## 2. User Goal
 
@@ -68,7 +68,7 @@ Flow:
 1 : Input values
 2 : Recommended Area
 3 : Recommended Hotels
-4 : Booking / Agoda
+4 : Hotel Evaluation / Next Step
 
 Decision factors include:
 
@@ -129,9 +129,7 @@ Each hotel card or listing should include:
 - area
 - best-for label
 - key strengths
-- booking action
-
-Booking links should use Booking or Agoda after approval.
+- decision next step
 
 ### Alternative Areas
 
@@ -215,42 +213,7 @@ Myeongdong, Dongdaemun, and Gangnam can be good for shopping, depending on the u
 
 Yes, but subway distance alone is not enough. Users with large suitcases should also check stairs, exits, walking distance, and airport access.
 
-### Should I book through Booking or Agoda?
-
-Booking and Agoda may both be useful. The final integration should compare availability, price, cancellation policy, and affiliate rules after approval.
-
-## 8. Future Development Plan
-
-Stay Guide should evolve into a recommendation engine supported by structured hotel and review data.
-
-Planned data expansion:
-
-- Hotel Database
-- Review Analysis
-- Reddit Analysis
-- Google Review Summary
-- Booking Integration
-- Agoda Integration
-
-Planned feature flow:
-
-1 : User selects travel purpose and priority
-2 : System recommends area
-3 : System recommends hotels
-4 : User compares hotel evaluation criteria
-5 : User opens Booking or Agoda
-
-Future implementation requires approval before adding:
-
-- hotel affiliate links
-- booking integrations
-- Agoda integrations
-- review scraping or automated review summaries
-- new navigation links
-- common CSS changes
-- URL changes
-
-## 9. Stay Cluster Page: Budget Travelers
+## 8. Stay Cluster Page: Budget Travelers
 
 The Budget Travelers stay cluster page should help users choose a budget-friendly Seoul area without treating the cheapest room as the best answer.
 
@@ -285,7 +248,7 @@ Decision rules:
 - Mention that prices vary by season, room type, location, booking timing, cancellation policy, holidays, and special events.
 - Prioritize subway access, airport access, luggage route, bathroom type, elevator availability, and late-night movement over headline price.
 
-## 10. Stay Cluster Internal Linking
+## 9. Stay Cluster Internal Linking
 
 All Stay Cluster pages should use a standardized `Related Guides` section near the bottom of the page.
 
@@ -303,11 +266,11 @@ Design rules:
 - Do not add external links, affiliate links, navigation changes, or new CSS for this section.
 - Keep all link labels and descriptions as visible HTML text for SEO and browser translation.
 
-## 11. Stay Cluster Design System
+## 10. Stay Cluster Design System
 
 Stay Cluster pages should use a unified visual system so the cluster feels like one premium decision-support experience.
 
-Applied page scope:
+Page scope:
 
 - Use `body class="stay-cluster"` on Stay Cluster pages only.
 - Keep styling scoped under `.stay-cluster` to avoid changing unrelated Korea Inside pages.
@@ -327,11 +290,11 @@ Rules:
 - Do not introduce new CSS that affects non-Stay pages.
 - Do not replace decision-support content with image-only design.
 
-## 12. Stay Cluster Polish Pass
+## 11. Stay Cluster Polish Requirements
 
-The Stay Cluster polish pass keeps all stay pages visually consistent while preserving content meaning, SEO metadata, URLs and one `h1` per page.
+Stay Cluster polish requirements keep all stay pages visually consistent while preserving content meaning, SEO metadata, URLs and one `h1` per page.
 
-Applied standards:
+Standards:
 
 - Keep Stay Cluster refinements scoped under `.stay-cluster` in `style.css`.
 - Keep hero sections compact so the `Quick decision` section appears earlier.

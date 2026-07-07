@@ -1,6 +1,6 @@
-# Korea Travel Checklist Page
+# Korea Travel Checklist Page Standard
 
-Last updated: 2026-07-01
+Last reviewed: 2026-07-01
 
 ## Page
 
@@ -10,7 +10,7 @@ Last updated: 2026-07-01
 
 ## Objective
 
-Improve `checklist.html` to the current KR Inside high-quality page standard without modifying other HTML pages, `style.css`, or `common.js`.
+Define the page standard for `checklist.html` without requiring changes to other HTML pages, `style.css`, or `common.js`.
 
 The page should help users decide what to prepare, not simply list items. Each checklist item should connect to a related guide so users can continue into the deeper decision page when needed.
 
@@ -22,7 +22,7 @@ The page should help users decide what to prepare, not simply list items. Each c
 | `where-to-stay-in-seoul.html` | Strong decision-support content flow and FAQ pattern. |
 | `docs/design-system.md` | Project component reuse audit and standard component guidance. |
 
-## Reused Components
+## Component Requirements
 
 | Component | Existing class or pattern |
 |---|---|
@@ -36,28 +36,28 @@ The page should help users decide what to prepare, not simply list items. Each c
 | FAQ | `.airport-faq`, `<details>`, `<summary>` |
 | Related links | `.related-links`, `.chip` |
 
-No new CSS component was created.
+Use existing CSS components unless a separate approved task changes the page structure or design system.
 
-## Required Sections Added Or Improved
+## Required Sections
 
-| Section | Status |
+| Section | Requirement |
 |---|---|
-| Hero | Improved |
-| Quick Answer | Added |
-| Before You Fly | Improved from existing `Before you fly` checklist |
-| After Landing | Added and preserved existing `At the airport` and `First day in Korea` as subsections |
-| Transportation | Added |
-| Payments | Added |
-| Accommodation | Added |
-| Internet | Added |
-| Safety | Added and preserved existing emergency, illness, lost item and embassy content |
-| Common Mistakes | Added |
-| Final Checklist | Added |
-| FAQ | Added 11 visible FAQ items and matching FAQ JSON-LD |
+| Hero | Required |
+| Quick Answer | Required |
+| Before You Fly | Required checklist section |
+| After Landing | Required, with airport and first-day subsections |
+| Transportation | Required |
+| Payments | Required |
+| Accommodation | Required |
+| Internet | Required |
+| Safety | Required, including emergency, illness, lost item and embassy content |
+| Common Mistakes | Required |
+| Final Checklist | Required |
+| FAQ | Required visible FAQ items with matching FAQ JSON-LD |
 
-## Existing Content Preservation
+## Content Preservation Requirements
 
-The old page had these sections:
+The page should preserve core travel-preparation topics unless a separate approved task changes the page scope:
 
 - Before you fly
 - At the airport
@@ -68,11 +68,11 @@ The old page had these sections:
 - Embassy contacts
 - Related guides
 
-These were not removed. They were corrected, expanded and reorganized into the new hub structure.
+These topics should remain accurate, readable and organized within the checklist hub structure.
 
-## SEO Updates
+## SEO Requirements
 
-Added or updated:
+The page should maintain:
 
 - Unique title
 - Meta description
@@ -82,77 +82,48 @@ Added or updated:
 - Twitter card metadata
 - Breadcrumb JSON-LD
 - FAQ JSON-LD
-- One H1 only
-- More descriptive internal links
+- Exactly one H1
+- Descriptive internal links
 
-## UX Updates
+## UX Requirements
 
-- Added quick answer near the top.
-- Added five preparation-status cards directly below the hero.
-- Grouped tasks by travel situation.
-- Added guide links to checklist items.
-- Added related guide CTAs at the end of major sections.
-- Rewrote card titles in action-oriented language.
-- Split long FAQ answers into shorter visible paragraphs while keeping FAQ count unchanged.
-- Preserved checkbox/localStorage behavior through existing checklist classes.
-- Added common mistakes and final checklist.
-- Added emergency number table with a caution to verify official details before travel.
+- Keep a quick answer near the top.
+- Keep preparation-status cards directly below the hero.
+- Group tasks by travel situation.
+- Connect checklist items to related guide pages where useful.
+- Keep related guide CTAs at the end of major sections.
+- Use action-oriented card titles.
+- Keep FAQ answers in short visible paragraphs.
+- Preserve checkbox/localStorage behavior through existing checklist classes.
+- Include common mistakes and final checklist.
+- Include an emergency number table with a caution to verify official details before travel.
 
-## Accessibility Notes
+## Accessibility Requirements
 
-- Kept semantic sections and heading hierarchy.
-- Added `aria-label` to primary navigation.
+- Keep semantic sections and heading hierarchy.
+- Use `aria-label` on primary navigation.
 - Checklist inputs use explicit labels with `for` and `id`.
 - FAQ uses native `<details>` and `<summary>`.
 - Important information remains visible HTML text.
 
-## QA Notes
+## Implementation Verification Requirements
 
-- H1 count checked: 1.
-- Visible FAQ count checked: 11.
-- FAQ JSON-LD count kept unchanged.
-- JSON-LD parsed successfully.
-- Internal file links and anchor links checked.
-- Corrupted character scan checked.
-- `style.css` and `common.js` diff checked: no changes.
-- Browser-based console and 360px / 768px / 1440px visual checks could not be completed because no browser instance was available in the current tool environment.
+- H1 count should be 1.
+- Visible FAQ content should match FAQ JSON-LD.
+- JSON-LD should parse successfully.
+- Internal file links and anchor links should be checked.
+- Corrupted character scan should be checked.
+- `style.css` and `common.js` should remain unchanged unless separately approved.
+- Browser-based console and 360px / 768px / 1440px visual checks should be performed when a browser is available.
 
 ## Sources
 
 | Source | Use |
 |---|---|
-| Korea Tourism Organization, Visit Korea: 1330 Travel Helpline & Complaint Center (`https://english.visitkorea.or.kr/svc/contents/infoHtmlView.do?vcontsId=140632`) | Verified 1330 Travel Helpline purpose and overseas number reference. |
+| Korea Tourism Organization, Visit Korea: 1330 Travel Helpline & Complaint Center (`https://english.visitkorea.or.kr/svc/contents/infoHtmlView.do?vcontsId=140632`) | Official source for 1330 Travel Helpline purpose and overseas number reference. |
 
-## Future Verification
+## Source Verification Requirements
 
 - Emergency numbers such as 112, 119 and 1339 should be rechecked against official Korean government or public-service sources during future safety content updates.
 - Entry requirements, K-ETA and visa rules should be handled on a dedicated entry/arrival page and verified close to publication.
 - If the project later centralizes header/footer markup, checklist should be migrated only after page-by-page approval.
-
-## Quality Scores
-
-Original page improvement task:
-
-| Area | Before | After |
-|---|---:|---:|
-| SEO | 32 | 92 |
-| UX | 45 | 90 |
-| Accessibility | 58 | 86 |
-| Mobile | 62 | 84 |
-| Design consistency | 54 | 90 |
-
-UX polish task on 2026-07-01:
-
-| Area | Before | After |
-|---|---:|---:|
-| SEO | 92 | 92 |
-| UX | 82 | 91 |
-| Accessibility | 86 | 87 |
-| Mobile | 82 | 85 |
-| Design consistency | 88 | 91 |
-
-## Files Changed
-
-- Modified: `checklist.html`
-- Modified: `docs/checklist.md`
-- Not modified: `style.css`, `common.js`, other HTML pages

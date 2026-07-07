@@ -1,5 +1,9 @@
 # Codex Report
 
+Historical one-time Codex report.
+
+This file records a past task result only. It is not a current operating standard, approval rule, or commit/push instruction. Current Codex workflow follows `AGENTS.md` and the user's explicit instructions.
+
 ## Work Summary
 
 Created `best-area-for-families-seoul.html`.
@@ -8,9 +12,9 @@ The new page is an SEO content page for `Best Area to Stay in Seoul for Families
 
 It helps foreign visitors choose family-friendly Seoul areas based on airport access, luggage, quietness, room comfort and easy transportation.
 
-Automatic approval rules apply because this is a new HTML page.
+Historical note: this past task included page creation, but this report does not define any current automatic approval rule.
 
-Local Git commit was created as required.
+A local Git commit was created for that past task.
 
 GitHub Push was not performed.
 
@@ -71,14 +75,14 @@ GitHub Push was not performed.
 
 ### `codex-report.md`
 
-- Updated this report for the `best-area-for-families-seoul.html` page creation task.
+- Updated this past-task report for the `best-area-for-families-seoul.html` page creation task.
 
 ## Verification Results
 
 - Ran `git status --short` before editing.
 - Confirmed `best-area-for-families-seoul.html` did not exist before creation.
 - Created only the allowed new HTML file: `best-area-for-families-seoul.html`.
-- Updated only the allowed report file: `codex-report.md`.
+- Updated this report file as part of that past task record.
 - Existing HTML files were not modified.
 - `style.css` was not modified.
 - JavaScript files were not modified.
@@ -93,7 +97,7 @@ GitHub Push was not performed.
   - exact title found: 1
   - exact meta description found: 1
   - exact canonical found: 1
-- Local Git commit was created.
+- A local Git commit was created for that task.
 - GitHub Push was not performed.
 
 ## Potential Issues
@@ -103,9 +107,8 @@ GitHub Push was not performed.
 - The page uses existing classes only, so table styling depends on current global CSS.
 - Area guidance is editorial content and does not include live hotel availability or prices.
 
-## Next Suggestions
+## Historical Follow-up Notes
 
-- Review the new page content in browser.
-- Perform visual verification at 375px, 768px and 1440px.
-- Add navigation or internal links in a separate approved task.
-- Add family hotel recommendations only after hotel database verification.
+The original report noted browser review, visual verification, navigation or internal links, and hotel recommendation verification as possible follow-up areas.
+
+These notes are historical references, not current task instructions.

@@ -1,8 +1,8 @@
-# Airport Transfer
+# Airport Transfer Page Standard
 
 ## Purpose
 
-Airport Transfer is a decision-support page for helping visitors choose the most suitable way to travel from Incheon Airport to their hotel or destination.
+Airport Transfer is a decision-support page for helping visitors choose the most suitable way to travel from the airport to their hotel or destination.
 
 The page does not replace detailed navigation apps. Korea Inside helps users:
 
@@ -12,7 +12,7 @@ The page does not replace detailed navigation apps. Korea Inside helps users:
 
 The core user question is:
 
-> How do I get from Incheon Airport to my hotel?
+> How do I get from the airport to my hotel?
 
 Airport Transfer should answer this question quickly, clearly, and practically.
 
@@ -162,8 +162,6 @@ Typical pickup recommendation cases:
 - hotel with difficult access
 - heavy rain or difficult walking conditions
 
-Affiliate booking links may be added in a later stage after approval.
-
 ## Transport Options
 
 Transport descriptions should remain short and practical.
@@ -193,10 +191,10 @@ Transport descriptions should remain short and practical.
 
 ### Airport Pickup
 
-- Best for families
-- Good for large luggage
-- Useful for late-night arrivals
-- Helpful when the hotel is difficult to reach
+- May fit families
+- May fit large luggage
+- May fit late-night arrivals
+- May help when the hotel is difficult to reach
 
 ## Real Travel Problems
 
@@ -237,33 +235,9 @@ Taxi cost depends on destination, time, traffic, taxi type, and surcharges. The 
 
 ### Do I need Airport Pickup?
 
-Airport Pickup is useful for families, large groups, late-night arrivals, heavy luggage, or hotels that are difficult to reach by public transportation.
+Airport Pickup may be useful for families, large groups, late-night arrivals, heavy luggage, or hotels that are difficult to reach by public transportation.
 
 ### Which option is best for families?
 
 Families should prioritize low walking burden, luggage convenience, and fewer transfers. Airport Bus, large taxi, or Airport Pickup may be better than rail-only routes depending on the destination.
 
-## Future Development Plan
-
-Airport Transfer should evolve into a recommendation engine with structured data.
-
-Planned data expansion:
-
-- Hotel Database
-- Nearest Station
-- Walking Distance
-- Exit Number
-- Airport Bus Stop
-- Night Bus Availability
-- Taxi Fare Estimate
-- Pickup Recommendation Rules
-
-Planned feature flow:
-
-1 : Hotel Search
-2 : Automatic Route Recommendation
-3 : Open in Naver Map
-4 : Booking Integration
-5 : Airport Pickup Affiliate
-
-Any future implementation that changes navigation, URLs, common CSS, redirects, booking links, or page design requires separate approval.
