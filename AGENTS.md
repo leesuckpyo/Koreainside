@@ -267,7 +267,9 @@ Approval rules:
 - Treat approval as explicit only when the Product Owner clearly gives it.
 - Proceed to the next task only after a new user instruction.
 - Create a local commit only when the user asks for or approves a commit.
-- Push to GitHub only when the project owner explicitly requests it in a separate instruction.
+- Do not push automatically after commit.
+- Push to GitHub only when the Product Owner explicitly instructs or approves the push.
+- If the Product Owner says they will push manually in GitHub Desktop or by another direct method, do not push from Codex.
 - Sync or publish only when explicitly instructed.
 
 Completion rules:
@@ -280,10 +282,17 @@ After explicit commit approval:
 
 - Use a clear commit message describing the implemented task.
 - Stop immediately after the local commit.
+- Do not treat commit approval as push approval.
 
-GitHub pushes are always performed manually by the project owner using GitHub Desktop.
+Before pushing:
 
-If a task includes both commit and push, perform only the approved local commit and stop. Push to GitHub only after the project owner explicitly requests a GitHub push in a separate instruction.
+- Verify `git status`.
+- Verify the working tree is clean.
+- Verify the ahead/behind state.
+- Verify the latest commit.
+- Verify the files included in the commit.
+- Verify there are no unexpected changes or untracked files.
+- Do not force push, rebase, merge, or pull unless the Product Owner explicitly instructs it.
 
 ---
 
