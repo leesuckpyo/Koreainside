@@ -1,15 +1,11 @@
 # Korea Inside TODO
 
-## Next Pages
+## Current Execution Candidate
 - [ ] Maps Guide
-- [ ] AREX Guide
-- [ ] Payments Guide
-- [ ] Apps Guide
-- [ ] Travel Checklist Guide
 
-## QA
-- [ ] Check all external links
-- [ ] Check mobile layout
-- [ ] Check FAQ accordion behavior
-- [ ] Check image loading
-- [ ] Check spelling and grammar
+## Page Completion / Pre-release QA
+- [ ] Check external links for the page being completed.
+- [ ] Check mobile layout for the page being completed.
+- [ ] Check FAQ accordion behavior when the page includes FAQ.
+- [ ] Check image loading for the page being completed.
+- [ ] Check spelling and grammar for the page being completed.
