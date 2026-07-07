@@ -250,6 +250,50 @@ Date
 
 ----------------------------------------
 
+ADR-011
+
+Problem-solving Content First
+
+Decision
+
+Korea Inside는 관광지 소개 중심 사이트가 아니라 외국인의 한국 여행 문제를 해결하는 decision-support / problem-solving platform이다. 콘텐츠는 사용자가 실수하지 않고 더 나은 결정을 하도록 돕는 것을 우선한다.
+
+Reason
+
+일반 관광 콘텐츠는 쉽게 복제될 수 있고 Korea Inside의 장기 경쟁력이 아니다. Korea Inside의 가치는 사용자가 실제 상황에서 불확실성을 줄이고 더 나은 결정을 하도록 돕는 데 있다.
+
+Status
+
+Accepted
+
+Date
+
+2026-07-07
+
+----------------------------------------
+
+ADR-012
+
+No Mobile App First
+
+Decision
+
+개발 순서는 Landing Page -> Website -> PWA -> Mobile App 순서를 따른다. 모바일 앱부터 개발하지 않는다.
+
+Reason
+
+모바일 앱 개발보다 트래픽, 수요 검증, 콘텐츠 구조, 수익모델 검증이 먼저다. 앱은 충분한 사용자 수요와 운영 구조가 검증된 뒤 검토한다.
+
+Status
+
+Accepted
+
+Date
+
+2026-07-07
+
+----------------------------------------
+
 최종 원칙
 
 ----------------------------------------
