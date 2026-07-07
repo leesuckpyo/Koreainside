@@ -6,9 +6,16 @@ Korea Inside OS v1.0은 지금까지 생성된 Standards, Handbooks, Playbooks, 
 
 새로운 Standard를 계속 추가하는 방식이 아니라, 기존 문서를 10~15개의 핵심 Handbook 아래로 계층화하고 중복 역할을 줄이는 것을 목표로 한다.
 
+## 0. 현재 권한 기준
+
+- Root `AGENTS.md`는 Codex 작업 규칙의 최상위 기준 문서이다.
+- `docs/codex-guidelines.md`는 `AGENTS.md`의 하위 보조 실행 가이드이다.
+- `docs/standards-hub.md`는 문서 체계 인덱스와 정리 방향을 제안하는 문서이며, 파일 이동, 삭제, 병합, 이름 변경, 구조 변경을 승인하지 않는다.
+- 이 문서의 트리, 병합, Migration Plan은 명시적 사용자 승인 전까지 제안/미승인 상태이다.
+
 ## 1. 모든 문서 목록
 
-현재 `docs/`에는 66개의 Markdown 문서가 있다.
+현재 `docs/`에는 70개의 Markdown 문서가 있다. (2026-07-07 기준)
 
 ### Core / Governance
 
@@ -25,6 +32,12 @@ Korea Inside OS v1.0은 지금까지 생성된 Standards, Handbooks, Playbooks, 
 - `release-strategy.md`
 
 ### AI / Codex
+
+Root 기준:
+
+- `../AGENTS.md` (Codex 작업 규칙의 최상위 기준, `docs/` 밖에 위치)
+
+보조 문서:
 
 - `codex-guidelines.md`
 - `ai-decision-framework.md`
@@ -119,7 +132,7 @@ Korea Inside OS v1.0은 지금까지 생성된 Standards, Handbooks, Playbooks, 
 
 `ai-development-constitution.md`, `codex-guidelines.md`, `ai-decision-framework.md`, `ai-collaboration-protocol.md`, `ai-self-audit.md`, `ai-evaluation-standard.md`는 모두 AI 작업 절차와 평가 기준을 다룬다.
 
-정리 방향: AI Collaboration Handbook으로 통합하고, 실행 순서는 Decision Framework → Collaboration Protocol → Self Audit → Evaluation으로 정리한다.
+정리 방향: Codex 작업 범위, 승인, 수정, commit, push, QA, Markdown cleanup 기준은 root `AGENTS.md`를 최상위로 둔다. `codex-guidelines.md`는 AGENTS.md 하위의 보조 실행 가이드로 유지하고, 나머지 AI 문서는 판단 프레임, 협업 방식, 감사, 평가 기준으로 역할을 분리한다.
 
 ### 품질 검사 중복
 
@@ -159,11 +172,15 @@ Korea Inside OS v1.0은 지금까지 생성된 Standards, Handbooks, Playbooks, 
 
 해결: Page Template Standard는 최소 골격, Golden Page Template은 상세 실행 기준으로 역할을 나눈다.
 
-### AI Decision Framework vs Codex Guidelines
+### AGENTS.md vs Codex Guidelines vs AI Decision Framework
 
-둘 다 작업 절차를 정의하지만, Decision Framework는 판단 순서이고 Codex Guidelines는 작업 규칙이다.
+`AGENTS.md`는 Codex 작업 규칙의 최상위 기준이다.
 
-해결: Decision Framework가 먼저, Codex Guidelines가 실행 규칙으로 뒤따른다.
+`docs/codex-guidelines.md`는 AGENTS.md를 반복하지 않는 보조 실행 가이드이다.
+
+`docs/ai-decision-framework.md`는 판단 순서와 의사결정 프레임을 보조한다.
+
+해결: 범위, 승인, 수정, 삭제, 생성, commit, push, QA, Markdown cleanup 기준은 `AGENTS.md`를 우선한다. 실행 감각은 `codex-guidelines.md`, 판단 순서는 `ai-decision-framework.md`를 보조로 사용한다.
 
 ### Asset Library vs Knowledge Management
 
@@ -179,7 +196,7 @@ Release Strategy는 공개 기준이고 Evolution Standard는 운영 후 개선 
 
 ## 4. 병합 제안
 
-OS v1.0에서는 아래 13개 Handbook 체계를 공식 구조로 사용한다.
+OS v1.0에서는 아래 13개 Handbook 체계를 제안 구조로 검토한다. 이 목록은 실제 폴더 이동, 문서 병합, 파일 삭제, 이름 변경을 승인하지 않는다.
 
 1. Project Charter Handbook
 2. Product & Business Handbook
@@ -196,6 +213,8 @@ OS v1.0에서는 아래 13개 Handbook 체계를 공식 구조로 사용한다.
 13. Page Specs Handbook
 
 ## 5. 최종 트리
+
+아래 트리는 제안/미승인 상태의 문서 구조안이다. 실제 폴더 이동, 파일 이름 변경, 문서 병합, 삭제, 보관 처리는 별도 지시와 diff 승인 전까지 수행하지 않는다.
 
 ```text
 docs/
@@ -293,13 +312,15 @@ docs/
 
 ## 6. Migration Plan
 
+아래 Migration Plan은 제안/미승인 상태이다. 이 문서만으로 문서 이동, 삭제, 병합, 이름 변경, Archived 처리, 구조 변경을 실행하지 않는다.
+
 ### Phase 1: Architecture Approval
 
-현재 문서 이동, 삭제, 병합 없이 OS v1.0 Documentation Architecture를 승인한다.
+현재 문서 이동, 삭제, 병합 없이 OS v1.0 Documentation Architecture를 승인 대상으로 제안한다.
 
 ### Phase 2: Hub 정리
 
-`standards-hub.md`를 공식 진입점으로 유지하고, 모든 신규 작업은 OS v1.0 Reference Order를 따른다.
+`standards-hub.md`를 문서 체계 진입점으로 유지하는 방향을 제안한다. Codex 작업 규칙은 root `AGENTS.md`를 우선한다.
 
 ### Phase 3: 역할 중복 정리
 
@@ -316,22 +337,23 @@ docs/
 
 ### Phase 5: 문서 병합
 
-각 Handbook 안에서 중복되는 문장은 제거하고, 원본 문서는 보관 또는 Archived 처리한다.
+각 Handbook 안에서 중복되는 문장을 제거하고 원본 문서를 보관 또는 Archived 처리하는 방안은 별도 승인 후 검토한다.
 
 ### Phase 6: 운영 적용
 
 새로운 Codex 작업은 아래 순서로 문서를 참조한다.
 
-1. Project Charter
-2. Product Vision
-3. Project Memory
-4. Decision Log
-5. AI Decision Framework
+1. AGENTS.md
+2. Project Charter
+3. Product Vision
+4. Project Memory
+5. Decision Log
 6. Codex Guidelines
-7. Master Playbook
-8. 관련 Handbook
-9. Page Specs
-10. Review Checklist
+7. AI Decision Framework
+8. Master Playbook
+9. 관련 Handbook
+10. Page Specs
+11. Review Checklist
 
 ## 7. 승인 전 금지 사항
 

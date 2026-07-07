@@ -1,165 +1,25 @@
 # Korea Inside Codex Guidelines
 
-## User Instruction First and Scope Control
+## Relationship to AGENTS.md
 
-### User Instruction First Rule
+The top-level Codex working rules for Korea Inside are defined in the root `AGENTS.md`.
 
-Codex must follow the user's explicit instruction first.
+This document is a supplementary execution guide. It should not repeat the full scope, approval, backup, Markdown cleanup, stop-condition, commit, or push rules from `AGENTS.md`.
 
-Codex may create, modify, delete, move, rename, refactor, optimize, format, document, or reorganize only what the user explicitly instructed.
+If this document conflicts with `AGENTS.md`, follow `AGENTS.md`.
 
-Codex must not perform extra work proactively, automatically, or as a helpful improvement.
+Existing features, SEO structure, FAQ, content, navigation, CSS, JavaScript, assets, and documentation remain protected by default. If the user explicitly instructs deletion, replacement, restructuring, or modification, Codex may perform that action only within the approved scope.
 
-If Codex believes an additional action is necessary, Codex must stop, explain why the action is needed, and wait for explicit user approval.
-
-### Scope Control Rule
-
-Each task is limited to the files, sections, and actions explicitly approved in the current instruction.
-
-Files not named in the current instruction are out of scope.
-
-Sections not named in the current instruction are out of scope.
-
-Actions not named in the current instruction are out of scope.
-
-### User-Directed Change Exception
-
-Existing features, SEO structure, FAQ, content, navigation, CSS, JavaScript, assets, and documentation are protected by default.
-
-However, if the user explicitly instructs deletion, replacement, restructuring, or modification, Codex may perform that action within the approved scope only.
-
-This means:
-
-- Do not delete or change existing work by default.
-- Do delete or change existing work when the user explicitly instructs it.
-- If the instruction is unclear, stop and ask for approval.
-
-### Creation Rule
-
-Codex must create files, folders, pages, documents, components, assets, or projects only when the user explicitly instructs it to do so.
-
-If creation appears necessary to complete the task, Codex must not create it automatically.
-
-Codex must report the reason and wait for explicit user approval.
-
-### Modification Rule
-
-Codex must modify only the files and sections explicitly requested by the user.
-
-Do not edit, refactor, rename, reformat, optimize, clean up, or improve unrelated files, pages, components, CSS rules, JavaScript code, navigation structures, documentation files, assets, or metadata.
-
-Even if Codex finds an issue outside the requested scope, Codex must not fix it automatically.
-
-Codex must report the issue separately and wait for user approval.
-
-### No Helpful Extra Work Rule
-
-Codex must not make helpful improvements outside the requested task.
-
-The following actions require explicit user instruction:
-
-- Creating files
-- Creating folders
-- Creating pages
-- Creating documents
-- Modifying unrelated files
-- Editing shared CSS
-- Editing shared JavaScript
-- Changing navigation
-- Changing SEO metadata
-- Renaming classes
-- Moving sections
-- Adding sections
-- Deleting sections
-- Rewriting page structure
-- Normalizing code style
-- Applying backup files
-- Applying patch files
-- Restoring from older Git versions
-- Updating multiple pages for consistency
-
-### Markdown Cleanup and Conflict Reporting Rule
-
-Markdown documentation is not an append-only file.
-
-When editing Markdown documentation, Codex must first read the existing document structure and existing rules.
-
-When editing Markdown documentation, Codex must not simply add new rules on top of existing conflicting, duplicated, unnecessary, outdated, overbroad, or ambiguous rules.
-
-If existing Markdown text is problematic, Codex must report it during the Markdown modification task.
-
-Problematic Markdown text includes:
-
-- Duplicated rules
-- Rules that conflict with the current user instruction
-- Outdated project rules
-- Unnecessary rules
-- Overbroad absolute prohibitions
-- Ambiguous instructions
-- Rules that may cause future task conflicts
-- Rules that no longer match the current Korea Inside workflow
-
-For each problematic text or section, Codex must report:
-
-1. The problematic text or section
-2. The reason it is a problem
-3. The proposed action: delete, replace, merge, or keep
-4. Whether the action is included in the diff
-
-Codex must not silently keep conflicting rules and add another rule above them.
-
-When the current user instruction explicitly asks for Markdown cleanup, Codex may delete, replace, or merge problematic Markdown text within the approved files only.
-
-Codex must show all deletions, replacements, and merges in the diff.
-
-Codex must not commit before explicit user approval.
-
-### Backup and Restore Rule
-
-Backup ZIPs, older Git versions, patch files, and external files are reference materials only unless the user explicitly approves their use.
-
-Codex must not overwrite current project files from any backup, ZIP, patch, or older version without:
-
-1. Comparing against the current file
-2. Showing the diff
-3. Receiving explicit user approval
-
-### Required Work Sequence
-
-For every task, Codex must follow this sequence:
-
-1. Run `git status`.
-2. Confirm the working tree state.
-3. Read the relevant Markdown documentation.
-4. Identify the exact files and actions allowed by the current user instruction.
-5. Modify only the approved files and sections.
-6. Show the full diff without abbreviation.
-7. Wait for user approval.
-8. Commit only after explicit user approval.
-
-### Stop Conditions
-
-Codex must stop and ask for approval if:
-
-- The requested task requires editing additional files.
-- The requested task requires creating new files, folders, pages, documents, components, assets, or projects not explicitly instructed.
-- The Markdown documentation appears outdated or incorrect.
-- The current file conflicts with the documented rule.
-- The requested change affects shared layout, navigation, CSS, JavaScript, SEO, or multiple pages.
-- The task requires restoring from backup, ZIP, patch, or Git history.
-- Codex is unsure whether a file or action is within scope.
+Use this document for practical execution judgment: UX sense, image policy, context interpretation, next-step suggestions, senior review habits, and Product Owner decision authority.
 
 ---
 
 ## 1. 기본 원칙
 
-- 기존 기능은 삭제하지 않는다.
-- 기존 SEO 구조는 유지한다.
-- 기존 FAQ는 유지한다.
-- 기존 콘텐츠는 삭제하지 않고 필요한 부분만 보완한다.
+- 작업 범위, 승인, 생성, 수정, 삭제, commit, push 기준은 root `AGENTS.md`를 따른다.
+- 기존 기능, SEO 구조, FAQ, 콘텐츠는 기본적으로 보호한다.
 - 단, 사용자가 명시적으로 지시한 경우 기존 기능, SEO 구조, FAQ, 콘텐츠도 승인된 범위 안에서 삭제하거나 변경할 수 있다.
-- 구조 변경이 필요한 경우 현재 지시 범위에 포함되는지 확인하고, 범위 밖이면 사유와 제안 diff를 보고한 뒤 승인 대기한다.
-- 코드 변경에 대한 Markdown 문서 업데이트는 사용자가 명시적으로 지시하거나 승인한 경우에만 수행한다.
+- 이 문서는 AGENTS.md를 반복하지 않고 실행 감각과 판단 기준만 보조한다.
 
 ## 2. UX 원칙
 
@@ -195,8 +55,8 @@ Codex must stop and ask for approval if:
 ## 5. 작업 절차
 
 - 변경 전 영향 범위를 설명한다.
-- 현재 지시에서 승인된 파일과 섹션만 수정한다.
-- 수정 후 변경 diff를 제시하고, commit 또는 후속 작업 전 승인을 기다린다.
+- 현재 지시에서 승인된 파일과 섹션만 다룬다.
+- 수정, diff, 승인, commit 흐름은 root `AGENTS.md`를 따른다.
 - 수정 후 변경 파일 목록과 남은 리스크를 보고한다.
 - 페이지 전략 점수 또는 품질 점수를 함께 제시한다.
 
@@ -271,7 +131,7 @@ Codex must stop and ask for approval if:
 
 - Codex는 현재 사용자 지시와 승인된 범위 안에서 프로젝트 위험을 함께 검토한다.
 - SEO 영향, 기존 기능 영향, 유지보수 영향, 정보 정확성 영향, 장기 운영 영향이 있으면 작업 전에 먼저 알려준다.
-- 리스크가 작은 문서 작업이라도 남은 리스크를 결과 보고에 포함한다.
+- 리스크 보고 범위와 QA 수준은 root `AGENTS.md`를 따른다.
 
 ## 14. 한 줄 확인이 필요한 작업
 
@@ -299,6 +159,8 @@ AI가 프로젝트 규칙을 기억해야 한다.
 ## 16. Project Health Check
 
 Project Health Check는 사용자가 명시적으로 요청하거나 승인한 경우에만 수행한다.
+
+일반 작업의 QA 범위와 자동 점검 제한은 root `AGENTS.md`를 따른다.
 
 명시적으로 요청된 경우 아래 항목을 점검한다.
 
