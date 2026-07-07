@@ -1,6 +1,6 @@
 # WOWPASS Page Planning
 
-Last updated: 2026-07-02
+Last updated: 2026-07-07
 
 ## Purpose
 
@@ -22,9 +22,17 @@ Current `wowpass.html` already has useful content that should be preserved:
 
 Future updates should improve and reorder the existing content rather than removing sections or reducing useful information.
 
+## Approved Page Identity
+
+As of 2026-07-07, `wowpass.html` is approved as a dedicated WOWPASS guide page.
+
+- VS-first framing is no longer approved for `wowpass.html`.
+- WOWPASS must remain the main page topic in the title, metadata, hero and H1.
+- Any WOWPASS and T-money comparison should remain supporting content only, or move to a separate comparison page in a future approved task.
+
 ## Revised UX Principle
 
-The page should create an "아~ 이거구나" moment before it asks users to compare features.
+The page should help travelers quickly understand why WOWPASS may be useful before comparing detailed features.
 
 Preferred user flow:
 
@@ -168,9 +176,9 @@ Future HTML work should preserve:
 - Existing useful FAQ content.
 - Visible, semantic HTML for every important instruction, comparison, warning, and value.
 
-Potential future title direction, only after approval:
+Approved title direction:
 
-- Shift from a pure `WOWPASS vs T-money` title toward a money-management frame, while still covering T-money comparison where it helps search intent.
+- Use a WOWPASS-first guide frame rather than a pure `WOWPASS vs T-money` title, while still covering T-money comparison where it supports traveler decisions.
 
 No metadata should be changed without reviewing SEO impact and showing the complete diff first.
 
@@ -193,6 +201,6 @@ Estimated page strategy quality before this documentation update: 72/100.
 
 Estimated page strategy quality after this documentation update: 90/100.
 
-Remaining gap: `wowpass.html` itself still uses a VS-first structure. A future approved HTML task can update the page order and add a Korean money recognition section without removing existing useful sections.
+Resolved identity gap: `wowpass.html` is approved as a WOWPASS-first guide page. A future approved HTML task can add a Korean money recognition section without removing existing useful sections.
 
 Comparison section order updated to match the page title.

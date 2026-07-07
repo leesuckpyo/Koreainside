@@ -49,9 +49,23 @@ Changes recorded for this structure:
 
 - Removed the Travel Style recommendation table from `accommodation.html`.
 - Removed the How to Choose section from `accommodation.html`.
-- Changed Complete Your Korea Trip into a compact bottom internal navigation banner below FAQ and above the final recommendation.
-- Kept Quick Decision, Quick Answer, Common Mistakes, Scenarios, FAQ, Related Guides and Final Recommendation sections unchanged for this phase.
+- Current `accommodation.html` structure includes Quick Decision, Quick Answer, Area Comparison, Common Mistakes, FAQ and Complete Trip Guides.
+- Scenarios, `related-guides` and Final Recommendation are not currently present in `accommodation.html` and are not being restored in this task.
+- Changed Complete Trip Guides into a compact bottom internal navigation banner below FAQ.
+- Converted the existing Quick Decision section into an internal guide-card hub using crawlable full-card links.
 - Connected users to related guides without distracting from the Accommodation page.
+
+Quick Decision guide-card hub links:
+
+- `hongdae-vs-myeongdong.html`
+- `best-area-for-first-time-visitors-seoul.html`
+- `best-area-for-families-seoul.html`
+- `best-area-for-solo-travelers-seoul.html`
+- `best-area-for-couples-seoul.html`
+- `best-area-for-budget-travelers-seoul.html`
+- `best-area-for-shopping-seoul.html`
+- `best-area-for-nightlife-seoul.html`
+- `best-area-for-luxury-hotels-seoul.html`
 
 Purpose:
 
