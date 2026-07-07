@@ -2,108 +2,50 @@
 
 > **How Korea Works**
 
-## 프로젝트 목표
+Korea Inside is a practical decision-support platform for international visitors in Korea.
 
-Korea Inside는 외국인이 한국 여행 중 실제로 겪는 문제를 해결하는 모바일 우선 웹 플랫폼이다. 관광지 정보를 나열하는 데 그치지 않고, 도착·이동·통신·결제·내비게이션 같은 실질적인 이용 문제에 답한다.
+It helps travelers understand how Korea works in real situations: airport arrival, transportation, mobile connectivity, payments, maps, accommodation, and other decisions that affect the trip.
 
-## 핵심 철학
+## Core Direction
 
-관광지 소개보다 문제 해결을 우선한다.
+Korea Inside does not exist to list tourist attractions.
 
-사용자가 한국에 도착하기 전과 도착 직후에 필요한 정보를 빠르고 명확하게 이해하고 실행할 수 있도록 돕는다.
+It exists to reduce uncertainty, prevent avoidable mistakes, and help visitors make better choices before and during their trip.
 
-## UI/UX 원칙
+Every page should answer a practical user problem and explain:
 
-Korea Inside는 Mobile First를 기본 원칙으로 한다.
+- what the visitor needs to decide
+- which option fits which situation
+- what the limitations are
+- what should be checked with official sources
 
-모바일 사용자는 긴 설명보다 빠른 해결을 원한다.
+## Stable Principles
 
-모든 핵심 화면은 3초 안에 목적을 이해할 수 있어야 한다.
+- Accuracy and user trust come first.
+- Important information should remain visible HTML text, not image-only content.
+- Content should be written for real users before SEO.
+- Recommendations should explain trade-offs, not simply name one best option.
+- Mobile usability and browser translation should be protected.
+- Existing URLs, SEO structure, navigation, CSS, JavaScript, and assets should not be changed without explicit approval.
 
-카드형 UI는 폭, 높이, 여백을 과도하게 크게 만들지 않는다.
+## Document Roles
 
-긴 문장보다 짧은 Step 형식을 우선한다.
+This file is only the root project overview.
 
-절차 안내는 가능하면 다음 형식을 사용한다.
+Use the project documents below for operational details:
 
-1 : Open Settings
-2 : Go to Cellular
-3 : Add eSIM
-4 : Scan QR Code
-5 : Activate eSIM
+- Codex working rules: `AGENTS.md`
+- Documentation map: `docs/standards-hub.md`
+- Roadmap and development order: `docs/project/ROADMAP.md`
+- Current execution items: `docs/project/TODO.md`
+- Change history: `docs/project/CHANGELOG.md`
+- Historical milestones: `docs/project/HISTORY.md`
+- Official decisions: `docs/decision-log.md`
+- Decision summaries: `docs/project/DECISIONS.md`
+- Codex execution guidance: `docs/codex-guidelines.md`
 
-인포그래픽 아래에 같은 내용을 긴 카드로 반복하지 않는다.
+## Maintenance Rule
 
-설명은 한 줄 이하를 원칙으로 한다.
+Do not store current progress, active task lists, release history, or detailed roadmaps in this file.
 
-모바일에서 눈의 좌우 이동이 크지 않도록 텍스트 폭을 줄인다.
-
-기존 디자인 색상, 폰트, 아이콘, 버튼 스타일은 유지한다.
-
-새 디자인을 만드는 것이 아니라 기존 디자인을 더 작고 읽기 쉽게 정리한다.
-
-모든 핵심 정보는 이미지가 아니라 보이는 HTML 텍스트로 제공한다.
-
-PC 화면은 모바일 구조를 자연스럽게 확장한다.
-
-모든 신규 페이지와 기존 페이지 개선 작업에 이 원칙을 적용한다.
-
-## 대상 사용자
-
-- 한국을 방문하는 외국인 여행자
-- 한국 도착 전 준비가 필요한 첫 방문자
-- 공항, 교통, 통신, 결제와 지도 사용에 도움이 필요한 방문자
-
-## 개발 우선순위
-
-1. eSIM
-2. Maps
-3. AREX
-4. Payments
-5. Apps
-
-## 콘텐츠 원칙
-
-- 모든 핵심 정보는 검색 가능하고 번역 가능한 HTML 텍스트로 제공한다.
-- 이미지는 이해를 돕는 보조 자료로만 사용한다.
-- 인포그래픽 안의 핵심 문구는 반드시 보이는 HTML 텍스트로도 제공한다.
-- 정확성, 사용자 경험, SEO, 모바일 사용성, 브라우저 자동 번역을 우선한다.
-
-## 번역 전략
-
-- 기본 콘텐츠 언어는 영어다.
-- 브라우저 자동 번역이 가능한 시맨틱 HTML 구조를 유지한다.
-- 중요한 안내, 비교, 경고, 절차를 이미지·`alt`·`title`·`figcaption`에만 의존하지 않는다.
-
-## SEO 전략
-
-- Google 검색 최적화를 목표로 한다.
-- 사용자의 실제 문제를 반영한 문제 해결형 검색어를 중심으로 콘텐츠를 작성한다.
-- 각 페이지에 고유한 `title`, meta description, canonical URL, 단일 `h1`, 의미 있는 이미지 `alt`를 제공한다.
-- 내부 링크와 FAQ를 활용해 관련 문제 해결 콘텐츠를 연결한다.
-
-## 수익모델
-
-사용자에게 유용한 선택지를 우선 제공하면서, 다음 영역의 제휴를 수익원으로 검토한다.
-
-- eSIM
-- 공항 픽업
-- 호텔
-- 투어
-- 교통패스
-
-## 현재 진행률
-
-- **대부분 완료:** Landing, Arrival, T-money, WOWPASS
-- **개선 중:** eSIM
-- **후속 개발:** Maps, AREX, Payments
-- **다음 우선순위:** Apps, SEO, Analytics, 도메인 연결
-
-## 향후 개발 로드맵
-
-1. eSIM 완성
-2. Maps 개발
-3. AREX 개발
-4. Payments 개발
-5. Apps 개발
-6. SEO, Analytics, 도메인 연결
+Update the dedicated project documents instead so this overview stays stable over time.
