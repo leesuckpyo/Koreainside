@@ -1,26 +1,32 @@
-# Korea Inside OS v1.0 Documentation Architecture
+# Korea Inside Standards Hub
 
 ## 목적
 
-Korea Inside OS v1.0은 지금까지 생성된 Standards, Handbooks, Playbooks, Patterns, Assets, Page Specs를 하나의 운영 체계로 재구성한다.
+Korea Inside Standards Hub는 현재 `docs/`에 존재하는 Standards, Handbooks, Playbooks, Patterns, Assets, Page Specs의 색인과 역할 안내이다.
 
-새로운 Standard를 계속 추가하는 방식이 아니라, 기존 문서를 10~15개의 핵심 Handbook 아래로 계층화하고 중복 역할을 줄이는 것을 목표로 한다.
+새로운 Standard를 계속 추가하거나 문서 체계를 재설계하는 문서가 아니다.
+
+기존 문서의 역할을 확인하고, 중복 역할과 정리 방향을 기록하는 것을 목표로 한다.
 
 ## 0. 현재 권한 기준
 
 - Root `AGENTS.md`는 Codex 작업 규칙의 최상위 기준 문서이다.
+- Root `PROJECT.md`는 프로젝트 개요 기준 문서이며, Codex 실행 권한은 `AGENTS.md`를 따른다.
 - `docs/codex-guidelines.md`는 `AGENTS.md`의 하위 보조 실행 가이드이다.
+- `docs/conflict-resolution-standard.md`는 문서 간 충돌 시 현재 사용자 명시 지시, root `AGENTS.md`, 승인된 작업 범위를 우선하도록 정리한 기준이다.
+- 제품 철학 문서, AI 기준 문서, 품질 기준 문서, 페이지별 기준문서, 자산 기준문서는 각각의 판단 기준으로 사용하지만, 파일 생성, 수정, 삭제, 이동, 이름 변경, 리팩토링, 포맷팅, stage, commit, push 권한을 자동 승인하지 않는다.
 - `docs/standards-hub.md`는 문서 체계 인덱스와 정리 방향을 제안하는 문서이며, 파일 이동, 삭제, 병합, 이름 변경, 구조 변경을 승인하지 않는다.
 - 이 문서의 트리, 병합, Migration Plan은 명시적 사용자 승인 전까지 제안/미승인 상태이다.
 
 ## 1. 모든 문서 목록
 
-현재 `docs/`에는 71개의 Markdown 문서가 있다. (2026-07-07 기준)
+현재 `docs/`에는 71개의 Markdown 문서가 있다. (2026-07-08 기준)
 
 ### Core / Governance
 
 - `project-charter.md`
 - `product-vision.md`
+- `product-constitution.md`
 - `founder-principles.md`
 - `business-operating-system.md`
 - `competitive-moat-strategy.md`
@@ -59,8 +65,14 @@ Root 기준:
 - `multilingual-seo-strategy.md`
 - `content-where-to-stay-in-seoul.md`
 
+### Architecture / Development / Admin
+
+- `project-architecture.md`
+- `category-map.md`
+
 ### Quality / Review / Risk
 
+- `measurement-framework.md`
 - `review-checklist.md`
 - `code-review-standard.md`
 - `definition-of-ready.md`
@@ -96,6 +108,7 @@ Root 기준:
 - `stay-area-database.md`
 - `checklist.md`
 - `home-hero.md`
+- `home-journey.md`
 - `home-quality-review.md`
 - `header.md`
 - `footer.md`
@@ -125,9 +138,9 @@ Root 기준:
 
 ### 상위 철학 중복
 
-`project-charter.md`, `product-vision.md`, `founder-principles.md`, `business-operating-system.md`, `competitive-moat-strategy.md`는 모두 프로젝트 방향과 정체성을 다룬다.
+`project-charter.md`, `product-constitution.md`, `product-vision.md`, `founder-principles.md`, `business-operating-system.md`, `competitive-moat-strategy.md`는 모두 프로젝트 방향과 정체성을 다룬다.
 
-정리 방향: `Project Charter`를 최상위로 두고, 나머지는 Product & Business Handbook의 하위 장으로 흡수한다.
+정리 방향: 제품 판단 기준에서는 `Project Charter`, `Product Constitution`, `Product Vision`의 역할을 구분하고, 나머지는 Product & Business Handbook의 하위 장으로 흡수하는 방안을 검토한다. Codex 작업 권한과 승인 범위는 root `AGENTS.md`를 따른다.
 
 ### AI 작업 규칙 중복
 
@@ -163,9 +176,9 @@ Root 기준:
 
 ### Standards Hub vs Project Charter
 
-기존 Hub는 Product Vision을 최상위로 두었지만, OS v1.0에서는 Project Charter가 모든 문서보다 상위에 위치한다.
+기존 Hub는 Product Vision을 최상위로 두었지만, 현재 기준에서는 Codex 작업 권한과 scope-control은 root `AGENTS.md`가 최상위이다.
 
-해결: Reference Order의 1순위를 Project Charter로 변경한다.
+해결: Reference Order는 현재 사용자 명시 지시와 `AGENTS.md`를 먼저 확인하고, `PROJECT.md`는 프로젝트 개요 기준으로, Project Charter와 Product Constitution/Product Vision은 제품 판단 기준으로 사용한다.
 
 ### Page Template Standard vs Golden Page Template
 
@@ -221,6 +234,7 @@ OS v1.0에서는 아래 13개 Handbook 체계를 제안 구조로 검토한다. 
 docs/
   00-project-charter/
     project-charter.md
+    product-constitution.md
     product-vision.md
     founder-principles.md
 
@@ -263,10 +277,12 @@ docs/
 
   07-architecture-development/
     project-architecture.md
+    category-map.md
     definition-of-ready.md
     code-review-standard.md
 
   08-quality-risk/
+    measurement-framework.md
     review-checklist.md
     risk-management.md
     lifecycle-management.md
@@ -295,6 +311,7 @@ docs/
     header.md
     footer.md
     home-hero.md
+    home-journey.md
     home-quality-review.md
 
   12-domain-data/
@@ -345,17 +362,22 @@ docs/
 
 새로운 Codex 작업은 아래 순서로 문서를 참조한다.
 
-1. AGENTS.md
-2. Project Charter
-3. Product Vision
-4. Project Memory
-5. Decision Log
-6. Codex Guidelines
-7. AI Decision Framework
-8. Master Playbook
-9. 관련 Handbook
-10. Page Specs
-11. Review Checklist
+1. 현재 사용자 명시 지시와 승인된 작업 범위
+2. AGENTS.md
+3. Conflict Resolution Standard
+4. PROJECT.md
+5. Project Charter / Product Constitution / Product Vision
+6. Project Memory
+7. Decision Log
+8. Codex Guidelines
+9. AI Decision Framework
+10. Master Playbook
+11. 관련 Handbook
+12. Page Specs
+13. Review Checklist
+
+Conflict Resolution Standard는 문서 간 충돌이 발생한 경우 우선 적용하는 해석 기준이다.
+다만 Codex 작업 권한과 scope-control은 현재 사용자 명시 지시와 root `AGENTS.md`를 따른다.
 
 ## 7. 승인 전 금지 사항
 
