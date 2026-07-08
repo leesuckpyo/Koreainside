@@ -49,11 +49,15 @@ Use three groups:
 
 | Label | Current state |
 | --- | --- |
-| English | `index.html` |
-| Japanese | Display-only until `/ja/` exists. |
-| Korean | Display-only until `/ko/` or the approved Korean URL exists. |
-| Traditional Chinese | Display-only until `/zh-tw/` exists. |
-| Vietnamese | Display-only until `/vi/` or the approved Vietnamese URL exists. |
+| English | Current root English pages; future `/en/` only after an approved multilingual implementation. |
+| Japanese | Display-only until `/ja/` exists through explicit approval. |
+| French | Display-only until `/fr/` exists through explicit approval. |
+| German | Display-only until `/de/` exists through explicit approval. |
+| Traditional Chinese | Display-only until `/zh-tw/` exists through explicit approval. |
+
+Language expansion must follow the root `AGENTS.md` multilingual target structure. The language folders and translated pages do not currently exist in the repository, and this document does not approve creating them.
+
+Do not add Korean, Vietnamese or other footer language links unless root `AGENTS.md` or a separate approved multilingual decision changes the target language structure.
 
 ## Bottom Notice
 
@@ -80,3 +84,9 @@ Information is provided for travel planning purposes and should be checked with 
 - Link text must be descriptive.
 - Display-only future links should not be fake clickable links.
 - Maintain readable color contrast.
+
+## Implementation Scope
+
+This document is a common UI standard only. It does not automatically approve HTML, CSS, JavaScript, navigation or site-wide footer changes.
+
+Common footer changes affect multiple pages. Before live implementation, confirm the target files, affected scope and diff, then wait for explicit user approval.

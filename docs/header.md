@@ -57,9 +57,11 @@ Current state:
 
 - Visible label: `EN`
 - Disabled button state
-- Planned language expansion: EN, JP, KR, TW, VN
+- Future language expansion must follow the root `AGENTS.md` multilingual target structure: `/en/`, `/ja/`, `/fr/`, `/de/`, `/zh-tw/`.
 
-Future language versions should use dedicated URLs, not query-string switching. Follow `docs/multilingual-seo-strategy.md` before enabling language navigation.
+Future language versions should use dedicated URLs, not query-string switching. Follow root `AGENTS.md` and `docs/multilingual-seo-strategy.md` before enabling language navigation.
+
+The language folders and translated pages do not currently exist in the repository. This document does not approve creating language folders, translated pages, or live header language links without explicit user approval.
 
 ## Accessibility Requirements
 
@@ -84,7 +86,9 @@ Home-page hero header behavior:
 
 `common.js` initializes header behavior only when it finds `[data-common-header]`. This allows existing pages to keep their current inline scripts until they are migrated.
 
-Future page migrations should reuse the same header classes and include `common.js`.
+Future page migrations should reuse the same header classes and include `common.js` only when the target files, scope and diff are explicitly approved.
+
+This document is a common UI standard only. It does not automatically approve HTML, CSS, JavaScript, navigation or site-wide header changes.
 
 ## Mobile Menu QA Record
 
