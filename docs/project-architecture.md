@@ -1,87 +1,95 @@
 # Korea Inside Project Architecture Standard
 
+This document is the current project architecture reference.
+
+It documents the repository structure that exists now. It is not an architecture proposal and does not approve new folders, file moves, renames, redirects, or restructuring.
+
 ## 1. 기본 원칙
 
-- 기능보다 구조를 먼저 설계한다.
+- 현재 저장소 구조를 기준으로 작업한다.
 - 공통 요소는 재사용한다.
-- 페이지마다 동일한 구조를 유지한다.
+- 기존 페이지 배치와 파일 위치를 유지한다.
 - 파일 위치는 일관성을 유지한다.
+- 새 파일, 새 폴더, 파일 이동, 이름 변경, 구조 변경은 사용자 명시 승인 전까지 금지한다.
 
 ---
 
-## 2. 폴더 구조
+## 2. 현재 저장소 구조
 
-/docs
+현재 상위 구조:
 
-/assets
+- `admin/`
+- `backup/` reference only
+- `docs/`
+- `images/`
+- `prompts/`
+- `reference/`
 
-/assets/images
+현재 루트 주요 파일:
 
-/assets/icons
+- root-level HTML pages such as `index.html`, `arrival.html`, `airport-transfer.html`, `esim.html`, `maps.html`, `payments.html`, `tmoney.html`, `wowpass.html`, and stay-cluster pages.
+- `style.css`
+- `common.js`
+- `PROJECT.md`
+- `AGENTS.md`
+- `README.md`
 
-/assets/animations
+현재 존재하지 않는 기준 구조:
 
-/assets/fonts
+- root `assets/`
+- root `css/`
+- root `js/`
+- root `pages/`
 
-/css
-
-/js
-
-/pages
+These folders must not be created unless the user explicitly approves that structure change.
 
 ---
 
 ## 3. 이미지 구조
 
-money/
+Image assets currently live under root `images/`.
 
-arrival/
+Current image folders include:
 
-wowpass/
+- `images/Accommodation/`
+- `images/airport/`
+- `images/arrival/`
+- `images/esim/`
+- `images/home/`
+- `images/infographics/`
+- `images/maps/`
+- `images/tmoney/`
+- `images/wowpass/`
 
-tmoney/
-
-maps/
-
-airport/
-
-hotel/
-
-transport/
-
-food/
+Do not create a separate root `assets/images/` structure without explicit approval.
 
 ---
 
 ## 4. CSS
 
-base.css
+Current shared CSS file:
 
-layout.css
+- `style.css`
 
-components.css
+There is no current root `css/` folder and no split CSS architecture such as `base.css`, `layout.css`, `components.css`, `utilities.css`, or `page.css`.
 
-utilities.css
+Do not split or reorganize CSS files unless a separate approved task authorizes the change and shows the full impact.
 
-page.css
-
-페이지별 CSS는 필요한 경우에만 추가한다.
+페이지별 CSS 파일은 현재 기본 구조가 아니다. 필요한 경우에도 사용자 명시 승인 전까지 새 CSS 파일을 만들지 않는다.
 
 ---
 
 ## 5. JavaScript
 
-공통 기능
+Current shared JavaScript file:
 
-↓
+- `common.js`
 
-컴포넌트
+There is no current root `js/` folder.
 
-↓
+Do not create a new JavaScript folder or split `common.js` unless a separate approved task authorizes the change and shows the full impact.
 
-페이지 기능
-
-순서로 관리한다.
+Page-specific JavaScript should remain minimal and must follow the approved scope for the current task.
 
 ---
 
@@ -125,9 +133,17 @@ Footer CTA
 
 ## 7. 문서 구조
 
-모든 주요 기능은
+Project documentation lives under `docs/`.
 
-대응하는 md 문서를 유지한다.
+Page standards and page reviews currently live as Markdown files directly under `docs/`.
+
+Supporting documentation subfolders currently include:
+
+- `docs/assets/`
+- `docs/korea-inside-intelligence/`
+- `docs/project/`
+
+When code changes behavior, update related Markdown documentation only when the user explicitly requests or approves that documentation action.
 
 예)
 
@@ -141,7 +157,9 @@ wowpass.md
 
 ## 8. Assets
 
-이미지는
+현재 이미지 자산은 root `images/` 아래에서 관리한다.
+
+이미지는 가능한 경우:
 
 WebP 우선
 
@@ -189,7 +207,9 @@ arrival-terminal.webp
 
 공통 컴포넌트를 먼저 검토한다.
 
-필요한 경우에만 신규 파일을 생성한다.
+신규 파일이나 신규 폴더는 사용자 명시 승인 후에만 생성한다.
+
+현재 구조와 다른 폴더 체계가 필요해 보이면 먼저 이유, 영향 범위, 대안을 보고하고 승인 전까지 생성하지 않는다.
 
 ---
 
