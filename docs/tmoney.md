@@ -92,12 +92,14 @@ Visible HTML near the image must explain the important meaning of the image.
 
 ## Known Issues and Future Verification
 
-- `tmoney.html` is not final-approved yet.
+- `tmoney.html` is not final-approved for T-money v2 yet.
+- Past guide work may have been recorded as completed in project logs; that record refers to earlier guide work, not final approval of future T-money v2.
+- Current `docs/tmoney.md` is the page standard baseline for future T-money v2 work.
 - Current page was restored from the clean `881767e` baseline with only launch navigation aligned.
 - Quick Answer is not present.
 - Source note is not present.
-- `.table-scroll` is not present.
-- Mobile 375px has a known 4-column comparison table overflow issue.
+- `tmoney.html` currently contains `.table-scroll`, but mobile 375px behavior for the 4-column comparison table remains a future visual verification / v2 improvement gap.
+- The live page includes purchase, recharge, refund, mobile/NFC, accepted-use, and limit-related claims; sufficient official source URLs and last-reviewed notes are not yet confirmed in the HTML and should be treated as a future T-money v2 verification gap.
 - T-money v2 improvement is planned but not part of this task.
 
 ## Out of Scope
