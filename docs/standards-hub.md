@@ -1,5 +1,19 @@
 # Korea Inside Standards Hub
 
+## Document Metadata
+
+Layer : L1
+Status : Active
+Authority Type : Standards Index
+Primary Responsibility : Documentation map and standards index
+Source of Truth For : Documentation inventory, standards organization, document role guidance, and standard document navigation
+Not Responsible For : File creation approval, file deletion approval, file movement approval, file renaming approval, document merge approval, product philosophy, business strategy, reference records, history records
+Higher Priority Documents : Current User Instruction
+Related Documents : PROJECT.md, AGENTS.md, docs/product-constitution.md, docs/business-operating-system.md
+Change Policy : Owner approval required before change
+Last Reviewed : 2026-07-09
+Review Trigger : Documentation architecture, standards hierarchy, document inventory, or source-of-truth mapping changes
+
 ## 목적
 
 Korea Inside Standards Hub는 현재 `docs/`에 존재하는 Standards, Handbooks, Playbooks, Patterns, Assets, Page Specs의 색인과 역할 안내이다.

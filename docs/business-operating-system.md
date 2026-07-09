@@ -1,5 +1,19 @@
 # Korea Inside Business Operating System
 
+## Document Metadata
+
+Layer : L1
+Status : Active
+Authority Type : Business Constitution
+Primary Responsibility : Business operating principles
+Source of Truth For : Business goal, revenue priority, KPI, growth loop, monetization rules, and business decision criteria
+Not Responsible For : Product UX principles, Codex behavior rules, documentation index, implementation details, page-specific standards, reference records, history records
+Higher Priority Documents : Current User Instruction
+Related Documents : PROJECT.md, AGENTS.md, docs/product-constitution.md, docs/standards-hub.md
+Change Policy : Owner approval required before change
+Last Reviewed : 2026-07-09
+Review Trigger : Revenue model, KPI, target market priority, growth strategy, or business operating rule changes
+
 ================================================
 
 Business Goal

@@ -1,5 +1,19 @@
 # Korea Inside
 
+## Document Metadata
+
+Layer : L1
+Status : Active
+Authority Type : Project Overview
+Primary Responsibility : Root project overview
+Source of Truth For : Project identity, purpose, high-level structure, and Project Base role summary
+Not Responsible For : Codex behavior rules, detailed product philosophy, business operating rules, page standards, reference records, history records, active sprint task lists
+Higher Priority Documents : Current User Instruction
+Related Documents : AGENTS.md, docs/product-constitution.md, docs/business-operating-system.md, docs/standards-hub.md
+Change Policy : Owner approval required before change
+Last Reviewed : 2026-07-09
+Review Trigger : Project identity, documentation architecture, Project Base composition, or source-of-truth role changes
+
 > **How Korea Works**
 
 Korea Inside is a practical decision-support platform for international visitors in Korea.

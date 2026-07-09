@@ -1,5 +1,19 @@
 # Korea Inside Product Constitution
 
+## Document Metadata
+
+Layer : L1
+Status : Active
+Authority Type : Product Constitution
+Primary Responsibility : Highest product principles
+Source of Truth For : Product mission, product vision, user value, product principles, non-goals, and product decision criteria
+Not Responsible For : Business KPI, revenue priority, Codex behavior rules, documentation index, implementation details, page-specific standards, reference records, history records
+Higher Priority Documents : Current User Instruction
+Related Documents : PROJECT.md, AGENTS.md, docs/business-operating-system.md, docs/standards-hub.md
+Change Policy : Owner approval required before change
+Last Reviewed : 2026-07-09
+Review Trigger : Product mission, target user, product philosophy, non-goal, or major UX decision criteria changes
+
 ## Purpose
 
 Korea Inside Product Constitution defines the highest product principles for the project.

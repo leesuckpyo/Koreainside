@@ -1,5 +1,19 @@
 # AGENTS.md
 
+## Document Metadata
+
+Layer : L1
+Status : Active
+Authority Type : Behavior Rules
+Primary Responsibility : AI and Codex working rules
+Source of Truth For : Scope control, approval rules, implementation workflow, git workflow, protected actions, and Codex behavior requirements
+Not Responsible For : Product philosophy, business strategy, documentation index, page-specific standards, reference records, history records
+Higher Priority Documents : Current User Instruction
+Related Documents : PROJECT.md, docs/product-constitution.md, docs/business-operating-system.md, docs/standards-hub.md
+Change Policy : Owner approval required before change
+Last Reviewed : 2026-07-09
+Review Trigger : Codex workflow, approval policy, protected file policy, git workflow, or AI behavior rule changes
+
 # Korea Inside AI Development Guide
 
 Korea Inside is a long-term production platform that helps international visitors solve practical problems, understand how Korea works, and make better decisions while traveling in Korea.
