@@ -5347,6 +5347,7 @@ ul, ol {
 .stay-cluster .airport-transport-grid,
 .stay-cluster .guide-grid,
 .stay-cluster .stay-decision-grid {
+  align-items: stretch;
   gap: 16px;
 }
 
@@ -5354,6 +5355,7 @@ ul, ol {
 .stay-cluster .guide-card,
 .stay-cluster .stay-decision-card {
   border-radius: var(--radius-lg);
+  height: 100%;
   box-shadow: var(--shadow-sm);
   min-width: 0;
   transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
@@ -5427,20 +5429,86 @@ ul, ol {
   line-height: 1.6;
 }
 
+.accommodation-page .accommodation-situation-rail {
+  display: grid;
+  align-items: stretch;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.accommodation-page .accommodation-situation-rail a {
+  display: grid;
+  gap: 5px;
+  align-content: start;
+  height: 100%;
+  min-width: 0;
+  padding: 11px 13px;
+  border: 1px solid rgba(194, 111, 48, 0.16);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.78);
+  color: var(--blue-deep);
+  text-decoration: none;
+  box-shadow: 0 8px 18px rgba(127, 88, 54, 0.07);
+}
+
+.accommodation-page .accommodation-situation-rail a:hover,
+.accommodation-page .accommodation-situation-rail a:focus {
+  border-color: rgba(194, 111, 48, 0.34);
+  background: #fff7ed;
+}
+
+.accommodation-page .accommodation-situation-rail span {
+  color: #a45f2b;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.accommodation-page .accommodation-situation-rail strong {
+  font-size: 0.9rem;
+  line-height: 1.34;
+}
+
 .accommodation-page .accommodation-quick-summary {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  grid-auto-rows: minmax(72px, auto);
+  grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: 12px;
 }
 
 .accommodation-page .accommodation-quick-summary__item {
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  grid-column: span 6;
   gap: 8px;
+  height: 100%;
   min-width: 0;
   padding: 16px;
   border: 1px solid rgba(26, 86, 219, 0.12);
   border-radius: var(--radius-md);
   background: rgba(255, 255, 255, 0.84);
+}
+
+.accommodation-page .accommodation-quick-summary__item--primary {
+  grid-row: span 3;
+  padding: 20px;
+  border-color: rgba(194, 111, 48, 0.28);
+  background:
+    linear-gradient(135deg, rgba(255, 247, 237, 0.96), rgba(255, 255, 255, 0.94)),
+    radial-gradient(circle at top right, rgba(47, 143, 131, 0.16), transparent 42%);
+  box-shadow: 0 14px 30px rgba(28, 54, 91, 0.1);
+}
+
+.accommodation-page .accommodation-quick-summary__item--primary strong {
+  font-size: clamp(1.2rem, 2vw, 1.46rem);
+}
+
+.accommodation-page .accommodation-quick-summary__item--watch {
+  border-color: rgba(194, 111, 48, 0.22);
+  background: #fff7ed;
 }
 
 .accommodation-page .accommodation-quick-summary__item span {
@@ -5470,9 +5538,17 @@ ul, ol {
 
 .accommodation-page #quick-decision .guide-card {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
   overflow: hidden;
   border-color: rgba(26, 86, 219, 0.14);
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.92), #f7fbff);
+}
+
+.accommodation-page #quick-decision .guide-card p {
+  margin-bottom: 0;
 }
 
 .accommodation-page #quick-decision .guide-card::before {
@@ -5496,56 +5572,139 @@ ul, ol {
 }
 
 .accommodation-page #area-comparison .stay-area-card {
-  display: flex;
-  flex-direction: column;
+  align-self: stretch;
+  display: grid;
   gap: 12px;
+  grid-template-rows: auto minmax(72px, auto) minmax(154px, auto) minmax(280px, auto) minmax(0, 1fr) auto;
+  height: 100%;
   border-color: rgba(26, 86, 219, 0.12);
   background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
 }
 
+.accommodation-page #area-comparison .airport-transport-grid {
+  align-items: stretch;
+}
+
 .accommodation-page #area-comparison .stay-area-card__image {
+  grid-row: 1;
   width: 100%;
   aspect-ratio: 16 / 10;
   object-fit: cover;
   border-radius: var(--radius-md);
 }
 
+.accommodation-page #area-comparison .stay-area-card__heading {
+  display: grid;
+  align-items: center;
+  column-gap: 10px;
+  grid-row: 2;
+  grid-template-columns: minmax(0, 1fr) auto;
+  min-height: 72px;
+}
+
 .accommodation-page #area-comparison .stay-area-card h3 {
+  display: flex;
+  align-items: center;
   margin: 0;
+  max-width: 100%;
+  min-width: 0;
+  min-height: 2.5em;
+  overflow-wrap: normal;
+  white-space: normal;
+  word-break: normal;
+  hyphens: manual;
+}
+
+.accommodation-page #area-comparison .stay-area-fit-badge {
+  display: inline-flex;
+  align-self: center;
+  flex: 0 0 auto;
+  justify-self: end;
+  margin-left: 0;
+  max-width: 100%;
+  padding: 5px 9px;
+  border: 1px solid rgba(194, 111, 48, 0.22);
+  border-radius: 999px;
+  background: #fff7ed;
+  color: #8a4d22;
+  font-size: 0.7rem;
+  font-weight: 900;
+  line-height: 1.2;
+  text-align: right;
+  overflow-wrap: normal;
+  white-space: nowrap;
+  word-break: normal;
 }
 
 .accommodation-page #area-comparison .stay-area-ratings {
+  flex: 0 0 auto;
   display: grid;
-  gap: 6px;
+  gap: 0;
+  grid-row: 3;
+  grid-template-rows: repeat(5, minmax(25px, 1fr));
   margin: 0;
+  min-height: 154px;
+  padding: 8px 10px;
+  border: 1px solid rgba(26, 86, 219, 0.1);
+  border-radius: var(--radius-md);
+  background: rgba(247, 251, 255, 0.78);
 }
 
 .accommodation-page #area-comparison .stay-area-ratings div {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 12px;
+  padding: 3px 0;
+  border-bottom: 1px solid rgba(26, 86, 219, 0.08);
   color: var(--blue-muted);
-  font-size: .92rem;
+  font-size: .84rem;
   line-height: 1.45;
 }
 
+.accommodation-page #area-comparison .stay-area-ratings div:last-child {
+  border-bottom: 0;
+}
+
 .accommodation-page #area-comparison .stay-area-ratings dt {
+  color: var(--blue-muted);
+  font-size: 0.72rem;
   font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
 }
 
 .accommodation-page #area-comparison .stay-area-ratings dd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-width: 66px;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: rgba(26, 86, 219, 0.08);
   color: var(--blue-accent);
+  font-size: 0.82rem;
+  font-weight: 800;
   white-space: nowrap;
 }
 
 .accommodation-page #area-comparison .stay-area-decision {
+  flex: 0 0 auto;
   display: grid;
-  gap: 10px;
+  gap: 8px;
+  grid-row: 4;
+  grid-template-rows: repeat(2, minmax(136px, 1fr));
+  min-height: 280px;
 }
 
 .accommodation-page #area-comparison .stay-area-decision p {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
   margin: 0;
-  padding: 11px 12px;
+  min-height: 136px;
+  padding: 10px 11px;
   border: 1px solid rgba(26, 86, 219, 0.1);
   border-left: 4px solid var(--blue-accent);
   border-radius: var(--radius-md);
@@ -5571,8 +5730,11 @@ ul, ol {
 }
 
 .accommodation-page #area-comparison .stay-area-card__link {
+  align-self: flex-start;
   display: inline-flex;
-  margin-top: auto;
+  grid-row: 6;
+  margin-top: 0;
+  padding-top: 2px;
   color: var(--blue-accent);
   font-size: .92rem;
   font-weight: 800;
@@ -5588,8 +5750,69 @@ ul, ol {
     border-radius: 20px;
   }
 
+  .accommodation-page .accommodation-situation-rail {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .accommodation-page .accommodation-situation-rail a,
+  .accommodation-page .accommodation-quick-summary__item,
+  .accommodation-page #quick-decision .guide-card,
+  .accommodation-page #area-comparison .stay-area-card {
+    display: flex;
+    flex-direction: column;
+    grid-template-rows: none;
+    height: auto;
+  }
+
   .accommodation-page .accommodation-quick-summary {
     grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+  }
+
+  .accommodation-page .accommodation-quick-summary__item,
+  .accommodation-page .accommodation-quick-summary__item--primary {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .accommodation-page #area-comparison .stay-area-card__heading {
+    display: flex;
+    min-height: 0;
+  }
+
+  .accommodation-page #area-comparison .stay-area-card h3,
+  .accommodation-page #area-comparison .stay-area-ratings,
+  .accommodation-page #area-comparison .stay-area-decision,
+  .accommodation-page #area-comparison .stay-area-decision p {
+    min-height: 0;
+  }
+
+  .accommodation-page #area-comparison .stay-area-decision p {
+    height: auto;
+  }
+
+  .accommodation-page #area-comparison .stay-area-card__image,
+  .accommodation-page #area-comparison .stay-area-card__heading,
+  .accommodation-page #area-comparison .stay-area-ratings,
+  .accommodation-page #area-comparison .stay-area-decision,
+  .accommodation-page #area-comparison .stay-area-card__link {
+    grid-row: auto;
+  }
+
+  .accommodation-page #area-comparison .stay-area-ratings,
+  .accommodation-page #area-comparison .stay-area-decision {
+    grid-template-rows: none;
+  }
+
+  .accommodation-page #area-comparison .stay-area-card__link {
+    margin-top: 0;
+  }
+
+  .accommodation-page #area-comparison .stay-area-fit-badge {
+    max-width: 100%;
+    margin-left: auto;
+    text-align: right;
   }
 
   .accommodation-page #quick-decision .guide-card {
@@ -5598,6 +5821,10 @@ ul, ol {
 }
 
 @media (min-width: 720px) and (max-width: 959px) {
+  .accommodation-page .accommodation-situation-rail {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .accommodation-page #area-comparison .airport-transport-grid {
     grid-template-columns: repeat(2, 1fr);
   }

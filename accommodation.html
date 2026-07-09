@@ -348,21 +348,53 @@
             </p>
           </div>
 
+          <nav class="accommodation-situation-rail" aria-label="Accommodation decision shortcuts">
+            <a href="#quick-answer">
+              <span>First time in Korea</span>
+              <strong>Start with the safest first base</strong>
+            </a>
+            <a href="#area-comparison">
+              <span>With luggage</span>
+              <strong>Check exits, walking route, and airport access</strong>
+            </a>
+            <a href="#area-comparison">
+              <span>Quiet stay</span>
+              <strong>Compare noise and family fit before price</strong>
+            </a>
+            <a href="#area-comparison">
+              <span>Airport access</span>
+              <strong>Look for the least tiring arrival route</strong>
+            </a>
+            <a href="#area-comparison">
+              <span>Nightlife</span>
+              <strong>Balance late activity with sleep quality</strong>
+            </a>
+            <a href="#common-mistakes">
+              <span>Family trip</span>
+              <strong>Choose convenience and calmer nights first</strong>
+            </a>
+          </nav>
+
           <div class="accommodation-quick-summary" aria-label="Seoul accommodation quick area summary">
-            <article class="accommodation-quick-summary__item">
-              <span>First visit</span>
+            <article class="accommodation-quick-summary__item accommodation-quick-summary__item--primary">
+              <span>Choose this if</span>
               <strong>Myeongdong or Hongdae</strong>
               <p>Myeongdong fits sightseeing and shopping. Hongdae fits cafés, nightlife, and airport rail access.</p>
             </article>
             <article class="accommodation-quick-summary__item">
-              <span>Children or luggage</span>
+              <span>Check before booking</span>
               <strong>Convenience before price</strong>
               <p>Check airport access, walking distance, station exits, and the route from the station to the hotel.</p>
             </article>
             <article class="accommodation-quick-summary__item">
-              <span>Before booking</span>
+              <span>Compare first</span>
               <strong>Match the area to your days</strong>
               <p>Compare daily travel time, noise level, shopping access, nightlife, and family fit before choosing.</p>
+            </article>
+            <article class="accommodation-quick-summary__item accommodation-quick-summary__item--watch">
+              <span>Watch out for</span>
+              <strong>Cheap can cost more time</strong>
+              <p>A cheaper hotel can be harder if airport access, walking route, room size, or noise does not fit your trip.</p>
             </article>
           </div>
         </div>
@@ -450,7 +482,10 @@
         <div class="airport-transport-grid">
           <article class="airport-transport-card airport-transport-card--best stay-area-card stay-area-card--hongdae">
             <img class="stay-area-card__image" src="images/Accommodation/hongdae-busking.webp" alt="Hongdae street performance area in Seoul" loading="lazy" decoding="async">
-            <h3>Hongdae</h3>
+            <div class="stay-area-card__heading">
+              <h3>Hongdae</h3>
+              <span class="stay-area-fit-badge">Best nightlife</span>
+            </div>
             <dl class="stay-area-ratings" aria-label="Hongdae quick ratings">
               <div><dt>Airport Access</dt><dd>★★★★★</dd></div>
               <div><dt>Shopping</dt><dd>★★★★☆</dd></div>
@@ -462,12 +497,15 @@
               <p><span>Best for</span> Cafés, nightlife, and easy airport rail access.</p>
               <p><span>Watch out</span> Quietness is lower, so check recent noise reviews if sleep matters.</p>
             </div>
-            <a href="hongdae-vs-myeongdong.html#choose-hongdae" class="stay-area-card__link">See why Hongdae works →</a>
+            <a href="hongdae-vs-myeongdong.html#choose-hongdae" class="stay-area-card__link">See why Hongdae works</a>
           </article>
 
           <article class="airport-transport-card stay-area-card">
             <img class="stay-area-card__image" src="images/Accommodation/myeongdong-shopping-street.webp" alt="Myeongdong shopping street in Seoul" loading="lazy" decoding="async">
-            <h3>Myeongdong</h3>
+            <div class="stay-area-card__heading">
+              <h3>Myeongdong</h3>
+              <span class="stay-area-fit-badge">Best first stay</span>
+            </div>
             <dl class="stay-area-ratings" aria-label="Myeongdong quick ratings">
               <div><dt>Airport Access</dt><dd>★★★★☆</dd></div>
               <div><dt>Shopping</dt><dd>★★★★★</dd></div>
@@ -479,12 +517,15 @@
               <p><span>Best for</span> First visits, sightseeing, and shopping.</p>
               <p><span>Watch out</span> With large luggage, check the exact walking route from the station exit to your hotel.</p>
             </div>
-            <a href="hongdae-vs-myeongdong.html#choose-myeongdong" class="stay-area-card__link">See why Myeongdong works →</a>
+            <a href="hongdae-vs-myeongdong.html#choose-myeongdong" class="stay-area-card__link">See why Myeongdong works</a>
           </article>
 
           <article class="airport-transport-card stay-area-card">
             <img class="stay-area-card__image" src="images/Accommodation/gangnam-city.webp" alt="Gangnam city streets in Seoul" loading="lazy" decoding="async">
-            <h3>Gangnam</h3>
+            <div class="stay-area-card__heading">
+              <h3>Gangnam</h3>
+              <span class="stay-area-fit-badge">Business base</span>
+            </div>
             <dl class="stay-area-ratings" aria-label="Gangnam quick ratings">
               <div><dt>Airport Access</dt><dd>★★★☆☆</dd></div>
               <div><dt>Shopping</dt><dd>★★★★★</dd></div>
@@ -496,12 +537,15 @@
               <p><span>Best for</span> Business, shopping, clinics, and southern Seoul plans.</p>
               <p><span>Watch out</span> It can be less convenient if most of your route is around northern Seoul.</p>
             </div>
-            <a href="best-area-for-luxury-hotels-seoul.html#area-guides" class="stay-area-card__link">Check Gangnam fit →</a>
+            <a href="best-area-for-luxury-hotels-seoul.html#area-guides" class="stay-area-card__link">Check Gangnam fit</a>
           </article>
 
           <article class="airport-transport-card stay-area-card">
             <img class="stay-area-card__image" src="images/Accommodation/insadong-traditional-masks-.webp" alt="Traditional masks in Insadong Seoul" loading="lazy" decoding="async">
-            <h3>Insadong</h3>
+            <div class="stay-area-card__heading">
+              <h3>Insadong</h3>
+              <span class="stay-area-fit-badge">Quiet culture stay</span>
+            </div>
             <dl class="stay-area-ratings" aria-label="Insadong quick ratings">
               <div><dt>Airport Access</dt><dd>★★★☆☆</dd></div>
               <div><dt>Shopping</dt><dd>★★★☆☆</dd></div>
@@ -513,12 +557,15 @@
               <p><span>Best for</span> A calmer stay with traditional atmosphere and easy sightseeing days.</p>
               <p><span>Watch out</span> Airport access is not as strong as Seoul Station, Hongdae, or Mapo / Gongdeok.</p>
             </div>
-            <a href="best-area-for-couples-seoul.html#area-guides" class="stay-area-card__link">Check Insadong fit →</a>
+            <a href="best-area-for-couples-seoul.html#area-guides" class="stay-area-card__link">Check Insadong fit</a>
           </article>
 
           <article class="airport-transport-card stay-area-card">
             <img class="stay-area-card__image" src="images/Accommodation/seoul-station.webp" alt="Seoul Station transport hub" loading="lazy" decoding="async">
-            <h3>Seoul Station</h3>
+            <div class="stay-area-card__heading">
+              <h3>Seoul Station</h3>
+              <span class="stay-area-fit-badge">Best airport access</span>
+            </div>
             <dl class="stay-area-ratings" aria-label="Seoul Station quick ratings">
               <div><dt>Airport Access</dt><dd>★★★★★</dd></div>
               <div><dt>Shopping</dt><dd>★★★☆☆</dd></div>
@@ -530,12 +577,15 @@
               <p><span>Best for</span> Airport access, KTX rail trips, short stays, and large luggage.</p>
               <p><span>Watch out</span> It is practical rather than atmospheric, so check the exact hotel side of the station.</p>
             </div>
-            <a href="best-area-for-solo-travelers-seoul.html#area-guides" class="stay-area-card__link">Check Seoul Station fit →</a>
+            <a href="best-area-for-solo-travelers-seoul.html#area-guides" class="stay-area-card__link">Check Seoul Station fit</a>
           </article>
 
           <article class="airport-transport-card stay-area-card">
             <img class="stay-area-card__image" src="images/Accommodation/dongdaemun-ddp-night.webp" alt="Dongdaemun Design Plaza (DDP) at night in Seoul" loading="lazy" decoding="async">
-            <h3>Dongdaemun</h3>
+            <div class="stay-area-card__heading">
+              <h3>Dong<wbr>daemun</h3>
+              <span class="stay-area-fit-badge">Budget shopping</span>
+            </div>
             <dl class="stay-area-ratings" aria-label="Dongdaemun quick ratings">
               <div><dt>Airport Access</dt><dd>★★★☆☆</dd></div>
               <div><dt>Shopping</dt><dd>★★★★★</dd></div>
@@ -547,12 +597,15 @@
               <p><span>Best for</span> Shopping, late activity, and budget-focused area comparison.</p>
               <p><span>Watch out</span> Quietness is lower, so avoid the busiest streets if sleep matters.</p>
             </div>
-            <a href="best-area-for-budget-travelers-seoul.html#budget-area-comparison" class="stay-area-card__link">Check Dongdaemun fit →</a>
+            <a href="best-area-for-budget-travelers-seoul.html#budget-area-comparison" class="stay-area-card__link">Check Dongdaemun fit</a>
           </article>
 
           <article class="airport-transport-card stay-area-card">
             <img class="stay-area-card__image" src="images/Accommodation/jamsil-seokchon-lake.webp" alt="Seokchon Lake near Jamsil in Seoul" loading="lazy" decoding="async">
-            <h3>Jamsil</h3>
+            <div class="stay-area-card__heading">
+              <h3>Jamsil</h3>
+              <span class="stay-area-fit-badge">Best for families</span>
+            </div>
             <dl class="stay-area-ratings" aria-label="Jamsil quick ratings">
               <div><dt>Airport Access</dt><dd>★★☆☆☆</dd></div>
               <div><dt>Shopping</dt><dd>★★★★★</dd></div>
@@ -564,12 +617,15 @@
               <p><span>Best for</span> Families, shopping, and quieter nights around a larger south-east Seoul base.</p>
               <p><span>Watch out</span> Airport access is weaker, so check arrival and departure routes before booking.</p>
             </div>
-            <a href="best-area-for-families-seoul.html#area-comparison" class="stay-area-card__link">Check Jamsil fit →</a>
+            <a href="best-area-for-families-seoul.html#area-comparison" class="stay-area-card__link">Check Jamsil fit</a>
           </article>
 
           <article class="airport-transport-card stay-area-card">
             <img class="stay-area-card__image" src="images/Accommodation/seongsu-alley.webp" alt="Seongsu cafe alley in Seoul" loading="lazy" decoding="async">
-            <h3>Seongsu</h3>
+            <div class="stay-area-card__heading">
+              <h3>Seongsu</h3>
+              <span class="stay-area-fit-badge">Local cafe mood</span>
+            </div>
             <dl class="stay-area-ratings" aria-label="Seongsu quick ratings">
               <div><dt>Airport Access</dt><dd>★★☆☆☆</dd></div>
               <div><dt>Shopping</dt><dd>★★★★☆</dd></div>
@@ -581,12 +637,15 @@
               <p><span>Best for</span> Cafés, walks, shopping, and a more local atmosphere.</p>
               <p><span>Watch out</span> Airport access is weaker, so check transfer time before choosing it as your base.</p>
             </div>
-            <a href="best-area-for-couples-seoul.html#area-guides" class="stay-area-card__link">Check Seongsu fit →</a>
+            <a href="best-area-for-couples-seoul.html#area-guides" class="stay-area-card__link">Check Seongsu fit</a>
           </article>
 
           <article class="airport-transport-card stay-area-card">
             <img class="stay-area-card__image" src="images/Accommodation/itaewon-night-street.webp" alt="Itaewon nightlife street in Seoul" loading="lazy" decoding="async">
-            <h3>Itaewon</h3>
+            <div class="stay-area-card__heading">
+              <h3>Itaewon</h3>
+              <span class="stay-area-fit-badge">Late-night base</span>
+            </div>
             <dl class="stay-area-ratings" aria-label="Itaewon quick ratings">
               <div><dt>Airport Access</dt><dd>★★☆☆☆</dd></div>
               <div><dt>Shopping</dt><dd>★★☆☆☆</dd></div>
@@ -598,12 +657,15 @@
               <p><span>Best for</span> Nightlife, late food, bars, music, and evening activity.</p>
               <p><span>Watch out</span> Quietness and family fit are lower, so stay slightly away from the busiest streets if needed.</p>
             </div>
-            <a href="best-area-for-nightlife-seoul.html#itaewon" class="stay-area-card__link">Check Itaewon fit →</a>
+            <a href="best-area-for-nightlife-seoul.html#itaewon" class="stay-area-card__link">Check Itaewon fit</a>
           </article>
 
           <article class="airport-transport-card stay-area-card">
             <img class="stay-area-card__image" src="images/Accommodation/mapo-gongdeok-station.webp" alt="Mapo Gongdeok station area in Seoul" loading="lazy" decoding="async">
-            <h3>Mapo / Gongdeok</h3>
+            <div class="stay-area-card__heading">
+              <h3>Mapo / Gongdeok</h3>
+              <span class="stay-area-fit-badge">Quiet airport base</span>
+            </div>
             <dl class="stay-area-ratings" aria-label="Mapo / Gongdeok quick ratings">
               <div><dt>Airport Access</dt><dd>★★★★★</dd></div>
               <div><dt>Shopping</dt><dd>★★☆☆☆</dd></div>
@@ -615,7 +677,7 @@
               <p><span>Best for</span> Airport access, quieter nights, and practical movement with luggage.</p>
               <p><span>Watch out</span> Shopping and nightlife are not the main reason to choose this area.</p>
             </div>
-            <a href="best-area-for-solo-travelers-seoul.html#area-guides" class="stay-area-card__link">Check Mapo / Gongdeok fit →</a>
+            <a href="best-area-for-solo-travelers-seoul.html#area-guides" class="stay-area-card__link">Check Mapo / Gongdeok fit</a>
           </article>
         </div>
       </div>
