@@ -47,6 +47,8 @@ An Implementation Contract must define:
 - Git boundary
 - Stop conditions
 
+Use docs/implementation-contract-standard.md as the standard format for all owner-approved Implementation Contracts.
+
 # Korea Inside AI Development Guide
 
 Korea Inside is a long-term production platform that helps international visitors solve practical problems, understand how Korea works, and make better decisions while traveling in Korea.

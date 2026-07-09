@@ -60,6 +60,7 @@ Root 기준:
 보조 문서:
 
 - `codex-guidelines.md`
+- `implementation-contract-standard.md` (Layer L2, `docs/implementation-contract-standard.md`, Implementation Contract standard format for owner-approved Codex work)
 - `ai-decision-framework.md`
 - `ai-collaboration-protocol.md`
 - `ai-self-audit.md`
