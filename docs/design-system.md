@@ -1,5 +1,19 @@
 # KR Inside Design System Audit
 
+## Document Metadata
+
+Layer : L2
+Status : Active
+Authority Type : Design Standard
+Primary Responsibility : Korea Inside visual decision design principles
+Source of Truth For : Visual decision design, warm practical design tone, recognition UX, image-as-information policy, page rhythm, visual hierarchy, and design anti-pattern direction
+Not Responsible For : Page-specific content, business strategy, Codex behavior rules, implementation approval, git workflow, reference records, history records
+Higher Priority Documents : Current User Instruction, AGENTS.md, PROJECT.md, docs/product-constitution.md
+Related Documents : docs/golden-page-template.md, docs/component-library.md, docs/page-template-standard.md, docs/anti-pattern-standard.md, docs/standards-hub.md
+Change Policy : Owner approval required before change
+Last Reviewed : 2026-07-09
+Review Trigger : Major visual direction change, recurring poor design output from Codex, new page family, image policy change, or component rhythm change
+
 Last updated: 2026-07-02
 
 ## Purpose

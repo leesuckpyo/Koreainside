@@ -1,5 +1,19 @@
 # Korea Inside Anti-Pattern Standard
 
+## Document Metadata
+
+Layer : L2
+Status : Active
+Authority Type : Anti-Pattern Standard
+Primary Responsibility : Prohibited patterns and failure prevention rules
+Source of Truth For : Product, UX, SEO, AI, design, documentation, and business anti-patterns that Korea Inside must avoid
+Not Responsible For : Positive design system rules, page-specific content, implementation approval, git workflow, reference records, history records
+Higher Priority Documents : Current User Instruction, AGENTS.md, PROJECT.md, docs/product-constitution.md, docs/business-operating-system.md
+Related Documents : docs/design-system.md, docs/golden-page-template.md, docs/component-library.md, docs/page-template-standard.md, docs/standards-hub.md
+Change Policy : Owner approval required before change
+Last Reviewed : 2026-07-09
+Review Trigger : Recurring failure pattern, design anti-pattern, SEO risk, AI misuse, business model conflict, or documentation governance issue
+
 ================================================
 
 목적

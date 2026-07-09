@@ -1,5 +1,19 @@
 # Korea Inside UI Component Library
 
+## Document Metadata
+
+Layer : L2
+Status : Active
+Authority Type : Component Standard
+Primary Responsibility : Reusable UI component roles and usage rules
+Source of Truth For : Hero, card, table, warning, tip, CTA, navigation, comparison, and practical information component usage rules
+Not Responsible For : Global design philosophy, page-level content flow, business strategy, Codex behavior rules, reference records, history records
+Higher Priority Documents : Current User Instruction, AGENTS.md, PROJECT.md, docs/product-constitution.md, docs/design-system.md
+Related Documents : docs/golden-page-template.md, docs/page-template-standard.md, docs/anti-pattern-standard.md, docs/standards-hub.md
+Change Policy : Owner approval required before change
+Last Reviewed : 2026-07-09
+Review Trigger : New reusable component, recurring component misuse, design system change, or page template change
+
 ## Purpose
 
 This document defines reusable UI components for Korea Inside pages.

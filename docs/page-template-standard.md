@@ -1,5 +1,19 @@
 # Korea Inside Page Template Standard
 
+## Document Metadata
+
+Layer : L2
+Status : Active
+Authority Type : Page Checklist Standard
+Primary Responsibility : Minimum page template and readiness checklist
+Source of Truth For : Minimum required page sections, quick page readiness checks, basic template consistency, and lightweight page creation checklist
+Not Responsible For : Full golden page architecture, visual design philosophy, component-level rules, business strategy, Codex behavior rules, reference records, history records
+Higher Priority Documents : Current User Instruction, AGENTS.md, PROJECT.md, docs/product-constitution.md, docs/design-system.md, docs/golden-page-template.md
+Related Documents : docs/component-library.md, docs/anti-pattern-standard.md, docs/standards-hub.md
+Change Policy : Owner approval required before change
+Last Reviewed : 2026-07-09
+Review Trigger : Minimum page requirements change, recurring incomplete page output, or page template workflow change
+
 ## 문서 성격
 
 이 문서는 Korea Inside 페이지를 만들거나 검토할 때 빠르게 확인하는 최소 페이지 골격 체크리스트이다.

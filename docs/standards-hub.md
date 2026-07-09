@@ -68,11 +68,11 @@ Root 기준:
 
 ### Design / UX / Page Structure
 
-- `design-system.md`
-- `page-template-standard.md`
-- `golden-page-template.md`
-- `component-library.md`
-- `anti-pattern-standard.md`
+- `design-system.md` (Layer L2, Design Standard, visual decision design and image-as-information principles)
+- `page-template-standard.md` (Layer L2, Page Checklist Standard, minimum page template checklist)
+- `golden-page-template.md` (Layer L2, Page Structure Standard, golden page structure and content flow)
+- `component-library.md` (Layer L2, Component Standard, reusable UI component rules)
+- `anti-pattern-standard.md` (Layer L2, Anti-Pattern Standard, prohibited patterns and failure prevention)
 
 ### SEO / Content / Localization
 

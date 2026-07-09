@@ -1,5 +1,19 @@
 # Korea Inside Golden Page Template
 
+## Document Metadata
+
+Layer : L2
+Status : Active
+Authority Type : Page Structure Standard
+Primary Responsibility : Golden page structure and content flow for high-quality Korea Inside pages
+Source of Truth For : Ideal page sequence, decision-support page flow, content hierarchy, section rhythm, and reusable page structure patterns
+Not Responsible For : Visual style system, component-level rules, quick minimum checklist, business strategy, Codex behavior rules, reference records, history records
+Higher Priority Documents : Current User Instruction, AGENTS.md, PROJECT.md, docs/product-constitution.md, docs/design-system.md
+Related Documents : docs/component-library.md, docs/page-template-standard.md, docs/anti-pattern-standard.md, docs/standards-hub.md
+Change Policy : Owner approval required before change
+Last Reviewed : 2026-07-09
+Review Trigger : Page architecture change, new page family, recurring weak page flow, or major section hierarchy change
+
 ## Purpose
 
 This document defines the standard page template for future Korea Inside content pages.
