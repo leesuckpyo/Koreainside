@@ -14,6 +14,39 @@ Change Policy : Owner approval required before change
 Last Reviewed : 2026-07-09
 Review Trigger : Codex workflow, approval policy, protected file policy, git workflow, or AI behavior rule changes
 
+## Project Base and Implementation Contract
+
+Project Base is an operating concept, not a separate Markdown file.
+
+Before any Codex work starts, Codex must read the Project Base documents:
+
+- PROJECT.md
+- AGENTS.md
+- docs/product-constitution.md
+- docs/business-operating-system.md
+- docs/standards-hub.md
+
+Codex must not implement from conversation memory.
+
+Codex must judge from the current user instruction and the current repository state.
+
+If the current instruction, repository state, or documentation is unclear, incomplete, or conflicting, Codex must follow this rule:
+
+Unknown → STOP → Report → Ask → Never Assume.
+
+No implementation, file modification, deletion, movement, renaming, refactoring, formatting, staging, commit, or push may begin without an explicit Implementation Contract approved by the owner.
+
+An Implementation Contract must define:
+
+- Task goal
+- Target files
+- Allowed changes
+- Prohibited changes
+- Required source documents
+- Validation method
+- Git boundary
+- Stop conditions
+
 # Korea Inside AI Development Guide
 
 Korea Inside is a long-term production platform that helps international visitors solve practical problems, understand how Korea works, and make better decisions while traveling in Korea.
