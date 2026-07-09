@@ -1,4 +1,4 @@
-# KR Inside Design System Audit
+# Korea Inside Design System Standard
 
 ## Document Metadata
 
@@ -14,7 +14,153 @@ Change Policy : Owner approval required before change
 Last Reviewed : 2026-07-09
 Review Trigger : Major visual direction change, recurring poor design output from Codex, new page family, image policy change, or component rhythm change
 
-Last updated: 2026-07-02
+## Design Position
+
+Korea Inside design is not decorative.
+
+It is a visual decision system that helps international visitors understand Korea quickly, practically, and confidently.
+
+Korea Inside must not become a cold information board.
+
+The design must help users understand:
+
+- where they are
+- what the place feels like
+- how they move
+- what is convenient
+- what to watch out for
+- what to do next
+
+## Core Design Promise
+
+Use these principles as the design promise.
+
+- Practical, but not boring.
+- Trustworthy, but not cold.
+- Visual, but not fake.
+- Helpful, but not overwhelming.
+
+## Visual Decision Design Principles
+
+Korea Inside pages must help users make decisions visually before they read long explanations.
+
+A page should answer these questions quickly:
+
+- What is this about?
+- Is this relevant to my situation?
+- What should I compare?
+- What should I watch out for?
+- What should I do next?
+
+## Warm Practical Design Tone
+
+The visual tone should feel useful, calm, human, and grounded.
+
+Avoid designs that feel:
+
+- too corporate
+- too empty
+- too text-heavy
+- too promotional
+- too much like a generic travel blog
+- too much like a SaaS dashboard
+
+## Page Rhythm
+
+Korea Inside pages should not be a flat list of information.
+
+Use a rhythm like:
+
+1. Scene
+2. Quick Answer
+3. Choice
+4. Practical Detail
+5. Warning or Tip
+6. Next Action
+
+The user should feel progression, not repetition.
+
+## Image Policy
+
+Images are not decoration.
+
+Images should help users understand real context, space, movement, atmosphere, or practical use.
+
+Use images for:
+
+- area atmosphere
+- transport movement
+- card or machine recognition
+- entrance or station context
+- real-life usage situation
+- visual comparison
+
+Do not put essential information only inside images.
+
+Important information must remain real HTML text for translation, SEO, accessibility, and maintenance.
+
+## Card and Section Rhythm
+
+Cards should not be generic information boxes.
+
+A Korea Inside card should help the user decide.
+
+Good cards should include one or more of:
+
+- situation
+- good for
+- watch out
+- practical detail
+- next action
+
+Avoid repeated cards with only title, description, and button.
+
+## CTA and Next Action Rules
+
+CTA should not feel like advertising.
+
+CTA should feel like the next useful step.
+
+Examples:
+
+- Check where to stay
+- Compare transport options
+- See what to prepare
+- Open the official source
+- Continue to the practical guide
+
+## What Korea Inside Must Avoid
+
+Avoid:
+
+- cold information-board design
+- endless text blocks
+- generic modern card grids
+- decorative images without practical meaning
+- fake travel mood
+- over-polished tourism promotion
+- unclear CTA buttons
+- burying warnings below promotional content
+- making every page look the same
+- making every section visually equal
+
+## Validation Checklist
+
+Before approving a design change, check:
+
+- Can the user understand the page purpose within 3 seconds?
+- Does the page show before it explains?
+- Does the visual hierarchy help decision-making?
+- Are images used as information, not decoration?
+- Are warnings and limitations visible?
+- Does the page feel practical but not boring?
+- Does the page feel trustworthy but not cold?
+- Does the page avoid generic card-grid repetition?
+- Is essential information real HTML text?
+- Does the design work on mobile?
+- Does the page still support browser translation?
+
+Last updated: 2026-07-09
 
 ## Purpose
 
