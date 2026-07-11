@@ -1,0 +1,6 @@
+# Keep Korea Inside Admin text files consistent across Windows and CI.
+* text=auto eol=lf
+
+*.png binary
+*.ico binary
+*.icns binary
