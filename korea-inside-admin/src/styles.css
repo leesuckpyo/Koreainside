@@ -429,6 +429,150 @@ h2 {
   white-space: nowrap;
 }
 
+.export-panel {
+  margin-top: 16px;
+  padding: 16px;
+  background: #f8f9fb;
+  border: 1px solid #e0e4ea;
+  border-radius: 8px;
+}
+
+.export-heading,
+.export-controls,
+.export-actions {
+  display: flex;
+  align-items: center;
+}
+
+.export-heading,
+.export-controls {
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.export-heading h3,
+.export-history-block h4 {
+  margin: 0;
+  color: #293548;
+}
+
+.export-heading h3 {
+  font-size: 16px;
+}
+
+.export-heading p,
+.export-history-empty {
+  margin: 4px 0 0;
+  color: #667286;
+  font-size: 13px;
+}
+
+.export-session-label {
+  color: #607087;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.export-controls {
+  margin-top: 14px;
+}
+
+.export-format {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.export-format legend {
+  float: left;
+  margin-right: 14px;
+  color: #677387;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.export-format label {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+}
+
+.export-actions {
+  gap: 8px;
+}
+
+.export-status,
+.export-preview {
+  margin-top: 12px;
+  padding: 10px 12px;
+  color: #536075;
+  font-size: 13px;
+  background: #ffffff;
+  border: 1px solid #dce1e8;
+  border-radius: 7px;
+}
+
+.export-status.is-error {
+  color: #8a2c2c;
+  background: #fff0f0;
+  border-color: #efc4c4;
+}
+
+.export-status.is-success {
+  color: #315c42;
+  background: #e6f4eb;
+  border-color: #b9dcc5;
+}
+
+.export-preview dl {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin: 0;
+}
+
+.export-preview dt {
+  color: #677387;
+  font-size: 11px;
+}
+
+.export-preview dd {
+  margin: 3px 0 0;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.export-history-block {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid #e0e4ea;
+}
+
+.export-history-block h4 {
+  font-size: 13px;
+}
+
+.export-history {
+  display: grid;
+  gap: 6px;
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.export-history li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: #536075;
+  font-size: 12px;
+}
+
 .tree-scroll {
   min-height: 220px;
   max-height: calc(100vh - 390px);
@@ -522,5 +666,9 @@ h2 {
     align-items: flex-start;
     flex-direction: column;
     gap: 8px;
+  }
+
+  .export-preview dl {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }

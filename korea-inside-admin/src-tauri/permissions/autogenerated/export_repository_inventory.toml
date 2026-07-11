@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-export-repository-inventory"
+description = "Enables the export_repository_inventory command without any pre-configured scope."
+commands.allow = ["export_repository_inventory"]
+
+[[permission]]
+identifier = "deny-export-repository-inventory"
+description = "Denies the export_repository_inventory command without any pre-configured scope."
+commands.deny = ["export_repository_inventory"]

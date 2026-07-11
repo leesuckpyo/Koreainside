@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-preview-repository-export"
+description = "Enables the preview_repository_export command without any pre-configured scope."
+commands.allow = ["preview_repository_export"]
+
+[[permission]]
+identifier = "deny-preview-repository-export"
+description = "Denies the preview_repository_export command without any pre-configured scope."
+commands.deny = ["preview_repository_export"]

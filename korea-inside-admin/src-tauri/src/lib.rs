@@ -1,10 +1,19 @@
+mod export;
 mod repository;
+
+use repository::RepositorySessionState;
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     let result = tauri::Builder::default()
         .plugin(tauri_plugin_dialog::init())
-        .invoke_handler(tauri::generate_handler![repository::select_repository])
+        .manage(RepositorySessionState::default())
+        .invoke_handler(tauri::generate_handler![
+            repository::select_repository,
+            repository::disconnect_repository,
+            export::preview_repository_export,
+            export::export_repository_inventory,
+        ])
         .run(tauri::generate_context!());
 
     if let Err(error) = result {

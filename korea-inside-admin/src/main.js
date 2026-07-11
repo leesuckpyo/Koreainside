@@ -17,6 +17,13 @@ window.addEventListener("DOMContentLoaded", () => {
   const repositoryTree = document.querySelector("#repository-tree");
   const dashboardRepositoryStatus = document.querySelector("#dashboard-repository-status");
   const dashboardAccessMode = document.querySelector("#dashboard-access-mode");
+  const exportFormatInputs = document.querySelectorAll('input[name="export-format"]');
+  const previewExportButton = document.querySelector("#preview-export");
+  const saveExportButton = document.querySelector("#save-export");
+  const exportStatus = document.querySelector("#export-status");
+  const exportPreview = document.querySelector("#export-preview");
+  const exportHistory = document.querySelector("#export-history");
+  const exportHistoryEmpty = document.querySelector("#export-history-empty");
   const viewTitles = {
     dashboard: "운영 대시보드",
     explorer: "프로젝트 탐색기",
@@ -75,10 +82,67 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  disconnectRepositoryButton.addEventListener("click", () => {
-    connectedRepository = null;
+  disconnectRepositoryButton.addEventListener("click", async () => {
     clearError();
-    renderDisconnectedRepository();
+    setLoading(true);
+    try {
+      await window.__TAURI__.core.invoke("disconnect_repository");
+      connectedRepository = null;
+      renderDisconnectedRepository();
+    } catch (error) {
+      showError("저장소 연결을 해제할 수 없습니다.");
+    } finally {
+      setLoading(false);
+    }
+  });
+
+  exportFormatInputs.forEach((input) => {
+    input.addEventListener("change", resetExportPreview);
+  });
+
+  previewExportButton.addEventListener("click", async () => {
+    setExportLoading(true, "내보내기 정보를 확인하고 있습니다.");
+    try {
+      const result = await window.__TAURI__.core.invoke("preview_repository_export", {
+        format: selectedExportFormat(),
+      });
+      if (result.status !== "ready") {
+        setExportStatus(result.message || "내보내기 미리보기를 확인할 수 없습니다.", "error");
+        exportPreview.hidden = true;
+        return;
+      }
+      renderExportPreview(result);
+      setExportStatus("내보내기 미리보기가 준비되었습니다.");
+    } catch (error) {
+      setExportStatus("관리자 앱과 통신할 수 없습니다.", "error");
+    } finally {
+      setExportLoading(false);
+    }
+  });
+
+  saveExportButton.addEventListener("click", async () => {
+    const format = selectedExportFormat();
+    setExportLoading(true, "저장 위치를 선택하십시오.");
+    try {
+      const result = await window.__TAURI__.core.invoke("export_repository_inventory", { format });
+      if (result.status === "cancelled") {
+        setExportStatus("파일 저장을 취소했습니다.");
+        addExportHistory(format, "취소", null, null);
+        return;
+      }
+      if (result.status !== "saved") {
+        setExportStatus(result.message || "파일을 저장할 수 없습니다.", "error");
+        addExportHistory(format, "실패", null, null);
+        return;
+      }
+      setExportStatus(`${result.fileName} 파일을 저장했습니다.`, "success");
+      addExportHistory(format, "성공", result.fileName, result.sizeBytes);
+    } catch (error) {
+      setExportStatus("관리자 앱과 통신할 수 없습니다.", "error");
+      addExportHistory(format, "실패", null, null);
+    } finally {
+      setExportLoading(false);
+    }
   });
 
   initializationState.textContent = "관리자 앱 기반 구성이 완료되었습니다.";
@@ -114,6 +178,7 @@ window.addEventListener("DOMContentLoaded", () => {
     repositoryTree.replaceChildren();
     dashboardRepositoryStatus.textContent = "선택되지 않음";
     dashboardAccessMode.textContent = "읽기 전용 예정";
+    resetExportPreview();
   }
 
   function renderConnectedRepository() {
@@ -134,6 +199,82 @@ window.addEventListener("DOMContentLoaded", () => {
     renderTree();
     dashboardRepositoryStatus.textContent = "연결됨";
     dashboardAccessMode.textContent = "읽기 전용";
+    resetExportPreview();
+  }
+
+  function selectedExportFormat() {
+    return document.querySelector('input[name="export-format"]:checked').value;
+  }
+
+  function setExportLoading(isLoading, message = "") {
+    previewExportButton.disabled = isLoading || !connectedRepository;
+    saveExportButton.disabled = isLoading || !connectedRepository;
+    exportFormatInputs.forEach((input) => {
+      input.disabled = isLoading || !connectedRepository;
+    });
+    if (isLoading) {
+      setExportStatus(message);
+    }
+  }
+
+  function setExportStatus(message, kind = "default") {
+    exportStatus.textContent = message;
+    exportStatus.classList.toggle("is-error", kind === "error");
+    exportStatus.classList.toggle("is-success", kind === "success");
+  }
+
+  function resetExportPreview() {
+    exportPreview.replaceChildren();
+    exportPreview.hidden = true;
+    setExportStatus(
+      connectedRepository
+        ? "내보내기 형식을 선택하고 미리보기를 확인하십시오."
+        : "저장소를 연결하면 내보내기를 사용할 수 있습니다.",
+    );
+    setExportLoading(false);
+  }
+
+  function renderExportPreview(result) {
+    const details = document.createElement("dl");
+    const values = [
+      ["형식", result.format.toUpperCase()],
+      ["항목 수", `${result.totalItems.toLocaleString("ko-KR")}개`],
+      ["예상 크기", formatBytes(result.estimatedBytes)],
+      ["데이터 상태", result.partial || result.truncated ? "부분 결과" : "전체 결과"],
+    ];
+    values.forEach(([label, value]) => {
+      const term = document.createElement("dt");
+      term.textContent = label;
+      const description = document.createElement("dd");
+      description.textContent = value;
+      const item = document.createElement("div");
+      item.append(term, description);
+      details.append(item);
+    });
+    exportPreview.replaceChildren(details);
+    exportPreview.hidden = false;
+  }
+
+  function addExportHistory(format, status, fileName, sizeBytes) {
+    const item = document.createElement("li");
+    const summary = document.createElement("span");
+    summary.textContent = fileName || `${format.toUpperCase()} 저장`;
+    const details = document.createElement("span");
+    const parts = [new Date().toLocaleTimeString("ko-KR"), status];
+    if (Number.isFinite(sizeBytes)) {
+      parts.push(formatBytes(sizeBytes));
+    }
+    details.textContent = parts.join(" · ");
+    item.append(summary, details);
+    exportHistory.prepend(item);
+    exportHistoryEmpty.hidden = true;
+  }
+
+  function formatBytes(bytes) {
+    if (bytes < 1024) {
+      return `${bytes.toLocaleString("ko-KR")} B`;
+    }
+    return `${(bytes / 1024).toLocaleString("ko-KR", { maximumFractionDigits: 1 })} KB`;
   }
 
   function renderWarnings() {

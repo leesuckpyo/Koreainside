@@ -5,6 +5,9 @@
   "windows": ["main"],
   "platforms": ["windows"],
   "permissions": [
-    "allow-select-repository"
+    "allow-select-repository",
+    "allow-disconnect-repository",
+    "allow-preview-repository-export",
+    "allow-export-repository-inventory"
   ]
 }

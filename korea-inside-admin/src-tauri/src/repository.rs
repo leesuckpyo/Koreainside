@@ -6,8 +6,9 @@ use std::{
     io::{self, Read},
     os::windows::fs::MetadataExt,
     path::{Component, Path, PathBuf, Prefix},
+    sync::Mutex,
 };
-use tauri::AppHandle;
+use tauri::{AppHandle, Manager, State};
 use tauri_plugin_dialog::DialogExt;
 use windows_sys::Win32::{
     Storage::FileSystem::{GetDriveTypeW, FILE_ATTRIBUTE_REPARSE_POINT},
@@ -37,7 +38,7 @@ const EXCLUDED_DIRECTORIES: &[&str] = &[
 
 const EXCLUDED_FILES: &[&str] = &["desktop.ini", "Thumbs.db", ".DS_Store"];
 
-#[derive(Serialize)]
+#[derive(Clone, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct SelectRepositoryResult {
     status: &'static str,
@@ -54,16 +55,31 @@ pub struct SelectRepositoryResult {
     message: Option<String>,
 }
 
-#[derive(Serialize)]
+#[derive(Clone, Serialize)]
 pub struct TreeNode {
-    name: String,
-    kind: &'static str,
-    children: Vec<TreeNode>,
+    pub(crate) name: String,
+    pub(crate) kind: &'static str,
+    pub(crate) children: Vec<TreeNode>,
 }
 
-struct UserError {
-    code: &'static str,
-    message: String,
+#[derive(Clone)]
+pub(crate) struct RepositorySnapshot {
+    pub(crate) repository_name: String,
+    pub(crate) tree: Vec<TreeNode>,
+    pub(crate) total_items: usize,
+    pub(crate) excluded_count: usize,
+    pub(crate) skipped_count: usize,
+    pub(crate) partial: bool,
+    pub(crate) truncated: bool,
+    pub(crate) warnings: Vec<String>,
+}
+
+#[derive(Default)]
+pub(crate) struct RepositorySessionState(pub(crate) Mutex<Option<RepositorySnapshot>>);
+
+pub(crate) struct UserError {
+    pub(crate) code: &'static str,
+    pub(crate) message: String,
 }
 
 struct ScanContext {
@@ -120,9 +136,11 @@ impl SelectRepositoryResult {
 
 #[tauri::command]
 pub async fn select_repository(app: AppHandle) -> SelectRepositoryResult {
-    let dialog_result =
-        tauri::async_runtime::spawn_blocking(move || app.dialog().file().blocking_pick_folder())
-            .await;
+    let dialog_app = app.clone();
+    let dialog_result = tauri::async_runtime::spawn_blocking(move || {
+        dialog_app.dialog().file().blocking_pick_folder()
+    })
+    .await;
 
     let selected = match dialog_result {
         Ok(Some(path)) => match path.into_path() {
@@ -144,7 +162,18 @@ pub async fn select_repository(app: AppHandle) -> SelectRepositoryResult {
     };
 
     match tauri::async_runtime::spawn_blocking(move || inspect_repository(selected)).await {
-        Ok(Ok(result)) => result,
+        Ok(Ok((result, snapshot))) => {
+            let state = app.state::<RepositorySessionState>();
+            if let Ok(mut current) = state.0.lock() {
+                *current = Some(snapshot);
+            } else {
+                return SelectRepositoryResult::error(user_error(
+                    "SESSION_STATE_FAILED",
+                    "저장소 연결 상태를 저장할 수 없습니다.",
+                ));
+            }
+            result
+        }
         Ok(Err(error)) => SelectRepositoryResult::error(error),
         Err(_) => SelectRepositoryResult::error(user_error(
             "SCAN_FAILED",
@@ -153,7 +182,19 @@ pub async fn select_repository(app: AppHandle) -> SelectRepositoryResult {
     }
 }
 
-fn inspect_repository(selected: PathBuf) -> Result<SelectRepositoryResult, UserError> {
+#[tauri::command]
+pub fn disconnect_repository(state: State<'_, RepositorySessionState>) -> Result<(), String> {
+    let mut current = state
+        .0
+        .lock()
+        .map_err(|_| "저장소 연결 상태를 삭제할 수 없습니다.".to_string())?;
+    *current = None;
+    Ok(())
+}
+
+fn inspect_repository(
+    selected: PathBuf,
+) -> Result<(SelectRepositoryResult, RepositorySnapshot), UserError> {
     let selected_metadata = fs::symlink_metadata(&selected)
         .map_err(|_| user_error("ROOT_ACCESS_DENIED", "선택한 폴더에 접근할 수 없습니다."))?;
 
@@ -201,7 +242,18 @@ fn inspect_repository(selected: PathBuf) -> Result<SelectRepositoryResult, UserE
         )
     })?;
 
-    Ok(SelectRepositoryResult {
+    let snapshot = RepositorySnapshot {
+        repository_name: repository_name.clone(),
+        tree: tree.clone(),
+        total_items: context.total_items,
+        excluded_count: context.excluded_count,
+        skipped_count: context.skipped_count,
+        partial: context.partial,
+        truncated: context.truncated,
+        warnings: context.warnings.clone(),
+    };
+
+    let result = SelectRepositoryResult {
         status: "connected",
         root_path: Some(display_path(&root)),
         repository_name: Some(repository_name),
@@ -214,10 +266,12 @@ fn inspect_repository(selected: PathBuf) -> Result<SelectRepositoryResult, UserE
         warnings: context.warnings,
         error_code: None,
         message: None,
-    })
+    };
+
+    Ok((result, snapshot))
 }
 
-fn validate_local_drive(path: &Path) -> Result<(), UserError> {
+pub(crate) fn validate_local_drive(path: &Path) -> Result<(), UserError> {
     let prefix = path
         .components()
         .next()

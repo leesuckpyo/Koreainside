@@ -103,6 +103,37 @@
 
               <div class="repository-warning" id="repository-warning" role="status" hidden></div>
 
+              <section class="export-panel" aria-labelledby="export-title">
+                <div class="export-heading">
+                  <div>
+                    <h3 id="export-title">저장소 인벤토리 내보내기</h3>
+                    <p>현재 연결된 읽기 전용 인벤토리를 CSV 또는 JSON 파일로 저장합니다.</p>
+                  </div>
+                  <span class="export-session-label">현재 세션만 표시</span>
+                </div>
+
+                <div class="export-controls">
+                  <fieldset class="export-format" id="export-format">
+                    <legend>출력 형식</legend>
+                    <label><input type="radio" name="export-format" value="csv" checked /> CSV</label>
+                    <label><input type="radio" name="export-format" value="json" /> JSON</label>
+                  </fieldset>
+                  <div class="export-actions">
+                    <button class="secondary-button" id="preview-export" type="button">내보내기 미리보기</button>
+                    <button class="primary-button" id="save-export" type="button">파일 저장</button>
+                  </div>
+                </div>
+
+                <div class="export-status" id="export-status" role="status">내보내기 형식을 선택하고 미리보기를 확인하십시오.</div>
+                <div class="export-preview" id="export-preview" hidden></div>
+
+                <div class="export-history-block">
+                  <h4>현재 세션 내보내기 이력</h4>
+                  <p class="export-history-empty" id="export-history-empty">아직 저장한 파일이 없습니다.</p>
+                  <ul class="export-history" id="export-history"></ul>
+                </div>
+              </section>
+
               <div class="tree-scroll">
                 <div class="repository-tree" id="repository-tree" role="tree" aria-label="저장소 파일 트리"></div>
               </div>
