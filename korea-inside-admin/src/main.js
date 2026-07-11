@@ -28,6 +28,15 @@ window.addEventListener("DOMContentLoaded", () => {
   const testVercelConnectionButton = document.querySelector("#test-vercel-connection");
   const deleteVercelTokenButton = document.querySelector("#delete-vercel-token");
   const analyticsMessage = document.querySelector("#analytics-message");
+  const analyticsSummary = document.querySelector("#analytics-summary");
+  const analyticsPeriodInputs = document.querySelectorAll('input[name="analytics-period"]');
+  const refreshAnalyticsSummaryButton = document.querySelector("#refresh-analytics-summary");
+  const analyticsVisitors = document.querySelector("#analytics-visitors");
+  const analyticsPageviews = document.querySelector("#analytics-pageviews");
+  const analyticsRange = document.querySelector("#analytics-range");
+  const analyticsFetchedAt = document.querySelector("#analytics-fetched-at");
+  const analyticsCacheStatus = document.querySelector("#analytics-cache-status");
+  const analyticsSummaryMessage = document.querySelector("#analytics-summary-message");
   const exportFormatInputs = document.querySelectorAll('input[name="export-format"]');
   const previewExportButton = document.querySelector("#preview-export");
   const saveExportButton = document.querySelector("#save-export");
@@ -42,6 +51,42 @@ window.addEventListener("DOMContentLoaded", () => {
   };
   let connectedRepository = null;
   let vercelCredentialStored = false;
+  let analyticsConnectionLoading = false;
+  let analyticsSummaryLoading = false;
+  let analyticsSummaryState = {
+    period: "7d",
+    status: "idle",
+    result: null,
+    errorCode: null,
+    message: null,
+    retryAt: null,
+  };
+  const allowedAnalyticsPeriods = new Set(["24h", "7d", "30d"]);
+  const analyticsErrorMessages = {
+    not_configured: "먼저 Vercel Access Token을 저장해 주십시오.",
+    credential_changed: "자격증명이 변경되었습니다. 잠시 후 다시 조회해 주십시오.",
+    credential_read_failed: "Windows 자격 증명 관리자에서 연결 정보를 확인할 수 없습니다.",
+    request_in_progress: "같은 기간의 조회가 이미 진행 중입니다.",
+    rate_limited: "Vercel 요청 제한 상태입니다.",
+    unauthorized: "저장된 Vercel 자격증명이 유효하지 않습니다.",
+    forbidden: "Vercel Analytics를 읽을 권한이 없습니다.",
+    plan_or_billing_required: "Vercel 플랜 또는 결제 상태를 확인해 주십시오.",
+    invalid_request: "Analytics 조회 요청을 처리할 수 없습니다.",
+    not_found: "Vercel 프로젝트 또는 Analytics 데이터를 확인할 수 없습니다.",
+    service_unavailable: "Vercel 서비스가 일시적으로 요청을 처리하지 못했습니다.",
+    timeout: "Vercel 응답 시간이 초과되었습니다.",
+    network_error: "Vercel API에 연결할 수 없습니다.",
+    response_too_large: "Analytics 응답 크기가 허용 범위를 초과했습니다.",
+    invalid_response: "Vercel Analytics 응답 형식을 확인할 수 없습니다.",
+  };
+  const analyticsDateFormatter = new Intl.DateTimeFormat("ko-KR", {
+    timeZone: "Asia/Seoul",
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
 
   navigationItems.forEach((item) => {
     item.addEventListener("click", () => {
@@ -158,10 +203,55 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  analyticsPeriodInputs.forEach((input) => {
+    input.addEventListener("change", () => {
+      if (!input.checked || !allowedAnalyticsPeriods.has(input.value)) {
+        return;
+      }
+      resetAnalyticsSummary(input.value);
+    });
+  });
+
+  refreshAnalyticsSummaryButton.addEventListener("click", async () => {
+    if (analyticsSummaryLoading || analyticsConnectionLoading) {
+      return;
+    }
+
+    const selectedPeriod = selectedAnalyticsPeriod();
+    if (!allowedAnalyticsPeriods.has(selectedPeriod)) {
+      renderAnalyticsSummaryError("invalid_response", null);
+      return;
+    }
+
+    setAnalyticsSummaryLoading(true);
+    setAnalyticsSummaryMessage("Vercel Analytics 요약을 조회하고 있습니다.");
+    try {
+      const result = await window.__TAURI__.core.invoke("get_vercel_analytics_summary", {
+        period: selectedPeriod,
+      });
+      if (result && result.status === "error") {
+        const errorCode = typeof result.errorCode === "string" ? result.errorCode : "invalid_response";
+        const retryAt = typeof result.retryAt === "string" ? result.retryAt : null;
+        renderAnalyticsSummaryError(errorCode, retryAt);
+        return;
+      }
+      if (!isValidAnalyticsSummary(result, selectedPeriod)) {
+        renderAnalyticsSummaryError("invalid_response", null);
+        return;
+      }
+      renderAnalyticsSummarySuccess(result);
+    } catch (error) {
+      renderAnalyticsSummaryError("network_error", null);
+    } finally {
+      setAnalyticsSummaryLoading(false);
+    }
+  });
+
   vercelTokenForm.addEventListener("submit", async (event) => {
     event.preventDefault();
     let token = vercelAccessToken.value;
     vercelAccessToken.value = "";
+    resetAnalyticsSummary(selectedAnalyticsPeriod());
     setAnalyticsLoading(true, "Access Token을 안전하게 저장하고 있습니다.");
 
     try {
@@ -199,6 +289,7 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
   deleteVercelTokenButton.addEventListener("click", async () => {
+    resetAnalyticsSummary(selectedAnalyticsPeriod());
     setAnalyticsLoading(true, "저장된 자격 증명을 삭제하고 있습니다.");
     try {
       const result = await window.__TAURI__.core.invoke("delete_vercel_access_token");
@@ -348,6 +439,136 @@ window.addEventListener("DOMContentLoaded", () => {
     return `${(bytes / 1024).toLocaleString("ko-KR", { maximumFractionDigits: 1 })} KB`;
   }
 
+  function selectedAnalyticsPeriod() {
+    const selected = document.querySelector('input[name="analytics-period"]:checked');
+    return selected && allowedAnalyticsPeriods.has(selected.value) ? selected.value : analyticsSummaryState.period;
+  }
+
+  function resetAnalyticsSummary(period) {
+    analyticsSummaryState = {
+      period: allowedAnalyticsPeriods.has(period) ? period : "7d",
+      status: "idle",
+      result: null,
+      errorCode: null,
+      message: null,
+      retryAt: null,
+    };
+    clearAnalyticsSummaryValues();
+    setAnalyticsSummaryMessage("선택한 기간을 새로고침하여 확인하십시오.");
+  }
+
+  function clearAnalyticsSummaryValues() {
+    analyticsVisitors.textContent = "—";
+    analyticsPageviews.textContent = "—";
+    analyticsRange.textContent = "확인 전";
+    analyticsFetchedAt.textContent = "없음";
+    analyticsCacheStatus.textContent = "확인 전";
+  }
+
+  function isValidAnalyticsSummary(result, requestedPeriod) {
+    return (
+      result !== null &&
+      typeof result === "object" &&
+      result.status === "ok" &&
+      result.period === requestedPeriod &&
+      allowedAnalyticsPeriods.has(result.period) &&
+      typeof result.rangeStart === "string" &&
+      result.rangeStart.length > 0 &&
+      typeof result.rangeEnd === "string" &&
+      result.rangeEnd.length > 0 &&
+      typeof result.fetchedAt === "string" &&
+      result.fetchedAt.length > 0 &&
+      Number.isSafeInteger(result.pageviews) &&
+      result.pageviews >= 0 &&
+      Number.isSafeInteger(result.visitors) &&
+      result.visitors >= 0 &&
+      typeof result.cached === "boolean"
+    );
+  }
+
+  function renderAnalyticsSummarySuccess(result) {
+    analyticsSummaryState = {
+      period: result.period,
+      status: "success",
+      result: {
+        period: result.period,
+        rangeStart: result.rangeStart,
+        rangeEnd: result.rangeEnd,
+        fetchedAt: result.fetchedAt,
+        pageviews: result.pageviews,
+        visitors: result.visitors,
+        cached: result.cached,
+      },
+      errorCode: null,
+      message: null,
+      retryAt: null,
+    };
+
+    analyticsVisitors.textContent = `${result.visitors.toLocaleString("ko-KR")}명`;
+    analyticsPageviews.textContent = `${result.pageviews.toLocaleString("ko-KR")}회`;
+    analyticsRange.textContent = `${formatAnalyticsTimestamp(result.rangeStart)} ~ ${formatAnalyticsTimestamp(result.rangeEnd)}`;
+    analyticsFetchedAt.textContent = formatAnalyticsTimestamp(result.fetchedAt);
+    analyticsCacheStatus.textContent = result.cached ? "캐시 사용" : "새로 조회";
+    setAnalyticsSummaryMessage(
+      result.cached ? "저장된 5분 캐시 결과를 표시합니다." : "Analytics 요약을 새로 조회했습니다.",
+      "success",
+    );
+    dashboardAnalyticsStatus.textContent = "연결됨";
+  }
+
+  function renderAnalyticsSummaryError(errorCode, retryAt) {
+    const message = analyticsErrorMessages[errorCode] || "Analytics 데이터를 조회할 수 없습니다.";
+    const retryMessage =
+      errorCode === "rate_limited" && retryAt ? ` ${formatAnalyticsTimestamp(retryAt)} 이후 다시 시도해 주십시오.` : "";
+
+    analyticsSummaryState = {
+      period: selectedAnalyticsPeriod(),
+      status: "error",
+      result: null,
+      errorCode,
+      message,
+      retryAt,
+    };
+    clearAnalyticsSummaryValues();
+    setAnalyticsSummaryMessage(`${message}${retryMessage}`, "error");
+
+    if (errorCode === "not_configured") {
+      dashboardAnalyticsStatus.textContent = "연결되지 않음";
+    } else if (
+      [
+        "unauthorized",
+        "forbidden",
+        "plan_or_billing_required",
+        "rate_limited",
+        "timeout",
+        "network_error",
+        "service_unavailable",
+      ].includes(errorCode)
+    ) {
+      dashboardAnalyticsStatus.textContent = "연결 오류";
+    }
+  }
+
+  function formatAnalyticsTimestamp(value) {
+    const date = new Date(value);
+    return Number.isNaN(date.getTime()) ? "확인할 수 없음" : `${analyticsDateFormatter.format(date)} KST`;
+  }
+
+  function setAnalyticsSummaryMessage(message, kind = "default") {
+    analyticsSummaryMessage.textContent = message;
+    analyticsSummaryMessage.classList.toggle("is-error", kind === "error");
+    analyticsSummaryMessage.classList.toggle("is-success", kind === "success");
+  }
+
+  function setAnalyticsSummaryLoading(isLoading) {
+    analyticsSummaryLoading = isLoading;
+    analyticsSummary.setAttribute("aria-busy", String(isLoading));
+    if (isLoading) {
+      analyticsSummaryState.status = "loading";
+    }
+    updateAnalyticsControls();
+  }
+
   async function refreshVercelConnectionStatus() {
     setAnalyticsLoading(true, "저장된 자격 증명을 확인하고 있습니다.");
     try {
@@ -368,13 +589,24 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   function setAnalyticsLoading(isLoading, message = "") {
-    saveVercelTokenButton.disabled = isLoading;
-    vercelAccessToken.disabled = isLoading;
-    testVercelConnectionButton.disabled = isLoading || !vercelCredentialStored;
-    deleteVercelTokenButton.disabled = isLoading || !vercelCredentialStored;
+    analyticsConnectionLoading = isLoading;
+    updateAnalyticsControls();
     if (isLoading) {
       setAnalyticsMessage(message);
     }
+  }
+
+  function updateAnalyticsControls() {
+    const analyticsBusy = analyticsConnectionLoading || analyticsSummaryLoading;
+    saveVercelTokenButton.disabled = analyticsBusy;
+    vercelAccessToken.disabled = analyticsBusy;
+    testVercelConnectionButton.disabled = analyticsBusy || !vercelCredentialStored;
+    deleteVercelTokenButton.disabled = analyticsBusy || !vercelCredentialStored;
+    refreshAnalyticsSummaryButton.disabled =
+      analyticsConnectionLoading || analyticsSummaryLoading || !vercelCredentialStored;
+    analyticsPeriodInputs.forEach((input) => {
+      input.disabled = analyticsConnectionLoading || analyticsSummaryLoading;
+    });
   }
 
   function renderAnalyticsStatus(result) {

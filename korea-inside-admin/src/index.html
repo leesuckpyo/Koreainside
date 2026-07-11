@@ -74,7 +74,47 @@
               <span class="analytics-badge" id="analytics-connection-badge">연결되지 않음</span>
             </div>
 
-            <div class="analytics-settings">
+            <section class="analytics-summary" id="analytics-summary" aria-labelledby="analytics-summary-title" aria-busy="false">
+              <div class="analytics-summary-toolbar">
+                <div>
+                  <h3 class="analytics-section-title" id="analytics-summary-title">트래픽 요약</h3>
+                  <p>선택한 기간의 방문자와 페이지뷰 집계값을 수동으로 조회합니다.</p>
+                </div>
+                <div class="analytics-summary-controls">
+                  <fieldset class="analytics-period" id="analytics-period">
+                    <legend>조회 기간</legend>
+                    <label><input type="radio" name="analytics-period" value="24h" /> 최근 24시간</label>
+                    <label><input type="radio" name="analytics-period" value="7d" checked /> 최근 7일</label>
+                    <label><input type="radio" name="analytics-period" value="30d" /> 최근 30일</label>
+                  </fieldset>
+                  <button class="primary-button" id="refresh-analytics-summary" type="button">새로고침</button>
+                </div>
+              </div>
+
+              <div class="analytics-metric-grid" aria-label="Vercel Analytics 요약 지표">
+                <div class="analytics-metric-card">
+                  <span>방문자</span>
+                  <strong id="analytics-visitors">—</strong>
+                </div>
+                <div class="analytics-metric-card">
+                  <span>페이지뷰</span>
+                  <strong id="analytics-pageviews">—</strong>
+                </div>
+              </div>
+
+              <dl class="analytics-summary-meta">
+                <div><dt>실제 조회 기간</dt><dd id="analytics-range">확인 전</dd></div>
+                <div><dt>마지막 조회 시각</dt><dd id="analytics-fetched-at">없음</dd></div>
+                <div><dt>캐시 사용 여부</dt><dd id="analytics-cache-status">확인 전</dd></div>
+              </dl>
+
+              <div class="analytics-summary-message" id="analytics-summary-message" role="status">
+                선택한 기간을 새로고침하여 확인하십시오.
+              </div>
+            </section>
+
+            <section class="analytics-settings" aria-labelledby="analytics-settings-title">
+              <h3 class="analytics-section-title" id="analytics-settings-title">연결 설정</h3>
               <div class="analytics-status-grid" aria-label="Vercel Analytics 연결 상태">
                 <div><span>자격증명</span><strong id="analytics-credential-status">저장되지 않음</strong></div>
                 <div><span>연결 상태</span><strong id="analytics-test-status">확인 전</strong></div>
@@ -110,9 +150,9 @@
               <div class="security-notice">
                 <strong>보안 안내</strong>
                 <p>Access Token은 Windows 자격 증명 관리자에만 저장되며 화면에 다시 표시되지 않습니다.</p>
-                <p>이번 단계에서는 연결 여부만 확인하며 방문자·페이지뷰 통계는 표시하지 않습니다.</p>
+                <p>방문자·페이지뷰는 익명 집계값만 표시하며 사용자가 새로고침할 때만 조회합니다.</p>
               </div>
-            </div>
+            </section>
           </section>
 
           <section class="view-panel" id="explorer-view" data-panel="explorer" hidden>
