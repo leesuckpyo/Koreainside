@@ -12,6 +12,7 @@
     "allow-save-vercel-access-token",
     "allow-get-vercel-connection-status",
     "allow-delete-vercel-access-token",
-    "allow-test-vercel-analytics-connection"
+    "allow-test-vercel-analytics-connection",
+    "allow-get-vercel-analytics-summary"
   ]
 }

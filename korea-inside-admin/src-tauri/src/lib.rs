@@ -19,6 +19,7 @@ pub fn run() {
             credentials::get_vercel_connection_status,
             credentials::delete_vercel_access_token,
             analytics::test_vercel_analytics_connection,
+            analytics::get_vercel_analytics_summary,
         ])
         .run(tauri::generate_context!());
 

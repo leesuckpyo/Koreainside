@@ -24,6 +24,12 @@ pub fn save_vercel_access_token(token: String) -> VercelConnectionStatus {
         Err((code, message)) => return status("error", false, code, message),
     };
 
+    with_runtime_invalidation(crate::analytics::invalidate_analytics_runtime_state, || {
+        save_validated_token(token)
+    })
+}
+
+fn save_validated_token(token: String) -> VercelConnectionStatus {
     let entry = match credential_entry() {
         Ok(entry) => entry,
         Err(_) => {
@@ -75,6 +81,13 @@ pub fn get_vercel_connection_status() -> VercelConnectionStatus {
 
 #[tauri::command]
 pub fn delete_vercel_access_token() -> VercelConnectionStatus {
+    with_runtime_invalidation(
+        crate::analytics::invalidate_analytics_runtime_state,
+        delete_stored_token,
+    )
+}
+
+fn delete_stored_token() -> VercelConnectionStatus {
     let entry = match credential_entry() {
         Ok(entry) => entry,
         Err(_) => {
@@ -96,6 +109,17 @@ pub fn delete_vercel_access_token() -> VercelConnectionStatus {
             "저장된 Vercel 자격 증명을 삭제할 수 없습니다.",
         ),
     }
+}
+
+fn with_runtime_invalidation<T, I, O>(mut invalidate: I, operation: O) -> T
+where
+    I: FnMut(),
+    O: FnOnce() -> T,
+{
+    invalidate();
+    let result = operation();
+    invalidate();
+    result
 }
 
 pub(crate) fn read_vercel_access_token() -> Result<String, KeyringError> {
@@ -177,6 +201,7 @@ fn status(
 #[cfg(test)]
 mod tests {
     use super::*;
+    use std::cell::Cell;
 
     #[test]
     fn rejects_empty_and_whitespace_tokens() {
@@ -215,5 +240,25 @@ mod tests {
     #[test]
     fn uses_local_non_roaming_persistence_value() {
         assert_eq!(CredPersist::Local.to_string(), "Local");
+    }
+
+    #[test]
+    fn saving_token_path_invalidates_runtime_state() {
+        let invalidations = Cell::new(0);
+        let result =
+            with_runtime_invalidation(|| invalidations.set(invalidations.get() + 1), || "saved");
+
+        assert_eq!(result, "saved");
+        assert_eq!(invalidations.get(), 2);
+    }
+
+    #[test]
+    fn deleting_token_path_invalidates_runtime_state() {
+        let invalidations = Cell::new(0);
+        let result =
+            with_runtime_invalidation(|| invalidations.set(invalidations.get() + 1), || "deleted");
+
+        assert_eq!(result, "deleted");
+        assert_eq!(invalidations.get(), 2);
     }
 }
