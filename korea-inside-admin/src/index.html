@@ -56,8 +56,8 @@
             </div>
             <dl class="status-grid">
               <div class="status-card is-ready"><dt>애플리케이션</dt><dd>기반 준비 완료</dd></div>
-              <div class="status-card"><dt>저장소</dt><dd>선택되지 않음</dd></div>
-              <div class="status-card"><dt>접근 모드</dt><dd>읽기 전용 예정</dd></div>
+              <div class="status-card"><dt>저장소</dt><dd id="dashboard-repository-status">선택되지 않음</dd></div>
+              <div class="status-card"><dt>접근 모드</dt><dd id="dashboard-access-mode">읽기 전용 예정</dd></div>
               <div class="status-card"><dt>Git 연동</dt><dd>연결되지 않음</dd></div>
               <div class="status-card"><dt>SQLite</dt><dd>비활성</dd></div>
               <div class="status-card"><dt>분석 API</dt><dd>연결되지 않음</dd></div>
@@ -66,20 +66,46 @@
           </section>
 
           <section class="view-panel" id="explorer-view" data-panel="explorer" hidden>
-            <div class="placeholder-panel">
-              <div class="placeholder-header">
-                <div>
-                  <p class="eyebrow">저장소 기반</p>
-                  <h2>프로젝트 탐색기</h2>
-                </div>
-                <span class="connection-badge">연결되지 않음</span>
+            <div class="explorer-header">
+              <div>
+                <p class="eyebrow">저장소 기반</p>
+                <h2>프로젝트 탐색기</h2>
               </div>
-              <p>Phase 1A-4에서 저장소 읽기 전용 연결을 구현할 예정입니다.</p>
-              <ul>
-                <li>아직 저장소 선택 기능이 연결되지 않았습니다.</li>
-                <li>파일 생성·수정·삭제 기능은 제공되지 않습니다.</li>
-                <li>현재 화면에는 정적 연결 준비 상태만 표시됩니다.</li>
-              </ul>
+              <div class="explorer-badges" aria-label="저장소 연결 상태">
+                <span class="connection-badge" id="connection-badge">연결되지 않음</span>
+                <span class="read-only-badge" id="read-only-badge" hidden>읽기 전용</span>
+              </div>
+            </div>
+
+            <div class="explorer-toolbar">
+              <div class="explorer-actions">
+                <button class="primary-button" id="select-repository" type="button">저장소 선택</button>
+                <button class="secondary-button" id="disconnect-repository" type="button" hidden>연결 해제</button>
+              </div>
+              <span class="loading-state" id="repository-loading" role="status" hidden>저장소를 확인하고 있습니다.</span>
+            </div>
+
+            <div class="repository-error" id="repository-error" role="alert" hidden></div>
+
+            <div class="repository-empty" id="repository-empty">
+              <h3>Korea Inside 저장소를 선택하십시오.</h3>
+              <p>선택한 저장소의 폴더와 파일 구조만 읽기 전용으로 표시합니다.</p>
+            </div>
+
+            <div class="repository-connected" id="repository-connected" hidden>
+              <div class="repository-summary">
+                <div class="repository-path-block">
+                  <span class="summary-label">선택 경로</span>
+                  <strong id="repository-path"></strong>
+                </div>
+                <p class="repository-counts" id="repository-counts"></p>
+              </div>
+
+              <div class="repository-warning" id="repository-warning" role="status" hidden></div>
+
+              <div class="tree-scroll">
+                <div class="repository-tree" id="repository-tree" role="tree" aria-label="저장소 파일 트리"></div>
+              </div>
             </div>
           </section>
         </main>
