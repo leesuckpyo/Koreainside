@@ -2,38 +2,88 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="styles.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tauri App</title>
+    <title>Korea Inside Admin</title>
+    <link rel="stylesheet" href="styles.css" />
     <script type="module" src="/main.js" defer></script>
   </head>
-
   <body>
-    <main class="container">
-      <h1>Welcome to Tauri</h1>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Admin navigation">
+        <div class="brand-block">
+          <p class="brand-name">Korea Inside Admin</p>
+          <p class="brand-subtitle">Operations Center</p>
+        </div>
 
-      <div class="row">
-        <a href="https://tauri.app" target="_blank">
-          <img src="/assets/tauri.svg" class="logo tauri" alt="Tauri logo" />
-        </a>
-        <a
-          href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"
-          target="_blank"
-        >
-          <img
-            src="/assets/javascript.svg"
-            class="logo vanilla"
-            alt="JavaScript logo"
-          />
-        </a>
+        <nav class="navigation">
+          <button class="nav-item is-active" type="button" data-view="dashboard" aria-current="page">
+            <span>운영 대시보드</span>
+          </button>
+          <button class="nav-item" type="button" disabled><span>트래픽·사용자</span><span class="phase-label">Later phase</span></button>
+          <button class="nav-item" type="button" disabled><span>유입·검색</span><span class="phase-label">Later phase</span></button>
+          <button class="nav-item" type="button" disabled><span>행동·이탈</span><span class="phase-label">Later phase</span></button>
+          <button class="nav-item" type="button" disabled><span>전환·제휴</span><span class="phase-label">Later phase</span></button>
+          <button class="nav-item" type="button" disabled><span>Accommodation</span><span class="phase-label">Later phase</span></button>
+          <button class="nav-item" type="button" disabled><span>eSIM</span><span class="phase-label">Later phase</span></button>
+          <button class="nav-item" type="button" disabled><span>콘텐츠·SEO</span><span class="phase-label">Later phase</span></button>
+          <button class="nav-item" type="button" disabled><span>사이트 상태점검</span><span class="phase-label">Later phase</span></button>
+          <button class="nav-item" type="button" data-view="explorer"><span>Project Explorer</span></button>
+          <button class="nav-item" type="button" disabled><span>Git·배포</span><span class="phase-label">Later phase</span></button>
+          <button class="nav-item" type="button" disabled><span>설정·데이터 연결</span><span class="phase-label">Later phase</span></button>
+        </nav>
+      </aside>
+
+      <div class="workspace">
+        <header class="status-bar" aria-label="Application status">
+          <div><span class="status-key">Environment</span><strong>Local Windows App</strong></div>
+          <div><span class="status-key">Mode</span><strong>Read-only foundation</strong></div>
+          <div><span class="status-key">Version</span><strong>0.1.0</strong></div>
+        </header>
+
+        <main class="main-content">
+          <div class="page-heading">
+            <div>
+              <p class="eyebrow">Operations workspace</p>
+              <h1 id="view-title">운영 대시보드</h1>
+            </div>
+            <span class="initialization-state" id="initialization-state">Foundation initialized</span>
+          </div>
+
+          <section class="view-panel" id="dashboard-view" data-panel="dashboard">
+            <div class="section-heading">
+              <h2>Foundation status</h2>
+              <p>Connections remain disabled until a later approved phase.</p>
+            </div>
+            <dl class="status-grid">
+              <div class="status-card is-ready"><dt>Application</dt><dd>Foundation Ready</dd></div>
+              <div class="status-card"><dt>Repository</dt><dd>Not selected</dd></div>
+              <div class="status-card"><dt>Access mode</dt><dd>Read-only planned</dd></div>
+              <div class="status-card"><dt>Git integration</dt><dd>Not connected</dd></div>
+              <div class="status-card"><dt>SQLite</dt><dd>Not enabled</dd></div>
+              <div class="status-card"><dt>Analytics API</dt><dd>Not connected</dd></div>
+              <div class="status-card"><dt>Deployment access</dt><dd>Disabled</dd></div>
+            </dl>
+          </section>
+
+          <section class="view-panel" id="explorer-view" data-panel="explorer" hidden>
+            <div class="placeholder-panel">
+              <div class="placeholder-header">
+                <div>
+                  <p class="eyebrow">Repository foundation</p>
+                  <h2>Project Explorer</h2>
+                </div>
+                <span class="connection-badge">Not connected</span>
+              </div>
+              <p>Phase 1A-4에서 지정 Korea Inside 저장소를 읽기 전용으로 연결 예정</p>
+              <ul>
+                <li>파일 생성·수정·삭제 기능 없음</li>
+                <li>Repository selection 기능은 아직 없음</li>
+                <li>현재 화면은 정적 연결 준비 상태만 표시</li>
+              </ul>
+            </div>
+          </section>
+        </main>
       </div>
-      <p>Click on the Tauri logo to learn more about the framework</p>
-
-      <form class="row" id="greet-form">
-        <input id="greet-input" placeholder="Enter a name..." />
-        <button type="submit">Greet</button>
-      </form>
-      <p id="greet-msg"></p>
-    </main>
+    </div>
   </body>
 </html>

@@ -1,18 +1,34 @@
-const { invoke } = window.__TAURI__.core;
-
-let greetInputEl;
-let greetMsgEl;
-
-async function greet() {
-  // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
-  greetMsgEl.textContent = await invoke("greet", { name: greetInputEl.value });
-}
-
 window.addEventListener("DOMContentLoaded", () => {
-  greetInputEl = document.querySelector("#greet-input");
-  greetMsgEl = document.querySelector("#greet-msg");
-  document.querySelector("#greet-form").addEventListener("submit", (e) => {
-    e.preventDefault();
-    greet();
+  const viewTitle = document.querySelector("#view-title");
+  const initializationState = document.querySelector("#initialization-state");
+  const navigationItems = document.querySelectorAll(".nav-item[data-view]");
+  const viewPanels = document.querySelectorAll("[data-panel]");
+  const viewTitles = {
+    dashboard: "운영 대시보드",
+    explorer: "Project Explorer",
+  };
+
+  navigationItems.forEach((item) => {
+    item.addEventListener("click", () => {
+      const selectedView = item.dataset.view;
+
+      navigationItems.forEach((navigationItem) => {
+        const isSelected = navigationItem === item;
+        navigationItem.classList.toggle("is-active", isSelected);
+        if (isSelected) {
+          navigationItem.setAttribute("aria-current", "page");
+        } else {
+          navigationItem.removeAttribute("aria-current");
+        }
+      });
+
+      viewPanels.forEach((panel) => {
+        panel.hidden = panel.dataset.panel !== selectedView;
+      });
+
+      viewTitle.textContent = viewTitles[selectedView];
+    });
   });
+
+  initializationState.textContent = "Foundation initialized";
 });

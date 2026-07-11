@@ -1,22 +1,27 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "korea-inside-admin",
+  "productName": "Korea Inside Admin",
   "version": "0.1.0",
   "identifier": "com.getkoreainside.admin",
   "build": {
     "frontendDist": "../src"
   },
   "app": {
-    "withGlobalTauri": true,
+    "withGlobalTauri": false,
     "windows": [
       {
-        "title": "korea-inside-admin",
-        "width": 800,
-        "height": 600
+        "title": "Korea Inside Admin",
+        "width": 1280,
+        "height": 800,
+        "minWidth": 1100,
+        "minHeight": 700,
+        "resizable": true,
+        "fullscreen": false,
+        "center": true
       }
     ],
     "security": {
-      "csp": null
+      "csp": "default-src 'self'; img-src 'self' data: asset: http://asset.localhost; style-src 'self'; script-src 'self'; connect-src ipc: http://ipc.localhost;"
     }
   },
   "bundle": {
