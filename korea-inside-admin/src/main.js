@@ -5,7 +5,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const viewPanels = document.querySelectorAll("[data-panel]");
   const viewTitles = {
     dashboard: "운영 대시보드",
-    explorer: "Project Explorer",
+    explorer: "프로젝트 탐색기",
   };
 
   navigationItems.forEach((item) => {
@@ -30,5 +30,5 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  initializationState.textContent = "Foundation initialized";
+  initializationState.textContent = "관리자 앱 기반 구성이 완료되었습니다.";
 });
