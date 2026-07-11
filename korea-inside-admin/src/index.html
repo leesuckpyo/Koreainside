@@ -19,7 +19,7 @@
           <button class="nav-item is-active" type="button" data-view="dashboard" aria-current="page">
             <span>운영 대시보드</span>
           </button>
-          <button class="nav-item" type="button" disabled><span>트래픽·사용자</span><span class="phase-label">후속 단계</span></button>
+          <button class="nav-item" type="button" data-view="analytics"><span>트래픽·사용자</span></button>
           <button class="nav-item" type="button" disabled><span>유입·검색</span><span class="phase-label">후속 단계</span></button>
           <button class="nav-item" type="button" disabled><span>행동·이탈</span><span class="phase-label">후속 단계</span></button>
           <button class="nav-item" type="button" disabled><span>전환·제휴</span><span class="phase-label">후속 단계</span></button>
@@ -60,9 +60,59 @@
               <div class="status-card"><dt>접근 모드</dt><dd id="dashboard-access-mode">읽기 전용 예정</dd></div>
               <div class="status-card"><dt>Git 연동</dt><dd>연결되지 않음</dd></div>
               <div class="status-card"><dt>SQLite</dt><dd>비활성</dd></div>
-              <div class="status-card"><dt>분석 API</dt><dd>연결되지 않음</dd></div>
+              <div class="status-card"><dt>분석 API</dt><dd id="dashboard-analytics-status">연결되지 않음</dd></div>
               <div class="status-card"><dt>배포 접근</dt><dd>비활성</dd></div>
             </dl>
+          </section>
+
+          <section class="view-panel" id="analytics-view" data-panel="analytics" hidden>
+            <div class="analytics-header">
+              <div>
+                <p class="eyebrow">읽기 전용 연결</p>
+                <h2>Vercel Analytics</h2>
+              </div>
+              <span class="analytics-badge" id="analytics-connection-badge">연결되지 않음</span>
+            </div>
+
+            <div class="analytics-settings">
+              <div class="analytics-status-grid" aria-label="Vercel Analytics 연결 상태">
+                <div><span>자격증명</span><strong id="analytics-credential-status">저장되지 않음</strong></div>
+                <div><span>연결 상태</span><strong id="analytics-test-status">확인 전</strong></div>
+                <div><span>마지막 연결 확인</span><strong id="analytics-last-checked">없음</strong></div>
+              </div>
+
+              <form class="token-form" id="vercel-token-form">
+                <label for="vercel-access-token">Vercel Access Token</label>
+                <div class="token-input-row">
+                  <input
+                    id="vercel-access-token"
+                    name="vercel-access-token"
+                    type="password"
+                    maxlength="512"
+                    autocomplete="off"
+                    autocapitalize="none"
+                    spellcheck="false"
+                    required
+                  />
+                  <button class="primary-button" id="save-vercel-token" type="submit">토큰 저장</button>
+                </div>
+              </form>
+
+              <div class="analytics-actions">
+                <button class="secondary-button" id="test-vercel-connection" type="button">연결 시험</button>
+                <button class="secondary-button is-danger" id="delete-vercel-token" type="button">연결 해제</button>
+              </div>
+
+              <div class="analytics-message" id="analytics-message" role="status">
+                Vercel Access Token을 저장한 후 연결 상태를 확인할 수 있습니다.
+              </div>
+
+              <div class="security-notice">
+                <strong>보안 안내</strong>
+                <p>Access Token은 Windows 자격 증명 관리자에만 저장되며 화면에 다시 표시되지 않습니다.</p>
+                <p>이번 단계에서는 연결 여부만 확인하며 방문자·페이지뷰 통계는 표시하지 않습니다.</p>
+              </div>
+            </div>
           </section>
 
           <section class="view-panel" id="explorer-view" data-panel="explorer" hidden>

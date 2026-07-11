@@ -1,3 +1,5 @@
+mod analytics;
+mod credentials;
 mod export;
 mod repository;
 
@@ -13,6 +15,10 @@ pub fn run() {
             repository::disconnect_repository,
             export::preview_repository_export,
             export::export_repository_inventory,
+            credentials::save_vercel_access_token,
+            credentials::get_vercel_connection_status,
+            credentials::delete_vercel_access_token,
+            analytics::test_vercel_analytics_connection,
         ])
         .run(tauri::generate_context!());
 

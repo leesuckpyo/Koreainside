@@ -8,6 +8,10 @@
     "allow-select-repository",
     "allow-disconnect-repository",
     "allow-preview-repository-export",
-    "allow-export-repository-inventory"
+    "allow-export-repository-inventory",
+    "allow-save-vercel-access-token",
+    "allow-get-vercel-connection-status",
+    "allow-delete-vercel-access-token",
+    "allow-test-vercel-analytics-connection"
   ]
 }

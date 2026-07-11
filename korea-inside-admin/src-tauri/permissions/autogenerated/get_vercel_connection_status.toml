@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-get-vercel-connection-status"
+description = "Enables the get_vercel_connection_status command without any pre-configured scope."
+commands.allow = ["get_vercel_connection_status"]
+
+[[permission]]
+identifier = "deny-get-vercel-connection-status"
+description = "Denies the get_vercel_connection_status command without any pre-configured scope."
+commands.deny = ["get_vercel_connection_status"]

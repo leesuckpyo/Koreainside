@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-test-vercel-analytics-connection"
+description = "Enables the test_vercel_analytics_connection command without any pre-configured scope."
+commands.allow = ["test_vercel_analytics_connection"]
+
+[[permission]]
+identifier = "deny-test-vercel-analytics-connection"
+description = "Denies the test_vercel_analytics_connection command without any pre-configured scope."
+commands.deny = ["test_vercel_analytics_connection"]

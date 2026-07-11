@@ -17,6 +17,17 @@ window.addEventListener("DOMContentLoaded", () => {
   const repositoryTree = document.querySelector("#repository-tree");
   const dashboardRepositoryStatus = document.querySelector("#dashboard-repository-status");
   const dashboardAccessMode = document.querySelector("#dashboard-access-mode");
+  const dashboardAnalyticsStatus = document.querySelector("#dashboard-analytics-status");
+  const analyticsConnectionBadge = document.querySelector("#analytics-connection-badge");
+  const analyticsCredentialStatus = document.querySelector("#analytics-credential-status");
+  const analyticsTestStatus = document.querySelector("#analytics-test-status");
+  const analyticsLastChecked = document.querySelector("#analytics-last-checked");
+  const vercelTokenForm = document.querySelector("#vercel-token-form");
+  const vercelAccessToken = document.querySelector("#vercel-access-token");
+  const saveVercelTokenButton = document.querySelector("#save-vercel-token");
+  const testVercelConnectionButton = document.querySelector("#test-vercel-connection");
+  const deleteVercelTokenButton = document.querySelector("#delete-vercel-token");
+  const analyticsMessage = document.querySelector("#analytics-message");
   const exportFormatInputs = document.querySelectorAll('input[name="export-format"]');
   const previewExportButton = document.querySelector("#preview-export");
   const saveExportButton = document.querySelector("#save-export");
@@ -26,9 +37,11 @@ window.addEventListener("DOMContentLoaded", () => {
   const exportHistoryEmpty = document.querySelector("#export-history-empty");
   const viewTitles = {
     dashboard: "운영 대시보드",
+    analytics: "Vercel Analytics",
     explorer: "프로젝트 탐색기",
   };
   let connectedRepository = null;
+  let vercelCredentialStored = false;
 
   navigationItems.forEach((item) => {
     item.addEventListener("click", () => {
@@ -145,7 +158,65 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  vercelTokenForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    let token = vercelAccessToken.value;
+    vercelAccessToken.value = "";
+    setAnalyticsLoading(true, "Access Token을 안전하게 저장하고 있습니다.");
+
+    try {
+      const result = await window.__TAURI__.core.invoke("save_vercel_access_token", { token });
+      renderAnalyticsStatus(result);
+      if (result.status === "credential_stored") {
+        setAnalyticsMessage("Access Token을 Windows 자격 증명 관리자에 저장했습니다.", "success");
+      } else {
+        setAnalyticsMessage(result.message || "Access Token을 저장할 수 없습니다.", "error");
+      }
+    } catch (error) {
+      renderAnalyticsError("관리자 앱과 통신할 수 없습니다.");
+    } finally {
+      token = "";
+      vercelAccessToken.value = "";
+      setAnalyticsLoading(false);
+    }
+  });
+
+  testVercelConnectionButton.addEventListener("click", async () => {
+    setAnalyticsLoading(true, "Vercel Analytics 연결을 확인하고 있습니다.");
+    try {
+      const result = await window.__TAURI__.core.invoke("test_vercel_analytics_connection");
+      renderAnalyticsStatus(result);
+      if (result.status === "connected") {
+        setAnalyticsMessage("Vercel Analytics 읽기 전용 연결을 확인했습니다.", "success");
+      } else {
+        setAnalyticsMessage(result.message || "Vercel Analytics 연결에 실패했습니다.", "error");
+      }
+    } catch (error) {
+      renderAnalyticsError("관리자 앱과 통신할 수 없습니다.");
+    } finally {
+      setAnalyticsLoading(false);
+    }
+  });
+
+  deleteVercelTokenButton.addEventListener("click", async () => {
+    setAnalyticsLoading(true, "저장된 자격 증명을 삭제하고 있습니다.");
+    try {
+      const result = await window.__TAURI__.core.invoke("delete_vercel_access_token");
+      renderAnalyticsStatus(result);
+      if (result.status === "not_configured") {
+        setAnalyticsMessage("저장된 Vercel 자격 증명을 삭제했습니다.", "success");
+      } else {
+        setAnalyticsMessage(result.message || "자격 증명을 삭제할 수 없습니다.", "error");
+      }
+    } catch (error) {
+      renderAnalyticsError("관리자 앱과 통신할 수 없습니다.");
+    } finally {
+      setAnalyticsLoading(false);
+    }
+  });
+
   initializationState.textContent = "관리자 앱 기반 구성이 완료되었습니다.";
+  refreshVercelConnectionStatus();
 
   function setLoading(isLoading) {
     selectRepositoryButton.disabled = isLoading;
@@ -275,6 +346,77 @@ window.addEventListener("DOMContentLoaded", () => {
       return `${bytes.toLocaleString("ko-KR")} B`;
     }
     return `${(bytes / 1024).toLocaleString("ko-KR", { maximumFractionDigits: 1 })} KB`;
+  }
+
+  async function refreshVercelConnectionStatus() {
+    setAnalyticsLoading(true, "저장된 자격 증명을 확인하고 있습니다.");
+    try {
+      const result = await window.__TAURI__.core.invoke("get_vercel_connection_status");
+      renderAnalyticsStatus(result);
+      if (result.status === "credential_stored") {
+        setAnalyticsMessage("자격증명이 저장되어 있습니다. 연결 시험을 실행해 주십시오.");
+      } else if (result.status === "not_configured") {
+        setAnalyticsMessage("Vercel Access Token을 저장한 후 연결 상태를 확인할 수 있습니다.");
+      } else {
+        setAnalyticsMessage(result.message || "연결 상태를 확인할 수 없습니다.", "error");
+      }
+    } catch (error) {
+      renderAnalyticsError("관리자 앱과 통신할 수 없습니다.");
+    } finally {
+      setAnalyticsLoading(false);
+    }
+  }
+
+  function setAnalyticsLoading(isLoading, message = "") {
+    saveVercelTokenButton.disabled = isLoading;
+    vercelAccessToken.disabled = isLoading;
+    testVercelConnectionButton.disabled = isLoading || !vercelCredentialStored;
+    deleteVercelTokenButton.disabled = isLoading || !vercelCredentialStored;
+    if (isLoading) {
+      setAnalyticsMessage(message);
+    }
+  }
+
+  function renderAnalyticsStatus(result) {
+    vercelCredentialStored = result.tokenStored === true;
+    analyticsCredentialStatus.textContent = vercelCredentialStored ? "토큰 저장됨" : "저장되지 않음";
+    analyticsLastChecked.textContent = result.lastCheckedAt
+      ? new Date(result.lastCheckedAt).toLocaleString("ko-KR")
+      : "없음";
+
+    analyticsConnectionBadge.classList.remove("is-connected", "is-error");
+    if (result.status === "connected") {
+      analyticsConnectionBadge.textContent = "연결됨";
+      analyticsConnectionBadge.classList.add("is-connected");
+      analyticsTestStatus.textContent = "연결 성공";
+      dashboardAnalyticsStatus.textContent = "연결됨";
+    } else if (result.status === "credential_stored") {
+      analyticsConnectionBadge.textContent = "자격증명 저장됨";
+      analyticsTestStatus.textContent = "확인 전";
+      dashboardAnalyticsStatus.textContent = "연결되지 않음";
+    } else if (result.status === "not_configured") {
+      analyticsConnectionBadge.textContent = "연결되지 않음";
+      analyticsTestStatus.textContent = "확인 전";
+      dashboardAnalyticsStatus.textContent = "연결되지 않음";
+    } else {
+      analyticsConnectionBadge.textContent = "오류";
+      analyticsConnectionBadge.classList.add("is-error");
+      analyticsTestStatus.textContent = result.status === "rate_limited" ? "요청 제한" : "연결 실패";
+      dashboardAnalyticsStatus.textContent = "연결 오류";
+    }
+
+    setAnalyticsLoading(false);
+  }
+
+  function renderAnalyticsError(message) {
+    renderAnalyticsStatus({ status: "error", tokenStored: vercelCredentialStored, lastCheckedAt: null });
+    setAnalyticsMessage(message, "error");
+  }
+
+  function setAnalyticsMessage(message, kind = "default") {
+    analyticsMessage.textContent = message;
+    analyticsMessage.classList.toggle("is-error", kind === "error");
+    analyticsMessage.classList.toggle("is-success", kind === "success");
   }
 
   function renderWarnings() {

@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-save-vercel-access-token"
+description = "Enables the save_vercel_access_token command without any pre-configured scope."
+commands.allow = ["save_vercel_access_token"]
+
+[[permission]]
+identifier = "deny-save-vercel-access-token"
+description = "Denies the save_vercel_access_token command without any pre-configured scope."
+commands.deny = ["save_vercel_access_token"]

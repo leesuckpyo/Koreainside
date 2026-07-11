@@ -5,6 +5,10 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             "disconnect_repository",
             "preview_repository_export",
             "export_repository_inventory",
+            "save_vercel_access_token",
+            "get_vercel_connection_status",
+            "delete_vercel_access_token",
+            "test_vercel_analytics_connection",
         ]),
     ))?;
 
