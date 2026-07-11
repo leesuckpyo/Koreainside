@@ -57,10 +57,10 @@
         <article class="airport-transport-card airport-transport-card--best">
           <span class="airport-badge">Mockup input</span>
           <h2 class="section__title">Tell us your arrival situation</h2>
-          <form action="#" method="get" aria-label="Airport transfer recommendation mockup">
+          <div role="group" aria-label="Airport transfer recommendation preview">
             <p>
               <label for="arrival-terminal">Arrival Terminal</label><br>
-              <select id="arrival-terminal" name="arrival-terminal">
+              <select id="arrival-terminal" name="arrival-terminal" disabled>
                 <option>ICN Terminal 1</option>
                 <option>ICN Terminal 2</option>
               </select>
@@ -68,12 +68,12 @@
 
             <p>
               <label for="arrival-time">Arrival Time</label><br>
-              <input id="arrival-time" name="arrival-time" type="time" value="14:30">
+              <input id="arrival-time" name="arrival-time" type="time" value="14:30" disabled>
             </p>
 
             <p>
               <label for="travelers">Travelers</label><br>
-              <select id="travelers" name="travelers">
+              <select id="travelers" name="travelers" disabled>
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -83,7 +83,7 @@
 
             <p>
               <label for="suitcases">Suitcases</label><br>
-              <select id="suitcases" name="suitcases">
+              <select id="suitcases" name="suitcases" disabled>
                 <option>None</option>
                 <option selected>1</option>
                 <option>2</option>
@@ -94,13 +94,13 @@
 
             <p>
               <label for="destination">Hotel or Area</label><br>
-              <input id="destination" name="destination" type="text" value="Hongdae" placeholder="Hotel name or area">
+              <input id="destination" name="destination" type="text" value="Hongdae" placeholder="Hotel name or area" disabled>
             </p>
 
             <p>
-              <a href="#" class="airport-official-map-link__button">Find Best Transfer</a>
+              <a class="airport-official-map-link__button" aria-disabled="true" tabindex="-1">Recommendation coming soon</a>
             </p>
-          </form>
+          </div>
         </article>
       </div>
     </section>
@@ -129,7 +129,7 @@
               <li>4 : 320m Walk</li>
               <li>5 : ABC Hotel</li>
             </ol>
-            <a href="#" class="airport-official-map-link__button">Open in Naver Map</a>
+            <a class="airport-official-map-link__button" aria-disabled="true" tabindex="-1">Naver Map route coming soon</a>
           </article>
 
           <article class="airport-transport-card">

@@ -70,7 +70,7 @@ Recommended language:
 - "Google Maps is useful for planning, saved places, reviews, and sharing, but local apps usually provide more complete route guidance in Korea."
 - "Naver Map is the safest first choice for most travelers."
 - "KakaoMap is a good local alternative and backup."
-- "Google Maps functionality may improve over time following Korea's 2026 conditional approval for map-data export, so current availability should be reviewed before publication updates."
+- "Google Maps functionality in Korea may change over time. The page should describe only currently verified functionality and recommend that travelers check current navigation support before their trip."
 
 ## Target Users
 
@@ -171,7 +171,7 @@ The guide should avoid a confrontational "Google vs Korea" framing. The useful f
 | Walking navigation | Naver Map | Stronger local walking guidance than Google Maps for Korea |
 | Restaurant reviews | Google Maps + Naver Map | Google is familiar and strong for international reviews; Naver has more local Korean listings and reviews |
 | Backup map | KakaoMap | Strong local data, route support, bus/subway details, and alternate search results |
-| Driving | Naver Map or KakaoMap | Local apps are the practical choice for Korean road navigation; Google may improve but should be checked |
+| Driving | Naver Map or KakaoMap | Local apps are the practical choice for Korean road navigation; current Google Maps functionality should be checked |
 | Sharing places with friends abroad | Google Maps | Familiar interface and easy sharing across countries |
 | Finding small local businesses | Naver Map or KakaoMap with Korean name | Korean names often produce better results |
 
@@ -183,11 +183,9 @@ The guide should avoid a confrontational "Google vs Korea" framing. The useful f
 
 Google Maps remains useful in Korea for many planning tasks, especially place search, reviews, saved lists, and sharing locations. However, Korea has historically limited Google's ability to provide the same complete navigation experience available in many other countries. The issue is connected to Korean restrictions on exporting detailed geographic data and security-processing requirements for sensitive locations.
 
-As of the last research review on June 27, 2026, South Korea's Ministry of Land, Infrastructure and Transport had announced a February 27, 2026 decision approving Google's export of 1:5,000 map data under strict security conditions. The ministry notice appears in Korean as "[Reference] Decision to approve Google 1:5000 map export" and states that approval is subject to strict security conditions. News summaries from AP and FT describe conditions including domestic processing, exclusion or blurring/security handling of sensitive information, and compliance oversight.
-
 Important content implication:
 
-The page must not claim that Google Maps will never provide full navigation in Korea. The correct position is that Google Maps has been limited, is improving, and may change over time. The page should recommend checking current functionality before travel and should keep a "Last reviewed" date near the map-functionality claims.
+The page must not claim that Google Maps will never provide full navigation in Korea. The correct position is that Google Maps has historically been limited in Korea and its functionality may change over time. The page should recommend checking current functionality before travel and should keep a "Last reviewed" date near the map-functionality claims.
 
 #### Official Google Help Context
 
@@ -199,9 +197,9 @@ This general Help documentation does not guarantee equal functionality in every 
 
 Historically, walking navigation has been one of the biggest Google Maps pain points in Korea. Multiple traveler discussions and Korea-focused articles describe walking directions as unavailable, limited, or less reliable compared with Naver Map and KakaoMap. Google Help Community threads specifically discuss drive and walk options not being available in South Korea.
 
-Because the 2026 map-data approval may change this over time, the page should say:
+Because functionality may change over time, the page should say:
 
-"Google Maps walking navigation in Korea has been limited or less reliable than local map apps. Because Google Maps services may improve after Korea's 2026 map-data approval, check current functionality before relying on it."
+"Google Maps walking navigation in Korea has been limited or less reliable than local map apps. Check current functionality before relying on it."
 
 Do not say:
 
@@ -221,7 +219,7 @@ The page should distinguish:
 
 Driving is a safety-critical use case. Visit Korea's official driving guide states that Google Maps GPS navigation cannot be used in Korea and recommends Naver Map and Kakao Map as multilingual Korean navigation alternatives. Because Visit Korea is an official tourism source and driving is high-stakes, the page should recommend Naver Map or KakaoMap for driving and tell users to verify rental-car navigation options.
 
-Because 2026 approval may eventually improve Google driving directions, the wording should be:
+Because functionality may change over time, the wording should be:
 
 "For driving, use Naver Map or KakaoMap unless you have verified that Google Maps driving navigation is fully available for your exact route at the time of travel."
 
@@ -256,11 +254,9 @@ Google Maps has strong English UI support and is familiar to global travelers. I
 
 #### Latest Official Announcements
 
-The most important current development is the February 27, 2026 South Korean government decision to approve Google's export of 1:5,000 map data under strict security conditions. This is not the same as saying full Google Maps navigation is already reliable for every traveler. It means the environment is changing and the Korea Inside page must be maintained as time-sensitive content.
-
 Content rule:
 
-Add a "Last reviewed" date for Google Maps status and state that Google Maps may improve after the 2026 approval.
+Add a "Last reviewed" date for Google Maps status and recommend checking current functionality before travel.
 
 ### 2. Naver Map
 
@@ -462,11 +458,11 @@ Some travelers prefer KakaoMap, especially for bus tracking, Jeju, or local rout
 
 For a short first trip, Naver Map plus Google Maps is usually enough. For longer trips, rural areas, Jeju, or complex routes, users often recommend having both Naver Map and KakaoMap installed.
 
-#### 7. Google Maps may improve, but travelers should not depend on uncertain rollout
+#### 7. Google Maps functionality may change, but travelers should not depend on uncertain rollout
 
-Recent Reddit discussions after the 2026 map-data approval show confusion caused by news summaries and AI snippets. Some users expect Google Maps to be fully fixed, while others report that it still barely works for their needs. The page must prevent overconfidence:
+Recent Reddit discussions show confusion caused by news summaries and AI snippets. Some users expect Google Maps to be fully functional, while others report that it still barely works for their needs. The page must prevent overconfidence:
 
-"Google Maps may improve, but for your trip, install Naver Map before arrival."
+"Google Maps functionality may vary, but for your trip, install Naver Map before arrival."
 
 ### Common Complaints
 
@@ -658,7 +654,7 @@ Recommended visible content:
 
 Required note:
 
-Google Maps is improving in Korea, but local map apps still provide the most complete navigation experience for most travelers.
+Google Maps remains useful in Korea, but local map apps generally provide a more complete navigation experience for most travelers. Current functionality should be verified before publication.
 
 ### 3. Why Google Maps Is Different
 
@@ -671,7 +667,7 @@ Required points:
 - Google Maps can be useful for place search, reviews and saved places.
 - Some navigation features may be limited or less reliable in Korea.
 - Local map apps such as Naver Map and KakaoMap usually provide more detailed public transport, walking, bus, subway and local place information.
-- Google Maps services in Korea may improve over time, especially after Korea's 2026 conditional map-data approval.
+- Google Maps functionality in Korea may change over time, so current navigation support should be verified before publication.
 - Travelers should check current functionality before relying on Google Maps for navigation.
 
 Tone:
@@ -1806,15 +1802,6 @@ Use official Kakao pages for public transit/car/walk/bike routes, quick navigati
 Research use:
 
 Use Visit Korea for official tourism guidance on driving navigation, Naver/Kakao language support, and taxi/ride-hailing context.
-
-### Korea Government / Transport Ministry
-
-- Ministry of Land, Infrastructure and Transport notice: Google 1:5000 map export approval decision, February 27, 2026  
-  https://www.molit.go.kr/USR/NEWS/m_72/dtl.jsp?id=95091751
-
-Research use:
-
-Use this as the official basis for saying Google Maps may improve after Korea's 2026 conditional map-data export approval. Because the ministry source is in Korean and may be difficult for users to read, the page can summarize it briefly and provide the source URL in the Last Reviewed section.
 
 ### Competitor / Context References
 

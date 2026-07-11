@@ -62,7 +62,7 @@ Use official websites and app store listings to verify app identity, availabilit
 - NAVER Maps, Navigation on Google Play: https://play.google.com/store/apps/details?id=com.nhn.android.nmap&hl=en_US
 - Papago official website: https://papago.naver.com/
 - Naver Papago on Google Play: https://play.google.com/store/apps/details?id=com.naver.labs.translator&hl=en_US
-- KakaoTalk official service page: https://www.kakaocorp.com/page/service/service/KakaoTalk?lang=en
+- Kakao official services — KakaoTalk: https://www.kakaocorp.com/page/service/service?lang=en
 - KakaoMap official service page: https://www.kakaocorp.com/page/service/service/KakaoMap?lang=en
 - Kakao T on Google Play: https://play.google.com/store/apps/details?id=com.kakao.taxi&hl=en_US
 - Baemin official website: https://www.baemin.com/
