@@ -8,32 +8,48 @@
   <title>Incheon Airport Arrival Guide | Korea Inside</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <header class="header" data-common-header>
-    <div class="container header__inner">
-      <a href="/" class="logo">
-        <span class="logo__mark">KI</span>
-        Korea Inside
-      </a>
-      <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="main-nav">
-        <span class="nav-toggle__bar"></span>
-        <span class="nav-toggle__bar"></span>
-        <span class="nav-toggle__bar"></span>
-      </button>
-      <nav class="nav" id="main-nav" aria-label="Primary navigation">
-        <ul class="nav__list">
-          <li><a href="/" class="nav__link">Home</a></li>
-          <li><a href="accommodation.html" class="nav__link">Accommodation</a></li>
-          <li><a href="esim.html" class="nav__link">Connectivity</a></li>
-          <li><a href="arrival.html" class="nav__link nav__link--active">Arrival</a></li>
-          <li><a href="airport-transfer.html" class="nav__link">Transportation</a></li>
-          <li><a href="payments.html" class="nav__link">Money</a></li>
-          <li><a href="maps.html" class="nav__link">Maps</a></li>
-          <li><a href="checklist.html" class="nav__link">Travel Tips</a></li>
+<body data-section="airport">
+<!-- GLOBAL_NAV_START -->
+  <header class="header site-header" data-common-header>
+    <div class="container header__inner site-header__inner">
+      <a href="index.html" class="logo site-header__logo" aria-label="Korea Inside home"><span class="logo__mark">KI</span>Korea Inside</a>
+      <button class="site-nav-toggle" id="site-nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-primary-navigation"><span class="site-nav-toggle__bar"></span><span class="site-nav-toggle__bar"></span><span class="site-nav-toggle__bar"></span></button>
+      <nav class="site-nav" id="site-primary-navigation" aria-label="Primary navigation">
+        <ul class="site-nav__list">
+          <li class="site-nav__item" data-nav-section="stay">
+            <button class="site-nav__trigger" id="site-nav-trigger-stay" type="button" aria-expanded="false" aria-controls="site-nav-panel-stay" aria-haspopup="true">Stay</button>
+            <div class="site-nav__panel" id="site-nav-panel-stay" aria-labelledby="site-nav-trigger-stay" hidden><div class="site-nav__group"><p class="site-nav__group-label">Stay Guide</p><a class="site-nav__link" href="accommodation.html">Stay Guide</a><a class="site-nav__link" href="best-area-for-first-time-visitors-seoul.html">First-Time Visitors</a><a class="site-nav__link" href="best-area-for-families-seoul.html">Families</a><a class="site-nav__link" href="best-area-for-solo-travelers-seoul.html">Solo Travelers</a><a class="site-nav__link" href="best-area-for-couples-seoul.html">Couples</a><a class="site-nav__link" href="best-area-for-budget-travelers-seoul.html">Budget Travelers</a><a class="site-nav__link" href="best-area-for-shopping-seoul.html">Shopping</a><a class="site-nav__link" href="best-area-for-nightlife-seoul.html">Nightlife</a><a class="site-nav__link" href="best-area-for-luxury-hotels-seoul.html">Luxury Hotels</a><a class="site-nav__link" href="hongdae-vs-myeongdong.html">Hongdae vs Myeongdong</a></div></div>
+          </li>
+          <li class="site-nav__item" data-nav-section="esim">
+            <button class="site-nav__trigger" id="site-nav-trigger-esim" type="button" aria-expanded="false" aria-controls="site-nav-panel-esim" aria-haspopup="true">eSIM</button>
+            <div class="site-nav__panel" id="site-nav-panel-esim" aria-labelledby="site-nav-trigger-esim" hidden><div class="site-nav__group"><a class="site-nav__link" href="esim.html">eSIM Guide</a></div></div>
+          </li>
+          <li class="site-nav__item site-nav__item--active" data-nav-section="airport">
+            <button class="site-nav__trigger site-nav__trigger--current" id="site-nav-trigger-airport" type="button" aria-expanded="false" aria-controls="site-nav-panel-airport" aria-haspopup="true" aria-current="true">Airport</button>
+            <div class="site-nav__panel" id="site-nav-panel-airport" aria-labelledby="site-nav-trigger-airport" hidden><div class="site-nav__group"><a class="site-nav__link" href="airport.html">Airport Guide</a><a class="site-nav__link" href="arrival.html">Arrival Guide</a><a class="site-nav__link" href="airport-transfer.html">Airport Transfer</a><a class="site-nav__link" href="arex.html">AREX Guide</a><a class="site-nav__link" href="airport-bus.html">Airport Bus Guide</a></div></div>
+          </li>
+          <li class="site-nav__item" data-nav-section="maps">
+            <button class="site-nav__trigger" id="site-nav-trigger-maps" type="button" aria-expanded="false" aria-controls="site-nav-panel-maps" aria-haspopup="true">Maps</button>
+            <div class="site-nav__panel" id="site-nav-panel-maps" aria-labelledby="site-nav-trigger-maps" hidden><div class="site-nav__group"><a class="site-nav__link" href="maps.html">Maps Guide</a></div></div>
+          </li>
+          <li class="site-nav__item" data-nav-section="transport">
+            <button class="site-nav__trigger" id="site-nav-trigger-transport" type="button" aria-expanded="false" aria-controls="site-nav-panel-transport" aria-haspopup="true">Transport</button>
+            <div class="site-nav__panel site-nav__panel--end" id="site-nav-panel-transport" aria-labelledby="site-nav-trigger-transport" hidden><div class="site-nav__group"><p class="site-nav__group-label">Travel Cards</p><a class="site-nav__link" href="tmoney.html">T-money Guide</a><a class="site-nav__link" href="wowpass.html">WOWPASS Guide</a><a class="site-nav__link" href="payments.html">T-money vs WOWPASS</a></div><div class="site-nav__group"><p class="site-nav__group-label">Other Transport</p><a class="site-nav__link" href="taxi.html">Taxi Guide</a><a class="site-nav__link" href="rental-car.html">Rental Car</a></div></div>
+          </li>
+          <li class="site-nav__item" data-nav-section="apps">
+            <button class="site-nav__trigger" id="site-nav-trigger-apps" type="button" aria-expanded="false" aria-controls="site-nav-panel-apps" aria-haspopup="true">Apps</button>
+            <div class="site-nav__panel site-nav__panel--end" id="site-nav-panel-apps" aria-labelledby="site-nav-trigger-apps" hidden><div class="site-nav__group"><a class="site-nav__link" href="apps.html">Essential Apps</a></div></div>
+          </li>
+          <li class="site-nav__item" data-nav-section="travel-tips">
+            <button class="site-nav__trigger" id="site-nav-trigger-travel-tips" type="button" aria-expanded="false" aria-controls="site-nav-panel-travel-tips" aria-haspopup="true">Travel Tips</button>
+            <div class="site-nav__panel site-nav__panel--end" id="site-nav-panel-travel-tips" aria-labelledby="site-nav-trigger-travel-tips" hidden><div class="site-nav__group"><a class="site-nav__link" href="checklist.html">Korea Travel Checklist</a></div></div>
+          </li>
         </ul>
       </nav>
+      <div class="language-switcher" aria-label="Language selector" data-supported-languages="EN JP KR TW VN"><button class="language-switcher__button" type="button" aria-disabled="true" disabled><span class="language-switcher__current">EN</span><span class="language-switcher__label">Language</span></button></div>
     </div>
   </header>
+  <!-- GLOBAL_NAV_END -->
 
   <main>
     <section class="airport-page-hero">
@@ -117,17 +133,17 @@
 
         <div class="arrival-flow-card">
           <div class="arrival-flow">
-            <a href="arrival.html" class="arrival-flow__step arrival-flow__step--link"><span>?àÔ∏è</span><strong>Arrive</strong><p>Open the landing guide.</p><em>Start guide ??/em></a>
+            <a href="arrival.html" class="arrival-flow__step arrival-flow__step--link"><span></span><strong>Arrive</strong><p>Open the landing guide.</p><em>Start guide ??/em></a>
             <div class="arrival-flow__arrow">??/div>
-            <div class="arrival-flow__step"><span>?õÑ</span><strong>Baggage Claim</strong><p>Pick up checked luggage.</p></div>
+            <div class="arrival-flow__step"><span></span><strong>Baggage Claim</strong><p>Pick up checked luggage.</p></div>
             <div class="arrival-flow__arrow">??/div>
-            <div class="arrival-flow__step"><span>?ö™</span><strong>Customs Exit</strong><p>Enter the arrivals hall.</p></div>
+            <div class="arrival-flow__step"><span></span><strong>Customs Exit</strong><p>Enter the arrivals hall.</p></div>
             <div class="arrival-flow__arrow">??/div>
-            <div class="arrival-flow__step"><span>?ì∂</span><strong>eSIM / SIM</strong><p>Connect before leaving.</p></div>
+            <div class="arrival-flow__step"><span></span><strong>eSIM / SIM</strong><p>Connect before leaving.</p></div>
             <div class="arrival-flow__arrow">??/div>
-            <div class="arrival-flow__step"><span>?í≥</span><strong>T-money</strong><p>Buy or load your transport card.</p></div>
+            <div class="arrival-flow__step"><span></span><strong>T-money</strong><p>Buy or load your transport card.</p></div>
             <div class="arrival-flow__arrow">??/div>
-            <div class="arrival-flow__step"><span>?öÜ</span><strong>AREX / Bus / Taxi</strong><p>Choose your way to Seoul.</p></div>
+            <div class="arrival-flow__step"><span></span><strong>AREX / Bus / Taxi</strong><p>Choose your way to Seoul.</p></div>
           </div>
         </div>
       </div>
@@ -143,25 +159,25 @@
 
         <div class="airport-action-grid">
           <a href="esim.html" class="airport-action-card airport-action-card--link">
-            <span class="airport-action-card__icon">?ì∂</span>
+            <span class="airport-action-card__icon"></span>
             <h3>Internet Guide</h3>
             <p>Get connected before leaving the airport.</p>
             <span class="airport-action-card__cta">Open eSIM Guide ??/span>
           </a>
           <a href="tmoney.html" class="airport-action-card airport-action-card--link">
-            <span class="airport-action-card__icon">?í≥</span>
+            <span class="airport-action-card__icon"></span>
             <h3>T-money Guide</h3>
             <p>The easiest way to pay for buses and subways.</p>
             <span class="airport-action-card__cta">Open T-money Guide ??/span>
           </a>
           <a href="payments.html" class="airport-action-card airport-action-card--link">
-            <span class="airport-action-card__icon">?í∞</span>
+            <span class="airport-action-card__icon"></span>
             <h3>Payment Guide</h3>
             <p>Foreign cards sometimes fail in Korea.</p>
             <span class="airport-action-card__cta">Open Payment Guide ??/span>
           </a>
           <a href="maps.html" class="airport-action-card airport-action-card--link">
-            <span class="airport-action-card__icon">?ó∫Ô∏?/span>
+            <span class="airport-action-card__icon"></span>
             <h3>Maps Guide</h3>
             <p>Google Maps is limited in Korea.</p>
             <span class="airport-action-card__cta">Open Maps Guide ??/span>
@@ -182,7 +198,7 @@
           <a href="arex.html" class="airport-transport-card airport-transport-card--best transport-hub-card">
             <span class="airport-badge">Best for most travelers</span>
             <div class="airport-transport-card__top">
-              <span class="airport-transport-icon">?öÜ</span>
+              <span class="airport-transport-icon"></span>
               <h3>How to Use AREX</h3>
             </div>
             <p>Use this guide if you are going to Seoul Station, Hongdae, Gongdeok or another subway-connected area.</p>
@@ -196,7 +212,7 @@
 
           <a href="airport-bus.html" class="airport-transport-card transport-hub-card">
             <div class="airport-transport-card__top">
-              <span class="airport-transport-icon airport-transport-icon--bus">?öå</span>
+              <span class="airport-transport-icon airport-transport-icon--bus"></span>
               <h3>How to Use Airport Bus</h3>
             </div>
             <p>Use this guide if your hotel is near an airport bus stop or far from a subway station.</p>
@@ -210,7 +226,7 @@
 
           <a href="taxi.html" class="airport-transport-card transport-hub-card">
             <div class="airport-transport-card__top">
-              <span class="airport-transport-icon airport-transport-icon--taxi">?öï</span>
+              <span class="airport-transport-icon airport-transport-icon--taxi"></span>
               <h3>How to Use Taxi in Korea</h3>
             </div>
             <p>Use this guide for families, late-night arrivals, heavy luggage or door-to-door travel.</p>
@@ -224,7 +240,7 @@
 
           <a href="rental-car.html" class="airport-transport-card transport-hub-card">
             <div class="airport-transport-card__top">
-              <span class="airport-transport-icon airport-transport-icon--rent">?öó</span>
+              <span class="airport-transport-icon airport-transport-icon--rent"></span>
               <h3>How to Rent a Car in Korea</h3>
             </div>
             <p>Use this guide for regional travel, road trips or long stays outside Seoul.</p>
@@ -248,7 +264,7 @@
 
         <div class="mistake-list">
           <div class="mistake-item"><div class="mistake-item__bad">Don't rely only on Google Maps.</div><div class="mistake-item__good">Do install Naver Map or KakaoMap before leaving the airport.</div></div>
-          <div class="mistake-item"><div class="mistake-item__bad">Don't leave with no internet.</div><div class="mistake-item__good">Do activate eSIM or connect to airport Wi?ëFi first.</div></div>
+          <div class="mistake-item"><div class="mistake-item__bad">Don't leave with no internet.</div><div class="mistake-item__good">Do activate eSIM or connect to airport Wi-Fi first.</div></div>
           <div class="mistake-item"><div class="mistake-item__bad">Don't load only ??,000 to T-money.</div><div class="mistake-item__good">Do load enough for your first day of rides.</div></div>
           <div class="mistake-item"><div class="mistake-item__bad">Don't follow unofficial taxi offers.</div><div class="mistake-item__good">Do use official signs, counters and taxi stands.</div></div>
         </div>
@@ -296,8 +312,8 @@
           </article>
 
           <article class="airport-tip-card">
-            <h3 class="airport-tip-card__title">Airport Wi?ëFi works throughout the terminal</h3>
-            <p class="airport-tip-card__desc">Free Wi?ëFi is available throughout Terminal 1 and Terminal 2, making it easy to activate your eSIM, check maps and contact your hotel after arrival.</p>
+            <h3 class="airport-tip-card__title">Airport Wi-Fi works throughout the terminal</h3>
+            <p class="airport-tip-card__desc">Free Wi-Fi is available throughout Terminal 1 and Terminal 2, making it easy to activate your eSIM, check maps and contact your hotel after arrival.</p>
             <div class="airport-tip-card__action">
               <p class="airport-tip-card__action-label">What to do</p>
               <p>Connect to the airport Wi-Fi network as soon as you land. Use it to activate your eSIM, check maps or message your hotel while still inside the terminal.</p>
@@ -445,7 +461,7 @@
           </details>
           <details>
             <summary>2. Can I buy a T-money card at the airport?</summary>
-            <p>Yes. You can usually buy one at convenience stores such as CU, GS25, 7?ëEleven or emart24. Keep cash available because some top-ups may require cash.</p>
+            <p>Yes. You can usually buy one at convenience stores such as CU, GS25, 7-Eleven or emart24. Keep cash available because some top-ups may require cash.</p>
           </details>
           <details>
             <summary>3. Should I exchange cash at Incheon Airport?</summary>
@@ -464,8 +480,8 @@
             <p>Usually yes, but not everywhere. Some small stores, machines or local services may reject foreign cards. Keep a backup payment method.</p>
           </details>
           <details>
-            <summary>7. Is free Wi?ëFi available at Incheon Airport?</summary>
-            <p>Yes. Free airport Wi?ëFi is available in the terminal, but you should still prepare mobile data before leaving the airport.</p>
+            <summary>7. Is free Wi-Fi available at Incheon Airport?</summary>
+            <p>Yes. Free airport Wi-Fi is available in the terminal, but you should still prepare mobile data before leaving the airport.</p>
           </details>
           <details>
             <summary>8. Do taxi drivers speak English?</summary>

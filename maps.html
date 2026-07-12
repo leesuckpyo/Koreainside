@@ -259,32 +259,48 @@
 }
   </script>
 </head>
-<body>
-  <header class="header">
-    <div class="container header__inner">
-      <a href="/" class="logo">
-        <span class="logo__mark">KI</span>
-        Korea Inside
-      </a>
-      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="main-nav">
-        <span class="nav-toggle__bar"></span>
-        <span class="nav-toggle__bar"></span>
-        <span class="nav-toggle__bar"></span>
-      </button>
-      <nav class="nav" id="main-nav" aria-label="Main navigation">
-        <ul class="nav__list">
-          <li><a href="/" class="nav__link">Home</a></li>
-          <li><a href="accommodation.html" class="nav__link">Accommodation</a></li>
-          <li><a href="esim.html" class="nav__link">Connectivity</a></li>
-          <li><a href="arrival.html" class="nav__link">Arrival</a></li>
-          <li><a href="airport-transfer.html" class="nav__link">Transportation</a></li>
-          <li><a href="payments.html" class="nav__link">Money</a></li>
-          <li><a href="maps.html" class="nav__link nav__link--active">Maps</a></li>
-          <li><a href="checklist.html" class="nav__link">Travel Tips</a></li>
+<body data-section="maps">
+<!-- GLOBAL_NAV_START -->
+  <header class="header site-header" data-common-header>
+    <div class="container header__inner site-header__inner">
+      <a href="index.html" class="logo site-header__logo" aria-label="Korea Inside home"><span class="logo__mark">KI</span>Korea Inside</a>
+      <button class="site-nav-toggle" id="site-nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-primary-navigation"><span class="site-nav-toggle__bar"></span><span class="site-nav-toggle__bar"></span><span class="site-nav-toggle__bar"></span></button>
+      <nav class="site-nav" id="site-primary-navigation" aria-label="Primary navigation">
+        <ul class="site-nav__list">
+          <li class="site-nav__item" data-nav-section="stay">
+            <button class="site-nav__trigger" id="site-nav-trigger-stay" type="button" aria-expanded="false" aria-controls="site-nav-panel-stay" aria-haspopup="true">Stay</button>
+            <div class="site-nav__panel" id="site-nav-panel-stay" aria-labelledby="site-nav-trigger-stay" hidden><div class="site-nav__group"><p class="site-nav__group-label">Stay Guide</p><a class="site-nav__link" href="accommodation.html">Stay Guide</a><a class="site-nav__link" href="best-area-for-first-time-visitors-seoul.html">First-Time Visitors</a><a class="site-nav__link" href="best-area-for-families-seoul.html">Families</a><a class="site-nav__link" href="best-area-for-solo-travelers-seoul.html">Solo Travelers</a><a class="site-nav__link" href="best-area-for-couples-seoul.html">Couples</a><a class="site-nav__link" href="best-area-for-budget-travelers-seoul.html">Budget Travelers</a><a class="site-nav__link" href="best-area-for-shopping-seoul.html">Shopping</a><a class="site-nav__link" href="best-area-for-nightlife-seoul.html">Nightlife</a><a class="site-nav__link" href="best-area-for-luxury-hotels-seoul.html">Luxury Hotels</a><a class="site-nav__link" href="hongdae-vs-myeongdong.html">Hongdae vs Myeongdong</a></div></div>
+          </li>
+          <li class="site-nav__item" data-nav-section="esim">
+            <button class="site-nav__trigger" id="site-nav-trigger-esim" type="button" aria-expanded="false" aria-controls="site-nav-panel-esim" aria-haspopup="true">eSIM</button>
+            <div class="site-nav__panel" id="site-nav-panel-esim" aria-labelledby="site-nav-trigger-esim" hidden><div class="site-nav__group"><a class="site-nav__link" href="esim.html">eSIM Guide</a></div></div>
+          </li>
+          <li class="site-nav__item" data-nav-section="airport">
+            <button class="site-nav__trigger" id="site-nav-trigger-airport" type="button" aria-expanded="false" aria-controls="site-nav-panel-airport" aria-haspopup="true">Airport</button>
+            <div class="site-nav__panel" id="site-nav-panel-airport" aria-labelledby="site-nav-trigger-airport" hidden><div class="site-nav__group"><a class="site-nav__link" href="airport.html">Airport Guide</a><a class="site-nav__link" href="arrival.html">Arrival Guide</a><a class="site-nav__link" href="airport-transfer.html">Airport Transfer</a><a class="site-nav__link" href="arex.html">AREX Guide</a><a class="site-nav__link" href="airport-bus.html">Airport Bus Guide</a></div></div>
+          </li>
+          <li class="site-nav__item site-nav__item--active" data-nav-section="maps">
+            <button class="site-nav__trigger site-nav__trigger--current" id="site-nav-trigger-maps" type="button" aria-expanded="false" aria-controls="site-nav-panel-maps" aria-haspopup="true" aria-current="true">Maps</button>
+            <div class="site-nav__panel" id="site-nav-panel-maps" aria-labelledby="site-nav-trigger-maps" hidden><div class="site-nav__group"><a class="site-nav__link" href="maps.html">Maps Guide</a></div></div>
+          </li>
+          <li class="site-nav__item" data-nav-section="transport">
+            <button class="site-nav__trigger" id="site-nav-trigger-transport" type="button" aria-expanded="false" aria-controls="site-nav-panel-transport" aria-haspopup="true">Transport</button>
+            <div class="site-nav__panel site-nav__panel--end" id="site-nav-panel-transport" aria-labelledby="site-nav-trigger-transport" hidden><div class="site-nav__group"><p class="site-nav__group-label">Travel Cards</p><a class="site-nav__link" href="tmoney.html">T-money Guide</a><a class="site-nav__link" href="wowpass.html">WOWPASS Guide</a><a class="site-nav__link" href="payments.html">T-money vs WOWPASS</a></div><div class="site-nav__group"><p class="site-nav__group-label">Other Transport</p><a class="site-nav__link" href="taxi.html">Taxi Guide</a><a class="site-nav__link" href="rental-car.html">Rental Car</a></div></div>
+          </li>
+          <li class="site-nav__item" data-nav-section="apps">
+            <button class="site-nav__trigger" id="site-nav-trigger-apps" type="button" aria-expanded="false" aria-controls="site-nav-panel-apps" aria-haspopup="true">Apps</button>
+            <div class="site-nav__panel site-nav__panel--end" id="site-nav-panel-apps" aria-labelledby="site-nav-trigger-apps" hidden><div class="site-nav__group"><a class="site-nav__link" href="apps.html">Essential Apps</a></div></div>
+          </li>
+          <li class="site-nav__item" data-nav-section="travel-tips">
+            <button class="site-nav__trigger" id="site-nav-trigger-travel-tips" type="button" aria-expanded="false" aria-controls="site-nav-panel-travel-tips" aria-haspopup="true">Travel Tips</button>
+            <div class="site-nav__panel site-nav__panel--end" id="site-nav-panel-travel-tips" aria-labelledby="site-nav-trigger-travel-tips" hidden><div class="site-nav__group"><a class="site-nav__link" href="checklist.html">Korea Travel Checklist</a></div></div>
+          </li>
         </ul>
       </nav>
+      <div class="language-switcher" aria-label="Language selector" data-supported-languages="EN JP KR TW VN"><button class="language-switcher__button" type="button" aria-disabled="true" disabled><span class="language-switcher__current">EN</span><span class="language-switcher__label">Language</span></button></div>
     </div>
   </header>
+  <!-- GLOBAL_NAV_END -->
 
   <main>
     <section class="page-hero maps-hero">
@@ -715,21 +731,7 @@
     </div>
   </footer>
 
-  <script>
-    const toggle = document.querySelector('.nav-toggle');
-    const nav = document.querySelector('.nav');
-    toggle.addEventListener('click', () => {
-      const open = toggle.getAttribute('aria-expanded') === 'true';
-      toggle.setAttribute('aria-expanded', !open);
-      nav.classList.toggle('is-open');
-    });
-    document.querySelectorAll('.nav__link').forEach(link => {
-      link.addEventListener('click', () => {
-        toggle.setAttribute('aria-expanded', 'false');
-        nav.classList.remove('is-open');
-      });
-    });
-  </script>
+  <script src="common.js"></script>
 <script>
   window.va = window.va || function () {
     (window.vaq = window.vaq || []).push(arguments);
