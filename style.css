@@ -611,11 +611,14 @@ ul, ol {
     top: 100%;
     right: 0;
     bottom: auto;
-    left: 0;
-    width: 100%;
+    left: auto;
+    width: clamp(260px, 68vw, 320px);
+    min-width: 0;
     height: auto;
     max-height: calc(100vh - var(--header-height));
     max-height: calc(100dvh - var(--header-height));
+    overflow-x: hidden;
+    overflow-y: auto;
     background: var(--white);
   }
 }
