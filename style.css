@@ -606,9 +606,17 @@ ul, ol {
     background: var(--white);
   }
 
-  .site-nav__item[data-nav-section="stay"] .site-nav__panel {
-    max-height: min(58vh, 520px);
-    overflow-y: auto;
+  .site-nav {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    bottom: auto;
+    left: 0;
+    width: 100%;
+    height: auto;
+    max-height: calc(100vh - var(--header-height));
+    max-height: calc(100dvh - var(--header-height));
+    background: var(--white);
   }
 }
 
