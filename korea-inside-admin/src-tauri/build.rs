@@ -10,6 +10,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             "delete_vercel_access_token",
             "test_vercel_analytics_connection",
             "get_vercel_analytics_summary",
+            "get_site_status_report",
         ]),
     ))?;
 
