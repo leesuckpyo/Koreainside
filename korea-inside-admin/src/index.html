@@ -20,7 +20,7 @@
             <span>운영 대시보드</span>
           </button>
           <button class="nav-item" type="button" data-view="analytics"><span>트래픽·사용자</span></button>
-          <button class="nav-item" type="button" disabled><span>유입·검색</span><span class="phase-label">후속 단계</span></button>
+          <button class="nav-item" type="button" data-view="search-console"><span>유입·검색</span></button>
           <button class="nav-item" type="button" disabled><span>행동·이탈</span><span class="phase-label">후속 단계</span></button>
           <button class="nav-item" type="button" disabled><span>전환·제휴</span><span class="phase-label">후속 단계</span></button>
           <button class="nav-item" type="button" disabled><span>숙소 관리</span><span class="phase-label">후속 단계</span></button>
@@ -153,6 +153,72 @@
                 <p>방문자·페이지뷰는 익명 집계값만 표시하며 사용자가 새로고침할 때만 조회합니다.</p>
               </div>
             </section>
+          </section>
+
+          <section class="view-panel" id="search-console-view" data-panel="search-console" hidden>
+            <div class="search-console-header">
+              <div>
+                <p class="eyebrow">읽기 전용 연결</p>
+                <h2>Google Search Console</h2>
+                <p>검색 노출, 클릭, 검색순위 및 색인 상태를 확인하기 위한 읽기 전용 연결입니다.</p>
+              </div>
+              <span class="search-console-badge" id="search-console-badge">연결되지 않음</span>
+            </div>
+
+            <section class="search-console-settings" aria-labelledby="search-console-settings-title">
+              <h3 class="search-console-section-title" id="search-console-settings-title">연결 상태</h3>
+              <div class="search-console-status-grid" aria-label="Google Search Console 연결 상태">
+                <div><span>Client 설정</span><strong id="search-console-configured-status">미설정</strong></div>
+                <div><span>Google 인증</span><strong id="search-console-authorization-status">없음</strong></div>
+                <div><span>연결 확인</span><strong id="search-console-connected-status">미확인</strong></div>
+                <div><span>재인증</span><strong id="search-console-reauthentication-status">정상</strong></div>
+                <div><span>마지막 연결 확인</span><strong id="search-console-last-checked">기록 없음</strong></div>
+              </div>
+            </section>
+
+            <section class="search-console-settings" aria-labelledby="search-console-client-title">
+              <h3 class="search-console-section-title" id="search-console-client-title">Client 설정</h3>
+              <form class="search-console-form" id="search-console-client-form">
+                <label for="search-console-client-id">Google OAuth Client ID</label>
+                <div class="search-console-input-row">
+                  <input
+                    id="search-console-client-id"
+                    name="search-console-client-id"
+                    type="text"
+                    maxlength="256"
+                    placeholder="xxxxx.apps.googleusercontent.com"
+                    autocomplete="off"
+                    autocapitalize="none"
+                    spellcheck="false"
+                    required
+                  />
+                  <button class="primary-button" id="save-search-console-client-id" type="submit">Client ID 저장</button>
+                </div>
+              </form>
+
+              <div class="search-console-actions">
+                <button class="secondary-button is-danger" id="delete-search-console-client-id" type="button">Client 설정 삭제</button>
+              </div>
+            </section>
+
+            <section class="search-console-settings" aria-labelledby="search-console-actions-title">
+              <h3 class="search-console-section-title" id="search-console-actions-title">연결 작업</h3>
+              <div class="search-console-actions">
+                <button class="primary-button" id="start-search-console-oauth" type="button">Google 계정 연결</button>
+                <button class="secondary-button" id="test-search-console-connection" type="button">연결 확인</button>
+                <button class="secondary-button is-danger" id="disconnect-search-console" type="button">연결 해제</button>
+              </div>
+            </section>
+
+            <div class="search-console-message" id="search-console-message" role="status">
+              Google OAuth Client ID를 저장한 후 Google 계정을 연결할 수 있습니다.
+            </div>
+
+            <div class="search-console-notice">
+              <strong>보안 안내</strong>
+              <p>Client ID와 Google 인증 정보는 Windows 자격 증명 관리자에만 저장되며 화면에 다시 표시되지 않습니다.</p>
+              <p>Search Console은 읽기 전용 권한만 요청합니다.</p>
+            </div>
           </section>
 
           <section class="view-panel" id="site-status-view" data-panel="site-status" hidden>

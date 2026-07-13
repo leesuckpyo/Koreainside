@@ -1,15 +1,21 @@
 use keyring_core::{Entry, Error as KeyringError};
 use oauth2::{
-    basic::BasicClient, AuthUrl, ClientId, CsrfToken, PkceCodeChallenge, RedirectUrl, Scope,
-    TokenUrl,
+    basic::{BasicClient, BasicErrorResponse, BasicErrorResponseType},
+    AuthUrl, AuthorizationCode, ClientId, CsrfToken, HttpRequest, HttpResponse, PkceCodeChallenge,
+    PkceCodeVerifier, RedirectUrl, RequestTokenError, Scope, TokenResponse, TokenUrl,
 };
 use reqwest::{header::CONTENT_TYPE, redirect::Policy, StatusCode};
 use serde::{Deserialize, Serialize};
 use std::{
     collections::{HashMap, HashSet},
+    error::Error,
+    fmt,
     io::{self, Read, Write},
     net::{Ipv4Addr, SocketAddr, SocketAddrV4, TcpListener, TcpStream},
-    sync::{Mutex, MutexGuard, OnceLock},
+    sync::{
+        atomic::{AtomicBool, Ordering},
+        Arc, Mutex, MutexGuard, OnceLock,
+    },
     thread,
     time::{Duration, Instant},
 };
@@ -28,7 +34,8 @@ const TOKEN_ENDPOINT: &str = "https://oauth2.googleapis.com/token";
 const REVOKE_ENDPOINT: &str = "https://oauth2.googleapis.com/revoke";
 const SITES_LIST_ENDPOINT: &str = "https://www.googleapis.com/webmasters/v3/sites";
 const SEARCH_CONSOLE_SCOPE: &str = "https://www.googleapis.com/auth/webmasters.readonly";
-const CALLBACK_PATH: &str = "/search-console/oauth/callback";
+const CALLBACK_PATH: &str = "/";
+const GOOGLE_ISSUER: &str = "https://accounts.google.com";
 
 const CLIENT_ID_SUFFIX: &str = ".apps.googleusercontent.com";
 const MAX_CLIENT_ID_LENGTH: usize = 256;
@@ -99,6 +106,11 @@ enum SearchConsoleError {
     InvalidCallback,
     StateMismatch,
     TokenExchangeFailed,
+    TokenInvalidGrant,
+    TokenInvalidClient,
+    TokenInvalidRequest,
+    TokenUnauthorizedClient,
+    TokenRedirectUriMismatch,
     MissingRefreshToken,
     ScopeNotGranted,
     ReauthenticationRequired,
@@ -125,6 +137,11 @@ impl SearchConsoleError {
             Self::InvalidCallback => "invalid_callback",
             Self::StateMismatch => "state_mismatch",
             Self::TokenExchangeFailed => "token_exchange_failed",
+            Self::TokenInvalidGrant => "token_invalid_grant",
+            Self::TokenInvalidClient => "token_invalid_client",
+            Self::TokenInvalidRequest => "token_invalid_request",
+            Self::TokenUnauthorizedClient => "token_unauthorized_client",
+            Self::TokenRedirectUriMismatch => "token_redirect_uri_mismatch",
             Self::MissingRefreshToken => "missing_refresh_token",
             Self::ScopeNotGranted => "scope_not_granted",
             Self::ReauthenticationRequired => "reauthentication_required",
@@ -159,6 +176,13 @@ impl SearchConsoleError {
             Self::InvalidCallback => "Google 인증 callback 형식을 확인할 수 없습니다.",
             Self::StateMismatch => "Google 인증 state 검증에 실패했습니다.",
             Self::TokenExchangeFailed => "Google 인증 코드를 토큰으로 교환할 수 없습니다.",
+            Self::TokenInvalidGrant => "Google 인증 코드를 사용할 수 없습니다.",
+            Self::TokenInvalidClient => "Google OAuth Client 설정을 확인해야 합니다.",
+            Self::TokenInvalidRequest => "Google 인증정보 요청 형식이 올바르지 않습니다.",
+            Self::TokenUnauthorizedClient => {
+                "이 Google OAuth Client에서는 해당 인증방식을 사용할 수 없습니다."
+            }
+            Self::TokenRedirectUriMismatch => "Google 인증의 되돌아오기 주소가 일치하지 않습니다.",
             Self::MissingRefreshToken => "Google 응답에 refresh token이 포함되지 않았습니다.",
             Self::ScopeNotGranted => "Search Console 읽기 전용 권한이 승인되지 않았습니다.",
             Self::ReauthenticationRequired => "Google Search Console 재인증이 필요합니다.",
@@ -263,6 +287,28 @@ struct TokenSet {
     expires_in: Duration,
 }
 
+#[derive(Debug)]
+enum OAuthHttpClientError {
+    InvalidRequest,
+    RequestFailed,
+    NetworkTimeout,
+    InvalidResponse,
+}
+
+impl fmt::Display for OAuthHttpClientError {
+    fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
+        let message = match self {
+            Self::InvalidRequest => "invalid oauth http request",
+            Self::RequestFailed => "oauth http request failed",
+            Self::NetworkTimeout => "oauth http request timed out",
+            Self::InvalidResponse => "invalid oauth http response",
+        };
+        formatter.write_str(message)
+    }
+}
+
+impl Error for OAuthHttpClientError {}
+
 #[derive(Deserialize)]
 struct GoogleTokenResponse {
     access_token: Option<String>,
@@ -345,18 +391,29 @@ pub async fn start_search_console_oauth() -> CommandResult<SearchConsoleActionRe
         build_authorization_request(&client_id, port).map_err(SearchConsoleCommandError::from)?;
     let expected_state = request.state.clone();
 
+    let callback_cancelled = Arc::new(AtomicBool::new(false));
+    let callback_cancel_signal = Arc::clone(&callback_cancelled);
+    let callback_handle = tauri::async_runtime::spawn_blocking(move || {
+        wait_for_callback(
+            listener,
+            expected_state,
+            AUTHORIZATION_TIMEOUT,
+            callback_cancel_signal,
+        )
+    });
+
     if webbrowser::open(&request.authorization_url).is_err() {
+        callback_cancelled.store(true, Ordering::SeqCst);
+        let _ = callback_handle.await;
         return Err(SearchConsoleCommandError::from(
             SearchConsoleError::BrowserOpenFailed,
         ));
     }
 
-    let callback = tauri::async_runtime::spawn_blocking(move || {
-        wait_for_callback(listener, expected_state, AUTHORIZATION_TIMEOUT)
-    })
-    .await
-    .map_err(|_| SearchConsoleCommandError::from(SearchConsoleError::Internal))?
-    .map_err(SearchConsoleCommandError::from)?;
+    let callback = callback_handle
+        .await
+        .map_err(|_| SearchConsoleCommandError::from(SearchConsoleError::Internal))?
+        .map_err(SearchConsoleCommandError::from)?;
 
     let CallbackOutcome::Authorized { code } = callback;
 
@@ -494,7 +551,7 @@ async fn refresh_access_token_with(
     refresh_token: &str,
 ) -> Result<TokenSet, SearchConsoleError> {
     let client = secure_http_client()?;
-    let body = form_request_body(&[
+    let body = urlencoded_body(&[
         ("grant_type", "refresh_token"),
         ("client_id", client_id),
         ("refresh_token", refresh_token),
@@ -526,28 +583,15 @@ async fn exchange_authorization_code(
     code: &str,
     pkce_verifier: &str,
 ) -> Result<TokenSet, SearchConsoleError> {
-    let client = secure_http_client()?;
-    let body = form_request_body(&[
-        ("grant_type", "authorization_code"),
-        ("client_id", client_id),
-        ("code", code),
-        ("redirect_uri", redirect_uri),
-        ("code_verifier", pkce_verifier),
-    ]);
-    let response = client
-        .post(TOKEN_ENDPOINT)
-        .header(CONTENT_TYPE, "application/x-www-form-urlencoded")
-        .body(body)
-        .send()
-        .await
-        .map_err(map_request_error)?;
-
-    let status = response.status();
-    let body = read_limited_body(response).await?;
-    if status != StatusCode::OK {
-        return Err(SearchConsoleError::TokenExchangeFailed);
-    }
-    parse_initial_token_response(&body)
+    let http_client = secure_http_client()?;
+    request_oauth_authorization_code(
+        client_id,
+        redirect_uri,
+        code,
+        pkce_verifier,
+        move |request| oauth_http_client(http_client, request),
+    )
+    .await
 }
 
 async fn fetch_sites_list(access_token: &str) -> Result<(), SearchConsoleError> {
@@ -569,7 +613,7 @@ async fn fetch_sites_list(access_token: &str) -> Result<(), SearchConsoleError> 
 
 async fn revoke_token(refresh_token: &str) -> Result<(), SearchConsoleError> {
     let client = secure_http_client()?;
-    let body = form_request_body(&[("token", refresh_token)]);
+    let body = urlencoded_body(&[("token", refresh_token)]);
     let response = client
         .post(REVOKE_ENDPOINT)
         .header(CONTENT_TYPE, "application/x-www-form-urlencoded")
@@ -599,20 +643,10 @@ fn build_authorization_request(
     client_id: &str,
     port: u16,
 ) -> Result<AuthorizationRequest, SearchConsoleError> {
-    let redirect_uri = format!("http://127.0.0.1:{port}{CALLBACK_PATH}");
-    let auth_url = AuthUrl::new(AUTHORIZATION_ENDPOINT.to_string())
+    let redirect_url = RedirectUrl::new(format!("http://127.0.0.1:{port}"))
         .map_err(|_| SearchConsoleError::Internal)?;
-    let token_url =
-        TokenUrl::new(TOKEN_ENDPOINT.to_string()).map_err(|_| SearchConsoleError::Internal)?;
-    let redirect_url =
-        RedirectUrl::new(redirect_uri.clone()).map_err(|_| SearchConsoleError::Internal)?;
-    let client = BasicClient::new(
-        ClientId::new(client_id.to_string()),
-        None,
-        auth_url,
-        Some(token_url),
-    )
-    .set_redirect_uri(redirect_url);
+    let redirect_uri = redirect_url.as_str().to_string();
+    let client = build_oauth_client(client_id, &redirect_uri)?;
     let (pkce_challenge, pkce_verifier) = PkceCodeChallenge::new_random_sha256();
     let (authorization_url, csrf_token) = client
         .authorize_url(CsrfToken::new_random)
@@ -630,13 +664,44 @@ fn build_authorization_request(
     })
 }
 
+fn build_oauth_client(
+    client_id: &str,
+    redirect_uri: &str,
+) -> Result<BasicClient, SearchConsoleError> {
+    build_oauth_client_with_token_endpoint(client_id, redirect_uri, TOKEN_ENDPOINT)
+}
+
+fn build_oauth_client_with_token_endpoint(
+    client_id: &str,
+    redirect_uri: &str,
+    token_endpoint: &str,
+) -> Result<BasicClient, SearchConsoleError> {
+    let auth_url = AuthUrl::new(AUTHORIZATION_ENDPOINT.to_string())
+        .map_err(|_| SearchConsoleError::Internal)?;
+    let token_url =
+        TokenUrl::new(token_endpoint.to_string()).map_err(|_| SearchConsoleError::Internal)?;
+    let redirect_url =
+        RedirectUrl::new(redirect_uri.to_string()).map_err(|_| SearchConsoleError::Internal)?;
+    Ok(BasicClient::new(
+        ClientId::new(client_id.to_string()),
+        None,
+        auth_url,
+        Some(token_url),
+    )
+    .set_redirect_uri(redirect_url))
+}
+
 fn wait_for_callback(
     listener: TcpListener,
     expected_state: String,
     timeout: Duration,
+    cancelled: Arc<AtomicBool>,
 ) -> Result<CallbackOutcome, SearchConsoleError> {
     let deadline = Instant::now() + timeout;
     loop {
+        if cancelled.load(Ordering::SeqCst) {
+            return Err(SearchConsoleError::Internal);
+        }
         if Instant::now() >= deadline {
             return Err(SearchConsoleError::CallbackTimeout);
         }
@@ -644,18 +709,22 @@ fn wait_for_callback(
             Ok((mut stream, peer)) => {
                 if !is_loopback_peer(peer) {
                     let _ = write_callback_response(&mut stream, false);
-                    return Err(SearchConsoleError::InvalidCallback);
+                    continue;
                 }
                 let request = match read_limited_http_request(&mut stream) {
                     Ok(request) => request,
                     Err(_) => {
                         let _ = write_callback_response(&mut stream, false);
-                        return Err(SearchConsoleError::InvalidCallback);
+                        continue;
                     }
                 };
                 let parsed = parse_callback_request(&request, &expected_state);
                 let _ = write_callback_response(&mut stream, parsed.is_ok());
-                return parsed;
+                match parsed {
+                    Ok(outcome) => return Ok(outcome),
+                    Err(SearchConsoleError::InvalidCallback) => continue,
+                    Err(error) => return Err(error),
+                }
             }
             Err(error) if error.kind() == io::ErrorKind::WouldBlock => {
                 thread::sleep(CALLBACK_ACCEPT_SLEEP);
@@ -704,11 +773,12 @@ fn parse_callback_request(
     let method = parts.next().ok_or(SearchConsoleError::InvalidCallback)?;
     let target = parts.next().ok_or(SearchConsoleError::InvalidCallback)?;
     let version = parts.next().ok_or(SearchConsoleError::InvalidCallback)?;
+    let absolute_form_target = target.starts_with("http://") || target.starts_with("https://");
     if parts.next().is_some()
         || method != "GET"
         || !matches!(version, "HTTP/1.1" | "HTTP/1.0")
         || target.contains('#')
-        || target.contains("://")
+        || absolute_form_target
         || !target.starts_with('/')
     {
         return Err(SearchConsoleError::InvalidCallback);
@@ -731,6 +801,7 @@ fn parse_callback_request(
     if !constant_time_eq(state, expected_state) {
         return Err(SearchConsoleError::StateMismatch);
     }
+    validate_callback_issuer(&params)?;
 
     let code = params.get("code").map(String::as_str);
     let error = params.get("error").map(String::as_str);
@@ -744,6 +815,15 @@ fn parse_callback_request(
             code: code.to_string(),
         }),
     }
+}
+
+fn validate_callback_issuer(params: &HashMap<String, String>) -> Result<(), SearchConsoleError> {
+    if let Some(issuer) = params.get("iss") {
+        if issuer.is_empty() || issuer != GOOGLE_ISSUER {
+            return Err(SearchConsoleError::InvalidCallback);
+        }
+    }
+    Ok(())
 }
 
 fn parse_query(query: &str) -> Result<HashMap<String, String>, SearchConsoleError> {
@@ -812,11 +892,7 @@ fn percent_decode(value: &str) -> Result<String, SearchConsoleError> {
 }
 
 fn write_callback_response(stream: &mut TcpStream, success: bool) -> io::Result<()> {
-    let body = if success {
-        "<!doctype html><meta charset=\"utf-8\"><title>Korea Inside Admin</title><p>Korea Inside Admin 연결이 완료되었습니다.</p><p>이 창을 닫고 관리자 앱으로 돌아가세요.</p>"
-    } else {
-        "<!doctype html><meta charset=\"utf-8\"><title>Korea Inside Admin</title><p>인증을 완료하지 못했습니다.</p><p>관리자 앱으로 돌아가 다시 시도하세요.</p>"
-    };
+    let body = callback_response_body(success);
     let response = format!(
         "HTTP/1.1 200 OK\r\nContent-Type: text/html; charset=utf-8\r\nCache-Control: no-store\r\nContent-Length: {}\r\nConnection: close\r\n\r\n{}",
         body.len(),
@@ -826,6 +902,15 @@ fn write_callback_response(stream: &mut TcpStream, success: bool) -> io::Result<
     stream.flush()
 }
 
+fn callback_response_body(success: bool) -> &'static str {
+    if success {
+        "<!doctype html><meta charset=\"utf-8\"><title>Korea Inside Admin</title><p>Google 인증 응답을 받았습니다.</p><p>관리자 앱에서 연결 결과를 확인하세요.</p>"
+    } else {
+        "<!doctype html><meta charset=\"utf-8\"><title>Korea Inside Admin</title><p>인증을 완료하지 못했습니다.</p><p>관리자 앱으로 돌아가 다시 시도하세요.</p>"
+    }
+}
+
+#[cfg(test)]
 fn parse_initial_token_response(body: &[u8]) -> Result<TokenSet, SearchConsoleError> {
     let tokens = parse_token_response(body)?;
     if tokens.refresh_token.as_deref().is_none_or(str::is_empty) {
@@ -870,6 +955,22 @@ fn token_error_is_invalid_grant(body: &[u8]) -> bool {
         .ok()
         .and_then(|error| error.error)
         .is_some_and(|error| error == "invalid_grant")
+}
+
+#[cfg(test)]
+fn map_authorization_token_error(body: &[u8]) -> SearchConsoleError {
+    match serde_json::from_slice::<GoogleErrorResponse>(body)
+        .ok()
+        .and_then(|error| error.error)
+        .as_deref()
+    {
+        Some("invalid_grant") => SearchConsoleError::TokenInvalidGrant,
+        Some("invalid_client") => SearchConsoleError::TokenInvalidClient,
+        Some("invalid_request") => SearchConsoleError::TokenInvalidRequest,
+        Some("unauthorized_client") => SearchConsoleError::TokenUnauthorizedClient,
+        Some("redirect_uri_mismatch") => SearchConsoleError::TokenRedirectUriMismatch,
+        _ => SearchConsoleError::TokenExchangeFailed,
+    }
 }
 
 fn parse_sites_list_response(body: &[u8]) -> Result<(), SearchConsoleError> {
@@ -935,30 +1036,162 @@ fn map_request_error(error: reqwest::Error) -> SearchConsoleError {
     }
 }
 
-fn form_request_body(params: &[(&str, &str)]) -> String {
-    params
-        .iter()
-        .map(|(key, value)| {
-            format!(
-                "{}={}",
-                form_encode_component(key),
-                form_encode_component(value)
-            )
-        })
-        .collect::<Vec<_>>()
-        .join("&")
+async fn request_oauth_authorization_code<C, F>(
+    client_id: &str,
+    redirect_uri: &str,
+    code: &str,
+    pkce_verifier: &str,
+    http_client: C,
+) -> Result<TokenSet, SearchConsoleError>
+where
+    C: FnOnce(HttpRequest) -> F,
+    F: std::future::Future<Output = Result<HttpResponse, OAuthHttpClientError>>,
+{
+    request_oauth_authorization_code_with_token_endpoint(
+        client_id,
+        redirect_uri,
+        code,
+        pkce_verifier,
+        TOKEN_ENDPOINT,
+        http_client,
+    )
+    .await
 }
 
-fn form_encode_component(value: &str) -> String {
-    let mut encoded = String::new();
-    for byte in value.bytes() {
-        if byte.is_ascii_alphanumeric() || matches!(byte, b'-' | b'.' | b'_' | b'~') {
-            encoded.push(char::from(byte));
-        } else {
-            encoded.push_str(&format!("%{byte:02X}"));
-        }
+async fn request_oauth_authorization_code_with_token_endpoint<C, F>(
+    client_id: &str,
+    redirect_uri: &str,
+    code: &str,
+    pkce_verifier: &str,
+    token_endpoint: &str,
+    http_client: C,
+) -> Result<TokenSet, SearchConsoleError>
+where
+    C: FnOnce(HttpRequest) -> F,
+    F: std::future::Future<Output = Result<HttpResponse, OAuthHttpClientError>>,
+{
+    let client = build_oauth_client_with_token_endpoint(client_id, redirect_uri, token_endpoint)?;
+    let token_result = client
+        .exchange_code(AuthorizationCode::new(code.to_string()))
+        .set_pkce_verifier(PkceCodeVerifier::new(pkce_verifier.to_string()))
+        .request_async(http_client)
+        .await
+        .map_err(map_oauth_token_error)?;
+    token_set_from_oauth_response(token_result)
+}
+
+async fn oauth_http_client(
+    client: reqwest::Client,
+    request: HttpRequest,
+) -> Result<HttpResponse, OAuthHttpClientError> {
+    let method = reqwest::Method::from_bytes(request.method.as_str().as_bytes())
+        .map_err(|_| OAuthHttpClientError::InvalidRequest)?;
+    let mut builder = client.request(method, request.url.as_str());
+    for (name, value) in request.headers.iter() {
+        let header_name = reqwest::header::HeaderName::from_bytes(name.as_str().as_bytes())
+            .map_err(|_| OAuthHttpClientError::InvalidRequest)?;
+        let header_value = reqwest::header::HeaderValue::from_bytes(value.as_bytes())
+            .map_err(|_| OAuthHttpClientError::InvalidRequest)?;
+        builder = builder.header(header_name, header_value);
     }
-    encoded
+    let response = builder.body(request.body).send().await.map_err(|error| {
+        if error.is_timeout() {
+            OAuthHttpClientError::NetworkTimeout
+        } else {
+            OAuthHttpClientError::RequestFailed
+        }
+    })?;
+    let status_code = oauth2::http::StatusCode::from_u16(response.status().as_u16())
+        .map_err(|_| OAuthHttpClientError::InvalidResponse)?;
+    let mut headers = oauth2::http::HeaderMap::new();
+    for (name, value) in response.headers().iter() {
+        let header_name = oauth2::http::header::HeaderName::from_bytes(name.as_str().as_bytes())
+            .map_err(|_| OAuthHttpClientError::InvalidResponse)?;
+        let header_value = oauth2::http::HeaderValue::from_bytes(value.as_bytes())
+            .map_err(|_| OAuthHttpClientError::InvalidResponse)?;
+        headers.append(header_name, header_value);
+    }
+    let body = read_limited_oauth_body(response).await?;
+    Ok(HttpResponse {
+        status_code,
+        headers,
+        body,
+    })
+}
+
+async fn read_limited_oauth_body(
+    mut response: reqwest::Response,
+) -> Result<Vec<u8>, OAuthHttpClientError> {
+    let mut body = Vec::new();
+    while let Some(chunk) = response
+        .chunk()
+        .await
+        .map_err(|_| OAuthHttpClientError::InvalidResponse)?
+    {
+        if body.len().saturating_add(chunk.len()) > MAX_RESPONSE_BYTES {
+            return Err(OAuthHttpClientError::InvalidResponse);
+        }
+        body.extend_from_slice(&chunk);
+    }
+    Ok(body)
+}
+
+fn token_set_from_oauth_response(
+    response: oauth2::basic::BasicTokenResponse,
+) -> Result<TokenSet, SearchConsoleError> {
+    if !scope_matches_requested_from_oauth(response.scopes()) {
+        return Err(SearchConsoleError::ScopeNotGranted);
+    }
+    let expires_in = response.expires_in().unwrap_or(Duration::from_secs(3600));
+    Ok(TokenSet {
+        access_token: response.access_token().secret().to_string(),
+        refresh_token: response
+            .refresh_token()
+            .map(|token| token.secret().to_string()),
+        expires_in: expires_in.max(Duration::from_secs(1)),
+    })
+}
+
+fn scope_matches_requested_from_oauth(scopes: Option<&Vec<Scope>>) -> bool {
+    let Some(scopes) = scopes else {
+        return true;
+    };
+    scopes.len() == 1 && scopes[0].as_ref() == SEARCH_CONSOLE_SCOPE
+}
+
+fn map_oauth_token_error(
+    error: RequestTokenError<OAuthHttpClientError, BasicErrorResponse>,
+) -> SearchConsoleError {
+    match error {
+        RequestTokenError::ServerResponse(response) => map_oauth_server_error(response.error()),
+        RequestTokenError::Request(OAuthHttpClientError::NetworkTimeout) => {
+            SearchConsoleError::NetworkTimeout
+        }
+        RequestTokenError::Request(_)
+        | RequestTokenError::Parse(_, _)
+        | RequestTokenError::Other(_) => SearchConsoleError::TokenExchangeFailed,
+    }
+}
+
+fn map_oauth_server_error(error: &BasicErrorResponseType) -> SearchConsoleError {
+    match error {
+        BasicErrorResponseType::InvalidGrant => SearchConsoleError::TokenInvalidGrant,
+        BasicErrorResponseType::InvalidClient => SearchConsoleError::TokenInvalidClient,
+        BasicErrorResponseType::InvalidRequest => SearchConsoleError::TokenInvalidRequest,
+        BasicErrorResponseType::UnauthorizedClient => SearchConsoleError::TokenUnauthorizedClient,
+        BasicErrorResponseType::Extension(value) if value == "redirect_uri_mismatch" => {
+            SearchConsoleError::TokenRedirectUriMismatch
+        }
+        _ => SearchConsoleError::TokenExchangeFailed,
+    }
+}
+
+fn urlencoded_body(params: &[(&str, &str)]) -> String {
+    let mut serializer = form_urlencoded::Serializer::new(String::new());
+    for (key, value) in params {
+        serializer.append_pair(key, value);
+    }
+    serializer.finish()
 }
 
 fn validate_client_id(client_id: &str) -> Result<String, SearchConsoleError> {
@@ -1202,6 +1435,14 @@ mod tests {
 
     const VALID_CLIENT_ID: &str = "1234567890-testdesktop.apps.googleusercontent.com";
 
+    #[derive(Debug)]
+    struct MockTokenRequestMetadata {
+        method: String,
+        path: String,
+        headers: HashMap<String, String>,
+        body: String,
+    }
+
     #[test]
     fn accepts_valid_client_id() {
         assert_eq!(
@@ -1318,13 +1559,253 @@ mod tests {
     #[test]
     fn redirect_uri_uses_ipv4_loopback() {
         let request = build_authorization_request(VALID_CLIENT_ID, 49152).unwrap();
-        assert_eq!(
-            request.redirect_uri,
-            format!("http://127.0.0.1:49152{CALLBACK_PATH}")
-        );
+        assert_eq!(request.redirect_uri, "http://127.0.0.1:49152");
+        assert!(!request
+            .redirect_uri
+            .contains("/search-console/oauth/callback"));
         assert!(request
             .authorization_url
             .contains("redirect_uri=http%3A%2F%2F127.0.0.1%3A49152"));
+    }
+
+    #[test]
+    fn authorization_code_token_request_uses_post_endpoint_and_form_content_type() {
+        let request = build_authorization_request(VALID_CLIENT_ID, 49152).unwrap();
+        let token_request = authorization_code_token_request_for_test(
+            VALID_CLIENT_ID,
+            &request.redirect_uri,
+            "test-code",
+            &request.pkce_verifier,
+        );
+
+        assert_eq!(token_request.method, oauth2::http::Method::POST);
+        assert_eq!(token_request.url.as_str(), TOKEN_ENDPOINT);
+        assert_eq!(
+            token_request
+                .headers
+                .get(oauth2::http::header::CONTENT_TYPE)
+                .and_then(|value| value.to_str().ok()),
+            Some("application/x-www-form-urlencoded")
+        );
+    }
+
+    #[test]
+    fn authorization_code_token_form_contains_required_fields_once() {
+        let request = build_authorization_request(VALID_CLIENT_ID, 49152).unwrap();
+        let token_request = authorization_code_token_request_for_test(
+            VALID_CLIENT_ID,
+            &request.redirect_uri,
+            "test-code",
+            &request.pkce_verifier,
+        );
+        let body = request_body_string_for_test(&token_request);
+        let params = parse_form_body_for_test(&body);
+        let keys = parse_form_keys_for_test(&body);
+
+        assert_eq!(params.len(), 5);
+        assert_eq!(keys.len(), 5);
+        assert_eq!(keys.iter().collect::<HashSet<_>>().len(), 5);
+        assert_eq!(
+            params.get("client_id").map(String::as_str),
+            Some(VALID_CLIENT_ID)
+        );
+        assert_eq!(params.get("code").map(String::as_str), Some("test-code"));
+        assert_eq!(
+            params.get("code_verifier").map(String::as_str),
+            Some(request.pkce_verifier.as_str())
+        );
+        assert_eq!(
+            params.get("grant_type").map(String::as_str),
+            Some("authorization_code")
+        );
+        assert_eq!(
+            params.get("redirect_uri").map(String::as_str),
+            Some(request.redirect_uri.as_str())
+        );
+    }
+
+    #[test]
+    fn authorization_code_token_form_has_no_empty_fields_or_client_secret() {
+        let request = build_authorization_request(VALID_CLIENT_ID, 49152).unwrap();
+        let token_request = authorization_code_token_request_for_test(
+            VALID_CLIENT_ID,
+            &request.redirect_uri,
+            "test-code",
+            &request.pkce_verifier,
+        );
+        let body = request_body_string_for_test(&token_request);
+        let params = parse_form_body_for_test(&body);
+
+        assert!(!params.contains_key("client_secret"));
+        assert!(params.values().all(|value| !value.is_empty()));
+    }
+
+    #[test]
+    fn authorization_and_token_redirect_uri_match_exactly() {
+        let request = build_authorization_request(VALID_CLIENT_ID, 49152).unwrap();
+        let token_request = authorization_code_token_request_for_test(
+            VALID_CLIENT_ID,
+            &request.redirect_uri,
+            "test-code",
+            &request.pkce_verifier,
+        );
+        let body = request_body_string_for_test(&token_request);
+        let params = parse_form_body_for_test(&body);
+
+        assert_eq!(
+            params.get("redirect_uri").map(String::as_str),
+            Some(request.redirect_uri.as_str())
+        );
+    }
+
+    #[test]
+    fn authorization_code_token_form_preserves_redirect_structure() {
+        let request = build_authorization_request(VALID_CLIENT_ID, 49152).unwrap();
+        let token_request = authorization_code_token_request_for_test(
+            VALID_CLIENT_ID,
+            &request.redirect_uri,
+            "test-code",
+            &request.pkce_verifier,
+        );
+        let body = request_body_string_for_test(&token_request);
+        let params = parse_form_body_for_test(&body);
+        let redirect_uri = params.get("redirect_uri").unwrap();
+        let redirect_url = url::Url::parse(redirect_uri).unwrap();
+
+        assert_eq!(redirect_url.scheme(), "http");
+        assert_eq!(redirect_url.host_str(), Some("127.0.0.1"));
+        assert_eq!(redirect_url.port(), Some(49152));
+        assert_eq!(redirect_url.path(), CALLBACK_PATH);
+        assert!(redirect_url.query().is_none());
+        assert!(redirect_url.fragment().is_none());
+    }
+
+    #[test]
+    fn authorization_code_token_form_preserves_pkce_verifier() {
+        let request = build_authorization_request(VALID_CLIENT_ID, 49152).unwrap();
+        let token_request = authorization_code_token_request_for_test(
+            VALID_CLIENT_ID,
+            &request.redirect_uri,
+            "test-code",
+            &request.pkce_verifier,
+        );
+        let body = request_body_string_for_test(&token_request);
+        let params = parse_form_body_for_test(&body);
+
+        assert_eq!(
+            params.get("code_verifier").map(String::as_str),
+            Some(request.pkce_verifier.as_str())
+        );
+    }
+
+    #[test]
+    fn authorization_code_token_form_encodes_code_once() {
+        let request = build_authorization_request(VALID_CLIENT_ID, 49152).unwrap();
+        let decoded_code = "code/with+reserved%value";
+        let token_request = authorization_code_token_request_for_test(
+            VALID_CLIENT_ID,
+            &request.redirect_uri,
+            decoded_code,
+            &request.pkce_verifier,
+        );
+        let body = request_body_string_for_test(&token_request);
+        let params = parse_form_body_for_test(&body);
+
+        assert_eq!(params.get("code").map(String::as_str), Some(decoded_code));
+        assert!(body.contains("code=code%2Fwith%2Breserved%25value"));
+        assert!(!body.contains(decoded_code));
+    }
+
+    #[test]
+    fn authorization_code_plus_is_not_decoded_as_space() {
+        let request = build_authorization_request(VALID_CLIENT_ID, 49152).unwrap();
+        let decoded_code = "code+plus";
+        let token_request = authorization_code_token_request_for_test(
+            VALID_CLIENT_ID,
+            &request.redirect_uri,
+            decoded_code,
+            &request.pkce_verifier,
+        );
+        let body = request_body_string_for_test(&token_request);
+        let params = parse_form_body_for_test(&body);
+
+        assert_eq!(params.get("code").map(String::as_str), Some("code+plus"));
+        assert_ne!(params.get("code").map(String::as_str), Some("code plus"));
+    }
+
+    #[test]
+    fn oauth_http_client_adapter_sends_expected_authorization_code_request_to_mock_endpoint() {
+        let request = build_authorization_request(VALID_CLIENT_ID, 49152).unwrap();
+        let expected_code = "fixture-code+with/reserved%chars";
+        let expected_verifier = request.pkce_verifier.clone();
+        let (token_endpoint, server) = spawn_mock_token_endpoint();
+        let client = reqwest::Client::builder()
+            .redirect(Policy::none())
+            .timeout(Duration::from_secs(5))
+            .build()
+            .unwrap();
+
+        let result =
+            tauri::async_runtime::block_on(request_oauth_authorization_code_with_token_endpoint(
+                VALID_CLIENT_ID,
+                &request.redirect_uri,
+                expected_code,
+                &expected_verifier,
+                &token_endpoint,
+                move |token_request| oauth_http_client(client, token_request),
+            ));
+
+        assert!(result.is_ok());
+        let metadata = server.join().unwrap();
+        let body = metadata.body;
+        let params = parse_form_body_for_test(&body);
+        let keys = parse_form_keys_for_test(&body);
+
+        assert_eq!(metadata.method, "POST");
+        assert_eq!(metadata.path, "/token");
+        assert_eq!(
+            metadata.headers.get("content-type").map(String::as_str),
+            Some("application/x-www-form-urlencoded")
+        );
+        assert!(!body.is_empty());
+        assert_eq!(params.len(), 5);
+        assert_eq!(keys.len(), 5);
+        for key in [
+            "client_id",
+            "code",
+            "code_verifier",
+            "grant_type",
+            "redirect_uri",
+        ] {
+            assert_eq!(
+                keys.iter()
+                    .filter(|candidate| candidate.as_str() == key)
+                    .count(),
+                1
+            );
+            assert!(params.get(key).is_some_and(|value| !value.is_empty()));
+        }
+        assert_eq!(
+            params.get("client_id").map(String::as_str),
+            Some(VALID_CLIENT_ID)
+        );
+        assert_eq!(params.get("code").map(String::as_str), Some(expected_code));
+        assert_eq!(
+            params.get("code_verifier").map(String::as_str),
+            Some(expected_verifier.as_str())
+        );
+        assert_eq!(
+            params.get("grant_type").map(String::as_str),
+            Some("authorization_code")
+        );
+        assert_eq!(
+            params.get("redirect_uri").map(String::as_str),
+            Some(request.redirect_uri.as_str())
+        );
+        assert!(!params.contains_key("client_secret"));
+        assert!(!metadata.headers.contains_key("authorization"));
+        assert!(!body.contains("client_secret"));
+        assert!(!body.contains("%253A%252F%252F"));
     }
 
     #[test]
@@ -1336,6 +1817,117 @@ mod tests {
                 code: "abc123".to_string()
             }
         );
+    }
+
+    #[test]
+    fn parses_successful_callback_with_google_issuer() {
+        let request = format!(
+            "GET {CALLBACK_PATH}?state=state123&iss=https://accounts.google.com&code=abc123 HTTP/1.1\r\n\r\n"
+        );
+        assert_eq!(
+            parse_callback_request(&request, "state123").unwrap(),
+            CallbackOutcome::Authorized {
+                code: "abc123".to_string()
+            }
+        );
+    }
+
+    #[test]
+    fn issuer_query_value_is_not_mistaken_for_absolute_form() {
+        let request = format!(
+            "GET {CALLBACK_PATH}?state=state123&iss=https://accounts.google.com&code=abc123 HTTP/1.1\r\n\r\n"
+        );
+        assert!(parse_callback_request(&request, "state123").is_ok());
+    }
+
+    #[test]
+    fn rejects_https_absolute_form_request_target() {
+        let request = format!(
+            "GET https://127.0.0.1{CALLBACK_PATH}?state=state123&iss=https://accounts.google.com&code=abc123 HTTP/1.1\r\n\r\n"
+        );
+        assert_eq!(
+            parse_callback_request(&request, "state123").unwrap_err(),
+            SearchConsoleError::InvalidCallback
+        );
+    }
+
+    #[test]
+    fn rejects_duplicate_issuer_parameter() {
+        let request = format!(
+            "GET {CALLBACK_PATH}?state=state123&iss=https://accounts.google.com&iss=https://accounts.google.com&code=abc123 HTTP/1.1\r\n\r\n"
+        );
+        assert_eq!(
+            parse_callback_request(&request, "state123").unwrap_err(),
+            SearchConsoleError::InvalidCallback
+        );
+    }
+
+    #[test]
+    fn rejects_empty_issuer_parameter() {
+        let request =
+            format!("GET {CALLBACK_PATH}?state=state123&iss=&code=abc123 HTTP/1.1\r\n\r\n");
+        assert_eq!(
+            parse_callback_request(&request, "state123").unwrap_err(),
+            SearchConsoleError::InvalidCallback
+        );
+    }
+
+    #[test]
+    fn rejects_wrong_issuer_parameter() {
+        let request = format!(
+            "GET {CALLBACK_PATH}?state=state123&iss=https://example.invalid&code=abc123 HTTP/1.1\r\n\r\n"
+        );
+        assert_eq!(
+            parse_callback_request(&request, "state123").unwrap_err(),
+            SearchConsoleError::InvalidCallback
+        );
+    }
+
+    #[test]
+    fn parses_successful_callback_without_issuer() {
+        let request = format!("GET {CALLBACK_PATH}?state=state123&code=abc123 HTTP/1.1\r\n\r\n");
+        assert_eq!(
+            parse_callback_request(&request, "state123").unwrap(),
+            CallbackOutcome::Authorized {
+                code: "abc123".to_string()
+            }
+        );
+    }
+
+    #[test]
+    fn parses_callback_with_parameters_in_any_order() {
+        for request in [
+            format!(
+                "GET {CALLBACK_PATH}?state=state123&iss=https://accounts.google.com&code=abc123 HTTP/1.1\r\n\r\n"
+            ),
+            format!(
+                "GET {CALLBACK_PATH}?code=abc123&state=state123&iss=https://accounts.google.com HTTP/1.1\r\n\r\n"
+            ),
+            format!(
+                "GET {CALLBACK_PATH}?iss=https://accounts.google.com&code=abc123&state=state123 HTTP/1.1\r\n\r\n"
+            ),
+        ] {
+            assert_eq!(
+                parse_callback_request(&request, "state123").unwrap(),
+                CallbackOutcome::Authorized {
+                    code: "abc123".to_string()
+                }
+            );
+        }
+    }
+
+    #[test]
+    fn issuer_callback_errors_do_not_include_raw_values() {
+        let request = format!(
+            "GET {CALLBACK_PATH}?state=secret-state&iss=https://example.invalid&code=secret-code HTTP/1.1\r\n\r\n"
+        );
+        let error = parse_callback_request(&request, "secret-state").unwrap_err();
+        assert_eq!(error, SearchConsoleError::InvalidCallback);
+
+        let error_json = serde_json::to_string(&SearchConsoleCommandError::from(error)).unwrap();
+        assert!(!error_json.contains("secret-state"));
+        assert!(!error_json.contains("secret-code"));
+        assert!(!error_json.contains("example.invalid"));
     }
 
     #[test]
@@ -1360,6 +1952,16 @@ mod tests {
     #[test]
     fn rejects_wrong_callback_path() {
         let request = "GET /wrong/path?code=abc123&state=state123 HTTP/1.1\r\n\r\n";
+        assert_eq!(
+            parse_callback_request(request, "state123").unwrap_err(),
+            SearchConsoleError::InvalidCallback
+        );
+    }
+
+    #[test]
+    fn rejects_legacy_long_callback_path() {
+        let request =
+            "GET /search-console/oauth/callback?code=abc123&state=state123 HTTP/1.1\r\n\r\n";
         assert_eq!(
             parse_callback_request(request, "state123").unwrap_err(),
             SearchConsoleError::InvalidCallback
@@ -1462,6 +2064,201 @@ mod tests {
     }
 
     #[test]
+    fn loopback_listener_accepts_callback_and_returns_http_200() {
+        let listener = bind_callback_listener().unwrap();
+        let port = listener.local_addr().unwrap().port();
+        let handle = thread::spawn(move || {
+            wait_for_callback(
+                listener,
+                "state123".to_string(),
+                Duration::from_secs(2),
+                callback_cancel_flag(),
+            )
+        });
+
+        let response = send_callback_request(port, successful_callback_request("state123"));
+        assert!(response.starts_with("HTTP/1.1 200 OK"));
+        assert!(response.contains("Korea Inside Admin"));
+
+        assert_eq!(
+            handle.join().unwrap().unwrap(),
+            CallbackOutcome::Authorized {
+                code: "dummy-code".to_string()
+            }
+        );
+    }
+
+    #[test]
+    fn callback_success_html_does_not_claim_connection_complete() {
+        let body = callback_response_body(true);
+
+        assert!(body.contains("Google 인증 응답을 받았습니다."));
+        assert!(body.contains("관리자 앱에서 연결 결과를 확인하세요."));
+        assert!(!body.contains("연결이 완료되었습니다."));
+    }
+
+    #[test]
+    fn listener_remains_alive_until_callback_waiter_is_awaited() {
+        let listener = bind_callback_listener().unwrap();
+        let port = listener.local_addr().unwrap().port();
+        let handle = thread::spawn(move || {
+            wait_for_callback(
+                listener,
+                "state123".to_string(),
+                Duration::from_secs(2),
+                callback_cancel_flag(),
+            )
+        });
+
+        let response = send_callback_request(port, successful_callback_request("state123"));
+
+        assert!(response.starts_with("HTTP/1.1 200 OK"));
+        assert!(handle.join().unwrap().is_ok());
+    }
+
+    #[test]
+    fn listener_ignores_invalid_loopback_request_until_valid_callback() {
+        let listener = bind_callback_listener().unwrap();
+        let port = listener.local_addr().unwrap().port();
+        let handle = thread::spawn(move || {
+            wait_for_callback(
+                listener,
+                "state123".to_string(),
+                Duration::from_secs(2),
+                callback_cancel_flag(),
+            )
+        });
+
+        let invalid_response = send_callback_request(
+            port,
+            "GET /favicon.ico HTTP/1.1\r\nHost: 127.0.0.1\r\n\r\n".to_string(),
+        );
+        assert!(invalid_response.starts_with("HTTP/1.1 200 OK"));
+        let valid_response = send_callback_request(port, successful_callback_request("state123"));
+        assert!(valid_response.starts_with("HTTP/1.1 200 OK"));
+
+        assert_eq!(
+            handle.join().unwrap().unwrap(),
+            CallbackOutcome::Authorized {
+                code: "dummy-code".to_string()
+            }
+        );
+    }
+
+    #[test]
+    fn callback_waiter_times_out_and_closes_listener() {
+        let listener = bind_callback_listener().unwrap();
+        let port = listener.local_addr().unwrap().port();
+
+        assert_eq!(
+            wait_for_callback(
+                listener,
+                "state123".to_string(),
+                Duration::from_millis(20),
+                callback_cancel_flag(),
+            )
+            .unwrap_err(),
+            SearchConsoleError::CallbackTimeout
+        );
+        assert!(TcpStream::connect((Ipv4Addr::LOCALHOST, port)).is_err());
+    }
+
+    #[test]
+    fn browser_open_failure_cancel_closes_listener() {
+        let listener = bind_callback_listener().unwrap();
+        let port = listener.local_addr().unwrap().port();
+        let cancel = callback_cancel_flag();
+        let waiter_cancel = Arc::clone(&cancel);
+        let handle = thread::spawn(move || {
+            wait_for_callback(
+                listener,
+                "state123".to_string(),
+                Duration::from_secs(2),
+                waiter_cancel,
+            )
+        });
+
+        cancel.store(true, Ordering::SeqCst);
+
+        assert_eq!(
+            handle.join().unwrap().unwrap_err(),
+            SearchConsoleError::Internal
+        );
+        assert!(TcpStream::connect((Ipv4Addr::LOCALHOST, port)).is_err());
+    }
+
+    #[test]
+    fn callback_success_releases_authentication_guard() {
+        let _lock = runtime_test_lock();
+        reset_runtime_state_for_test();
+        let result: Result<(), SearchConsoleError> = (|| {
+            let _guard = OperationGuard::begin(OperationKind::Authentication)?;
+            let listener = bind_callback_listener()?;
+            let port = listener.local_addr().unwrap().port();
+            let handle = thread::spawn(move || {
+                wait_for_callback(
+                    listener,
+                    "state123".to_string(),
+                    Duration::from_secs(2),
+                    callback_cancel_flag(),
+                )
+            });
+            let response = send_callback_request(port, successful_callback_request("state123"));
+            assert!(response.is_empty() || response.starts_with("HTTP/1.1 200 OK"));
+            handle.join().unwrap()?;
+            Ok(())
+        })();
+
+        assert!(result.is_ok());
+        assert!(OperationGuard::begin(OperationKind::ClientConfiguration).is_ok());
+        reset_runtime_state_for_test();
+    }
+
+    #[test]
+    fn callback_error_releases_authentication_guard() {
+        let _lock = runtime_test_lock();
+        reset_runtime_state_for_test();
+        let result: Result<(), SearchConsoleError> = (|| {
+            let _guard = OperationGuard::begin(OperationKind::Authentication)?;
+            let listener = bind_callback_listener()?;
+            let port = listener.local_addr().unwrap().port();
+            let handle = thread::spawn(move || {
+                wait_for_callback(
+                    listener,
+                    "state123".to_string(),
+                    Duration::from_secs(2),
+                    callback_cancel_flag(),
+                )
+            });
+            let response = send_callback_request(port, successful_callback_request("wrong-state"));
+            assert!(response.is_empty() || response.starts_with("HTTP/1.1 200 OK"));
+            assert_eq!(
+                handle.join().unwrap().unwrap_err(),
+                SearchConsoleError::StateMismatch
+            );
+            Err(SearchConsoleError::StateMismatch)
+        })();
+
+        assert_eq!(result.err(), Some(SearchConsoleError::StateMismatch));
+        assert!(OperationGuard::begin(OperationKind::ClientConfiguration).is_ok());
+        reset_runtime_state_for_test();
+    }
+
+    #[test]
+    fn command_initial_error_releases_authentication_guard() {
+        let _lock = runtime_test_lock();
+        reset_runtime_state_for_test();
+        let result: Result<(), SearchConsoleError> = (|| {
+            let _guard = OperationGuard::begin(OperationKind::Authentication)?;
+            Err(SearchConsoleError::NotConfigured)
+        })();
+
+        assert_eq!(result.err(), Some(SearchConsoleError::NotConfigured));
+        assert!(OperationGuard::begin(OperationKind::ClientConfiguration).is_ok());
+        reset_runtime_state_for_test();
+    }
+
+    #[test]
     fn callback_errors_do_not_include_query_code_or_state_values() {
         let error_json = serde_json::to_string(&SearchConsoleCommandError::from(
             SearchConsoleError::StateMismatch,
@@ -1561,6 +2358,63 @@ mod tests {
         .unwrap();
         assert!(!error_json.contains(VALID_CLIENT_ID));
         assert!(!error_json.contains("Bearer"));
+    }
+
+    #[test]
+    fn maps_authorization_token_error_codes_safely() {
+        for (body, expected) in [
+            (
+                br#"{"error":"invalid_grant","error_description":"hidden"}"#.as_slice(),
+                SearchConsoleError::TokenInvalidGrant,
+            ),
+            (
+                br#"{"error":"invalid_client","error_description":"hidden"}"#.as_slice(),
+                SearchConsoleError::TokenInvalidClient,
+            ),
+            (
+                br#"{"error":"invalid_request","error_description":"hidden"}"#.as_slice(),
+                SearchConsoleError::TokenInvalidRequest,
+            ),
+            (
+                br#"{"error":"unauthorized_client","error_description":"hidden"}"#.as_slice(),
+                SearchConsoleError::TokenUnauthorizedClient,
+            ),
+            (
+                br#"{"error":"redirect_uri_mismatch","error_description":"hidden"}"#.as_slice(),
+                SearchConsoleError::TokenRedirectUriMismatch,
+            ),
+        ] {
+            assert_eq!(map_authorization_token_error(body), expected);
+        }
+    }
+
+    #[test]
+    fn unknown_authorization_token_error_uses_general_mapping() {
+        for body in [
+            br#"{"error":"temporarily_unavailable","error_description":"hidden"}"#.as_slice(),
+            br#"{"error_description":"hidden"}"#.as_slice(),
+            b"not-json".as_slice(),
+        ] {
+            assert_eq!(
+                map_authorization_token_error(body),
+                SearchConsoleError::TokenExchangeFailed
+            );
+        }
+    }
+
+    #[test]
+    fn token_error_mapping_does_not_expose_description_or_body() {
+        let error = map_authorization_token_error(
+            br#"{"error":"invalid_grant","error_description":"secret-description"}"#,
+        );
+        let error_json = serde_json::to_string(&SearchConsoleCommandError::from(error)).unwrap();
+
+        assert_eq!(
+            SearchConsoleCommandError::from(error).code,
+            "token_invalid_grant"
+        );
+        assert!(!error_json.contains("secret-description"));
+        assert!(!error_json.contains("error_description"));
     }
 
     #[test]
@@ -1885,9 +2739,175 @@ mod tests {
         })
     }
 
+    fn callback_cancel_flag() -> Arc<AtomicBool> {
+        Arc::new(AtomicBool::new(false))
+    }
+
+    fn successful_callback_request(state: &str) -> String {
+        format!(
+            "GET {CALLBACK_PATH}?code=dummy-code&state={state} HTTP/1.1\r\nHost: 127.0.0.1\r\n\r\n"
+        )
+    }
+
+    fn send_callback_request(port: u16, request: String) -> String {
+        let mut stream = TcpStream::connect((Ipv4Addr::LOCALHOST, port)).unwrap();
+        stream
+            .set_read_timeout(Some(Duration::from_secs(2)))
+            .unwrap();
+        stream.write_all(request.as_bytes()).unwrap();
+        let _ = stream.shutdown(std::net::Shutdown::Write);
+        let mut response = String::new();
+        if let Err(error) = stream.read_to_string(&mut response) {
+            if error.raw_os_error() != Some(10054) {
+                panic!("failed to read callback response: {error}");
+            }
+        }
+        response
+    }
+
+    fn parse_form_body_for_test(body: &str) -> HashMap<String, String> {
+        form_urlencoded::parse(body.as_bytes())
+            .map(|(key, value)| (key.into_owned(), value.into_owned()))
+            .collect()
+    }
+
+    fn parse_form_keys_for_test(body: &str) -> Vec<String> {
+        form_urlencoded::parse(body.as_bytes())
+            .map(|(key, _)| key.into_owned())
+            .collect()
+    }
+
+    fn authorization_code_token_request_for_test(
+        client_id: &str,
+        redirect_uri: &str,
+        code: &str,
+        pkce_verifier: &str,
+    ) -> HttpRequest {
+        let captured = Rc::new(RefCell::new(None));
+        let captured_request = Rc::clone(&captured);
+        let result = tauri::async_runtime::block_on(request_oauth_authorization_code(
+            client_id,
+            redirect_uri,
+            code,
+            pkce_verifier,
+            move |request| {
+                *captured_request.borrow_mut() = Some(request);
+                async {
+                    Ok(HttpResponse {
+                        status_code: oauth2::http::StatusCode::OK,
+                        headers: oauth2::http::HeaderMap::new(),
+                        body: br#"{"access_token":"access","token_type":"Bearer","refresh_token":"refresh","expires_in":3600,"scope":"https://www.googleapis.com/auth/webmasters.readonly"}"#.to_vec(),
+                    })
+                }
+            },
+        ));
+        assert!(result.is_ok());
+        let request = captured.borrow_mut().take().unwrap();
+        request
+    }
+
+    fn request_body_string_for_test(request: &HttpRequest) -> String {
+        String::from_utf8(request.body.clone()).unwrap()
+    }
+
+    fn spawn_mock_token_endpoint() -> (String, thread::JoinHandle<MockTokenRequestMetadata>) {
+        let listener = TcpListener::bind((Ipv4Addr::LOCALHOST, 0)).unwrap();
+        listener.set_nonblocking(true).unwrap();
+        let port = listener.local_addr().unwrap().port();
+        let endpoint = format!("http://127.0.0.1:{port}/token");
+        let handle = thread::spawn(move || {
+            let deadline = Instant::now() + Duration::from_secs(5);
+            let (mut stream, _) = loop {
+                match listener.accept() {
+                    Ok(connection) => break connection,
+                    Err(error) if error.kind() == io::ErrorKind::WouldBlock => {
+                        assert!(Instant::now() < deadline, "mock token server timed out");
+                        thread::sleep(Duration::from_millis(10));
+                    }
+                    Err(error) => panic!("mock token server failed: {error}"),
+                }
+            };
+            let raw_request = read_mock_http_request(&mut stream);
+            let metadata = parse_mock_token_request(&raw_request);
+            let body = br#"{"access_token":"fixture-access","token_type":"Bearer","refresh_token":"fixture-refresh","expires_in":3600,"scope":"https://www.googleapis.com/auth/webmasters.readonly"}"#;
+            let response = format!(
+                "HTTP/1.1 200 OK\r\nContent-Type: application/json\r\nContent-Length: {}\r\nConnection: close\r\n\r\n",
+                body.len()
+            );
+            stream.write_all(response.as_bytes()).unwrap();
+            stream.write_all(body).unwrap();
+            stream.flush().unwrap();
+            metadata
+        });
+        (endpoint, handle)
+    }
+
+    fn read_mock_http_request(stream: &mut TcpStream) -> String {
+        stream
+            .set_read_timeout(Some(Duration::from_secs(2)))
+            .unwrap();
+        let mut buffer = Vec::new();
+        let mut chunk = [0_u8; 512];
+        let header_end = loop {
+            let read = stream.read(&mut chunk).unwrap();
+            assert!(read > 0, "mock token request closed before headers");
+            buffer.extend_from_slice(&chunk[..read]);
+            if let Some(header_end) = http_header_end(&buffer) {
+                break header_end;
+            }
+        };
+        let header_text = String::from_utf8(buffer[..header_end].to_vec()).unwrap();
+        let content_length = header_text
+            .lines()
+            .find_map(|line| {
+                let (name, value) = line.split_once(':')?;
+                name.eq_ignore_ascii_case("content-length")
+                    .then(|| value.trim().parse::<usize>().unwrap())
+            })
+            .unwrap_or(0);
+        while buffer.len() < header_end + content_length {
+            let read = stream.read(&mut chunk).unwrap();
+            assert!(read > 0, "mock token request closed before body");
+            buffer.extend_from_slice(&chunk[..read]);
+        }
+        String::from_utf8(buffer).unwrap()
+    }
+
+    fn http_header_end(buffer: &[u8]) -> Option<usize> {
+        buffer
+            .windows(4)
+            .position(|window| window == b"\r\n\r\n")
+            .map(|index| index + 4)
+    }
+
+    fn parse_mock_token_request(raw_request: &str) -> MockTokenRequestMetadata {
+        let (headers, body) = raw_request.split_once("\r\n\r\n").unwrap();
+        let mut lines = headers.lines();
+        let request_line = lines.next().unwrap();
+        let mut request_parts = request_line.split_whitespace();
+        let method = request_parts.next().unwrap().to_string();
+        let target = request_parts.next().unwrap();
+        let url = url::Url::parse(&format!("http://127.0.0.1{target}")).unwrap();
+        let headers = lines
+            .filter_map(|line| {
+                let (name, value) = line.split_once(':')?;
+                Some((name.to_ascii_lowercase(), value.trim().to_string()))
+            })
+            .collect();
+
+        MockTokenRequestMetadata {
+            method,
+            path: url.path().to_string(),
+            headers,
+            body: body.to_string(),
+        }
+    }
+
     fn runtime_test_lock() -> TestMutexGuard<'static, ()> {
         static LOCK: TestOnceLock<TestMutex<()>> = TestOnceLock::new();
-        LOCK.get_or_init(|| TestMutex::new(())).lock().unwrap()
+        LOCK.get_or_init(|| TestMutex::new(()))
+            .lock()
+            .unwrap_or_else(|poisoned| poisoned.into_inner())
     }
 
     fn reset_runtime_state_for_test() {
