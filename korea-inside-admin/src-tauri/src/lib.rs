@@ -2,6 +2,7 @@ mod analytics;
 mod credentials;
 mod export;
 mod repository;
+mod search_console;
 mod site_status;
 
 use repository::RepositorySessionState;
@@ -22,6 +23,12 @@ pub fn run() {
             analytics::test_vercel_analytics_connection,
             analytics::get_vercel_analytics_summary,
             site_status::get_site_status_report,
+            search_console::get_search_console_client_status,
+            search_console::save_search_console_client_id,
+            search_console::delete_search_console_client_id,
+            search_console::start_search_console_oauth,
+            search_console::disconnect_search_console,
+            search_console::test_search_console_connection,
         ])
         .run(tauri::generate_context!());
 

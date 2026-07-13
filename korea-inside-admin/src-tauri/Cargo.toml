@@ -28,3 +28,6 @@ keyring-core = "1"
 windows-native-keyring-store = "1.1"
 reqwest = { version = "0.13", default-features = false, features = ["query", "rustls", "system-proxy"] }
 windows-sys = { version = "0.61", features = ["Win32_Storage_FileSystem", "Win32_System_WindowsProgramming"] }
+oauth2 = { version = "4.4", default-features = false }
+webbrowser = "1"
+url = "2"

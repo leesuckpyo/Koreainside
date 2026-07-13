@@ -14,6 +14,12 @@
     "allow-delete-vercel-access-token",
     "allow-test-vercel-analytics-connection",
     "allow-get-vercel-analytics-summary",
-    "allow-get-site-status-report"
+    "allow-get-site-status-report",
+    "allow-get-search-console-client-status",
+    "allow-save-search-console-client-id",
+    "allow-delete-search-console-client-id",
+    "allow-start-search-console-oauth",
+    "allow-disconnect-search-console",
+    "allow-test-search-console-connection"
   ]
 }
