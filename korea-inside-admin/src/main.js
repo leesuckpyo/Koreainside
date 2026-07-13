@@ -44,15 +44,41 @@ window.addEventListener("DOMContentLoaded", () => {
   const exportPreview = document.querySelector("#export-preview");
   const exportHistory = document.querySelector("#export-history");
   const exportHistoryEmpty = document.querySelector("#export-history-empty");
+  const runSiteStatusAuditButton = document.querySelector("#run-site-status-audit");
+  const siteStatusBadge = document.querySelector("#site-status-badge");
+  const siteStatusRepositoryPath = document.querySelector("#site-status-repository-path");
+  const siteStatusRepositoryEmpty = document.querySelector("#site-status-repository-empty");
+  const siteStatusLastChecked = document.querySelector("#site-status-last-checked");
+  const siteStatusMessage = document.querySelector("#site-status-message");
+  const siteStatusHtmlCount = document.querySelector("#site-status-html-count");
+  const siteStatusOkCount = document.querySelector("#site-status-ok-count");
+  const siteStatusWarningCount = document.querySelector("#site-status-warning-count");
+  const siteStatusErrorCount = document.querySelector("#site-status-error-count");
+  const siteStatusSitemapExists = document.querySelector("#site-status-sitemap-exists");
+  const siteStatusRobotsExists = document.querySelector("#site-status-robots-exists");
+  const siteStatusVercelJsonExists = document.querySelector("#site-status-vercel-json-exists");
+  const siteStatusVercelignoreExists = document.querySelector("#site-status-vercelignore-exists");
+  const siteStatusSitemapUrlCount = document.querySelector("#site-status-sitemap-url-count");
+  const siteStatusSitemapDuplicates = document.querySelector("#site-status-sitemap-duplicates");
+  const siteStatusRobotsSitemap = document.querySelector("#site-status-robots-sitemap");
+  const siteStatusPublicMissing = document.querySelector("#site-status-public-missing");
+  const siteStatusLocalMissing = document.querySelector("#site-status-local-missing");
+  const siteStatusExclusionEvidence = document.querySelector("#site-status-exclusion-evidence");
+  const siteStatusReviewRequired = document.querySelector("#site-status-review-required");
+  const siteStatusPagesEmpty = document.querySelector("#site-status-pages-empty");
+  const siteStatusPagesBody = document.querySelector("#site-status-pages-body");
   const viewTitles = {
     dashboard: "운영 대시보드",
     analytics: "Vercel Analytics",
+    "site-status": "사이트 상태점검",
     explorer: "프로젝트 탐색기",
   };
   let connectedRepository = null;
+  let repositorySelectionLoading = false;
   let vercelCredentialStored = false;
   let analyticsConnectionLoading = false;
   let analyticsSummaryLoading = false;
+  let siteStatusLoading = false;
   let analyticsSummaryState = {
     period: "7d",
     status: "idle",
@@ -157,6 +183,10 @@ window.addEventListener("DOMContentLoaded", () => {
   exportFormatInputs.forEach((input) => {
     input.addEventListener("change", resetExportPreview);
   });
+
+  if (runSiteStatusAuditButton) {
+    runSiteStatusAuditButton.addEventListener("click", runSiteStatusAudit);
+  }
 
   previewExportButton.addEventListener("click", async () => {
     setExportLoading(true, "내보내기 정보를 확인하고 있습니다.");
@@ -308,12 +338,15 @@ window.addEventListener("DOMContentLoaded", () => {
 
   initializationState.textContent = "관리자 앱 기반 구성이 완료되었습니다.";
   refreshVercelConnectionStatus();
+  resetSiteStatusReport();
 
   function setLoading(isLoading) {
+    repositorySelectionLoading = isLoading;
     selectRepositoryButton.disabled = isLoading;
     disconnectRepositoryButton.disabled = isLoading;
     repositoryLoading.hidden = !isLoading;
     repositoryConnected.setAttribute("aria-busy", String(isLoading));
+    updateSiteStatusControls();
   }
 
   function showError(message) {
@@ -341,6 +374,7 @@ window.addEventListener("DOMContentLoaded", () => {
     dashboardRepositoryStatus.textContent = "선택되지 않음";
     dashboardAccessMode.textContent = "읽기 전용 예정";
     resetExportPreview();
+    resetSiteStatusReport();
   }
 
   function renderConnectedRepository() {
@@ -362,6 +396,7 @@ window.addEventListener("DOMContentLoaded", () => {
     dashboardRepositoryStatus.textContent = "연결됨";
     dashboardAccessMode.textContent = "읽기 전용";
     resetExportPreview();
+    resetSiteStatusReport();
   }
 
   function selectedExportFormat() {
@@ -437,6 +472,308 @@ window.addEventListener("DOMContentLoaded", () => {
       return `${bytes.toLocaleString("ko-KR")} B`;
     }
     return `${(bytes / 1024).toLocaleString("ko-KR", { maximumFractionDigits: 1 })} KB`;
+  }
+
+  async function runSiteStatusAudit() {
+    if (siteStatusLoading) {
+      return;
+    }
+
+    const repositoryRoot = connectedRepository && connectedRepository.rootPath;
+    if (!repositoryRoot) {
+      setSiteStatusMessage("저장소를 먼저 연결하십시오.", "error");
+      updateSiteStatusControls();
+      return;
+    }
+
+    setSiteStatusLoading(true);
+    setSiteStatusBadge("점검 중", "loading");
+    setSiteStatusMessage("연결된 저장소를 읽기 전용으로 점검하고 있습니다.");
+    setText(siteStatusLastChecked, new Date().toLocaleString("ko-KR"));
+
+    try {
+      const result = await window.__TAURI__.core.invoke("get_site_status_report", {
+        repositoryRoot,
+      });
+
+      if (!isValidSiteStatusReport(result)) {
+        renderSiteStatusError("사이트 상태 점검 응답 형식을 확인할 수 없습니다.");
+        return;
+      }
+
+      if (!connectedRepository || connectedRepository.rootPath !== repositoryRoot) {
+        renderSiteStatusError("저장소 연결 상태가 변경되었습니다. 다시 점검하십시오.");
+        return;
+      }
+
+      if (result.status === "error") {
+        renderSiteStatusError(result.message || "사이트 상태를 점검할 수 없습니다.", result.errorCode);
+        return;
+      }
+
+      renderSiteStatusReport(result);
+    } catch (error) {
+      renderSiteStatusError("사이트 상태 점검 command를 실행할 수 없습니다.", "invoke_failed");
+    } finally {
+      setSiteStatusLoading(false);
+    }
+  }
+
+  function resetSiteStatusReport() {
+    updateSiteStatusRepositoryState();
+    setSiteStatusBadge("점검 전", "idle");
+    setSiteStatusMessage("연결된 저장소를 읽기 전용으로 점검합니다. 자동 수정이나 파일 저장은 수행하지 않습니다.");
+    setText(siteStatusLastChecked, "마지막 점검 없음");
+    setText(siteStatusHtmlCount, "—");
+    setText(siteStatusOkCount, "—");
+    setText(siteStatusWarningCount, "—");
+    setText(siteStatusErrorCount, "—");
+    setText(siteStatusSitemapExists, "—");
+    setText(siteStatusRobotsExists, "—");
+    setText(siteStatusVercelJsonExists, "—");
+    setText(siteStatusVercelignoreExists, "—");
+    setText(siteStatusSitemapUrlCount, "—");
+    setText(siteStatusSitemapDuplicates, "—");
+    setText(siteStatusRobotsSitemap, "—");
+    renderSiteStatusList(siteStatusPublicMissing, ["점검 전"]);
+    renderSiteStatusList(siteStatusLocalMissing, ["점검 전"]);
+    renderSiteStatusList(siteStatusExclusionEvidence, ["점검 전"]);
+    renderSiteStatusList(siteStatusReviewRequired, ["점검 전"]);
+    if (siteStatusPagesBody) {
+      siteStatusPagesBody.replaceChildren();
+    }
+    setText(siteStatusPagesEmpty, "아직 점검 결과가 없습니다.");
+    updateSiteStatusControls();
+  }
+
+  function updateSiteStatusRepositoryState() {
+    const repositoryRoot = connectedRepository && connectedRepository.rootPath;
+    setText(siteStatusRepositoryPath, repositoryRoot || "연결되지 않음");
+    if (siteStatusRepositoryEmpty) {
+      siteStatusRepositoryEmpty.hidden = Boolean(repositoryRoot);
+    }
+    updateSiteStatusControls();
+  }
+
+  function updateSiteStatusControls() {
+    if (!runSiteStatusAuditButton) {
+      return;
+    }
+    runSiteStatusAuditButton.disabled =
+      siteStatusLoading || repositorySelectionLoading || !connectedRepository || !connectedRepository.rootPath;
+    runSiteStatusAuditButton.textContent = siteStatusLoading ? "점검 중" : "사이트 상태 점검";
+  }
+
+  function setSiteStatusLoading(isLoading) {
+    siteStatusLoading = isLoading;
+    updateSiteStatusControls();
+  }
+
+  function renderSiteStatusReport(report) {
+    const summary = report.summary;
+    const global = report.global;
+    const pages = Array.isArray(report.pages) ? report.pages : [];
+    const reviewRequiredPages = pages.filter((page) => page.pageClassification === "review_required");
+    const checkedHtmlCount = safeCount(summary.checkedHtmlCount);
+    const okCount = safeCount(summary.okCount);
+    const warningCount = safeCount(summary.warningCount);
+    const errorCount = safeCount(summary.errorCount);
+    const sitemapUrlCount = safeCount(global.sitemapUrlCount);
+    const statusKind = errorCount > 0 ? "error" : warningCount > 0 ? "warning" : "ok";
+    const statusText = statusKind === "error" ? "오류" : statusKind === "warning" ? "경고" : "정상";
+
+    setSiteStatusBadge(statusText, statusKind);
+    setSiteStatusMessage(
+      `점검 완료: HTML ${checkedHtmlCount.toLocaleString("ko-KR")}개, 경고 ${warningCount.toLocaleString("ko-KR")}개, 오류 ${errorCount.toLocaleString("ko-KR")}개`,
+      statusKind === "ok" ? "success" : statusKind,
+    );
+    setText(siteStatusLastChecked, new Date().toLocaleString("ko-KR"));
+    setText(siteStatusHtmlCount, checkedHtmlCount.toLocaleString("ko-KR"));
+    setText(siteStatusOkCount, okCount.toLocaleString("ko-KR"));
+    setText(siteStatusWarningCount, warningCount.toLocaleString("ko-KR"));
+    setText(siteStatusErrorCount, errorCount.toLocaleString("ko-KR"));
+    setText(siteStatusSitemapExists, formatExists(summary.sitemapExists));
+    setText(siteStatusRobotsExists, formatExists(summary.robotsTxtExists));
+    setText(siteStatusVercelJsonExists, formatExists(summary.vercelJsonExists));
+    setText(siteStatusVercelignoreExists, formatExists(summary.vercelignoreExists));
+    setText(siteStatusSitemapUrlCount, sitemapUrlCount.toLocaleString("ko-KR"));
+    setText(siteStatusSitemapDuplicates, formatDuplicateUrls(global));
+    setText(siteStatusRobotsSitemap, formatBoolean(global.robotsHasSitemap));
+    renderSiteStatusList(siteStatusPublicMissing, normalArray(global.publicHtmlNotInSitemap), "없음");
+    renderSiteStatusList(siteStatusLocalMissing, normalArray(global.sitemapUrlsWithoutLocalFile), "없음");
+    renderSiteStatusList(siteStatusExclusionEvidence, formatDeploymentEvidence(global.deploymentExclusionEvidence), "없음");
+    renderSiteStatusList(siteStatusReviewRequired, formatReviewRequiredPages(reviewRequiredPages), "없음");
+    renderSiteStatusPages(pages);
+  }
+
+  function renderSiteStatusError(message, errorCode = null) {
+    const detail = errorCode ? ` (${errorCode})` : "";
+    setSiteStatusBadge("오류", "error");
+    setSiteStatusMessage(`${message}${detail}`, "error");
+  }
+
+  function renderSiteStatusPages(pages) {
+    if (!siteStatusPagesBody) {
+      return;
+    }
+
+    siteStatusPagesBody.replaceChildren();
+    setText(
+      siteStatusPagesEmpty,
+      pages.length === 0 ? "페이지 결과가 없습니다." : `${pages.length.toLocaleString("ko-KR")}개 페이지 결과`,
+    );
+
+    pages.forEach((page) => {
+      const row = document.createElement("tr");
+      row.append(
+        createTableCell(page.relativePath || "경로 없음"),
+        createTableCell(formatClassification(page.pageClassification)),
+        createTableCell(formatPresence(page.titleExists)),
+        createTableCell(formatPresence(page.metaDescriptionExists)),
+        createTableCell(formatPresence(page.canonicalExists)),
+        createTableCell(Number.isSafeInteger(page.h1Count) ? page.h1Count.toLocaleString("ko-KR") : "확인 필요"),
+        createTableCell(formatBoolean(page.robotsNoindex)),
+        createTableCell(formatBoolean(page.sitemapIncluded)),
+        createIssuesCell(page.issues),
+      );
+      siteStatusPagesBody.append(row);
+    });
+  }
+
+  function renderSiteStatusList(listElement, items, emptyText = "없음") {
+    if (!listElement) {
+      return;
+    }
+
+    listElement.replaceChildren();
+    const values = normalArray(items);
+    if (values.length === 0) {
+      const emptyItem = document.createElement("li");
+      emptyItem.textContent = emptyText;
+      listElement.append(emptyItem);
+      return;
+    }
+
+    values.forEach((value) => {
+      const item = document.createElement("li");
+      item.textContent = String(value);
+      listElement.append(item);
+    });
+  }
+
+  function formatDeploymentEvidence(evidenceItems) {
+    return normalArray(evidenceItems).map((item) => {
+      const evidence = normalArray(item.evidence).join(", ");
+      return `${item.relativePath || "경로 없음"} · ${formatClassification(item.pageClassification)} · ${evidence || "근거 없음"}`;
+    });
+  }
+
+  function formatReviewRequiredPages(pages) {
+    return pages.map((page) => {
+      const issues = normalArray(page.issues).join(", ");
+      return `${page.relativePath || "경로 없음"} · ${issues || "검토 필요"}`;
+    });
+  }
+
+  function createTableCell(value) {
+    const cell = document.createElement("td");
+    cell.textContent = value;
+    return cell;
+  }
+
+  function createIssuesCell(issues) {
+    const cell = document.createElement("td");
+    const values = normalArray(issues);
+
+    if (values.length === 0) {
+      cell.textContent = "0개";
+      return cell;
+    }
+
+    const details = document.createElement("details");
+    const summary = document.createElement("summary");
+    const list = document.createElement("ul");
+    summary.textContent = `${values.length.toLocaleString("ko-KR")}개`;
+    values.forEach((issue) => {
+      const item = document.createElement("li");
+      item.textContent = issue;
+      list.append(item);
+    });
+    details.append(summary, list);
+    cell.append(details);
+    return cell;
+  }
+
+  function isValidSiteStatusReport(result) {
+    return (
+      result !== null &&
+      typeof result === "object" &&
+      (result.status === "ok" || result.status === "error") &&
+      result.summary !== null &&
+      typeof result.summary === "object" &&
+      result.global !== null &&
+      typeof result.global === "object" &&
+      Array.isArray(result.pages)
+    );
+  }
+
+  function setSiteStatusBadge(text, kind) {
+    if (!siteStatusBadge) {
+      return;
+    }
+    siteStatusBadge.textContent = text;
+    siteStatusBadge.classList.remove("is-idle", "is-loading", "is-ok", "is-warning", "is-error");
+    siteStatusBadge.classList.add(`is-${kind}`);
+  }
+
+  function setSiteStatusMessage(message, kind = "default") {
+    if (!siteStatusMessage) {
+      return;
+    }
+    siteStatusMessage.textContent = message;
+    siteStatusMessage.classList.toggle("is-error", kind === "error");
+    siteStatusMessage.classList.toggle("is-warning", kind === "warning");
+    siteStatusMessage.classList.toggle("is-success", kind === "success");
+  }
+
+  function formatExists(value) {
+    return value === true ? "있음" : "없음";
+  }
+
+  function formatPresence(value) {
+    return value === true ? "있음" : "누락";
+  }
+
+  function formatBoolean(value) {
+    return value === true ? "예" : "아니오";
+  }
+
+  function formatDuplicateUrls(global) {
+    const duplicates = normalArray(global.duplicateSitemapUrls);
+    return global.sitemapHasDuplicateUrls ? `있음 (${duplicates.length.toLocaleString("ko-KR")}개)` : "없음";
+  }
+
+  function formatClassification(value) {
+    const labels = {
+      public: "public",
+      excluded: "excluded",
+      review_required: "review_required",
+    };
+    return labels[value] || "review_required";
+  }
+
+  function normalArray(value) {
+    return Array.isArray(value) ? value : [];
+  }
+
+  function safeCount(value) {
+    return Number.isSafeInteger(value) && value >= 0 ? value : 0;
+  }
+
+  function setText(element, value) {
+    if (element) {
+      element.textContent = value;
+    }
   }
 
   function selectedAnalyticsPeriod() {

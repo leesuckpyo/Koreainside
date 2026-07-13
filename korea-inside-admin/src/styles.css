@@ -205,7 +205,8 @@ h2 {
 .initialization-state,
 .connection-badge,
 .read-only-badge,
-.analytics-badge {
+.analytics-badge,
+.site-status-badge {
   display: inline-flex;
   align-items: center;
   min-height: 30px;
@@ -221,6 +222,7 @@ h2 {
 
 .section-heading,
 .analytics-header,
+.site-status-header,
 .explorer-header {
   display: flex;
   align-items: flex-start;
@@ -234,6 +236,7 @@ h2 {
 
 .section-heading h2,
 .analytics-header h2,
+.site-status-header h2,
 .explorer-header h2 {
   font-size: 18px;
   font-weight: 700;
@@ -253,6 +256,36 @@ h2 {
 }
 
 .analytics-badge.is-error {
+  color: #8a2c2c;
+  background: #fff0f0;
+  border-color: #efc4c4;
+}
+
+.site-status-badge {
+  color: #765b1d;
+  background: #fff6da;
+  border-color: #ead28a;
+}
+
+.site-status-badge.is-loading {
+  color: #214781;
+  background: #edf3fb;
+  border-color: #8facd4;
+}
+
+.site-status-badge.is-ok {
+  color: #315c42;
+  background: #e6f4eb;
+  border-color: #b9dcc5;
+}
+
+.site-status-badge.is-warning {
+  color: #765b1d;
+  background: #fff6da;
+  border-color: #ead28a;
+}
+
+.site-status-badge.is-error {
   color: #8a2c2c;
   background: #fff0f0;
   border-color: #efc4c4;
@@ -516,6 +549,256 @@ h2 {
   color: #315c42;
   background: #e6f4eb;
   border-color: #b9dcc5;
+}
+
+.site-status-repository {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 14px;
+  background: #f8f9fb;
+  border: 1px solid #e0e4ea;
+  border-radius: 8px;
+}
+
+.site-status-repository-copy {
+  display: grid;
+  min-width: 0;
+  gap: 4px;
+}
+
+.site-status-repository h3,
+.site-status-section-title,
+.site-status-list-block h4 {
+  margin: 0;
+  color: #293548;
+}
+
+.site-status-repository h3,
+.site-status-section-title {
+  font-size: 16px;
+}
+
+.site-status-repository strong {
+  overflow-wrap: anywhere;
+  font-size: 14px;
+}
+
+.site-status-repository p,
+.site-status-pages-heading p {
+  margin: 0;
+  color: #667286;
+  font-size: 13px;
+}
+
+.site-status-run-controls {
+  display: grid;
+  justify-items: end;
+  gap: 7px;
+  flex: 0 0 auto;
+}
+
+.site-status-run-controls span {
+  color: #667286;
+  font-size: 12px;
+}
+
+.site-status-message {
+  margin-top: 14px;
+  padding: 10px 12px;
+  color: #536075;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+  background: #f8f9fb;
+  border: 1px solid #e0e4ea;
+  border-radius: 7px;
+}
+
+.site-status-message.is-error {
+  color: #8a2c2c;
+  background: #fff0f0;
+  border-color: #efc4c4;
+}
+
+.site-status-message.is-warning {
+  color: #765b1d;
+  background: #fff6da;
+  border-color: #ead28a;
+}
+
+.site-status-message.is-success {
+  color: #315c42;
+  background: #e6f4eb;
+  border-color: #b9dcc5;
+}
+
+.site-status-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+  margin: 16px 0 0;
+}
+
+.site-status-summary-card {
+  min-height: 96px;
+  padding: 14px;
+  background: #f8f9fb;
+  border: 1px solid #e0e4ea;
+  border-left: 4px solid #9aa5b4;
+  border-radius: 9px;
+}
+
+.site-status-summary-card dt,
+.site-status-global-grid dt {
+  color: #677387;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.site-status-summary-card dd {
+  margin: 10px 0 0;
+  color: #1c2738;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.site-status-global,
+.site-status-pages {
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid #e3e7ec;
+}
+
+.site-status-global-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin: 12px 0 0;
+}
+
+.site-status-global-grid div {
+  min-width: 0;
+  padding: 12px;
+  background: #f8f9fb;
+  border: 1px solid #e0e4ea;
+  border-radius: 8px;
+}
+
+.site-status-global-grid dd {
+  margin: 5px 0 0;
+  color: #344258;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.site-status-list-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.site-status-list-block {
+  min-width: 0;
+  padding: 12px;
+  background: #ffffff;
+  border: 1px solid #e0e4ea;
+  border-radius: 8px;
+}
+
+.site-status-list-block h4 {
+  font-size: 13px;
+}
+
+.site-status-list-block ul {
+  display: grid;
+  gap: 5px;
+  max-height: 170px;
+  margin: 8px 0 0;
+  padding-left: 18px;
+  overflow: auto;
+  color: #536075;
+  font-size: 12px;
+}
+
+.site-status-pages-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.site-status-table-scroll {
+  max-width: 100%;
+  margin-top: 12px;
+  overflow-x: auto;
+  border: 1px solid #e0e4ea;
+  border-radius: 8px;
+}
+
+.site-status-table {
+  width: 100%;
+  min-width: 960px;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+.site-status-table th,
+.site-status-table td {
+  padding: 9px 10px;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid #e8ecf2;
+}
+
+.site-status-table th {
+  color: #536075;
+  font-weight: 700;
+  background: #f8f9fb;
+  white-space: nowrap;
+}
+
+.site-status-table td {
+  color: #293548;
+  overflow-wrap: anywhere;
+}
+
+.site-status-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.site-status-table details {
+  min-width: 0;
+  max-width: 240px;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  white-space: normal;
+}
+
+.site-status-table summary {
+  cursor: pointer;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  white-space: normal;
+}
+
+.site-status-table ul {
+  display: grid;
+  gap: 4px;
+  margin: 6px 0 0;
+  padding-left: 16px;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  white-space: normal;
+}
+
+.site-status-table li {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  white-space: normal;
 }
 
 .security-notice {
@@ -968,6 +1251,28 @@ h2 {
   }
 
   .analytics-status-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 1024px) {
+  .site-status-header,
+  .site-status-repository,
+  .site-status-pages-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .site-status-run-controls {
+    justify-items: start;
+  }
+
+  .site-status-summary-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .site-status-global-grid,
+  .site-status-list-grid {
     grid-template-columns: 1fr;
   }
 }

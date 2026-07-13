@@ -26,7 +26,7 @@
           <button class="nav-item" type="button" disabled><span>숙소 관리</span><span class="phase-label">후속 단계</span></button>
           <button class="nav-item" type="button" disabled><span>eSIM 관리</span><span class="phase-label">후속 단계</span></button>
           <button class="nav-item" type="button" disabled><span>콘텐츠·SEO</span><span class="phase-label">후속 단계</span></button>
-          <button class="nav-item" type="button" disabled><span>사이트 상태점검</span><span class="phase-label">후속 단계</span></button>
+          <button class="nav-item" type="button" data-view="site-status"><span>사이트 상태점검</span></button>
           <button class="nav-item" type="button" data-view="explorer"><span>프로젝트 탐색기</span></button>
           <button class="nav-item" type="button" disabled><span>Git·배포</span><span class="phase-label">후속 단계</span></button>
           <button class="nav-item" type="button" disabled><span>설정·데이터 연결</span><span class="phase-label">후속 단계</span></button>
@@ -151,6 +151,95 @@
                 <strong>보안 안내</strong>
                 <p>Access Token은 Windows 자격 증명 관리자에만 저장되며 화면에 다시 표시되지 않습니다.</p>
                 <p>방문자·페이지뷰는 익명 집계값만 표시하며 사용자가 새로고침할 때만 조회합니다.</p>
+              </div>
+            </section>
+          </section>
+
+          <section class="view-panel" id="site-status-view" data-panel="site-status" hidden>
+            <div class="site-status-header">
+              <div>
+                <p class="eyebrow">읽기 전용 점검</p>
+                <h2>사이트 상태 요약</h2>
+              </div>
+              <span class="site-status-badge" id="site-status-badge">점검 전</span>
+            </div>
+
+            <section class="site-status-repository" aria-labelledby="site-status-repository-title">
+              <div class="site-status-repository-copy">
+                <h3 id="site-status-repository-title">연결 저장소</h3>
+                <strong id="site-status-repository-path">연결되지 않음</strong>
+                <p id="site-status-repository-empty">프로젝트 탐색기에서 저장소를 연결한 후 사이트 상태를 점검할 수 있습니다.</p>
+              </div>
+              <div class="site-status-run-controls">
+                <button class="primary-button" id="run-site-status-audit" type="button" disabled>사이트 상태 점검</button>
+                <span id="site-status-last-checked">마지막 점검 없음</span>
+              </div>
+            </section>
+
+            <div class="site-status-message" id="site-status-message" role="status">
+              연결된 저장소를 읽기 전용으로 점검합니다. 자동 수정이나 파일 저장은 수행하지 않습니다.
+            </div>
+
+            <dl class="site-status-summary-grid" aria-label="사이트 상태 요약 지표">
+              <div class="site-status-summary-card"><dt>검사한 HTML</dt><dd id="site-status-html-count">—</dd></div>
+              <div class="site-status-summary-card"><dt>정상</dt><dd id="site-status-ok-count">—</dd></div>
+              <div class="site-status-summary-card"><dt>경고</dt><dd id="site-status-warning-count">—</dd></div>
+              <div class="site-status-summary-card"><dt>오류</dt><dd id="site-status-error-count">—</dd></div>
+              <div class="site-status-summary-card"><dt>sitemap.xml</dt><dd id="site-status-sitemap-exists">—</dd></div>
+              <div class="site-status-summary-card"><dt>robots.txt</dt><dd id="site-status-robots-exists">—</dd></div>
+              <div class="site-status-summary-card"><dt>vercel.json</dt><dd id="site-status-vercel-json-exists">—</dd></div>
+              <div class="site-status-summary-card"><dt>.vercelignore</dt><dd id="site-status-vercelignore-exists">—</dd></div>
+            </dl>
+
+            <section class="site-status-global" aria-labelledby="site-status-global-title">
+              <h3 class="site-status-section-title" id="site-status-global-title">전역 점검</h3>
+              <dl class="site-status-global-grid">
+                <div><dt>sitemap URL 수</dt><dd id="site-status-sitemap-url-count">—</dd></div>
+                <div><dt>sitemap 중복 URL</dt><dd id="site-status-sitemap-duplicates">—</dd></div>
+                <div><dt>robots.txt Sitemap 선언</dt><dd id="site-status-robots-sitemap">—</dd></div>
+              </dl>
+              <div class="site-status-list-grid">
+                <section class="site-status-list-block" aria-labelledby="site-status-public-missing-title">
+                  <h4 id="site-status-public-missing-title">sitemap 누락 공개 후보</h4>
+                  <ul id="site-status-public-missing"><li>점검 전</li></ul>
+                </section>
+                <section class="site-status-list-block" aria-labelledby="site-status-local-missing-title">
+                  <h4 id="site-status-local-missing-title">로컬 파일 없는 sitemap URL 후보</h4>
+                  <ul id="site-status-local-missing"><li>점검 전</li></ul>
+                </section>
+                <section class="site-status-list-block" aria-labelledby="site-status-exclusion-evidence-title">
+                  <h4 id="site-status-exclusion-evidence-title">배포 제외 근거</h4>
+                  <ul id="site-status-exclusion-evidence"><li>점검 전</li></ul>
+                </section>
+                <section class="site-status-list-block" aria-labelledby="site-status-review-required-title">
+                  <h4 id="site-status-review-required-title">검토 필요 항목</h4>
+                  <ul id="site-status-review-required"><li>점검 전</li></ul>
+                </section>
+              </div>
+            </section>
+
+            <section class="site-status-pages" aria-labelledby="site-status-pages-title">
+              <div class="site-status-pages-heading">
+                <h3 class="site-status-section-title" id="site-status-pages-title">페이지별 결과</h3>
+                <p id="site-status-pages-empty">아직 점검 결과가 없습니다.</p>
+              </div>
+              <div class="site-status-table-scroll">
+                <table class="site-status-table">
+                  <thead>
+                    <tr>
+                      <th scope="col">경로</th>
+                      <th scope="col">분류</th>
+                      <th scope="col">title</th>
+                      <th scope="col">description</th>
+                      <th scope="col">canonical</th>
+                      <th scope="col">H1</th>
+                      <th scope="col">noindex</th>
+                      <th scope="col">sitemap</th>
+                      <th scope="col">issues</th>
+                    </tr>
+                  </thead>
+                  <tbody id="site-status-pages-body"></tbody>
+                </table>
               </div>
             </section>
           </section>
