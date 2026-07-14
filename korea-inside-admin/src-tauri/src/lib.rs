@@ -24,6 +24,7 @@ pub fn run() {
             analytics::get_vercel_analytics_summary,
             site_status::get_site_status_report,
             search_console::get_search_console_client_status,
+            search_console::import_search_console_oauth_json,
             search_console::save_search_console_client_id,
             search_console::delete_search_console_client_id,
             search_console::start_search_console_oauth,

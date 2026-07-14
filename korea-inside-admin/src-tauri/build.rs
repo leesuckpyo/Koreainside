@@ -12,6 +12,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             "get_vercel_analytics_summary",
             "get_site_status_report",
             "get_search_console_client_status",
+            "import_search_console_oauth_json",
             "save_search_console_client_id",
             "delete_search_console_client_id",
             "start_search_console_oauth",

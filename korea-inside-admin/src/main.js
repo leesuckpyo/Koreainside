@@ -69,6 +69,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const siteStatusPagesBody = document.querySelector("#site-status-pages-body");
   const searchConsoleBadge = document.querySelector("#search-console-badge");
   const searchConsoleConfiguredStatus = document.querySelector("#search-console-configured-status");
+  const searchConsoleClientSecretStatus = document.querySelector("#search-console-client-secret-status");
   const searchConsoleAuthorizationStatus = document.querySelector("#search-console-authorization-status");
   const searchConsoleConnectedStatus = document.querySelector("#search-console-connected-status");
   const searchConsoleReauthenticationStatus = document.querySelector("#search-console-reauthentication-status");
@@ -76,6 +77,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const searchConsoleClientForm = document.querySelector("#search-console-client-form");
   const searchConsoleClientId = document.querySelector("#search-console-client-id");
   const saveSearchConsoleClientIdButton = document.querySelector("#save-search-console-client-id");
+  const importSearchConsoleOauthJsonButton = document.querySelector("#import-search-console-oauth-json");
   const deleteSearchConsoleClientIdButton = document.querySelector("#delete-search-console-client-id");
   const startSearchConsoleOauthButton = document.querySelector("#start-search-console-oauth");
   const testSearchConsoleConnectionButton = document.querySelector("#test-search-console-connection");
@@ -97,6 +99,7 @@ window.addEventListener("DOMContentLoaded", () => {
   let searchConsoleLoading = false;
   let searchConsoleStatus = {
     configured: false,
+    clientSecretStored: false,
     authorizationStored: false,
     connected: false,
     authenticationInProgress: false,
@@ -139,6 +142,11 @@ window.addEventListener("DOMContentLoaded", () => {
   });
   const searchConsoleErrorMessages = {
     not_configured: "먼저 Google OAuth Client ID를 저장하세요.",
+    client_secret_not_configured: "OAuth JSON을 가져와 Client Secret을 저장하세요.",
+    oauth_json_selection_failed: "OAuth JSON 파일을 선택할 수 없습니다.",
+    oauth_json_read_failed: "선택한 OAuth JSON 파일을 읽을 수 없습니다.",
+    oauth_json_too_large: "OAuth JSON 파일 크기가 허용 범위를 초과했습니다.",
+    invalid_oauth_json: "Google Desktop OAuth JSON 형식이 올바르지 않습니다.",
     already_in_progress: "다른 Search Console 작업이 진행 중입니다.",
     invalid_client_id: "Client ID 형식이 올바르지 않습니다.",
     credential_store_failed: "Windows 보안 저장소에 설정을 저장하지 못했습니다.",
@@ -246,6 +254,10 @@ window.addEventListener("DOMContentLoaded", () => {
 
   if (searchConsoleClientId) {
     searchConsoleClientId.addEventListener("input", updateSearchConsoleControls);
+  }
+
+  if (importSearchConsoleOauthJsonButton) {
+    importSearchConsoleOauthJsonButton.addEventListener("click", importSearchConsoleOauthJson);
   }
 
   if (deleteSearchConsoleClientIdButton) {
@@ -429,6 +441,8 @@ window.addEventListener("DOMContentLoaded", () => {
         setSearchConsoleMessage("Google 계정을 다시 연결해야 합니다.", "warning");
       } else if (searchConsoleStatus.connected) {
         setSearchConsoleMessage("Search Console 읽기 전용 연결을 확인했습니다.", "success");
+      } else if (searchConsoleStatus.configured && !searchConsoleStatus.clientSecretStored) {
+        setSearchConsoleMessage("OAuth JSON을 가져와 Client Secret을 저장해 주십시오.");
       } else if (searchConsoleStatus.authorizationStored) {
         setSearchConsoleMessage("Google 인증이 저장되어 있습니다. 연결 확인을 실행해 주십시오.");
       } else if (searchConsoleStatus.configured) {
@@ -460,7 +474,39 @@ window.addEventListener("DOMContentLoaded", () => {
     try {
       const result = await window.__TAURI__.core.invoke("save_search_console_client_id", { clientId });
       renderSearchConsoleStatus(result);
-      setSearchConsoleMessage("Client ID 저장 완료", "success");
+      setSearchConsoleMessage(
+        result.clientSecretStored
+          ? "Client ID 저장 완료"
+          : "Client ID 저장 완료. OAuth JSON을 다시 가져오십시오.",
+        result.clientSecretStored ? "success" : "warning",
+      );
+    } catch (error) {
+      renderSearchConsoleError(errorCodeFromInvoke(error));
+    } finally {
+      setSearchConsoleLoading(false);
+    }
+  }
+
+  async function importSearchConsoleOauthJson() {
+    setSearchConsoleLoading(true, "Google OAuth Desktop Client 설정을 가져오고 있습니다.");
+    try {
+      const result = await window.__TAURI__.core.invoke("import_search_console_oauth_json");
+      if (!isValidSearchConsoleOauthImportResult(result)) {
+        renderSearchConsoleError("internal_error");
+        return;
+      }
+      if (result.status === "cancelled") {
+        await refreshSearchConsoleStatus();
+        return;
+      }
+
+      await refreshSearchConsoleStatus({ preserveMessage: true });
+      setSearchConsoleMessage(
+        result.clientIdChanged
+          ? "새 OAuth Client 설정을 저장했습니다. Google 계정 재인증이 필요합니다."
+          : "Google OAuth Desktop Client 설정을 안전하게 저장했습니다.",
+        result.clientIdChanged ? "warning" : "success",
+      );
     } catch (error) {
       renderSearchConsoleError(errorCodeFromInvoke(error));
     } finally {
@@ -549,6 +595,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     searchConsoleStatus = {
       configured: result.configured === true,
+      clientSecretStored: result.clientSecretStored === true,
       authorizationStored: result.authorizationStored === true,
       connected: result.connected === true,
       authenticationInProgress: result.authenticationInProgress === true,
@@ -557,6 +604,7 @@ window.addEventListener("DOMContentLoaded", () => {
     };
 
     setText(searchConsoleConfiguredStatus, searchConsoleStatus.configured ? "설정됨" : "미설정");
+    setText(searchConsoleClientSecretStatus, searchConsoleStatus.clientSecretStored ? "저장됨" : "없음");
     setText(searchConsoleAuthorizationStatus, searchConsoleStatus.authorizationStored ? "저장됨" : "없음");
     setText(searchConsoleConnectedStatus, searchConsoleStatus.connected ? "확인됨" : "미확인");
     setText(searchConsoleReauthenticationStatus, searchConsoleStatus.reauthenticationRequired ? "필요" : "정상");
@@ -596,9 +644,7 @@ window.addEventListener("DOMContentLoaded", () => {
   function updateSearchConsoleControls() {
     const busy = searchConsoleLoading || searchConsoleStatus.authenticationInProgress;
     const clientIdEntered = searchConsoleClientId && searchConsoleClientId.value.trim().length > 0;
-    const canStartOauth =
-      searchConsoleStatus.configured &&
-      (!searchConsoleStatus.authorizationStored || searchConsoleStatus.reauthenticationRequired);
+    const canStartOauth = searchConsoleStatus.configured && searchConsoleStatus.clientSecretStored;
 
     if (searchConsoleClientId) {
       searchConsoleClientId.disabled = busy;
@@ -607,13 +653,21 @@ window.addEventListener("DOMContentLoaded", () => {
       saveSearchConsoleClientIdButton.disabled = busy || !clientIdEntered;
     }
     if (deleteSearchConsoleClientIdButton) {
-      deleteSearchConsoleClientIdButton.disabled = busy || !searchConsoleStatus.configured;
+      deleteSearchConsoleClientIdButton.disabled =
+        busy ||
+        (!searchConsoleStatus.configured &&
+          !searchConsoleStatus.clientSecretStored &&
+          !searchConsoleStatus.authorizationStored);
+    }
+    if (importSearchConsoleOauthJsonButton) {
+      importSearchConsoleOauthJsonButton.disabled = busy;
     }
     if (startSearchConsoleOauthButton) {
       startSearchConsoleOauthButton.disabled = busy || !canStartOauth;
     }
     if (testSearchConsoleConnectionButton) {
-      testSearchConsoleConnectionButton.disabled = busy || !searchConsoleStatus.authorizationStored;
+      testSearchConsoleConnectionButton.disabled =
+        busy || !searchConsoleStatus.clientSecretStored || !searchConsoleStatus.authorizationStored;
     }
     if (disconnectSearchConsoleButton) {
       disconnectSearchConsoleButton.disabled = busy || !searchConsoleStatus.authorizationStored;
@@ -677,9 +731,25 @@ window.addEventListener("DOMContentLoaded", () => {
       result !== null &&
       typeof result === "object" &&
       typeof result.configured === "boolean" &&
+      typeof result.clientSecretStored === "boolean" &&
       typeof result.authorizationStored === "boolean" &&
       typeof result.connected === "boolean" &&
       typeof result.authenticationInProgress === "boolean" &&
+      typeof result.reauthenticationRequired === "boolean"
+    );
+  }
+
+  function isValidSearchConsoleOauthImportResult(result) {
+    if (result === null || typeof result !== "object") {
+      return false;
+    }
+    if (result.status === "cancelled") {
+      return true;
+    }
+    return (
+      result.status === "imported" &&
+      typeof result.clientIdChanged === "boolean" &&
+      result.clientSecretStored === true &&
       typeof result.reauthenticationRequired === "boolean"
     );
   }

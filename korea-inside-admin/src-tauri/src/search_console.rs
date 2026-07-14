@@ -1,8 +1,9 @@
 use keyring_core::{Entry, Error as KeyringError};
 use oauth2::{
     basic::{BasicClient, BasicErrorResponse, BasicErrorResponseType},
-    AuthUrl, AuthorizationCode, ClientId, CsrfToken, HttpRequest, HttpResponse, PkceCodeChallenge,
-    PkceCodeVerifier, RedirectUrl, RequestTokenError, Scope, TokenResponse, TokenUrl,
+    AuthType, AuthUrl, AuthorizationCode, ClientId, ClientSecret, CsrfToken, HttpRequest,
+    HttpResponse, PkceCodeChallenge, PkceCodeVerifier, RedirectUrl, RequestTokenError, Scope,
+    TokenResponse, TokenUrl,
 };
 use reqwest::{header::CONTENT_TYPE, redirect::Policy, StatusCode};
 use serde::{Deserialize, Serialize};
@@ -10,8 +11,10 @@ use std::{
     collections::{HashMap, HashSet},
     error::Error,
     fmt,
+    fs::File,
     io::{self, Read, Write},
     net::{Ipv4Addr, SocketAddr, SocketAddrV4, TcpListener, TcpStream},
+    path::Path,
     sync::{
         atomic::{AtomicBool, Ordering},
         Arc, Mutex, MutexGuard, OnceLock,
@@ -19,13 +22,18 @@ use std::{
     thread,
     time::{Duration, Instant},
 };
+use tauri::AppHandle;
+use tauri_plugin_dialog::DialogExt;
 use time::{format_description::well_known::Rfc3339, OffsetDateTime};
 use url::form_urlencoded;
 use windows_native_keyring_store::{CredPersist, Store};
 
 const CREDENTIAL_SERVICE: &str = "com.getkoreainside.admin.search-console";
 const CLIENT_ID_ACCOUNT: &str = "oauth-client-id";
+const CLIENT_SECRET_ACCOUNT: &str = "oauth-client-secret";
 const REFRESH_TOKEN_ACCOUNT: &str = "refresh-token";
+const OAUTH_CREDENTIAL_UPDATE_LOCK: &str =
+    "__KOREA_INSIDE_SEARCH_CONSOLE_OAUTH_UPDATE_INCOMPLETE__";
 #[cfg(test)]
 const VERCEL_CREDENTIAL_SERVICE_FOR_TEST: &str = "com.getkoreainside.admin.vercel";
 
@@ -39,6 +47,7 @@ const GOOGLE_ISSUER: &str = "https://accounts.google.com";
 
 const CLIENT_ID_SUFFIX: &str = ".apps.googleusercontent.com";
 const MAX_CLIENT_ID_LENGTH: usize = 256;
+const MAX_OAUTH_JSON_BYTES: usize = 64 * 1024;
 const AUTHORIZATION_TIMEOUT: Duration = Duration::from_secs(300);
 const CALLBACK_ACCEPT_SLEEP: Duration = Duration::from_millis(50);
 const CALLBACK_READ_TIMEOUT: Duration = Duration::from_secs(2);
@@ -54,12 +63,45 @@ type CommandResult<T> = Result<T, SearchConsoleCommandError>;
 #[serde(rename_all = "camelCase")]
 pub struct SearchConsoleClientStatus {
     configured: bool,
+    client_secret_stored: bool,
     authorization_stored: bool,
     connected: bool,
     authentication_in_progress: bool,
     reauthentication_required: bool,
     #[serde(skip_serializing_if = "Option::is_none")]
     last_checked_at: Option<String>,
+}
+
+#[derive(Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct SearchConsoleOAuthImportResult {
+    status: &'static str,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    client_id_changed: Option<bool>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    client_secret_stored: Option<bool>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    reauthentication_required: Option<bool>,
+}
+
+impl SearchConsoleOAuthImportResult {
+    fn cancelled() -> Self {
+        Self {
+            status: "cancelled",
+            client_id_changed: None,
+            client_secret_stored: None,
+            reauthentication_required: None,
+        }
+    }
+
+    fn imported(client_id_changed: bool, reauthentication_required: bool) -> Self {
+        Self {
+            status: "imported",
+            client_id_changed: Some(client_id_changed),
+            client_secret_stored: Some(true),
+            reauthentication_required: Some(reauthentication_required),
+        }
+    }
 }
 
 #[derive(Serialize)]
@@ -92,6 +134,11 @@ impl SearchConsoleCommandError {
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 enum SearchConsoleError {
     NotConfigured,
+    ClientSecretNotConfigured,
+    OAuthJsonSelectionFailed,
+    OAuthJsonReadFailed,
+    OAuthJsonTooLarge,
+    InvalidOAuthJson,
     AlreadyInProgress,
     InvalidClientId,
     CredentialStoreFailed,
@@ -123,6 +170,11 @@ impl SearchConsoleError {
     fn code(self) -> &'static str {
         match self {
             Self::NotConfigured => "not_configured",
+            Self::ClientSecretNotConfigured => "client_secret_not_configured",
+            Self::OAuthJsonSelectionFailed => "oauth_json_selection_failed",
+            Self::OAuthJsonReadFailed => "oauth_json_read_failed",
+            Self::OAuthJsonTooLarge => "oauth_json_too_large",
+            Self::InvalidOAuthJson => "invalid_oauth_json",
             Self::AlreadyInProgress => "already_in_progress",
             Self::InvalidClientId => "invalid_client_id",
             Self::CredentialStoreFailed => "credential_store_failed",
@@ -156,6 +208,13 @@ impl SearchConsoleError {
             Self::NotConfigured => {
                 "Search Console OAuth Client ID 또는 연결 토큰이 설정되지 않았습니다."
             }
+            Self::ClientSecretNotConfigured => {
+                "Google OAuth Client Secret이 저장되지 않았습니다. OAuth JSON을 가져와 Client 설정을 완료하십시오."
+            }
+            Self::OAuthJsonSelectionFailed => "Google OAuth JSON 파일을 선택할 수 없습니다.",
+            Self::OAuthJsonReadFailed => "선택한 Google OAuth JSON 파일을 읽을 수 없습니다.",
+            Self::OAuthJsonTooLarge => "Google OAuth JSON 파일 크기가 허용 범위를 초과했습니다.",
+            Self::InvalidOAuthJson => "Google Desktop OAuth JSON 형식이 올바르지 않습니다.",
             Self::AlreadyInProgress => "Search Console 연결 작업이 이미 진행 중입니다.",
             Self::InvalidClientId => "Google Desktop OAuth Client ID 형식을 확인해 주십시오.",
             Self::CredentialStoreFailed => {
@@ -211,6 +270,7 @@ struct SearchConsoleRuntimeState {
     access_token: Option<AccessTokenCache>,
 }
 
+#[derive(Clone)]
 struct AccessTokenCache {
     token: String,
     expires_at: Instant,
@@ -323,6 +383,24 @@ struct GoogleErrorResponse {
 }
 
 #[derive(Deserialize)]
+struct GoogleOAuthClientJson {
+    installed: Option<GoogleInstalledOAuthClient>,
+    web: Option<serde_json::Value>,
+}
+
+#[derive(Deserialize)]
+struct GoogleInstalledOAuthClient {
+    client_id: Option<String>,
+    client_secret: Option<String>,
+}
+
+#[derive(Debug, Eq, PartialEq)]
+struct ImportedOAuthClient {
+    client_id: String,
+    client_secret: String,
+}
+
+#[derive(Deserialize)]
 struct SitesListResponse {
     #[serde(rename = "siteEntry")]
     site_entries: Option<Vec<SiteEntry>>,
@@ -342,18 +420,62 @@ pub fn get_search_console_client_status() -> CommandResult<SearchConsoleClientSt
 }
 
 #[tauri::command]
+pub async fn import_search_console_oauth_json(
+    app: AppHandle,
+) -> CommandResult<SearchConsoleOAuthImportResult> {
+    let dialog_app = app.clone();
+    let selected = tauri::async_runtime::spawn_blocking(move || {
+        dialog_app
+            .dialog()
+            .file()
+            .add_filter("JSON", &["json"])
+            .blocking_pick_file()
+    })
+    .await
+    .map_err(|_| SearchConsoleCommandError::from(SearchConsoleError::OAuthJsonSelectionFailed))?;
+
+    let Some(selected) = selected else {
+        return Ok(SearchConsoleOAuthImportResult::cancelled());
+    };
+    let path = selected.into_path().map_err(|_| {
+        SearchConsoleCommandError::from(SearchConsoleError::OAuthJsonSelectionFailed)
+    })?;
+    let oauth_client = tauri::async_runtime::spawn_blocking(move || read_oauth_client_json(&path))
+        .await
+        .map_err(|_| SearchConsoleCommandError::from(SearchConsoleError::OAuthJsonReadFailed))?
+        .map_err(SearchConsoleCommandError::from)?;
+
+    let _guard = OperationGuard::begin(OperationKind::ClientConfiguration)
+        .map_err(SearchConsoleCommandError::from)?;
+    let client_id_changed =
+        import_oauth_client_credentials(&oauth_client).map_err(SearchConsoleCommandError::from)?;
+    let reauthentication_required = if client_id_changed {
+        true
+    } else {
+        client_status()
+            .map_err(SearchConsoleCommandError::from)?
+            .reauthentication_required
+    };
+
+    Ok(SearchConsoleOAuthImportResult::imported(
+        client_id_changed,
+        reauthentication_required,
+    ))
+}
+
+#[tauri::command]
 pub fn save_search_console_client_id(
     client_id: String,
 ) -> CommandResult<SearchConsoleClientStatus> {
     let client_id = validate_client_id(&client_id).map_err(SearchConsoleCommandError::from)?;
     let _guard = OperationGuard::begin(OperationKind::ClientConfiguration)
         .map_err(SearchConsoleCommandError::from)?;
+    let mut credential_backend = WindowsSearchConsoleCredentialBackend;
+    let mut runtime_backend = LiveSearchConsoleRuntimeBackend;
     save_search_console_client_id_with(
+        &mut credential_backend,
+        &mut runtime_backend,
         client_id,
-        read_stored_client_id,
-        |value| save_credential(CLIENT_ID_ACCOUNT, value),
-        || delete_credential_if_present(REFRESH_TOKEN_ACCOUNT),
-        || clear_runtime_connection_state(false),
         client_status,
     )
     .map_err(Into::into)
@@ -365,8 +487,9 @@ pub fn delete_search_console_client_id() -> CommandResult<SearchConsoleClientSta
         .map_err(SearchConsoleCommandError::from)?;
     delete_search_console_client_id_with(
         || delete_credential_if_present(REFRESH_TOKEN_ACCOUNT),
-        || clear_runtime_connection_state(false),
+        || delete_credential_if_present(CLIENT_SECRET_ACCOUNT),
         || delete_credential_if_present(CLIENT_ID_ACCOUNT),
+        || clear_runtime_connection_state(false),
         client_status,
     )
     .map_err(Into::into)
@@ -376,11 +499,8 @@ pub fn delete_search_console_client_id() -> CommandResult<SearchConsoleClientSta
 pub async fn start_search_console_oauth() -> CommandResult<SearchConsoleActionResult> {
     let _guard = OperationGuard::begin(OperationKind::Authentication)
         .map_err(SearchConsoleCommandError::from)?;
-    let client_id = read_credential(CLIENT_ID_ACCOUNT).map_err(|error| match error {
-        KeyringError::NoEntry => SearchConsoleCommandError::from(SearchConsoleError::NotConfigured),
-        _ => SearchConsoleCommandError::from(SearchConsoleError::CredentialReadFailed),
-    })?;
-    let client_id = validate_client_id(&client_id).map_err(SearchConsoleCommandError::from)?;
+    let client_id = read_required_client_id().map_err(SearchConsoleCommandError::from)?;
+    let client_secret = read_required_client_secret().map_err(SearchConsoleCommandError::from)?;
 
     let listener = bind_callback_listener().map_err(SearchConsoleCommandError::from)?;
     let port = listener
@@ -419,6 +539,7 @@ pub async fn start_search_console_oauth() -> CommandResult<SearchConsoleActionRe
 
     let tokens = exchange_authorization_code(
         &client_id,
+        &client_secret,
         &request.redirect_uri,
         &code,
         &request.pkce_verifier,
@@ -486,11 +607,7 @@ pub async fn disconnect_search_console() -> CommandResult<SearchConsoleActionRes
 pub async fn test_search_console_connection() -> CommandResult<SearchConsoleClientStatus> {
     let _guard =
         OperationGuard::begin(OperationKind::Refresh).map_err(SearchConsoleCommandError::from)?;
-    let client_id = read_credential(CLIENT_ID_ACCOUNT).map_err(|error| match error {
-        KeyringError::NoEntry => SearchConsoleCommandError::from(SearchConsoleError::NotConfigured),
-        _ => SearchConsoleCommandError::from(SearchConsoleError::CredentialReadFailed),
-    })?;
-    validate_client_id(&client_id).map_err(SearchConsoleCommandError::from)?;
+    read_required_client_id().map_err(SearchConsoleCommandError::from)?;
     read_credential(REFRESH_TOKEN_ACCOUNT).map_err(|error| match error {
         KeyringError::NoEntry => SearchConsoleCommandError::from(SearchConsoleError::NotConfigured),
         _ => SearchConsoleCommandError::from(SearchConsoleError::CredentialReadFailed),
@@ -528,17 +645,14 @@ async fn refresh_access_token() -> Result<String, SearchConsoleError> {
         return Ok(token);
     }
 
-    let client_id = read_credential(CLIENT_ID_ACCOUNT).map_err(|error| match error {
-        KeyringError::NoEntry => SearchConsoleError::NotConfigured,
-        _ => SearchConsoleError::CredentialReadFailed,
-    })?;
-    let client_id = validate_client_id(&client_id)?;
+    let client_id = read_required_client_id()?;
+    let client_secret = read_required_client_secret()?;
     let refresh_token = read_credential(REFRESH_TOKEN_ACCOUNT).map_err(|error| match error {
         KeyringError::NoEntry => SearchConsoleError::NotConfigured,
         _ => SearchConsoleError::CredentialReadFailed,
     })?;
 
-    let tokens = refresh_access_token_with(&client_id, &refresh_token).await?;
+    let tokens = refresh_access_token_with(&client_id, &client_secret, &refresh_token).await?;
     if let Some(new_refresh_token) = tokens.refresh_token.as_deref() {
         save_credential(REFRESH_TOKEN_ACCOUNT, new_refresh_token)?;
     }
@@ -548,16 +662,50 @@ async fn refresh_access_token() -> Result<String, SearchConsoleError> {
 
 async fn refresh_access_token_with(
     client_id: &str,
+    client_secret: &str,
     refresh_token: &str,
 ) -> Result<TokenSet, SearchConsoleError> {
+    refresh_access_token_with_token_endpoint(
+        client_id,
+        client_secret,
+        refresh_token,
+        TOKEN_ENDPOINT,
+    )
+    .await
+}
+
+async fn refresh_access_token_with_token_endpoint(
+    client_id: &str,
+    client_secret: &str,
+    refresh_token: &str,
+    token_endpoint: &str,
+) -> Result<TokenSet, SearchConsoleError> {
     let client = secure_http_client()?;
+    refresh_access_token_with_http_client(
+        client,
+        client_id,
+        client_secret,
+        refresh_token,
+        token_endpoint,
+    )
+    .await
+}
+
+async fn refresh_access_token_with_http_client(
+    client: reqwest::Client,
+    client_id: &str,
+    client_secret: &str,
+    refresh_token: &str,
+    token_endpoint: &str,
+) -> Result<TokenSet, SearchConsoleError> {
     let body = urlencoded_body(&[
         ("grant_type", "refresh_token"),
         ("client_id", client_id),
+        ("client_secret", client_secret),
         ("refresh_token", refresh_token),
     ]);
     let response = client
-        .post(TOKEN_ENDPOINT)
+        .post(token_endpoint)
         .header(CONTENT_TYPE, "application/x-www-form-urlencoded")
         .body(body)
         .send()
@@ -579,6 +727,7 @@ async fn refresh_access_token_with(
 
 async fn exchange_authorization_code(
     client_id: &str,
+    client_secret: &str,
     redirect_uri: &str,
     code: &str,
     pkce_verifier: &str,
@@ -586,6 +735,7 @@ async fn exchange_authorization_code(
     let http_client = secure_http_client()?;
     request_oauth_authorization_code(
         client_id,
+        client_secret,
         redirect_uri,
         code,
         pkce_verifier,
@@ -688,6 +838,28 @@ fn build_oauth_client_with_token_endpoint(
         auth_url,
         Some(token_url),
     )
+    .set_redirect_uri(redirect_url))
+}
+
+fn build_oauth_token_client_with_token_endpoint(
+    client_id: &str,
+    client_secret: &str,
+    redirect_uri: &str,
+    token_endpoint: &str,
+) -> Result<BasicClient, SearchConsoleError> {
+    let auth_url = AuthUrl::new(AUTHORIZATION_ENDPOINT.to_string())
+        .map_err(|_| SearchConsoleError::Internal)?;
+    let token_url =
+        TokenUrl::new(token_endpoint.to_string()).map_err(|_| SearchConsoleError::Internal)?;
+    let redirect_url =
+        RedirectUrl::new(redirect_uri.to_string()).map_err(|_| SearchConsoleError::Internal)?;
+    Ok(BasicClient::new(
+        ClientId::new(client_id.to_string()),
+        Some(ClientSecret::new(client_secret.to_string())),
+        auth_url,
+        Some(token_url),
+    )
+    .set_auth_type(AuthType::RequestBody)
     .set_redirect_uri(redirect_url))
 }
 
@@ -1038,6 +1210,7 @@ fn map_request_error(error: reqwest::Error) -> SearchConsoleError {
 
 async fn request_oauth_authorization_code<C, F>(
     client_id: &str,
+    client_secret: &str,
     redirect_uri: &str,
     code: &str,
     pkce_verifier: &str,
@@ -1049,6 +1222,7 @@ where
 {
     request_oauth_authorization_code_with_token_endpoint(
         client_id,
+        client_secret,
         redirect_uri,
         code,
         pkce_verifier,
@@ -1060,6 +1234,7 @@ where
 
 async fn request_oauth_authorization_code_with_token_endpoint<C, F>(
     client_id: &str,
+    client_secret: &str,
     redirect_uri: &str,
     code: &str,
     pkce_verifier: &str,
@@ -1070,7 +1245,12 @@ where
     C: FnOnce(HttpRequest) -> F,
     F: std::future::Future<Output = Result<HttpResponse, OAuthHttpClientError>>,
 {
-    let client = build_oauth_client_with_token_endpoint(client_id, redirect_uri, token_endpoint)?;
+    let client = build_oauth_token_client_with_token_endpoint(
+        client_id,
+        client_secret,
+        redirect_uri,
+        token_endpoint,
+    )?;
     let token_result = client
         .exchange_code(AuthorizationCode::new(code.to_string()))
         .set_pkce_verifier(PkceCodeVerifier::new(pkce_verifier.to_string()))
@@ -1194,6 +1374,53 @@ fn urlencoded_body(params: &[(&str, &str)]) -> String {
     serializer.finish()
 }
 
+fn read_oauth_client_json(path: &Path) -> Result<ImportedOAuthClient, SearchConsoleError> {
+    if path
+        .extension()
+        .and_then(|extension| extension.to_str())
+        .is_none_or(|extension| !extension.eq_ignore_ascii_case("json"))
+    {
+        return Err(SearchConsoleError::InvalidOAuthJson);
+    }
+    let file = File::open(path).map_err(|_| SearchConsoleError::OAuthJsonReadFailed)?;
+    let mut bytes = Vec::new();
+    file.take((MAX_OAUTH_JSON_BYTES + 1) as u64)
+        .read_to_end(&mut bytes)
+        .map_err(|_| SearchConsoleError::OAuthJsonReadFailed)?;
+    parse_oauth_client_json(&bytes)
+}
+
+fn parse_oauth_client_json(bytes: &[u8]) -> Result<ImportedOAuthClient, SearchConsoleError> {
+    if bytes.len() > MAX_OAUTH_JSON_BYTES {
+        return Err(SearchConsoleError::OAuthJsonTooLarge);
+    }
+    let parsed = serde_json::from_slice::<GoogleOAuthClientJson>(bytes)
+        .map_err(|_| SearchConsoleError::InvalidOAuthJson)?;
+    if parsed.web.is_some() {
+        return Err(SearchConsoleError::InvalidOAuthJson);
+    }
+    let installed = parsed
+        .installed
+        .ok_or(SearchConsoleError::InvalidOAuthJson)?;
+    let client_id = installed
+        .client_id
+        .ok_or(SearchConsoleError::InvalidOAuthJson)?;
+    let client_id =
+        validate_client_id(&client_id).map_err(|_| SearchConsoleError::InvalidOAuthJson)?;
+    let client_secret = installed
+        .client_secret
+        .ok_or(SearchConsoleError::InvalidOAuthJson)?;
+    let client_secret = client_secret.trim();
+    if client_secret.is_empty() {
+        return Err(SearchConsoleError::InvalidOAuthJson);
+    }
+
+    Ok(ImportedOAuthClient {
+        client_id,
+        client_secret: client_secret.to_string(),
+    })
+}
+
 fn validate_client_id(client_id: &str) -> Result<String, SearchConsoleError> {
     let trimmed = client_id.trim();
     if trimmed.is_empty() || trimmed.len() > MAX_CLIENT_ID_LENGTH {
@@ -1219,64 +1446,328 @@ fn validate_client_id(client_id: &str) -> Result<String, SearchConsoleError> {
     Ok(trimmed.to_string())
 }
 
-fn save_search_console_client_id_with<R, S, D, C, T>(
-    client_id: String,
-    mut read_existing_client_id: R,
-    mut save_client_id: S,
-    mut delete_refresh_token: D,
-    mut clear_runtime: C,
-    mut status: T,
-) -> Result<SearchConsoleClientStatus, SearchConsoleError>
-where
-    R: FnMut() -> Result<Option<String>, SearchConsoleError>,
-    S: FnMut(&str) -> Result<(), SearchConsoleError>,
-    D: FnMut() -> Result<(), SearchConsoleError>,
-    C: FnMut() -> Result<(), SearchConsoleError>,
-    T: FnMut() -> Result<SearchConsoleClientStatus, SearchConsoleError>,
-{
-    if read_existing_client_id()?.as_deref() == Some(client_id.as_str()) {
-        return status();
+fn usable_stored_client_id(client_id: &str) -> Option<String> {
+    if client_id == OAUTH_CREDENTIAL_UPDATE_LOCK {
+        return None;
     }
-    delete_refresh_token()?;
-    clear_runtime()?;
-    save_client_id(&client_id)?;
-    status()
+    validate_client_id(client_id).ok()
 }
 
-fn delete_search_console_client_id_with<D, C, R, T>(
+trait SearchConsoleCredentialBackend {
+    fn read_optional(&mut self, account: &str) -> Result<Option<String>, SearchConsoleError>;
+    fn save(&mut self, account: &str, value: &str) -> Result<(), SearchConsoleError>;
+    fn delete(&mut self, account: &str) -> Result<(), SearchConsoleError>;
+}
+
+struct WindowsSearchConsoleCredentialBackend;
+
+impl SearchConsoleCredentialBackend for WindowsSearchConsoleCredentialBackend {
+    fn read_optional(&mut self, account: &str) -> Result<Option<String>, SearchConsoleError> {
+        read_optional_credential(account)
+    }
+
+    fn save(&mut self, account: &str, value: &str) -> Result<(), SearchConsoleError> {
+        save_credential(account, value)
+    }
+
+    fn delete(&mut self, account: &str) -> Result<(), SearchConsoleError> {
+        delete_credential_if_present(account)
+    }
+}
+
+fn read_required_client_id_with<S: SearchConsoleCredentialBackend>(
+    backend: &mut S,
+) -> Result<String, SearchConsoleError> {
+    let client_id = backend
+        .read_optional(CLIENT_ID_ACCOUNT)?
+        .ok_or(SearchConsoleError::NotConfigured)?;
+    if client_id == OAUTH_CREDENTIAL_UPDATE_LOCK {
+        return Err(SearchConsoleError::NotConfigured);
+    }
+    validate_client_id(&client_id)
+}
+
+fn read_required_client_id() -> Result<String, SearchConsoleError> {
+    let mut backend = WindowsSearchConsoleCredentialBackend;
+    read_required_client_id_with(&mut backend)
+}
+
+struct OAuthCredentialSnapshot {
+    client_id: Option<String>,
+    client_secret: Option<String>,
+    refresh_token: Option<String>,
+}
+
+#[derive(Clone)]
+struct RuntimeConnectionSnapshot {
+    connected: bool,
+    reauthentication_required: bool,
+    last_checked_at: Option<String>,
+    access_token: Option<AccessTokenCache>,
+}
+
+trait SearchConsoleRuntimeBackend {
+    fn snapshot(&mut self) -> Result<RuntimeConnectionSnapshot, SearchConsoleError>;
+    fn clear(&mut self, reauthentication_required: bool) -> Result<(), SearchConsoleError>;
+    fn restore(&mut self, snapshot: RuntimeConnectionSnapshot) -> Result<(), SearchConsoleError>;
+}
+
+struct LiveSearchConsoleRuntimeBackend;
+
+impl SearchConsoleRuntimeBackend for LiveSearchConsoleRuntimeBackend {
+    fn snapshot(&mut self) -> Result<RuntimeConnectionSnapshot, SearchConsoleError> {
+        snapshot_runtime_connection_state()
+    }
+
+    fn clear(&mut self, reauthentication_required: bool) -> Result<(), SearchConsoleError> {
+        clear_runtime_connection_state(reauthentication_required)
+    }
+
+    fn restore(&mut self, snapshot: RuntimeConnectionSnapshot) -> Result<(), SearchConsoleError> {
+        restore_runtime_connection_state(snapshot)
+    }
+}
+
+fn import_oauth_client_credentials(
+    oauth_client: &ImportedOAuthClient,
+) -> Result<bool, SearchConsoleError> {
+    let mut backend = WindowsSearchConsoleCredentialBackend;
+    let mut runtime_backend = LiveSearchConsoleRuntimeBackend;
+    import_oauth_client_credentials_with(&mut backend, &mut runtime_backend, oauth_client)
+}
+
+fn import_oauth_client_credentials_with<S, R>(
+    backend: &mut S,
+    runtime_backend: &mut R,
+    oauth_client: &ImportedOAuthClient,
+) -> Result<bool, SearchConsoleError>
+where
+    S: SearchConsoleCredentialBackend,
+    R: SearchConsoleRuntimeBackend,
+{
+    let client_id = backend.read_optional(CLIENT_ID_ACCOUNT)?;
+    let client_secret = backend.read_optional(CLIENT_SECRET_ACCOUNT)?;
+    let same_client_id = client_id
+        .as_deref()
+        .and_then(usable_stored_client_id)
+        .as_deref()
+        == Some(oauth_client.client_id.as_str());
+
+    if same_client_id {
+        if let Err(error) = backend.save(CLIENT_SECRET_ACCOUNT, &oauth_client.client_secret) {
+            if restore_credential_entry(backend, CLIENT_SECRET_ACCOUNT, client_secret.as_deref())
+                .is_err()
+            {
+                delete_oauth_credential_fragments_best_effort(backend);
+            }
+            return Err(error);
+        }
+        return Ok(false);
+    }
+
+    let snapshot = OAuthCredentialSnapshot {
+        client_id,
+        client_secret,
+        refresh_token: backend.read_optional(REFRESH_TOKEN_ACCOUNT)?,
+    };
+    let runtime_snapshot = runtime_backend.snapshot()?;
+    backend.save(CLIENT_ID_ACCOUNT, OAUTH_CREDENTIAL_UPDATE_LOCK)?;
+    let update_result = (|| {
+        backend.save(CLIENT_SECRET_ACCOUNT, &oauth_client.client_secret)?;
+        backend.delete(REFRESH_TOKEN_ACCOUNT)?;
+        runtime_backend.clear(true)?;
+        backend.save(CLIENT_ID_ACCOUNT, &oauth_client.client_id)?;
+        Ok(())
+    })();
+
+    if let Err(error) = update_result {
+        let _ = rollback_oauth_transaction(backend, runtime_backend, &snapshot, runtime_snapshot);
+        return Err(error);
+    }
+
+    Ok(true)
+}
+
+fn restore_oauth_transaction_snapshot<S, R>(
+    backend: &mut S,
+    runtime_backend: &mut R,
+    snapshot: &OAuthCredentialSnapshot,
+    runtime_snapshot: RuntimeConnectionSnapshot,
+) -> Result<(), SearchConsoleError>
+where
+    S: SearchConsoleCredentialBackend,
+    R: SearchConsoleRuntimeBackend,
+{
+    let mut first_error = None;
+    for (account, value) in [
+        (CLIENT_SECRET_ACCOUNT, snapshot.client_secret.as_deref()),
+        (REFRESH_TOKEN_ACCOUNT, snapshot.refresh_token.as_deref()),
+    ] {
+        if let Err(error) = restore_credential_entry(backend, account, value) {
+            first_error.get_or_insert(error);
+        }
+    }
+    if let Err(error) = runtime_backend.restore(runtime_snapshot) {
+        first_error.get_or_insert(error);
+    }
+    if let Some(error) = first_error {
+        return Err(error);
+    }
+    restore_credential_entry(backend, CLIENT_ID_ACCOUNT, snapshot.client_id.as_deref())
+}
+
+fn restore_credential_entry<S: SearchConsoleCredentialBackend>(
+    backend: &mut S,
+    account: &str,
+    value: Option<&str>,
+) -> Result<(), SearchConsoleError> {
+    match value {
+        Some(value) => backend.save(account, value),
+        None => backend.delete(account),
+    }
+}
+
+fn delete_oauth_credential_fragments_best_effort<S: SearchConsoleCredentialBackend>(
+    backend: &mut S,
+) {
+    for _ in 0..2 {
+        let _ = backend.delete(REFRESH_TOKEN_ACCOUNT);
+        let _ = backend.delete(CLIENT_SECRET_ACCOUNT);
+    }
+}
+
+fn rollback_oauth_transaction<S, R>(
+    backend: &mut S,
+    runtime_backend: &mut R,
+    snapshot: &OAuthCredentialSnapshot,
+    runtime_snapshot: RuntimeConnectionSnapshot,
+) -> Result<(), SearchConsoleError>
+where
+    S: SearchConsoleCredentialBackend,
+    R: SearchConsoleRuntimeBackend,
+{
+    let result =
+        restore_oauth_transaction_snapshot(backend, runtime_backend, snapshot, runtime_snapshot);
+    if result.is_err() {
+        delete_oauth_credential_fragments_best_effort(backend);
+        let _ = runtime_backend.clear(true);
+    }
+    result
+}
+
+fn save_search_console_client_id_with<S, R, T>(
+    credential_backend: &mut S,
+    runtime_backend: &mut R,
+    client_id: String,
+    mut status: T,
+) -> Result<SearchConsoleClientStatus, SearchConsoleError>
+where
+    S: SearchConsoleCredentialBackend,
+    R: SearchConsoleRuntimeBackend,
+    T: FnMut() -> Result<SearchConsoleClientStatus, SearchConsoleError>,
+{
+    let client_id = validate_client_id(&client_id)?;
+    let stored_client_id = credential_backend.read_optional(CLIENT_ID_ACCOUNT)?;
+    let same_client_id = stored_client_id
+        .as_deref()
+        .and_then(usable_stored_client_id)
+        .as_deref()
+        == Some(client_id.as_str());
+    if same_client_id {
+        return status();
+    }
+
+    let credential_snapshot = OAuthCredentialSnapshot {
+        client_id: stored_client_id,
+        client_secret: credential_backend.read_optional(CLIENT_SECRET_ACCOUNT)?,
+        refresh_token: credential_backend.read_optional(REFRESH_TOKEN_ACCOUNT)?,
+    };
+    let runtime_snapshot = runtime_backend.snapshot()?;
+    credential_backend.save(CLIENT_ID_ACCOUNT, OAUTH_CREDENTIAL_UPDATE_LOCK)?;
+    let update_result = (|| {
+        credential_backend.delete(REFRESH_TOKEN_ACCOUNT)?;
+        credential_backend.delete(CLIENT_SECRET_ACCOUNT)?;
+        runtime_backend.clear(true)?;
+        credential_backend.save(CLIENT_ID_ACCOUNT, &client_id)?;
+        Ok(())
+    })();
+
+    if let Err(error) = update_result {
+        let _ = rollback_oauth_transaction(
+            credential_backend,
+            runtime_backend,
+            &credential_snapshot,
+            runtime_snapshot,
+        );
+        return Err(error);
+    }
+
+    Ok(client_id_change_completed_status())
+}
+
+fn client_id_change_completed_status() -> SearchConsoleClientStatus {
+    SearchConsoleClientStatus {
+        configured: true,
+        client_secret_stored: false,
+        authorization_stored: false,
+        connected: false,
+        authentication_in_progress: false,
+        reauthentication_required: true,
+        last_checked_at: None,
+    }
+}
+
+fn delete_search_console_client_id_with<D, S, R, C, T>(
     mut delete_refresh_token: D,
-    mut clear_runtime: C,
+    mut delete_client_secret: S,
     mut delete_client_id: R,
+    mut clear_runtime: C,
     mut status: T,
 ) -> Result<SearchConsoleClientStatus, SearchConsoleError>
 where
     D: FnMut() -> Result<(), SearchConsoleError>,
-    C: FnMut() -> Result<(), SearchConsoleError>,
+    S: FnMut() -> Result<(), SearchConsoleError>,
     R: FnMut() -> Result<(), SearchConsoleError>,
+    C: FnMut() -> Result<(), SearchConsoleError>,
     T: FnMut() -> Result<SearchConsoleClientStatus, SearchConsoleError>,
 {
-    delete_refresh_token()?;
-    clear_runtime()?;
-    delete_client_id()?;
+    let mut first_error = None;
+    for result in [
+        delete_refresh_token(),
+        delete_client_secret(),
+        delete_client_id(),
+        clear_runtime(),
+    ] {
+        if let Err(error) = result {
+            first_error.get_or_insert(error);
+        }
+    }
+    if let Some(error) = first_error {
+        return Err(error);
+    }
     status()
 }
 
 fn client_status() -> Result<SearchConsoleClientStatus, SearchConsoleError> {
     let configured = read_stored_client_id()?.is_some();
+    let client_secret_stored = credential_exists(CLIENT_SECRET_ACCOUNT)?;
     let authorization_stored = credential_exists(REFRESH_TOKEN_ACCOUNT)?;
-    client_status_from_parts(configured, authorization_stored)
+    client_status_from_parts(configured, client_secret_stored, authorization_stored)
 }
 
 fn client_status_from_parts(
     configured: bool,
+    client_secret_stored: bool,
     authorization_stored: bool,
 ) -> Result<SearchConsoleClientStatus, SearchConsoleError> {
     let state = lock_runtime_state()?;
     Ok(SearchConsoleClientStatus {
         configured,
+        client_secret_stored,
         authorization_stored,
         connected: state.connected
             && configured
+            && client_secret_stored
             && authorization_stored
             && !state.reauthentication_required,
         authentication_in_progress: state.authentication_in_progress,
@@ -1309,6 +1800,27 @@ fn set_last_checked_now(reauthentication_required: bool) -> Result<(), SearchCon
     state.last_checked_at = Some(current_utc_timestamp()?);
     state.reauthentication_required = reauthentication_required;
     state.connected = !reauthentication_required;
+    Ok(())
+}
+
+fn snapshot_runtime_connection_state() -> Result<RuntimeConnectionSnapshot, SearchConsoleError> {
+    let state = lock_runtime_state()?;
+    Ok(RuntimeConnectionSnapshot {
+        connected: state.connected,
+        reauthentication_required: state.reauthentication_required,
+        last_checked_at: state.last_checked_at.clone(),
+        access_token: state.access_token.clone(),
+    })
+}
+
+fn restore_runtime_connection_state(
+    snapshot: RuntimeConnectionSnapshot,
+) -> Result<(), SearchConsoleError> {
+    let mut state = lock_runtime_state()?;
+    state.connected = snapshot.connected;
+    state.reauthentication_required = snapshot.reauthentication_required;
+    state.last_checked_at = snapshot.last_checked_at;
+    state.access_token = snapshot.access_token;
     Ok(())
 }
 
@@ -1368,12 +1880,28 @@ fn read_credential(account: &str) -> Result<String, KeyringError> {
     credential_entry(account)?.get_password()
 }
 
-fn read_stored_client_id() -> Result<Option<String>, SearchConsoleError> {
-    match read_credential(CLIENT_ID_ACCOUNT) {
-        Ok(client_id) => Ok(validate_client_id(&client_id).ok()),
+fn read_optional_credential(account: &str) -> Result<Option<String>, SearchConsoleError> {
+    match read_credential(account) {
+        Ok(value) => Ok(Some(value)),
         Err(KeyringError::NoEntry) => Ok(None),
         Err(_) => Err(SearchConsoleError::CredentialReadFailed),
     }
+}
+
+fn read_stored_client_id() -> Result<Option<String>, SearchConsoleError> {
+    Ok(read_optional_credential(CLIENT_ID_ACCOUNT)?
+        .as_deref()
+        .and_then(usable_stored_client_id))
+}
+
+fn read_required_client_secret() -> Result<String, SearchConsoleError> {
+    require_client_secret(read_optional_credential(CLIENT_SECRET_ACCOUNT)?)
+}
+
+fn require_client_secret(value: Option<String>) -> Result<String, SearchConsoleError> {
+    value
+        .filter(|value| !value.trim().is_empty())
+        .ok_or(SearchConsoleError::ClientSecretNotConfigured)
 }
 
 fn save_credential(account: &str, value: &str) -> Result<(), SearchConsoleError> {
@@ -1441,6 +1969,197 @@ mod tests {
         path: String,
         headers: HashMap<String, String>,
         body: String,
+    }
+
+    #[derive(Default)]
+    struct FakeCredentialBackend {
+        values: HashMap<String, String>,
+        operations: Vec<String>,
+        attempts: HashMap<String, usize>,
+        failures: HashSet<String>,
+        persistent_failures: HashMap<String, usize>,
+        shared_operations: Option<Rc<RefCell<Vec<String>>>>,
+    }
+
+    impl FakeCredentialBackend {
+        fn fail_save_on_attempt(&mut self, account: &str, attempt: usize) {
+            self.failures.insert(format!("save:{account}:{attempt}"));
+        }
+
+        fn fail_delete_on_attempt(&mut self, account: &str, attempt: usize) {
+            self.failures.insert(format!("delete:{account}:{attempt}"));
+        }
+
+        fn fail_save_from_attempt(&mut self, account: &str, attempt: usize) {
+            self.persistent_failures
+                .insert(format!("save:{account}"), attempt);
+        }
+
+        fn fail_delete_from_attempt(&mut self, account: &str, attempt: usize) {
+            self.persistent_failures
+                .insert(format!("delete:{account}"), attempt);
+        }
+
+        fn record_operations_with(&mut self, operations: Rc<RefCell<Vec<String>>>) {
+            self.shared_operations = Some(operations);
+        }
+
+        fn attempt_count(&self, operation: &str, account: &str) -> usize {
+            self.attempts
+                .get(&format!("{operation}:{account}"))
+                .copied()
+                .unwrap_or_default()
+        }
+
+        fn should_fail(&mut self, operation: &str, account: &str) -> bool {
+            let operation_key = format!("{operation}:{account}");
+            let attempt = {
+                let attempt = self.attempts.entry(operation_key.clone()).or_default();
+                *attempt += 1;
+                *attempt
+            };
+            self.operations.push(operation_key.clone());
+            if let Some(operations) = &self.shared_operations {
+                operations.borrow_mut().push(operation_key.clone());
+            }
+            let one_shot_failure = self.failures.remove(&format!("{operation_key}:{attempt}"));
+            let persistent_failure = self
+                .persistent_failures
+                .get(&operation_key)
+                .is_some_and(|first_failure| attempt >= *first_failure);
+            one_shot_failure || persistent_failure
+        }
+    }
+
+    impl SearchConsoleCredentialBackend for FakeCredentialBackend {
+        fn read_optional(&mut self, account: &str) -> Result<Option<String>, SearchConsoleError> {
+            Ok(self.values.get(account).cloned())
+        }
+
+        fn save(&mut self, account: &str, value: &str) -> Result<(), SearchConsoleError> {
+            if self.should_fail("save", account) {
+                return Err(SearchConsoleError::CredentialStoreFailed);
+            }
+            self.values.insert(account.to_string(), value.to_string());
+            Ok(())
+        }
+
+        fn delete(&mut self, account: &str) -> Result<(), SearchConsoleError> {
+            if self.should_fail("delete", account) {
+                return Err(SearchConsoleError::CredentialDeleteFailed);
+            }
+            self.values.remove(account);
+            Ok(())
+        }
+    }
+
+    struct FakeRuntimeBackend {
+        state: RuntimeConnectionSnapshot,
+        snapshot_calls: usize,
+        clear_calls: usize,
+        restore_calls: usize,
+        fail_clear_attempts: HashSet<usize>,
+        fail_restore_attempts: HashSet<usize>,
+        shared_operations: Option<Rc<RefCell<Vec<String>>>>,
+    }
+
+    impl FakeRuntimeBackend {
+        fn connected() -> Self {
+            Self {
+                state: RuntimeConnectionSnapshot {
+                    connected: true,
+                    reauthentication_required: false,
+                    last_checked_at: Some("2026-07-14T00:00:00Z".to_string()),
+                    access_token: Some(AccessTokenCache {
+                        token: ["fixture", "access", "token"].join("-"),
+                        expires_at: Instant::now() + Duration::from_secs(3600),
+                    }),
+                },
+                snapshot_calls: 0,
+                clear_calls: 0,
+                restore_calls: 0,
+                fail_clear_attempts: HashSet::new(),
+                fail_restore_attempts: HashSet::new(),
+                shared_operations: None,
+            }
+        }
+
+        fn restarted() -> Self {
+            Self {
+                state: RuntimeConnectionSnapshot {
+                    connected: false,
+                    reauthentication_required: false,
+                    last_checked_at: None,
+                    access_token: None,
+                },
+                snapshot_calls: 0,
+                clear_calls: 0,
+                restore_calls: 0,
+                fail_clear_attempts: HashSet::new(),
+                fail_restore_attempts: HashSet::new(),
+                shared_operations: None,
+            }
+        }
+
+        fn record_operations_with(&mut self, operations: Rc<RefCell<Vec<String>>>) {
+            self.shared_operations = Some(operations);
+        }
+
+        fn fail_clear_on_attempt(&mut self, attempt: usize) {
+            self.fail_clear_attempts.insert(attempt);
+        }
+
+        fn fail_restore_on_attempt(&mut self, attempt: usize) {
+            self.fail_restore_attempts.insert(attempt);
+        }
+    }
+
+    impl SearchConsoleRuntimeBackend for FakeRuntimeBackend {
+        fn snapshot(&mut self) -> Result<RuntimeConnectionSnapshot, SearchConsoleError> {
+            self.snapshot_calls += 1;
+            if let Some(operations) = &self.shared_operations {
+                operations.borrow_mut().push("snapshot:runtime".to_string());
+            }
+            Ok(self.state.clone())
+        }
+
+        fn clear(&mut self, reauthentication_required: bool) -> Result<(), SearchConsoleError> {
+            self.clear_calls += 1;
+            if let Some(operations) = &self.shared_operations {
+                operations.borrow_mut().push("clear:runtime".to_string());
+            }
+            if self.fail_clear_attempts.remove(&self.clear_calls) {
+                return Err(SearchConsoleError::Internal);
+            }
+            self.state.access_token = None;
+            self.state.connected = false;
+            self.state.reauthentication_required = reauthentication_required;
+            self.state.last_checked_at = None;
+            Ok(())
+        }
+
+        fn restore(
+            &mut self,
+            snapshot: RuntimeConnectionSnapshot,
+        ) -> Result<(), SearchConsoleError> {
+            self.restore_calls += 1;
+            if let Some(operations) = &self.shared_operations {
+                operations.borrow_mut().push("restore:runtime".to_string());
+            }
+            if self.fail_restore_attempts.remove(&self.restore_calls) {
+                return Err(SearchConsoleError::Internal);
+            }
+            self.state = snapshot;
+            Ok(())
+        }
+    }
+
+    fn import_oauth_client_credentials_for_test(
+        backend: &mut FakeCredentialBackend,
+        oauth_client: &ImportedOAuthClient,
+    ) -> Result<bool, SearchConsoleError> {
+        let mut runtime = FakeRuntimeBackend::connected();
+        import_oauth_client_credentials_with(backend, &mut runtime, oauth_client)
     }
 
     #[test]
@@ -1518,6 +2237,80 @@ mod tests {
                 SearchConsoleError::InvalidClientId
             );
         }
+    }
+
+    #[test]
+    fn parses_installed_desktop_oauth_json_and_trims_outer_whitespace() {
+        let client_secret = test_client_secret();
+        let bytes = desktop_oauth_json_fixture(
+            &format!("  {VALID_CLIENT_ID}\r\n"),
+            &format!("  {client_secret}\r\n"),
+        );
+
+        let parsed = parse_oauth_client_json(&bytes).unwrap();
+
+        assert_eq!(parsed.client_id, VALID_CLIENT_ID);
+        assert_eq!(parsed.client_secret, client_secret);
+    }
+
+    #[test]
+    fn rejects_web_oauth_json() {
+        let bytes = serde_json::to_vec(&serde_json::json!({
+            "web": {
+                "client_id": VALID_CLIENT_ID,
+                "client_secret": test_client_secret()
+            }
+        }))
+        .unwrap();
+        assert_eq!(
+            parse_oauth_client_json(&bytes).unwrap_err(),
+            SearchConsoleError::InvalidOAuthJson
+        );
+    }
+
+    #[test]
+    fn rejects_oauth_json_with_missing_client_id() {
+        let bytes = serde_json::to_vec(&serde_json::json!({
+            "installed": { "client_secret": test_client_secret() }
+        }))
+        .unwrap();
+        assert_eq!(
+            parse_oauth_client_json(&bytes).unwrap_err(),
+            SearchConsoleError::InvalidOAuthJson
+        );
+    }
+
+    #[test]
+    fn rejects_oauth_json_with_missing_or_empty_client_secret() {
+        for installed in [
+            serde_json::json!({ "client_id": VALID_CLIENT_ID }),
+            serde_json::json!({ "client_id": VALID_CLIENT_ID, "client_secret": "   " }),
+        ] {
+            let bytes = serde_json::to_vec(&serde_json::json!({ "installed": installed })).unwrap();
+            assert_eq!(
+                parse_oauth_client_json(&bytes).unwrap_err(),
+                SearchConsoleError::InvalidOAuthJson
+            );
+        }
+    }
+
+    #[test]
+    fn rejects_oauth_json_with_invalid_client_id() {
+        let bytes =
+            desktop_oauth_json_fixture("not-a-desktop-client.example.com", &test_client_secret());
+        assert_eq!(
+            parse_oauth_client_json(&bytes).unwrap_err(),
+            SearchConsoleError::InvalidOAuthJson
+        );
+    }
+
+    #[test]
+    fn rejects_oversized_oauth_json_before_parsing() {
+        let bytes = vec![b' '; MAX_OAUTH_JSON_BYTES + 1];
+        assert_eq!(
+            parse_oauth_client_json(&bytes).unwrap_err(),
+            SearchConsoleError::OAuthJsonTooLarge
+        );
     }
 
     #[test]
@@ -1602,12 +2395,16 @@ mod tests {
         let params = parse_form_body_for_test(&body);
         let keys = parse_form_keys_for_test(&body);
 
-        assert_eq!(params.len(), 5);
-        assert_eq!(keys.len(), 5);
-        assert_eq!(keys.iter().collect::<HashSet<_>>().len(), 5);
+        assert_eq!(params.len(), 6);
+        assert_eq!(keys.len(), 6);
+        assert_eq!(keys.iter().collect::<HashSet<_>>().len(), 6);
         assert_eq!(
             params.get("client_id").map(String::as_str),
             Some(VALID_CLIENT_ID)
+        );
+        assert_eq!(
+            params.get("client_secret").map(String::as_str),
+            Some(test_client_secret().as_str())
         );
         assert_eq!(params.get("code").map(String::as_str), Some("test-code"));
         assert_eq!(
@@ -1625,7 +2422,7 @@ mod tests {
     }
 
     #[test]
-    fn authorization_code_token_form_has_no_empty_fields_or_client_secret() {
+    fn authorization_code_token_form_has_no_empty_fields_and_includes_client_secret() {
         let request = build_authorization_request(VALID_CLIENT_ID, 49152).unwrap();
         let token_request = authorization_code_token_request_for_test(
             VALID_CLIENT_ID,
@@ -1636,8 +2433,33 @@ mod tests {
         let body = request_body_string_for_test(&token_request);
         let params = parse_form_body_for_test(&body);
 
-        assert!(!params.contains_key("client_secret"));
+        assert!(params.contains_key("client_secret"));
         assert!(params.values().all(|value| !value.is_empty()));
+    }
+
+    #[test]
+    fn missing_or_empty_stored_client_secret_is_rejected_before_token_request() {
+        for value in [None, Some(String::new()), Some("   ".to_string())] {
+            assert_eq!(
+                require_client_secret(value).unwrap_err(),
+                SearchConsoleError::ClientSecretNotConfigured
+            );
+        }
+        let error = SearchConsoleCommandError::from(SearchConsoleError::ClientSecretNotConfigured);
+        assert_eq!(error.code, "client_secret_not_configured");
+        assert_eq!(
+            error.message,
+            "Google OAuth Client Secret이 저장되지 않았습니다. OAuth JSON을 가져와 Client 설정을 완료하십시오."
+        );
+    }
+
+    #[test]
+    fn non_empty_stored_client_secret_is_preserved_for_token_request() {
+        let client_secret = test_client_secret();
+        assert_eq!(
+            require_client_secret(Some(client_secret.clone())).unwrap(),
+            client_secret
+        );
     }
 
     #[test]
@@ -1738,6 +2560,7 @@ mod tests {
         let request = build_authorization_request(VALID_CLIENT_ID, 49152).unwrap();
         let expected_code = "fixture-code+with/reserved%chars";
         let expected_verifier = request.pkce_verifier.clone();
+        let expected_client_secret = test_client_secret();
         let (token_endpoint, server) = spawn_mock_token_endpoint();
         let client = reqwest::Client::builder()
             .redirect(Policy::none())
@@ -1748,6 +2571,7 @@ mod tests {
         let result =
             tauri::async_runtime::block_on(request_oauth_authorization_code_with_token_endpoint(
                 VALID_CLIENT_ID,
+                &expected_client_secret,
                 &request.redirect_uri,
                 expected_code,
                 &expected_verifier,
@@ -1768,10 +2592,11 @@ mod tests {
             Some("application/x-www-form-urlencoded")
         );
         assert!(!body.is_empty());
-        assert_eq!(params.len(), 5);
-        assert_eq!(keys.len(), 5);
+        assert_eq!(params.len(), 6);
+        assert_eq!(keys.len(), 6);
         for key in [
             "client_id",
+            "client_secret",
             "code",
             "code_verifier",
             "grant_type",
@@ -1789,6 +2614,10 @@ mod tests {
             params.get("client_id").map(String::as_str),
             Some(VALID_CLIENT_ID)
         );
+        assert_eq!(
+            params.get("client_secret").map(String::as_str),
+            Some(expected_client_secret.as_str())
+        );
         assert_eq!(params.get("code").map(String::as_str), Some(expected_code));
         assert_eq!(
             params.get("code_verifier").map(String::as_str),
@@ -1802,10 +2631,61 @@ mod tests {
             params.get("redirect_uri").map(String::as_str),
             Some(request.redirect_uri.as_str())
         );
-        assert!(!params.contains_key("client_secret"));
         assert!(!metadata.headers.contains_key("authorization"));
-        assert!(!body.contains("client_secret"));
         assert!(!body.contains("%253A%252F%252F"));
+    }
+
+    #[test]
+    fn refresh_token_form_includes_client_secret_and_existing_fields_once() {
+        let expected_client_secret = test_client_secret();
+        let expected_refresh_token = ["fixture", "refresh", "token"].join("-");
+        let (token_endpoint, server) = spawn_mock_token_endpoint();
+        let client = reqwest::Client::builder()
+            .redirect(Policy::none())
+            .timeout(Duration::from_secs(5))
+            .build()
+            .unwrap();
+
+        let result = tauri::async_runtime::block_on(refresh_access_token_with_http_client(
+            client,
+            VALID_CLIENT_ID,
+            &expected_client_secret,
+            &expected_refresh_token,
+            &token_endpoint,
+        ));
+
+        assert!(result.is_ok());
+        let metadata = server.join().unwrap();
+        let params = parse_form_body_for_test(&metadata.body);
+        let keys = parse_form_keys_for_test(&metadata.body);
+        assert_eq!(metadata.method, "POST");
+        assert_eq!(metadata.path, "/token");
+        assert_eq!(params.len(), 4);
+        assert_eq!(keys.len(), 4);
+        for key in ["client_id", "client_secret", "refresh_token", "grant_type"] {
+            assert_eq!(
+                keys.iter()
+                    .filter(|candidate| candidate.as_str() == key)
+                    .count(),
+                1
+            );
+        }
+        assert_eq!(
+            params.get("client_id").map(String::as_str),
+            Some(VALID_CLIENT_ID)
+        );
+        assert_eq!(
+            params.get("client_secret").map(String::as_str),
+            Some(expected_client_secret.as_str())
+        );
+        assert_eq!(
+            params.get("refresh_token").map(String::as_str),
+            Some(expected_refresh_token.as_str())
+        );
+        assert_eq!(
+            params.get("grant_type").map(String::as_str),
+            Some("refresh_token")
+        );
     }
 
     #[test]
@@ -2338,6 +3218,7 @@ mod tests {
     fn token_and_error_dtos_do_not_expose_secret_words() {
         let status = SearchConsoleClientStatus {
             configured: true,
+            client_secret_stored: true,
             authorization_stored: true,
             connected: true,
             authentication_in_progress: false,
@@ -2346,6 +3227,8 @@ mod tests {
         };
         let status_json = serde_json::to_string(&status).unwrap();
         assert!(!status_json.contains("clientId"));
+        assert!(status_json.contains("\"clientSecretStored\":true"));
+        assert!(!status_json.contains(&test_client_secret()));
         assert!(!status_json.contains("refresh"));
         assert!(!status_json.contains("access"));
         assert!(!status_json.contains("code"));
@@ -2493,104 +3376,691 @@ mod tests {
     fn search_console_and_vercel_credential_services_are_separate() {
         assert_ne!(CREDENTIAL_SERVICE, VERCEL_CREDENTIAL_SERVICE_FOR_TEST);
         assert_ne!(CLIENT_ID_ACCOUNT, REFRESH_TOKEN_ACCOUNT);
+        assert_ne!(CLIENT_ID_ACCOUNT, CLIENT_SECRET_ACCOUNT);
+        assert_ne!(CLIENT_SECRET_ACCOUNT, REFRESH_TOKEN_ACCOUNT);
     }
 
     #[test]
-    fn same_client_id_save_does_not_delete_refresh_token() {
-        let events = Rc::new(RefCell::new(Vec::new()));
-        let delete_events = Rc::clone(&events);
-        let save_events = Rc::clone(&events);
-        let clear_events = Rc::clone(&events);
-        save_search_console_client_id_with(
-            VALID_CLIENT_ID.to_string(),
-            || Ok(Some(VALID_CLIENT_ID.to_string())),
-            |_| {
-                save_events.borrow_mut().push("save_client_id");
-                Ok(())
-            },
-            || {
-                delete_events.borrow_mut().push("delete_refresh");
-                Ok(())
-            },
-            || {
-                clear_events.borrow_mut().push("clear_runtime");
-                Ok(())
-            },
-            dummy_status,
-        )
-        .unwrap();
-        assert!(events.borrow().is_empty());
-    }
+    fn locked_client_id_is_not_reported_as_configured() {
+        let mut backend = credential_backend_for_client(OAUTH_CREDENTIAL_UPDATE_LOCK);
+        let runtime = FakeRuntimeBackend::restarted();
 
-    #[test]
-    fn different_client_id_deletes_refresh_before_saving_client_id() {
-        let events = Rc::new(RefCell::new(Vec::new()));
-        let delete_events = Rc::clone(&events);
-        let save_events = Rc::clone(&events);
-        let clear_events = Rc::clone(&events);
-        save_search_console_client_id_with(
-            VALID_CLIENT_ID.to_string(),
-            || Ok(Some("other-client.apps.googleusercontent.com".to_string())),
-            |_| {
-                save_events.borrow_mut().push("save_client_id");
-                Ok(())
-            },
-            || {
-                delete_events.borrow_mut().push("delete_refresh");
-                Ok(())
-            },
-            || {
-                clear_events.borrow_mut().push("clear_runtime");
-                Ok(())
-            },
-            dummy_status,
-        )
-        .unwrap();
         assert_eq!(
-            events.borrow().as_slice(),
-            ["delete_refresh", "clear_runtime", "save_client_id"]
+            validate_client_id(OAUTH_CREDENTIAL_UPDATE_LOCK).unwrap_err(),
+            SearchConsoleError::InvalidClientId
         );
+        let status = client_status_from_fake_state(&backend, &runtime);
+        assert!(!status.configured);
+        assert!(status.client_secret_stored);
+        assert!(status.authorization_stored);
+        assert!(!status.connected);
+        assert!(!serde_json::to_string(&status)
+            .unwrap()
+            .contains(OAUTH_CREDENTIAL_UPDATE_LOCK));
+        assert_oauth_entry_points_blocked(&mut backend);
     }
 
     #[test]
-    fn failed_refresh_delete_prevents_new_client_id_save() {
-        let events = Rc::new(RefCell::new(Vec::new()));
-        let save_events = Rc::clone(&events);
-        let result = save_search_console_client_id_with(
+    fn locked_client_id_can_be_recovered_by_manual_save() {
+        let mut backend = credential_backend_for_client(OAUTH_CREDENTIAL_UPDATE_LOCK);
+        let mut runtime = FakeRuntimeBackend::restarted();
+
+        save_search_console_client_id_with(
+            &mut backend,
+            &mut runtime,
             VALID_CLIENT_ID.to_string(),
-            || Ok(Some("other-client.apps.googleusercontent.com".to_string())),
-            |_| {
-                save_events.borrow_mut().push("save_client_id");
-                Ok(())
-            },
-            || Err(SearchConsoleError::CredentialDeleteFailed),
-            || Ok(()),
+            dummy_status,
+        )
+        .unwrap();
+
+        assert_eq!(
+            backend.values.get(CLIENT_ID_ACCOUNT).map(String::as_str),
+            Some(VALID_CLIENT_ID)
+        );
+        assert!(!backend.values.contains_key(CLIENT_SECRET_ACCOUNT));
+        assert!(!backend.values.contains_key(REFRESH_TOKEN_ACCOUNT));
+    }
+
+    #[test]
+    fn locked_client_id_can_be_recovered_by_oauth_import() {
+        let mut backend = credential_backend_for_client(OAUTH_CREDENTIAL_UPDATE_LOCK);
+        let mut runtime = FakeRuntimeBackend::restarted();
+        let oauth_client = imported_oauth_client_fixture();
+
+        assert!(
+            import_oauth_client_credentials_with(&mut backend, &mut runtime, &oauth_client)
+                .unwrap()
+        );
+
+        assert_eq!(
+            backend.values.get(CLIENT_ID_ACCOUNT),
+            Some(&oauth_client.client_id)
+        );
+        assert_eq!(
+            backend.values.get(CLIENT_SECRET_ACCOUNT),
+            Some(&oauth_client.client_secret)
+        );
+        assert!(!backend.values.contains_key(REFRESH_TOKEN_ACCOUNT));
+    }
+
+    #[test]
+    fn same_client_id_import_updates_secret_and_preserves_refresh_token() {
+        let refresh_token = ["fixture", "refresh", "token"].join("-");
+        let mut backend = FakeCredentialBackend::default();
+        backend
+            .values
+            .insert(CLIENT_ID_ACCOUNT.to_string(), VALID_CLIENT_ID.to_string());
+        backend.values.insert(
+            CLIENT_SECRET_ACCOUNT.to_string(),
+            ["old", "fixture", "secret"].join("-"),
+        );
+        backend
+            .values
+            .insert(REFRESH_TOKEN_ACCOUNT.to_string(), refresh_token.clone());
+        let oauth_client = ImportedOAuthClient {
+            client_id: VALID_CLIENT_ID.to_string(),
+            client_secret: test_client_secret(),
+        };
+
+        assert!(!import_oauth_client_credentials_for_test(&mut backend, &oauth_client).unwrap());
+        assert_eq!(
+            backend.values.get(REFRESH_TOKEN_ACCOUNT),
+            Some(&refresh_token)
+        );
+        assert_eq!(
+            backend.values.get(CLIENT_SECRET_ACCOUNT),
+            Some(&oauth_client.client_secret)
+        );
+        assert!(!backend
+            .operations
+            .contains(&format!("delete:{REFRESH_TOKEN_ACCOUNT}")));
+    }
+
+    #[test]
+    fn different_client_id_import_replaces_pair_and_deletes_refresh_token() {
+        let mut backend = FakeCredentialBackend::default();
+        let operations = Rc::new(RefCell::new(Vec::new()));
+        backend.record_operations_with(Rc::clone(&operations));
+        let mut runtime = FakeRuntimeBackend::connected();
+        runtime.record_operations_with(Rc::clone(&operations));
+        backend.values.insert(
+            CLIENT_ID_ACCOUNT.to_string(),
+            "other-client.apps.googleusercontent.com".to_string(),
+        );
+        backend.values.insert(
+            CLIENT_SECRET_ACCOUNT.to_string(),
+            ["old", "fixture", "secret"].join("-"),
+        );
+        backend.values.insert(
+            REFRESH_TOKEN_ACCOUNT.to_string(),
+            ["fixture", "refresh", "token"].join("-"),
+        );
+        let oauth_client = ImportedOAuthClient {
+            client_id: VALID_CLIENT_ID.to_string(),
+            client_secret: test_client_secret(),
+        };
+
+        assert!(
+            import_oauth_client_credentials_with(&mut backend, &mut runtime, &oauth_client)
+                .unwrap()
+        );
+        assert_eq!(
+            operations.borrow().clone(),
+            vec![
+                "snapshot:runtime".to_string(),
+                format!("save:{CLIENT_ID_ACCOUNT}"),
+                format!("save:{CLIENT_SECRET_ACCOUNT}"),
+                format!("delete:{REFRESH_TOKEN_ACCOUNT}"),
+                "clear:runtime".to_string(),
+                format!("save:{CLIENT_ID_ACCOUNT}"),
+            ]
+        );
+        assert_eq!(
+            backend.values.get(CLIENT_ID_ACCOUNT),
+            Some(&oauth_client.client_id)
+        );
+        assert_eq!(
+            backend.values.get(CLIENT_SECRET_ACCOUNT),
+            Some(&oauth_client.client_secret)
+        );
+        assert!(!backend.values.contains_key(REFRESH_TOKEN_ACCOUNT));
+    }
+
+    #[test]
+    fn failed_refresh_token_delete_import_restores_original_credentials() {
+        let mut backend = original_credential_backend();
+        backend.fail_delete_on_attempt(REFRESH_TOKEN_ACCOUNT, 1);
+        let oauth_client = imported_oauth_client_fixture();
+
+        assert_eq!(
+            import_oauth_client_credentials_for_test(&mut backend, &oauth_client).unwrap_err(),
+            SearchConsoleError::CredentialDeleteFailed
+        );
+        assert_original_credentials(&backend);
+    }
+
+    #[test]
+    fn failed_client_id_save_import_restores_original_credentials() {
+        let mut backend = original_credential_backend();
+        backend.fail_save_on_attempt(CLIENT_ID_ACCOUNT, 2);
+
+        assert_eq!(
+            import_oauth_client_credentials_for_test(
+                &mut backend,
+                &imported_oauth_client_fixture(),
+            )
+            .unwrap_err(),
+            SearchConsoleError::CredentialStoreFailed
+        );
+        assert_original_credentials(&backend);
+    }
+
+    #[test]
+    fn failed_update_lock_save_import_preserves_credentials_and_runtime() {
+        let mut backend = original_credential_backend();
+        backend.fail_save_on_attempt(CLIENT_ID_ACCOUNT, 1);
+        let mut runtime = FakeRuntimeBackend::connected();
+        let original_runtime = runtime.state.clone();
+
+        assert_eq!(
+            import_oauth_client_credentials_with(
+                &mut backend,
+                &mut runtime,
+                &imported_oauth_client_fixture(),
+            )
+            .unwrap_err(),
+            SearchConsoleError::CredentialStoreFailed
+        );
+
+        assert_original_credentials(&backend);
+        assert_runtime_matches(&runtime.state, &original_runtime);
+        assert_eq!(backend.operations, [format!("save:{CLIENT_ID_ACCOUNT}")]);
+        assert_eq!(runtime.snapshot_calls, 1);
+        assert_eq!(runtime.clear_calls, 0);
+        assert_eq!(runtime.restore_calls, 0);
+    }
+
+    #[test]
+    fn failed_client_secret_save_import_restores_original_credentials() {
+        let mut backend = original_credential_backend();
+        backend.fail_save_on_attempt(CLIENT_SECRET_ACCOUNT, 1);
+
+        assert_eq!(
+            import_oauth_client_credentials_for_test(
+                &mut backend,
+                &imported_oauth_client_fixture(),
+            )
+            .unwrap_err(),
+            SearchConsoleError::CredentialStoreFailed
+        );
+        assert_original_credentials(&backend);
+    }
+
+    #[test]
+    fn failed_client_id_restore_after_import_failure_cleans_credentials() {
+        let mut backend = original_credential_backend();
+        backend.fail_save_on_attempt(CLIENT_SECRET_ACCOUNT, 1);
+        backend.fail_save_on_attempt(CLIENT_ID_ACCOUNT, 2);
+
+        assert!(import_oauth_client_credentials_for_test(
+            &mut backend,
+            &imported_oauth_client_fixture()
+        )
+        .is_err());
+        assert_only_update_lock_is_stored(&backend);
+    }
+
+    #[test]
+    fn failed_client_secret_restore_after_import_failure_cleans_credentials() {
+        let mut backend = original_credential_backend();
+        backend.fail_delete_on_attempt(REFRESH_TOKEN_ACCOUNT, 1);
+        backend.fail_save_on_attempt(CLIENT_SECRET_ACCOUNT, 2);
+
+        assert!(import_oauth_client_credentials_for_test(
+            &mut backend,
+            &imported_oauth_client_fixture()
+        )
+        .is_err());
+        assert_only_update_lock_is_stored(&backend);
+    }
+
+    #[test]
+    fn failed_refresh_token_restore_after_import_failure_cleans_credentials() {
+        let mut backend = original_credential_backend();
+        backend.fail_save_on_attempt(CLIENT_SECRET_ACCOUNT, 1);
+        backend.fail_save_on_attempt(REFRESH_TOKEN_ACCOUNT, 1);
+
+        assert!(import_oauth_client_credentials_for_test(
+            &mut backend,
+            &imported_oauth_client_fixture()
+        )
+        .is_err());
+        assert_only_update_lock_is_stored(&backend);
+    }
+
+    #[test]
+    fn import_cleanup_retries_every_one_shot_delete_failure_combination() {
+        for failed_accounts in [
+            vec![REFRESH_TOKEN_ACCOUNT],
+            vec![CLIENT_SECRET_ACCOUNT],
+            vec![REFRESH_TOKEN_ACCOUNT, CLIENT_SECRET_ACCOUNT],
+        ] {
+            let mut backend = original_credential_backend();
+            backend.fail_save_on_attempt(CLIENT_SECRET_ACCOUNT, 1);
+            backend.fail_save_on_attempt(CLIENT_ID_ACCOUNT, 2);
+            for account in failed_accounts {
+                backend.fail_delete_on_attempt(account, 1);
+            }
+
+            assert!(import_oauth_client_credentials_for_test(
+                &mut backend,
+                &imported_oauth_client_fixture()
+            )
+            .is_err());
+            assert_only_update_lock_is_stored(&backend);
+        }
+    }
+
+    #[test]
+    fn failed_import_rollback_and_persistent_cleanup_remains_locked_after_restart() {
+        let mut backend = original_credential_backend();
+        backend.fail_delete_from_attempt(REFRESH_TOKEN_ACCOUNT, 1);
+        backend.fail_save_from_attempt(CLIENT_SECRET_ACCOUNT, 2);
+        backend.fail_delete_from_attempt(CLIENT_SECRET_ACCOUNT, 1);
+        let mut runtime = FakeRuntimeBackend::connected();
+        let error = import_oauth_client_credentials_with(
+            &mut backend,
+            &mut runtime,
+            &imported_oauth_client_fixture(),
+        )
+        .unwrap_err();
+
+        assert_eq!(error, SearchConsoleError::CredentialDeleteFailed);
+        assert_update_lock_is_stored(&backend);
+        assert!(backend.values.contains_key(CLIENT_SECRET_ACCOUNT));
+        assert!(backend.values.contains_key(REFRESH_TOKEN_ACCOUNT));
+        assert!(backend.attempt_count("delete", REFRESH_TOKEN_ACCOUNT) >= 3);
+        assert!(backend.attempt_count("delete", CLIENT_SECRET_ACCOUNT) >= 2);
+
+        drop(runtime);
+        let restarted_runtime = FakeRuntimeBackend::restarted();
+        let status = client_status_from_fake_state(&backend, &restarted_runtime);
+        assert!(!status.configured);
+        assert!(!status.connected);
+        assert_oauth_entry_points_blocked(&mut backend);
+
+        let serialized = serde_json::to_string(&SearchConsoleCommandError::from(error)).unwrap();
+        for sensitive_fixture in [
+            original_client_id(),
+            original_client_secret(),
+            original_refresh_token(),
+            test_client_secret(),
+        ] {
+            assert!(!serialized.contains(&sensitive_fixture));
+        }
+    }
+
+    #[test]
+    fn persistent_cleanup_failure_blocks_configured_status() {
+        let mut backend = credential_backend_for_client(OAUTH_CREDENTIAL_UPDATE_LOCK);
+        backend.fail_delete_from_attempt(CLIENT_SECRET_ACCOUNT, 1);
+        backend.fail_delete_from_attempt(REFRESH_TOKEN_ACCOUNT, 1);
+
+        delete_oauth_credential_fragments_best_effort(&mut backend);
+
+        assert_update_lock_is_stored(&backend);
+        assert_eq!(backend.attempt_count("delete", CLIENT_SECRET_ACCOUNT), 2);
+        assert_eq!(backend.attempt_count("delete", REFRESH_TOKEN_ACCOUNT), 2);
+        let restarted_runtime = FakeRuntimeBackend::restarted();
+        let status = client_status_from_fake_state(&backend, &restarted_runtime);
+        assert!(!status.configured);
+        assert!(!status.connected);
+    }
+
+    #[test]
+    fn oauth_import_result_exposes_only_non_sensitive_state() {
+        let json =
+            serde_json::to_value(SearchConsoleOAuthImportResult::imported(false, false)).unwrap();
+        let object = json.as_object().unwrap();
+
+        assert_eq!(
+            object.keys().cloned().collect::<HashSet<_>>(),
+            HashSet::from([
+                "status".to_string(),
+                "clientIdChanged".to_string(),
+                "clientSecretStored".to_string(),
+                "reauthenticationRequired".to_string(),
+            ])
+        );
+        assert_eq!(
+            object.get("clientSecretStored"),
+            Some(&serde_json::json!(true))
+        );
+        assert!(!json.to_string().contains(&test_client_secret()));
+    }
+
+    #[test]
+    fn same_manual_client_id_preserves_credentials_and_runtime_state() {
+        let mut backend = credential_backend_for_client(VALID_CLIENT_ID);
+        let mut runtime = FakeRuntimeBackend::connected();
+        let original_runtime = runtime.state.clone();
+
+        save_search_console_client_id_with(
+            &mut backend,
+            &mut runtime,
+            VALID_CLIENT_ID.to_string(),
+            dummy_status,
+        )
+        .unwrap();
+        assert_credentials_for_client(&backend, VALID_CLIENT_ID);
+        assert!(backend.operations.is_empty());
+        assert_eq!(runtime.snapshot_calls, 0);
+        assert_eq!(runtime.clear_calls, 0);
+        assert_eq!(runtime.restore_calls, 0);
+        assert_runtime_matches(&runtime.state, &original_runtime);
+    }
+
+    #[test]
+    fn invalid_manual_client_id_does_not_modify_credentials_or_runtime() {
+        let mut backend = original_credential_backend();
+        let mut runtime = FakeRuntimeBackend::connected();
+        let original_runtime = runtime.state.clone();
+
+        assert_eq!(
+            save_search_console_client_id_with(
+                &mut backend,
+                &mut runtime,
+                "invalid-client-id".to_string(),
+                dummy_status,
+            )
+            .err()
+            .unwrap(),
+            SearchConsoleError::InvalidClientId
+        );
+        assert_original_credentials(&backend);
+        assert!(backend.operations.is_empty());
+        assert_eq!(runtime.snapshot_calls, 0);
+        assert_eq!(runtime.clear_calls, 0);
+        assert_eq!(runtime.restore_calls, 0);
+        assert_runtime_matches(&runtime.state, &original_runtime);
+    }
+
+    #[test]
+    fn different_manual_client_id_succeeds_only_after_old_credentials_are_removed() {
+        let mut backend = original_credential_backend();
+        let operations = Rc::new(RefCell::new(Vec::new()));
+        backend.record_operations_with(Rc::clone(&operations));
+        let mut runtime = FakeRuntimeBackend::connected();
+        runtime.record_operations_with(Rc::clone(&operations));
+
+        save_search_console_client_id_with(
+            &mut backend,
+            &mut runtime,
+            VALID_CLIENT_ID.to_string(),
+            dummy_status,
+        )
+        .unwrap();
+
+        assert_eq!(
+            operations.borrow().clone(),
+            vec![
+                "snapshot:runtime".to_string(),
+                format!("save:{CLIENT_ID_ACCOUNT}"),
+                format!("delete:{REFRESH_TOKEN_ACCOUNT}"),
+                format!("delete:{CLIENT_SECRET_ACCOUNT}"),
+                "clear:runtime".to_string(),
+                format!("save:{CLIENT_ID_ACCOUNT}"),
+            ]
+        );
+        assert_eq!(
+            backend.values.get(CLIENT_ID_ACCOUNT).map(String::as_str),
+            Some(VALID_CLIENT_ID)
+        );
+        assert!(!backend.values.contains_key(CLIENT_SECRET_ACCOUNT));
+        assert!(!backend.values.contains_key(REFRESH_TOKEN_ACCOUNT));
+        assert_runtime_fail_closed(&runtime.state);
+        assert_eq!(runtime.snapshot_calls, 1);
+        assert_eq!(runtime.clear_calls, 1);
+        assert_eq!(runtime.restore_calls, 0);
+    }
+
+    #[test]
+    fn failed_manual_refresh_token_delete_restores_credentials_and_runtime() {
+        let mut backend = original_credential_backend();
+        backend.fail_delete_on_attempt(REFRESH_TOKEN_ACCOUNT, 1);
+        let mut runtime = FakeRuntimeBackend::connected();
+        let original_runtime = runtime.state.clone();
+
+        let result = save_search_console_client_id_with(
+            &mut backend,
+            &mut runtime,
+            VALID_CLIENT_ID.to_string(),
             dummy_status,
         );
         assert_eq!(
             result.err(),
             Some(SearchConsoleError::CredentialDeleteFailed)
         );
-        assert!(events.borrow().is_empty());
+        assert_original_credentials(&backend);
+        assert_runtime_matches(&runtime.state, &original_runtime);
+        assert_eq!(runtime.restore_calls, 1);
     }
 
     #[test]
-    fn client_id_delete_removes_refresh_before_client_id() {
+    fn failed_manual_client_secret_delete_restores_credentials_and_runtime() {
+        let mut backend = original_credential_backend();
+        backend.fail_delete_on_attempt(CLIENT_SECRET_ACCOUNT, 1);
+        let mut runtime = FakeRuntimeBackend::connected();
+        let original_runtime = runtime.state.clone();
+
+        let result = save_search_console_client_id_with(
+            &mut backend,
+            &mut runtime,
+            VALID_CLIENT_ID.to_string(),
+            dummy_status,
+        );
+        assert_eq!(
+            result.err(),
+            Some(SearchConsoleError::CredentialDeleteFailed)
+        );
+        assert_original_credentials(&backend);
+        assert_runtime_matches(&runtime.state, &original_runtime);
+        assert_eq!(runtime.restore_calls, 1);
+    }
+
+    #[test]
+    fn failed_manual_client_id_save_restores_credentials_and_runtime() {
+        let mut backend = original_credential_backend();
+        backend.fail_save_on_attempt(CLIENT_ID_ACCOUNT, 2);
+        let mut runtime = FakeRuntimeBackend::connected();
+        let original_runtime = runtime.state.clone();
+
+        let result = save_search_console_client_id_with(
+            &mut backend,
+            &mut runtime,
+            VALID_CLIENT_ID.to_string(),
+            dummy_status,
+        );
+        assert_eq!(
+            result.err(),
+            Some(SearchConsoleError::CredentialStoreFailed)
+        );
+        assert_original_credentials(&backend);
+        assert_runtime_matches(&runtime.state, &original_runtime);
+        assert_eq!(runtime.restore_calls, 1);
+    }
+
+    #[test]
+    fn failed_manual_update_lock_save_preserves_credentials_and_runtime() {
+        let mut backend = original_credential_backend();
+        backend.fail_save_on_attempt(CLIENT_ID_ACCOUNT, 1);
+        let mut runtime = FakeRuntimeBackend::connected();
+        let original_runtime = runtime.state.clone();
+
+        assert_eq!(
+            save_search_console_client_id_with(
+                &mut backend,
+                &mut runtime,
+                VALID_CLIENT_ID.to_string(),
+                dummy_status,
+            )
+            .err()
+            .unwrap(),
+            SearchConsoleError::CredentialStoreFailed
+        );
+
+        assert_original_credentials(&backend);
+        assert_runtime_matches(&runtime.state, &original_runtime);
+        assert_eq!(backend.operations, [format!("save:{CLIENT_ID_ACCOUNT}")]);
+        assert_eq!(runtime.snapshot_calls, 1);
+        assert_eq!(runtime.clear_calls, 0);
+        assert_eq!(runtime.restore_calls, 0);
+    }
+
+    #[test]
+    fn failed_manual_runtime_clear_restores_credentials_and_runtime() {
+        let mut backend = original_credential_backend();
+        let mut runtime = FakeRuntimeBackend::connected();
+        runtime.fail_clear_on_attempt(1);
+        let original_runtime = runtime.state.clone();
+
+        let result = save_search_console_client_id_with(
+            &mut backend,
+            &mut runtime,
+            VALID_CLIENT_ID.to_string(),
+            dummy_status,
+        );
+        assert_eq!(result.err(), Some(SearchConsoleError::Internal));
+        assert_original_credentials(&backend);
+        assert_runtime_matches(&runtime.state, &original_runtime);
+        assert_eq!(runtime.restore_calls, 1);
+    }
+
+    #[test]
+    fn failed_manual_rollback_returns_error_and_enters_fail_closed_state() {
+        let mut backend = original_credential_backend();
+        backend.fail_delete_on_attempt(CLIENT_SECRET_ACCOUNT, 1);
+        backend.fail_save_on_attempt(REFRESH_TOKEN_ACCOUNT, 1);
+        let mut runtime = FakeRuntimeBackend::connected();
+
+        let error = save_search_console_client_id_with(
+            &mut backend,
+            &mut runtime,
+            VALID_CLIENT_ID.to_string(),
+            dummy_status,
+        )
+        .err()
+        .unwrap();
+
+        assert_eq!(error, SearchConsoleError::CredentialDeleteFailed);
+        assert_only_update_lock_is_stored(&backend);
+        assert_runtime_fail_closed(&runtime.state);
+        assert_eq!(runtime.restore_calls, 1);
+        assert_eq!(runtime.clear_calls, 1);
+        let serialized = serde_json::to_string(&SearchConsoleCommandError::from(error)).unwrap();
+        for sensitive_fixture in [
+            original_client_id(),
+            original_client_secret(),
+            original_refresh_token(),
+        ] {
+            assert!(!serialized.contains(&sensitive_fixture));
+        }
+    }
+
+    #[test]
+    fn failed_manual_runtime_restore_cleans_credentials_and_runtime() {
+        let mut backend = original_credential_backend();
+        backend.fail_delete_on_attempt(REFRESH_TOKEN_ACCOUNT, 1);
+        let mut runtime = FakeRuntimeBackend::connected();
+        runtime.fail_restore_on_attempt(1);
+
+        assert!(save_search_console_client_id_with(
+            &mut backend,
+            &mut runtime,
+            VALID_CLIENT_ID.to_string(),
+            dummy_status,
+        )
+        .is_err());
+        assert_only_update_lock_is_stored(&backend);
+        assert_runtime_fail_closed(&runtime.state);
+        assert_eq!(runtime.restore_calls, 1);
+        assert_eq!(runtime.clear_calls, 1);
+    }
+
+    #[test]
+    fn failed_manual_rollback_and_persistent_cleanup_remains_locked_after_restart() {
+        let mut backend = original_credential_backend();
+        backend.fail_delete_from_attempt(CLIENT_SECRET_ACCOUNT, 1);
+        backend.fail_save_from_attempt(REFRESH_TOKEN_ACCOUNT, 1);
+        backend.fail_delete_from_attempt(REFRESH_TOKEN_ACCOUNT, 2);
+        let mut runtime = FakeRuntimeBackend::connected();
+        let error = save_search_console_client_id_with(
+            &mut backend,
+            &mut runtime,
+            VALID_CLIENT_ID.to_string(),
+            dummy_status,
+        )
+        .err()
+        .unwrap();
+
+        assert_eq!(error, SearchConsoleError::CredentialDeleteFailed);
+        assert_update_lock_is_stored(&backend);
+        assert!(backend.values.contains_key(CLIENT_SECRET_ACCOUNT));
+        assert!(backend.attempt_count("delete", CLIENT_SECRET_ACCOUNT) >= 3);
+        assert!(backend.attempt_count("delete", REFRESH_TOKEN_ACCOUNT) >= 3);
+
+        drop(runtime);
+        let restarted_runtime = FakeRuntimeBackend::restarted();
+        let status = client_status_from_fake_state(&backend, &restarted_runtime);
+        assert!(!status.configured);
+        assert!(!status.connected);
+        assert_oauth_entry_points_blocked(&mut backend);
+
+        let serialized = serde_json::to_string(&SearchConsoleCommandError::from(error)).unwrap();
+        for sensitive_fixture in [
+            original_client_id(),
+            original_client_secret(),
+            original_refresh_token(),
+        ] {
+            assert!(!serialized.contains(&sensitive_fixture));
+        }
+    }
+
+    #[test]
+    fn persistent_failure_blocks_oauth_request_after_restart() {
+        let mut backend = credential_backend_for_client(OAUTH_CREDENTIAL_UPDATE_LOCK);
+        let restarted_runtime = FakeRuntimeBackend::restarted();
+        let status = client_status_from_fake_state(&backend, &restarted_runtime);
+
+        assert!(!status.configured);
+        assert!(!status.connected);
+        assert_oauth_entry_points_blocked(&mut backend);
+    }
+
+    #[test]
+    fn client_id_delete_removes_refresh_secret_and_client_id() {
         let events = Rc::new(RefCell::new(Vec::new()));
         let delete_refresh_events = Rc::clone(&events);
-        let clear_events = Rc::clone(&events);
+        let delete_secret_events = Rc::clone(&events);
         let delete_client_events = Rc::clone(&events);
+        let clear_events = Rc::clone(&events);
         delete_search_console_client_id_with(
             || {
                 delete_refresh_events.borrow_mut().push("delete_refresh");
                 Ok(())
             },
             || {
-                clear_events.borrow_mut().push("clear_runtime");
+                delete_secret_events
+                    .borrow_mut()
+                    .push("delete_client_secret");
                 Ok(())
             },
             || {
                 delete_client_events.borrow_mut().push("delete_client_id");
+                Ok(())
+            },
+            || {
+                clear_events.borrow_mut().push("clear_runtime");
                 Ok(())
             },
             dummy_status,
@@ -2598,19 +4068,35 @@ mod tests {
         .unwrap();
         assert_eq!(
             events.borrow().as_slice(),
-            ["delete_refresh", "clear_runtime", "delete_client_id"]
+            [
+                "delete_refresh",
+                "delete_client_secret",
+                "delete_client_id",
+                "clear_runtime"
+            ]
         );
     }
 
     #[test]
-    fn failed_refresh_delete_prevents_client_id_delete() {
+    fn failed_refresh_delete_still_attempts_secret_and_client_id_delete() {
         let events = Rc::new(RefCell::new(Vec::new()));
+        let delete_secret_events = Rc::clone(&events);
         let delete_client_events = Rc::clone(&events);
+        let clear_events = Rc::clone(&events);
         let result = delete_search_console_client_id_with(
             || Err(SearchConsoleError::CredentialDeleteFailed),
-            || Ok(()),
+            || {
+                delete_secret_events
+                    .borrow_mut()
+                    .push("delete_client_secret");
+                Ok(())
+            },
             || {
                 delete_client_events.borrow_mut().push("delete_client_id");
+                Ok(())
+            },
+            || {
+                clear_events.borrow_mut().push("clear_runtime");
                 Ok(())
             },
             dummy_status,
@@ -2619,7 +4105,10 @@ mod tests {
             result.err(),
             Some(SearchConsoleError::CredentialDeleteFailed)
         );
-        assert!(events.borrow().is_empty());
+        assert_eq!(
+            events.borrow().as_slice(),
+            ["delete_client_secret", "delete_client_id", "clear_runtime"]
+        );
     }
 
     #[test]
@@ -2694,7 +4183,7 @@ mod tests {
         let _lock = runtime_test_lock();
         reset_runtime_state_for_test();
         set_last_checked_now(false).unwrap();
-        let status = client_status_from_parts(true, true).unwrap();
+        let status = client_status_from_parts(true, true, true).unwrap();
         assert!(status.connected);
         assert!(status.last_checked_at.is_some());
         reset_runtime_state_for_test();
@@ -2704,7 +4193,7 @@ mod tests {
     fn stored_authorization_alone_is_not_connected_after_app_start() {
         let _lock = runtime_test_lock();
         reset_runtime_state_for_test();
-        let status = client_status_from_parts(true, true).unwrap();
+        let status = client_status_from_parts(true, true, true).unwrap();
         assert!(status.configured);
         assert!(status.authorization_stored);
         assert!(!status.connected);
@@ -2731,6 +4220,7 @@ mod tests {
     fn dummy_status() -> Result<SearchConsoleClientStatus, SearchConsoleError> {
         Ok(SearchConsoleClientStatus {
             configured: true,
+            client_secret_stored: true,
             authorization_stored: true,
             connected: false,
             authentication_in_progress: false,
@@ -2783,10 +4273,12 @@ mod tests {
         code: &str,
         pkce_verifier: &str,
     ) -> HttpRequest {
+        let client_secret = test_client_secret();
         let captured = Rc::new(RefCell::new(None));
         let captured_request = Rc::clone(&captured);
         let result = tauri::async_runtime::block_on(request_oauth_authorization_code(
             client_id,
+            &client_secret,
             redirect_uri,
             code,
             pkce_verifier,
@@ -2804,6 +4296,162 @@ mod tests {
         assert!(result.is_ok());
         let request = captured.borrow_mut().take().unwrap();
         request
+    }
+
+    fn original_client_id() -> String {
+        "other-client.apps.googleusercontent.com".to_string()
+    }
+
+    fn original_client_secret() -> String {
+        ["original", "fixture", "secret"].join("-")
+    }
+
+    fn original_refresh_token() -> String {
+        ["original", "fixture", "refresh"].join("-")
+    }
+
+    fn credential_backend_for_client(client_id: &str) -> FakeCredentialBackend {
+        let mut backend = FakeCredentialBackend::default();
+        backend
+            .values
+            .insert(CLIENT_ID_ACCOUNT.to_string(), client_id.to_string());
+        backend
+            .values
+            .insert(CLIENT_SECRET_ACCOUNT.to_string(), original_client_secret());
+        backend
+            .values
+            .insert(REFRESH_TOKEN_ACCOUNT.to_string(), original_refresh_token());
+        backend
+    }
+
+    fn original_credential_backend() -> FakeCredentialBackend {
+        credential_backend_for_client(&original_client_id())
+    }
+
+    fn imported_oauth_client_fixture() -> ImportedOAuthClient {
+        ImportedOAuthClient {
+            client_id: VALID_CLIENT_ID.to_string(),
+            client_secret: test_client_secret(),
+        }
+    }
+
+    fn assert_credentials_for_client(backend: &FakeCredentialBackend, client_id: &str) {
+        assert!(backend
+            .values
+            .get(CLIENT_ID_ACCOUNT)
+            .is_some_and(|value| value == client_id));
+        assert!(backend
+            .values
+            .get(CLIENT_SECRET_ACCOUNT)
+            .is_some_and(|value| value == &original_client_secret()));
+        assert!(backend
+            .values
+            .get(REFRESH_TOKEN_ACCOUNT)
+            .is_some_and(|value| value == &original_refresh_token()));
+    }
+
+    fn assert_original_credentials(backend: &FakeCredentialBackend) {
+        assert_credentials_for_client(backend, &original_client_id());
+    }
+
+    fn assert_only_update_lock_is_stored(backend: &FakeCredentialBackend) {
+        assert_eq!(
+            backend.values.get(CLIENT_ID_ACCOUNT).map(String::as_str),
+            Some(OAUTH_CREDENTIAL_UPDATE_LOCK)
+        );
+        assert!(usable_stored_client_id(OAUTH_CREDENTIAL_UPDATE_LOCK).is_none());
+        assert!(!backend.values.contains_key(CLIENT_SECRET_ACCOUNT));
+        assert!(!backend.values.contains_key(REFRESH_TOKEN_ACCOUNT));
+        assert_eq!(backend.values.len(), 1);
+    }
+
+    fn assert_update_lock_is_stored(backend: &FakeCredentialBackend) {
+        assert_eq!(
+            backend.values.get(CLIENT_ID_ACCOUNT).map(String::as_str),
+            Some(OAUTH_CREDENTIAL_UPDATE_LOCK)
+        );
+        assert!(usable_stored_client_id(OAUTH_CREDENTIAL_UPDATE_LOCK).is_none());
+    }
+
+    fn client_status_from_fake_state(
+        backend: &FakeCredentialBackend,
+        runtime: &FakeRuntimeBackend,
+    ) -> SearchConsoleClientStatus {
+        let configured = backend
+            .values
+            .get(CLIENT_ID_ACCOUNT)
+            .and_then(|value| usable_stored_client_id(value))
+            .is_some();
+        let client_secret_stored = backend.values.contains_key(CLIENT_SECRET_ACCOUNT);
+        let authorization_stored = backend.values.contains_key(REFRESH_TOKEN_ACCOUNT);
+        SearchConsoleClientStatus {
+            configured,
+            client_secret_stored,
+            authorization_stored,
+            connected: runtime.state.connected
+                && configured
+                && client_secret_stored
+                && authorization_stored
+                && !runtime.state.reauthentication_required,
+            authentication_in_progress: false,
+            reauthentication_required: runtime.state.reauthentication_required,
+            last_checked_at: runtime.state.last_checked_at.clone(),
+        }
+    }
+
+    fn assert_oauth_entry_points_blocked(backend: &mut FakeCredentialBackend) {
+        let mut request_count = 0;
+        for _ in 0..2 {
+            let result = read_required_client_id_with(backend).and_then(|_| {
+                request_count += 1;
+                Ok(())
+            });
+            assert_eq!(result.unwrap_err(), SearchConsoleError::NotConfigured);
+        }
+        assert_eq!(request_count, 0);
+    }
+
+    fn assert_runtime_matches(
+        actual: &RuntimeConnectionSnapshot,
+        expected: &RuntimeConnectionSnapshot,
+    ) {
+        assert_eq!(actual.connected, expected.connected);
+        assert_eq!(
+            actual.reauthentication_required,
+            expected.reauthentication_required
+        );
+        assert_eq!(actual.last_checked_at, expected.last_checked_at);
+        assert!(actual
+            .access_token
+            .as_ref()
+            .zip(expected.access_token.as_ref())
+            .is_some_and(|(actual, expected)| {
+                actual.token == expected.token && actual.expires_at == expected.expires_at
+            }));
+    }
+
+    fn assert_runtime_fail_closed(runtime: &RuntimeConnectionSnapshot) {
+        assert!(!runtime.connected);
+        assert!(runtime.reauthentication_required);
+        assert!(runtime.last_checked_at.is_none());
+        assert!(runtime.access_token.is_none());
+    }
+
+    fn test_client_secret() -> String {
+        ["fixture", "client", "secret"].join("-")
+    }
+
+    fn desktop_oauth_json_fixture(client_id: &str, client_secret: &str) -> Vec<u8> {
+        serde_json::to_vec(&serde_json::json!({
+            "installed": {
+                "client_id": client_id,
+                "client_secret": client_secret,
+                "auth_uri": AUTHORIZATION_ENDPOINT,
+                "token_uri": TOKEN_ENDPOINT,
+                "redirect_uris": ["http://localhost"]
+            }
+        }))
+        .unwrap()
     }
 
     fn request_body_string_for_test(request: &HttpRequest) -> String {
