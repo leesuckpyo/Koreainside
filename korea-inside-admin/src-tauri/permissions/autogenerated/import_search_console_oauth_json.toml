@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-import-search-console-oauth-json"
+description = "Enables the import_search_console_oauth_json command without any pre-configured scope."
+commands.allow = ["import_search_console_oauth_json"]
+
+[[permission]]
+identifier = "deny-import-search-console-oauth-json"
+description = "Denies the import_search_console_oauth_json command without any pre-configured scope."
+commands.deny = ["import_search_console_oauth_json"]

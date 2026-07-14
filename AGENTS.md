@@ -252,6 +252,120 @@ Long-term goal: become the world's most trusted guide for understanding how Kore
 
 ---
 
+## Current Business and Content Priority
+
+The current bottleneck is not a lack of administrator features. It is the lack of front-site content that helps international visitors decide to visit Korea and shape their trip.
+
+Freeze additional administrator program development as a lower priority. Unless there is an operational failure or regression, also defer:
+
+- New administrator app features
+- Administrator app UI improvements
+- Additional Search Console OAuth changes
+- EXE or installer production
+- Indiscriminate expansion of detailed eSIM, Airport, or Transport pages
+- Large-scale whole-site audits
+
+Search Console OAuth is complete. Do not modify it unless a regression is confirmed.
+
+This current priority supersedes older page-sequence or execution-candidate documents where they conflict.
+
+### Main Front-Site Structure
+
+Use the following structure as the main front-site content axis.
+
+1. `What brings you to Korea?`
+   - Food
+   - Beauty
+   - K-Culture
+   - Tradition
+   - Local
+   - Nature
+   - Help visitors choose the interests and reasons that bring them to Korea.
+2. `Shape your trip`
+   - When to go
+   - How many days to stay
+   - Which cities to visit
+   - Turn interests into a practical trip shape.
+3. `EXPERIENCES`
+   - Tours
+   - Classes
+   - Shows
+   - Tickets
+   - Wellness
+   - Day trips
+   - Connect interests to activities visitors can actually join. Explain suitability, advantages, cautions, and the relationship between region and itinerary before presenting Klook or other affiliate products. Do not build simple affiliate-product listing pages.
+4. `STAY`
+   - Help visitors choose a suitable accommodation area based on trip purpose, experience locations, itinerary, transportation, and differences between areas, then connect the decision to accommodation booking.
+5. `Prepare for Korea`
+   - eSIM
+   - Airport
+   - Transport
+   - Maps
+   - Apps
+   - Payments
+   - Travel Tips
+   - Do not delete existing content. Keep it as the later layer that supports trip preparation and use within Korea.
+
+### Travel Content Production Framework
+
+Use the approved `TASTE KOREA` draft as the common framework for representative Travel content:
+
+Strong Hero
+
+→ Experience type selection
+
+→ Representative city and area comparison
+
+→ Images with sufficient supporting explanation
+
+→ Choices by traveler type
+
+→ Related `EXPERIENCES` or `STAY`
+
+→ Final selection and booking banner at the very end of the page
+
+Each major image block must explain:
+
+- Why the experience is worthwhile
+- What the visitor can actually do
+- How it differs from other regions or experiences
+- Advantages and cautions
+- Which travelers it suits
+- How it connects to related cities, areas, and `STAY`
+
+Do not create gallery-style pages that only list photographs and titles.
+
+### Content Length Principle
+
+Do not pre-limit a page to three or four screens. Keep the information required for a user to make a real choice.
+
+Remove or separate only:
+
+- Repetition
+- Generalities
+- Encyclopedic information that does not affect a choice
+- Detailed topics with a separate search intent
+
+Judge a page by interest density and information structure, not page length.
+
+### Content Production Roles
+
+Use this standard workflow:
+
+GPT content development
+
+→ User review
+
+→ GPT final copy and implementation specification
+
+→ Codex implementation
+
+→ User screen review
+
+The user is the reviewer and final decision-maker, not the editor. Codex reproduces the approved final specification on the site. Codex must not independently change content direction, titles, images, or copy. Do not begin content HTML implementation before user approval.
+
+---
+
 ## Development Workflow
 
 Before implementing any task:
@@ -360,6 +474,14 @@ Protected files and areas:
 - Common components
 - Existing URLs
 - Existing images
+- Mobile hamburger menu
+- Common navigation structure
+- Menu width, height, position, transparency, and scrolling behavior
+- Accordion behavior
+- `common.js` events and related common CSS
+- Search Console OAuth
+- Windows Credential Manager handling
+- Existing backup folders
 
 Modification rules:
 
@@ -837,6 +959,10 @@ Rules:
 - Whenever possible, provide multiple suitable options.
 - Avoid forcing users toward a single affiliate product.
 - Clearly disclose affiliate links according to applicable regulations.
+- Do not place repeated affiliate links, fixed CTAs, floating booking buttons, or repeated booking prompts throughout body content.
+- Place one selection and booking area only at the end of each major page, directly related to that page's content.
+- Internal navigation links to relevant content, city or area guides, and non-commercial section anchors may appear within the body; the end-of-page-only rule applies specifically to affiliate selection areas, booking sections, and commercial conversion CTAs.
+- Disclose transparently that Korea Inside may earn affiliate revenue and that the user pays no additional cost.
 
 Recommendation priority:
 

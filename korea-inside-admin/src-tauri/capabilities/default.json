@@ -16,6 +16,7 @@
     "allow-get-vercel-analytics-summary",
     "allow-get-site-status-report",
     "allow-get-search-console-client-status",
+    "allow-import-search-console-oauth-json",
     "allow-save-search-console-client-id",
     "allow-delete-search-console-client-id",
     "allow-start-search-console-oauth",

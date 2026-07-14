@@ -67,9 +67,26 @@ window.addEventListener("DOMContentLoaded", () => {
   const siteStatusReviewRequired = document.querySelector("#site-status-review-required");
   const siteStatusPagesEmpty = document.querySelector("#site-status-pages-empty");
   const siteStatusPagesBody = document.querySelector("#site-status-pages-body");
+  const searchConsoleBadge = document.querySelector("#search-console-badge");
+  const searchConsoleConfiguredStatus = document.querySelector("#search-console-configured-status");
+  const searchConsoleClientSecretStatus = document.querySelector("#search-console-client-secret-status");
+  const searchConsoleAuthorizationStatus = document.querySelector("#search-console-authorization-status");
+  const searchConsoleConnectedStatus = document.querySelector("#search-console-connected-status");
+  const searchConsoleReauthenticationStatus = document.querySelector("#search-console-reauthentication-status");
+  const searchConsoleLastChecked = document.querySelector("#search-console-last-checked");
+  const searchConsoleClientForm = document.querySelector("#search-console-client-form");
+  const searchConsoleClientId = document.querySelector("#search-console-client-id");
+  const saveSearchConsoleClientIdButton = document.querySelector("#save-search-console-client-id");
+  const importSearchConsoleOauthJsonButton = document.querySelector("#import-search-console-oauth-json");
+  const deleteSearchConsoleClientIdButton = document.querySelector("#delete-search-console-client-id");
+  const startSearchConsoleOauthButton = document.querySelector("#start-search-console-oauth");
+  const testSearchConsoleConnectionButton = document.querySelector("#test-search-console-connection");
+  const disconnectSearchConsoleButton = document.querySelector("#disconnect-search-console");
+  const searchConsoleMessage = document.querySelector("#search-console-message");
   const viewTitles = {
     dashboard: "운영 대시보드",
     analytics: "Vercel Analytics",
+    "search-console": "Google Search Console",
     "site-status": "사이트 상태점검",
     explorer: "프로젝트 탐색기",
   };
@@ -79,6 +96,16 @@ window.addEventListener("DOMContentLoaded", () => {
   let analyticsConnectionLoading = false;
   let analyticsSummaryLoading = false;
   let siteStatusLoading = false;
+  let searchConsoleLoading = false;
+  let searchConsoleStatus = {
+    configured: false,
+    clientSecretStored: false,
+    authorizationStored: false,
+    connected: false,
+    authenticationInProgress: false,
+    reauthenticationRequired: false,
+    lastCheckedAt: null,
+  };
   let analyticsSummaryState = {
     period: "7d",
     status: "idle",
@@ -113,6 +140,39 @@ window.addEventListener("DOMContentLoaded", () => {
     hour: "2-digit",
     minute: "2-digit",
   });
+  const searchConsoleErrorMessages = {
+    not_configured: "먼저 Google OAuth Client ID를 저장하세요.",
+    client_secret_not_configured: "OAuth JSON을 가져와 Client Secret을 저장하세요.",
+    oauth_json_selection_failed: "OAuth JSON 파일을 선택할 수 없습니다.",
+    oauth_json_read_failed: "선택한 OAuth JSON 파일을 읽을 수 없습니다.",
+    oauth_json_too_large: "OAuth JSON 파일 크기가 허용 범위를 초과했습니다.",
+    invalid_oauth_json: "Google Desktop OAuth JSON 형식이 올바르지 않습니다.",
+    already_in_progress: "다른 Search Console 작업이 진행 중입니다.",
+    invalid_client_id: "Client ID 형식이 올바르지 않습니다.",
+    credential_store_failed: "Windows 보안 저장소에 설정을 저장하지 못했습니다.",
+    credential_read_failed: "Windows 보안 저장소에서 설정을 읽지 못했습니다.",
+    credential_delete_failed: "Windows 보안 저장소에서 설정을 삭제하지 못했습니다.",
+    listener_bind_failed: "로컬 인증 대기 포트를 열지 못했습니다.",
+    browser_open_failed: "기본 브라우저를 열지 못했습니다.",
+    authorization_denied: "Google 계정 연결을 취소했습니다.",
+    authorization_failed: "Google 인증을 완료하지 못했습니다.",
+    callback_timeout: "Google 인증 대기시간이 초과되었습니다.",
+    network_timeout: "Google 서버 응답시간이 초과되었습니다.",
+    invalid_callback: "Google 인증 응답을 확인하지 못했습니다. 다시 연결하세요.",
+    state_mismatch: "인증 보안 검증에 실패했습니다. 다시 연결하세요.",
+    token_exchange_failed: "Google 인증정보 교환에 실패했습니다. 다시 연결하세요.",
+    token_invalid_grant: "Google 인증코드를 사용할 수 없습니다. 새로 다시 연결하세요.",
+    token_invalid_client: "Google OAuth Client 설정을 확인해야 합니다.",
+    token_invalid_request: "Google 인증정보 요청 형식이 올바르지 않습니다.",
+    token_unauthorized_client: "이 Google OAuth Client에서는 해당 인증방식을 사용할 수 없습니다.",
+    token_redirect_uri_mismatch: "Google 인증의 되돌아오기 주소가 일치하지 않습니다.",
+    missing_refresh_token: "Google 인증정보를 받지 못했습니다. 다시 연결하세요.",
+    scope_not_granted: "Search Console 읽기 권한이 승인되지 않았습니다.",
+    reauthentication_required: "Google 계정을 다시 연결해야 합니다.",
+    api_request_failed: "Search Console 연결 확인에 실패했습니다.",
+    revoke_failed: "Google 연결 해제를 완료하지 못했습니다. 로컬 인증정보 상태를 확인하세요.",
+    internal_error: "Search Console 연결 상태를 처리할 수 없습니다.",
+  };
 
   navigationItems.forEach((item) => {
     item.addEventListener("click", () => {
@@ -186,6 +246,34 @@ window.addEventListener("DOMContentLoaded", () => {
 
   if (runSiteStatusAuditButton) {
     runSiteStatusAuditButton.addEventListener("click", runSiteStatusAudit);
+  }
+
+  if (searchConsoleClientForm) {
+    searchConsoleClientForm.addEventListener("submit", saveSearchConsoleClientId);
+  }
+
+  if (searchConsoleClientId) {
+    searchConsoleClientId.addEventListener("input", updateSearchConsoleControls);
+  }
+
+  if (importSearchConsoleOauthJsonButton) {
+    importSearchConsoleOauthJsonButton.addEventListener("click", importSearchConsoleOauthJson);
+  }
+
+  if (deleteSearchConsoleClientIdButton) {
+    deleteSearchConsoleClientIdButton.addEventListener("click", deleteSearchConsoleClientId);
+  }
+
+  if (startSearchConsoleOauthButton) {
+    startSearchConsoleOauthButton.addEventListener("click", startSearchConsoleOauth);
+  }
+
+  if (testSearchConsoleConnectionButton) {
+    testSearchConsoleConnectionButton.addEventListener("click", testSearchConsoleConnection);
+  }
+
+  if (disconnectSearchConsoleButton) {
+    disconnectSearchConsoleButton.addEventListener("click", disconnectSearchConsole);
   }
 
   previewExportButton.addEventListener("click", async () => {
@@ -338,7 +426,342 @@ window.addEventListener("DOMContentLoaded", () => {
 
   initializationState.textContent = "관리자 앱 기반 구성이 완료되었습니다.";
   refreshVercelConnectionStatus();
+  refreshSearchConsoleStatus();
   resetSiteStatusReport();
+
+  async function refreshSearchConsoleStatus({ preserveMessage = false } = {}) {
+    setSearchConsoleLoading(true, preserveMessage ? "" : "Search Console 연결 상태를 확인하고 있습니다.");
+    try {
+      const result = await window.__TAURI__.core.invoke("get_search_console_client_status");
+      renderSearchConsoleStatus(result);
+      if (preserveMessage) {
+        return;
+      }
+      if (searchConsoleStatus.reauthenticationRequired) {
+        setSearchConsoleMessage("Google 계정을 다시 연결해야 합니다.", "warning");
+      } else if (searchConsoleStatus.connected) {
+        setSearchConsoleMessage("Search Console 읽기 전용 연결을 확인했습니다.", "success");
+      } else if (searchConsoleStatus.configured && !searchConsoleStatus.clientSecretStored) {
+        setSearchConsoleMessage("OAuth JSON을 가져와 Client Secret을 저장해 주십시오.");
+      } else if (searchConsoleStatus.authorizationStored) {
+        setSearchConsoleMessage("Google 인증이 저장되어 있습니다. 연결 확인을 실행해 주십시오.");
+      } else if (searchConsoleStatus.configured) {
+        setSearchConsoleMessage("Google 계정 연결을 진행할 수 있습니다.");
+      } else {
+        setSearchConsoleMessage("Google OAuth Client ID를 저장한 후 Google 계정을 연결할 수 있습니다.");
+      }
+    } catch (error) {
+      if (!preserveMessage) {
+        renderSearchConsoleError("internal_error");
+      }
+    } finally {
+      setSearchConsoleLoading(false);
+    }
+  }
+
+  async function saveSearchConsoleClientId(event) {
+    event.preventDefault();
+    const clientId = searchConsoleClientId.value.trim();
+    searchConsoleClientId.value = "";
+
+    if (!clientId) {
+      setSearchConsoleMessage(searchConsoleErrorMessages.invalid_client_id, "error");
+      updateSearchConsoleControls();
+      return;
+    }
+
+    setSearchConsoleLoading(true, "Client ID를 안전하게 저장하고 있습니다.");
+    try {
+      const result = await window.__TAURI__.core.invoke("save_search_console_client_id", { clientId });
+      renderSearchConsoleStatus(result);
+      setSearchConsoleMessage(
+        result.clientSecretStored
+          ? "Client ID 저장 완료"
+          : "Client ID 저장 완료. OAuth JSON을 다시 가져오십시오.",
+        result.clientSecretStored ? "success" : "warning",
+      );
+    } catch (error) {
+      renderSearchConsoleError(errorCodeFromInvoke(error));
+    } finally {
+      setSearchConsoleLoading(false);
+    }
+  }
+
+  async function importSearchConsoleOauthJson() {
+    setSearchConsoleLoading(true, "Google OAuth Desktop Client 설정을 가져오고 있습니다.");
+    try {
+      const result = await window.__TAURI__.core.invoke("import_search_console_oauth_json");
+      if (!isValidSearchConsoleOauthImportResult(result)) {
+        renderSearchConsoleError("internal_error");
+        return;
+      }
+      if (result.status === "cancelled") {
+        await refreshSearchConsoleStatus();
+        return;
+      }
+
+      await refreshSearchConsoleStatus({ preserveMessage: true });
+      setSearchConsoleMessage(
+        result.clientIdChanged
+          ? "새 OAuth Client 설정을 저장했습니다. Google 계정 재인증이 필요합니다."
+          : "Google OAuth Desktop Client 설정을 안전하게 저장했습니다.",
+        result.clientIdChanged ? "warning" : "success",
+      );
+    } catch (error) {
+      renderSearchConsoleError(errorCodeFromInvoke(error));
+    } finally {
+      setSearchConsoleLoading(false);
+    }
+  }
+
+  async function deleteSearchConsoleClientId() {
+    const confirmed = window.confirm("저장된 Google 인증도 함께 제거합니다.");
+    if (!confirmed) {
+      return;
+    }
+
+    setSearchConsoleLoading(true, "Client 설정을 삭제하고 있습니다.");
+    try {
+      const result = await window.__TAURI__.core.invoke("delete_search_console_client_id");
+      renderSearchConsoleStatus(result);
+      setSearchConsoleMessage("Client 설정 삭제 완료", "success");
+    } catch (error) {
+      renderSearchConsoleError(errorCodeFromInvoke(error));
+    } finally {
+      setSearchConsoleLoading(false);
+    }
+  }
+
+  async function startSearchConsoleOauth() {
+    setSearchConsoleLoading(true, "Google 계정 연결을 진행하고 있습니다.");
+    try {
+      const result = await window.__TAURI__.core.invoke("start_search_console_oauth");
+      if (!isValidSearchConsoleActionResult(result)) {
+        renderSearchConsoleError("internal_error");
+        return;
+      }
+      renderSearchConsoleStatus(result.clientStatus);
+      setSearchConsoleMessage("Google 계정 연결 완료", "success");
+    } catch (error) {
+      renderSearchConsoleError(errorCodeFromInvoke(error));
+      refreshSearchConsoleStatus({ preserveMessage: true });
+    } finally {
+      setSearchConsoleLoading(false);
+    }
+  }
+
+  async function testSearchConsoleConnection() {
+    setSearchConsoleLoading(true, "Search Console 연결을 확인하고 있습니다.");
+    try {
+      const result = await window.__TAURI__.core.invoke("test_search_console_connection");
+      renderSearchConsoleStatus(result);
+      setSearchConsoleMessage("Search Console 연결 확인 완료", "success");
+    } catch (error) {
+      renderSearchConsoleError(errorCodeFromInvoke(error));
+      refreshSearchConsoleStatus({ preserveMessage: true });
+    } finally {
+      setSearchConsoleLoading(false);
+    }
+  }
+
+  async function disconnectSearchConsole() {
+    setSearchConsoleLoading(true, "Google 계정 연결을 해제하고 있습니다.");
+    try {
+      const result = await window.__TAURI__.core.invoke("disconnect_search_console");
+      if (!isValidSearchConsoleActionResult(result)) {
+        renderSearchConsoleError("internal_error");
+        return;
+      }
+      renderSearchConsoleStatus(result.clientStatus);
+      setSearchConsoleMessage(
+        result.revokeAttempted && result.revokeSucceeded === false
+          ? searchConsoleErrorMessages.revoke_failed
+          : "Google 계정 연결 해제 완료",
+        result.revokeAttempted && result.revokeSucceeded === false ? "warning" : "success",
+      );
+    } catch (error) {
+      renderSearchConsoleError(errorCodeFromInvoke(error));
+      refreshSearchConsoleStatus({ preserveMessage: true });
+    } finally {
+      setSearchConsoleLoading(false);
+    }
+  }
+
+  function renderSearchConsoleStatus(result) {
+    if (!isValidSearchConsoleStatus(result)) {
+      renderSearchConsoleError("internal_error");
+      return;
+    }
+
+    searchConsoleStatus = {
+      configured: result.configured === true,
+      clientSecretStored: result.clientSecretStored === true,
+      authorizationStored: result.authorizationStored === true,
+      connected: result.connected === true,
+      authenticationInProgress: result.authenticationInProgress === true,
+      reauthenticationRequired: result.reauthenticationRequired === true,
+      lastCheckedAt: typeof result.lastCheckedAt === "string" ? result.lastCheckedAt : null,
+    };
+
+    setText(searchConsoleConfiguredStatus, searchConsoleStatus.configured ? "설정됨" : "미설정");
+    setText(searchConsoleClientSecretStatus, searchConsoleStatus.clientSecretStored ? "저장됨" : "없음");
+    setText(searchConsoleAuthorizationStatus, searchConsoleStatus.authorizationStored ? "저장됨" : "없음");
+    setText(searchConsoleConnectedStatus, searchConsoleStatus.connected ? "확인됨" : "미확인");
+    setText(searchConsoleReauthenticationStatus, searchConsoleStatus.reauthenticationRequired ? "필요" : "정상");
+    setText(
+      searchConsoleLastChecked,
+      searchConsoleStatus.lastCheckedAt ? formatSearchConsoleTimestamp(searchConsoleStatus.lastCheckedAt) : "기록 없음",
+    );
+    renderSearchConsoleBadge();
+    updateSearchConsoleControls();
+  }
+
+  function renderSearchConsoleBadge() {
+    if (!searchConsoleBadge) {
+      return;
+    }
+
+    searchConsoleBadge.classList.remove("is-connected", "is-warning", "is-error", "is-loading");
+    if (searchConsoleStatus.authenticationInProgress) {
+      searchConsoleBadge.textContent = "인증 진행 중";
+      searchConsoleBadge.classList.add("is-loading");
+    } else if (searchConsoleStatus.reauthenticationRequired) {
+      searchConsoleBadge.textContent = "재인증 필요";
+      searchConsoleBadge.classList.add("is-warning");
+    } else if (searchConsoleStatus.connected) {
+      searchConsoleBadge.textContent = "연결됨";
+      searchConsoleBadge.classList.add("is-connected");
+    } else if (searchConsoleStatus.authorizationStored) {
+      searchConsoleBadge.textContent = "인증 저장됨";
+      searchConsoleBadge.classList.add("is-warning");
+    } else if (searchConsoleStatus.configured) {
+      searchConsoleBadge.textContent = "Client 설정됨";
+    } else {
+      searchConsoleBadge.textContent = "연결되지 않음";
+    }
+  }
+
+  function updateSearchConsoleControls() {
+    const busy = searchConsoleLoading || searchConsoleStatus.authenticationInProgress;
+    const clientIdEntered = searchConsoleClientId && searchConsoleClientId.value.trim().length > 0;
+    const canStartOauth = searchConsoleStatus.configured && searchConsoleStatus.clientSecretStored;
+
+    if (searchConsoleClientId) {
+      searchConsoleClientId.disabled = busy;
+    }
+    if (saveSearchConsoleClientIdButton) {
+      saveSearchConsoleClientIdButton.disabled = busy || !clientIdEntered;
+    }
+    if (deleteSearchConsoleClientIdButton) {
+      deleteSearchConsoleClientIdButton.disabled =
+        busy ||
+        (!searchConsoleStatus.configured &&
+          !searchConsoleStatus.clientSecretStored &&
+          !searchConsoleStatus.authorizationStored);
+    }
+    if (importSearchConsoleOauthJsonButton) {
+      importSearchConsoleOauthJsonButton.disabled = busy;
+    }
+    if (startSearchConsoleOauthButton) {
+      startSearchConsoleOauthButton.disabled = busy || !canStartOauth;
+    }
+    if (testSearchConsoleConnectionButton) {
+      testSearchConsoleConnectionButton.disabled =
+        busy || !searchConsoleStatus.clientSecretStored || !searchConsoleStatus.authorizationStored;
+    }
+    if (disconnectSearchConsoleButton) {
+      disconnectSearchConsoleButton.disabled = busy || !searchConsoleStatus.authorizationStored;
+    }
+  }
+
+  function setSearchConsoleLoading(isLoading, message = "") {
+    searchConsoleLoading = isLoading;
+    updateSearchConsoleControls();
+    if (isLoading && message) {
+      setSearchConsoleMessage(message);
+    }
+  }
+
+  function setSearchConsoleMessage(message, kind = "default") {
+    if (!searchConsoleMessage) {
+      return;
+    }
+    searchConsoleMessage.textContent = message;
+    searchConsoleMessage.classList.toggle("is-error", kind === "error");
+    searchConsoleMessage.classList.toggle("is-warning", kind === "warning");
+    searchConsoleMessage.classList.toggle("is-success", kind === "success");
+  }
+
+  function renderSearchConsoleError(errorCode) {
+    const message = searchConsoleErrorMessages[errorCode] || "Google 계정 연결에 실패했습니다. 다시 시도하세요.";
+    setSearchConsoleMessage(message, "error");
+    if (searchConsoleBadge) {
+      searchConsoleBadge.classList.remove("is-connected", "is-warning", "is-loading");
+      searchConsoleBadge.classList.add("is-error");
+      searchConsoleBadge.textContent = "오류";
+    }
+    updateSearchConsoleControls();
+  }
+
+  function errorCodeFromInvoke(error) {
+    if (error && typeof error === "object" && typeof error.code === "string") {
+      return error.code;
+    }
+    if (error && typeof error === "object" && typeof error.errorCode === "string") {
+      return error.errorCode;
+    }
+    if (typeof error === "string") {
+      try {
+        const parsed = JSON.parse(error);
+        if (parsed && typeof parsed.code === "string") {
+          return parsed.code;
+        }
+        if (parsed && typeof parsed.errorCode === "string") {
+          return parsed.errorCode;
+        }
+      } catch {
+        return "unknown_error";
+      }
+    }
+    return "internal_error";
+  }
+
+  function isValidSearchConsoleStatus(result) {
+    return (
+      result !== null &&
+      typeof result === "object" &&
+      typeof result.configured === "boolean" &&
+      typeof result.clientSecretStored === "boolean" &&
+      typeof result.authorizationStored === "boolean" &&
+      typeof result.connected === "boolean" &&
+      typeof result.authenticationInProgress === "boolean" &&
+      typeof result.reauthenticationRequired === "boolean"
+    );
+  }
+
+  function isValidSearchConsoleOauthImportResult(result) {
+    if (result === null || typeof result !== "object") {
+      return false;
+    }
+    if (result.status === "cancelled") {
+      return true;
+    }
+    return (
+      result.status === "imported" &&
+      typeof result.clientIdChanged === "boolean" &&
+      result.clientSecretStored === true &&
+      typeof result.reauthenticationRequired === "boolean"
+    );
+  }
+
+  function isValidSearchConsoleActionResult(result) {
+    return result !== null && typeof result === "object" && isValidSearchConsoleStatus(result.clientStatus);
+  }
+
+  function formatSearchConsoleTimestamp(value) {
+    const date = new Date(value);
+    return Number.isNaN(date.getTime()) ? "확인할 수 없음" : date.toLocaleString("ko-KR");
+  }
 
   function setLoading(isLoading) {
     repositorySelectionLoading = isLoading;
