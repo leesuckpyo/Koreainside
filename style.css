@@ -7011,7 +7011,10 @@ ul, ol {
     .taste-korea-page .taste-content .city-small .city-image{height:210px}
     .taste-korea-page .taste-content .seoul-layout{display:grid;grid-template-columns:.82fr 1.18fr;gap:54px;align-items:start;margin-top:46px}
     .taste-korea-page .taste-content .seoul-photo{position:sticky;top:105px;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
-    .taste-korea-page .taste-content .seoul-photo img{height:650px;object-fit:cover}
+    .taste-korea-page .taste-content .seoul-photo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(3,minmax(0,1fr));gap:6px;height:650px}
+    .taste-korea-page .taste-content .seoul-photo-grid figure{position:relative;min-width:0;min-height:0;margin:0;overflow:hidden;background:#d8d0c1}
+    .taste-korea-page .taste-content .seoul-photo-grid img{width:100%;height:100%;object-fit:cover}
+    .taste-korea-page .taste-content .seoul-photo-grid figcaption{position:absolute;left:10px;bottom:10px;max-width:calc(100% - 20px);padding:5px 8px;border-radius:999px;background:rgba(20,19,15,.76);color:#fff;font-size:.68rem;font-weight:800;line-height:1;overflow-wrap:anywhere;backdrop-filter:blur(4px)}
     .taste-korea-page .taste-content .neighborhoods{display:grid;gap:12px}
     .taste-korea-page .taste-content .hood{display:grid;grid-template-columns:112px 1fr auto;gap:18px;align-items:center;background:var(--white);border:1px solid var(--line);border-radius:18px;padding:18px 20px}
     .taste-korea-page .taste-content .hood h3{margin:0;font-size:1.1rem}
@@ -7053,7 +7056,7 @@ ul, ol {
       .taste-korea-page .taste-content .city-grid{grid-template-columns:1fr 1fr}
       .taste-korea-page .taste-content .city-card:first-child{grid-column:1/-1;grid-row:auto}
       .taste-korea-page .taste-content .seoul-photo{position:relative;top:auto}
-      .taste-korea-page .taste-content .seoul-photo img{height:420px}
+      .taste-korea-page .taste-content .seoul-photo-grid{height:480px}
       .taste-korea-page .taste-content .decision-table th,.taste-korea-page .taste-content .decision-table td{padding:16px}
       .taste-korea-page .taste-content .stay-panel{padding:46px 34px}
       .taste-korea-page .taste-content .footer-grid{grid-template-columns:1fr}
@@ -7072,6 +7075,7 @@ ul, ol {
       .taste-korea-page .taste-content .city-grid{grid-template-columns:1fr}
       .taste-korea-page .taste-content .hood{grid-template-columns:1fr auto;gap:8px}
       .taste-korea-page .taste-content .hood > div:nth-child(2){grid-column:1/-1;grid-row:2}
+      .taste-korea-page .taste-content .seoul-photo-grid{height:540px}
       .taste-korea-page .taste-content .decision-table-wrap{overflow-x:auto}
       .taste-korea-page .taste-content .decision-table{min-width:670px}
       .taste-korea-page .taste-content .stay-panel{padding:38px 25px;border-radius:26px}
