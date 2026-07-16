@@ -7,6 +7,262 @@
   <link rel="canonical" href="https://www.getkoreainside.com/taste-korea.html">
   <title>Taste Korea: Food Experiences, Cities &amp; Where to Stay | Korea Inside</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    .taste-korea-page .taste-content .hero {
+      min-height: clamp(600px, 70vh, 680px);
+      padding-top: 48px;
+      padding-bottom: 44px;
+    }
+
+    .taste-korea-page .taste-content .hero h1 {
+      display: flex;
+      width: max-content;
+      margin-right: auto;
+      margin-left: auto;
+      align-items: baseline;
+      justify-content: center;
+      gap: 18px;
+      font-size: clamp(4rem, 5.4vw, 5.6rem);
+      line-height: .88;
+      letter-spacing: -.06em;
+      white-space: nowrap;
+    }
+
+    .taste-korea-page .taste-content .hero h1 em {
+      display: inline;
+      width: auto;
+      margin: 0;
+      font-size: .58em;
+      line-height: 1;
+      transform: none;
+    }
+
+    .taste-korea-page .taste-content .mosaic {
+      transform: none;
+    }
+
+    .taste-korea-page .taste-content .hero .eyebrow {
+      font-size: .66rem;
+    }
+
+    .taste-korea-page .taste-content .hero-copy {
+      max-width: 590px;
+      margin-bottom: 32px;
+      font-size: clamp(.96rem, 1vw, 1.05rem);
+      line-height: 1.8;
+    }
+
+    .taste-korea-page .taste-content .hero-note {
+      font-size: .7rem;
+      line-height: 1.35;
+    }
+
+    @media (min-width: 901px) {
+      .taste-korea-page .taste-content .hero-grid {
+        grid-template-columns: 1.03fr .97fr;
+        gap: 56px;
+      }
+
+      .taste-korea-page .taste-content .hero-grid > div:first-child {
+        text-align: left;
+      }
+
+      .taste-korea-page .taste-content .hero h1 {
+        margin-right: 0;
+        margin-left: 0;
+        justify-content: flex-start;
+        gap: 14px;
+      }
+
+      .taste-korea-page .taste-content .hero h1 em {
+        font-size: .6em;
+      }
+
+      .taste-korea-page .taste-content .hero-copy {
+        width: 100%;
+        max-width: 650px;
+        margin-right: 0;
+        margin-bottom: 36px;
+        margin-left: 0;
+        font-size: clamp(1.06rem, 1.12vw, 1.12rem);
+        line-height: 1.85;
+        text-align: left;
+      }
+
+      .taste-korea-page .taste-content .hero-note {
+        margin-right: 0;
+        margin-left: 0;
+        justify-content: flex-start;
+        text-align: left;
+      }
+    }
+
+    .taste-korea-page .taste-content .principle {
+      margin-top: 0;
+    }
+
+    .taste-korea-page .taste-content .section > .wrap > .eyebrow {
+      margin-bottom: 14px;
+      font-size: .7rem;
+      line-height: 1.2;
+      letter-spacing: .16em;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .taste-korea-page .taste-content .section > .wrap > .section-title {
+      width: 100%;
+      max-width: 1050px;
+      margin-top: 0;
+      font-size: clamp(2.55rem, 3vw, 3.45rem);
+      line-height: 1.02;
+      letter-spacing: -.045em;
+      text-wrap: wrap;
+      white-space: normal;
+    }
+
+    .taste-korea-page .taste-content .stay-panel h2 {
+      max-width: 680px;
+      font-size: clamp(2.4rem, 3.4vw, 3.3rem);
+      line-height: 1;
+    }
+
+    .taste-korea-page #experiences .section-lead {
+      max-width: 790px;
+      font-size: clamp(.96rem, 1vw, 1.05rem);
+      line-height: 1.58;
+    }
+
+    .taste-korea-page #experiences .exp-body {
+      inset: auto 24px 22px;
+    }
+
+    .taste-korea-page #experiences .exp-no {
+      font-size: .66rem;
+      line-height: 1.2;
+      letter-spacing: .08em;
+    }
+
+    .taste-korea-page #experiences .exp-card h3 {
+      margin: .4rem 0 10px;
+      font-size: clamp(1.25rem, 1.55vw, 1.7rem);
+      line-height: 1.04;
+      letter-spacing: -.03em;
+      text-wrap: balance;
+    }
+
+    .taste-korea-page #experiences .exp-card p {
+      font-size: clamp(.86rem, .9vw, .94rem);
+      line-height: 1.5;
+    }
+
+    .taste-korea-page #experiences .tags {
+      gap: 7px;
+      margin-top: 13px;
+    }
+
+    .taste-korea-page #experiences .tag {
+      padding: 5px 9px;
+      font-size: .66rem;
+      line-height: 1.2;
+    }
+
+    .taste-korea-page #seoul .section-lead {
+      max-width: 800px;
+      font-size: clamp(1rem, 1.05vw, 1.08rem);
+      line-height: 1.65;
+    }
+
+    .taste-korea-page #seoul .hood h3 {
+      font-size: 1.1rem;
+      line-height: 1.25;
+    }
+
+    .taste-korea-page #seoul .hood p {
+      font-size: .91rem;
+      line-height: 1.5;
+    }
+
+    .taste-korea-page #seoul .hood-type {
+      font-size: .7rem;
+      letter-spacing: .05em;
+    }
+
+    .taste-korea-page #seoul .seoul-photo-grid figcaption {
+      padding: 4px 7px;
+      font-size: .65rem;
+    }
+
+    @media (max-width: 900px) {
+      .taste-korea-page .taste-content .hero {
+        min-height: auto;
+        padding-top: 42px;
+        padding-bottom: 36px;
+      }
+
+      .taste-korea-page .taste-content .section > .wrap > .eyebrow {
+        margin-bottom: 12px;
+        font-size: .66rem;
+      }
+
+      .taste-korea-page .taste-content .section > .wrap > .section-title {
+        max-width: 100%;
+        font-size: clamp(2rem, 8.5vw, 2.55rem);
+        line-height: 1.04;
+        text-wrap: balance;
+        white-space: normal;
+      }
+
+      .taste-korea-page .taste-content .hero-copy {
+        margin-bottom: 28px;
+        font-size: 1rem;
+        line-height: 1.68;
+      }
+
+      .taste-korea-page #seoul .hood h3 {
+        font-size: 1rem;
+      }
+
+      .taste-korea-page #seoul .hood p {
+        font-size: .9rem;
+      }
+
+      .taste-korea-page #seoul .hood-type {
+        font-size: .66rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .taste-korea-page .taste-content .hero h1 {
+        display: block;
+        width: 100%;
+        font-size: clamp(3.1rem, 15vw, 4rem);
+        white-space: normal;
+      }
+
+      .taste-korea-page .taste-content .hero h1 em {
+        display: block;
+        width: max-content;
+        margin: 4px auto 0;
+        font-size: .7em;
+        line-height: 1;
+      }
+
+      .taste-korea-page #experiences .exp-body {
+        inset: auto 20px 20px;
+      }
+
+      .taste-korea-page #experiences .exp-card h3 {
+        font-size: clamp(1.3rem, 6.2vw, 1.65rem);
+        line-height: 1.05;
+      }
+
+      .taste-korea-page #experiences .exp-card p {
+        font-size: .88rem;
+        line-height: 1.48;
+      }
+    }
+  </style>
 </head>
 <body class="taste-korea-page">
 <header class="header site-header" data-common-header>
