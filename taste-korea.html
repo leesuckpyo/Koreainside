@@ -127,6 +127,117 @@
       line-height: 1;
     }
 
+    .taste-korea-page .taste-content .stay-panel {
+      padding: 52px;
+    }
+
+    .taste-korea-page .taste-content .next-step-intro,
+    .taste-korea-page .taste-content .next-step-grid {
+      position: relative;
+      z-index: 1;
+    }
+
+    .taste-korea-page .taste-content .next-step-intro h2 {
+      max-width: 780px;
+      margin: 0 0 15px;
+      font-size: clamp(2.35rem, 3.2vw, 3.25rem);
+      line-height: 1;
+    }
+
+    .taste-korea-page .taste-content .stay-panel .next-step-intro > p {
+      max-width: 760px;
+      margin: 0;
+      color: #f1d9d2;
+      font-size: 1rem;
+      line-height: 1.65;
+    }
+
+    .taste-korea-page .taste-content .next-step-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 30px;
+    }
+
+    .taste-korea-page .taste-content .next-step-card {
+      display: flex;
+      min-width: 0;
+      min-height: 218px;
+      flex-direction: column;
+      padding: 24px;
+      border: 1px solid rgba(99, 36, 28, .14);
+      border-radius: 20px;
+      background: var(--white);
+      color: var(--ink);
+      box-shadow: 0 8px 22px rgba(31, 18, 13, .08);
+      text-decoration: none;
+    }
+
+    .taste-korea-page .taste-content a.next-step-card {
+      transition: transform .18s ease, border-color .18s ease, background-color .18s ease;
+    }
+
+    .taste-korea-page .taste-content a.next-step-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(99, 36, 28, .34);
+      background: #fffdf9;
+    }
+
+    .taste-korea-page .taste-content a.next-step-card:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 3px;
+    }
+
+    .taste-korea-page .taste-content .next-step-card__label {
+      display: block;
+      margin-bottom: 12px;
+      color: var(--red-dark);
+      font-size: .7rem;
+      font-weight: 900;
+      line-height: 1.2;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .taste-korea-page .taste-content .next-step-card__title {
+      margin: 0 0 10px;
+      color: var(--ink);
+      font-size: 1.28rem;
+      line-height: 1.15;
+      letter-spacing: -.025em;
+    }
+
+    .taste-korea-page .taste-content .stay-panel .next-step-card__description {
+      max-width: none;
+      margin: 0;
+      color: #625d54;
+      font-size: .88rem;
+      line-height: 1.55;
+    }
+
+    .taste-korea-page .taste-content .next-step-card__action,
+    .taste-korea-page .taste-content .next-step-card__status {
+      display: block;
+      margin-top: auto;
+      padding-top: 20px;
+      color: var(--red-dark);
+      font-size: .82rem;
+      font-weight: 900;
+      line-height: 1.35;
+    }
+
+    .taste-korea-page .taste-content .next-step-card--disabled {
+      cursor: default;
+      opacity: .8;
+      border-color: rgba(255, 255, 255, .42);
+      background: #f6eee5;
+      box-shadow: none;
+    }
+
+    .taste-korea-page .taste-content .next-step-card__status {
+      color: #7e4b42;
+    }
+
     .taste-korea-page #experiences .section-lead {
       max-width: 790px;
       font-size: clamp(.96rem, 1vw, 1.05rem);
@@ -193,6 +304,90 @@
       font-size: .65rem;
     }
 
+    .taste-korea-page .taste-content .stay-transition-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(360px, .8fr);
+      gap: 32px;
+      align-items: center;
+      margin-top: 30px;
+      padding: 28px 30px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: #fbf8f1;
+      box-shadow: 0 8px 24px rgba(35, 26, 14, .04);
+    }
+
+    .taste-korea-page .taste-content .stay-transition-card__copy,
+    .taste-korea-page .taste-content .stay-transition-card__actions {
+      min-width: 0;
+    }
+
+    .taste-korea-page .taste-content .stay-transition-card__eyebrow {
+      margin: 0 0 8px;
+      color: var(--red-dark);
+      font-size: .68rem;
+      font-weight: 900;
+      line-height: 1.2;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .taste-korea-page .taste-content .stay-transition-card__title {
+      margin: 0 0 9px;
+      color: var(--ink);
+      font-size: clamp(1.45rem, 2vw, 1.9rem);
+      line-height: 1.08;
+      letter-spacing: -.035em;
+    }
+
+    .taste-korea-page .taste-content .stay-transition-card__description {
+      max-width: 680px;
+      margin: 0;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.55;
+    }
+
+    .taste-korea-page .taste-content .stay-transition-card__links {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .taste-korea-page .taste-content .stay-transition-card__link {
+      display: inline-flex;
+      min-width: 0;
+      min-height: 44px;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--white);
+      color: var(--ink);
+      font-size: .8rem;
+      font-weight: 850;
+      line-height: 1.2;
+      text-align: center;
+    }
+
+    .taste-korea-page .taste-content .stay-transition-card__link:hover {
+      border-color: rgba(99, 36, 28, .38);
+      background: #f5efe5;
+    }
+
+    .taste-korea-page .taste-content .stay-transition-card__link:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 2px;
+    }
+
+    .taste-korea-page .taste-content .stay-transition-card__note {
+      margin: 11px 0 0;
+      color: var(--muted);
+      font-size: .72rem;
+      line-height: 1.5;
+    }
+
     @media (max-width: 900px) {
       .taste-korea-page .taste-content .hero {
         min-height: auto;
@@ -230,6 +425,24 @@
       .taste-korea-page #seoul .hood-type {
         font-size: .66rem;
       }
+
+      .taste-korea-page .taste-content .stay-transition-card {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .taste-korea-page .taste-content .stay-panel {
+        padding: 42px 32px;
+      }
+
+      .taste-korea-page .taste-content .next-step-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .taste-korea-page .taste-content .next-step-card {
+        min-height: 0;
+      }
     }
 
     @media (max-width: 640px) {
@@ -260,6 +473,42 @@
       .taste-korea-page #experiences .exp-card p {
         font-size: .88rem;
         line-height: 1.48;
+      }
+
+      .taste-korea-page .taste-content .stay-transition-card {
+        margin-top: 24px;
+        padding: 22px 18px;
+        border-radius: 18px;
+      }
+
+      .taste-korea-page .taste-content .stay-transition-card__title {
+        font-size: 1.45rem;
+      }
+
+      .taste-korea-page .taste-content .stay-transition-card__links {
+        grid-template-columns: 1fr;
+      }
+
+      .taste-korea-page .taste-content .stay-panel {
+        padding: 32px 20px;
+        border-radius: 26px;
+      }
+
+      .taste-korea-page .taste-content .next-step-intro h2 {
+        font-size: 2.1rem;
+      }
+
+      .taste-korea-page .taste-content .stay-panel .next-step-intro > p {
+        font-size: .94rem;
+        line-height: 1.58;
+      }
+
+      .taste-korea-page .taste-content .next-step-grid {
+        margin-top: 24px;
+      }
+
+      .taste-korea-page .taste-content .next-step-card {
+        padding: 21px;
       }
     }
   </style>
@@ -547,6 +796,21 @@
 <div><b>Jeonju</b><span>Traditional focus · often one night · compact but visitor-heavy core</span></div>
 <div><b>Jeju</b><span>Nature and island food · two or more nights · route and vehicle matter</span></div>
 </div>
+<aside class="stay-transition-card" aria-labelledby="stay-transition-card-korea-title">
+<div class="stay-transition-card__copy">
+<p class="stay-transition-card__eyebrow">STAYS ACROSS KOREA</p>
+<h3 class="stay-transition-card__title" id="stay-transition-card-korea-title">Already know which city fits your trip?</h3>
+<p class="stay-transition-card__description">Search stays across Korea, then choose your city, travel dates, cancellation terms and room type.</p>
+</div>
+<div class="stay-transition-card__actions">
+<div class="stay-transition-card__links" aria-label="Direct links to accommodation options across Korea">
+<a class="stay-transition-card__link" href="https://www.expedia.com/All-South-Korea-Hotels.d94.Travel-Guide-City-All-Hotels" target="_blank" rel="noopener noreferrer" data-link-stage="direct" data-placement="taste-korea-city-summary-card" data-provider="expedia">Expedia</a>
+<a class="stay-transition-card__link" href="https://www.booking.com/country/kr.html" target="_blank" rel="noopener noreferrer" data-link-stage="direct" data-placement="taste-korea-city-summary-card" data-provider="booking">Booking.com</a>
+<a class="stay-transition-card__link" href="https://www.agoda.com/country/south-korea.html" target="_blank" rel="noopener noreferrer" data-link-stage="direct" data-placement="taste-korea-city-summary-card" data-provider="agoda">Agoda</a>
+</div>
+<p class="stay-transition-card__note">These are direct, non-affiliate links. Korea Inside does not earn a commission from these bookings at this time.</p>
+</div>
+</aside>
 </div>
 </section>
 <section class="section" id="seoul">
@@ -670,6 +934,21 @@
 <div><b>Brands &amp; trend spaces</b><span>Choose Seongsu</span></div>
 <div><b>First-trip convenience</b><span>Choose Myeongdong</span></div>
 </div>
+<aside class="stay-transition-card" aria-labelledby="stay-transition-card-title">
+<div class="stay-transition-card__copy">
+<p class="stay-transition-card__eyebrow">STAY OPTIONS</p>
+<h3 class="stay-transition-card__title" id="stay-transition-card-title">Found the Seoul area that fits your food trip?</h3>
+<p class="stay-transition-card__description">Check current stays, then compare location, cancellation terms, room size and the route from the station.</p>
+</div>
+<div class="stay-transition-card__actions">
+<div class="stay-transition-card__links" aria-label="Direct links to Seoul accommodation options">
+<a class="stay-transition-card__link" href="https://www.expedia.com/All-Seoul-Hotels.d178308.Travel-Guide-City-All-Hotels" target="_blank" rel="noopener noreferrer" data-link-stage="direct" data-placement="taste-seoul-context-card" data-provider="expedia">Expedia</a>
+<a class="stay-transition-card__link" href="https://www.booking.com/city/kr/seoul.html" target="_blank" rel="noopener noreferrer" data-link-stage="direct" data-placement="taste-seoul-context-card" data-provider="booking">Booking.com</a>
+<a class="stay-transition-card__link" href="https://www.agoda.com/city/seoul-kr.html" target="_blank" rel="noopener noreferrer" data-link-stage="direct" data-placement="taste-seoul-context-card" data-provider="agoda">Agoda</a>
+</div>
+<p class="stay-transition-card__note">These are direct, non-affiliate links. Korea Inside does not earn a commission from these bookings at this time.</p>
+</div>
+</aside>
 </div>
 </section>
 <section class="section decision" id="decision">
@@ -764,11 +1043,31 @@
 <section class="stay" id="stay">
 <div class="wrap">
 <div class="stay-panel">
-<div class="eyebrow taste-stay-eyebrow">Your next decision</div>
-<h2>Where should food lovers stay in Seoul?</h2>
-<p>Compare Jongno, Mapo, Hongdae and Yeonnam, Euljiro, Seongsu and Myeongdong by food style, evening atmosphere, transport and overall trip fit. The best base is the one that supports several days—not the address closest to one famous restaurant.</p>
-<a class="stay-button" href="accommodation.html">Compare Seoul areas to stay <span>→</span></a>
-<div class="disclosure">Some links on the next page may be affiliate links. If you book through them, Korea Inside may earn a commission at no extra cost to you. If this guide helped you make a better choice, using those links is one simple way to support independent, practical travel information.</div>
+<div class="next-step-intro">
+<div class="eyebrow taste-stay-eyebrow">CONTINUE PLANNING</div>
+<h2>Turn your food trip into a complete Korea plan.</h2>
+<p>Choose where to stay, prepare mobile data before arrival, or plan where to shop for K-beauty. Continue with the Korea Inside guide that matches your next decision.</p>
+</div>
+<div class="next-step-grid">
+<a class="next-step-card" href="accommodation.html" data-link-stage="internal" data-provider="korea-inside" data-placement="taste-footer-hub" data-destination="stay">
+<span class="next-step-card__label">STAY IN KOREA</span>
+<h3 class="next-step-card__title">Choose the right base for your trip.</h3>
+<p class="next-step-card__description">Compare cities and Seoul neighborhoods by transport, atmosphere and travel style.</p>
+<span class="next-step-card__action">Explore where to stay →</span>
+</a>
+<article class="next-step-card next-step-card--disabled" aria-disabled="true" data-link-stage="coming-soon" data-provider="korea-inside" data-placement="taste-footer-hub" data-destination="k-beauty">
+<span class="next-step-card__label">K-BEAUTY</span>
+<h3 class="next-step-card__title">Plan where and how to shop.</h3>
+<p class="next-step-card__description">Understand store options, shopping areas and what to check before buying.</p>
+<span class="next-step-card__status">K-Beauty guide coming soon</span>
+</article>
+<a class="next-step-card" href="esim.html" data-link-stage="internal" data-provider="korea-inside" data-placement="taste-footer-hub" data-destination="esim">
+<span class="next-step-card__label">eSIM</span>
+<h3 class="next-step-card__title">Prepare mobile data before arrival.</h3>
+<p class="next-step-card__description">Compare data needs, trip length, device compatibility and activation timing.</p>
+<span class="next-step-card__action">Compare eSIM options →</span>
+</a>
+</div>
 </div>
 </div>
 </section>
