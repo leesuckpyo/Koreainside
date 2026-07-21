@@ -99,6 +99,9 @@ window.addEventListener("DOMContentLoaded", () => {
   const searchConsoleTopQueries = document.querySelector("#search-console-top-queries");
   const searchConsoleTopQueriesStatus = document.querySelector("#search-console-top-queries-status");
   const searchConsoleTopQueriesBody = document.querySelector("#search-console-top-queries-body");
+  const searchConsoleTopCountries = document.querySelector("#search-console-top-countries");
+  const searchConsoleTopCountriesStatus = document.querySelector("#search-console-top-countries-status");
+  const searchConsoleTopCountriesBody = document.querySelector("#search-console-top-countries-body");
   const viewTitles = {
     dashboard: "운영 대시보드",
     analytics: "Vercel Analytics",
@@ -116,6 +119,7 @@ window.addEventListener("DOMContentLoaded", () => {
   let searchConsoleSummaryLoading = false;
   let searchConsoleTopPagesLoading = false;
   let searchConsoleTopQueriesLoading = false;
+  let searchConsoleTopCountriesLoading = false;
   let searchConsoleSummaryAttempted = false;
   let searchConsoleStatus = {
     configured: false,
@@ -511,6 +515,7 @@ window.addEventListener("DOMContentLoaded", () => {
       searchConsoleSummaryAttempted ||
       searchConsoleSummaryLoading ||
       searchConsoleTopQueriesLoading ||
+      searchConsoleTopCountriesLoading ||
       searchConsoleLoading
     ) {
       return;
@@ -523,6 +528,7 @@ window.addEventListener("DOMContentLoaded", () => {
       searchConsoleSummaryLoading ||
       searchConsoleTopPagesLoading ||
       searchConsoleTopQueriesLoading ||
+      searchConsoleTopCountriesLoading ||
       searchConsoleLoading
     ) {
       return;
@@ -545,6 +551,7 @@ window.addEventListener("DOMContentLoaded", () => {
     searchConsoleSummaryAttempted = true;
     resetSearchConsoleTopPages("요약 데이터와 같은 기간의 상위 페이지를 준비하고 있습니다.");
     setSearchConsoleTopQueriesStatus("요약 데이터와 같은 기간의 상위 검색어를 준비하고 있습니다.");
+    setSearchConsoleTopCountriesStatus("요약 데이터와 같은 기간의 상위 노출 국가를 준비하고 있습니다.");
     setSearchConsoleSummaryLoading(true);
     setSearchConsoleSummaryMessage("Search Console 최근 28일 실적을 조회하고 있습니다.");
     let shouldRefreshConnectionStatus = false;
@@ -565,6 +572,7 @@ window.addEventListener("DOMContentLoaded", () => {
       if (summaryResult) {
         await loadSearchConsoleTopPages(summaryResult);
         await loadSearchConsoleTopQueries(summaryResult);
+        await loadSearchConsoleTopCountries(summaryResult);
       }
       if (shouldRefreshConnectionStatus) {
         refreshSearchConsoleStatus({ preserveMessage: true });
@@ -594,6 +602,7 @@ window.addEventListener("DOMContentLoaded", () => {
     setSearchConsoleSummaryMessage(message, "error");
     renderSearchConsoleTopPagesError(errorCode);
     renderSearchConsoleTopQueriesError(errorCode);
+    renderSearchConsoleTopCountriesError(errorCode);
   }
 
   function resetSearchConsoleSummary() {
@@ -608,6 +617,7 @@ window.addEventListener("DOMContentLoaded", () => {
     setSearchConsoleSummaryMessage("Google 계정을 연결하면 최근 검색 실적을 조회합니다.");
     resetSearchConsoleTopPages();
     resetSearchConsoleTopQueries();
+    resetSearchConsoleTopCountries();
   }
 
   async function loadSearchConsoleTopPages(summaryResult) {
@@ -783,6 +793,94 @@ window.addEventListener("DOMContentLoaded", () => {
     searchConsoleTopQueriesStatus.classList.toggle("is-error", kind === "error");
   }
 
+  async function loadSearchConsoleTopCountries(summaryResult) {
+    setSearchConsoleTopCountriesLoading(true);
+    setSearchConsoleTopCountriesStatus("최근 28일 상위 노출 국가를 조회하고 있습니다.");
+    try {
+      const result = await window.__TAURI__.core.invoke("get_search_console_top_countries", {
+        startDate: summaryResult.startDate,
+        endDate: summaryResult.endDate,
+      });
+      if (!isValidSearchConsoleTopCountries(result, summaryResult)) {
+        renderSearchConsoleTopCountriesError("search_analytics_invalid_response");
+        return;
+      }
+      renderSearchConsoleTopCountries(result);
+    } catch (error) {
+      renderSearchConsoleTopCountriesError(errorCodeFromInvoke(error));
+    } finally {
+      setSearchConsoleTopCountriesLoading(false);
+    }
+  }
+
+  function renderSearchConsoleTopCountries(result) {
+    if (!searchConsoleTopCountriesBody) {
+      return;
+    }
+    const fragment = document.createDocumentFragment();
+    result.rows.forEach((country) => {
+      const row = document.createElement("tr");
+      const countryCell = document.createElement("td");
+      const countryText = document.createElement("span");
+      countryText.className = "search-console-page-path";
+      countryText.textContent = country.countryName
+        ? `${country.countryName} (${country.countryCode})`
+        : country.countryCode;
+      countryCell.append(countryText);
+
+      const values = [
+        formatSearchConsoleCount(country.clicks),
+        formatSearchConsoleCount(country.impressions),
+        `${(country.ctr * 100).toFixed(2)}%`,
+        country.position.toFixed(1),
+      ];
+      row.append(countryCell);
+      values.forEach((value) => {
+        const cell = document.createElement("td");
+        cell.textContent = value;
+        row.append(cell);
+      });
+      fragment.append(row);
+    });
+    searchConsoleTopCountriesBody.replaceChildren(fragment);
+    setSearchConsoleTopCountriesStatus(
+      result.rows.length > 0
+        ? "최근 28일 노출 기준 상위 10개 국가입니다."
+        : "해당 기간에 국가별 Search Console 데이터가 없습니다.",
+    );
+  }
+
+  function renderSearchConsoleTopCountriesError(errorCode) {
+    const message =
+      searchConsoleSummaryErrorMessages[errorCode] || "Search Console 상위 노출 국가를 조회할 수 없습니다.";
+    setSearchConsoleTopCountriesStatus(message, "error");
+  }
+
+  function resetSearchConsoleTopCountries(
+    message = "Google 계정을 연결하면 상위 노출 국가를 조회합니다.",
+  ) {
+    if (searchConsoleTopCountriesBody) {
+      searchConsoleTopCountriesBody.replaceChildren();
+    }
+    setSearchConsoleTopCountriesStatus(message);
+  }
+
+  function setSearchConsoleTopCountriesLoading(isLoading) {
+    searchConsoleTopCountriesLoading = isLoading;
+    if (searchConsoleTopCountries) {
+      searchConsoleTopCountries.setAttribute("aria-busy", String(isLoading));
+    }
+    updateSearchConsoleControls();
+  }
+
+  function setSearchConsoleTopCountriesStatus(message, kind = "default") {
+    if (!searchConsoleTopCountriesStatus) {
+      return;
+    }
+    searchConsoleTopCountriesStatus.textContent = message;
+    searchConsoleTopCountriesStatus.classList.toggle("is-error", kind === "error");
+  }
+
   function searchConsolePagePath(pageUrl) {
     const parsed = new URL(pageUrl);
     return parsed.pathname || "/";
@@ -879,6 +977,48 @@ window.addEventListener("DOMContentLoaded", () => {
         (!previous ||
           previous.clicks > query.clicks ||
           (previous.clicks === query.clicks && previous.impressions >= query.impressions))
+      );
+    });
+  }
+
+  function isValidSearchConsoleTopCountries(result, summaryResult) {
+    if (
+      result === null ||
+      typeof result !== "object" ||
+      result.startDate !== summaryResult.startDate ||
+      result.endDate !== summaryResult.endDate ||
+      result.siteUrl !== summaryResult.siteUrl ||
+      typeof result.fetchedAtUtc !== "string" ||
+      Number.isNaN(new Date(result.fetchedAtUtc).getTime()) ||
+      !Array.isArray(result.rows) ||
+      result.rows.length > 10
+    ) {
+      return false;
+    }
+
+    return result.rows.every((country, index) => {
+      const previous = result.rows[index - 1];
+      return (
+        country !== null &&
+        typeof country === "object" &&
+        typeof country.countryCode === "string" &&
+        /^[A-Z]{3}$/.test(country.countryCode) &&
+        (country.countryName === null ||
+          (typeof country.countryName === "string" &&
+            country.countryName.length > 0 &&
+            country.countryName === country.countryName.trim())) &&
+        Number.isFinite(country.clicks) &&
+        country.clicks >= 0 &&
+        Number.isFinite(country.impressions) &&
+        country.impressions >= 0 &&
+        Number.isFinite(country.ctr) &&
+        country.ctr >= 0 &&
+        country.ctr <= 1 &&
+        Number.isFinite(country.position) &&
+        country.position >= 0 &&
+        (!previous ||
+          previous.impressions > country.impressions ||
+          (previous.impressions === country.impressions && previous.clicks >= country.clicks))
       );
     });
   }
@@ -1133,6 +1273,7 @@ window.addEventListener("DOMContentLoaded", () => {
       searchConsoleSummaryLoading ||
       searchConsoleTopPagesLoading ||
       searchConsoleTopQueriesLoading ||
+      searchConsoleTopCountriesLoading ||
       searchConsoleStatus.authenticationInProgress;
     const clientIdEntered = searchConsoleClientId && searchConsoleClientId.value.trim().length > 0;
     const canStartOauth = searchConsoleStatus.configured && searchConsoleStatus.clientSecretStored;

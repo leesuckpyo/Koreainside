@@ -64,6 +64,8 @@ const SEARCH_ANALYTICS_DISCOVERY_DAYS: i64 = 480;
 const SEARCH_ANALYTICS_ROW_LIMIT: u32 = 25_000;
 const SEARCH_ANALYTICS_TOP_PAGES_LIMIT: usize = 10;
 const SEARCH_ANALYTICS_TOP_QUERIES_LIMIT: usize = 10;
+const SEARCH_ANALYTICS_TOP_COUNTRIES_ROW_LIMIT: u32 = 250;
+const SEARCH_ANALYTICS_TOP_COUNTRIES_LIMIT: usize = 10;
 const SEARCH_CONSOLE_SITE_PRIORITY: [&str; 3] = [
     "https://www.getkoreainside.com/",
     "https://getkoreainside.com/",
@@ -176,6 +178,27 @@ pub struct SearchConsoleTopQueries {
 #[serde(rename_all = "camelCase")]
 struct SearchConsoleTopQuery {
     query: String,
+    clicks: f64,
+    impressions: f64,
+    ctr: f64,
+    position: f64,
+}
+
+#[derive(Debug, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct SearchConsoleTopCountries {
+    start_date: String,
+    end_date: String,
+    fetched_at_utc: String,
+    site_url: String,
+    rows: Vec<SearchConsoleTopCountry>,
+}
+
+#[derive(Debug, Serialize)]
+#[serde(rename_all = "camelCase")]
+struct SearchConsoleTopCountry {
+    country_code: String,
+    country_name: Option<&'static str>,
     clicks: f64,
     impressions: f64,
     ctr: f64,
@@ -1033,6 +1056,47 @@ pub async fn get_search_console_top_queries(
     Ok(result)
 }
 
+#[tauri::command]
+pub async fn get_search_console_top_countries(
+    start_date: String,
+    end_date: String,
+) -> CommandResult<SearchConsoleTopCountries> {
+    let (start_date, end_date) = validate_search_analytics_period(&start_date, &end_date)
+        .map_err(SearchConsoleCommandError::from)?;
+    let _guard =
+        OperationGuard::begin(OperationKind::Refresh).map_err(SearchConsoleCommandError::from)?;
+    read_required_client_id().map_err(SearchConsoleCommandError::from)?;
+    read_credential(REFRESH_TOKEN_ACCOUNT).map_err(|error| match error {
+        KeyringError::NoEntry => SearchConsoleCommandError::from(SearchConsoleError::NotConfigured),
+        _ => SearchConsoleCommandError::from(SearchConsoleError::CredentialReadFailed),
+    })?;
+
+    let client = secure_http_client().map_err(SearchConsoleCommandError::from)?;
+    let access_token = refresh_access_token()
+        .await
+        .map_err(SearchConsoleCommandError::from)?;
+    let endpoints = SearchConsoleApiEndpoints {
+        sites: SITES_LIST_ENDPOINT,
+        search_analytics_base: SEARCH_ANALYTICS_ENDPOINT_BASE,
+    };
+    let result = fetch_search_console_top_countries_with_refresh(
+        &client,
+        access_token,
+        || async {
+            clear_cached_access_token()?;
+            refresh_access_token().await
+        },
+        endpoints,
+        start_date,
+        end_date,
+    )
+    .await
+    .map_err(SearchConsoleCommandError::from)?;
+
+    set_last_checked_now(false).map_err(SearchConsoleCommandError::from)?;
+    Ok(result)
+}
+
 async fn refresh_access_token() -> Result<String, SearchConsoleError> {
     if let Some(token) = cached_access_token()? {
         return Ok(token);
@@ -1392,6 +1456,79 @@ async fn fetch_search_console_top_queries_once(
     })
 }
 
+async fn fetch_search_console_top_countries_with_refresh<F, Fut>(
+    client: &reqwest::Client,
+    access_token: String,
+    refresh_access_token: F,
+    endpoints: SearchConsoleApiEndpoints<'_>,
+    start_date: Date,
+    end_date: Date,
+) -> Result<SearchConsoleTopCountries, SearchConsoleError>
+where
+    F: FnOnce() -> Fut,
+    Fut: std::future::Future<Output = Result<String, SearchConsoleError>>,
+{
+    match fetch_search_console_top_countries_once(
+        client,
+        &access_token,
+        endpoints,
+        start_date,
+        end_date,
+    )
+    .await
+    {
+        Ok(result) => Ok(result),
+        Err(SearchConsoleSummaryFetchError::Unauthorized) => {
+            let refreshed_access_token = refresh_access_token().await?;
+            fetch_search_console_top_countries_once(
+                client,
+                &refreshed_access_token,
+                endpoints,
+                start_date,
+                end_date,
+            )
+            .await
+            .map_err(public_summary_error)
+        }
+        Err(SearchConsoleSummaryFetchError::Public(error)) => Err(error),
+    }
+}
+
+async fn fetch_search_console_top_countries_once(
+    client: &reqwest::Client,
+    access_token: &str,
+    endpoints: SearchConsoleApiEndpoints<'_>,
+    start_date: Date,
+    end_date: Date,
+) -> Result<SearchConsoleTopCountries, SearchConsoleSummaryFetchError> {
+    let site_entries = fetch_sites_for_summary(client, access_token, endpoints.sites).await?;
+    let site_url = select_target_site(&site_entries)?.to_string();
+    let query = SearchAnalyticsQuery {
+        start_date: format_search_analytics_date(start_date),
+        end_date: format_search_analytics_date(end_date),
+        data_state: "final",
+        row_limit: SEARCH_ANALYTICS_TOP_COUNTRIES_ROW_LIMIT,
+        dimensions: Some(vec!["country"]),
+    };
+    let body = fetch_search_analytics(
+        client,
+        access_token,
+        &site_url,
+        &query,
+        endpoints.search_analytics_base,
+    )
+    .await?;
+    let rows = parse_search_console_top_countries(&body)?;
+
+    Ok(SearchConsoleTopCountries {
+        start_date: format_search_analytics_date(start_date),
+        end_date: format_search_analytics_date(end_date),
+        fetched_at_utc: current_utc_timestamp()?,
+        site_url,
+        rows,
+    })
+}
+
 async fn fetch_sites_for_summary(
     client: &reqwest::Client,
     access_token: &str,
@@ -1672,6 +1809,100 @@ fn parse_search_console_top_queries(
     });
     queries.truncate(SEARCH_ANALYTICS_TOP_QUERIES_LIMIT);
     Ok(queries)
+}
+
+fn parse_search_console_top_countries(
+    body: &[u8],
+) -> Result<Vec<SearchConsoleTopCountry>, SearchConsoleError> {
+    let response = parse_search_analytics_response(body)?;
+    let mut countries = Vec::new();
+    for row in response.rows.unwrap_or_default() {
+        let keys = row
+            .keys
+            .ok_or(SearchConsoleError::SearchAnalyticsInvalidResponse)?;
+        if keys.len() != 1 {
+            return Err(SearchConsoleError::SearchAnalyticsInvalidResponse);
+        }
+        let Some(country_code) = normalize_search_console_country_code(&keys[0]) else {
+            continue;
+        };
+        let country = SearchConsoleTopCountry {
+            country_name: search_console_country_name(&country_code),
+            country_code,
+            clicks: row
+                .clicks
+                .ok_or(SearchConsoleError::SearchAnalyticsInvalidResponse)?,
+            impressions: row
+                .impressions
+                .ok_or(SearchConsoleError::SearchAnalyticsInvalidResponse)?,
+            ctr: row
+                .ctr
+                .ok_or(SearchConsoleError::SearchAnalyticsInvalidResponse)?,
+            position: row
+                .position
+                .ok_or(SearchConsoleError::SearchAnalyticsInvalidResponse)?,
+        };
+        if !country.clicks.is_finite()
+            || country.clicks < 0.0
+            || !country.impressions.is_finite()
+            || country.impressions < 0.0
+            || !country.ctr.is_finite()
+            || !(0.0..=1.0).contains(&country.ctr)
+            || !country.position.is_finite()
+            || country.position < 0.0
+        {
+            return Err(SearchConsoleError::SearchAnalyticsInvalidResponse);
+        }
+        countries.push(country);
+    }
+
+    countries.sort_by(|left, right| {
+        right
+            .impressions
+            .total_cmp(&left.impressions)
+            .then_with(|| right.clicks.total_cmp(&left.clicks))
+            .then_with(|| left.country_code.cmp(&right.country_code))
+    });
+    countries.truncate(SEARCH_ANALYTICS_TOP_COUNTRIES_LIMIT);
+    Ok(countries)
+}
+
+fn normalize_search_console_country_code(value: &str) -> Option<String> {
+    let country_code = value.trim();
+    if country_code.len() != 3 || !country_code.bytes().all(|byte| byte.is_ascii_alphabetic()) {
+        return None;
+    }
+    Some(country_code.to_ascii_uppercase())
+}
+
+fn search_console_country_name(country_code: &str) -> Option<&'static str> {
+    match country_code {
+        "AUS" => Some("Australia"),
+        "BRA" => Some("Brazil"),
+        "CAN" => Some("Canada"),
+        "CHN" => Some("China"),
+        "DEU" => Some("Germany"),
+        "ESP" => Some("Spain"),
+        "FRA" => Some("France"),
+        "GBR" => Some("United Kingdom"),
+        "HKG" => Some("Hong Kong"),
+        "IDN" => Some("Indonesia"),
+        "IND" => Some("India"),
+        "ITA" => Some("Italy"),
+        "JPN" => Some("Japan"),
+        "KOR" => Some("South Korea"),
+        "MEX" => Some("Mexico"),
+        "MYS" => Some("Malaysia"),
+        "NLD" => Some("Netherlands"),
+        "NZL" => Some("New Zealand"),
+        "PHL" => Some("Philippines"),
+        "SGP" => Some("Singapore"),
+        "THA" => Some("Thailand"),
+        "TWN" => Some("Taiwan"),
+        "USA" => Some("United States"),
+        "VNM" => Some("Vietnam"),
+        _ => None,
+    }
 }
 
 fn sanitize_search_console_page_url(value: &str) -> Result<String, SearchConsoleError> {
@@ -5358,6 +5589,333 @@ mod tests {
             .build()
             .unwrap();
         let error = tauri::async_runtime::block_on(fetch_search_console_top_queries_once(
+            &client,
+            "fixture-access-token",
+            SearchConsoleApiEndpoints {
+                sites: &sites_endpoint,
+                search_analytics_base: &search_analytics_base,
+            },
+            Date::from_calendar_date(2026, Month::June, 21).unwrap(),
+            Date::from_calendar_date(2026, Month::July, 18).unwrap(),
+        ))
+        .unwrap_err();
+        let requests = server.join().unwrap();
+
+        assert_eq!(
+            error,
+            SearchConsoleSummaryFetchError::Public(
+                SearchConsoleError::SearchAnalyticsRequestFailed
+            )
+        );
+        assert_eq!(requests.len(), 2);
+        {
+            let state = runtime_state().lock().unwrap();
+            assert!(state.connected);
+            assert!(!state.reauthentication_required);
+        }
+        reset_runtime_state_for_test();
+    }
+
+    #[test]
+    fn normal_search_console_top_countries_response_uses_country_dimension() {
+        let responses = vec![
+            (
+                "200 OK",
+                br#"{"siteEntry":[{"siteUrl":"https://www.getkoreainside.com/","permissionLevel":"siteOwner"}]}"#.as_slice(),
+            ),
+            (
+                "200 OK",
+                br#"{"rows":[{"keys":["usa"],"clicks":3,"impressions":28,"ctr":0.1071428571,"position":7.4}]}"#.as_slice(),
+            ),
+        ];
+        let (sites_endpoint, search_analytics_base, server) =
+            spawn_mock_search_console_api(responses);
+        let client = reqwest::Client::builder()
+            .redirect(Policy::none())
+            .timeout(Duration::from_secs(5))
+            .build()
+            .unwrap();
+        let refresh_calls = Rc::new(RefCell::new(0));
+        let tracked_refresh_calls = Rc::clone(&refresh_calls);
+        let result =
+            tauri::async_runtime::block_on(fetch_search_console_top_countries_with_refresh(
+                &client,
+                "fixture-access-token".to_string(),
+                move || {
+                    *tracked_refresh_calls.borrow_mut() += 1;
+                    async { Ok("unexpected-refreshed-token".to_string()) }
+                },
+                SearchConsoleApiEndpoints {
+                    sites: &sites_endpoint,
+                    search_analytics_base: &search_analytics_base,
+                },
+                Date::from_calendar_date(2026, Month::June, 21).unwrap(),
+                Date::from_calendar_date(2026, Month::July, 18).unwrap(),
+            ))
+            .unwrap();
+        let requests = server.join().unwrap();
+
+        assert_eq!(*refresh_calls.borrow(), 0);
+        assert_eq!(result.start_date, "2026-06-21");
+        assert_eq!(result.end_date, "2026-07-18");
+        assert_eq!(result.rows.len(), 1);
+        assert_eq!(result.rows[0].country_code, "USA");
+        assert_eq!(result.rows[0].country_name, Some("United States"));
+        assert_eq!(result.rows[0].clicks, 3.0);
+        assert_eq!(result.rows[0].impressions, 28.0);
+        assert_eq!(result.rows[0].ctr, 0.1071428571);
+        assert_eq!(result.rows[0].position, 7.4);
+        assert_eq!(requests.len(), 2);
+        assert!(requests[1].body.contains("\"dimensions\":[\"country\"]"));
+        assert!(requests[1].body.contains("\"rowLimit\":250"));
+        assert!(requests[1].body.contains("\"startDate\":\"2026-06-21\""));
+        assert!(requests[1].body.contains("\"endDate\":\"2026-07-18\""));
+    }
+
+    #[test]
+    fn search_console_top_countries_are_sorted_by_impressions_descending() {
+        let countries = parse_search_console_top_countries(
+            br#"{"rows":[{"keys":["USA"],"clicks":2,"impressions":20,"ctr":0.1,"position":4},{"keys":["JPN"],"clicks":3,"impressions":90,"ctr":0.03,"position":2},{"keys":["KOR"],"clicks":5,"impressions":50,"ctr":0.1,"position":3}]}"#,
+        )
+        .unwrap();
+
+        assert_eq!(
+            countries
+                .iter()
+                .map(|country| country.impressions)
+                .collect::<Vec<_>>(),
+            [90.0, 50.0, 20.0]
+        );
+    }
+
+    #[test]
+    fn search_console_top_countries_use_clicks_for_impression_ties() {
+        let countries = parse_search_console_top_countries(
+            br#"{"rows":[{"keys":["USA"],"clicks":2,"impressions":20,"ctr":0.1,"position":4},{"keys":["JPN"],"clicks":8,"impressions":20,"ctr":0.4,"position":2}]}"#,
+        )
+        .unwrap();
+
+        assert_eq!(countries[0].country_code, "JPN");
+        assert_eq!(countries[1].country_code, "USA");
+    }
+
+    #[test]
+    fn search_console_top_countries_are_limited_to_ten() {
+        let rows = (0..12)
+            .map(|index| {
+                let country_code = format!(
+                    "A{}{}",
+                    (b'A' + index / 26) as char,
+                    (b'A' + index % 26) as char
+                );
+                serde_json::json!({
+                    "keys": [country_code],
+                    "clicks": index,
+                    "impressions": index + 10,
+                    "ctr": 0.1,
+                    "position": 5.0
+                })
+            })
+            .collect::<Vec<_>>();
+        let body = serde_json::to_vec(&serde_json::json!({ "rows": rows })).unwrap();
+        let countries = parse_search_console_top_countries(&body).unwrap();
+
+        assert_eq!(countries.len(), SEARCH_ANALYTICS_TOP_COUNTRIES_LIMIT);
+        assert_eq!(countries.first().unwrap().impressions, 21.0);
+        assert_eq!(countries.last().unwrap().impressions, 12.0);
+    }
+
+    #[test]
+    fn search_console_country_codes_are_trimmed_uppercased_and_invalid_values_excluded() {
+        let countries = parse_search_console_top_countries(
+            br#"{"rows":[{"keys":[" kor "],"clicks":5,"impressions":30,"ctr":0.1,"position":2},{"keys":[""],"clicks":4,"impressions":20,"ctr":0.2,"position":3},{"keys":["US"],"clicks":3,"impressions":15,"ctr":0.2,"position":4},{"keys":["U1A"],"clicks":2,"impressions":10,"ctr":0.2,"position":5},{"keys":["USAA"],"clicks":1,"impressions":5,"ctr":0.2,"position":6}]}"#,
+        )
+        .unwrap();
+
+        assert_eq!(countries.len(), 1);
+        assert_eq!(countries[0].country_code, "KOR");
+    }
+
+    #[test]
+    fn search_console_country_names_map_major_countries_and_preserve_other_codes() {
+        let countries = parse_search_console_top_countries(
+            br#"{"rows":[{"keys":["USA"],"clicks":2,"impressions":20,"ctr":0.1,"position":4},{"keys":["ZZZ"],"clicks":1,"impressions":10,"ctr":0.1,"position":5}]}"#,
+        )
+        .unwrap();
+
+        assert_eq!(countries[0].country_name, Some("United States"));
+        assert_eq!(countries[1].country_code, "ZZZ");
+        assert_eq!(countries[1].country_name, None);
+    }
+
+    #[test]
+    fn empty_search_console_top_countries_are_not_an_api_error() {
+        assert!(parse_search_console_top_countries(br#"{"rows":[]}"#)
+            .unwrap()
+            .is_empty());
+        assert!(parse_search_console_top_countries(br#"{}"#)
+            .unwrap()
+            .is_empty());
+    }
+
+    #[test]
+    fn search_console_top_countries_reject_invalid_json() {
+        assert_eq!(
+            parse_search_console_top_countries(b"not-json").unwrap_err(),
+            SearchConsoleError::SearchAnalyticsInvalidResponse
+        );
+    }
+
+    #[test]
+    fn search_console_top_countries_unauthorized_response_uses_refresh_flow_once() {
+        let responses = vec![
+            ("401 Unauthorized", br#"{"error":"unauthorized"}"#.as_slice()),
+            (
+                "200 OK",
+                br#"{"siteEntry":[{"siteUrl":"sc-domain:getkoreainside.com","permissionLevel":"siteOwner"}]}"#.as_slice(),
+            ),
+            (
+                "200 OK",
+                br#"{"rows":[{"keys":["KOR"],"clicks":4,"impressions":20,"ctr":0.2,"position":6}]}"#.as_slice(),
+            ),
+        ];
+        let (sites_endpoint, search_analytics_base, server) =
+            spawn_mock_search_console_api(responses);
+        let client = reqwest::Client::builder()
+            .redirect(Policy::none())
+            .timeout(Duration::from_secs(5))
+            .build()
+            .unwrap();
+        let refresh_calls = Rc::new(RefCell::new(0));
+        let tracked_refresh_calls = Rc::clone(&refresh_calls);
+        let result =
+            tauri::async_runtime::block_on(fetch_search_console_top_countries_with_refresh(
+                &client,
+                "expired-access-token".to_string(),
+                move || {
+                    *tracked_refresh_calls.borrow_mut() += 1;
+                    async { Ok("refreshed-access-token".to_string()) }
+                },
+                SearchConsoleApiEndpoints {
+                    sites: &sites_endpoint,
+                    search_analytics_base: &search_analytics_base,
+                },
+                Date::from_calendar_date(2026, Month::June, 21).unwrap(),
+                Date::from_calendar_date(2026, Month::July, 18).unwrap(),
+            ))
+            .unwrap();
+        let requests = server.join().unwrap();
+
+        assert_eq!(*refresh_calls.borrow(), 1);
+        assert_eq!(result.rows.len(), 1);
+        assert_eq!(requests.len(), 3);
+        assert_eq!(
+            requests[0].headers.get("authorization").map(String::as_str),
+            Some("Bearer expired-access-token")
+        );
+        assert_eq!(
+            requests[1].headers.get("authorization").map(String::as_str),
+            Some("Bearer refreshed-access-token")
+        );
+    }
+
+    #[test]
+    fn search_console_top_countries_use_only_allowed_korea_inside_properties() {
+        let responses = vec![(
+            "200 OK",
+            br#"{"siteEntry":[{"siteUrl":"sc-domain:unrelated.example","permissionLevel":"siteOwner"}]}"#.as_slice(),
+        )];
+        let (sites_endpoint, search_analytics_base, server) =
+            spawn_mock_search_console_api(responses);
+        let client = reqwest::Client::builder()
+            .redirect(Policy::none())
+            .timeout(Duration::from_secs(5))
+            .build()
+            .unwrap();
+        let error = tauri::async_runtime::block_on(fetch_search_console_top_countries_once(
+            &client,
+            "fixture-access-token",
+            SearchConsoleApiEndpoints {
+                sites: &sites_endpoint,
+                search_analytics_base: &search_analytics_base,
+            },
+            Date::from_calendar_date(2026, Month::June, 21).unwrap(),
+            Date::from_calendar_date(2026, Month::July, 18).unwrap(),
+        ))
+        .unwrap_err();
+        let requests = server.join().unwrap();
+
+        assert_eq!(
+            error,
+            SearchConsoleSummaryFetchError::Public(SearchConsoleError::SearchConsoleSiteNotFound)
+        );
+        assert_eq!(requests.len(), 1);
+    }
+
+    #[test]
+    fn search_console_top_countries_do_not_expose_authentication_data() {
+        let responses = vec![
+            (
+                "200 OK",
+                br#"{"siteEntry":[{"siteUrl":"https://getkoreainside.com/","permissionLevel":"siteOwner"}]}"#.as_slice(),
+            ),
+            (
+                "200 OK",
+                br#"{"rows":[{"keys":["USA"],"clicks":2,"impressions":10,"ctr":0.2,"position":3}]}"#.as_slice(),
+            ),
+        ];
+        let (sites_endpoint, search_analytics_base, server) =
+            spawn_mock_search_console_api(responses);
+        let client = reqwest::Client::builder()
+            .redirect(Policy::none())
+            .timeout(Duration::from_secs(5))
+            .build()
+            .unwrap();
+        let result = tauri::async_runtime::block_on(fetch_search_console_top_countries_once(
+            &client,
+            "fixture-sensitive-access-token",
+            SearchConsoleApiEndpoints {
+                sites: &sites_endpoint,
+                search_analytics_base: &search_analytics_base,
+            },
+            Date::from_calendar_date(2026, Month::June, 21).unwrap(),
+            Date::from_calendar_date(2026, Month::July, 18).unwrap(),
+        ))
+        .unwrap();
+        let requests = server.join().unwrap();
+        let serialized = serde_json::to_string(&result).unwrap();
+
+        assert_eq!(requests.len(), 2);
+        assert!(!serialized.contains("fixture-sensitive-access-token"));
+        assert!(!serialized.contains("Bearer"));
+        assert!(!serialized.contains("refresh_token"));
+        assert!(!serialized.contains("client_secret"));
+    }
+
+    #[test]
+    fn search_console_top_countries_api_error_preserves_oauth_connection_state() {
+        let _lock = runtime_test_lock();
+        reset_runtime_state_for_test();
+        {
+            let mut state = runtime_state().lock().unwrap();
+            state.connected = true;
+            state.reauthentication_required = false;
+        }
+        let responses = vec![
+            (
+                "200 OK",
+                br#"{"siteEntry":[{"siteUrl":"sc-domain:getkoreainside.com","permissionLevel":"siteOwner"}]}"#.as_slice(),
+            ),
+            ("500 Internal Server Error", br#"{"error":"server"}"#.as_slice()),
+        ];
+        let (sites_endpoint, search_analytics_base, server) =
+            spawn_mock_search_console_api(responses);
+        let client = reqwest::Client::builder()
+            .redirect(Policy::none())
+            .timeout(Duration::from_secs(5))
+            .build()
+            .unwrap();
+        let error = tauri::async_runtime::block_on(fetch_search_console_top_countries_once(
             &client,
             "fixture-access-token",
             SearchConsoleApiEndpoints {
