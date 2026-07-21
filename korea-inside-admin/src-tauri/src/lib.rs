@@ -32,6 +32,7 @@ pub fn run() {
             search_console::test_search_console_connection,
             search_console::get_search_console_summary,
             search_console::get_search_console_top_pages,
+            search_console::get_search_console_top_queries,
         ])
         .run(tauri::generate_context!());
 

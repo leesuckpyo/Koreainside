@@ -96,6 +96,9 @@ window.addEventListener("DOMContentLoaded", () => {
   const searchConsoleTopPages = document.querySelector("#search-console-top-pages");
   const searchConsoleTopPagesStatus = document.querySelector("#search-console-top-pages-status");
   const searchConsoleTopPagesBody = document.querySelector("#search-console-top-pages-body");
+  const searchConsoleTopQueries = document.querySelector("#search-console-top-queries");
+  const searchConsoleTopQueriesStatus = document.querySelector("#search-console-top-queries-status");
+  const searchConsoleTopQueriesBody = document.querySelector("#search-console-top-queries-body");
   const viewTitles = {
     dashboard: "운영 대시보드",
     analytics: "Vercel Analytics",
@@ -112,6 +115,7 @@ window.addEventListener("DOMContentLoaded", () => {
   let searchConsoleLoading = false;
   let searchConsoleSummaryLoading = false;
   let searchConsoleTopPagesLoading = false;
+  let searchConsoleTopQueriesLoading = false;
   let searchConsoleSummaryAttempted = false;
   let searchConsoleStatus = {
     configured: false,
@@ -506,6 +510,7 @@ window.addEventListener("DOMContentLoaded", () => {
       !canLoad ||
       searchConsoleSummaryAttempted ||
       searchConsoleSummaryLoading ||
+      searchConsoleTopQueriesLoading ||
       searchConsoleLoading
     ) {
       return;
@@ -514,7 +519,12 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   async function loadSearchConsoleSummary() {
-    if (searchConsoleSummaryLoading || searchConsoleTopPagesLoading || searchConsoleLoading) {
+    if (
+      searchConsoleSummaryLoading ||
+      searchConsoleTopPagesLoading ||
+      searchConsoleTopQueriesLoading ||
+      searchConsoleLoading
+    ) {
       return;
     }
     if (
@@ -534,6 +544,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     searchConsoleSummaryAttempted = true;
     resetSearchConsoleTopPages("요약 데이터와 같은 기간의 상위 페이지를 준비하고 있습니다.");
+    setSearchConsoleTopQueriesStatus("요약 데이터와 같은 기간의 상위 검색어를 준비하고 있습니다.");
     setSearchConsoleSummaryLoading(true);
     setSearchConsoleSummaryMessage("Search Console 최근 28일 실적을 조회하고 있습니다.");
     let shouldRefreshConnectionStatus = false;
@@ -553,6 +564,7 @@ window.addEventListener("DOMContentLoaded", () => {
       setSearchConsoleSummaryLoading(false);
       if (summaryResult) {
         await loadSearchConsoleTopPages(summaryResult);
+        await loadSearchConsoleTopQueries(summaryResult);
       }
       if (shouldRefreshConnectionStatus) {
         refreshSearchConsoleStatus({ preserveMessage: true });
@@ -581,6 +593,7 @@ window.addEventListener("DOMContentLoaded", () => {
       searchConsoleSummaryErrorMessages[errorCode] || "Search Console 실적 요약을 조회할 수 없습니다.";
     setSearchConsoleSummaryMessage(message, "error");
     renderSearchConsoleTopPagesError(errorCode);
+    renderSearchConsoleTopQueriesError(errorCode);
   }
 
   function resetSearchConsoleSummary() {
@@ -594,6 +607,7 @@ window.addEventListener("DOMContentLoaded", () => {
     setText(searchConsoleSummaryFetchedAt, "조회 전");
     setSearchConsoleSummaryMessage("Google 계정을 연결하면 최근 검색 실적을 조회합니다.");
     resetSearchConsoleTopPages();
+    resetSearchConsoleTopQueries();
   }
 
   async function loadSearchConsoleTopPages(summaryResult) {
@@ -684,6 +698,91 @@ window.addEventListener("DOMContentLoaded", () => {
     searchConsoleTopPagesStatus.classList.toggle("is-error", kind === "error");
   }
 
+  async function loadSearchConsoleTopQueries(summaryResult) {
+    setSearchConsoleTopQueriesLoading(true);
+    setSearchConsoleTopQueriesStatus("최근 28일 상위 검색어를 조회하고 있습니다.");
+    try {
+      const result = await window.__TAURI__.core.invoke("get_search_console_top_queries", {
+        startDate: summaryResult.startDate,
+        endDate: summaryResult.endDate,
+      });
+      if (!isValidSearchConsoleTopQueries(result, summaryResult)) {
+        renderSearchConsoleTopQueriesError("search_analytics_invalid_response");
+        return;
+      }
+      renderSearchConsoleTopQueries(result);
+    } catch (error) {
+      renderSearchConsoleTopQueriesError(errorCodeFromInvoke(error));
+    } finally {
+      setSearchConsoleTopQueriesLoading(false);
+    }
+  }
+
+  function renderSearchConsoleTopQueries(result) {
+    if (!searchConsoleTopQueriesBody) {
+      return;
+    }
+    const fragment = document.createDocumentFragment();
+    result.rows.forEach((query) => {
+      const row = document.createElement("tr");
+      const queryCell = document.createElement("td");
+      const queryText = document.createElement("span");
+      queryText.className = "search-console-page-path";
+      queryText.textContent = query.query;
+      queryText.title = query.query;
+      queryCell.append(queryText);
+
+      const values = [
+        formatSearchConsoleCount(query.clicks),
+        formatSearchConsoleCount(query.impressions),
+        `${(query.ctr * 100).toFixed(2)}%`,
+        query.position.toFixed(1),
+      ];
+      row.append(queryCell);
+      values.forEach((value) => {
+        const cell = document.createElement("td");
+        cell.textContent = value;
+        row.append(cell);
+      });
+      fragment.append(row);
+    });
+    searchConsoleTopQueriesBody.replaceChildren(fragment);
+    setSearchConsoleTopQueriesStatus(
+      result.rows.length > 0
+        ? "최근 28일 클릭 기준 상위 10개 검색어입니다."
+        : "해당 기간에 검색어별 Search Console 데이터가 없습니다.",
+    );
+  }
+
+  function renderSearchConsoleTopQueriesError(errorCode) {
+    const message =
+      searchConsoleSummaryErrorMessages[errorCode] || "Search Console 상위 검색어를 조회할 수 없습니다.";
+    setSearchConsoleTopQueriesStatus(message, "error");
+  }
+
+  function resetSearchConsoleTopQueries(message = "Google 계정을 연결하면 상위 검색어를 조회합니다.") {
+    if (searchConsoleTopQueriesBody) {
+      searchConsoleTopQueriesBody.replaceChildren();
+    }
+    setSearchConsoleTopQueriesStatus(message);
+  }
+
+  function setSearchConsoleTopQueriesLoading(isLoading) {
+    searchConsoleTopQueriesLoading = isLoading;
+    if (searchConsoleTopQueries) {
+      searchConsoleTopQueries.setAttribute("aria-busy", String(isLoading));
+    }
+    updateSearchConsoleControls();
+  }
+
+  function setSearchConsoleTopQueriesStatus(message, kind = "default") {
+    if (!searchConsoleTopQueriesStatus) {
+      return;
+    }
+    searchConsoleTopQueriesStatus.textContent = message;
+    searchConsoleTopQueriesStatus.classList.toggle("is-error", kind === "error");
+  }
+
   function searchConsolePagePath(pageUrl) {
     const parsed = new URL(pageUrl);
     return parsed.pathname || "/";
@@ -743,6 +842,45 @@ window.addEventListener("DOMContentLoaded", () => {
     } catch {
       return false;
     }
+  }
+
+  function isValidSearchConsoleTopQueries(result, summaryResult) {
+    if (
+      result === null ||
+      typeof result !== "object" ||
+      result.startDate !== summaryResult.startDate ||
+      result.endDate !== summaryResult.endDate ||
+      result.siteUrl !== summaryResult.siteUrl ||
+      typeof result.fetchedAtUtc !== "string" ||
+      Number.isNaN(new Date(result.fetchedAtUtc).getTime()) ||
+      !Array.isArray(result.rows) ||
+      result.rows.length > 10
+    ) {
+      return false;
+    }
+
+    return result.rows.every((query, index) => {
+      const previous = result.rows[index - 1];
+      return (
+        query !== null &&
+        typeof query === "object" &&
+        typeof query.query === "string" &&
+        query.query.length > 0 &&
+        query.query === query.query.trim() &&
+        Number.isFinite(query.clicks) &&
+        query.clicks >= 0 &&
+        Number.isFinite(query.impressions) &&
+        query.impressions >= 0 &&
+        Number.isFinite(query.ctr) &&
+        query.ctr >= 0 &&
+        query.ctr <= 1 &&
+        Number.isFinite(query.position) &&
+        query.position >= 0 &&
+        (!previous ||
+          previous.clicks > query.clicks ||
+          (previous.clicks === query.clicks && previous.impressions >= query.impressions))
+      );
+    });
   }
 
   function setSearchConsoleSummaryLoading(isLoading) {
@@ -994,6 +1132,7 @@ window.addEventListener("DOMContentLoaded", () => {
       searchConsoleLoading ||
       searchConsoleSummaryLoading ||
       searchConsoleTopPagesLoading ||
+      searchConsoleTopQueriesLoading ||
       searchConsoleStatus.authenticationInProgress;
     const clientIdEntered = searchConsoleClientId && searchConsoleClientId.value.trim().length > 0;
     const canStartOauth = searchConsoleStatus.configured && searchConsoleStatus.clientSecretStored;

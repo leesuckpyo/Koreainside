@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-get-search-console-top-queries"
+description = "Enables the get_search_console_top_queries command without any pre-configured scope."
+commands.allow = ["get_search_console_top_queries"]
+
+[[permission]]
+identifier = "deny-get-search-console-top-queries"
+description = "Denies the get_search_console_top_queries command without any pre-configured scope."
+commands.deny = ["get_search_console_top_queries"]

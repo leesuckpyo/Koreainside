@@ -63,6 +63,7 @@ const SEARCH_ANALYTICS_PERIOD_DAYS: i64 = 28;
 const SEARCH_ANALYTICS_DISCOVERY_DAYS: i64 = 480;
 const SEARCH_ANALYTICS_ROW_LIMIT: u32 = 25_000;
 const SEARCH_ANALYTICS_TOP_PAGES_LIMIT: usize = 10;
+const SEARCH_ANALYTICS_TOP_QUERIES_LIMIT: usize = 10;
 const SEARCH_CONSOLE_SITE_PRIORITY: [&str; 3] = [
     "https://www.getkoreainside.com/",
     "https://getkoreainside.com/",
@@ -155,6 +156,26 @@ pub struct SearchConsoleTopPages {
 #[serde(rename_all = "camelCase")]
 struct SearchConsoleTopPage {
     page_url: String,
+    clicks: f64,
+    impressions: f64,
+    ctr: f64,
+    position: f64,
+}
+
+#[derive(Debug, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct SearchConsoleTopQueries {
+    start_date: String,
+    end_date: String,
+    fetched_at_utc: String,
+    site_url: String,
+    rows: Vec<SearchConsoleTopQuery>,
+}
+
+#[derive(Debug, Serialize)]
+#[serde(rename_all = "camelCase")]
+struct SearchConsoleTopQuery {
+    query: String,
     clicks: f64,
     impressions: f64,
     ctr: f64,
@@ -971,6 +992,47 @@ pub async fn get_search_console_top_pages(
     Ok(result)
 }
 
+#[tauri::command]
+pub async fn get_search_console_top_queries(
+    start_date: String,
+    end_date: String,
+) -> CommandResult<SearchConsoleTopQueries> {
+    let (start_date, end_date) = validate_search_analytics_period(&start_date, &end_date)
+        .map_err(SearchConsoleCommandError::from)?;
+    let _guard =
+        OperationGuard::begin(OperationKind::Refresh).map_err(SearchConsoleCommandError::from)?;
+    read_required_client_id().map_err(SearchConsoleCommandError::from)?;
+    read_credential(REFRESH_TOKEN_ACCOUNT).map_err(|error| match error {
+        KeyringError::NoEntry => SearchConsoleCommandError::from(SearchConsoleError::NotConfigured),
+        _ => SearchConsoleCommandError::from(SearchConsoleError::CredentialReadFailed),
+    })?;
+
+    let client = secure_http_client().map_err(SearchConsoleCommandError::from)?;
+    let access_token = refresh_access_token()
+        .await
+        .map_err(SearchConsoleCommandError::from)?;
+    let endpoints = SearchConsoleApiEndpoints {
+        sites: SITES_LIST_ENDPOINT,
+        search_analytics_base: SEARCH_ANALYTICS_ENDPOINT_BASE,
+    };
+    let result = fetch_search_console_top_queries_with_refresh(
+        &client,
+        access_token,
+        || async {
+            clear_cached_access_token()?;
+            refresh_access_token().await
+        },
+        endpoints,
+        start_date,
+        end_date,
+    )
+    .await
+    .map_err(SearchConsoleCommandError::from)?;
+
+    set_last_checked_now(false).map_err(SearchConsoleCommandError::from)?;
+    Ok(result)
+}
+
 async fn refresh_access_token() -> Result<String, SearchConsoleError> {
     if let Some(token) = cached_access_token()? {
         return Ok(token);
@@ -1257,6 +1319,79 @@ async fn fetch_search_console_top_pages_once(
     })
 }
 
+async fn fetch_search_console_top_queries_with_refresh<F, Fut>(
+    client: &reqwest::Client,
+    access_token: String,
+    refresh_access_token: F,
+    endpoints: SearchConsoleApiEndpoints<'_>,
+    start_date: Date,
+    end_date: Date,
+) -> Result<SearchConsoleTopQueries, SearchConsoleError>
+where
+    F: FnOnce() -> Fut,
+    Fut: std::future::Future<Output = Result<String, SearchConsoleError>>,
+{
+    match fetch_search_console_top_queries_once(
+        client,
+        &access_token,
+        endpoints,
+        start_date,
+        end_date,
+    )
+    .await
+    {
+        Ok(result) => Ok(result),
+        Err(SearchConsoleSummaryFetchError::Unauthorized) => {
+            let refreshed_access_token = refresh_access_token().await?;
+            fetch_search_console_top_queries_once(
+                client,
+                &refreshed_access_token,
+                endpoints,
+                start_date,
+                end_date,
+            )
+            .await
+            .map_err(public_summary_error)
+        }
+        Err(SearchConsoleSummaryFetchError::Public(error)) => Err(error),
+    }
+}
+
+async fn fetch_search_console_top_queries_once(
+    client: &reqwest::Client,
+    access_token: &str,
+    endpoints: SearchConsoleApiEndpoints<'_>,
+    start_date: Date,
+    end_date: Date,
+) -> Result<SearchConsoleTopQueries, SearchConsoleSummaryFetchError> {
+    let site_entries = fetch_sites_for_summary(client, access_token, endpoints.sites).await?;
+    let site_url = select_target_site(&site_entries)?.to_string();
+    let query = SearchAnalyticsQuery {
+        start_date: format_search_analytics_date(start_date),
+        end_date: format_search_analytics_date(end_date),
+        data_state: "final",
+        row_limit: SEARCH_ANALYTICS_TOP_QUERIES_LIMIT as u32,
+        dimensions: Some(vec!["query"]),
+    };
+    let body = fetch_search_analytics(
+        client,
+        access_token,
+        &site_url,
+        &query,
+        endpoints.search_analytics_base,
+    )
+    .await?;
+    let rows = parse_search_console_top_queries(&body)?;
+
+    Ok(SearchConsoleTopQueries {
+        start_date: format_search_analytics_date(start_date),
+        end_date: format_search_analytics_date(end_date),
+        fetched_at_utc: current_utc_timestamp()?,
+        site_url,
+        rows,
+    })
+}
+
 async fn fetch_sites_for_summary(
     client: &reqwest::Client,
     access_token: &str,
@@ -1481,6 +1616,62 @@ fn parse_search_console_top_pages(
     });
     pages.truncate(SEARCH_ANALYTICS_TOP_PAGES_LIMIT);
     Ok(pages)
+}
+
+fn parse_search_console_top_queries(
+    body: &[u8],
+) -> Result<Vec<SearchConsoleTopQuery>, SearchConsoleError> {
+    let response = parse_search_analytics_response(body)?;
+    let mut queries = Vec::new();
+    for row in response.rows.unwrap_or_default() {
+        let keys = row
+            .keys
+            .ok_or(SearchConsoleError::SearchAnalyticsInvalidResponse)?;
+        if keys.len() != 1 {
+            return Err(SearchConsoleError::SearchAnalyticsInvalidResponse);
+        }
+        let query = keys[0].trim();
+        if query.is_empty() {
+            continue;
+        }
+        let query = SearchConsoleTopQuery {
+            query: query.to_string(),
+            clicks: row
+                .clicks
+                .ok_or(SearchConsoleError::SearchAnalyticsInvalidResponse)?,
+            impressions: row
+                .impressions
+                .ok_or(SearchConsoleError::SearchAnalyticsInvalidResponse)?,
+            ctr: row
+                .ctr
+                .ok_or(SearchConsoleError::SearchAnalyticsInvalidResponse)?,
+            position: row
+                .position
+                .ok_or(SearchConsoleError::SearchAnalyticsInvalidResponse)?,
+        };
+        if !query.clicks.is_finite()
+            || query.clicks < 0.0
+            || !query.impressions.is_finite()
+            || query.impressions < 0.0
+            || !query.ctr.is_finite()
+            || !(0.0..=1.0).contains(&query.ctr)
+            || !query.position.is_finite()
+            || query.position < 0.0
+        {
+            return Err(SearchConsoleError::SearchAnalyticsInvalidResponse);
+        }
+        queries.push(query);
+    }
+
+    queries.sort_by(|left, right| {
+        right
+            .clicks
+            .total_cmp(&left.clicks)
+            .then_with(|| right.impressions.total_cmp(&left.impressions))
+            .then_with(|| left.query.cmp(&right.query))
+    });
+    queries.truncate(SEARCH_ANALYTICS_TOP_QUERIES_LIMIT);
+    Ok(queries)
 }
 
 fn sanitize_search_console_page_url(value: &str) -> Result<String, SearchConsoleError> {
@@ -4878,6 +5069,320 @@ mod tests {
         assert!(!serialized.contains("sensitive-value"));
         assert!(!serialized.contains("access_token"));
         assert!(!serialized.contains("refresh-token"));
+    }
+
+    #[test]
+    fn normal_search_console_top_queries_response_uses_query_dimension() {
+        let responses = vec![
+            (
+                "200 OK",
+                br#"{"siteEntry":[{"siteUrl":"https://www.getkoreainside.com/","permissionLevel":"siteOwner"}]}"#.as_slice(),
+            ),
+            (
+                "200 OK",
+                br#"{"rows":[{"keys":["stay in seoul or incheon"],"clicks":3,"impressions":28,"ctr":0.1071428571,"position":7.4}]}"#.as_slice(),
+            ),
+        ];
+        let (sites_endpoint, search_analytics_base, server) =
+            spawn_mock_search_console_api(responses);
+        let client = reqwest::Client::builder()
+            .redirect(Policy::none())
+            .timeout(Duration::from_secs(5))
+            .build()
+            .unwrap();
+        let refresh_calls = Rc::new(RefCell::new(0));
+        let tracked_refresh_calls = Rc::clone(&refresh_calls);
+        let result = tauri::async_runtime::block_on(fetch_search_console_top_queries_with_refresh(
+            &client,
+            "fixture-access-token".to_string(),
+            move || {
+                *tracked_refresh_calls.borrow_mut() += 1;
+                async { Ok("unexpected-refreshed-token".to_string()) }
+            },
+            SearchConsoleApiEndpoints {
+                sites: &sites_endpoint,
+                search_analytics_base: &search_analytics_base,
+            },
+            Date::from_calendar_date(2026, Month::June, 21).unwrap(),
+            Date::from_calendar_date(2026, Month::July, 18).unwrap(),
+        ))
+        .unwrap();
+        let requests = server.join().unwrap();
+
+        assert_eq!(*refresh_calls.borrow(), 0);
+        assert_eq!(result.start_date, "2026-06-21");
+        assert_eq!(result.end_date, "2026-07-18");
+        assert_eq!(result.rows.len(), 1);
+        assert_eq!(result.rows[0].query, "stay in seoul or incheon");
+        assert_eq!(result.rows[0].clicks, 3.0);
+        assert_eq!(result.rows[0].impressions, 28.0);
+        assert_eq!(result.rows[0].ctr, 0.1071428571);
+        assert_eq!(result.rows[0].position, 7.4);
+        assert_eq!(requests.len(), 2);
+        assert!(requests[1].body.contains("\"dimensions\":[\"query\"]"));
+        assert!(requests[1].body.contains("\"rowLimit\":10"));
+        assert!(requests[1].body.contains("\"startDate\":\"2026-06-21\""));
+        assert!(requests[1].body.contains("\"endDate\":\"2026-07-18\""));
+    }
+
+    #[test]
+    fn search_console_top_queries_are_sorted_by_clicks_descending() {
+        let queries = parse_search_console_top_queries(
+            br#"{"rows":[{"keys":["low"],"clicks":2,"impressions":20,"ctr":0.1,"position":4},{"keys":["high"],"clicks":9,"impressions":30,"ctr":0.3,"position":2},{"keys":["mid"],"clicks":5,"impressions":25,"ctr":0.2,"position":3}]}"#,
+        )
+        .unwrap();
+
+        assert_eq!(
+            queries.iter().map(|query| query.clicks).collect::<Vec<_>>(),
+            [9.0, 5.0, 2.0]
+        );
+    }
+
+    #[test]
+    fn search_console_top_queries_use_impressions_for_click_ties() {
+        let queries = parse_search_console_top_queries(
+            br#"{"rows":[{"keys":["lower impressions"],"clicks":4,"impressions":10,"ctr":0.4,"position":4},{"keys":["higher impressions"],"clicks":4,"impressions":30,"ctr":0.1,"position":2}]}"#,
+        )
+        .unwrap();
+
+        assert_eq!(queries[0].query, "higher impressions");
+        assert_eq!(queries[1].query, "lower impressions");
+    }
+
+    #[test]
+    fn search_console_top_queries_are_limited_to_ten() {
+        let rows = (0..12)
+            .map(|index| {
+                serde_json::json!({
+                    "keys": [format!("query {index}")],
+                    "clicks": index,
+                    "impressions": index + 10,
+                    "ctr": 0.1,
+                    "position": 5.0
+                })
+            })
+            .collect::<Vec<_>>();
+        let body = serde_json::to_vec(&serde_json::json!({ "rows": rows })).unwrap();
+        let queries = parse_search_console_top_queries(&body).unwrap();
+
+        assert_eq!(queries.len(), SEARCH_ANALYTICS_TOP_QUERIES_LIMIT);
+        assert_eq!(queries.first().unwrap().clicks, 11.0);
+        assert_eq!(queries.last().unwrap().clicks, 2.0);
+    }
+
+    #[test]
+    fn empty_search_console_queries_are_excluded() {
+        let queries = parse_search_console_top_queries(
+            br#"{"rows":[{"keys":["   "],"clicks":5,"impressions":10,"ctr":0.5,"position":2},{"keys":["korea travel"],"clicks":1,"impressions":4,"ctr":0.25,"position":3}]}"#,
+        )
+        .unwrap();
+
+        assert_eq!(queries.len(), 1);
+        assert_eq!(queries[0].query, "korea travel");
+    }
+
+    #[test]
+    fn search_console_queries_trim_surrounding_whitespace() {
+        let queries = parse_search_console_top_queries(
+            br#"{"rows":[{"keys":["  korea travel tips  "],"clicks":1,"impressions":4,"ctr":0.25,"position":3}]}"#,
+        )
+        .unwrap();
+
+        assert_eq!(queries[0].query, "korea travel tips");
+    }
+
+    #[test]
+    fn empty_search_console_top_queries_are_not_an_api_error() {
+        assert!(parse_search_console_top_queries(br#"{"rows":[]}"#)
+            .unwrap()
+            .is_empty());
+        assert!(parse_search_console_top_queries(br#"{}"#)
+            .unwrap()
+            .is_empty());
+    }
+
+    #[test]
+    fn search_console_top_queries_reject_invalid_json() {
+        assert_eq!(
+            parse_search_console_top_queries(b"not-json").unwrap_err(),
+            SearchConsoleError::SearchAnalyticsInvalidResponse
+        );
+    }
+
+    #[test]
+    fn search_console_top_queries_unauthorized_response_uses_refresh_flow_once() {
+        let responses = vec![
+            ("401 Unauthorized", br#"{"error":"unauthorized"}"#.as_slice()),
+            (
+                "200 OK",
+                br#"{"siteEntry":[{"siteUrl":"sc-domain:getkoreainside.com","permissionLevel":"siteOwner"}]}"#.as_slice(),
+            ),
+            (
+                "200 OK",
+                br#"{"rows":[{"keys":["taste korea"],"clicks":4,"impressions":20,"ctr":0.2,"position":6}]}"#.as_slice(),
+            ),
+        ];
+        let (sites_endpoint, search_analytics_base, server) =
+            spawn_mock_search_console_api(responses);
+        let client = reqwest::Client::builder()
+            .redirect(Policy::none())
+            .timeout(Duration::from_secs(5))
+            .build()
+            .unwrap();
+        let refresh_calls = Rc::new(RefCell::new(0));
+        let tracked_refresh_calls = Rc::clone(&refresh_calls);
+        let result = tauri::async_runtime::block_on(fetch_search_console_top_queries_with_refresh(
+            &client,
+            "expired-access-token".to_string(),
+            move || {
+                *tracked_refresh_calls.borrow_mut() += 1;
+                async { Ok("refreshed-access-token".to_string()) }
+            },
+            SearchConsoleApiEndpoints {
+                sites: &sites_endpoint,
+                search_analytics_base: &search_analytics_base,
+            },
+            Date::from_calendar_date(2026, Month::June, 21).unwrap(),
+            Date::from_calendar_date(2026, Month::July, 18).unwrap(),
+        ))
+        .unwrap();
+        let requests = server.join().unwrap();
+
+        assert_eq!(*refresh_calls.borrow(), 1);
+        assert_eq!(result.rows.len(), 1);
+        assert_eq!(requests.len(), 3);
+        assert_eq!(
+            requests[0].headers.get("authorization").map(String::as_str),
+            Some("Bearer expired-access-token")
+        );
+        assert_eq!(
+            requests[1].headers.get("authorization").map(String::as_str),
+            Some("Bearer refreshed-access-token")
+        );
+    }
+
+    #[test]
+    fn search_console_top_queries_use_only_allowed_korea_inside_properties() {
+        let responses = vec![(
+            "200 OK",
+            br#"{"siteEntry":[{"siteUrl":"sc-domain:unrelated.example","permissionLevel":"siteOwner"}]}"#.as_slice(),
+        )];
+        let (sites_endpoint, search_analytics_base, server) =
+            spawn_mock_search_console_api(responses);
+        let client = reqwest::Client::builder()
+            .redirect(Policy::none())
+            .timeout(Duration::from_secs(5))
+            .build()
+            .unwrap();
+        let error = tauri::async_runtime::block_on(fetch_search_console_top_queries_once(
+            &client,
+            "fixture-access-token",
+            SearchConsoleApiEndpoints {
+                sites: &sites_endpoint,
+                search_analytics_base: &search_analytics_base,
+            },
+            Date::from_calendar_date(2026, Month::June, 21).unwrap(),
+            Date::from_calendar_date(2026, Month::July, 18).unwrap(),
+        ))
+        .unwrap_err();
+        let requests = server.join().unwrap();
+
+        assert_eq!(
+            error,
+            SearchConsoleSummaryFetchError::Public(SearchConsoleError::SearchConsoleSiteNotFound)
+        );
+        assert_eq!(requests.len(), 1);
+    }
+
+    #[test]
+    fn search_console_top_queries_do_not_expose_authentication_data() {
+        let responses = vec![
+            (
+                "200 OK",
+                br#"{"siteEntry":[{"siteUrl":"https://getkoreainside.com/","permissionLevel":"siteOwner"}]}"#.as_slice(),
+            ),
+            (
+                "200 OK",
+                br#"{"rows":[{"keys":["korea inside"],"clicks":2,"impressions":10,"ctr":0.2,"position":3}]}"#.as_slice(),
+            ),
+        ];
+        let (sites_endpoint, search_analytics_base, server) =
+            spawn_mock_search_console_api(responses);
+        let client = reqwest::Client::builder()
+            .redirect(Policy::none())
+            .timeout(Duration::from_secs(5))
+            .build()
+            .unwrap();
+        let result = tauri::async_runtime::block_on(fetch_search_console_top_queries_once(
+            &client,
+            "fixture-sensitive-access-token",
+            SearchConsoleApiEndpoints {
+                sites: &sites_endpoint,
+                search_analytics_base: &search_analytics_base,
+            },
+            Date::from_calendar_date(2026, Month::June, 21).unwrap(),
+            Date::from_calendar_date(2026, Month::July, 18).unwrap(),
+        ))
+        .unwrap();
+        let requests = server.join().unwrap();
+        let serialized = serde_json::to_string(&result).unwrap();
+
+        assert_eq!(requests.len(), 2);
+        assert!(!serialized.contains("fixture-sensitive-access-token"));
+        assert!(!serialized.contains("Bearer"));
+        assert!(!serialized.contains("refresh_token"));
+        assert!(!serialized.contains("client_secret"));
+    }
+
+    #[test]
+    fn search_console_top_queries_api_error_preserves_oauth_connection_state() {
+        let _lock = runtime_test_lock();
+        reset_runtime_state_for_test();
+        {
+            let mut state = runtime_state().lock().unwrap();
+            state.connected = true;
+            state.reauthentication_required = false;
+        }
+        let responses = vec![
+            (
+                "200 OK",
+                br#"{"siteEntry":[{"siteUrl":"sc-domain:getkoreainside.com","permissionLevel":"siteOwner"}]}"#.as_slice(),
+            ),
+            ("500 Internal Server Error", br#"{"error":"server"}"#.as_slice()),
+        ];
+        let (sites_endpoint, search_analytics_base, server) =
+            spawn_mock_search_console_api(responses);
+        let client = reqwest::Client::builder()
+            .redirect(Policy::none())
+            .timeout(Duration::from_secs(5))
+            .build()
+            .unwrap();
+        let error = tauri::async_runtime::block_on(fetch_search_console_top_queries_once(
+            &client,
+            "fixture-access-token",
+            SearchConsoleApiEndpoints {
+                sites: &sites_endpoint,
+                search_analytics_base: &search_analytics_base,
+            },
+            Date::from_calendar_date(2026, Month::June, 21).unwrap(),
+            Date::from_calendar_date(2026, Month::July, 18).unwrap(),
+        ))
+        .unwrap_err();
+        let requests = server.join().unwrap();
+
+        assert_eq!(
+            error,
+            SearchConsoleSummaryFetchError::Public(
+                SearchConsoleError::SearchAnalyticsRequestFailed
+            )
+        );
+        assert_eq!(requests.len(), 2);
+        {
+            let state = runtime_state().lock().unwrap();
+            assert!(state.connected);
+            assert!(!state.reauthentication_required);
+        }
+        reset_runtime_state_for_test();
     }
 
     #[test]
