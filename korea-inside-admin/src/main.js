@@ -543,6 +543,7 @@ window.addEventListener("DOMContentLoaded", () => {
       renderSearchConsoleStatus(result.clientStatus);
       setSearchConsoleMessage("Google 계정 연결 완료", "success");
     } catch (error) {
+      logSearchConsoleOauthDiagnostic(error);
       renderSearchConsoleError(errorCodeFromInvoke(error));
       refreshSearchConsoleStatus({ preserveMessage: true });
     } finally {
@@ -701,6 +702,76 @@ window.addEventListener("DOMContentLoaded", () => {
       searchConsoleBadge.textContent = "오류";
     }
     updateSearchConsoleControls();
+  }
+
+  function logSearchConsoleOauthDiagnostic(error) {
+    const safeDiagnostic = safeSearchConsoleOauthDiagnosticFromInvoke(error);
+    if (safeDiagnostic) {
+      console.error("[Search Console OAuth]", safeDiagnostic);
+    }
+  }
+
+  function safeSearchConsoleOauthDiagnosticFromInvoke(error) {
+    let payload = error;
+    if (typeof error === "string") {
+      try {
+        payload = JSON.parse(error);
+      } catch {
+        return null;
+      }
+    }
+    if (!payload || typeof payload !== "object") {
+      return null;
+    }
+
+    const diagnostic = payload.diagnostic;
+    if (!diagnostic || typeof diagnostic !== "object") {
+      return null;
+    }
+
+    const allowedGoogleErrors = new Set([
+      "invalid_request",
+      "invalid_client",
+      "invalid_grant",
+      "unauthorized_client",
+      "unsupported_grant_type",
+      "invalid_scope",
+      "access_denied",
+      "server_error",
+      "temporarily_unavailable",
+      "redirect_uri_mismatch",
+      "unknown",
+      "unavailable",
+    ]);
+    const httpStatusIsSafe =
+      diagnostic.httpStatus === null ||
+      (Number.isInteger(diagnostic.httpStatus) &&
+        diagnostic.httpStatus >= 100 &&
+        diagnostic.httpStatus <= 599);
+    const timeIsSafe =
+      diagnostic.timeUtc === "unavailable" ||
+      (typeof diagnostic.timeUtc === "string" &&
+        diagnostic.timeUtc.length <= 40 &&
+        /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?Z$/.test(diagnostic.timeUtc));
+
+    if (
+      diagnostic.stage !== "token_endpoint" ||
+      !httpStatusIsSafe ||
+      typeof diagnostic.googleError !== "string" ||
+      !allowedGoogleErrors.has(diagnostic.googleError) ||
+      !timeIsSafe ||
+      typeof diagnostic.redirectUriMatch !== "boolean"
+    ) {
+      return null;
+    }
+
+    return {
+      stage: diagnostic.stage,
+      httpStatus: diagnostic.httpStatus,
+      googleError: diagnostic.googleError,
+      timeUtc: diagnostic.timeUtc,
+      redirectUriMatch: diagnostic.redirectUriMatch,
+    };
   }
 
   function errorCodeFromInvoke(error) {

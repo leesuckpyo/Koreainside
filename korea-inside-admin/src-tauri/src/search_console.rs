@@ -56,6 +56,8 @@ const MAX_RESPONSE_BYTES: usize = 64 * 1024;
 const CONNECT_TIMEOUT: Duration = Duration::from_secs(5);
 const REQUEST_TIMEOUT: Duration = Duration::from_secs(10);
 const ACCESS_TOKEN_REFRESH_MARGIN: Duration = Duration::from_secs(60);
+const TOKEN_ENDPOINT_STAGE: &str = "token_endpoint";
+const DIAGNOSTIC_VALUE_UNAVAILABLE: &str = "unavailable";
 
 type CommandResult<T> = Result<T, SearchConsoleCommandError>;
 
@@ -120,6 +122,18 @@ pub struct SearchConsoleActionResult {
 pub struct SearchConsoleCommandError {
     code: &'static str,
     message: &'static str,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    diagnostic: Option<SearchConsoleOAuthDiagnostic>,
+}
+
+#[derive(Serialize)]
+#[serde(rename_all = "camelCase")]
+struct SearchConsoleOAuthDiagnostic {
+    stage: &'static str,
+    http_status: Option<u16>,
+    google_error: &'static str,
+    time_utc: String,
+    redirect_uri_match: bool,
 }
 
 impl SearchConsoleCommandError {
@@ -127,6 +141,29 @@ impl SearchConsoleCommandError {
         Self {
             code: error.code(),
             message: error.message(),
+            diagnostic: None,
+        }
+    }
+
+    fn from_token_exchange_failure(failure: OAuthTokenExchangeFailure) -> Self {
+        let diagnostic =
+            failure
+                .redirect_uri_match
+                .map(|redirect_uri_match| SearchConsoleOAuthDiagnostic {
+                    stage: TOKEN_ENDPOINT_STAGE,
+                    http_status: failure.http_status,
+                    google_error: failure
+                        .google_error
+                        .map(SafeGoogleErrorCode::as_str)
+                        .unwrap_or(DIAGNOSTIC_VALUE_UNAVAILABLE),
+                    time_utc: current_utc_timestamp()
+                        .unwrap_or_else(|_| DIAGNOSTIC_VALUE_UNAVAILABLE.to_string()),
+                    redirect_uri_match,
+                });
+        Self {
+            code: failure.error.code(),
+            message: failure.error.message(),
+            diagnostic,
         }
     }
 }
@@ -349,25 +386,121 @@ struct TokenSet {
 
 #[derive(Debug)]
 enum OAuthHttpClientError {
-    InvalidRequest,
-    RequestFailed,
-    NetworkTimeout,
-    InvalidResponse,
+    InvalidRequest {
+        redirect_uri_match: bool,
+    },
+    RequestFailed {
+        redirect_uri_match: bool,
+    },
+    NetworkTimeout {
+        redirect_uri_match: bool,
+    },
+    InvalidResponse {
+        http_status: Option<u16>,
+        redirect_uri_match: bool,
+    },
+    TokenEndpointRejected {
+        http_status: u16,
+        google_error: Option<SafeGoogleErrorCode>,
+        redirect_uri_match: bool,
+    },
+}
+
+impl OAuthHttpClientError {
+    fn http_status(&self) -> Option<u16> {
+        match self {
+            Self::InvalidResponse { http_status, .. } => *http_status,
+            Self::TokenEndpointRejected { http_status, .. } => Some(*http_status),
+            Self::InvalidRequest { .. }
+            | Self::RequestFailed { .. }
+            | Self::NetworkTimeout { .. } => None,
+        }
+    }
 }
 
 impl fmt::Display for OAuthHttpClientError {
     fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
         let message = match self {
-            Self::InvalidRequest => "invalid oauth http request",
-            Self::RequestFailed => "oauth http request failed",
-            Self::NetworkTimeout => "oauth http request timed out",
-            Self::InvalidResponse => "invalid oauth http response",
+            Self::InvalidRequest { .. } => "invalid oauth http request",
+            Self::RequestFailed { .. } => "oauth http request failed",
+            Self::NetworkTimeout { .. } => "oauth http request timed out",
+            Self::InvalidResponse { .. } => "invalid oauth http response",
+            Self::TokenEndpointRejected { .. } => "oauth token endpoint rejected request",
         };
         formatter.write_str(message)
     }
 }
 
 impl Error for OAuthHttpClientError {}
+
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+enum SafeGoogleErrorCode {
+    InvalidRequest,
+    InvalidClient,
+    InvalidGrant,
+    UnauthorizedClient,
+    UnsupportedGrantType,
+    InvalidScope,
+    AccessDenied,
+    ServerError,
+    TemporarilyUnavailable,
+    RedirectUriMismatch,
+    Unknown,
+}
+
+impl SafeGoogleErrorCode {
+    fn as_str(self) -> &'static str {
+        match self {
+            Self::InvalidRequest => "invalid_request",
+            Self::InvalidClient => "invalid_client",
+            Self::InvalidGrant => "invalid_grant",
+            Self::UnauthorizedClient => "unauthorized_client",
+            Self::UnsupportedGrantType => "unsupported_grant_type",
+            Self::InvalidScope => "invalid_scope",
+            Self::AccessDenied => "access_denied",
+            Self::ServerError => "server_error",
+            Self::TemporarilyUnavailable => "temporarily_unavailable",
+            Self::RedirectUriMismatch => "redirect_uri_mismatch",
+            Self::Unknown => "unknown",
+        }
+    }
+}
+
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+struct OAuthTokenExchangeFailure {
+    error: SearchConsoleError,
+    http_status: Option<u16>,
+    google_error: Option<SafeGoogleErrorCode>,
+    redirect_uri_match: Option<bool>,
+}
+
+impl OAuthTokenExchangeFailure {
+    fn new(
+        error: SearchConsoleError,
+        http_status: Option<u16>,
+        google_error: Option<SafeGoogleErrorCode>,
+        redirect_uri_match: Option<bool>,
+    ) -> Self {
+        Self {
+            error,
+            http_status,
+            google_error,
+            redirect_uri_match,
+        }
+    }
+}
+
+impl From<SearchConsoleError> for OAuthTokenExchangeFailure {
+    fn from(error: SearchConsoleError) -> Self {
+        Self::new(error, None, None, None)
+    }
+}
+
+#[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+struct OAuthTokenRequestMetadata {
+    http_status: Option<u16>,
+    redirect_uri_match: Option<bool>,
+}
 
 #[derive(Deserialize)]
 struct GoogleTokenResponse {
@@ -545,7 +678,7 @@ pub async fn start_search_console_oauth() -> CommandResult<SearchConsoleActionRe
         &request.pkce_verifier,
     )
     .await
-    .map_err(SearchConsoleCommandError::from)?;
+    .map_err(SearchConsoleCommandError::from_token_exchange_failure)?;
     let refresh_token = tokens
         .refresh_token
         .ok_or(SearchConsoleError::MissingRefreshToken)
@@ -731,15 +864,16 @@ async fn exchange_authorization_code(
     redirect_uri: &str,
     code: &str,
     pkce_verifier: &str,
-) -> Result<TokenSet, SearchConsoleError> {
-    let http_client = secure_http_client()?;
+) -> Result<TokenSet, OAuthTokenExchangeFailure> {
+    let http_client = secure_http_client().map_err(OAuthTokenExchangeFailure::from)?;
+    let expected_redirect_uri = redirect_uri.to_string();
     request_oauth_authorization_code(
         client_id,
         client_secret,
         redirect_uri,
         code,
         pkce_verifier,
-        move |request| oauth_http_client(http_client, request),
+        move |request| oauth_http_client(http_client, request, expected_redirect_uri),
     )
     .await
 }
@@ -1123,26 +1257,49 @@ fn token_set(tokens: GoogleTokenResponse) -> TokenSet {
 }
 
 fn token_error_is_invalid_grant(body: &[u8]) -> bool {
+    safe_google_error_code_from_body(body) == Some(SafeGoogleErrorCode::InvalidGrant)
+}
+
+fn safe_google_error_code_from_body(body: &[u8]) -> Option<SafeGoogleErrorCode> {
     serde_json::from_slice::<GoogleErrorResponse>(body)
         .ok()
-        .and_then(|error| error.error)
-        .is_some_and(|error| error == "invalid_grant")
+        .and_then(|response| response.error)
+        .filter(|error| !error.is_empty())
+        .map(|error| safe_google_error_code(error.as_str()))
+}
+
+fn safe_google_error_code(error: &str) -> SafeGoogleErrorCode {
+    match error {
+        "invalid_request" => SafeGoogleErrorCode::InvalidRequest,
+        "invalid_client" => SafeGoogleErrorCode::InvalidClient,
+        "invalid_grant" => SafeGoogleErrorCode::InvalidGrant,
+        "unauthorized_client" => SafeGoogleErrorCode::UnauthorizedClient,
+        "unsupported_grant_type" => SafeGoogleErrorCode::UnsupportedGrantType,
+        "invalid_scope" => SafeGoogleErrorCode::InvalidScope,
+        "access_denied" => SafeGoogleErrorCode::AccessDenied,
+        "server_error" => SafeGoogleErrorCode::ServerError,
+        "temporarily_unavailable" => SafeGoogleErrorCode::TemporarilyUnavailable,
+        "redirect_uri_mismatch" => SafeGoogleErrorCode::RedirectUriMismatch,
+        _ => SafeGoogleErrorCode::Unknown,
+    }
+}
+
+fn map_safe_google_error(error: SafeGoogleErrorCode) -> SearchConsoleError {
+    match error {
+        SafeGoogleErrorCode::InvalidGrant => SearchConsoleError::TokenInvalidGrant,
+        SafeGoogleErrorCode::InvalidClient => SearchConsoleError::TokenInvalidClient,
+        SafeGoogleErrorCode::InvalidRequest => SearchConsoleError::TokenInvalidRequest,
+        SafeGoogleErrorCode::UnauthorizedClient => SearchConsoleError::TokenUnauthorizedClient,
+        SafeGoogleErrorCode::RedirectUriMismatch => SearchConsoleError::TokenRedirectUriMismatch,
+        _ => SearchConsoleError::TokenExchangeFailed,
+    }
 }
 
 #[cfg(test)]
 fn map_authorization_token_error(body: &[u8]) -> SearchConsoleError {
-    match serde_json::from_slice::<GoogleErrorResponse>(body)
-        .ok()
-        .and_then(|error| error.error)
-        .as_deref()
-    {
-        Some("invalid_grant") => SearchConsoleError::TokenInvalidGrant,
-        Some("invalid_client") => SearchConsoleError::TokenInvalidClient,
-        Some("invalid_request") => SearchConsoleError::TokenInvalidRequest,
-        Some("unauthorized_client") => SearchConsoleError::TokenUnauthorizedClient,
-        Some("redirect_uri_mismatch") => SearchConsoleError::TokenRedirectUriMismatch,
-        _ => SearchConsoleError::TokenExchangeFailed,
-    }
+    safe_google_error_code_from_body(body)
+        .map(map_safe_google_error)
+        .unwrap_or(SearchConsoleError::TokenExchangeFailed)
 }
 
 fn parse_sites_list_response(body: &[u8]) -> Result<(), SearchConsoleError> {
@@ -1215,7 +1372,7 @@ async fn request_oauth_authorization_code<C, F>(
     code: &str,
     pkce_verifier: &str,
     http_client: C,
-) -> Result<TokenSet, SearchConsoleError>
+) -> Result<TokenSet, OAuthTokenExchangeFailure>
 where
     C: FnOnce(HttpRequest) -> F,
     F: std::future::Future<Output = Result<HttpResponse, OAuthHttpClientError>>,
@@ -1223,6 +1380,7 @@ where
     request_oauth_authorization_code_with_token_endpoint(
         client_id,
         client_secret,
+        redirect_uri,
         redirect_uri,
         code,
         pkce_verifier,
@@ -1236,11 +1394,12 @@ async fn request_oauth_authorization_code_with_token_endpoint<C, F>(
     client_id: &str,
     client_secret: &str,
     redirect_uri: &str,
+    expected_redirect_uri: &str,
     code: &str,
     pkce_verifier: &str,
     token_endpoint: &str,
     http_client: C,
-) -> Result<TokenSet, SearchConsoleError>
+) -> Result<TokenSet, OAuthTokenExchangeFailure>
 where
     C: FnOnce(HttpRequest) -> F,
     F: std::future::Future<Output = Result<HttpResponse, OAuthHttpClientError>>,
@@ -1251,47 +1410,121 @@ where
         redirect_uri,
         token_endpoint,
     )?;
+    let request_metadata = Arc::new(Mutex::new(OAuthTokenRequestMetadata::default()));
+    let tracked_metadata = Arc::clone(&request_metadata);
+    let expected_redirect_uri = expected_redirect_uri.to_string();
     let token_result = client
         .exchange_code(AuthorizationCode::new(code.to_string()))
         .set_pkce_verifier(PkceCodeVerifier::new(pkce_verifier.to_string()))
-        .request_async(http_client)
-        .await
-        .map_err(map_oauth_token_error)?;
-    token_set_from_oauth_response(token_result)
+        .request_async(move |request| {
+            {
+                let mut metadata = tracked_metadata
+                    .lock()
+                    .unwrap_or_else(|poisoned| poisoned.into_inner());
+                metadata.redirect_uri_match = Some(token_request_redirect_uri_matches(
+                    &request,
+                    expected_redirect_uri.as_str(),
+                ));
+            }
+            let request_future = http_client(request);
+            let tracked_metadata = Arc::clone(&tracked_metadata);
+            async move {
+                let result = request_future.await;
+                let http_status = match &result {
+                    Ok(response) => Some(response.status_code.as_u16()),
+                    Err(error) => error.http_status(),
+                };
+                let mut metadata = tracked_metadata
+                    .lock()
+                    .unwrap_or_else(|poisoned| poisoned.into_inner());
+                metadata.http_status = http_status;
+                result
+            }
+        })
+        .await;
+    let request_metadata = *request_metadata
+        .lock()
+        .unwrap_or_else(|poisoned| poisoned.into_inner());
+    let token_response =
+        token_result.map_err(|error| map_oauth_token_error(error, request_metadata))?;
+    token_set_from_oauth_response(token_response).map_err(|error| {
+        OAuthTokenExchangeFailure::new(
+            error,
+            request_metadata.http_status,
+            None,
+            request_metadata.redirect_uri_match,
+        )
+    })
+}
+
+fn token_request_redirect_uri_matches(request: &HttpRequest, expected_redirect_uri: &str) -> bool {
+    let mut redirect_uri = None;
+    for (key, value) in form_urlencoded::parse(&request.body) {
+        if key == "redirect_uri" {
+            if redirect_uri.is_some() {
+                return false;
+            }
+            redirect_uri = Some(value.into_owned());
+        }
+    }
+    redirect_uri.as_deref() == Some(expected_redirect_uri)
 }
 
 async fn oauth_http_client(
     client: reqwest::Client,
     request: HttpRequest,
+    expected_redirect_uri: String,
 ) -> Result<HttpResponse, OAuthHttpClientError> {
+    let redirect_uri_match =
+        token_request_redirect_uri_matches(&request, expected_redirect_uri.as_str());
     let method = reqwest::Method::from_bytes(request.method.as_str().as_bytes())
-        .map_err(|_| OAuthHttpClientError::InvalidRequest)?;
+        .map_err(|_| OAuthHttpClientError::InvalidRequest { redirect_uri_match })?;
     let mut builder = client.request(method, request.url.as_str());
     for (name, value) in request.headers.iter() {
         let header_name = reqwest::header::HeaderName::from_bytes(name.as_str().as_bytes())
-            .map_err(|_| OAuthHttpClientError::InvalidRequest)?;
+            .map_err(|_| OAuthHttpClientError::InvalidRequest { redirect_uri_match })?;
         let header_value = reqwest::header::HeaderValue::from_bytes(value.as_bytes())
-            .map_err(|_| OAuthHttpClientError::InvalidRequest)?;
+            .map_err(|_| OAuthHttpClientError::InvalidRequest { redirect_uri_match })?;
         builder = builder.header(header_name, header_value);
     }
     let response = builder.body(request.body).send().await.map_err(|error| {
         if error.is_timeout() {
-            OAuthHttpClientError::NetworkTimeout
+            OAuthHttpClientError::NetworkTimeout { redirect_uri_match }
         } else {
-            OAuthHttpClientError::RequestFailed
+            OAuthHttpClientError::RequestFailed { redirect_uri_match }
         }
     })?;
-    let status_code = oauth2::http::StatusCode::from_u16(response.status().as_u16())
-        .map_err(|_| OAuthHttpClientError::InvalidResponse)?;
+    let http_status = response.status().as_u16();
+    let status_code = oauth2::http::StatusCode::from_u16(http_status).map_err(|_| {
+        OAuthHttpClientError::InvalidResponse {
+            http_status: Some(http_status),
+            redirect_uri_match,
+        }
+    })?;
     let mut headers = oauth2::http::HeaderMap::new();
     for (name, value) in response.headers().iter() {
         let header_name = oauth2::http::header::HeaderName::from_bytes(name.as_str().as_bytes())
-            .map_err(|_| OAuthHttpClientError::InvalidResponse)?;
-        let header_value = oauth2::http::HeaderValue::from_bytes(value.as_bytes())
-            .map_err(|_| OAuthHttpClientError::InvalidResponse)?;
+            .map_err(|_| OAuthHttpClientError::InvalidResponse {
+                http_status: Some(http_status),
+                redirect_uri_match,
+            })?;
+        let header_value =
+            oauth2::http::HeaderValue::from_bytes(value.as_bytes()).map_err(|_| {
+                OAuthHttpClientError::InvalidResponse {
+                    http_status: Some(http_status),
+                    redirect_uri_match,
+                }
+            })?;
         headers.append(header_name, header_value);
     }
-    let body = read_limited_oauth_body(response).await?;
+    let body = read_limited_oauth_body(response, http_status, redirect_uri_match).await?;
+    if !status_code.is_success() {
+        return Err(OAuthHttpClientError::TokenEndpointRejected {
+            http_status,
+            google_error: safe_google_error_code_from_body(&body),
+            redirect_uri_match,
+        });
+    }
     Ok(HttpResponse {
         status_code,
         headers,
@@ -1301,15 +1534,24 @@ async fn oauth_http_client(
 
 async fn read_limited_oauth_body(
     mut response: reqwest::Response,
+    http_status: u16,
+    redirect_uri_match: bool,
 ) -> Result<Vec<u8>, OAuthHttpClientError> {
     let mut body = Vec::new();
-    while let Some(chunk) = response
-        .chunk()
-        .await
-        .map_err(|_| OAuthHttpClientError::InvalidResponse)?
+    while let Some(chunk) =
+        response
+            .chunk()
+            .await
+            .map_err(|_| OAuthHttpClientError::InvalidResponse {
+                http_status: Some(http_status),
+                redirect_uri_match,
+            })?
     {
         if body.len().saturating_add(chunk.len()) > MAX_RESPONSE_BYTES {
-            return Err(OAuthHttpClientError::InvalidResponse);
+            return Err(OAuthHttpClientError::InvalidResponse {
+                http_status: Some(http_status),
+                redirect_uri_match,
+            });
         }
         body.extend_from_slice(&chunk);
     }
@@ -1341,15 +1583,87 @@ fn scope_matches_requested_from_oauth(scopes: Option<&Vec<Scope>>) -> bool {
 
 fn map_oauth_token_error(
     error: RequestTokenError<OAuthHttpClientError, BasicErrorResponse>,
-) -> SearchConsoleError {
+    request_metadata: OAuthTokenRequestMetadata,
+) -> OAuthTokenExchangeFailure {
     match error {
-        RequestTokenError::ServerResponse(response) => map_oauth_server_error(response.error()),
-        RequestTokenError::Request(OAuthHttpClientError::NetworkTimeout) => {
-            SearchConsoleError::NetworkTimeout
+        RequestTokenError::ServerResponse(response) => {
+            let google_error = safe_google_error_code_from_oauth(response.error());
+            OAuthTokenExchangeFailure::new(
+                map_oauth_server_error(response.error()),
+                request_metadata.http_status,
+                Some(google_error),
+                request_metadata.redirect_uri_match,
+            )
         }
-        RequestTokenError::Request(_)
-        | RequestTokenError::Parse(_, _)
-        | RequestTokenError::Other(_) => SearchConsoleError::TokenExchangeFailed,
+        RequestTokenError::Request(OAuthHttpClientError::TokenEndpointRejected {
+            http_status,
+            google_error,
+            redirect_uri_match,
+        }) => {
+            let error = google_error
+                .map(map_safe_google_error)
+                .unwrap_or(SearchConsoleError::TokenExchangeFailed);
+            OAuthTokenExchangeFailure::new(
+                error,
+                request_metadata.http_status.or(Some(http_status)),
+                google_error,
+                request_metadata
+                    .redirect_uri_match
+                    .or(Some(redirect_uri_match)),
+            )
+        }
+        RequestTokenError::Request(OAuthHttpClientError::NetworkTimeout { redirect_uri_match }) => {
+            OAuthTokenExchangeFailure::new(
+                SearchConsoleError::NetworkTimeout,
+                request_metadata.http_status,
+                None,
+                request_metadata
+                    .redirect_uri_match
+                    .or(Some(redirect_uri_match)),
+            )
+        }
+        RequestTokenError::Request(OAuthHttpClientError::InvalidResponse {
+            http_status,
+            redirect_uri_match,
+        }) => OAuthTokenExchangeFailure::new(
+            SearchConsoleError::TokenExchangeFailed,
+            request_metadata.http_status.or(http_status),
+            None,
+            request_metadata
+                .redirect_uri_match
+                .or(Some(redirect_uri_match)),
+        ),
+        RequestTokenError::Request(OAuthHttpClientError::InvalidRequest { redirect_uri_match })
+        | RequestTokenError::Request(OAuthHttpClientError::RequestFailed { redirect_uri_match }) => {
+            OAuthTokenExchangeFailure::new(
+                SearchConsoleError::TokenExchangeFailed,
+                request_metadata.http_status,
+                None,
+                request_metadata
+                    .redirect_uri_match
+                    .or(Some(redirect_uri_match)),
+            )
+        }
+        RequestTokenError::Parse(_, _) | RequestTokenError::Other(_) => {
+            OAuthTokenExchangeFailure::new(
+                SearchConsoleError::TokenExchangeFailed,
+                request_metadata.http_status,
+                None,
+                request_metadata.redirect_uri_match,
+            )
+        }
+    }
+}
+
+fn safe_google_error_code_from_oauth(error: &BasicErrorResponseType) -> SafeGoogleErrorCode {
+    match error {
+        BasicErrorResponseType::InvalidRequest => SafeGoogleErrorCode::InvalidRequest,
+        BasicErrorResponseType::InvalidClient => SafeGoogleErrorCode::InvalidClient,
+        BasicErrorResponseType::InvalidGrant => SafeGoogleErrorCode::InvalidGrant,
+        BasicErrorResponseType::UnauthorizedClient => SafeGoogleErrorCode::UnauthorizedClient,
+        BasicErrorResponseType::UnsupportedGrantType => SafeGoogleErrorCode::UnsupportedGrantType,
+        BasicErrorResponseType::InvalidScope => SafeGoogleErrorCode::InvalidScope,
+        BasicErrorResponseType::Extension(value) => safe_google_error_code(value.as_str()),
     }
 }
 
@@ -2419,6 +2733,14 @@ mod tests {
             params.get("redirect_uri").map(String::as_str),
             Some(request.redirect_uri.as_str())
         );
+        assert!(token_request_redirect_uri_matches(
+            &token_request,
+            &request.redirect_uri
+        ));
+        assert!(!token_request_redirect_uri_matches(
+            &token_request,
+            "http://127.0.0.1:1"
+        ));
     }
 
     #[test]
@@ -2567,16 +2889,20 @@ mod tests {
             .timeout(Duration::from_secs(5))
             .build()
             .unwrap();
+        let expected_redirect_uri = request.redirect_uri.clone();
 
         let result =
             tauri::async_runtime::block_on(request_oauth_authorization_code_with_token_endpoint(
                 VALID_CLIENT_ID,
                 &expected_client_secret,
                 &request.redirect_uri,
+                &request.redirect_uri,
                 expected_code,
                 &expected_verifier,
                 &token_endpoint,
-                move |token_request| oauth_http_client(client, token_request),
+                move |token_request| {
+                    oauth_http_client(client, token_request, expected_redirect_uri)
+                },
             ));
 
         assert!(result.is_ok());
@@ -2633,6 +2959,242 @@ mod tests {
         );
         assert!(!metadata.headers.contains_key("authorization"));
         assert!(!body.contains("%253A%252F%252F"));
+    }
+
+    #[test]
+    fn token_endpoint_rejection_returns_only_safe_diagnostic_fields() {
+        let request = build_authorization_request(VALID_CLIENT_ID, 49152).unwrap();
+        let authorization_code = ["fixture", "authorization", "code"].join("-");
+        let client_secret = test_client_secret();
+        let expected_redirect_uri = request.redirect_uri.clone();
+        let pkce_verifier = request.pkce_verifier.clone();
+        let (token_endpoint, server) = spawn_mock_token_endpoint_with_response(
+            "400 Bad Request",
+            br#"{"error":"invalid_grant","error_description":"do-not-expose-description"}"#,
+        );
+        let client = reqwest::Client::builder()
+            .redirect(Policy::none())
+            .timeout(Duration::from_secs(5))
+            .build()
+            .unwrap();
+
+        let failure =
+            tauri::async_runtime::block_on(request_oauth_authorization_code_with_token_endpoint(
+                VALID_CLIENT_ID,
+                &client_secret,
+                &request.redirect_uri,
+                &request.redirect_uri,
+                &authorization_code,
+                &pkce_verifier,
+                &token_endpoint,
+                move |token_request| {
+                    oauth_http_client(client, token_request, expected_redirect_uri)
+                },
+            ))
+            .unwrap_err();
+        let _ = server.join().unwrap();
+
+        assert_eq!(failure.error, SearchConsoleError::TokenInvalidGrant);
+        assert_eq!(failure.http_status, Some(400));
+        assert_eq!(
+            failure.google_error,
+            Some(SafeGoogleErrorCode::InvalidGrant)
+        );
+        assert_eq!(failure.redirect_uri_match, Some(true));
+
+        let error_json = serde_json::to_value(
+            SearchConsoleCommandError::from_token_exchange_failure(failure),
+        )
+        .unwrap();
+        assert_eq!(error_json["code"], "token_invalid_grant");
+        let diagnostic = error_json["diagnostic"].as_object().unwrap();
+        let diagnostic_keys = diagnostic
+            .keys()
+            .map(String::as_str)
+            .collect::<HashSet<_>>();
+        assert_eq!(
+            diagnostic_keys,
+            HashSet::from([
+                "stage",
+                "httpStatus",
+                "googleError",
+                "timeUtc",
+                "redirectUriMatch",
+            ])
+        );
+        assert_eq!(diagnostic["stage"], TOKEN_ENDPOINT_STAGE);
+        assert_eq!(diagnostic["httpStatus"], 400);
+        assert_eq!(diagnostic["googleError"], "invalid_grant");
+        assert_eq!(diagnostic["redirectUriMatch"], true);
+        assert!(diagnostic["timeUtc"]
+            .as_str()
+            .is_some_and(|value| value.ends_with('Z') || value == DIAGNOSTIC_VALUE_UNAVAILABLE));
+
+        let serialized = serde_json::to_string(&error_json).unwrap();
+        for sensitive in [
+            client_secret.as_str(),
+            authorization_code.as_str(),
+            pkce_verifier.as_str(),
+            "do-not-expose-description",
+            "error_description",
+        ] {
+            assert!(!serialized.contains(sensitive));
+        }
+    }
+
+    #[test]
+    fn unknown_google_error_code_is_not_copied_to_diagnostic() {
+        let raw_error = "do_not_expose_raw_google_value";
+        let body = format!(r#"{{"error":"{raw_error}"}}"#);
+        let google_error = safe_google_error_code_from_body(body.as_bytes());
+
+        assert_eq!(google_error, Some(SafeGoogleErrorCode::Unknown));
+        assert_eq!(
+            google_error.map(SafeGoogleErrorCode::as_str),
+            Some("unknown")
+        );
+        assert_ne!(
+            google_error.map(SafeGoogleErrorCode::as_str),
+            Some(raw_error)
+        );
+    }
+
+    #[test]
+    fn explicit_unknown_google_error_is_unknown_without_raw_value() {
+        let raw_error = "do_not_expose_raw_google_value";
+        let body = format!(r#"{{"error":"{raw_error}"}}"#);
+        let (failure, sensitive_values) =
+            token_exchange_failure_with_response_for_test("400 Bad Request", body.as_bytes(), None);
+
+        assert_eq!(failure.http_status, Some(400));
+        assert_eq!(failure.google_error, Some(SafeGoogleErrorCode::Unknown));
+        let serialized = serialized_token_exchange_failure_for_test(failure);
+        assert!(serialized.contains("\"googleError\":\"unknown\""));
+        assert!(!serialized.contains(raw_error));
+        assert_sensitive_values_hidden_for_test(&serialized, &sensitive_values);
+    }
+
+    #[test]
+    fn missing_google_error_is_unavailable_with_http_status() {
+        let (failure, sensitive_values) = token_exchange_failure_with_response_for_test(
+            "400 Bad Request",
+            br#"{"error_description":"do-not-expose-description"}"#,
+            None,
+        );
+
+        assert_eq!(failure.http_status, Some(400));
+        assert_eq!(failure.google_error, None);
+        let serialized = serialized_token_exchange_failure_for_test(failure);
+        assert!(serialized.contains("\"googleError\":\"unavailable\""));
+        assert!(!serialized.contains("do-not-expose-description"));
+        assert_sensitive_values_hidden_for_test(&serialized, &sensitive_values);
+    }
+
+    #[test]
+    fn malformed_google_error_response_is_unavailable_with_http_status() {
+        let raw_body = "not-json-do-not-expose";
+        let (failure, sensitive_values) = token_exchange_failure_with_response_for_test(
+            "400 Bad Request",
+            raw_body.as_bytes(),
+            None,
+        );
+
+        assert_eq!(failure.http_status, Some(400));
+        assert_eq!(failure.google_error, None);
+        let serialized = serialized_token_exchange_failure_for_test(failure);
+        assert!(serialized.contains("\"googleError\":\"unavailable\""));
+        assert!(!serialized.contains(raw_body));
+        assert_sensitive_values_hidden_for_test(&serialized, &sensitive_values);
+    }
+
+    #[test]
+    fn html_token_error_is_unavailable_with_actual_http_status() {
+        let raw_body = "<html>do-not-expose-google-body</html>";
+        let (failure, sensitive_values) = token_exchange_failure_with_response_for_test(
+            "500 Internal Server Error",
+            raw_body.as_bytes(),
+            None,
+        );
+
+        assert_eq!(failure.http_status, Some(500));
+        assert_eq!(failure.google_error, None);
+        let serialized = serialized_token_exchange_failure_for_test(failure);
+        assert!(serialized.contains("\"httpStatus\":500"));
+        assert!(serialized.contains("\"googleError\":\"unavailable\""));
+        assert!(!serialized.contains(raw_body));
+        assert_sensitive_values_hidden_for_test(&serialized, &sensitive_values);
+    }
+
+    #[test]
+    fn successful_http_response_parse_failure_keeps_status_and_redirect_match() {
+        let raw_body = "not-a-token-response-do-not-expose";
+        let (failure, sensitive_values) =
+            token_exchange_failure_with_response_for_test("200 OK", raw_body.as_bytes(), None);
+
+        assert_eq!(failure.http_status, Some(200));
+        assert_eq!(failure.google_error, None);
+        assert_eq!(failure.redirect_uri_match, Some(true));
+        let serialized = serialized_token_exchange_failure_for_test(failure);
+        assert!(serialized.contains("\"httpStatus\":200"));
+        assert!(serialized.contains("\"googleError\":\"unavailable\""));
+        assert!(serialized.contains("\"redirectUriMatch\":true"));
+        assert!(!serialized.contains(raw_body));
+        assert_sensitive_values_hidden_for_test(&serialized, &sensitive_values);
+    }
+
+    #[test]
+    fn redirect_uri_mismatch_survives_token_response_parse_failure() {
+        let raw_body = "not-a-token-response-do-not-expose";
+        let (failure, sensitive_values) = token_exchange_failure_with_response_for_test(
+            "200 OK",
+            raw_body.as_bytes(),
+            Some("http://127.0.0.1:1/unexpected"),
+        );
+
+        assert_eq!(failure.http_status, Some(200));
+        assert_eq!(failure.redirect_uri_match, Some(false));
+        let serialized = serialized_token_exchange_failure_for_test(failure);
+        assert!(serialized.contains("\"redirectUriMatch\":false"));
+        assert!(!serialized.contains(raw_body));
+        assert_sensitive_values_hidden_for_test(&serialized, &sensitive_values);
+    }
+
+    #[test]
+    fn network_failure_without_response_keeps_null_status_and_actual_redirect_match() {
+        let request = build_authorization_request(VALID_CLIENT_ID, 49152).unwrap();
+        let authorization_code = ["network", "authorization", "code"].join("-");
+        let client_secret = test_client_secret();
+        let pkce_verifier = request.pkce_verifier.clone();
+        let expected_redirect_uri = request.redirect_uri.clone();
+        let failure =
+            tauri::async_runtime::block_on(request_oauth_authorization_code_with_token_endpoint(
+                VALID_CLIENT_ID,
+                &client_secret,
+                &request.redirect_uri,
+                &request.redirect_uri,
+                &authorization_code,
+                &pkce_verifier,
+                TOKEN_ENDPOINT,
+                move |token_request| async move {
+                    Err::<HttpResponse, OAuthHttpClientError>(OAuthHttpClientError::RequestFailed {
+                        redirect_uri_match: token_request_redirect_uri_matches(
+                            &token_request,
+                            expected_redirect_uri.as_str(),
+                        ),
+                    })
+                },
+            ))
+            .unwrap_err();
+
+        assert_eq!(failure.http_status, None);
+        assert_eq!(failure.redirect_uri_match, Some(true));
+        let serialized = serialized_token_exchange_failure_for_test(failure);
+        assert!(serialized.contains("\"httpStatus\":null"));
+        assert!(serialized.contains("\"redirectUriMatch\":true"));
+        assert_sensitive_values_hidden_for_test(
+            &serialized,
+            &[client_secret, authorization_code, pkce_verifier],
+        );
     }
 
     #[test]
@@ -4458,11 +5020,73 @@ mod tests {
         String::from_utf8(request.body.clone()).unwrap()
     }
 
+    fn token_exchange_failure_with_response_for_test(
+        status: &str,
+        body: &[u8],
+        expected_redirect_uri: Option<&str>,
+    ) -> (OAuthTokenExchangeFailure, [String; 3]) {
+        let request = build_authorization_request(VALID_CLIENT_ID, 49152).unwrap();
+        let authorization_code = ["fixture", "authorization", "code"].join("-");
+        let client_secret = test_client_secret();
+        let pkce_verifier = request.pkce_verifier.clone();
+        let expected_redirect_uri = expected_redirect_uri
+            .unwrap_or(request.redirect_uri.as_str())
+            .to_string();
+        let adapter_redirect_uri = expected_redirect_uri.clone();
+        let (token_endpoint, server) = spawn_mock_token_endpoint_with_response(status, body);
+        let client = reqwest::Client::builder()
+            .redirect(Policy::none())
+            .timeout(Duration::from_secs(5))
+            .build()
+            .unwrap();
+
+        let failure =
+            tauri::async_runtime::block_on(request_oauth_authorization_code_with_token_endpoint(
+                VALID_CLIENT_ID,
+                &client_secret,
+                &request.redirect_uri,
+                &expected_redirect_uri,
+                &authorization_code,
+                &pkce_verifier,
+                &token_endpoint,
+                move |token_request| oauth_http_client(client, token_request, adapter_redirect_uri),
+            ))
+            .unwrap_err();
+        let _ = server.join().unwrap();
+
+        (failure, [client_secret, authorization_code, pkce_verifier])
+    }
+
+    fn serialized_token_exchange_failure_for_test(failure: OAuthTokenExchangeFailure) -> String {
+        serde_json::to_string(&SearchConsoleCommandError::from_token_exchange_failure(
+            failure,
+        ))
+        .unwrap()
+    }
+
+    fn assert_sensitive_values_hidden_for_test(serialized: &str, sensitive_values: &[String]) {
+        for sensitive in sensitive_values {
+            assert!(!serialized.contains(sensitive));
+        }
+    }
+
     fn spawn_mock_token_endpoint() -> (String, thread::JoinHandle<MockTokenRequestMetadata>) {
+        spawn_mock_token_endpoint_with_response(
+            "200 OK",
+            br#"{"access_token":"fixture-access","token_type":"Bearer","refresh_token":"fixture-refresh","expires_in":3600,"scope":"https://www.googleapis.com/auth/webmasters.readonly"}"#,
+        )
+    }
+
+    fn spawn_mock_token_endpoint_with_response(
+        status: &str,
+        body: &[u8],
+    ) -> (String, thread::JoinHandle<MockTokenRequestMetadata>) {
         let listener = TcpListener::bind((Ipv4Addr::LOCALHOST, 0)).unwrap();
         listener.set_nonblocking(true).unwrap();
         let port = listener.local_addr().unwrap().port();
         let endpoint = format!("http://127.0.0.1:{port}/token");
+        let status = status.to_string();
+        let body = body.to_vec();
         let handle = thread::spawn(move || {
             let deadline = Instant::now() + Duration::from_secs(5);
             let (mut stream, _) = loop {
@@ -4477,13 +5101,12 @@ mod tests {
             };
             let raw_request = read_mock_http_request(&mut stream);
             let metadata = parse_mock_token_request(&raw_request);
-            let body = br#"{"access_token":"fixture-access","token_type":"Bearer","refresh_token":"fixture-refresh","expires_in":3600,"scope":"https://www.googleapis.com/auth/webmasters.readonly"}"#;
             let response = format!(
-                "HTTP/1.1 200 OK\r\nContent-Type: application/json\r\nContent-Length: {}\r\nConnection: close\r\n\r\n",
+                "HTTP/1.1 {status}\r\nContent-Type: application/json\r\nContent-Length: {}\r\nConnection: close\r\n\r\n",
                 body.len()
             );
             stream.write_all(response.as_bytes()).unwrap();
-            stream.write_all(body).unwrap();
+            stream.write_all(&body).unwrap();
             stream.flush().unwrap();
             metadata
         });
