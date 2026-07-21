@@ -21,6 +21,7 @@
     "allow-delete-search-console-client-id",
     "allow-start-search-console-oauth",
     "allow-disconnect-search-console",
-    "allow-test-search-console-connection"
+    "allow-test-search-console-connection",
+    "allow-get-search-console-summary"
   ]
 }

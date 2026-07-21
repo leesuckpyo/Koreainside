@@ -83,6 +83,16 @@ window.addEventListener("DOMContentLoaded", () => {
   const testSearchConsoleConnectionButton = document.querySelector("#test-search-console-connection");
   const disconnectSearchConsoleButton = document.querySelector("#disconnect-search-console");
   const searchConsoleMessage = document.querySelector("#search-console-message");
+  const searchConsoleSummary = document.querySelector("#search-console-summary");
+  const refreshSearchConsoleSummaryButton = document.querySelector("#refresh-search-console-summary");
+  const searchConsoleClicks = document.querySelector("#search-console-clicks");
+  const searchConsoleImpressions = document.querySelector("#search-console-impressions");
+  const searchConsoleCtr = document.querySelector("#search-console-ctr");
+  const searchConsolePosition = document.querySelector("#search-console-position");
+  const searchConsoleRange = document.querySelector("#search-console-range");
+  const searchConsoleSiteUrl = document.querySelector("#search-console-site-url");
+  const searchConsoleSummaryFetchedAt = document.querySelector("#search-console-summary-fetched-at");
+  const searchConsoleSummaryMessage = document.querySelector("#search-console-summary-message");
   const viewTitles = {
     dashboard: "운영 대시보드",
     analytics: "Vercel Analytics",
@@ -97,6 +107,8 @@ window.addEventListener("DOMContentLoaded", () => {
   let analyticsSummaryLoading = false;
   let siteStatusLoading = false;
   let searchConsoleLoading = false;
+  let searchConsoleSummaryLoading = false;
+  let searchConsoleSummaryAttempted = false;
   let searchConsoleStatus = {
     configured: false,
     clientSecretStored: false,
@@ -173,6 +185,17 @@ window.addEventListener("DOMContentLoaded", () => {
     revoke_failed: "Google 연결 해제를 완료하지 못했습니다. 로컬 인증정보 상태를 확인하세요.",
     internal_error: "Search Console 연결 상태를 처리할 수 없습니다.",
   };
+  const searchConsoleSummaryErrorMessages = {
+    not_configured: "저장된 Google 인증정보를 확인할 수 없습니다.",
+    already_in_progress: "다른 Search Console 작업이 진행 중입니다.",
+    network_timeout: "Search Console 실적 조회 시간이 초과되었습니다.",
+    reauthentication_required: "Google 계정을 다시 연결한 후 실적을 조회해 주십시오.",
+    search_analytics_permission_denied: "Search Console 실적 데이터를 읽을 권한이 없습니다.",
+    search_console_site_not_found: "Korea Inside Search Console 속성을 찾을 수 없습니다.",
+    search_analytics_request_failed: "Search Console 실적 요약을 조회할 수 없습니다.",
+    search_analytics_invalid_response: "Search Console 실적 응답 형식을 확인할 수 없습니다.",
+    internal_error: "Search Console 실적 요약을 처리할 수 없습니다.",
+  };
 
   navigationItems.forEach((item) => {
     item.addEventListener("click", () => {
@@ -193,6 +216,9 @@ window.addEventListener("DOMContentLoaded", () => {
       });
 
       viewTitle.textContent = viewTitles[selectedView];
+      if (selectedView === "search-console") {
+        loadSearchConsoleSummaryIfReady();
+      }
     });
   });
 
@@ -274,6 +300,10 @@ window.addEventListener("DOMContentLoaded", () => {
 
   if (disconnectSearchConsoleButton) {
     disconnectSearchConsoleButton.addEventListener("click", disconnectSearchConsole);
+  }
+
+  if (refreshSearchConsoleSummaryButton) {
+    refreshSearchConsoleSummaryButton.addEventListener("click", loadSearchConsoleSummary);
   }
 
   previewExportButton.addEventListener("click", async () => {
@@ -456,7 +486,155 @@ window.addEventListener("DOMContentLoaded", () => {
       }
     } finally {
       setSearchConsoleLoading(false);
+      loadSearchConsoleSummaryIfReady();
     }
+  }
+
+  function loadSearchConsoleSummaryIfReady() {
+    const searchConsoleView = document.querySelector('[data-panel="search-console"]');
+    const canLoad =
+      searchConsoleStatus.clientSecretStored &&
+      searchConsoleStatus.authorizationStored &&
+      !searchConsoleStatus.reauthenticationRequired;
+    if (
+      !searchConsoleView ||
+      searchConsoleView.hidden ||
+      !canLoad ||
+      searchConsoleSummaryAttempted ||
+      searchConsoleSummaryLoading ||
+      searchConsoleLoading
+    ) {
+      return;
+    }
+    loadSearchConsoleSummary();
+  }
+
+  async function loadSearchConsoleSummary() {
+    if (searchConsoleSummaryLoading || searchConsoleLoading) {
+      return;
+    }
+    if (
+      !searchConsoleStatus.clientSecretStored ||
+      !searchConsoleStatus.authorizationStored ||
+      searchConsoleStatus.reauthenticationRequired
+    ) {
+      setSearchConsoleSummaryMessage(
+        searchConsoleStatus.reauthenticationRequired
+          ? searchConsoleSummaryErrorMessages.reauthentication_required
+          : "Google 계정을 연결하면 최근 검색 실적을 조회합니다.",
+        searchConsoleStatus.reauthenticationRequired ? "error" : "default",
+      );
+      updateSearchConsoleControls();
+      return;
+    }
+
+    searchConsoleSummaryAttempted = true;
+    setSearchConsoleSummaryLoading(true);
+    setSearchConsoleSummaryMessage("Search Console 최근 28일 실적을 조회하고 있습니다.");
+    let shouldRefreshConnectionStatus = false;
+    try {
+      const result = await window.__TAURI__.core.invoke("get_search_console_summary");
+      if (!isValidSearchConsoleSummary(result)) {
+        renderSearchConsoleSummaryError("search_analytics_invalid_response");
+        return;
+      }
+      renderSearchConsoleSummary(result);
+      shouldRefreshConnectionStatus = true;
+    } catch (error) {
+      renderSearchConsoleSummaryError(errorCodeFromInvoke(error));
+    } finally {
+      setSearchConsoleSummaryLoading(false);
+      if (shouldRefreshConnectionStatus) {
+        refreshSearchConsoleStatus({ preserveMessage: true });
+      }
+    }
+  }
+
+  function renderSearchConsoleSummary(result) {
+    setText(searchConsoleClicks, formatSearchConsoleCount(result.clicks));
+    setText(searchConsoleImpressions, formatSearchConsoleCount(result.impressions));
+    setText(searchConsoleCtr, `${(result.ctr * 100).toFixed(2)}%`);
+    setText(searchConsolePosition, result.position.toFixed(1));
+    setText(searchConsoleRange, `${result.startDate} ~ ${result.endDate}`);
+    setText(searchConsoleSiteUrl, result.siteUrl);
+    setText(searchConsoleSummaryFetchedAt, formatSearchConsoleTimestamp(result.fetchedAtUtc));
+    setSearchConsoleSummaryMessage(
+      result.hasData
+        ? "Search Console 최근 28일 실적을 불러왔습니다."
+        : "해당 기간에 Search Console 실적 데이터가 없습니다.",
+      result.hasData ? "success" : "default",
+    );
+  }
+
+  function renderSearchConsoleSummaryError(errorCode) {
+    const message =
+      searchConsoleSummaryErrorMessages[errorCode] || "Search Console 실적 요약을 조회할 수 없습니다.";
+    setSearchConsoleSummaryMessage(message, "error");
+  }
+
+  function resetSearchConsoleSummary() {
+    searchConsoleSummaryAttempted = false;
+    setText(searchConsoleClicks, "—");
+    setText(searchConsoleImpressions, "—");
+    setText(searchConsoleCtr, "—");
+    setText(searchConsolePosition, "—");
+    setText(searchConsoleRange, "조회 전");
+    setText(searchConsoleSiteUrl, "확인 전");
+    setText(searchConsoleSummaryFetchedAt, "조회 전");
+    setSearchConsoleSummaryMessage("Google 계정을 연결하면 최근 검색 실적을 조회합니다.");
+  }
+
+  function setSearchConsoleSummaryLoading(isLoading) {
+    searchConsoleSummaryLoading = isLoading;
+    if (searchConsoleSummary) {
+      searchConsoleSummary.setAttribute("aria-busy", String(isLoading));
+    }
+    updateSearchConsoleControls();
+  }
+
+  function setSearchConsoleSummaryMessage(message, kind = "default") {
+    if (!searchConsoleSummaryMessage) {
+      return;
+    }
+    searchConsoleSummaryMessage.textContent = message;
+    searchConsoleSummaryMessage.classList.toggle("is-error", kind === "error");
+    searchConsoleSummaryMessage.classList.toggle("is-success", kind === "success");
+  }
+
+  function formatSearchConsoleCount(value) {
+    return value.toLocaleString("ko-KR", { maximumFractionDigits: 0 });
+  }
+
+  function isValidSearchConsoleSummary(result) {
+    const allowedSites = new Set([
+      "https://www.getkoreainside.com/",
+      "https://getkoreainside.com/",
+      "sc-domain:getkoreainside.com",
+    ]);
+    const datePattern = /^\d{4}-\d{2}-\d{2}$/;
+    return (
+      result !== null &&
+      typeof result === "object" &&
+      Number.isFinite(result.clicks) &&
+      result.clicks >= 0 &&
+      Number.isFinite(result.impressions) &&
+      result.impressions >= 0 &&
+      Number.isFinite(result.ctr) &&
+      result.ctr >= 0 &&
+      result.ctr <= 1 &&
+      Number.isFinite(result.position) &&
+      result.position >= 0 &&
+      typeof result.startDate === "string" &&
+      datePattern.test(result.startDate) &&
+      typeof result.endDate === "string" &&
+      datePattern.test(result.endDate) &&
+      result.startDate <= result.endDate &&
+      typeof result.fetchedAtUtc === "string" &&
+      !Number.isNaN(new Date(result.fetchedAtUtc).getTime()) &&
+      typeof result.siteUrl === "string" &&
+      allowedSites.has(result.siteUrl) &&
+      typeof result.hasData === "boolean"
+    );
   }
 
   async function saveSearchConsoleClientId(event) {
@@ -474,6 +652,7 @@ window.addEventListener("DOMContentLoaded", () => {
     try {
       const result = await window.__TAURI__.core.invoke("save_search_console_client_id", { clientId });
       renderSearchConsoleStatus(result);
+      resetSearchConsoleSummary();
       setSearchConsoleMessage(
         result.clientSecretStored
           ? "Client ID 저장 완료"
@@ -500,6 +679,7 @@ window.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
+      resetSearchConsoleSummary();
       await refreshSearchConsoleStatus({ preserveMessage: true });
       setSearchConsoleMessage(
         result.clientIdChanged
@@ -524,6 +704,7 @@ window.addEventListener("DOMContentLoaded", () => {
     try {
       const result = await window.__TAURI__.core.invoke("delete_search_console_client_id");
       renderSearchConsoleStatus(result);
+      resetSearchConsoleSummary();
       setSearchConsoleMessage("Client 설정 삭제 완료", "success");
     } catch (error) {
       renderSearchConsoleError(errorCodeFromInvoke(error));
@@ -541,6 +722,7 @@ window.addEventListener("DOMContentLoaded", () => {
         return;
       }
       renderSearchConsoleStatus(result.clientStatus);
+      resetSearchConsoleSummary();
       setSearchConsoleMessage("Google 계정 연결 완료", "success");
     } catch (error) {
       logSearchConsoleOauthDiagnostic(error);
@@ -548,6 +730,7 @@ window.addEventListener("DOMContentLoaded", () => {
       refreshSearchConsoleStatus({ preserveMessage: true });
     } finally {
       setSearchConsoleLoading(false);
+      loadSearchConsoleSummaryIfReady();
     }
   }
 
@@ -556,12 +739,14 @@ window.addEventListener("DOMContentLoaded", () => {
     try {
       const result = await window.__TAURI__.core.invoke("test_search_console_connection");
       renderSearchConsoleStatus(result);
+      resetSearchConsoleSummary();
       setSearchConsoleMessage("Search Console 연결 확인 완료", "success");
     } catch (error) {
       renderSearchConsoleError(errorCodeFromInvoke(error));
       refreshSearchConsoleStatus({ preserveMessage: true });
     } finally {
       setSearchConsoleLoading(false);
+      loadSearchConsoleSummaryIfReady();
     }
   }
 
@@ -574,6 +759,7 @@ window.addEventListener("DOMContentLoaded", () => {
         return;
       }
       renderSearchConsoleStatus(result.clientStatus);
+      resetSearchConsoleSummary();
       setSearchConsoleMessage(
         result.revokeAttempted && result.revokeSucceeded === false
           ? searchConsoleErrorMessages.revoke_failed
@@ -643,7 +829,8 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   function updateSearchConsoleControls() {
-    const busy = searchConsoleLoading || searchConsoleStatus.authenticationInProgress;
+    const busy =
+      searchConsoleLoading || searchConsoleSummaryLoading || searchConsoleStatus.authenticationInProgress;
     const clientIdEntered = searchConsoleClientId && searchConsoleClientId.value.trim().length > 0;
     const canStartOauth = searchConsoleStatus.configured && searchConsoleStatus.clientSecretStored;
 
@@ -672,6 +859,13 @@ window.addEventListener("DOMContentLoaded", () => {
     }
     if (disconnectSearchConsoleButton) {
       disconnectSearchConsoleButton.disabled = busy || !searchConsoleStatus.authorizationStored;
+    }
+    if (refreshSearchConsoleSummaryButton) {
+      refreshSearchConsoleSummaryButton.disabled =
+        busy ||
+        !searchConsoleStatus.clientSecretStored ||
+        !searchConsoleStatus.authorizationStored ||
+        searchConsoleStatus.reauthenticationRequired;
     }
   }
 

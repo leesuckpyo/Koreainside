@@ -165,6 +165,61 @@
               <span class="search-console-badge" id="search-console-badge">연결되지 않음</span>
             </div>
 
+            <section
+              class="analytics-summary search-console-summary"
+              id="search-console-summary"
+              aria-labelledby="search-console-summary-title"
+              aria-busy="false"
+            >
+              <div class="analytics-summary-toolbar">
+                <div>
+                  <h3 class="analytics-section-title" id="search-console-summary-title">최근 28일 검색 실적</h3>
+                  <p>Search Console에서 확인 가능한 최신 확정 날짜를 기준으로 집계합니다.</p>
+                </div>
+                <button class="secondary-button" id="refresh-search-console-summary" type="button" disabled>
+                  새로고침
+                </button>
+              </div>
+
+              <div class="analytics-metric-grid search-console-metric-grid" aria-label="Search Console 최근 28일 요약 지표">
+                <article class="analytics-metric-card">
+                  <span>총 클릭수</span>
+                  <strong id="search-console-clicks">—</strong>
+                </article>
+                <article class="analytics-metric-card">
+                  <span>총 노출수</span>
+                  <strong id="search-console-impressions">—</strong>
+                </article>
+                <article class="analytics-metric-card">
+                  <span>평균 CTR</span>
+                  <strong id="search-console-ctr">—</strong>
+                </article>
+                <article class="analytics-metric-card">
+                  <span>평균 게재순위</span>
+                  <strong id="search-console-position">—</strong>
+                </article>
+              </div>
+
+              <dl class="analytics-summary-meta">
+                <div>
+                  <dt>조회 기간</dt>
+                  <dd id="search-console-range">조회 전</dd>
+                </div>
+                <div>
+                  <dt>Search Console 속성</dt>
+                  <dd id="search-console-site-url">확인 전</dd>
+                </div>
+                <div>
+                  <dt>마지막 갱신</dt>
+                  <dd id="search-console-summary-fetched-at">조회 전</dd>
+                </div>
+              </dl>
+
+              <div class="analytics-summary-message" id="search-console-summary-message" role="status">
+                Google 계정을 연결하면 최근 검색 실적을 조회합니다.
+              </div>
+            </section>
+
             <section class="search-console-settings" aria-labelledby="search-console-settings-title">
               <h3 class="search-console-section-title" id="search-console-settings-title">연결 상태</h3>
               <div class="search-console-status-grid" aria-label="Google Search Console 연결 상태">

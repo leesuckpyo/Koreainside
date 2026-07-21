@@ -24,7 +24,7 @@ use std::{
 };
 use tauri::AppHandle;
 use tauri_plugin_dialog::DialogExt;
-use time::{format_description::well_known::Rfc3339, OffsetDateTime};
+use time::{format_description::well_known::Rfc3339, Date, Month, OffsetDateTime};
 use url::form_urlencoded;
 use windows_native_keyring_store::{CredPersist, Store};
 
@@ -41,6 +41,7 @@ const AUTHORIZATION_ENDPOINT: &str = "https://accounts.google.com/o/oauth2/v2/au
 const TOKEN_ENDPOINT: &str = "https://oauth2.googleapis.com/token";
 const REVOKE_ENDPOINT: &str = "https://oauth2.googleapis.com/revoke";
 const SITES_LIST_ENDPOINT: &str = "https://www.googleapis.com/webmasters/v3/sites";
+const SEARCH_ANALYTICS_ENDPOINT_BASE: &str = "https://www.googleapis.com/webmasters/v3/sites";
 const SEARCH_CONSOLE_SCOPE: &str = "https://www.googleapis.com/auth/webmasters.readonly";
 const CALLBACK_PATH: &str = "/";
 const GOOGLE_ISSUER: &str = "https://accounts.google.com";
@@ -58,6 +59,14 @@ const REQUEST_TIMEOUT: Duration = Duration::from_secs(10);
 const ACCESS_TOKEN_REFRESH_MARGIN: Duration = Duration::from_secs(60);
 const TOKEN_ENDPOINT_STAGE: &str = "token_endpoint";
 const DIAGNOSTIC_VALUE_UNAVAILABLE: &str = "unavailable";
+const SEARCH_ANALYTICS_PERIOD_DAYS: i64 = 28;
+const SEARCH_ANALYTICS_DISCOVERY_DAYS: i64 = 480;
+const SEARCH_ANALYTICS_ROW_LIMIT: u32 = 25_000;
+const SEARCH_CONSOLE_SITE_PRIORITY: [&str; 3] = [
+    "https://www.getkoreainside.com/",
+    "https://getkoreainside.com/",
+    "sc-domain:getkoreainside.com",
+];
 
 type CommandResult<T> = Result<T, SearchConsoleCommandError>;
 
@@ -115,6 +124,20 @@ pub struct SearchConsoleActionResult {
     revoke_attempted: Option<bool>,
     #[serde(skip_serializing_if = "Option::is_none")]
     revoke_succeeded: Option<bool>,
+}
+
+#[derive(Debug, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct SearchConsoleSummary {
+    clicks: f64,
+    impressions: f64,
+    ctr: f64,
+    position: f64,
+    start_date: String,
+    end_date: String,
+    fetched_at_utc: String,
+    site_url: String,
+    has_data: bool,
 }
 
 #[derive(Serialize)]
@@ -199,6 +222,10 @@ enum SearchConsoleError {
     ScopeNotGranted,
     ReauthenticationRequired,
     ApiRequestFailed,
+    SearchAnalyticsPermissionDenied,
+    SearchConsoleSiteNotFound,
+    SearchAnalyticsRequestFailed,
+    SearchAnalyticsInvalidResponse,
     RevokeFailed,
     Internal,
 }
@@ -235,6 +262,10 @@ impl SearchConsoleError {
             Self::ScopeNotGranted => "scope_not_granted",
             Self::ReauthenticationRequired => "reauthentication_required",
             Self::ApiRequestFailed => "api_request_failed",
+            Self::SearchAnalyticsPermissionDenied => "search_analytics_permission_denied",
+            Self::SearchConsoleSiteNotFound => "search_console_site_not_found",
+            Self::SearchAnalyticsRequestFailed => "search_analytics_request_failed",
+            Self::SearchAnalyticsInvalidResponse => "search_analytics_invalid_response",
             Self::RevokeFailed => "revoke_failed",
             Self::Internal => "internal_error",
         }
@@ -283,6 +314,18 @@ impl SearchConsoleError {
             Self::ScopeNotGranted => "Search Console 읽기 전용 권한이 승인되지 않았습니다.",
             Self::ReauthenticationRequired => "Google Search Console 재인증이 필요합니다.",
             Self::ApiRequestFailed => "Google Search Console 연결 시험을 완료할 수 없습니다.",
+            Self::SearchAnalyticsPermissionDenied => {
+                "Google Search Console 실적 데이터를 읽을 권한이 없습니다."
+            }
+            Self::SearchConsoleSiteNotFound => {
+                "Korea Inside Search Console 속성을 찾을 수 없습니다."
+            }
+            Self::SearchAnalyticsRequestFailed => {
+                "Google Search Console 실적 요약을 조회할 수 없습니다."
+            }
+            Self::SearchAnalyticsInvalidResponse => {
+                "Google Search Console 실적 응답 형식을 확인할 수 없습니다."
+            }
             Self::RevokeFailed => "Google Search Console 연결 해제 요청을 완료할 수 없습니다.",
             Self::Internal => "Search Console 연결 상태를 처리할 수 없습니다.",
         }
@@ -539,12 +582,74 @@ struct SitesListResponse {
     site_entries: Option<Vec<SiteEntry>>,
 }
 
-#[derive(Deserialize)]
+#[derive(Clone, Debug, Deserialize, Eq, PartialEq)]
 struct SiteEntry {
     #[serde(rename = "siteUrl")]
-    _site_url: String,
+    site_url: String,
     #[serde(rename = "permissionLevel")]
-    _permission_level: String,
+    permission_level: String,
+}
+
+#[derive(Serialize)]
+#[serde(rename_all = "camelCase")]
+struct SearchAnalyticsQuery {
+    start_date: String,
+    end_date: String,
+    data_state: &'static str,
+    row_limit: u32,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    dimensions: Option<Vec<&'static str>>,
+}
+
+#[derive(Deserialize)]
+struct SearchAnalyticsResponse {
+    rows: Option<Vec<SearchAnalyticsRow>>,
+}
+
+#[derive(Deserialize)]
+struct SearchAnalyticsRow {
+    keys: Option<Vec<String>>,
+    clicks: Option<f64>,
+    impressions: Option<f64>,
+    ctr: Option<f64>,
+    position: Option<f64>,
+}
+
+#[derive(Clone, Copy, Debug, PartialEq)]
+struct SearchAnalyticsMetrics {
+    clicks: f64,
+    impressions: f64,
+    ctr: f64,
+    position: f64,
+}
+
+impl SearchAnalyticsMetrics {
+    fn empty() -> Self {
+        Self {
+            clicks: 0.0,
+            impressions: 0.0,
+            ctr: 0.0,
+            position: 0.0,
+        }
+    }
+}
+
+#[derive(Clone, Copy)]
+struct SearchConsoleApiEndpoints<'a> {
+    sites: &'a str,
+    search_analytics_base: &'a str,
+}
+
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+enum SearchConsoleSummaryFetchError {
+    Unauthorized,
+    Public(SearchConsoleError),
+}
+
+impl From<SearchConsoleError> for SearchConsoleSummaryFetchError {
+    fn from(error: SearchConsoleError) -> Self {
+        Self::Public(error)
+    }
 }
 
 #[tauri::command]
@@ -769,6 +874,41 @@ pub async fn test_search_console_connection() -> CommandResult<SearchConsoleClie
     client_status().map_err(Into::into)
 }
 
+#[tauri::command]
+pub async fn get_search_console_summary() -> CommandResult<SearchConsoleSummary> {
+    let _guard =
+        OperationGuard::begin(OperationKind::Refresh).map_err(SearchConsoleCommandError::from)?;
+    read_required_client_id().map_err(SearchConsoleCommandError::from)?;
+    read_credential(REFRESH_TOKEN_ACCOUNT).map_err(|error| match error {
+        KeyringError::NoEntry => SearchConsoleCommandError::from(SearchConsoleError::NotConfigured),
+        _ => SearchConsoleCommandError::from(SearchConsoleError::CredentialReadFailed),
+    })?;
+
+    let client = secure_http_client().map_err(SearchConsoleCommandError::from)?;
+    let access_token = refresh_access_token()
+        .await
+        .map_err(SearchConsoleCommandError::from)?;
+    let endpoints = SearchConsoleApiEndpoints {
+        sites: SITES_LIST_ENDPOINT,
+        search_analytics_base: SEARCH_ANALYTICS_ENDPOINT_BASE,
+    };
+    let summary = fetch_search_console_summary_with_refresh(
+        &client,
+        access_token,
+        || async {
+            clear_cached_access_token()?;
+            refresh_access_token().await
+        },
+        endpoints,
+        OffsetDateTime::now_utc().date(),
+    )
+    .await
+    .map_err(SearchConsoleCommandError::from)?;
+
+    set_last_checked_now(false).map_err(SearchConsoleCommandError::from)?;
+    Ok(summary)
+}
+
 async fn refresh_access_token() -> Result<String, SearchConsoleError> {
     if let Some(token) = cached_access_token()? {
         return Ok(token);
@@ -893,6 +1033,312 @@ async fn fetch_sites_list(access_token: &str) -> Result<(), SearchConsoleError> 
     let body = read_limited_body(response).await?;
     parse_sites_list_response(&body)?;
     Ok(())
+}
+
+async fn fetch_search_console_summary_with_refresh<F, Fut>(
+    client: &reqwest::Client,
+    access_token: String,
+    refresh_access_token: F,
+    endpoints: SearchConsoleApiEndpoints<'_>,
+    today: Date,
+) -> Result<SearchConsoleSummary, SearchConsoleError>
+where
+    F: FnOnce() -> Fut,
+    Fut: std::future::Future<Output = Result<String, SearchConsoleError>>,
+{
+    match fetch_search_console_summary_once(client, &access_token, endpoints, today).await {
+        Ok(summary) => Ok(summary),
+        Err(SearchConsoleSummaryFetchError::Unauthorized) => {
+            let refreshed_access_token = refresh_access_token().await?;
+            fetch_search_console_summary_once(client, &refreshed_access_token, endpoints, today)
+                .await
+                .map_err(public_summary_error)
+        }
+        Err(SearchConsoleSummaryFetchError::Public(error)) => Err(error),
+    }
+}
+
+async fn fetch_search_console_summary_once(
+    client: &reqwest::Client,
+    access_token: &str,
+    endpoints: SearchConsoleApiEndpoints<'_>,
+    today: Date,
+) -> Result<SearchConsoleSummary, SearchConsoleSummaryFetchError> {
+    let site_entries = fetch_sites_for_summary(client, access_token, endpoints.sites).await?;
+    let site_url = select_target_site(&site_entries)?.to_string();
+    let discovery_start = subtract_days(today, SEARCH_ANALYTICS_DISCOVERY_DAYS - 1)?;
+    let discovery_query = SearchAnalyticsQuery {
+        start_date: format_search_analytics_date(discovery_start),
+        end_date: format_search_analytics_date(today),
+        data_state: "final",
+        row_limit: SEARCH_ANALYTICS_ROW_LIMIT,
+        dimensions: Some(vec!["date"]),
+    };
+    let discovery_body = fetch_search_analytics(
+        client,
+        access_token,
+        &site_url,
+        &discovery_query,
+        endpoints.search_analytics_base,
+    )
+    .await?;
+    let latest_date = parse_latest_search_analytics_date(&discovery_body)?;
+    let end_date = latest_date.unwrap_or(today);
+    let start_date = subtract_days(end_date, SEARCH_ANALYTICS_PERIOD_DAYS - 1)?;
+
+    let metrics = if latest_date.is_some() {
+        let summary_query = SearchAnalyticsQuery {
+            start_date: format_search_analytics_date(start_date),
+            end_date: format_search_analytics_date(end_date),
+            data_state: "final",
+            row_limit: 1,
+            dimensions: None,
+        };
+        let summary_body = fetch_search_analytics(
+            client,
+            access_token,
+            &site_url,
+            &summary_query,
+            endpoints.search_analytics_base,
+        )
+        .await?;
+        parse_search_analytics_metrics(&summary_body)?
+    } else {
+        None
+    };
+    let has_data = metrics.is_some();
+    let metrics = metrics.unwrap_or_else(SearchAnalyticsMetrics::empty);
+
+    Ok(SearchConsoleSummary {
+        clicks: metrics.clicks,
+        impressions: metrics.impressions,
+        ctr: metrics.ctr,
+        position: metrics.position,
+        start_date: format_search_analytics_date(start_date),
+        end_date: format_search_analytics_date(end_date),
+        fetched_at_utc: current_utc_timestamp()?,
+        site_url,
+        has_data,
+    })
+}
+
+async fn fetch_sites_for_summary(
+    client: &reqwest::Client,
+    access_token: &str,
+    endpoint: &str,
+) -> Result<Vec<SiteEntry>, SearchConsoleSummaryFetchError> {
+    let response = client
+        .get(endpoint)
+        .bearer_auth(access_token)
+        .send()
+        .await
+        .map_err(map_summary_request_error)?;
+    ensure_summary_status(response.status())?;
+    let body = read_limited_summary_body(response).await?;
+    parse_sites_for_summary(&body).map_err(SearchConsoleSummaryFetchError::Public)
+}
+
+async fn fetch_search_analytics(
+    client: &reqwest::Client,
+    access_token: &str,
+    site_url: &str,
+    query: &SearchAnalyticsQuery,
+    endpoint_base: &str,
+) -> Result<Vec<u8>, SearchConsoleSummaryFetchError> {
+    let endpoint = search_analytics_endpoint(endpoint_base, site_url);
+    let body = serde_json::to_vec(query)
+        .map_err(|_| SearchConsoleSummaryFetchError::Public(SearchConsoleError::Internal))?;
+    let response = client
+        .post(endpoint)
+        .bearer_auth(access_token)
+        .header(CONTENT_TYPE, "application/json")
+        .body(body)
+        .send()
+        .await
+        .map_err(map_summary_request_error)?;
+    ensure_summary_status(response.status())?;
+    read_limited_summary_body(response).await
+}
+
+async fn read_limited_summary_body(
+    mut response: reqwest::Response,
+) -> Result<Vec<u8>, SearchConsoleSummaryFetchError> {
+    let mut body = Vec::new();
+    while let Some(chunk) = response
+        .chunk()
+        .await
+        .map_err(|error| map_summary_request_error(error))?
+    {
+        if body.len().saturating_add(chunk.len()) > MAX_RESPONSE_BYTES {
+            return Err(SearchConsoleSummaryFetchError::Public(
+                SearchConsoleError::SearchAnalyticsInvalidResponse,
+            ));
+        }
+        body.extend_from_slice(&chunk);
+    }
+    Ok(body)
+}
+
+fn ensure_summary_status(status: StatusCode) -> Result<(), SearchConsoleSummaryFetchError> {
+    match status {
+        StatusCode::OK => Ok(()),
+        StatusCode::UNAUTHORIZED => Err(SearchConsoleSummaryFetchError::Unauthorized),
+        StatusCode::FORBIDDEN => Err(SearchConsoleSummaryFetchError::Public(
+            SearchConsoleError::SearchAnalyticsPermissionDenied,
+        )),
+        _ => Err(SearchConsoleSummaryFetchError::Public(
+            SearchConsoleError::SearchAnalyticsRequestFailed,
+        )),
+    }
+}
+
+fn map_summary_request_error(error: reqwest::Error) -> SearchConsoleSummaryFetchError {
+    SearchConsoleSummaryFetchError::Public(if error.is_timeout() {
+        SearchConsoleError::NetworkTimeout
+    } else {
+        SearchConsoleError::SearchAnalyticsRequestFailed
+    })
+}
+
+fn public_summary_error(error: SearchConsoleSummaryFetchError) -> SearchConsoleError {
+    match error {
+        SearchConsoleSummaryFetchError::Unauthorized => {
+            SearchConsoleError::ReauthenticationRequired
+        }
+        SearchConsoleSummaryFetchError::Public(error) => error,
+    }
+}
+
+fn search_analytics_endpoint(endpoint_base: &str, site_url: &str) -> String {
+    let encoded_site_url: String = form_urlencoded::byte_serialize(site_url.as_bytes()).collect();
+    format!(
+        "{}/{encoded_site_url}/searchAnalytics/query",
+        endpoint_base.trim_end_matches('/')
+    )
+}
+
+fn parse_sites_for_summary(body: &[u8]) -> Result<Vec<SiteEntry>, SearchConsoleError> {
+    if body.len() > MAX_RESPONSE_BYTES {
+        return Err(SearchConsoleError::SearchAnalyticsInvalidResponse);
+    }
+    let response: SitesListResponse = serde_json::from_slice(body)
+        .map_err(|_| SearchConsoleError::SearchAnalyticsInvalidResponse)?;
+    response
+        .site_entries
+        .ok_or(SearchConsoleError::SearchAnalyticsInvalidResponse)
+}
+
+fn select_target_site(site_entries: &[SiteEntry]) -> Result<&str, SearchConsoleError> {
+    SEARCH_CONSOLE_SITE_PRIORITY
+        .iter()
+        .find_map(|candidate| {
+            site_entries
+                .iter()
+                .find(|entry| entry.site_url == *candidate)
+                .map(|entry| entry.site_url.as_str())
+        })
+        .ok_or(SearchConsoleError::SearchConsoleSiteNotFound)
+}
+
+fn parse_latest_search_analytics_date(body: &[u8]) -> Result<Option<Date>, SearchConsoleError> {
+    let response = parse_search_analytics_response(body)?;
+    let mut latest = None;
+    for row in response.rows.unwrap_or_default() {
+        let keys = row
+            .keys
+            .ok_or(SearchConsoleError::SearchAnalyticsInvalidResponse)?;
+        if keys.len() != 1 {
+            return Err(SearchConsoleError::SearchAnalyticsInvalidResponse);
+        }
+        let date = parse_search_analytics_date(&keys[0])?;
+        latest = Some(latest.map_or(date, |current: Date| current.max(date)));
+    }
+    Ok(latest)
+}
+
+fn parse_search_analytics_metrics(
+    body: &[u8],
+) -> Result<Option<SearchAnalyticsMetrics>, SearchConsoleError> {
+    let response = parse_search_analytics_response(body)?;
+    let rows = response.rows.unwrap_or_default();
+    if rows.is_empty() {
+        return Ok(None);
+    }
+    if rows.len() != 1 {
+        return Err(SearchConsoleError::SearchAnalyticsInvalidResponse);
+    }
+    let row = &rows[0];
+    let metrics = SearchAnalyticsMetrics {
+        clicks: row
+            .clicks
+            .ok_or(SearchConsoleError::SearchAnalyticsInvalidResponse)?,
+        impressions: row
+            .impressions
+            .ok_or(SearchConsoleError::SearchAnalyticsInvalidResponse)?,
+        ctr: row
+            .ctr
+            .ok_or(SearchConsoleError::SearchAnalyticsInvalidResponse)?,
+        position: row
+            .position
+            .ok_or(SearchConsoleError::SearchAnalyticsInvalidResponse)?,
+    };
+    if !metrics.clicks.is_finite()
+        || metrics.clicks < 0.0
+        || !metrics.impressions.is_finite()
+        || metrics.impressions < 0.0
+        || !metrics.ctr.is_finite()
+        || !(0.0..=1.0).contains(&metrics.ctr)
+        || !metrics.position.is_finite()
+        || metrics.position < 0.0
+    {
+        return Err(SearchConsoleError::SearchAnalyticsInvalidResponse);
+    }
+    Ok(Some(metrics))
+}
+
+fn parse_search_analytics_response(
+    body: &[u8],
+) -> Result<SearchAnalyticsResponse, SearchConsoleError> {
+    if body.len() > MAX_RESPONSE_BYTES {
+        return Err(SearchConsoleError::SearchAnalyticsInvalidResponse);
+    }
+    serde_json::from_slice(body).map_err(|_| SearchConsoleError::SearchAnalyticsInvalidResponse)
+}
+
+fn parse_search_analytics_date(value: &str) -> Result<Date, SearchConsoleError> {
+    let mut parts = value.split('-');
+    let year = parts
+        .next()
+        .and_then(|part| part.parse::<i32>().ok())
+        .ok_or(SearchConsoleError::SearchAnalyticsInvalidResponse)?;
+    let month = parts
+        .next()
+        .and_then(|part| part.parse::<u8>().ok())
+        .and_then(|month| Month::try_from(month).ok())
+        .ok_or(SearchConsoleError::SearchAnalyticsInvalidResponse)?;
+    let day = parts
+        .next()
+        .and_then(|part| part.parse::<u8>().ok())
+        .ok_or(SearchConsoleError::SearchAnalyticsInvalidResponse)?;
+    if parts.next().is_some() || value.len() != 10 {
+        return Err(SearchConsoleError::SearchAnalyticsInvalidResponse);
+    }
+    Date::from_calendar_date(year, month, day)
+        .map_err(|_| SearchConsoleError::SearchAnalyticsInvalidResponse)
+}
+
+fn subtract_days(date: Date, days: i64) -> Result<Date, SearchConsoleError> {
+    date.checked_sub(time::Duration::days(days))
+        .ok_or(SearchConsoleError::Internal)
+}
+
+fn format_search_analytics_date(date: Date) -> String {
+    format!(
+        "{:04}-{:02}-{:02}",
+        date.year(),
+        u8::from(date.month()),
+        date.day()
+    )
 }
 
 async fn revoke_token(refresh_token: &str) -> Result<(), SearchConsoleError> {
@@ -2099,6 +2545,12 @@ fn cached_access_token() -> Result<Option<String>, SearchConsoleError> {
             .unwrap_or(cache.expires_at);
         (Instant::now() < refresh_at).then(|| cache.token.clone())
     }))
+}
+
+fn clear_cached_access_token() -> Result<(), SearchConsoleError> {
+    let mut state = lock_runtime_state()?;
+    state.access_token = None;
+    Ok(())
 }
 
 fn store_access_token(token: String, expires_in: Duration) -> Result<(), SearchConsoleError> {
@@ -3777,6 +4229,224 @@ mod tests {
     }
 
     #[test]
+    fn normal_search_console_summary_api_response_returns_recent_metrics() {
+        let responses = vec![
+            (
+                "200 OK",
+                br#"{"siteEntry":[{"siteUrl":"https://www.getkoreainside.com/","permissionLevel":"siteOwner"}]}"#.as_slice(),
+            ),
+            (
+                "200 OK",
+                br#"{"rows":[{"keys":["2026-07-18"],"clicks":1,"impressions":10,"ctr":0.1,"position":8.0}]}"#.as_slice(),
+            ),
+            (
+                "200 OK",
+                br#"{"rows":[{"clicks":24,"impressions":1284,"ctr":0.0186915888,"position":18.4}]}"#.as_slice(),
+            ),
+        ];
+        let (sites_endpoint, search_analytics_base, server) =
+            spawn_mock_search_console_api(responses);
+        let client = reqwest::Client::builder()
+            .redirect(Policy::none())
+            .timeout(Duration::from_secs(5))
+            .build()
+            .unwrap();
+        let refresh_calls = Rc::new(RefCell::new(0));
+        let tracked_refresh_calls = Rc::clone(&refresh_calls);
+        let summary = tauri::async_runtime::block_on(fetch_search_console_summary_with_refresh(
+            &client,
+            "fixture-access-token".to_string(),
+            move || {
+                *tracked_refresh_calls.borrow_mut() += 1;
+                async { Ok("unexpected-refreshed-token".to_string()) }
+            },
+            SearchConsoleApiEndpoints {
+                sites: &sites_endpoint,
+                search_analytics_base: &search_analytics_base,
+            },
+            Date::from_calendar_date(2026, Month::July, 21).unwrap(),
+        ))
+        .unwrap();
+        let requests = server.join().unwrap();
+
+        assert_eq!(*refresh_calls.borrow(), 0);
+        assert_eq!(summary.start_date, "2026-06-21");
+        assert_eq!(summary.end_date, "2026-07-18");
+        assert_eq!(summary.clicks, 24.0);
+        assert_eq!(summary.impressions, 1284.0);
+        assert_eq!(summary.ctr, 0.0186915888);
+        assert_eq!(summary.position, 18.4);
+        assert!(summary.has_data);
+        assert_eq!(summary.site_url, "https://www.getkoreainside.com/");
+        assert_eq!(requests.len(), 3);
+        assert_eq!(requests[0].method, "GET");
+        assert_eq!(requests[0].path, "/sites");
+        assert_eq!(requests[1].method, "POST");
+        assert!(requests[1].body.contains("\"dimensions\":[\"date\"]"));
+        assert!(requests[2].body.contains("\"rowLimit\":1"));
+        assert!(!requests[2].body.contains("dimensions"));
+    }
+
+    #[test]
+    fn parses_search_console_summary_metrics() {
+        let metrics = parse_search_analytics_metrics(
+            br#"{"rows":[{"clicks":24.0,"impressions":1284.0,"ctr":0.0187,"position":18.4}]}"#,
+        )
+        .unwrap()
+        .unwrap();
+
+        assert_eq!(
+            metrics,
+            SearchAnalyticsMetrics {
+                clicks: 24.0,
+                impressions: 1284.0,
+                ctr: 0.0187,
+                position: 18.4,
+            }
+        );
+    }
+
+    #[test]
+    fn empty_search_console_rows_are_data_absence_not_api_error() {
+        assert_eq!(
+            parse_search_analytics_metrics(br#"{"rows":[]}"#).unwrap(),
+            None
+        );
+        assert_eq!(parse_latest_search_analytics_date(br#"{}"#).unwrap(), None);
+    }
+
+    #[test]
+    fn search_console_summary_unauthorized_response_uses_refresh_flow_once() {
+        let responses = vec![
+            ("401 Unauthorized", br#"{"error":"unauthorized"}"#.as_slice()),
+            (
+                "200 OK",
+                br#"{"siteEntry":[{"siteUrl":"sc-domain:getkoreainside.com","permissionLevel":"siteOwner"}]}"#.as_slice(),
+            ),
+            (
+                "200 OK",
+                br#"{"rows":[{"keys":["2026-07-18"]}]}"#.as_slice(),
+            ),
+            (
+                "200 OK",
+                br#"{"rows":[{"clicks":1,"impressions":2,"ctr":0.5,"position":3}]}"#.as_slice(),
+            ),
+        ];
+        let (sites_endpoint, search_analytics_base, server) =
+            spawn_mock_search_console_api(responses);
+        let client = reqwest::Client::builder()
+            .redirect(Policy::none())
+            .timeout(Duration::from_secs(5))
+            .build()
+            .unwrap();
+        let refresh_calls = Rc::new(RefCell::new(0));
+        let tracked_refresh_calls = Rc::clone(&refresh_calls);
+        let summary = tauri::async_runtime::block_on(fetch_search_console_summary_with_refresh(
+            &client,
+            "expired-access-token".to_string(),
+            move || {
+                *tracked_refresh_calls.borrow_mut() += 1;
+                async { Ok("refreshed-access-token".to_string()) }
+            },
+            SearchConsoleApiEndpoints {
+                sites: &sites_endpoint,
+                search_analytics_base: &search_analytics_base,
+            },
+            Date::from_calendar_date(2026, Month::July, 21).unwrap(),
+        ))
+        .unwrap();
+        let requests = server.join().unwrap();
+
+        assert_eq!(*refresh_calls.borrow(), 1);
+        assert!(summary.has_data);
+        assert_eq!(requests.len(), 4);
+        assert_eq!(
+            requests[0].headers.get("authorization").map(String::as_str),
+            Some("Bearer expired-access-token")
+        );
+        assert_eq!(
+            requests[1].headers.get("authorization").map(String::as_str),
+            Some("Bearer refreshed-access-token")
+        );
+    }
+
+    #[test]
+    fn search_console_summary_permission_denied_is_safe_and_specific() {
+        assert_eq!(
+            ensure_summary_status(StatusCode::FORBIDDEN).unwrap_err(),
+            SearchConsoleSummaryFetchError::Public(
+                SearchConsoleError::SearchAnalyticsPermissionDenied
+            )
+        );
+    }
+
+    #[test]
+    fn search_console_summary_rejects_accounts_without_target_site() {
+        let entries = vec![SiteEntry {
+            site_url: "sc-domain:unrelated.example".to_string(),
+            permission_level: "siteOwner".to_string(),
+        }];
+        assert_eq!(
+            select_target_site(&entries).unwrap_err(),
+            SearchConsoleError::SearchConsoleSiteNotFound
+        );
+    }
+
+    #[test]
+    fn search_console_summary_rejects_invalid_json() {
+        assert_eq!(
+            parse_search_analytics_metrics(b"not-json").unwrap_err(),
+            SearchConsoleError::SearchAnalyticsInvalidResponse
+        );
+        assert_eq!(
+            parse_sites_for_summary(b"not-json").unwrap_err(),
+            SearchConsoleError::SearchAnalyticsInvalidResponse
+        );
+    }
+
+    #[test]
+    fn search_console_summary_errors_do_not_expose_sensitive_values() {
+        let serialized = serde_json::to_string(&SearchConsoleCommandError::from(
+            SearchConsoleError::SearchAnalyticsRequestFailed,
+        ))
+        .unwrap();
+        for sensitive in [
+            "fixture-client-secret",
+            "fixture-access-token",
+            "fixture-refresh-token",
+            "fixture-authorization-code",
+            "fixture-pkce-verifier",
+            "google-original-response-body",
+        ] {
+            assert!(!serialized.contains(sensitive));
+        }
+        assert!(!serialized.contains("diagnostic"));
+    }
+
+    #[test]
+    fn search_console_site_selection_uses_explicit_priority() {
+        let entries = vec![
+            SiteEntry {
+                site_url: "sc-domain:getkoreainside.com".to_string(),
+                permission_level: "siteOwner".to_string(),
+            },
+            SiteEntry {
+                site_url: "https://getkoreainside.com/".to_string(),
+                permission_level: "siteFullUser".to_string(),
+            },
+            SiteEntry {
+                site_url: "https://www.getkoreainside.com/".to_string(),
+                permission_level: "siteRestrictedUser".to_string(),
+            },
+        ];
+
+        assert_eq!(
+            select_target_site(&entries).unwrap(),
+            "https://www.getkoreainside.com/"
+        );
+    }
+
+    #[test]
     fn token_and_error_dtos_do_not_expose_secret_words() {
         let status = SearchConsoleClientStatus {
             configured: true,
@@ -5068,6 +5738,50 @@ mod tests {
         for sensitive in sensitive_values {
             assert!(!serialized.contains(sensitive));
         }
+    }
+
+    fn spawn_mock_search_console_api(
+        responses: Vec<(&'static str, &'static [u8])>,
+    ) -> (
+        String,
+        String,
+        thread::JoinHandle<Vec<MockTokenRequestMetadata>>,
+    ) {
+        let listener = TcpListener::bind((Ipv4Addr::LOCALHOST, 0)).unwrap();
+        listener.set_nonblocking(true).unwrap();
+        let port = listener.local_addr().unwrap().port();
+        let sites_endpoint = format!("http://127.0.0.1:{port}/sites");
+        let search_analytics_base = sites_endpoint.clone();
+        let handle = thread::spawn(move || {
+            let mut requests = Vec::with_capacity(responses.len());
+            for (status, body) in responses {
+                let deadline = Instant::now() + Duration::from_secs(5);
+                let (mut stream, _) = loop {
+                    match listener.accept() {
+                        Ok(connection) => break connection,
+                        Err(error) if error.kind() == io::ErrorKind::WouldBlock => {
+                            assert!(
+                                Instant::now() < deadline,
+                                "mock Search Console server timed out"
+                            );
+                            thread::sleep(Duration::from_millis(10));
+                        }
+                        Err(error) => panic!("mock Search Console server failed: {error}"),
+                    }
+                };
+                let raw_request = read_mock_http_request(&mut stream);
+                requests.push(parse_mock_token_request(&raw_request));
+                let response = format!(
+                    "HTTP/1.1 {status}\r\nContent-Type: application/json\r\nContent-Length: {}\r\nConnection: close\r\n\r\n",
+                    body.len()
+                );
+                stream.write_all(response.as_bytes()).unwrap();
+                stream.write_all(body).unwrap();
+                stream.flush().unwrap();
+            }
+            requests
+        });
+        (sites_endpoint, search_analytics_base, handle)
     }
 
     fn spawn_mock_token_endpoint() -> (String, thread::JoinHandle<MockTokenRequestMetadata>) {

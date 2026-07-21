@@ -867,6 +867,14 @@ h2 {
   border-color: #efc4c4;
 }
 
+.search-console-summary {
+  max-width: none;
+}
+
+.search-console-metric-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
 .search-console-settings {
   margin-top: 18px;
 }
@@ -1435,6 +1443,10 @@ h2 {
   .search-console-status-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .search-console-metric-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 1024px) {
@@ -1451,6 +1463,10 @@ h2 {
   }
 
   .search-console-status-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .search-console-metric-grid {
     grid-template-columns: 1fr;
   }
 
