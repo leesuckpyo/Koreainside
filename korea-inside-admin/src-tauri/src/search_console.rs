@@ -62,6 +62,7 @@ const DIAGNOSTIC_VALUE_UNAVAILABLE: &str = "unavailable";
 const SEARCH_ANALYTICS_PERIOD_DAYS: i64 = 28;
 const SEARCH_ANALYTICS_DISCOVERY_DAYS: i64 = 480;
 const SEARCH_ANALYTICS_ROW_LIMIT: u32 = 25_000;
+const SEARCH_ANALYTICS_TOP_PAGES_LIMIT: usize = 10;
 const SEARCH_CONSOLE_SITE_PRIORITY: [&str; 3] = [
     "https://www.getkoreainside.com/",
     "https://getkoreainside.com/",
@@ -138,6 +139,26 @@ pub struct SearchConsoleSummary {
     fetched_at_utc: String,
     site_url: String,
     has_data: bool,
+}
+
+#[derive(Debug, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct SearchConsoleTopPages {
+    start_date: String,
+    end_date: String,
+    fetched_at_utc: String,
+    site_url: String,
+    pages: Vec<SearchConsoleTopPage>,
+}
+
+#[derive(Debug, Serialize)]
+#[serde(rename_all = "camelCase")]
+struct SearchConsoleTopPage {
+    page_url: String,
+    clicks: f64,
+    impressions: f64,
+    ctr: f64,
+    position: f64,
 }
 
 #[derive(Serialize)]
@@ -909,6 +930,47 @@ pub async fn get_search_console_summary() -> CommandResult<SearchConsoleSummary>
     Ok(summary)
 }
 
+#[tauri::command]
+pub async fn get_search_console_top_pages(
+    start_date: String,
+    end_date: String,
+) -> CommandResult<SearchConsoleTopPages> {
+    let (start_date, end_date) = validate_search_analytics_period(&start_date, &end_date)
+        .map_err(SearchConsoleCommandError::from)?;
+    let _guard =
+        OperationGuard::begin(OperationKind::Refresh).map_err(SearchConsoleCommandError::from)?;
+    read_required_client_id().map_err(SearchConsoleCommandError::from)?;
+    read_credential(REFRESH_TOKEN_ACCOUNT).map_err(|error| match error {
+        KeyringError::NoEntry => SearchConsoleCommandError::from(SearchConsoleError::NotConfigured),
+        _ => SearchConsoleCommandError::from(SearchConsoleError::CredentialReadFailed),
+    })?;
+
+    let client = secure_http_client().map_err(SearchConsoleCommandError::from)?;
+    let access_token = refresh_access_token()
+        .await
+        .map_err(SearchConsoleCommandError::from)?;
+    let endpoints = SearchConsoleApiEndpoints {
+        sites: SITES_LIST_ENDPOINT,
+        search_analytics_base: SEARCH_ANALYTICS_ENDPOINT_BASE,
+    };
+    let result = fetch_search_console_top_pages_with_refresh(
+        &client,
+        access_token,
+        || async {
+            clear_cached_access_token()?;
+            refresh_access_token().await
+        },
+        endpoints,
+        start_date,
+        end_date,
+    )
+    .await
+    .map_err(SearchConsoleCommandError::from)?;
+
+    set_last_checked_now(false).map_err(SearchConsoleCommandError::from)?;
+    Ok(result)
+}
+
 async fn refresh_access_token() -> Result<String, SearchConsoleError> {
     if let Some(token) = cached_access_token()? {
         return Ok(token);
@@ -1122,6 +1184,79 @@ async fn fetch_search_console_summary_once(
     })
 }
 
+async fn fetch_search_console_top_pages_with_refresh<F, Fut>(
+    client: &reqwest::Client,
+    access_token: String,
+    refresh_access_token: F,
+    endpoints: SearchConsoleApiEndpoints<'_>,
+    start_date: Date,
+    end_date: Date,
+) -> Result<SearchConsoleTopPages, SearchConsoleError>
+where
+    F: FnOnce() -> Fut,
+    Fut: std::future::Future<Output = Result<String, SearchConsoleError>>,
+{
+    match fetch_search_console_top_pages_once(
+        client,
+        &access_token,
+        endpoints,
+        start_date,
+        end_date,
+    )
+    .await
+    {
+        Ok(result) => Ok(result),
+        Err(SearchConsoleSummaryFetchError::Unauthorized) => {
+            let refreshed_access_token = refresh_access_token().await?;
+            fetch_search_console_top_pages_once(
+                client,
+                &refreshed_access_token,
+                endpoints,
+                start_date,
+                end_date,
+            )
+            .await
+            .map_err(public_summary_error)
+        }
+        Err(SearchConsoleSummaryFetchError::Public(error)) => Err(error),
+    }
+}
+
+async fn fetch_search_console_top_pages_once(
+    client: &reqwest::Client,
+    access_token: &str,
+    endpoints: SearchConsoleApiEndpoints<'_>,
+    start_date: Date,
+    end_date: Date,
+) -> Result<SearchConsoleTopPages, SearchConsoleSummaryFetchError> {
+    let site_entries = fetch_sites_for_summary(client, access_token, endpoints.sites).await?;
+    let site_url = select_target_site(&site_entries)?.to_string();
+    let query = SearchAnalyticsQuery {
+        start_date: format_search_analytics_date(start_date),
+        end_date: format_search_analytics_date(end_date),
+        data_state: "final",
+        row_limit: SEARCH_ANALYTICS_TOP_PAGES_LIMIT as u32,
+        dimensions: Some(vec!["page"]),
+    };
+    let body = fetch_search_analytics(
+        client,
+        access_token,
+        &site_url,
+        &query,
+        endpoints.search_analytics_base,
+    )
+    .await?;
+    let pages = parse_search_console_top_pages(&body)?;
+
+    Ok(SearchConsoleTopPages {
+        start_date: format_search_analytics_date(start_date),
+        end_date: format_search_analytics_date(end_date),
+        fetched_at_utc: current_utc_timestamp()?,
+        site_url,
+        pages,
+    })
+}
+
 async fn fetch_sites_for_summary(
     client: &reqwest::Client,
     access_token: &str,
@@ -1294,6 +1429,92 @@ fn parse_search_analytics_metrics(
         return Err(SearchConsoleError::SearchAnalyticsInvalidResponse);
     }
     Ok(Some(metrics))
+}
+
+fn parse_search_console_top_pages(
+    body: &[u8],
+) -> Result<Vec<SearchConsoleTopPage>, SearchConsoleError> {
+    let response = parse_search_analytics_response(body)?;
+    let mut pages = Vec::new();
+    for row in response.rows.unwrap_or_default() {
+        let keys = row
+            .keys
+            .ok_or(SearchConsoleError::SearchAnalyticsInvalidResponse)?;
+        if keys.len() != 1 {
+            return Err(SearchConsoleError::SearchAnalyticsInvalidResponse);
+        }
+        let page_url = sanitize_search_console_page_url(&keys[0])?;
+        let page = SearchConsoleTopPage {
+            page_url,
+            clicks: row
+                .clicks
+                .ok_or(SearchConsoleError::SearchAnalyticsInvalidResponse)?,
+            impressions: row
+                .impressions
+                .ok_or(SearchConsoleError::SearchAnalyticsInvalidResponse)?,
+            ctr: row
+                .ctr
+                .ok_or(SearchConsoleError::SearchAnalyticsInvalidResponse)?,
+            position: row
+                .position
+                .ok_or(SearchConsoleError::SearchAnalyticsInvalidResponse)?,
+        };
+        if !page.clicks.is_finite()
+            || page.clicks < 0.0
+            || !page.impressions.is_finite()
+            || page.impressions < 0.0
+            || !page.ctr.is_finite()
+            || !(0.0..=1.0).contains(&page.ctr)
+            || !page.position.is_finite()
+            || page.position < 0.0
+        {
+            return Err(SearchConsoleError::SearchAnalyticsInvalidResponse);
+        }
+        pages.push(page);
+    }
+
+    pages.sort_by(|left, right| {
+        right
+            .clicks
+            .total_cmp(&left.clicks)
+            .then_with(|| left.page_url.cmp(&right.page_url))
+    });
+    pages.truncate(SEARCH_ANALYTICS_TOP_PAGES_LIMIT);
+    Ok(pages)
+}
+
+fn sanitize_search_console_page_url(value: &str) -> Result<String, SearchConsoleError> {
+    if value.is_empty() || value.len() > 2_048 {
+        return Err(SearchConsoleError::SearchAnalyticsInvalidResponse);
+    }
+    let mut page_url =
+        url::Url::parse(value).map_err(|_| SearchConsoleError::SearchAnalyticsInvalidResponse)?;
+    let host = page_url
+        .host_str()
+        .ok_or(SearchConsoleError::SearchAnalyticsInvalidResponse)?;
+    let host_is_allowed = host == "getkoreainside.com" || host.ends_with(".getkoreainside.com");
+    if !matches!(page_url.scheme(), "http" | "https")
+        || !host_is_allowed
+        || !page_url.username().is_empty()
+        || page_url.password().is_some()
+    {
+        return Err(SearchConsoleError::SearchAnalyticsInvalidResponse);
+    }
+    page_url.set_query(None);
+    page_url.set_fragment(None);
+    Ok(page_url.to_string())
+}
+
+fn validate_search_analytics_period(
+    start_date: &str,
+    end_date: &str,
+) -> Result<(Date, Date), SearchConsoleError> {
+    let start_date = parse_search_analytics_date(start_date)?;
+    let end_date = parse_search_analytics_date(end_date)?;
+    if end_date - start_date != time::Duration::days(SEARCH_ANALYTICS_PERIOD_DAYS - 1) {
+        return Err(SearchConsoleError::SearchAnalyticsInvalidResponse);
+    }
+    Ok((start_date, end_date))
 }
 
 fn parse_search_analytics_response(
@@ -4444,6 +4665,219 @@ mod tests {
             select_target_site(&entries).unwrap(),
             "https://www.getkoreainside.com/"
         );
+    }
+
+    #[test]
+    fn normal_search_console_top_pages_response_uses_page_dimension() {
+        let responses = vec![
+            (
+                "200 OK",
+                br#"{"siteEntry":[{"siteUrl":"https://www.getkoreainside.com/","permissionLevel":"siteOwner"}]}"#.as_slice(),
+            ),
+            (
+                "200 OK",
+                br#"{"rows":[{"keys":["https://www.getkoreainside.com/accommodation/"],"clicks":24,"impressions":1284,"ctr":0.0186915888,"position":18.4}]}"#.as_slice(),
+            ),
+        ];
+        let (sites_endpoint, search_analytics_base, server) =
+            spawn_mock_search_console_api(responses);
+        let client = reqwest::Client::builder()
+            .redirect(Policy::none())
+            .timeout(Duration::from_secs(5))
+            .build()
+            .unwrap();
+        let refresh_calls = Rc::new(RefCell::new(0));
+        let tracked_refresh_calls = Rc::clone(&refresh_calls);
+        let result = tauri::async_runtime::block_on(fetch_search_console_top_pages_with_refresh(
+            &client,
+            "fixture-access-token".to_string(),
+            move || {
+                *tracked_refresh_calls.borrow_mut() += 1;
+                async { Ok("unexpected-refreshed-token".to_string()) }
+            },
+            SearchConsoleApiEndpoints {
+                sites: &sites_endpoint,
+                search_analytics_base: &search_analytics_base,
+            },
+            Date::from_calendar_date(2026, Month::June, 21).unwrap(),
+            Date::from_calendar_date(2026, Month::July, 18).unwrap(),
+        ))
+        .unwrap();
+        let requests = server.join().unwrap();
+
+        assert_eq!(*refresh_calls.borrow(), 0);
+        assert_eq!(result.start_date, "2026-06-21");
+        assert_eq!(result.end_date, "2026-07-18");
+        assert_eq!(result.pages.len(), 1);
+        assert_eq!(
+            result.pages[0].page_url,
+            "https://www.getkoreainside.com/accommodation/"
+        );
+        assert_eq!(result.pages[0].clicks, 24.0);
+        assert_eq!(result.pages[0].impressions, 1284.0);
+        assert_eq!(result.pages[0].ctr, 0.0186915888);
+        assert_eq!(result.pages[0].position, 18.4);
+        assert_eq!(requests.len(), 2);
+        assert!(requests[1].body.contains("\"dimensions\":[\"page\"]"));
+        assert!(requests[1].body.contains("\"rowLimit\":10"));
+        assert!(requests[1].body.contains("\"startDate\":\"2026-06-21\""));
+        assert!(requests[1].body.contains("\"endDate\":\"2026-07-18\""));
+    }
+
+    #[test]
+    fn search_console_top_pages_are_sorted_by_clicks_descending() {
+        let pages = parse_search_console_top_pages(
+            br#"{"rows":[{"keys":["https://getkoreainside.com/low/"],"clicks":2,"impressions":20,"ctr":0.1,"position":4},{"keys":["https://getkoreainside.com/high/"],"clicks":9,"impressions":30,"ctr":0.3,"position":2},{"keys":["https://getkoreainside.com/mid/"],"clicks":5,"impressions":25,"ctr":0.2,"position":3}]}"#,
+        )
+        .unwrap();
+
+        assert_eq!(
+            pages.iter().map(|page| page.clicks).collect::<Vec<_>>(),
+            [9.0, 5.0, 2.0]
+        );
+    }
+
+    #[test]
+    fn search_console_top_pages_are_limited_to_ten() {
+        let rows = (0..12)
+            .map(|index| {
+                serde_json::json!({
+                    "keys": [format!("https://getkoreainside.com/page-{index}/")],
+                    "clicks": index,
+                    "impressions": index + 10,
+                    "ctr": 0.1,
+                    "position": 5.0
+                })
+            })
+            .collect::<Vec<_>>();
+        let body = serde_json::to_vec(&serde_json::json!({ "rows": rows })).unwrap();
+        let pages = parse_search_console_top_pages(&body).unwrap();
+
+        assert_eq!(pages.len(), SEARCH_ANALYTICS_TOP_PAGES_LIMIT);
+        assert_eq!(pages.first().unwrap().clicks, 11.0);
+        assert_eq!(pages.last().unwrap().clicks, 2.0);
+    }
+
+    #[test]
+    fn empty_search_console_top_pages_are_not_an_api_error() {
+        assert!(parse_search_console_top_pages(br#"{"rows":[]}"#)
+            .unwrap()
+            .is_empty());
+        assert!(parse_search_console_top_pages(br#"{}"#).unwrap().is_empty());
+    }
+
+    #[test]
+    fn search_console_top_pages_reject_invalid_responses() {
+        for body in [
+            b"not-json".as_slice(),
+            br#"{"rows":[{"clicks":1,"impressions":2,"ctr":0.5,"position":3}]}"#.as_slice(),
+            br#"{"rows":[{"keys":["https://example.com/foreign/"],"clicks":1,"impressions":2,"ctr":0.5,"position":3}]}"#.as_slice(),
+            br#"{"rows":[{"keys":["https://getkoreainside.com/","extra"],"clicks":1,"impressions":2,"ctr":0.5,"position":3}]}"#.as_slice(),
+        ] {
+            assert_eq!(
+                parse_search_console_top_pages(body).unwrap_err(),
+                SearchConsoleError::SearchAnalyticsInvalidResponse
+            );
+        }
+    }
+
+    #[test]
+    fn search_console_top_pages_unauthorized_response_uses_refresh_flow_once() {
+        let responses = vec![
+            ("401 Unauthorized", br#"{"error":"unauthorized"}"#.as_slice()),
+            (
+                "200 OK",
+                br#"{"siteEntry":[{"siteUrl":"sc-domain:getkoreainside.com","permissionLevel":"siteOwner"}]}"#.as_slice(),
+            ),
+            (
+                "200 OK",
+                br#"{"rows":[{"keys":["https://getkoreainside.com/taste-korea/"],"clicks":4,"impressions":20,"ctr":0.2,"position":6}]}"#.as_slice(),
+            ),
+        ];
+        let (sites_endpoint, search_analytics_base, server) =
+            spawn_mock_search_console_api(responses);
+        let client = reqwest::Client::builder()
+            .redirect(Policy::none())
+            .timeout(Duration::from_secs(5))
+            .build()
+            .unwrap();
+        let refresh_calls = Rc::new(RefCell::new(0));
+        let tracked_refresh_calls = Rc::clone(&refresh_calls);
+        let result = tauri::async_runtime::block_on(fetch_search_console_top_pages_with_refresh(
+            &client,
+            "expired-access-token".to_string(),
+            move || {
+                *tracked_refresh_calls.borrow_mut() += 1;
+                async { Ok("refreshed-access-token".to_string()) }
+            },
+            SearchConsoleApiEndpoints {
+                sites: &sites_endpoint,
+                search_analytics_base: &search_analytics_base,
+            },
+            Date::from_calendar_date(2026, Month::June, 21).unwrap(),
+            Date::from_calendar_date(2026, Month::July, 18).unwrap(),
+        ))
+        .unwrap();
+        let requests = server.join().unwrap();
+
+        assert_eq!(*refresh_calls.borrow(), 1);
+        assert_eq!(result.pages.len(), 1);
+        assert_eq!(requests.len(), 3);
+        assert_eq!(
+            requests[0].headers.get("authorization").map(String::as_str),
+            Some("Bearer expired-access-token")
+        );
+        assert_eq!(
+            requests[1].headers.get("authorization").map(String::as_str),
+            Some("Bearer refreshed-access-token")
+        );
+    }
+
+    #[test]
+    fn search_console_top_pages_use_only_allowed_korea_inside_properties() {
+        let responses = vec![(
+            "200 OK",
+            br#"{"siteEntry":[{"siteUrl":"sc-domain:unrelated.example","permissionLevel":"siteOwner"}]}"#.as_slice(),
+        )];
+        let (sites_endpoint, search_analytics_base, server) =
+            spawn_mock_search_console_api(responses);
+        let client = reqwest::Client::builder()
+            .redirect(Policy::none())
+            .timeout(Duration::from_secs(5))
+            .build()
+            .unwrap();
+        let error = tauri::async_runtime::block_on(fetch_search_console_top_pages_once(
+            &client,
+            "fixture-access-token",
+            SearchConsoleApiEndpoints {
+                sites: &sites_endpoint,
+                search_analytics_base: &search_analytics_base,
+            },
+            Date::from_calendar_date(2026, Month::June, 21).unwrap(),
+            Date::from_calendar_date(2026, Month::July, 18).unwrap(),
+        ))
+        .unwrap_err();
+        let requests = server.join().unwrap();
+
+        assert_eq!(
+            error,
+            SearchConsoleSummaryFetchError::Public(SearchConsoleError::SearchConsoleSiteNotFound)
+        );
+        assert_eq!(requests.len(), 1);
+    }
+
+    #[test]
+    fn search_console_top_pages_remove_sensitive_url_parts() {
+        let pages = parse_search_console_top_pages(
+            br#"{"rows":[{"keys":["https://www.getkoreainside.com/path/?access_token=sensitive-value#refresh-token"],"clicks":1,"impressions":2,"ctr":0.5,"position":3}]}"#,
+        )
+        .unwrap();
+        let serialized = serde_json::to_string(&pages).unwrap();
+
+        assert_eq!(pages[0].page_url, "https://www.getkoreainside.com/path/");
+        assert!(!serialized.contains("sensitive-value"));
+        assert!(!serialized.contains("access_token"));
+        assert!(!serialized.contains("refresh-token"));
     }
 
     #[test]

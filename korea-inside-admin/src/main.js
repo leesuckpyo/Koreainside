@@ -93,6 +93,9 @@ window.addEventListener("DOMContentLoaded", () => {
   const searchConsoleSiteUrl = document.querySelector("#search-console-site-url");
   const searchConsoleSummaryFetchedAt = document.querySelector("#search-console-summary-fetched-at");
   const searchConsoleSummaryMessage = document.querySelector("#search-console-summary-message");
+  const searchConsoleTopPages = document.querySelector("#search-console-top-pages");
+  const searchConsoleTopPagesStatus = document.querySelector("#search-console-top-pages-status");
+  const searchConsoleTopPagesBody = document.querySelector("#search-console-top-pages-body");
   const viewTitles = {
     dashboard: "운영 대시보드",
     analytics: "Vercel Analytics",
@@ -108,6 +111,7 @@ window.addEventListener("DOMContentLoaded", () => {
   let siteStatusLoading = false;
   let searchConsoleLoading = false;
   let searchConsoleSummaryLoading = false;
+  let searchConsoleTopPagesLoading = false;
   let searchConsoleSummaryAttempted = false;
   let searchConsoleStatus = {
     configured: false,
@@ -510,7 +514,7 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   async function loadSearchConsoleSummary() {
-    if (searchConsoleSummaryLoading || searchConsoleLoading) {
+    if (searchConsoleSummaryLoading || searchConsoleTopPagesLoading || searchConsoleLoading) {
       return;
     }
     if (
@@ -529,9 +533,11 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     searchConsoleSummaryAttempted = true;
+    resetSearchConsoleTopPages("요약 데이터와 같은 기간의 상위 페이지를 준비하고 있습니다.");
     setSearchConsoleSummaryLoading(true);
     setSearchConsoleSummaryMessage("Search Console 최근 28일 실적을 조회하고 있습니다.");
     let shouldRefreshConnectionStatus = false;
+    let summaryResult = null;
     try {
       const result = await window.__TAURI__.core.invoke("get_search_console_summary");
       if (!isValidSearchConsoleSummary(result)) {
@@ -539,11 +545,15 @@ window.addEventListener("DOMContentLoaded", () => {
         return;
       }
       renderSearchConsoleSummary(result);
+      summaryResult = result;
       shouldRefreshConnectionStatus = true;
     } catch (error) {
       renderSearchConsoleSummaryError(errorCodeFromInvoke(error));
     } finally {
       setSearchConsoleSummaryLoading(false);
+      if (summaryResult) {
+        await loadSearchConsoleTopPages(summaryResult);
+      }
       if (shouldRefreshConnectionStatus) {
         refreshSearchConsoleStatus({ preserveMessage: true });
       }
@@ -570,6 +580,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const message =
       searchConsoleSummaryErrorMessages[errorCode] || "Search Console 실적 요약을 조회할 수 없습니다.";
     setSearchConsoleSummaryMessage(message, "error");
+    renderSearchConsoleTopPagesError(errorCode);
   }
 
   function resetSearchConsoleSummary() {
@@ -582,6 +593,156 @@ window.addEventListener("DOMContentLoaded", () => {
     setText(searchConsoleSiteUrl, "확인 전");
     setText(searchConsoleSummaryFetchedAt, "조회 전");
     setSearchConsoleSummaryMessage("Google 계정을 연결하면 최근 검색 실적을 조회합니다.");
+    resetSearchConsoleTopPages();
+  }
+
+  async function loadSearchConsoleTopPages(summaryResult) {
+    setSearchConsoleTopPagesLoading(true);
+    setSearchConsoleTopPagesStatus("최근 28일 상위 유입 페이지를 조회하고 있습니다.");
+    try {
+      const result = await window.__TAURI__.core.invoke("get_search_console_top_pages", {
+        startDate: summaryResult.startDate,
+        endDate: summaryResult.endDate,
+      });
+      if (!isValidSearchConsoleTopPages(result, summaryResult)) {
+        renderSearchConsoleTopPagesError("search_analytics_invalid_response");
+        return;
+      }
+      renderSearchConsoleTopPages(result);
+    } catch (error) {
+      renderSearchConsoleTopPagesError(errorCodeFromInvoke(error));
+    } finally {
+      setSearchConsoleTopPagesLoading(false);
+    }
+  }
+
+  function renderSearchConsoleTopPages(result) {
+    if (!searchConsoleTopPagesBody) {
+      return;
+    }
+    const fragment = document.createDocumentFragment();
+    result.pages.forEach((page) => {
+      const row = document.createElement("tr");
+      const pageCell = document.createElement("td");
+      const pagePath = document.createElement("span");
+      pagePath.className = "search-console-page-path";
+      pagePath.textContent = searchConsolePagePath(page.pageUrl);
+      pagePath.title = page.pageUrl;
+      pageCell.append(pagePath);
+
+      const values = [
+        formatSearchConsoleCount(page.clicks),
+        formatSearchConsoleCount(page.impressions),
+        `${(page.ctr * 100).toFixed(2)}%`,
+        page.position.toFixed(1),
+      ];
+      row.append(pageCell);
+      values.forEach((value) => {
+        const cell = document.createElement("td");
+        cell.textContent = value;
+        row.append(cell);
+      });
+      fragment.append(row);
+    });
+    searchConsoleTopPagesBody.replaceChildren(fragment);
+    setSearchConsoleTopPagesStatus(
+      result.pages.length > 0
+        ? `클릭수 기준 상위 ${result.pages.length}개 페이지입니다.`
+        : "해당 기간에 페이지별 Search Console 데이터가 없습니다.",
+    );
+  }
+
+  function renderSearchConsoleTopPagesError(errorCode) {
+    const message =
+      searchConsoleSummaryErrorMessages[errorCode] || "Search Console 상위 페이지를 조회할 수 없습니다.";
+    if (searchConsoleTopPagesBody) {
+      searchConsoleTopPagesBody.replaceChildren();
+    }
+    setSearchConsoleTopPagesStatus(message, "error");
+  }
+
+  function resetSearchConsoleTopPages(message = "Google 계정을 연결하면 상위 페이지를 조회합니다.") {
+    if (searchConsoleTopPagesBody) {
+      searchConsoleTopPagesBody.replaceChildren();
+    }
+    setSearchConsoleTopPagesStatus(message);
+  }
+
+  function setSearchConsoleTopPagesLoading(isLoading) {
+    searchConsoleTopPagesLoading = isLoading;
+    if (searchConsoleTopPages) {
+      searchConsoleTopPages.setAttribute("aria-busy", String(isLoading));
+    }
+    updateSearchConsoleControls();
+  }
+
+  function setSearchConsoleTopPagesStatus(message, kind = "default") {
+    if (!searchConsoleTopPagesStatus) {
+      return;
+    }
+    searchConsoleTopPagesStatus.textContent = message;
+    searchConsoleTopPagesStatus.classList.toggle("is-error", kind === "error");
+  }
+
+  function searchConsolePagePath(pageUrl) {
+    const parsed = new URL(pageUrl);
+    return parsed.pathname || "/";
+  }
+
+  function isValidSearchConsoleTopPages(result, summaryResult) {
+    if (
+      result === null ||
+      typeof result !== "object" ||
+      result.startDate !== summaryResult.startDate ||
+      result.endDate !== summaryResult.endDate ||
+      result.siteUrl !== summaryResult.siteUrl ||
+      typeof result.fetchedAtUtc !== "string" ||
+      Number.isNaN(new Date(result.fetchedAtUtc).getTime()) ||
+      !Array.isArray(result.pages) ||
+      result.pages.length > 10
+    ) {
+      return false;
+    }
+
+    return result.pages.every((page, index) => {
+      const previous = result.pages[index - 1];
+      return (
+        page !== null &&
+        typeof page === "object" &&
+        isSafeSearchConsolePageUrl(page.pageUrl) &&
+        Number.isFinite(page.clicks) &&
+        page.clicks >= 0 &&
+        Number.isFinite(page.impressions) &&
+        page.impressions >= 0 &&
+        Number.isFinite(page.ctr) &&
+        page.ctr >= 0 &&
+        page.ctr <= 1 &&
+        Number.isFinite(page.position) &&
+        page.position >= 0 &&
+        (!previous || previous.clicks >= page.clicks)
+      );
+    });
+  }
+
+  function isSafeSearchConsolePageUrl(pageUrl) {
+    if (typeof pageUrl !== "string") {
+      return false;
+    }
+    try {
+      const parsed = new URL(pageUrl);
+      const hostIsAllowed =
+        parsed.hostname === "getkoreainside.com" || parsed.hostname.endsWith(".getkoreainside.com");
+      return (
+        (parsed.protocol === "https:" || parsed.protocol === "http:") &&
+        hostIsAllowed &&
+        !parsed.username &&
+        !parsed.password &&
+        !parsed.search &&
+        !parsed.hash
+      );
+    } catch {
+      return false;
+    }
   }
 
   function setSearchConsoleSummaryLoading(isLoading) {
@@ -830,7 +991,10 @@ window.addEventListener("DOMContentLoaded", () => {
 
   function updateSearchConsoleControls() {
     const busy =
-      searchConsoleLoading || searchConsoleSummaryLoading || searchConsoleStatus.authenticationInProgress;
+      searchConsoleLoading ||
+      searchConsoleSummaryLoading ||
+      searchConsoleTopPagesLoading ||
+      searchConsoleStatus.authenticationInProgress;
     const clientIdEntered = searchConsoleClientId && searchConsoleClientId.value.trim().length > 0;
     const canStartOauth = searchConsoleStatus.configured && searchConsoleStatus.clientSecretStored;
 

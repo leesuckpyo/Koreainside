@@ -22,6 +22,7 @@
     "allow-start-search-console-oauth",
     "allow-disconnect-search-console",
     "allow-test-search-console-connection",
-    "allow-get-search-console-summary"
+    "allow-get-search-console-summary",
+    "allow-get-search-console-top-pages"
   ]
 }

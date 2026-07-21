@@ -875,6 +875,31 @@ h2 {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
+.search-console-top-pages-table {
+  min-width: 720px;
+}
+
+.search-console-top-pages-table th:not(:first-child),
+.search-console-top-pages-table td:not(:first-child) {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.search-console-top-pages-table th:first-child {
+  width: 55%;
+}
+
+.search-console-page-path {
+  display: block;
+  color: #293548;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.search-console-top-pages-status.is-error {
+  color: #8a2c2c;
+}
+
 .search-console-settings {
   margin-top: 18px;
 }
