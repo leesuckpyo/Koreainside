@@ -22,6 +22,7 @@ pub fn run() {
             credentials::delete_vercel_access_token,
             analytics::test_vercel_analytics_connection,
             analytics::get_vercel_analytics_summary,
+            analytics::get_vercel_affiliate_analytics,
             site_status::get_site_status_report,
             search_console::get_search_console_client_status,
             search_console::import_search_console_oauth_json,

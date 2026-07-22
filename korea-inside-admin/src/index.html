@@ -22,7 +22,7 @@
           <button class="nav-item" type="button" data-view="analytics"><span>트래픽·사용자</span></button>
           <button class="nav-item" type="button" data-view="search-console"><span>유입·검색</span></button>
           <button class="nav-item" type="button" disabled><span>행동·이탈</span><span class="phase-label">후속 단계</span></button>
-          <button class="nav-item" type="button" disabled><span>전환·제휴</span><span class="phase-label">후속 단계</span></button>
+          <button class="nav-item" type="button" data-view="affiliate"><span>전환·제휴</span></button>
           <button class="nav-item" type="button" disabled><span>숙소 관리</span><span class="phase-label">후속 단계</span></button>
           <button class="nav-item" type="button" disabled><span>eSIM 관리</span><span class="phase-label">후속 단계</span></button>
           <button class="nav-item" type="button" disabled><span>콘텐츠·SEO</span><span class="phase-label">후속 단계</span></button>
@@ -151,6 +151,130 @@
                 <strong>보안 안내</strong>
                 <p>Access Token은 Windows 자격 증명 관리자에만 저장되며 화면에 다시 표시되지 않습니다.</p>
                 <p>방문자·페이지뷰는 익명 집계값만 표시하며 사용자가 새로고침할 때만 조회합니다.</p>
+              </div>
+            </section>
+          </section>
+
+          <section class="view-panel" id="affiliate-view" data-panel="affiliate" hidden>
+            <div class="analytics-header">
+              <div>
+                <p class="eyebrow">읽기 전용 전환 데이터</p>
+                <h2>전환·제휴</h2>
+                <p>전체 기간의 제휴 클릭 총계와 최근 28일의 속성별 성과를 확인합니다.</p>
+              </div>
+              <span class="analytics-badge" id="affiliate-badge">조회 전</span>
+            </div>
+
+            <section
+              class="analytics-summary search-console-summary"
+              id="affiliate-summary"
+              aria-labelledby="affiliate-summary-title"
+              aria-busy="false"
+            >
+              <div class="analytics-summary-toolbar">
+                <div>
+                  <h3 class="analytics-section-title" id="affiliate-summary-title">제휴 성과</h3>
+                  <p>총계는 Analytics 활성화 이후, 속성별 성과는 최근 28일 기준입니다.</p>
+                </div>
+                <button class="secondary-button" id="refresh-affiliate-analytics" type="button">새로고침</button>
+              </div>
+
+              <div
+                class="analytics-metric-grid search-console-metric-grid"
+                aria-label="전체 기간의 제휴 클릭 총계와 최근 28일의 속성별 성과 요약"
+              >
+                <article class="analytics-metric-card">
+                  <span>총 제휴 클릭(전체 기간)</span>
+                  <strong id="affiliate-total-clicks">—</strong>
+                </article>
+                <article class="analytics-metric-card">
+                  <span>순 방문자(전체 기간)</span>
+                  <strong id="affiliate-visitors">—</strong>
+                </article>
+                <article class="analytics-metric-card">
+                  <span>속성 집계 기간</span>
+                  <strong id="affiliate-range">조회 전</strong>
+                </article>
+                <article class="analytics-metric-card">
+                  <span>마지막 새로고침</span>
+                  <strong id="affiliate-fetched-at">조회 전</strong>
+                </article>
+              </div>
+
+              <div class="analytics-summary-message" id="affiliate-summary-message" role="status">
+                화면을 열면 전체 기간 총계와 최근 28일 속성별 데이터를 조회합니다.
+              </div>
+
+              <section class="site-status-pages search-console-top-pages" aria-labelledby="affiliate-brands-title">
+                <div>
+                  <h3 class="site-status-section-title" id="affiliate-brands-title">브랜드별 성과</h3>
+                  <p class="search-console-top-pages-status" id="affiliate-brands-status" role="status">조회 전</p>
+                </div>
+                <div class="site-status-table-scroll">
+                  <table class="site-status-table search-console-top-pages-table">
+                    <thead><tr><th scope="col">브랜드</th><th scope="col">클릭 수</th><th scope="col">순 방문자</th></tr></thead>
+                    <tbody id="affiliate-brands-body"></tbody>
+                  </table>
+                </div>
+              </section>
+
+              <section class="site-status-pages search-console-top-pages" aria-labelledby="affiliate-pages-title">
+                <div>
+                  <h3 class="site-status-section-title" id="affiliate-pages-title">페이지별 성과</h3>
+                  <p class="search-console-top-pages-status" id="affiliate-pages-status" role="status">조회 전</p>
+                </div>
+                <div class="site-status-table-scroll">
+                  <table class="site-status-table search-console-top-pages-table">
+                    <thead><tr><th scope="col">페이지 경로</th><th scope="col">클릭 수</th><th scope="col">순 방문자</th></tr></thead>
+                    <tbody id="affiliate-pages-body"></tbody>
+                  </table>
+                </div>
+              </section>
+
+              <section class="site-status-pages search-console-top-pages" aria-labelledby="affiliate-placements-title">
+                <div>
+                  <h3 class="site-status-section-title" id="affiliate-placements-title">배치 위치별 성과</h3>
+                  <p class="search-console-top-pages-status" id="affiliate-placements-status" role="status">조회 전</p>
+                </div>
+                <div class="site-status-table-scroll">
+                  <table class="site-status-table search-console-top-pages-table">
+                    <thead><tr><th scope="col">placement</th><th scope="col">클릭 수</th><th scope="col">순 방문자</th></tr></thead>
+                    <tbody id="affiliate-placements-body"></tbody>
+                  </table>
+                </div>
+              </section>
+
+              <section class="site-status-pages search-console-top-pages" aria-labelledby="affiliate-link-stages-title">
+                <div>
+                  <h3 class="site-status-section-title" id="affiliate-link-stages-title">링크 단계별 성과</h3>
+                  <p class="search-console-top-pages-status" id="affiliate-link-stages-status" role="status">조회 전</p>
+                </div>
+                <div class="site-status-table-scroll">
+                  <table class="site-status-table search-console-top-pages-table">
+                    <thead><tr><th scope="col">link_stage</th><th scope="col">클릭 수</th><th scope="col">순 방문자</th></tr></thead>
+                    <tbody id="affiliate-link-stages-body"></tbody>
+                  </table>
+                </div>
+              </section>
+
+              <section class="site-status-pages search-console-top-pages" aria-labelledby="affiliate-details-title">
+                <div>
+                  <h3 class="site-status-section-title" id="affiliate-details-title">상세 데이터</h3>
+                  <p class="search-console-top-pages-status" id="affiliate-details-status" role="status">조회 전</p>
+                </div>
+                <div class="site-status-table-scroll">
+                  <table class="site-status-table search-console-top-pages-table">
+                    <thead>
+                      <tr><th scope="col">속성</th><th scope="col">값</th><th scope="col">클릭 수</th><th scope="col">순 방문자</th></tr>
+                    </thead>
+                    <tbody id="affiliate-details-body"></tbody>
+                  </table>
+                </div>
+              </section>
+
+              <div class="search-console-notice">
+                <strong>데이터 안내</strong>
+                <p>현재 통계에는 운영 검증용 Expedia 클릭 1건이 포함되어 있습니다.</p>
               </div>
             </section>
           </section>

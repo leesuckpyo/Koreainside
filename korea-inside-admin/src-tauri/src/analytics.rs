@@ -16,6 +16,7 @@ const MAX_JAVASCRIPT_SAFE_INTEGER: u64 = 9_007_199_254_740_991;
 const CACHE_TTL: Duration = Duration::from_secs(5 * 60);
 const FAILURE_COOLDOWN: Duration = Duration::from_secs(10);
 const MAX_CREDENTIAL_GENERATION_ATTEMPTS: usize = 2;
+const AFFILIATE_PERIOD_MS: i64 = 28 * 24 * 60 * 60 * 1_000;
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 enum AnalyticsPeriod {
@@ -495,6 +496,110 @@ impl AnalyticsSummaryResponse {
     }
 }
 
+#[derive(Clone, Debug, Eq, PartialEq, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct AffiliateAggregateRow {
+    value: String,
+    count: u64,
+    visitors: u64,
+}
+
+#[derive(Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct AffiliateAnalyticsResponse {
+    status: &'static str,
+    period: &'static str,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    range_start: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    range_end: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    fetched_at: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    total_clicks: Option<u64>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    visitors: Option<u64>,
+    brands: Vec<AffiliateAggregateRow>,
+    pages: Vec<AffiliateAggregateRow>,
+    page_categories: Vec<AffiliateAggregateRow>,
+    content_topics: Vec<AffiliateAggregateRow>,
+    placements: Vec<AffiliateAggregateRow>,
+    link_stages: Vec<AffiliateAggregateRow>,
+    destination_hosts: Vec<AffiliateAggregateRow>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    error_code: Option<&'static str>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    message: Option<&'static str>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    retry_at: Option<String>,
+}
+
+impl AffiliateAnalyticsResponse {
+    fn success(
+        range: TimeRange,
+        fetched_at_ms: i64,
+        result: vercel_adapter::AffiliateAnalyticsResult,
+    ) -> Self {
+        let (Some(range_start), Some(range_end), Some(fetched_at)) = (
+            format_utc_timestamp(range.since_ms),
+            format_utc_timestamp(range.until_ms),
+            format_utc_timestamp(fetched_at_ms),
+        ) else {
+            return Self::error(AnalyticsQueryError::InvalidResponse, None);
+        };
+
+        Self {
+            status: "ok",
+            period: "28d",
+            range_start: Some(range_start),
+            range_end: Some(range_end),
+            fetched_at: Some(fetched_at),
+            total_clicks: Some(result.total_clicks),
+            visitors: Some(result.visitors),
+            brands: result.brands,
+            pages: result.pages,
+            page_categories: result.page_categories,
+            content_topics: result.content_topics,
+            placements: result.placements,
+            link_stages: result.link_stages,
+            destination_hosts: result.destination_hosts,
+            error_code: None,
+            message: None,
+            retry_at: None,
+        }
+    }
+
+    fn error(error: AnalyticsQueryError, retry_at: Option<String>) -> Self {
+        Self {
+            status: "error",
+            period: "28d",
+            range_start: None,
+            range_end: None,
+            fetched_at: None,
+            total_clicks: None,
+            visitors: None,
+            brands: Vec::new(),
+            pages: Vec::new(),
+            page_categories: Vec::new(),
+            content_topics: Vec::new(),
+            placements: Vec::new(),
+            link_stages: Vec::new(),
+            destination_hosts: Vec::new(),
+            error_code: Some(error.code()),
+            message: Some(error.message()),
+            retry_at,
+        }
+    }
+
+    fn credential_changed() -> Self {
+        let mut response = Self::error(AnalyticsQueryError::CredentialReadFailed, None);
+        response.error_code = Some("credential_changed");
+        response.message =
+            Some("자격 증명이 변경되어 요청 결과를 사용하지 않았습니다. 다시 시도해 주십시오.");
+        response
+    }
+}
+
 #[tauri::command]
 pub async fn get_vercel_analytics_summary(period: String) -> AnalyticsSummaryResponse {
     let Some(period) = AnalyticsPeriod::parse(&period) else {
@@ -584,6 +689,51 @@ pub async fn get_vercel_analytics_summary(period: String) -> AnalyticsSummaryRes
             } else {
                 credential_changed_response(period)
             }
+        }
+    }
+}
+
+#[tauri::command]
+pub async fn get_vercel_affiliate_analytics() -> AffiliateAnalyticsResponse {
+    let generation = lock_request_state(request_state()).generation;
+    let token = match read_vercel_access_token() {
+        Ok(token) => token,
+        Err(keyring_core::Error::NoEntry) => {
+            return AffiliateAnalyticsResponse::error(AnalyticsQueryError::NotConfigured, None);
+        }
+        Err(_) => {
+            return AffiliateAnalyticsResponse::error(
+                AnalyticsQueryError::CredentialReadFailed,
+                None,
+            );
+        }
+    };
+
+    if lock_request_state(request_state()).generation != generation {
+        return AffiliateAnalyticsResponse::credential_changed();
+    }
+
+    let until_ms = current_utc_milliseconds();
+    let Some(since_ms) = until_ms.checked_sub(AFFILIATE_PERIOD_MS) else {
+        return AffiliateAnalyticsResponse::error(AnalyticsQueryError::InvalidResponse, None);
+    };
+    let range = TimeRange { since_ms, until_ms };
+
+    match vercel_adapter::fetch_affiliate_analytics(&token, &range).await {
+        Ok(result) => {
+            if lock_request_state(request_state()).generation != generation {
+                AffiliateAnalyticsResponse::credential_changed()
+            } else {
+                AffiliateAnalyticsResponse::success(range, current_utc_milliseconds(), result)
+            }
+        }
+        Err(error) => {
+            let retry_at = error.cooldown_duration().and_then(|duration| {
+                let retry_at_ms = current_utc_milliseconds()
+                    .saturating_add(duration.as_millis().min(i64::MAX as u128) as i64);
+                format_utc_timestamp(retry_at_ms)
+            });
+            AffiliateAnalyticsResponse::error(error, retry_at)
         }
     }
 }
@@ -726,6 +876,14 @@ fn current_kst_timestamp() -> Option<String> {
 mod vercel_adapter {
     use super::*;
     use serde::Deserialize;
+    use serde_json::{Map, Value};
+
+    const AFFILIATE_COUNT_ENDPOINT: &str =
+        "https://api.vercel.com/v1/query/web-analytics/events/count";
+    const AFFILIATE_AGGREGATE_ENDPOINT: &str =
+        "https://api.vercel.com/v1/query/web-analytics/events/aggregate";
+    const AFFILIATE_FILTER: &str = "eventName eq 'affiliate_click'";
+    const MAX_AFFILIATE_VALUE_BYTES: usize = 2 * 1024;
 
     pub(super) const ENDPOINT: &str = "https://api.vercel.com/v1/query/web-analytics/visits/count";
     pub(super) const PROJECT_ID: &str = "prj_E6IPJCgBEvh3J7Ga8AMNXeq3Gb4M";
@@ -745,9 +903,207 @@ mod vercel_adapter {
         visitors: u64,
     }
 
+    #[derive(Deserialize)]
+    struct VercelAffiliateCountResponse {
+        version: u64,
+        data: VercelAffiliateCountData,
+    }
+
+    #[derive(Deserialize)]
+    struct VercelAffiliateCountData {
+        count: u64,
+        visitors: u64,
+    }
+
+    #[derive(Deserialize)]
+    struct VercelAffiliateAggregateResponse {
+        version: u64,
+        data: Value,
+    }
+
     pub(super) struct CountResult {
         pub(super) pageviews: u64,
         pub(super) visitors: u64,
+    }
+
+    pub(super) struct AffiliateAnalyticsResult {
+        pub(super) total_clicks: u64,
+        pub(super) visitors: u64,
+        pub(super) brands: Vec<AffiliateAggregateRow>,
+        pub(super) pages: Vec<AffiliateAggregateRow>,
+        pub(super) page_categories: Vec<AffiliateAggregateRow>,
+        pub(super) content_topics: Vec<AffiliateAggregateRow>,
+        pub(super) placements: Vec<AffiliateAggregateRow>,
+        pub(super) link_stages: Vec<AffiliateAggregateRow>,
+        pub(super) destination_hosts: Vec<AffiliateAggregateRow>,
+    }
+
+    pub(super) async fn fetch_affiliate_analytics(
+        token: &str,
+        range: &TimeRange,
+    ) -> Result<AffiliateAnalyticsResult, AnalyticsQueryError> {
+        let client = secure_http_client()?;
+        let count = fetch_affiliate_count(&client, token).await?;
+        let brands = fetch_affiliate_dimension(&client, token, range, "eventData/brand").await?;
+        let pages = fetch_affiliate_dimension(&client, token, range, "eventData/page_path").await?;
+        let page_categories =
+            fetch_affiliate_dimension(&client, token, range, "eventData/page_category").await?;
+        let content_topics =
+            fetch_affiliate_dimension(&client, token, range, "eventData/content_topic").await?;
+        let placements =
+            fetch_affiliate_dimension(&client, token, range, "eventData/placement").await?;
+        let link_stages =
+            fetch_affiliate_dimension(&client, token, range, "eventData/link_stage").await?;
+        let destination_hosts =
+            fetch_affiliate_dimension(&client, token, range, "eventData/destination_host").await?;
+
+        Ok(AffiliateAnalyticsResult {
+            total_clicks: count.count,
+            visitors: count.visitors,
+            brands,
+            pages,
+            page_categories,
+            content_topics,
+            placements,
+            link_stages,
+            destination_hosts,
+        })
+    }
+
+    async fn fetch_affiliate_count(
+        client: &reqwest::Client,
+        token: &str,
+    ) -> Result<VercelAffiliateCountData, AnalyticsQueryError> {
+        let response = client
+            .get(AFFILIATE_COUNT_ENDPOINT)
+            .bearer_auth(token)
+            .query(&[
+                ("projectId", PROJECT_ID.to_string()),
+                ("teamId", TEAM_ID.to_string()),
+                ("filter", AFFILIATE_FILTER.to_string()),
+            ])
+            .send()
+            .await
+            .map_err(map_request_error)?;
+        let body = read_success_body(response).await?;
+        parse_affiliate_count_response(&body)
+    }
+
+    async fn fetch_affiliate_dimension(
+        client: &reqwest::Client,
+        token: &str,
+        range: &TimeRange,
+        dimension: &str,
+    ) -> Result<Vec<AffiliateAggregateRow>, AnalyticsQueryError> {
+        let response = client
+            .get(AFFILIATE_AGGREGATE_ENDPOINT)
+            .bearer_auth(token)
+            .query(&[
+                ("projectId", PROJECT_ID.to_string()),
+                ("teamId", TEAM_ID.to_string()),
+                ("since", range.since_ms.to_string()),
+                ("until", range.until_ms.to_string()),
+                ("limit", "100".to_string()),
+                ("filter", AFFILIATE_FILTER.to_string()),
+                ("by", dimension.to_string()),
+            ])
+            .send()
+            .await
+            .map_err(map_request_error)?;
+        let body = read_success_body(response).await?;
+        parse_affiliate_aggregate_response(&body, dimension)
+    }
+
+    async fn read_success_body(
+        response: reqwest::Response,
+    ) -> Result<Vec<u8>, AnalyticsQueryError> {
+        if response.status() != StatusCode::OK {
+            return Err(map_http_status(response.status(), response.headers()));
+        }
+        if response
+            .content_length()
+            .is_some_and(|length| length > MAX_RESPONSE_BYTES as u64)
+        {
+            return Err(AnalyticsQueryError::ResponseTooLarge);
+        }
+        read_limited_body(response).await
+    }
+
+    fn parse_affiliate_count_response(
+        body: &[u8],
+    ) -> Result<VercelAffiliateCountData, AnalyticsQueryError> {
+        if body.len() > MAX_RESPONSE_BYTES {
+            return Err(AnalyticsQueryError::ResponseTooLarge);
+        }
+        let response: VercelAffiliateCountResponse =
+            serde_json::from_slice(body).map_err(|_| AnalyticsQueryError::InvalidResponse)?;
+        let _version = response.version;
+        if response.data.count > MAX_JAVASCRIPT_SAFE_INTEGER
+            || response.data.visitors > MAX_JAVASCRIPT_SAFE_INTEGER
+        {
+            return Err(AnalyticsQueryError::InvalidResponse);
+        }
+        Ok(response.data)
+    }
+
+    fn parse_affiliate_aggregate_response(
+        body: &[u8],
+        dimension: &str,
+    ) -> Result<Vec<AffiliateAggregateRow>, AnalyticsQueryError> {
+        if body.len() > MAX_RESPONSE_BYTES {
+            return Err(AnalyticsQueryError::ResponseTooLarge);
+        }
+        let response: VercelAffiliateAggregateResponse =
+            serde_json::from_slice(body).map_err(|_| AnalyticsQueryError::InvalidResponse)?;
+        let _version = response.version;
+        normalize_aggregate_data(response.data)?
+            .into_iter()
+            .map(|row| parse_affiliate_row(row, dimension))
+            .collect()
+    }
+
+    fn normalize_aggregate_data(
+        data: Value,
+    ) -> Result<Vec<Map<String, Value>>, AnalyticsQueryError> {
+        match data {
+            Value::Null => Ok(Vec::new()),
+            Value::Object(row) => Ok(vec![row]),
+            Value::Array(rows) => rows
+                .into_iter()
+                .map(|row| match row {
+                    Value::Object(row) => Ok(row),
+                    _ => Err(AnalyticsQueryError::InvalidResponse),
+                })
+                .collect(),
+            _ => Err(AnalyticsQueryError::InvalidResponse),
+        }
+    }
+
+    fn parse_affiliate_row(
+        row: Map<String, Value>,
+        dimension: &str,
+    ) -> Result<AffiliateAggregateRow, AnalyticsQueryError> {
+        let value = match row.get(dimension) {
+            Some(Value::String(value)) if value.len() <= MAX_AFFILIATE_VALUE_BYTES => value.clone(),
+            Some(Value::Null) => "값 없음".to_string(),
+            _ => return Err(AnalyticsQueryError::InvalidResponse),
+        };
+        let count = row
+            .get("count")
+            .and_then(Value::as_u64)
+            .ok_or(AnalyticsQueryError::InvalidResponse)?;
+        let visitors = row
+            .get("visitors")
+            .and_then(Value::as_u64)
+            .ok_or(AnalyticsQueryError::InvalidResponse)?;
+        if count > MAX_JAVASCRIPT_SAFE_INTEGER || visitors > MAX_JAVASCRIPT_SAFE_INTEGER {
+            return Err(AnalyticsQueryError::InvalidResponse);
+        }
+        Ok(AffiliateAggregateRow {
+            value,
+            count,
+            visitors,
+        })
     }
 
     pub(super) async fn fetch_count(
@@ -893,6 +1249,21 @@ mod vercel_adapter {
     }
 
     #[cfg(test)]
+    pub(super) fn parse_affiliate_count_for_test(
+        body: &[u8],
+    ) -> Result<(u64, u64), AnalyticsQueryError> {
+        parse_affiliate_count_response(body).map(|data| (data.count, data.visitors))
+    }
+
+    #[cfg(test)]
+    pub(super) fn parse_affiliate_aggregate_for_test(
+        body: &[u8],
+        dimension: &str,
+    ) -> Result<Vec<AffiliateAggregateRow>, AnalyticsQueryError> {
+        parse_affiliate_aggregate_response(body, dimension)
+    }
+
+    #[cfg(test)]
     pub(super) fn map_status_for_test(
         status: StatusCode,
         headers: &HeaderMap,
@@ -980,6 +1351,77 @@ mod tests {
             let count = vercel_adapter::parse_for_test(response).unwrap();
             assert!(count.pageviews <= 42);
             assert!(count.visitors <= 30);
+        }
+    }
+
+    #[test]
+    fn parses_affiliate_count_response() {
+        assert_eq!(
+            vercel_adapter::parse_affiliate_count_for_test(
+                br#"{"version":1,"data":{"count":1,"visitors":1}}"#
+            )
+            .unwrap(),
+            (1, 1)
+        );
+    }
+
+    #[test]
+    fn normalizes_affiliate_null_object_and_array_data() {
+        let dimension = "eventData/brand";
+        let empty = vercel_adapter::parse_affiliate_aggregate_for_test(
+            br#"{"version":1,"data":null}"#,
+            dimension,
+        )
+        .unwrap();
+        assert!(empty.is_empty());
+
+        let single = vercel_adapter::parse_affiliate_aggregate_for_test(
+            br#"{"version":1,"data":{"eventData/brand":"expedia","count":1,"visitors":1}}"#,
+            dimension,
+        )
+        .unwrap();
+        assert_eq!(
+            single,
+            vec![AffiliateAggregateRow {
+                value: "expedia".to_string(),
+                count: 1,
+                visitors: 1,
+            }]
+        );
+
+        let multiple = vercel_adapter::parse_affiliate_aggregate_for_test(
+            br#"{"version":1,"data":[{"eventData/brand":"expedia","count":2,"visitors":1},{"eventData/brand":"klook","count":1,"visitors":1}]}"#,
+            dimension,
+        )
+        .unwrap();
+        assert_eq!(multiple.len(), 2);
+        assert_eq!(multiple[0].value, "expedia");
+        assert_eq!(multiple[1].value, "klook");
+    }
+
+    #[test]
+    fn rejects_affiliate_aggregate_response_without_data() {
+        assert!(matches!(
+            vercel_adapter::parse_affiliate_aggregate_for_test(
+                br#"{"version":1}"#,
+                "eventData/brand"
+            ),
+            Err(AnalyticsQueryError::InvalidResponse)
+        ));
+    }
+
+    #[test]
+    fn rejects_invalid_affiliate_aggregate_rows() {
+        for response in [
+            br#"{"version":1,"data":"invalid"}"#.as_slice(),
+            br#"{"version":1,"data":{"count":1,"visitors":1}}"#.as_slice(),
+            br#"{"version":1,"data":{"eventData/brand":"expedia","visitors":1}}"#.as_slice(),
+            br#"{"version":1,"data":[1]}"#.as_slice(),
+        ] {
+            assert!(matches!(
+                vercel_adapter::parse_affiliate_aggregate_for_test(response, "eventData/brand"),
+                Err(AnalyticsQueryError::InvalidResponse)
+            ));
         }
     }
 

@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-get-vercel-affiliate-analytics"
+description = "Enables the get_vercel_affiliate_analytics command without any pre-configured scope."
+commands.allow = ["get_vercel_affiliate_analytics"]
+
+[[permission]]
+identifier = "deny-get-vercel-affiliate-analytics"
+description = "Denies the get_vercel_affiliate_analytics command without any pre-configured scope."
+commands.deny = ["get_vercel_affiliate_analytics"]

@@ -37,6 +37,24 @@ window.addEventListener("DOMContentLoaded", () => {
   const analyticsFetchedAt = document.querySelector("#analytics-fetched-at");
   const analyticsCacheStatus = document.querySelector("#analytics-cache-status");
   const analyticsSummaryMessage = document.querySelector("#analytics-summary-message");
+  const affiliateSummary = document.querySelector("#affiliate-summary");
+  const affiliateBadge = document.querySelector("#affiliate-badge");
+  const refreshAffiliateAnalyticsButton = document.querySelector("#refresh-affiliate-analytics");
+  const affiliateTotalClicks = document.querySelector("#affiliate-total-clicks");
+  const affiliateVisitors = document.querySelector("#affiliate-visitors");
+  const affiliateRange = document.querySelector("#affiliate-range");
+  const affiliateFetchedAt = document.querySelector("#affiliate-fetched-at");
+  const affiliateSummaryMessage = document.querySelector("#affiliate-summary-message");
+  const affiliateBrandsStatus = document.querySelector("#affiliate-brands-status");
+  const affiliateBrandsBody = document.querySelector("#affiliate-brands-body");
+  const affiliatePagesStatus = document.querySelector("#affiliate-pages-status");
+  const affiliatePagesBody = document.querySelector("#affiliate-pages-body");
+  const affiliatePlacementsStatus = document.querySelector("#affiliate-placements-status");
+  const affiliatePlacementsBody = document.querySelector("#affiliate-placements-body");
+  const affiliateLinkStagesStatus = document.querySelector("#affiliate-link-stages-status");
+  const affiliateLinkStagesBody = document.querySelector("#affiliate-link-stages-body");
+  const affiliateDetailsStatus = document.querySelector("#affiliate-details-status");
+  const affiliateDetailsBody = document.querySelector("#affiliate-details-body");
   const exportFormatInputs = document.querySelectorAll('input[name="export-format"]');
   const previewExportButton = document.querySelector("#preview-export");
   const saveExportButton = document.querySelector("#save-export");
@@ -105,6 +123,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const viewTitles = {
     dashboard: "운영 대시보드",
     analytics: "Vercel Analytics",
+    affiliate: "전환·제휴",
     "search-console": "Google Search Console",
     "site-status": "사이트 상태점검",
     explorer: "프로젝트 탐색기",
@@ -114,6 +133,8 @@ window.addEventListener("DOMContentLoaded", () => {
   let vercelCredentialStored = false;
   let analyticsConnectionLoading = false;
   let analyticsSummaryLoading = false;
+  let affiliateAnalyticsLoading = false;
+  let affiliateAnalyticsAttempted = false;
   let siteStatusLoading = false;
   let searchConsoleLoading = false;
   let searchConsoleSummaryLoading = false;
@@ -159,6 +180,18 @@ window.addEventListener("DOMContentLoaded", () => {
   const analyticsDateFormatter = new Intl.DateTimeFormat("ko-KR", {
     timeZone: "Asia/Seoul",
     year: "numeric",
+    month: "numeric",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+  const affiliateRangeFormatter = new Intl.DateTimeFormat("ko-KR", {
+    timeZone: "Asia/Seoul",
+    month: "numeric",
+    day: "numeric",
+  });
+  const affiliateFetchedAtFormatter = new Intl.DateTimeFormat("ko-KR", {
+    timeZone: "Asia/Seoul",
     month: "numeric",
     day: "numeric",
     hour: "2-digit",
@@ -230,6 +263,8 @@ window.addEventListener("DOMContentLoaded", () => {
       viewTitle.textContent = viewTitles[selectedView];
       if (selectedView === "search-console") {
         loadSearchConsoleSummaryIfReady();
+      } else if (selectedView === "affiliate") {
+        loadAffiliateAnalyticsIfReady();
       }
     });
   });
@@ -316,6 +351,10 @@ window.addEventListener("DOMContentLoaded", () => {
 
   if (refreshSearchConsoleSummaryButton) {
     refreshSearchConsoleSummaryButton.addEventListener("click", loadSearchConsoleSummary);
+  }
+
+  if (refreshAffiliateAnalyticsButton) {
+    refreshAffiliateAnalyticsButton.addEventListener("click", loadAffiliateAnalytics);
   }
 
   previewExportButton.addEventListener("click", async () => {
@@ -412,6 +451,7 @@ window.addEventListener("DOMContentLoaded", () => {
     let token = vercelAccessToken.value;
     vercelAccessToken.value = "";
     resetAnalyticsSummary(selectedAnalyticsPeriod());
+    resetAffiliateAnalytics();
     setAnalyticsLoading(true, "Access Token을 안전하게 저장하고 있습니다.");
 
     try {
@@ -450,6 +490,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   deleteVercelTokenButton.addEventListener("click", async () => {
     resetAnalyticsSummary(selectedAnalyticsPeriod());
+    resetAffiliateAnalytics();
     setAnalyticsLoading(true, "저장된 자격 증명을 삭제하고 있습니다.");
     try {
       const result = await window.__TAURI__.core.invoke("delete_vercel_access_token");
@@ -470,6 +511,7 @@ window.addEventListener("DOMContentLoaded", () => {
   refreshVercelConnectionStatus();
   refreshSearchConsoleStatus();
   resetSiteStatusReport();
+  resetAffiliateAnalytics();
 
   async function refreshSearchConsoleStatus({ preserveMessage = false } = {}) {
     setSearchConsoleLoading(true, preserveMessage ? "" : "Search Console 연결 상태를 확인하고 있습니다.");
@@ -1906,6 +1948,317 @@ window.addEventListener("DOMContentLoaded", () => {
     if (element) {
       element.textContent = value;
     }
+  }
+
+  function loadAffiliateAnalyticsIfReady() {
+    const affiliateView = document.querySelector('[data-panel="affiliate"]');
+    if (!affiliateView || affiliateView.hidden || affiliateAnalyticsAttempted || affiliateAnalyticsLoading) {
+      return;
+    }
+    loadAffiliateAnalytics();
+  }
+
+  async function loadAffiliateAnalytics() {
+    if (affiliateAnalyticsLoading) {
+      return;
+    }
+
+    affiliateAnalyticsAttempted = true;
+    setAffiliateAnalyticsLoading(true);
+    setAffiliateSummaryMessage("최근 28일 affiliate_click 데이터를 조회하고 있습니다.");
+    try {
+      const result = await window.__TAURI__.core.invoke("get_vercel_affiliate_analytics");
+      if (result && result.status === "error") {
+        renderAffiliateAnalyticsError(
+          typeof result.errorCode === "string" ? result.errorCode : "invalid_response",
+          typeof result.retryAt === "string" ? result.retryAt : null,
+        );
+        return;
+      }
+      if (!isValidAffiliateAnalytics(result)) {
+        renderAffiliateAnalyticsError("invalid_response", null);
+        return;
+      }
+      renderAffiliateAnalytics(result);
+    } catch (error) {
+      renderAffiliateAnalyticsError("network_error", null);
+    } finally {
+      setAffiliateAnalyticsLoading(false);
+    }
+  }
+
+  function isValidAffiliateAnalytics(result) {
+    return (
+      result !== null &&
+      typeof result === "object" &&
+      result.status === "ok" &&
+      result.period === "28d" &&
+      isValidTimestamp(result.rangeStart) &&
+      isValidTimestamp(result.rangeEnd) &&
+      isValidTimestamp(result.fetchedAt) &&
+      Number.isSafeInteger(result.totalClicks) &&
+      result.totalClicks >= 0 &&
+      Number.isSafeInteger(result.visitors) &&
+      result.visitors >= 0 &&
+      [
+        result.brands,
+        result.pages,
+        result.pageCategories,
+        result.contentTopics,
+        result.placements,
+        result.linkStages,
+        result.destinationHosts,
+      ].every(isValidAffiliateRows)
+    );
+  }
+
+  function isValidAffiliateRows(rows) {
+    return (
+      Array.isArray(rows) &&
+      rows.every(
+        (row) =>
+          row !== null &&
+          typeof row === "object" &&
+          typeof row.value === "string" &&
+          Number.isSafeInteger(row.count) &&
+          row.count >= 0 &&
+          Number.isSafeInteger(row.visitors) &&
+          row.visitors >= 0,
+      )
+    );
+  }
+
+  function isValidTimestamp(value) {
+    return typeof value === "string" && value.length > 0 && !Number.isNaN(new Date(value).getTime());
+  }
+
+  function renderAffiliateAnalytics(result) {
+    const hasAggregateData = [
+      result.brands,
+      result.pages,
+      result.pageCategories,
+      result.contentTopics,
+      result.placements,
+      result.linkStages,
+      result.destinationHosts,
+    ].some((rows) => rows.length > 0);
+    setText(affiliateTotalClicks, `${result.totalClicks.toLocaleString("ko-KR")}회`);
+    setText(affiliateVisitors, `${result.visitors.toLocaleString("ko-KR")}명`);
+    setText(
+      affiliateRange,
+      `${formatAffiliateRangeDate(result.rangeStart)} ~ ${formatAffiliateRangeDate(result.rangeEnd)}`,
+    );
+    setText(affiliateFetchedAt, formatAffiliateFetchedAt(result.fetchedAt));
+
+    renderAffiliatePerformanceTable(
+      affiliateBrandsBody,
+      affiliateBrandsStatus,
+      result.brands,
+      "브랜드",
+    );
+    renderAffiliatePerformanceTable(
+      affiliatePagesBody,
+      affiliatePagesStatus,
+      result.pages,
+      "페이지",
+    );
+    renderAffiliatePerformanceTable(
+      affiliatePlacementsBody,
+      affiliatePlacementsStatus,
+      result.placements,
+      "placement",
+    );
+    renderAffiliatePerformanceTable(
+      affiliateLinkStagesBody,
+      affiliateLinkStagesStatus,
+      result.linkStages,
+      "link_stage",
+    );
+    renderAffiliateDetails(result);
+
+    affiliateBadge.classList.remove("is-error");
+    if (result.totalClicks > 0 || hasAggregateData) {
+      affiliateBadge.textContent = "데이터 확인";
+      affiliateBadge.classList.add("is-connected");
+      setAffiliateSummaryMessage("제휴 총계와 최근 28일 속성별 성과를 불러왔습니다.", "success");
+    } else {
+      affiliateBadge.textContent = "데이터 없음";
+      affiliateBadge.classList.remove("is-connected");
+      setAffiliateSummaryMessage("최근 28일에 수집된 affiliate_click 데이터가 없습니다.");
+    }
+  }
+
+  function renderAffiliatePerformanceTable(body, status, rows, label) {
+    if (!body || !status) {
+      return;
+    }
+    const fragment = document.createDocumentFragment();
+    if (rows.length === 0) {
+      fragment.append(createAffiliateEmptyRow(3, `${label}별 데이터가 없습니다.`));
+      setAffiliateTableStatus(status, `${label}별 데이터가 없습니다.`);
+    } else {
+      rows.forEach((item) => {
+        const row = document.createElement("tr");
+        const valueCell = document.createElement("td");
+        const value = document.createElement("span");
+        value.className = "search-console-page-path";
+        value.textContent = item.value || "값 없음";
+        valueCell.append(value);
+        row.append(valueCell, createAffiliateCountCell(item.count), createAffiliateCountCell(item.visitors));
+        fragment.append(row);
+      });
+      setAffiliateTableStatus(status, `${label} 기준 ${rows.length.toLocaleString("ko-KR")}개 그룹입니다.`);
+    }
+    body.replaceChildren(fragment);
+  }
+
+  function renderAffiliateDetails(result) {
+    if (!affiliateDetailsBody || !affiliateDetailsStatus) {
+      return;
+    }
+    const groups = [
+      ["page_category", result.pageCategories],
+      ["content_topic", result.contentTopics],
+      ["destination_host", result.destinationHosts],
+    ];
+    const fragment = document.createDocumentFragment();
+    let rowCount = 0;
+    groups.forEach(([dimension, rows]) => {
+      rows.forEach((item) => {
+        const row = document.createElement("tr");
+        const dimensionCell = document.createElement("td");
+        dimensionCell.textContent = dimension;
+        const valueCell = document.createElement("td");
+        const value = document.createElement("span");
+        value.className = "search-console-page-path";
+        value.textContent = item.value || "값 없음";
+        valueCell.append(value);
+        row.append(
+          dimensionCell,
+          valueCell,
+          createAffiliateCountCell(item.count),
+          createAffiliateCountCell(item.visitors),
+        );
+        fragment.append(row);
+        rowCount += 1;
+      });
+    });
+    if (rowCount === 0) {
+      fragment.append(createAffiliateEmptyRow(4, "상세 데이터가 없습니다."));
+      setAffiliateTableStatus(affiliateDetailsStatus, "상세 데이터가 없습니다.");
+    } else {
+      setAffiliateTableStatus(
+        affiliateDetailsStatus,
+        `상세 속성 기준 ${rowCount.toLocaleString("ko-KR")}개 그룹입니다.`,
+      );
+    }
+    affiliateDetailsBody.replaceChildren(fragment);
+  }
+
+  function createAffiliateCountCell(value) {
+    const cell = document.createElement("td");
+    cell.textContent = value.toLocaleString("ko-KR");
+    return cell;
+  }
+
+  function createAffiliateEmptyRow(colspan, message) {
+    const row = document.createElement("tr");
+    const cell = document.createElement("td");
+    cell.colSpan = colspan;
+    cell.textContent = message;
+    row.append(cell);
+    return row;
+  }
+
+  function renderAffiliateAnalyticsError(errorCode, retryAt) {
+    const message = analyticsErrorMessages[errorCode] || "제휴 성과 데이터를 조회할 수 없습니다.";
+    const retryMessage =
+      errorCode === "rate_limited" && retryAt ? ` ${formatAnalyticsTimestamp(retryAt)} 이후 다시 시도해 주십시오.` : "";
+    clearAffiliateSummaryValues();
+    clearAffiliateTables(`${message}${retryMessage}`, "error");
+    affiliateBadge.textContent = "조회 오류";
+    affiliateBadge.classList.remove("is-connected");
+    affiliateBadge.classList.add("is-error");
+    setAffiliateSummaryMessage(`${message}${retryMessage}`, "error");
+  }
+
+  function resetAffiliateAnalytics() {
+    affiliateAnalyticsAttempted = false;
+    clearAffiliateSummaryValues();
+    clearAffiliateTables("조회 전");
+    affiliateBadge.textContent = "조회 전";
+    affiliateBadge.classList.remove("is-connected", "is-error");
+    setAffiliateSummaryMessage("화면을 열면 최근 28일 데이터를 조회합니다.");
+  }
+
+  function clearAffiliateSummaryValues() {
+    setText(affiliateTotalClicks, "—");
+    setText(affiliateVisitors, "—");
+    setText(affiliateRange, "조회 전");
+    setText(affiliateFetchedAt, "조회 전");
+  }
+
+  function clearAffiliateTables(message, kind = "default") {
+    [
+      [affiliateBrandsBody, affiliateBrandsStatus, 3],
+      [affiliatePagesBody, affiliatePagesStatus, 3],
+      [affiliatePlacementsBody, affiliatePlacementsStatus, 3],
+      [affiliateLinkStagesBody, affiliateLinkStagesStatus, 3],
+      [affiliateDetailsBody, affiliateDetailsStatus, 4],
+    ].forEach(([body, status, colspan]) => {
+      if (body) {
+        body.replaceChildren(createAffiliateEmptyRow(colspan, message));
+      }
+      setAffiliateTableStatus(status, message, kind);
+    });
+  }
+
+  function setAffiliateAnalyticsLoading(isLoading) {
+    affiliateAnalyticsLoading = isLoading;
+    if (affiliateSummary) {
+      affiliateSummary.setAttribute("aria-busy", String(isLoading));
+    }
+    if (refreshAffiliateAnalyticsButton) {
+      refreshAffiliateAnalyticsButton.disabled = isLoading;
+    }
+    if (isLoading) {
+      affiliateBadge.textContent = "조회 중";
+      affiliateBadge.classList.remove("is-connected", "is-error");
+      [
+        affiliateBrandsStatus,
+        affiliatePagesStatus,
+        affiliatePlacementsStatus,
+        affiliateLinkStagesStatus,
+        affiliateDetailsStatus,
+      ].forEach((status) => setAffiliateTableStatus(status, "조회 중"));
+    }
+  }
+
+  function setAffiliateSummaryMessage(message, kind = "default") {
+    if (!affiliateSummaryMessage) {
+      return;
+    }
+    affiliateSummaryMessage.textContent = message;
+    affiliateSummaryMessage.classList.toggle("is-error", kind === "error");
+    affiliateSummaryMessage.classList.toggle("is-success", kind === "success");
+  }
+
+  function setAffiliateTableStatus(status, message, kind = "default") {
+    if (!status) {
+      return;
+    }
+    status.textContent = message;
+    status.classList.toggle("is-error", kind === "error");
+  }
+
+  function formatAffiliateRangeDate(value) {
+    const date = new Date(value);
+    return Number.isNaN(date.getTime()) ? "확인 불가" : affiliateRangeFormatter.format(date);
+  }
+
+  function formatAffiliateFetchedAt(value) {
+    const date = new Date(value);
+    return Number.isNaN(date.getTime()) ? "확인 불가" : `${affiliateFetchedAtFormatter.format(date)} KST`;
   }
 
   function selectedAnalyticsPeriod() {
