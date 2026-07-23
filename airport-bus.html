@@ -9,7 +9,7 @@
   <title>Incheon Airport Bus Guide: Routes, Tickets and Boarding | Korea Inside</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body data-section="airport">
+<body class="airport-bus-page" data-section="airport">
 <!-- GLOBAL_NAV_START -->
   <header class="header site-header" data-common-header>
     <div class="container header__inner site-header__inner">
@@ -70,9 +70,18 @@
           <p>Start with your exact destination, not a bus number. A Seoul airport limousine is convenient when its stop is close to your hotel; an Incheon or Gyeonggi bus serves destinations outside central Seoul; an intercity bus connects the airport with other regions. Late-night buses are separate limited services, while the free airport shuttle is only for moving within the airport area.</p>
         </div>
 
-        <section aria-labelledby="choose-bus">
-          <h2 id="choose-bus">Which Incheon Airport Bus Do You Need?</h2>
-          <p>“Airport bus” is a broad label at Incheon Airport. The buses do not all use the same network, operator, ticket rules or destination area. First decide which category matches your trip. Then check the live route, terminal and boarding information for that specific service.</p>
+        <section class="airport-bus-section airport-section--gray" aria-labelledby="choose-bus">
+          <div class="airport-bus-media airport-bus-media--image-right">
+            <figure class="airport-bus-media__figure">
+              <img src="images/airport/incheon-airport-t2-bus-directions.webp" alt="Terminal 2 signs for local-city, Seoul and Gyeonggi airport bus boarding areas at Incheon Airport" width="1600" height="900" loading="lazy" decoding="async">
+              <figcaption>Terminal 2 separates bus boarding areas by destination. Bay ranges and route assignments can change, so confirm the current signs before boarding.</figcaption>
+            </figure>
+            <div class="airport-bus-media__copy">
+              <p class="eyebrow">Chapter 1</p>
+              <h2 id="choose-bus">Which Incheon Airport Bus Do You Need?</h2>
+              <p>“Airport bus” is a broad label at Incheon Airport. The buses do not all use the same network, operator, ticket rules or destination area. First decide which category matches your trip, then check the live route, terminal and boarding information for that specific service.</p>
+            </div>
+          </div>
 
           <h3>1. Seoul airport limousine or airport bus</h3>
           <p>Choose this category when your destination is in Seoul and a listed stop is reasonably close to your accommodation. These buses typically place luggage in a compartment below the passenger cabin, so they can be comfortable after a long flight. The main advantage is fewer transfers: you may be able to ride from the terminal to a hotel district without carrying a suitcase through stations.</p>
@@ -87,8 +96,7 @@
               <p class="airport-official-map-link__tip">This source does not cover every Seoul or intercity airport bus.</p>
             </div>
             <div class="airport-official-map-link__action">
-              <a href="https://www.gbis.go.kr/service/busInfo/airpIncheonBus.action?cmd=airpIncheon" target="_blank" rel="noopener noreferrer" class="airport-official-map-link__button">Check official Gyeonggi airport bus routes</a>
-              <p class="airport-official-map-link__tip">Korean-language website</p>
+              <a href="https://www.gbis.go.kr/service/busInfo/airpIncheonBus.action?lang=1&amp;cmd=airpIncheon" target="_blank" rel="noopener noreferrer" class="airport-official-map-link__button">Check official Gyeonggi airport bus routes</a>
             </div>
           </div>
 
@@ -101,8 +109,7 @@
               <p class="airport-official-map-link__tip">Not every route or terminal supports online booking. If online booking is unavailable, check the airport ticket counter, the departure terminal or the route operator.</p>
             </div>
             <div class="airport-official-map-link__action">
-              <a href="https://www.bustago.or.kr/newweb/kr/index.do" target="_blank" rel="noopener noreferrer" class="airport-official-map-link__button">Check intercity buses on BusTago</a>
-              <p class="airport-official-map-link__tip">Korean-language website</p>
+              <a href="https://www.bustago.or.kr/newweb/en/index.do" target="_blank" rel="noopener noreferrer" class="airport-official-map-link__button">Check intercity buses on BusTago</a>
             </div>
           </div>
 
@@ -167,9 +174,10 @@
           </div>
         </section>
 
-        <section aria-labelledby="find-route">
+        <section class="airport-bus-section" aria-labelledby="find-route">
+          <p class="eyebrow">Chapter 2</p>
           <h2 id="find-route">How to Find the Right Route and Stop</h2>
-          <p>A correct route search starts before you reach the ticket counter. Save your accommodation’s Korean address, English address and phone number. Pin the entrance on a Korean map rather than relying only on a booking-site neighborhood label. This gives you a precise destination to compare with official bus stops.</p>
+          <p>A correct route search starts before you reach the ticket counter. Save your accommodation’s Korean address, English address and phone number. Pin the entrance on a Korean map rather than relying only on a booking-site neighborhood label; this gives you a precise destination to compare with official bus stops.</p>
 
           <ol>
             <li><strong>Confirm the exact address.</strong> Check the Korean road address and place name. If you are staying in an apartment or guesthouse, identify a nearby major hotel, station or landmark as a second reference.</li>
@@ -218,27 +226,58 @@
           </div>
         </section>
 
-        <section aria-labelledby="tickets-boarding">
+        <section class="airport-bus-section airport-section--gray" aria-labelledby="tickets-boarding">
+          <p class="eyebrow">Chapter 3</p>
           <h2 id="tickets-boarding">Tickets and Boarding at Terminal 1 and Terminal 2</h2>
-          <p>After immigration, baggage claim and customs, enter the public arrival hall and pause before following the first bus sign you see. Confirm your destination, service category and terminal. Then locate the official ticket or information point for that route. The exact counter, machine, bay and sales method can change, so use airport signs and live official information on the day.</p>
+          <p>After immigration, baggage claim and customs, enter the public arrival hall and pause before following the first bus sign you see. Confirm your destination, service category and terminal, then locate the official ticket or information point for that route. The exact counter, machine, bay and sales method can change, so use airport signs and live official information on the day.</p>
 
-          <h3>Arrival-to-seat sequence</h3>
-          <ol>
-            <li><strong>Enter the public arrival hall.</strong> Finish all arrival procedures and keep your passport, phone and destination details accessible.</li>
-            <li><strong>Confirm the destination and bus type.</strong> Recheck the exact stop, direction and operator rather than asking only for “the bus to Seoul.”</li>
-            <li><strong>Find the correct ticket point or machine.</strong> Follow official airport signs. Ask airport information staff if the route or operator is unclear.</li>
-            <li><strong>Check the ticket details.</strong> Confirm the bus number or service name, destination stop, departure terminal and boarding bay before paying.</li>
-            <li><strong>Go to the displayed boarding bay.</strong> Leave enough time to find the bay, but continue checking the electronic display or sign for changes.</li>
-            <li><strong>Confirm the bus before loading luggage.</strong> Show the ticket or destination to staff and check the direction on the vehicle.</li>
-            <li><strong>Keep the luggage claim tag.</strong> If staff place a bag below the bus, retain the matching tag until you collect the bag.</li>
-            <li><strong>Monitor your stop.</strong> Follow onboard displays or announcements and keep your map open. If unsure, ask the driver or another staff member early.</li>
-          </ol>
+          <div class="airport-bus-media">
+            <figure class="airport-bus-media__figure">
+              <img src="images/airport/incheon-airport-arrivals-transfer-sign.webp" alt="Incheon Airport overhead sign pointing separately to Arrivals and Transfer" width="1600" height="1108" loading="lazy" decoding="async">
+              <figcaption>Passengers entering Korea should follow Arrivals. Transfer signs are for connecting passengers following a separate route.</figcaption>
+            </figure>
+            <div class="airport-bus-media__copy">
+              <h3>Arrival-to-seat sequence</h3>
+              <ol class="airport-bus-media__steps">
+                <li><strong>Enter the public arrival hall.</strong> Finish all arrival procedures and keep your passport, phone and destination details accessible.</li>
+                <li><strong>Confirm the destination and bus type.</strong> Recheck the exact stop, direction and operator rather than asking only for “the bus to Seoul.”</li>
+                <li><strong>Find the correct ticket point or machine.</strong> Follow official airport signs. Ask airport information staff if the route or operator is unclear.</li>
+                <li><strong>Check the ticket details.</strong> Confirm the bus number or service name, destination stop, departure terminal and boarding bay before paying.</li>
+                <li><strong>Go to the displayed boarding bay.</strong> Leave enough time to find the bay, but continue checking the electronic display or sign for changes.</li>
+                <li><strong>Confirm the bus before loading luggage.</strong> Show the ticket or destination to staff and check the direction on the vehicle.</li>
+                <li><strong>Keep the luggage claim tag.</strong> If staff place a bag below the bus, retain the matching tag until you collect the bag.</li>
+                <li><strong>Monitor your stop.</strong> Follow onboard displays or announcements and keep your map open. If unsure, ask the driver or another staff member early.</li>
+              </ol>
+            </div>
+          </div>
 
           <h3>Terminal 1</h3>
           <p>At Terminal 1, official bus information and ticket facilities are associated with the arrivals level and the outside bus area. Follow the airport’s bus and ticket signs after entering the public hall. Confirm the current ticket location and boarding bay on the official T1 public bus page or with airport staff; do not depend on an old blog screenshot or a saved bay number.</p>
 
+          <figure class="airport-bus-media__figure airport-bus-media__figure--wide">
+            <img src="images/airport/incheon-airport-t1-seoul-bus-bays.webp" alt="Terminal 1 Seoul-bound airport bus boarding bays at Incheon Airport" width="1470" height="1070" loading="lazy" decoding="async">
+            <figcaption>This photo shows a Seoul-bound airport bus boarding area at Terminal 1. Bay and route assignments can change, so check your ticket and the live airport display before boarding.</figcaption>
+          </figure>
+
           <h3>Terminal 2</h3>
-          <p>At Terminal 2, the bus terminal is on B1 of the Transportation Center. Follow signs from the arrival hall to the Transportation Center, then locate the ticket and boarding information for your route. Build in walking time, especially if you have children, several bags or limited mobility.</p>
+          <p>At Terminal 2, follow the airport bus signs to the B1 Transportation Center. Confirm the current ticket counter, route and boarding bay on the live display or with airport staff. Do not depend on an old screenshot or a saved bay number.</p>
+
+          <div class="airport-bus-media">
+            <figure class="airport-bus-media__figure">
+              <img src="images/airport/incheon-airport-t2-transportation-board.webp" alt="Terminal 2 transportation center information board at Incheon Airport" width="1448" height="1086" loading="lazy" decoding="async">
+              <figcaption>Terminal 2 uses the B1 Transportation Center for airport bus tickets and boarding. Use this board for orientation, then confirm your route and boarding bay on the live airport display.</figcaption>
+            </figure>
+            <div class="airport-bus-media__copy">
+              <h3>Four checks before boarding</h3>
+              <ol class="airport-bus-media__steps">
+                <li>Confirm your destination</li>
+                <li>Check the bus type</li>
+                <li>Find the operator</li>
+                <li>Confirm the boarding bay</li>
+              </ol>
+            </div>
+          </div>
+
           <p>A route’s availability, advance-purchase requirement and boarding method may differ by operator. Confirm the live details for the specific service rather than applying one company’s instructions to every bus at T2.</p>
 
           <h3>Payment and ticket cautions</h3>
@@ -251,8 +290,10 @@
           </ul>
         </section>
 
-        <section aria-labelledby="luggage-problems">
+        <section class="airport-bus-section" aria-labelledby="luggage-problems">
+          <p class="eyebrow">Chapter 4</p>
           <h2 id="luggage-problems">Luggage, Children, Late Arrival and Problems</h2>
+          <p>Plan for luggage, children and late arrival by checking the rules of the route you will actually use. Operator-specific limits and a realistic backup plan matter more than assumptions based on another airport bus company.</p>
 
           <h3>Luggage</h3>
           <p>Airport buses can be attractive with large suitcases because many services provide a luggage compartment. Before handing over a bag, confirm that the vehicle is your bus and tell staff the destination stop if asked. Keep valuables, medication, travel documents and electronics with you rather than in the luggage hold.</p>
@@ -303,7 +344,8 @@
           </div>
         </section>
 
-        <section aria-labelledby="return-airport">
+        <section class="airport-bus-section airport-section--gray" aria-labelledby="return-airport">
+          <p class="eyebrow">Chapter 5</p>
           <h2 id="return-airport">Returning to Incheon Airport</h2>
           <p>Your arrival stop and your return boarding stop may be on different sides of a road or in different places. Confirm the airport-bound stop the day before departure. Save its Korean name, map pin and a street-level image if available, then inspect the walking route with your luggage.</p>
 

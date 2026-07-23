@@ -4509,6 +4509,95 @@ ul, ol {
   font-weight: 800;
 }
 
+/* Airport bus editorial photo layout */
+.airport-bus-page .tip-box + .airport-bus-section {
+  margin-top: 44px;
+}
+
+.airport-bus-page .airport-bus-section.airport-section--gray {
+  padding: 24px 20px;
+  border-radius: var(--radius-xl);
+}
+
+.airport-bus-page .airport-bus-section > .eyebrow {
+  margin-bottom: 8px;
+}
+
+.airport-bus-page .airport-bus-media {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+  margin: 28px 0 32px;
+}
+
+.airport-bus-page .airport-bus-media:first-child {
+  margin-top: 0;
+}
+
+.airport-bus-page .airport-bus-media__figure {
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+}
+
+.airport-bus-page .airport-bus-media__figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.airport-bus-page .airport-bus-media__figure figcaption {
+  padding: 13px 16px;
+  border-top: 1px solid var(--gray-200);
+  background: var(--white);
+  color: var(--blue-muted);
+  font-size: .88rem;
+  line-height: 1.6;
+}
+
+.airport-bus-page .airport-bus-media__copy {
+  min-width: 0;
+}
+
+.airport-bus-page .airport-bus-media__copy > :first-child {
+  margin-top: 0;
+}
+
+.airport-bus-page .airport-bus-media__copy > :last-child,
+.airport-bus-page .airport-bus-media__steps {
+  margin-bottom: 0;
+}
+
+.airport-bus-page .airport-bus-media__figure--wide {
+  margin: 24px 0 32px;
+}
+
+@media (min-width: 860px) {
+  .airport-bus-page .airport-bus-section.airport-section--gray {
+    padding: 36px 40px;
+  }
+
+  .airport-bus-page .airport-bus-media {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+    gap: 32px;
+  }
+
+  .airport-bus-page .airport-bus-media--image-right .airport-bus-media__figure {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .airport-bus-page .airport-bus-media--image-right .airport-bus-media__copy {
+    grid-column: 1;
+    grid-row: 1;
+  }
+}
+
 /* Hidden Airport Tips card alignment fix */
 .airport-tips-grid{
   align-items: stretch;
