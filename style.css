@@ -7509,3 +7509,886 @@ ul, ol {
       .taste-korea-page .taste-faq-answer{padding:0 18px 20px}
     }
 /* ── TASTE KOREA PAGE END ── */
+
+/* Arrival Guide warm editorial palette */
+.arrival-page main {
+  --arrival-ink: #14130F;
+  --arrival-muted: #514C43;
+  --arrival-line: #D8D0C2;
+  --arrival-paper: #F7F3EA;
+  --arrival-sand: #FBF8F1;
+  --arrival-sand-strong: #B73722;
+  --arrival-sage: #F1EBDF;
+  --arrival-sage-strong: #B73722;
+  --arrival-clay: #F5EDE3;
+  --arrival-clay-strong: #B73722;
+  --arrival-mist: #FBF8F1;
+  --arrival-mist-strong: #B73722;
+  --arrival-plum: #F1EBDF;
+  --arrival-plum-strong: #B73722;
+  background: #F7F3EA;
+  color: #514C43;
+}
+
+.arrival-page main .arrival-hero {
+  background: #F7F3EA;
+  border-bottom-color: #D8D0C2;
+}
+
+.arrival-page main .page-hero__breadcrumb {
+  color: #746C60;
+}
+
+.arrival-page main .page-hero__breadcrumb a,
+.arrival-page main .page-hero__breadcrumb a:visited {
+  color: #514C43;
+}
+
+.arrival-page main .page-hero__breadcrumb a:hover {
+  color: #B73722;
+}
+
+.arrival-page main .arrival-hero__title {
+  color: #14130F;
+}
+
+.arrival-page main .arrival-hero__desc {
+  color: #514C43;
+}
+
+.arrival-page main .arrival-hero .eyebrow,
+.arrival-page main .arrival-section .eyebrow {
+  color: #B73722;
+}
+
+.arrival-page main .arrival-hero__media {
+  background: #D8D0C2;
+}
+
+.arrival-page main .arrival-hero__media figcaption {
+  background: rgba(20, 19, 15, 0.82);
+  color: #FFFDF8;
+}
+
+.arrival-page main .arrival-section {
+  background: #FFFDF8;
+}
+
+.arrival-page main .arrival-section--soft {
+  background: #F7F3EA;
+}
+
+.arrival-page main .arrival-section__header h2,
+.arrival-page main .arrival-official-cta h2,
+.arrival-page main .arrival-choice-card h3,
+.arrival-page main .arrival-checklist h3,
+.arrival-page main .arrival-transport-card h3,
+.arrival-page main .arrival-next-grid h3,
+.arrival-page main .arrival-step h3,
+.arrival-page main .arrival-terminal-card h3,
+.arrival-page main .arrival-source-panel h4,
+.arrival-page main .arrival-stay-options__title {
+  color: #14130F;
+}
+
+.arrival-page main .arrival-section__header > p:last-child,
+.arrival-page main .arrival-choice-card > p,
+.arrival-page main .arrival-step__content > p,
+.arrival-page main .arrival-checklist p,
+.arrival-page main .arrival-transport-card p,
+.arrival-page main .arrival-next-grid p,
+.arrival-page main .arrival-terminal-card p,
+.arrival-page main .arrival-affiliate-disclosure {
+  color: #514C43;
+}
+
+.arrival-page main .arrival-kicker {
+  color: #D59F3A;
+}
+
+.arrival-page main .arrival-official-cta {
+  background: #14130F;
+}
+
+.arrival-page main .arrival-official-cta h2,
+.arrival-page main .arrival-official-cta__copy > p:not(.arrival-kicker) {
+  color: #FFFDF8;
+}
+
+.arrival-page main .arrival-official-cta__copy .arrival-official-cta__privacy,
+.arrival-page main .arrival-official-cta__action p {
+  color: #D8D0C2;
+}
+
+.arrival-page main .arrival-button--light,
+.arrival-page main .arrival-button--light:visited {
+  background: #F1EBDF;
+  border-color: #F1EBDF;
+  color: #14130F;
+}
+
+.arrival-page main .arrival-button--light:hover {
+  background: #B73722;
+  border-color: #B73722;
+  color: #FFFDF8;
+}
+
+.arrival-page main .arrival-button--light:focus-visible {
+  outline-color: #D59F3A;
+}
+
+.arrival-page main .arrival-source-links a:focus-visible,
+.arrival-page main .arrival-terminal-map__media:focus-visible,
+.arrival-page main .arrival-terminal-map__link:focus-visible,
+.arrival-page main .arrival-transport-card a:focus-visible,
+.arrival-page main .arrival-next-grid a:focus-visible,
+.arrival-page main .arrival-faq summary:focus-visible,
+.arrival-page main .arrival-ota-card:focus-visible {
+  outline-color: #B73722;
+}
+
+.arrival-page main .arrival-choice-card {
+  background: #F1EBDF;
+  border-color: #D8D0C2;
+  border-top-color: #B73722;
+}
+
+.arrival-page main .arrival-choice-card__number,
+.arrival-page main .arrival-choice-card__label {
+  color: #B73722;
+}
+
+.arrival-page main .arrival-choice-card__note {
+  border-left-color: #B73722;
+}
+
+.arrival-page main .arrival-steps-media {
+  background: #FBF8F1;
+  border-color: #D8D0C2;
+}
+
+.arrival-page main .arrival-steps-media figcaption {
+  background: #FBF8F1;
+  border-top-color: #D8D0C2;
+  color: #746C60;
+}
+
+.arrival-page main .arrival-timeline::before {
+  background: #D8D0C2;
+}
+
+.arrival-page main .arrival-step__number {
+  color: #B73722;
+}
+
+.arrival-page main .arrival-step__content {
+  border-bottom-color: #D8D0C2;
+}
+
+.arrival-page main .arrival-step__note {
+  border-left-color: #B73722;
+}
+
+.arrival-page main .arrival-source-panel {
+  background: #F5EDE3;
+  border-color: #D8D0C2;
+}
+
+.arrival-page main .arrival-source-panel > p {
+  color: #514C43;
+}
+
+.arrival-page main .arrival-source-links a {
+  background: #FBF8F1;
+  border-color: #D8D0C2;
+  color: #14130F;
+}
+
+.arrival-page main .arrival-source-links a:hover {
+  border-color: #B73722;
+  color: #B73722;
+}
+
+.arrival-page main .arrival-source-links span {
+  color: #746C60;
+}
+
+.arrival-page main .arrival-section--terminal {
+  background: #F7F3EA;
+}
+
+.arrival-page main .arrival-terminal-card {
+  background: #FBF8F1;
+  border-left-color: #B73722;
+}
+
+.arrival-page main .arrival-terminal-card__badge {
+  color: #B73722;
+}
+
+.arrival-page main .arrival-terminal-note {
+  background: #F5EDE3;
+  color: #14130F;
+}
+
+.arrival-page main .arrival-terminal-note p {
+  color: #514C43;
+}
+
+.arrival-page main .arrival-terminal-map {
+  background: #FBF8F1;
+  border-color: #D8D0C2;
+}
+
+.arrival-page main .arrival-terminal-map__media {
+  background: #FFFDF8;
+}
+
+.arrival-page main .arrival-terminal-map__caption {
+  background: #FBF8F1;
+  border-top-color: #D8D0C2;
+  color: #746C60;
+}
+
+.arrival-page main .arrival-terminal-map__caption small {
+  color: #746C60;
+}
+
+.arrival-page main .arrival-terminal-map__link,
+.arrival-page main .arrival-terminal-map__link:visited {
+  color: #B73722;
+}
+
+.arrival-page main .arrival-terminal-map__link:hover {
+  color: #8F2A1B;
+}
+
+.arrival-page main .arrival-checklist li,
+.arrival-page main .arrival-checklist__item--wide {
+  background: #F1EBDF;
+  border-color: #D8D0C2;
+  border-top-color: #B73722;
+}
+
+.arrival-page main .arrival-checklist__mark {
+  background: #B73722;
+  color: #FFFDF8;
+}
+
+.arrival-page main .arrival-transport-card {
+  background: #F1EBDF;
+  border-color: #D8D0C2;
+  border-top-color: #B73722;
+}
+
+.arrival-page main .arrival-transport-card__mark {
+  background: #B73722;
+  color: #FFFDF8;
+}
+
+.arrival-page main .arrival-transport-card__label,
+.arrival-page main .arrival-transport-card a,
+.arrival-page main .arrival-transport-card a:visited {
+  color: #B73722;
+}
+
+.arrival-page main .arrival-transport-card a:hover {
+  color: #14130F;
+}
+
+.arrival-page main .arrival-ota-card {
+  --ota-accent: #B73722;
+  background: #FBF8F1;
+  border-color: #D8D0C2;
+  color: #14130F;
+}
+
+.arrival-page main .arrival-ota-card:hover {
+  background: #F5EDE3;
+  border-color: #B73722;
+  color: #14130F;
+}
+
+.arrival-page main .arrival-ota-card__cta {
+  color: #514C43;
+}
+
+.arrival-page main .arrival-faq details {
+  background: #FBF8F1;
+  border-bottom-color: #D8D0C2;
+}
+
+.arrival-page main .arrival-faq details:first-child {
+  border-top-color: #D8D0C2;
+}
+
+.arrival-page main .arrival-faq details[open] {
+  background: #F5EDE3;
+}
+
+.arrival-page main .arrival-faq summary {
+  color: #14130F;
+}
+
+.arrival-page main .arrival-faq p {
+  color: #514C43;
+}
+
+.arrival-page main .arrival-next-grid a {
+  --next-accent: #B73722;
+  background: #FBF8F1;
+  border-top-color: #D8D0C2;
+  color: #14130F;
+}
+
+.arrival-page main .arrival-next-grid a:hover {
+  border-top-color: #B73722;
+  color: #14130F;
+}
+
+.arrival-page main .arrival-next-grid span {
+  color: #B73722;
+}
+
+.arrival-page main .arrival-service-notice {
+  background: #F7F3EA;
+  border-top-color: #D8D0C2;
+}
+
+.arrival-page main .arrival-service-notice__inner {
+  color: #746C60;
+}
+/* Airport main and transfer warm editorial palette */
+
+.airport-page main,
+.airport-transfer-page main {
+  background: #F7F3EA;
+  color: #514C43;
+}
+
+.airport-page main .airport-page-hero,
+.airport-transfer-page main .airport-page-hero {
+  background: #F7F3EA;
+  border-bottom-color: #D8D0C2;
+}
+
+.airport-page main .page-hero__breadcrumb,
+.airport-transfer-page main .page-hero__breadcrumb {
+  color: #746C60;
+}
+
+.airport-page main .page-hero__breadcrumb a,
+.airport-page main .page-hero__breadcrumb a:visited,
+.airport-transfer-page main .page-hero__breadcrumb a,
+.airport-transfer-page main .page-hero__breadcrumb a:visited {
+  color: #514C43;
+}
+
+.airport-page main .airport-page-hero__title,
+.airport-transfer-page main .airport-page-hero__title {
+  color: #14130F;
+}
+
+.airport-page main .airport-page-hero__desc,
+.airport-transfer-page main .airport-page-hero__desc {
+  color: #514C43;
+}
+
+.airport-page main .airport-page-hero__photo,
+.airport-page main .airport-wide-image,
+.airport-page main .airport-map-card,
+.airport-transfer-page main .airport-page-hero__photo,
+.airport-transfer-page main .airport-wide-image,
+.airport-transfer-page main .airport-map-card {
+  background: #FFFDF8;
+  border-color: #D8D0C2;
+}
+
+.airport-page main a,
+.airport-page main a:visited,
+.airport-transfer-page main a,
+.airport-transfer-page main a:visited {
+  color: #B73722;
+}
+
+.airport-page main a:hover,
+.airport-transfer-page main a:hover {
+  color: #8F2A1B;
+}
+
+.airport-page main a:focus-visible,
+.airport-page main summary:focus-visible,
+.airport-transfer-page main a:focus-visible,
+.airport-transfer-page main summary:focus-visible {
+  outline: 3px solid #B73722;
+  outline-offset: 3px;
+}
+
+.airport-page main .eyebrow,
+.airport-transfer-page main .eyebrow {
+  color: #B73722;
+}
+
+.airport-page main .airport-pill,
+.airport-page main .airport-pill:visited,
+.airport-transfer-page main .airport-pill,
+.airport-transfer-page main .airport-pill:visited {
+  background: #F1EBDF;
+  color: #14130F;
+}
+
+.airport-page main .airport-pill:hover,
+.airport-transfer-page main .airport-pill:hover {
+  background: #14130F;
+  color: #FFFDF8;
+}
+
+.airport-page main .airport-section,
+.airport-transfer-page main .airport-section {
+  background: #FFFDF8;
+}
+
+.airport-page main .airport-section--gray,
+.airport-transfer-page main .airport-section--gray {
+  background: #F7F3EA;
+}
+
+.airport-page main .section__title,
+.airport-transfer-page main .section__title {
+  color: #14130F;
+}
+
+.airport-page main .section__subtitle,
+.airport-transfer-page main .section__subtitle {
+  color: #514C43;
+}
+
+.airport-page main #faq .eyebrow,
+.airport-transfer-page main #faq .eyebrow {
+  background: #F1EBDF;
+  color: #B73722;
+}
+
+.airport-page main .airport-wide-image figcaption,
+.airport-transfer-page main .airport-wide-image figcaption {
+  background: #FBF8F1;
+  border-top-color: #D8D0C2;
+  color: #746C60;
+}
+
+.airport-page main .airport-official-map-link-wrap,
+.airport-transfer-page main .airport-official-map-link-wrap {
+  background: #FFFDF8;
+}
+
+.airport-page main .airport-official-map-link,
+.airport-transfer-page main .airport-official-map-link {
+  background: #FBF8F1;
+  border-color: #D8D0C2;
+}
+
+.airport-page main .airport-official-map-link h3,
+.airport-transfer-page main .airport-official-map-link h3 {
+  color: #14130F;
+}
+
+.airport-page main .airport-official-map-link p,
+.airport-transfer-page main .airport-official-map-link p {
+  color: #514C43;
+}
+
+.airport-page main .airport-official-map-link__tip,
+.airport-transfer-page main .airport-official-map-link__tip {
+  color: #746C60;
+}
+
+.airport-page main .airport-official-map-link__button,
+.airport-page main .airport-official-map-link__button:visited,
+.airport-transfer-page main .airport-official-map-link__button,
+.airport-transfer-page main .airport-official-map-link__button:visited {
+  background: #14130F;
+  color: #FFFDF8;
+}
+
+.airport-page main .airport-official-map-link__button:hover,
+.airport-transfer-page main .airport-official-map-link__button:hover {
+  background: #B73722;
+  color: #FFFDF8;
+}
+
+.airport-page main .airport-action-card,
+.airport-transfer-page main .airport-action-card {
+  background: #F1EBDF;
+  border-color: #D8D0C2;
+}
+
+.airport-page main .airport-action-card__icon,
+.airport-transfer-page main .airport-action-card__icon {
+  background: #F5EDE3;
+  color: #B73722;
+}
+
+.airport-page main .airport-action-card__icon svg,
+.airport-transfer-page main .airport-action-card__icon svg {
+  stroke: #B73722;
+}
+
+.airport-page main .airport-action-card__icon svg [fill]:not([fill="none"]),
+.airport-transfer-page main .airport-action-card__icon svg [fill]:not([fill="none"]) {
+  fill: #B73722;
+}
+
+.airport-page main .airport-action-card h3,
+.airport-transfer-page main .airport-action-card h3 {
+  color: #14130F;
+}
+
+.airport-page main .airport-action-card p,
+.airport-transfer-page main .airport-action-card p {
+  color: #514C43;
+}
+
+.airport-page main .airport-action-card--link,
+.airport-page main .airport-action-card--link:visited,
+.airport-transfer-page main .airport-action-card--link,
+.airport-transfer-page main .airport-action-card--link:visited {
+  color: #14130F;
+}
+
+.airport-page main .airport-action-card--link:hover,
+.airport-transfer-page main .airport-action-card--link:hover {
+  background: #F5EDE3;
+  border-color: #B73722;
+  color: #14130F;
+}
+
+.airport-page main .airport-action-card__cta,
+.airport-transfer-page main .airport-action-card__cta {
+  color: #B73722;
+}
+
+.airport-page main .airport-transport-card,
+.airport-transfer-page main .airport-transport-card {
+  background: #FBF8F1;
+  border-color: #D8D0C2;
+}
+
+.airport-page main .airport-transport-card--best,
+.airport-transfer-page main .airport-transport-card--best {
+  background: #F5EDE3;
+  border-color: #B73722;
+}
+
+.airport-page main .airport-transport-icon,
+.airport-transfer-page main .airport-transport-icon {
+  background: #F5EDE3;
+  color: #B73722;
+}
+
+.airport-page main .airport-transport-icon--bus,
+.airport-transfer-page main .airport-transport-icon--bus {
+  background: #F1EBDF;
+  color: #14130F;
+}
+
+.airport-page main .airport-transport-icon--taxi,
+.airport-transfer-page main .airport-transport-icon--taxi {
+  background: #F5EDE3;
+  color: #B73722;
+}
+
+.airport-page main .airport-transport-icon--rent,
+.airport-transfer-page main .airport-transport-icon--rent {
+  background: #F1EBDF;
+  color: #514C43;
+}
+
+.airport-page main .airport-transport-card h3,
+.airport-transfer-page main .airport-transport-card h3 {
+  color: #14130F;
+}
+
+.airport-page main .airport-transport-card p,
+.airport-page main .airport-transport-card li,
+.airport-transfer-page main .airport-transport-card p,
+.airport-transfer-page main .airport-transport-card li {
+  color: #514C43;
+}
+
+.airport-page main .airport-transport-card strong,
+.airport-transfer-page main .airport-transport-card strong {
+  color: #14130F;
+}
+
+.airport-page main .transport-hub-card,
+.airport-page main .transport-hub-card:visited,
+.airport-transfer-page main .transport-hub-card,
+.airport-transfer-page main .transport-hub-card:visited {
+  color: #14130F;
+}
+
+.airport-page main .transport-hub-card:hover,
+.airport-transfer-page main .transport-hub-card:hover {
+  border-color: #B73722;
+  color: #14130F;
+}
+
+.airport-page main .transport-hub-card__cta,
+.airport-transfer-page main .transport-hub-card__cta {
+  color: #B73722;
+}
+
+.airport-page main .mistake-item,
+.airport-transfer-page main .mistake-item {
+  background: #FBF8F1;
+  border-color: #D8D0C2;
+}
+
+.airport-page main .mistake-item__bad {
+  color: #B73722;
+}
+
+.airport-page main .mistake-item__good {
+  color: #514C43;
+}
+
+.airport-page main .mistake-item__bad::before,
+.airport-page main .mistake-item__good::before {
+  color: #B73722;
+}
+
+.airport-page main .airport-problem-card,
+.airport-transfer-page main .airport-problem-card {
+  background: #F1EBDF;
+  border-color: #D8D0C2;
+}
+
+.airport-page main .airport-problem-card__title,
+.airport-transfer-page main .airport-problem-card__title {
+  color: #14130F;
+}
+
+.airport-page main .airport-problem-card__problem,
+.airport-page main .airport-problem-card__solution,
+.airport-page main .airport-problem-card__backup,
+.airport-transfer-page main .airport-problem-card__problem,
+.airport-transfer-page main .airport-problem-card__solution,
+.airport-transfer-page main .airport-problem-card__backup {
+  color: #514C43;
+}
+
+.airport-page main .airport-problem-card__problem strong,
+.airport-page main .airport-problem-card__solution strong,
+.airport-page main .airport-problem-card__backup strong,
+.airport-transfer-page main .airport-problem-card__problem strong,
+.airport-transfer-page main .airport-problem-card__solution strong,
+.airport-transfer-page main .airport-problem-card__backup strong {
+  color: #14130F;
+}
+
+.airport-page main .airport-problem-card__related,
+.airport-transfer-page main .airport-problem-card__related {
+  border-top-color: #D8D0C2;
+}
+
+.airport-page main .airport-problem-card__related a,
+.airport-transfer-page main .airport-problem-card__related a {
+  color: #B73722;
+}
+
+.airport-page main .airport-problem-card__related a:hover,
+.airport-transfer-page main .airport-problem-card__related a:hover {
+  color: #14130F;
+}
+
+.airport-page main .airport-faq details,
+.airport-transfer-page main .airport-faq details {
+  background: #FBF8F1;
+  border-color: #D8D0C2;
+}
+
+.airport-page main .airport-faq details[open],
+.airport-transfer-page main .airport-faq details[open] {
+  background: #F5EDE3;
+}
+
+.airport-page main .airport-faq summary,
+.airport-transfer-page main .airport-faq summary {
+  color: #14130F;
+}
+
+.airport-page main .airport-faq p,
+.airport-transfer-page main .airport-faq p {
+  color: #514C43;
+}
+
+.airport-page main .related-links,
+.airport-transfer-page main .related-links {
+  border-top-color: #D8D0C2;
+}
+
+.airport-page main .related-links__title,
+.airport-transfer-page main .related-links__title {
+  color: #746C60;
+}
+
+.airport-page main .chip,
+.airport-page main .chip:visited,
+.airport-transfer-page main .chip,
+.airport-transfer-page main .chip:visited {
+  background: #F1EBDF;
+  color: #14130F;
+}
+
+.airport-page main .chip:hover,
+.airport-transfer-page main .chip:hover {
+  background: #14130F;
+  color: #FFFDF8;
+}
+
+.airport-page main #first-steps {
+  background: #14130F;
+}
+
+.airport-page main #first-steps .eyebrow {
+  color: #D59F3A;
+}
+
+.airport-page main #first-steps .section__title,
+.airport-page main #first-steps .section__subtitle {
+  color: #FFFDF8;
+}
+
+/* AREX warm editorial palette */
+
+.arex-page main {
+  background: #F7F3EA;
+  color: #514C43;
+}
+
+.arex-page main .page-hero {
+  background: #F7F3EA;
+  border-bottom-color: #D8D0C2;
+}
+
+.arex-page main .page-hero__breadcrumb {
+  color: #746C60;
+}
+
+.arex-page main .page-hero__breadcrumb a,
+.arex-page main .page-hero__breadcrumb a:visited {
+  color: #514C43;
+}
+
+.arex-page main .page-hero__title {
+  color: #14130F;
+}
+
+.arex-page main .page-hero__desc {
+  color: #514C43;
+}
+
+.arex-page main .guide-content {
+  background: #FFFDF8;
+}
+
+.arex-page main .guide-content h2,
+.arex-page main .guide-content h3 {
+  color: #14130F;
+}
+
+.arex-page main .guide-content p,
+.arex-page main .guide-content ul,
+.arex-page main .guide-content ol {
+  color: #514C43;
+}
+
+.arex-page main .guide-content strong {
+  color: #14130F;
+}
+
+.arex-page main .guide-content li::marker {
+  color: #B73722;
+}
+
+.arex-page main a,
+.arex-page main a:visited {
+  color: #B73722;
+}
+
+.arex-page main a:hover {
+  color: #8F2A1B;
+}
+
+.arex-page main a:focus-visible,
+.arex-page main summary:focus-visible {
+  outline: 3px solid #B73722;
+  outline-offset: 3px;
+}
+
+.arex-page main .tip-box {
+  background: #14130F;
+  border-left-color: #B73722;
+}
+
+.arex-page main .tip-box__label {
+  color: #D59F3A;
+}
+
+.arex-page main .tip-box p {
+  color: #FFFDF8;
+}
+
+.arex-page main .info-table th,
+.arex-page main .info-table td {
+  border-bottom-color: #D8D0C2;
+}
+
+.arex-page main .info-table th {
+  background: #F1EBDF;
+  color: #14130F;
+}
+
+.arex-page main .info-table td {
+  background: #FFFDF8;
+  color: #514C43;
+}
+
+.arex-page main .info-table tbody tr:nth-child(even) td {
+  background: #FBF8F1;
+}
+
+.arex-page main .guide-content details {
+  background: #FBF8F1;
+}
+
+.arex-page main .guide-content details[open] {
+  background: #F5EDE3;
+}
+
+.arex-page main .guide-content summary {
+  color: #14130F;
+}
+
+.arex-page main .guide-content details p {
+  color: #514C43;
+}
+
+.arex-page main .related-links {
+  border-top-color: #D8D0C2;
+}
+
+.arex-page main .related-links__title {
+  color: #746C60;
+}
+
+.arex-page main .chip,
+.arex-page main .chip:visited {
+  background: #F1EBDF;
+  color: #14130F;
+}
+
+.arex-page main .chip:hover {
+  background: #14130F;
+  color: #FFFDF8;
+}
