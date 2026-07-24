@@ -8259,6 +8259,572 @@ ul, ol {
   color: #FFFDF8;
 }
 
+/* Airport Transfer long-form editorial guide */
+
+.airport-transfer-page main .airport-page-hero__copy {
+  max-width: 920px;
+}
+
+.airport-transfer-page main .airport-page-hero__title {
+  max-width: 860px;
+}
+
+.airport-transfer-page main .transfer-hero-answer {
+  display: grid;
+  gap: 12px;
+  max-width: 820px;
+  color: #514C43;
+  font-size: 1.03rem;
+  line-height: 1.75;
+}
+
+.airport-transfer-page main .transfer-experience-note {
+  max-width: 800px;
+  margin-top: 20px;
+  padding: 16px 18px;
+  border-left: 3px solid #B73722;
+  background: #F5EDE3;
+  color: #514C43;
+  line-height: 1.7;
+}
+
+.airport-transfer-page main .transfer-chapter {
+  border-top: 1px solid #D8D0C2;
+}
+
+.airport-transfer-page main .transfer-chapter--light {
+  background: #FFFDF8;
+}
+
+.airport-transfer-page main .transfer-chapter--cream {
+  background: #F7F3EA;
+}
+
+.airport-transfer-page main .transfer-chapter__header {
+  max-width: 860px;
+  margin-bottom: 34px;
+}
+
+.airport-transfer-page main .transfer-chapter__number {
+  margin-bottom: 10px;
+  color: #B73722;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.airport-transfer-page main .transfer-chapter h2 {
+  max-width: 820px;
+  margin-bottom: 14px;
+  color: #14130F;
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+}
+
+.airport-transfer-page main .transfer-chapter h3 {
+  margin: 30px 0 10px;
+  color: #14130F;
+  font-size: 1.18rem;
+  line-height: 1.35;
+}
+
+.airport-transfer-page main .transfer-chapter h4 {
+  color: #14130F;
+}
+
+.airport-transfer-page main .transfer-chapter p,
+.airport-transfer-page main .transfer-chapter li,
+.airport-transfer-page main .transfer-chapter dd {
+  color: #514C43;
+  line-height: 1.72;
+}
+
+.airport-transfer-page main .transfer-chapter p + p {
+  margin-top: 12px;
+}
+
+.airport-transfer-page main .transfer-chapter strong {
+  color: #14130F;
+}
+
+.airport-transfer-page main .transfer-chapter__answer {
+  max-width: 760px;
+  color: #514C43;
+  font-size: 1.04rem;
+  line-height: 1.7;
+}
+
+.airport-transfer-page main .transfer-editorial-split {
+  display: grid;
+  gap: 28px;
+  align-items: start;
+  margin: 34px 0;
+}
+
+.airport-transfer-page main .transfer-editorial-copy h3:first-child,
+.airport-transfer-page main .transfer-editorial-split > div > h3:first-child {
+  margin-top: 0;
+}
+
+.airport-transfer-page main .transfer-decision-flow,
+.airport-transfer-page main .transfer-burden-flow,
+.airport-transfer-page main .transfer-traveler-matrix,
+.airport-transfer-page main .transfer-terminal-flow,
+.airport-transfer-page main .transfer-night-ladder {
+  margin: 0;
+}
+
+.airport-transfer-page main .transfer-decision-flow figcaption,
+.airport-transfer-page main .transfer-burden-flow figcaption,
+.airport-transfer-page main .transfer-traveler-matrix figcaption,
+.airport-transfer-page main .transfer-terminal-flow figcaption,
+.airport-transfer-page main .transfer-night-ladder figcaption {
+  margin-bottom: 16px;
+  color: #746C60;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.airport-transfer-page main .transfer-decision-flow ol {
+  display: grid;
+  gap: 12px;
+  padding: 0;
+  list-style: none;
+  counter-reset: transfer-step;
+}
+
+.airport-transfer-page main .transfer-decision-flow li {
+  position: relative;
+  min-height: 132px;
+  padding: 20px 18px 18px 56px;
+  border: 1px solid #D8D0C2;
+  border-radius: var(--radius-lg);
+  background: #F1EBDF;
+  counter-increment: transfer-step;
+}
+
+.airport-transfer-page main .transfer-decision-flow li::before {
+  content: counter(transfer-step);
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  display: grid;
+  width: 26px;
+  height: 26px;
+  place-items: center;
+  border-radius: 50%;
+  background: #B73722;
+  color: #FFFDF8;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.airport-transfer-page main .transfer-decision-flow strong,
+.airport-transfer-page main .transfer-decision-flow span {
+  display: block;
+}
+
+.airport-transfer-page main .transfer-decision-flow span {
+  margin-top: 6px;
+  color: #514C43;
+  line-height: 1.55;
+}
+
+.airport-transfer-page main .transfer-fast-choice {
+  display: grid;
+  gap: 18px;
+  margin-top: 30px;
+  padding-top: 26px;
+  border-top: 1px solid #D8D0C2;
+}
+
+.airport-transfer-page main .transfer-fast-choice h3 {
+  margin-top: 0;
+}
+
+.airport-transfer-page main .transfer-comparison {
+  margin: 24px 0 38px;
+  overflow-x: auto;
+  border: 1px solid #D8D0C2;
+  border-radius: var(--radius-lg);
+  background: #FFFDF8;
+  box-shadow: var(--shadow-sm);
+}
+
+.airport-transfer-page main .transfer-comparison:focus-visible {
+  outline: 3px solid #B73722;
+  outline-offset: 3px;
+}
+
+.airport-transfer-page main .transfer-comparison table {
+  width: 100%;
+  min-width: 1080px;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.airport-transfer-page main .transfer-comparison caption {
+  padding: 16px 18px;
+  background: #F1EBDF;
+  color: #14130F;
+  font-weight: 800;
+  text-align: left;
+}
+
+.airport-transfer-page main .transfer-comparison th,
+.airport-transfer-page main .transfer-comparison td {
+  padding: 14px;
+  border-right: 1px solid #D8D0C2;
+  border-bottom: 1px solid #D8D0C2;
+  vertical-align: top;
+  color: #514C43;
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.airport-transfer-page main .transfer-comparison thead th {
+  background: #F1EBDF;
+  color: #14130F;
+}
+
+.airport-transfer-page main .transfer-comparison tbody th {
+  background: #F5EDE3;
+  color: #14130F;
+}
+
+.airport-transfer-page main .transfer-comparison tbody tr:nth-child(even) td {
+  background: #FBF8F1;
+}
+
+.airport-transfer-page main .transfer-burden-flow > div {
+  display: grid;
+  gap: 12px;
+}
+
+.airport-transfer-page main .transfer-burden-flow article {
+  padding: 18px;
+  border-top: 3px solid #B73722;
+  background: #F1EBDF;
+}
+
+.airport-transfer-page main .transfer-burden-flow h4 {
+  margin-bottom: 12px;
+}
+
+.airport-transfer-page main .transfer-burden-flow ol {
+  display: grid;
+  gap: 7px;
+  padding-left: 20px;
+}
+
+.airport-transfer-page main .transfer-dark-summary {
+  padding: 42px 0;
+  border-top: 4px solid #B73722;
+  background: #14130F;
+}
+
+.airport-transfer-page main .transfer-dark-summary__label {
+  margin-bottom: 10px;
+  color: #D59F3A;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.airport-transfer-page main .transfer-dark-summary h3 {
+  margin-bottom: 12px;
+  color: #FFFDF8;
+  font-size: clamp(1.65rem, 3vw, 2.35rem);
+}
+
+.airport-transfer-page main .transfer-dark-summary p:last-child {
+  max-width: 850px;
+  color: #FFFDF8;
+  line-height: 1.75;
+}
+
+.airport-transfer-page main .transfer-traveler-matrix > div {
+  display: grid;
+  gap: 16px;
+}
+
+.airport-transfer-page main .transfer-traveler-matrix article {
+  padding: 22px;
+  border: 1px solid #D8D0C2;
+  border-radius: var(--radius-lg);
+  background: #FBF8F1;
+}
+
+.airport-transfer-page main .transfer-traveler-matrix h3 {
+  margin-top: 0;
+}
+
+.airport-transfer-page main .transfer-traveler-matrix dl {
+  display: grid;
+  gap: 4px;
+}
+
+.airport-transfer-page main .transfer-traveler-matrix dt {
+  margin-top: 10px;
+  color: #B73722;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.airport-transfer-page main .transfer-terminal-flow {
+  margin: 30px 0;
+  padding: 24px;
+  border: 1px solid #D8D0C2;
+  border-radius: var(--radius-xl);
+  background: #F5EDE3;
+}
+
+.airport-transfer-page main .transfer-terminal-flow > div,
+.airport-transfer-page main .transfer-terminal-details,
+.airport-transfer-page main .transfer-option-profile {
+  display: grid;
+  gap: 18px;
+}
+
+.airport-transfer-page main .transfer-terminal-lane {
+  padding: 20px;
+  background: #FFFDF8;
+  border-top: 3px solid #D59F3A;
+}
+
+.airport-transfer-page main .transfer-terminal-lane h4 {
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+}
+
+.airport-transfer-page main .transfer-terminal-lane ol {
+  display: grid;
+  gap: 8px;
+  padding-left: 20px;
+}
+
+.airport-transfer-page main .transfer-terminal-details {
+  margin: 32px 0;
+}
+
+.airport-transfer-page main .transfer-terminal-details > div,
+.airport-transfer-page main .transfer-option-profile > div {
+  padding: 22px;
+  border: 1px solid #D8D0C2;
+  border-radius: var(--radius-lg);
+  background: #F1EBDF;
+}
+
+.airport-transfer-page main .transfer-terminal-details h3,
+.airport-transfer-page main .transfer-option-profile h3 {
+  margin-top: 0;
+}
+
+.airport-transfer-page main .transfer-option-profile {
+  margin: 28px 0;
+}
+
+.airport-transfer-page main .transfer-source-note {
+  padding: 22px;
+  border-left: 4px solid #B73722;
+  background: #F5EDE3;
+}
+
+.airport-transfer-page main .transfer-source-note__label {
+  margin-bottom: 8px;
+  color: #B73722;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.airport-transfer-page main .transfer-night-ladder {
+  margin: 34px 0;
+}
+
+.airport-transfer-page main .transfer-night-ladder ol {
+  display: grid;
+  gap: 10px;
+  padding: 0;
+  list-style: none;
+  counter-reset: night-step;
+}
+
+.airport-transfer-page main .transfer-night-ladder li {
+  position: relative;
+  padding: 16px 18px 16px 56px;
+  border-bottom: 1px solid #D8D0C2;
+  background: #FBF8F1;
+  counter-increment: night-step;
+}
+
+.airport-transfer-page main .transfer-night-ladder li::before {
+  content: counter(night-step, decimal-leading-zero);
+  position: absolute;
+  top: 16px;
+  left: 18px;
+  color: #B73722;
+  font-weight: 800;
+}
+
+.airport-transfer-page main .transfer-night-ladder strong,
+.airport-transfer-page main .transfer-night-ladder span {
+  display: block;
+}
+
+.airport-transfer-page main .transfer-night-ladder span {
+  margin-top: 4px;
+}
+
+.airport-transfer-page main .transfer-mistake-list,
+.airport-transfer-page main .transfer-checklist {
+  display: grid;
+  gap: 9px;
+  padding: 0;
+  list-style: none;
+}
+
+.airport-transfer-page main .transfer-mistake-list li,
+.airport-transfer-page main .transfer-checklist li {
+  position: relative;
+  padding: 11px 12px 11px 36px;
+  border-bottom: 1px solid #D8D0C2;
+}
+
+.airport-transfer-page main .transfer-mistake-list li::before,
+.airport-transfer-page main .transfer-checklist li::before {
+  position: absolute;
+  left: 12px;
+  color: #B73722;
+  font-weight: 800;
+}
+
+.airport-transfer-page main .transfer-mistake-list li::before {
+  content: "!";
+}
+
+.airport-transfer-page main .transfer-checklist li::before {
+  content: "✓";
+}
+
+.airport-transfer-page main .transfer-related-guides {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 34px 0;
+  padding-top: 26px;
+  border-top: 1px solid #D8D0C2;
+}
+
+.airport-transfer-page main .transfer-related-guides a,
+.airport-transfer-page main .transfer-related-guides a:visited {
+  display: inline-flex;
+  padding: 9px 12px;
+  border: 1px solid #D8D0C2;
+  border-radius: 999px;
+  background: #F1EBDF;
+  color: #14130F;
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.airport-transfer-page main .transfer-related-guides a:hover {
+  border-color: #B73722;
+  background: #F5EDE3;
+  color: #14130F;
+}
+
+.airport-transfer-page main .transfer-faq {
+  max-width: 900px;
+}
+
+.airport-transfer-page main .transfer-faq details {
+  background: #FBF8F1;
+}
+
+.airport-transfer-page main .transfer-faq details[open] {
+  background: #F5EDE3;
+}
+
+.airport-transfer-page main .transfer-source-intro {
+  color: #746C60;
+}
+
+.airport-transfer-page main .transfer-official-sources {
+  display: grid;
+  gap: 8px 24px;
+  margin-top: 18px;
+  padding-left: 20px;
+}
+
+.airport-transfer-page main .transfer-official-sources a {
+  overflow-wrap: anywhere;
+}
+
+.airport-transfer-page main .transfer-review-date {
+  padding: 18px 20px;
+  border-top: 1px solid #D8D0C2;
+  border-bottom: 1px solid #D8D0C2;
+  color: #746C60;
+}
+
+@media (min-width: 768px) {
+  .airport-transfer-page main .transfer-editorial-split {
+    grid-template-columns: minmax(0, 3fr) minmax(280px, 2fr);
+    gap: 46px;
+  }
+
+  .airport-transfer-page main .transfer-editorial-split--reverse {
+    grid-template-columns: minmax(280px, 2fr) minmax(0, 3fr);
+  }
+
+  .airport-transfer-page main .transfer-editorial-split--reverse > :first-child {
+    order: 2;
+  }
+
+  .airport-transfer-page main .transfer-fast-choice,
+  .airport-transfer-page main .transfer-terminal-flow > div,
+  .airport-transfer-page main .transfer-terminal-details,
+  .airport-transfer-page main .transfer-option-profile {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .airport-transfer-page main .transfer-decision-flow ol {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .airport-transfer-page main .transfer-burden-flow > div {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .airport-transfer-page main .transfer-traveler-matrix > div {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .airport-transfer-page main .transfer-official-sources {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .airport-transfer-page main .airport-page-hero {
+    padding: 64px 0 42px;
+  }
+
+  .airport-transfer-page main .transfer-chapter {
+    padding: 78px 0;
+  }
+
+  .airport-transfer-page main .transfer-traveler-matrix > div {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
 /* AREX warm editorial palette */
 
 .arex-page main {
