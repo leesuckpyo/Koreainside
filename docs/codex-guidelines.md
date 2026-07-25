@@ -6,7 +6,7 @@ The top-level Codex working rules for Korea Inside are defined in the root `AGEN
 
 This document is a supplementary execution guide. It should not repeat the full scope, approval, backup, Markdown cleanup, stop-condition, commit, or push rules from `AGENTS.md`.
 
-If this document conflicts with the current user instruction, approved scope, root `AGENTS.md`, or `docs/conflict-resolution-standard.md`, follow the current user instruction, approved scope, root `AGENTS.md`, then Conflict Resolution Standard.
+If documents conflict, separate execution authority from current-state evidence. Follow the execution-authority and current-context orders in root `AGENTS.md`, `docs/standards-hub.md`, and Conflict Resolution Standard.
 
 This document does not authorize file creation, modification, deletion, movement, renaming, refactoring, formatting, stage, commit, push, or documentation updates by itself.
 
@@ -14,7 +14,7 @@ Related MD, Change Log, Project Memory, and Decision Log updates are performed o
 
 Existing features, SEO structure, FAQ, content, navigation, CSS, JavaScript, assets, and documentation remain protected by default. If the user explicitly instructs deletion, replacement, restructuring, or modification, Codex may perform that action only within the approved scope.
 
-Use this document for practical execution judgment: UX sense, image policy, context interpretation, next-step suggestions, senior review habits, and Product Owner decision authority.
+Use this document for practical execution judgment: context interpretation, image-production boundaries, senior review habits, and Product Owner decision authority.
 
 ---
 
@@ -43,6 +43,9 @@ Use this document for practical execution judgment: UX sense, image policy, cont
 - 한국 지폐, T-money, WOWPASS, 키오스크, 앱 화면, 실제 UI는 AI가 임의 생성하지 않는다.
 - 사용자 제공 실물 사진은 원본 의미를 유지한 상태에서 보정, 크롭, 배경 제거, 합성만 허용한다.
 - 핵심 정보는 이미지 안에만 넣지 않고 HTML 텍스트로 유지한다.
+- 이미지 생성·편집은 사용자가 제작 실행을 직접 요청한 경우에만 수행한다.
+- 이미지 필요성, 배치, 방향, 향후 작업을 논의하는 표현은 제작 승인으로 해석하지 않는다.
+- 제작 대상, 목적, 비율 또는 크기, 시각 방향, 변경 범위가 불명확하면 임의로 실행하지 않고 확인한다.
 
 ## 4. 페이지 검토 체크리스트
 
@@ -64,29 +67,47 @@ Use this document for practical execution judgment: UX sense, image policy, cont
 - 수정, diff, 승인, stage, commit, push 흐름은 root `AGENTS.md`를 따른다.
 - 삭제, 병합, 파일명 변경, 구조 변경, 새 파일/폴더 생성, 대량 수정, stage, commit, push는 별도 명시 승인이 필요하다.
 - 수정 후 변경 파일 목록과 남은 리스크를 보고한다.
-- 페이지 전략 점수 또는 품질 점수를 함께 제시한다.
 
-## 6. 기존 결정 우선
+## 6. 실행 권한과 현재 상태
 
-- Codex는 프로젝트의 이전 승인 내역과 Decision Log, Project Memory, Handbook을 우선 참조한다.
-- 이미 승인된 사항은 다시 제안하거나 기존 결정을 뒤집지 않는다.
-- 새로운 제안이 필요한 경우에는 기존 결정과 충돌하는 이유를 먼저 설명한 후 대안을 제시한다.
+실행 권한은 다음 순서를 따른다.
+
+1. 사용자의 현재 직접 지시
+2. 사용자가 승인한 개별 Codex 작업 지시문 또는 Implementation Contract
+3. root `AGENTS.md`의 범위·보호·승인·Git 규칙
+4. 관련 전문 기준 문서
+5. 페이지별 스펙과 구현 참고자료
+
+현재 상태와 맥락은 다음 순서로 확인한다.
+
+1. 실제 저장소 또는 운영 화면에서 재확인한 현재 상태
+2. 사용자가 지정한 최신 인계문
+3. 현재 조사자료·공식자료·측정자료
+4. 과거 인계문·Decision Log·Project Memory·과거 기록
+
+- 최신 인계문은 현재 상태, 완료사항, 다음 작업 맥락의 기준이지만 실행 승인이 아니다.
+- 최신 인계문에 다음 작업이 있어도 사용자 승인 전에는 후보 상태다.
+- 실제 Git 또는 운영 상태가 인계문과 다르면 실제 상태를 재확인하고 차이를 보고한다.
+- 최신 인계문이 명시되지 않았으면 임의로 과거 보고서나 기록을 최신 인계문으로 지정하지 않는다.
+- 과거 인계문과 기록은 이전 결정 이유, 변경 전후 맥락, 완료 이력, 누락 배경이 필요한 경우에만 선택적으로 확인한다.
+- 과거 문서의 다음 작업, Git 상태, 승인 상태, Codex 지시문은 현재 작업으로 재실행하지 않는다.
+- 기존 확정 결정은 Decision Log와 Project Memory에서 확인하되, 현재 사용자 지시와 승인된 범위를 확장하는 근거로 사용하지 않는다.
 
 ## 7. 문맥 기반 운영 규칙
 
 - 사용자는 프로젝트 규칙을 기억할 필요가 없다.
-- Codex는 이전 대화와 프로젝트 규칙을 바탕으로 사용자의 의도를 추론한다.
+- Codex는 현재 대화와 프로젝트 규칙을 바탕으로 사용자의 의도를 해석한다.
 - 사용자가 "좋아", "진행", "반영", "저장", "확정"과 같은 자연스러운 표현을 사용하면 앞선 대화에서 이미 승인된 범위 안에서만 다음 작업을 판단한다.
 - 이러한 표현은 삭제, 병합, 파일명 변경, 구조 변경, 새 파일/폴더 생성, 대량 수정, stage, commit, push 승인으로 자동 해석하지 않는다.
 - Codex는 사용자에게 "명확하게 다시 말해달라", "커밋이라고 입력해달라", "정확한 명령어를 입력해달라"처럼 프로젝트 규칙을 기억하도록 요구하지 않는다.
-- 먼저 문맥을 해석하고, 필요한 경우 가장 안전한 다음 작업을 제안한다.
+- 먼저 현재 문맥을 해석하고, 범위를 바꾸는 선택이 필요하면 사용자에게 확인한다.
 
 ## 8. "다음" 요청 처리
 
-- 사용자가 "다음"이라고 하면 새로운 규칙이나 문서를 계속 생성하지 않는다.
-- Codex는 현재 프로젝트 단계를 판단하여 문서 작성, 문서 통합, 리팩토링, 실제 개발, 품질 검토 중 가장 적절한 다음 작업을 제안한다.
-- "다음"은 제안 요청으로 해석하며, 파일 생성, 수정, 삭제, 이동, 이름 변경, 리팩토링, 포맷팅, stage, commit, push 실행 승인으로 자동 해석하지 않는다.
-- 다음 작업을 제안할 때는 기존 승인 내역, Project Memory, Decision Log, 관련 Handbook을 우선 참조한다.
+- "다음"은 현재 승인된 작업 안에서의 다음 절차만 의미한다.
+- 현재 작업이 끝났다면 "다음"만으로 새 페이지, 기능, 문서, 리팩토링 또는 품질 검토를 선택하지 않는다.
+- 새 작업은 사용자의 직접 지시 또는 사용자가 승인한 개별 Codex 작업 지시문·Implementation Contract로 확정한다.
+- TODO와 ROADMAP은 후보와 장기 방향을 제공할 뿐 실행 승인이 아니다.
 
 ## 9. 문서 통합 우선
 

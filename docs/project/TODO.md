@@ -1,9 +1,21 @@
 # Korea Inside TODO
 
-## Current Execution Candidate
+## Role
+
+This file is a reviewable backlog. It does not authorize Codex to start an item, select the next page, or change repository files.
+
+An item becomes active work only through the user's current direct approval or a task-specific Codex instruction approved by the user.
+
+A next task named in the latest handoff remains a candidate until the user approves execution.
+
+Historical TODO status or priority is not current execution authority.
+
+## Backlog Candidates
+
 - [ ] Maps Guide
 
-## Page Completion / Pre-release QA
+## Reusable Review Candidates
+
 - [ ] Check external links for the page being completed.
 - [ ] Check mobile layout for the page being completed.
 - [ ] Check FAQ accordion behavior when the page includes FAQ.

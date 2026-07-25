@@ -11,7 +11,7 @@ Not Responsible For : Product philosophy, business strategy, documentation index
 Higher Priority Documents : Current User Instruction
 Related Documents : PROJECT.md, docs/product-constitution.md, docs/business-operating-system.md, docs/standards-hub.md
 Change Policy : Owner approval required before change
-Last Reviewed : 2026-07-09
+Last Reviewed : 2026-07-25
 Review Trigger : Codex workflow, approval policy, protected file policy, git workflow, or AI behavior rule changes
 
 ## Project Base and Implementation Contract
@@ -34,20 +34,22 @@ If the current instruction, repository state, or documentation is unclear, incom
 
 Unknown → STOP → Report → Ask → Never Assume.
 
-No implementation, file modification, deletion, movement, renaming, refactoring, formatting, staging, commit, or push may begin without an explicit Implementation Contract approved by the owner.
+The user's current direct instruction is the highest execution authority.
 
-An Implementation Contract must define:
+A task-specific Codex instruction approved by the user serves as the Implementation Contract for that task. A separate document-format Implementation Contract does not need to be created for every task.
+
+An instruction that changes repository files must define at least:
 
 - Task goal
-- Target files
-- Allowed changes
-- Prohibited changes
-- Required source documents
-- Validation method
-- Git boundary
-- Stop conditions
+- Modification scope
+- Protected or prohibited scope
+- Validation criteria
 
-Use docs/implementation-contract-standard.md as the standard format for all owner-approved Implementation Contracts.
+A read-only inspection may proceed from the user's direct instruction without a separate Implementation Contract.
+
+If the instruction, scope, protection boundary, or validation criteria are unclear or conflicting, Codex must not interpret them into permission to modify files. Report the difference and ask the user.
+
+Use `docs/implementation-contract-standard.md` when the user requests or approves a separate formal Implementation Contract.
 
 # Korea Inside AI Development Guide
 
@@ -224,145 +226,87 @@ Codex must stop and ask for approval if:
 
 ---
 
-## Project Philosophy
+## Execution Authority and Current Context
 
-Help users choose. Do not simply recommend.
+### Execution Authority
 
-Explain:
+Use this order to decide whether Codex may act:
 
-- Why an option fits
-- Why another option may fit better
-- Advantages
-- Limitations
-- Trade-offs
-- Suitable users
-- Unsuitable users
+1. The user's current direct instruction
+2. A task-specific Codex instruction or Implementation Contract approved by the user
+3. The scope, protection, approval, and Git rules in root `AGENTS.md`
+4. The relevant specialized standard
+5. Page specifications and implementation references
 
-Reduce uncertainty and mistakes. Focus on practical information instead of tourism marketing.
+No handoff, TODO, ROADMAP, standard, page specification, or historical record grants execution authority by itself.
 
-For accommodation content, explain decision criteria such as airport access, subway access, walking convenience, suitcase friendliness, noise, family suitability, budget suitability, nightlife, and shopping access.
+### Current State and Context Sources
 
-For transportation content, help users choose based on arrival time, destination, number of travelers, luggage, and budget.
+Use this order to determine what is currently true:
 
-Every new feature should answer this question:
+1. Current state re-verified in the actual repository or operating interface
+2. The latest handoff explicitly designated by the user
+3. Current research, official sources, and measurement data
+4. Historical handoffs, Decision Log, Project Memory, and historical records
 
-"Does this help the visitor make a better decision?"
+The latest handoff is the primary handoff reference for current state, completed work, and next-task context. It does not let Codex automatically start a new task without the user's execution approval.
 
-Long-term goal: become the world's most trusted guide for understanding how Korea works.
+Even when a latest handoff names a next task, that task remains a candidate until the user approves it.
 
----
+If the actual Git or operating state differs from the latest handoff, verify the actual state and report the difference.
 
-## Current Business and Content Priority
+A historical handoff is context only and never current execution authority.
 
-The current bottleneck is not a lack of administrator features. It is the lack of front-site content that helps international visitors decide to visit Korea and shape their trip.
+Codex performs only the work currently approved by the user.
 
-Freeze additional administrator program development as a lower priority. Unless there is an operational failure or regression, also defer:
+The word "next" means the next procedure inside the currently approved task. It does not authorize Codex to select another page, feature, document, or backlog item.
 
-- New administrator app features
-- Administrator app UI improvements
-- Additional Search Console OAuth changes
-- EXE or installer production
-- Indiscriminate expansion of detailed eSIM, Airport, or Transport pages
-- Large-scale whole-site audits
+A new task may be selected only by:
 
-Search Console OAuth is complete. Do not modify it unless a regression is confirmed.
+- the user's current direct instruction
+- a task-specific Codex instruction or Implementation Contract approved by the user
 
-This current priority supersedes older page-sequence or execution-candidate documents where they conflict.
+Use the latest handoff only for current state, execution context, next-task context, and Git or deployment status. Do not read every historical handoff for every task.
 
-### Main Front-Site Structure
+Consult a historical handoff only when:
 
-Use the following structure as the main front-site content axis.
+- the reason for an earlier decision is needed
+- before-and-after context must be restored
+- completed history must be verified
+- background omitted from the latest handoff is required
 
-1. `What brings you to Korea?`
-   - Food
-   - Beauty
-   - K-Culture
-   - Tradition
-   - Local
-   - Nature
-   - Help visitors choose the interests and reasons that bring them to Korea.
-2. `Shape your trip`
-   - When to go
-   - How many days to stay
-   - Which cities to visit
-   - Turn interests into a practical trip shape.
-3. `EXPERIENCES`
-   - Tours
-   - Classes
-   - Shows
-   - Tickets
-   - Wellness
-   - Day trips
-   - Connect interests to activities visitors can actually join. Explain suitability, advantages, cautions, and the relationship between region and itinerary before presenting Klook or other affiliate products. Do not build simple affiliate-product listing pages.
-4. `STAY`
-   - Help visitors choose a suitable accommodation area based on trip purpose, experience locations, itinerary, transportation, and differences between areas, then connect the decision to accommodation booking.
-5. `Prepare for Korea`
-   - eSIM
-   - Airport
-   - Transport
-   - Maps
-   - Apps
-   - Payments
-   - Travel Tips
-   - Do not delete existing content. Keep it as the later layer that supports trip preparation and use within Korea.
+If the latest and a historical handoff conflict, use the latest handoff. Never re-run a historical next task, Git state, approval state, or Codex instruction as current work. Historical handoffs remain project records and are not deletion targets.
 
-### Travel Content Production Framework
+TODO and ROADMAP documents are planning references, not execution approval. A TODO item is a reviewable backlog candidate. A ROADMAP describes long-term direction and stages.
 
-Use the approved `TASTE KOREA` draft as the common framework for representative Travel content:
+## Image Production Execution Boundary
 
-Strong Hero
+Generate or edit an image only when the user directly asks to create or modify an image, illustration, infographic, or other visual asset.
 
-→ Experience type selection
+Statements such as "an image is needed," "review the infographic direction," "consider the image placement," "finish the infographic tomorrow," or "list the required images" are planning or discussion, not production approval.
 
-→ Representative city and area comparison
+Do not invoke an image-generation or image-editing tool merely because the task mentions an image or infographic.
 
-→ Images with sufficient supporting explanation
+Before production, the approved scope must make the target, purpose, aspect ratio or dimensions, visual direction, and requested change sufficiently clear. If any material production requirement is ambiguous, stop and ask instead of inventing it.
 
-→ Choices by traveler type
+## Specialized Standards Reference
 
-→ Related `EXPERIENCES` or `STAY`
+Keep detailed professional rules in their source-of-truth documents instead of duplicating them here.
 
-→ Final selection and booking banner at the very end of the page
+- Product principles: `docs/product-constitution.md`
+- Business principles: `docs/business-operating-system.md`
+- Documentation roles and reference order: `docs/standards-hub.md`
+- Codex execution judgment: `docs/codex-guidelines.md`
+- Content writing and editorial QA: `docs/content-writing-standard.md`
+- Visual design and component rules: `docs/design-system.md`
+- SEO: `docs/seo-standard.md`
+- Multilingual SEO: `docs/multilingual-seo-strategy.md`
+- Decision logic: `docs/decision-engine.md`
+- Research and source management: `docs/knowledge-management.md`
+- Affiliate publication policy: `docs/content-writing-standard.md`
+- Business and monetization principles: `docs/business-operating-system.md`
 
-Each major image block must explain:
-
-- Why the experience is worthwhile
-- What the visitor can actually do
-- How it differs from other regions or experiences
-- Advantages and cautions
-- Which travelers it suits
-- How it connects to related cities, areas, and `STAY`
-
-Do not create gallery-style pages that only list photographs and titles.
-
-### Content Length Principle
-
-Do not pre-limit a page to three or four screens. Keep the information required for a user to make a real choice.
-
-Remove or separate only:
-
-- Repetition
-- Generalities
-- Encyclopedic information that does not affect a choice
-- Detailed topics with a separate search intent
-
-Judge a page by interest density and information structure, not page length.
-
-### Content Production Roles
-
-Use this standard workflow:
-
-GPT content development
-
-→ User review
-
-→ GPT final copy and implementation specification
-
-→ Codex implementation
-
-→ User screen review
-
-The user is the reviewer and final decision-maker, not the editor. Codex reproduces the approved final specification on the site. Codex must not independently change content direction, titles, images, or copy. Do not begin content HTML implementation before user approval.
+These documents provide domain standards. They do not expand the approved task scope or authorize file changes.
 
 ---
 
@@ -479,9 +423,15 @@ Protected files and areas:
 - Menu width, height, position, transparency, and scrolling behavior
 - Accordion behavior
 - `common.js` events and related common CSS
-- Search Console OAuth
-- Windows Credential Manager handling
 - Existing backup folders
+
+### Authentication and Secret Protection
+
+- Protect the existing Google Search Console OAuth implementation and Windows Credential Manager handling.
+- Never print or expose Vercel Access Tokens, API tokens, passwords, account or banking information, authentication data, or other secrets in logs, command output, reports, screenshots, or documentation.
+- Do not issue, rotate, reset, delete, or replace existing credentials unless the user explicitly approves that exact action.
+- Do not change OAuth, credential storage, token handling, or authentication settings without explicit user approval.
+- If verification can reveal a secret, report only whether the configuration exists or passes; redact the value.
 
 Modification rules:
 
@@ -551,116 +501,30 @@ The architecture should support years of continuous growth without requiring maj
 
 ---
 
-## SEO & Content Standards
+## Domain Standard Boundary
 
-Korea Inside is a search-first content platform, but content must be written for real users first.
+Content, SEO, design, localization, research, recommendation, and affiliate rules belong to the specialized standards listed above.
 
-Content principles:
+When implementation touches one of those domains:
 
-- Do not create content only for SEO.
-- Answer practical questions.
-- Prioritize accuracy over quantity.
-- Never invent facts.
-- Clearly state uncertainty when information cannot be verified.
-- Explain trade-offs.
-- Avoid exaggerated recommendations.
-- Remain objective and trustworthy.
-- Avoid unnecessary travel descriptions.
+- read the relevant standard before editing
+- keep important information as visible semantic HTML
+- preserve browser translation, accessibility, mobile usability, and existing URLs
+- reuse the nearest approved structure and component
+- apply only the QA level authorized by this document and the current task
 
-Every page should include:
+Do not copy an entire specialized standard into this file.
 
-- A unique, meaningful `title`
-- One non-empty `meta name="description"`
-- A canonical URL
-- Exactly one `h1`
-- Logical heading hierarchy
-- Meaningful `alt` text for informative images
-- Internal links where useful
-- Descriptive anchor text
-- Open Graph tags when applicable
+### Content Direction and Implementation Boundary
 
-HTML content rules:
+- Content titles, `h1`, core conclusions, image direction, copy direction, and major section structure follow the user's approval or an approved final specification.
+- Codex implements the approved final specification as given.
+- Codex must not independently change a title, image direction, copy direction, or recommendation conclusion.
+- If a technical constraint or existing structure conflicts with the approved specification, report the difference and alternatives instead of making an unapproved substitute.
+- Within the approved scope, Codex may correct only changes that do not alter the approved purpose, such as a simple typo, grammar error, or clearly broken link.
+- Keep content-direction decisions separate from the implementation role.
 
-- HTML is the source of truth.
-- Important information must be visible HTML text.
-- Images are visual aids only.
-- Never place essential information only inside images.
-- Do not rely on `alt`, `title`, or `figcaption` alone for browser translation.
-- Every meaningful phrase, instruction, label, comparison, and warning in an infographic must also exist as visible semantic HTML near the image.
-- Before finishing an infographic change, verify a one-to-one mapping between important image text and visible HTML text.
-
-HTML First Policy:
-
-- When the user requests removal of a section, delete the HTML itself.
-- Do not hide removed sections with CSS such as `display: none` unless the user explicitly requests it.
-- Keep important content as visible semantic HTML text.
-
-Use semantic HTML whenever appropriate:
-
-- `header`
-- `nav`
-- `main`
-- `section`
-- `article`
-- `aside`
-- `footer`
-- `h1` through `h4`
-- `p`
-- `ul`
-- `li`
-- `table`
-
-Readability:
-
-- Prefer short paragraphs.
-- Prefer short step formats for procedures.
-- Use tables when comparing options.
-- Use bullet lists where appropriate.
-- Avoid unnecessary repetition.
-- Keep explanations to one line or less by default on mobile.
-
-Recommended step format:
-
-1 : Open Settings
-2 : Go to Cellular
-3 : Add eSIM
-4 : Scan QR Code
-5 : Activate eSIM
-
----
-
-## UX, Design & Responsive Standards
-
-Korea Inside is mobile first by default.
-
-Mobile users want fast solutions more than long explanations. Every core screen must make its purpose understandable within 3 seconds.
-
-Design rules:
-
-- Never redesign pages unless explicitly requested.
-- Keep the existing visual design, spacing, typography, colors, icons, buttons, and layout.
-- Make existing designs smaller, clearer, and easier to read when improvement is requested.
-- Do not make card UI excessively large in width, height, or spacing.
-- Do not repeat the same infographic content below the infographic as long cards.
-- Reduce text width on mobile so the user's eyes do not travel too far left and right.
-- Desktop layouts should naturally expand the mobile structure.
-- Respect the current Korea Inside design system.
-
-CSS rules:
-
-- Reuse existing CSS whenever possible.
-- Avoid unnecessary new classes.
-- Avoid duplicated styles.
-- Avoid unnecessary selectors.
-- Avoid inline CSS.
-- Keep mobile first.
-
-Responsive verification for visual changes must follow the Codex QA / Verification Rules below and must not use automated screenshots, Chrome CDP, or scroll verification unless explicitly requested.
-
-- Do not run full responsive QA for minor visual changes unless the Product Owner requests it.
-- Use the smallest verification level that matches the change scope and risk.
-- Preserve existing design, colors, spacing, typography, layout, and responsive behavior unless a design change was explicitly approved.
-- For Level 3 Release QA, use the standard responsive viewports: mobile 375px, tablet 768px, desktop 1440px.
+Detailed voice, wording, recommendation, and editorial QA rules belong to `docs/content-writing-standard.md`.
 
 ---
 
@@ -827,154 +691,6 @@ Important:
 - For document changes, modify only the named documents and sections, show the full diff without abbreviation, and wait for Product Owner approval before commit or follow-up work.
 - After the approved implementation and required verification level are complete, report the result and stop immediately.
 - Do not continue with additional QA, screenshots, improvements, refactoring, commits, pushes, or another task unless explicitly requested by the Product Owner.
-
----
-
-## Multilingual Strategy
-
-English is the master language.
-
-Rules:
-
-- All new content must be written in English first.
-- Translations must always be based on English.
-- Never translate directly from another translated language.
-- English remains the source of truth.
-- Do not implement translations until explicitly requested.
-- Prepare architecture so future multilingual expansion does not require rebuilding the website.
-
-Target language structure:
-
-- `/en/`
-- `/ja/`
-- `/fr/`
-- `/de/`
-- `/zh-tw/`
-
-URL rules:
-
-- Every translated page must have its own URL.
-- Prefer language subdirectories.
-- Do not use query-string language switching.
-
-Content consistency:
-
-- All language versions must use the same HTML structure.
-- Keep section order identical.
-- Keep heading hierarchy identical.
-- Keep internal linking structure consistent.
-
-Every future language page should eventually include:
-
-- `hreflang`
-- Canonical URL
-- Language-specific metadata
-- Language-specific sitemap entry
-
-Important content must remain HTML text, never image-only. Avoid hard-coded content patterns that prevent future multilingual expansion.
-
----
-
-## Decision Engine
-
-Recommendations must be rule-based, transparent, and consistent.
-
-Before making recommendations, identify:
-
-- User goal
-- User constraints
-- User priorities
-
-Do not recommend the highest-rated or most popular option by default.
-
-Consider:
-
-- Convenience
-- Cost
-- Travel style
-- Accessibility
-- Time
-- Practicality
-- Reliability
-- User suitability
-
-Whenever appropriate, compare options side by side with tables instead of long paragraphs.
-
-Never hide disadvantages. Always explain both strengths and weaknesses.
-
-The same inputs should produce the same outputs. Avoid subjective or random recommendations.
-
----
-
-## Data & Research
-
-Korea Inside must provide reliable, evidence-based information.
-
-Never invent facts. Never guess. If information cannot be verified, clearly state that verification is required.
-
-Use sources in this priority order:
-
-1. Official government sources
-2. Official company websites
-3. Public transportation operators
-4. Airport authorities
-5. Official tourism organizations
-6. Official documentation
-
-Community discussions may be used only as supplementary information.
-
-Transportation, fares, travel cards, telecom plans, airport procedures, operating hours, prices, and policy details must be checked against official sources.
-
-Maintain the official source URL and last-reviewed date for each changeable claim or content section.
-
-Prioritize practical information such as:
-
-- Airport transfer times
-- Subway accessibility
-- Elevator availability
-- Large suitcase friendliness
-- Walking difficulty
-- Station exits
-- Ticket rules
-- Payment methods
-- Business hours
-
-If information is estimated, label it as an estimate. If information is verified, state that it is based on official sources.
-
-If official information changes frequently, design pages so updates are easy and avoid duplicating the same information across multiple pages.
-
----
-
-## Affiliate Policy
-
-Affiliate revenue is important, but user trust always comes first.
-
-Rules:
-
-- Never recommend a product or service only because it has an affiliate program.
-- Recommend affiliate products only when they genuinely help the user.
-- Explain advantages and disadvantages.
-- Do not hide limitations.
-- Provide objective comparisons.
-- Whenever possible, provide multiple suitable options.
-- Avoid forcing users toward a single affiliate product.
-- Clearly disclose affiliate links according to applicable regulations.
-- Do not place repeated affiliate links, fixed CTAs, floating booking buttons, or repeated booking prompts throughout body content.
-- Place one selection and booking area only at the end of each major page, directly related to that page's content.
-- Internal navigation links to relevant content, city or area guides, and non-commercial section anchors may appear within the body; the end-of-page-only rule applies specifically to affiliate selection areas, booking sections, and commercial conversion CTAs.
-- Disclose transparently that Korea Inside may earn affiliate revenue and that the user pays no additional cost.
-
-Recommendation priority:
-
-1. User suitability
-2. Reliability
-3. Convenience
-4. Value
-5. Affiliate relationship
-
-Affiliate status must never become the primary ranking factor.
-
-Education comes before monetization. Revenue is the result of trust, not the goal of content.
 
 ---
 

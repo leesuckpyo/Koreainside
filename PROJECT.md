@@ -50,8 +50,8 @@ Use the project documents below for operational details:
 
 - Codex working rules: `AGENTS.md`
 - Documentation map: `docs/standards-hub.md`
-- Roadmap and development order: `docs/project/ROADMAP.md`
-- Current execution items: `docs/project/TODO.md`
+- Long-term stages and direction: `docs/project/ROADMAP.md`
+- Reviewable backlog candidates: `docs/project/TODO.md`
 - Change history: `docs/project/CHANGELOG.md`
 - Historical milestones: `docs/project/HISTORY.md`
 - Official decisions: `docs/decision-log.md`

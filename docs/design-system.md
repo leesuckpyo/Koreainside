@@ -5,317 +5,249 @@
 Layer : L2
 Status : Active
 Authority Type : Design Standard
-Primary Responsibility : Korea Inside visual decision design principles
-Source of Truth For : Visual decision design, warm practical design tone, recognition UX, image-as-information policy, page rhythm, visual hierarchy, and design anti-pattern direction
-Not Responsible For : Page-specific content, business strategy, Codex behavior rules, implementation approval, git workflow, reference records, history records
+Primary Responsibility : Site-wide visual language, component consistency, responsive design, image and infographic direction, and design QA
+Source of Truth For : Color roles, typography, content width, spacing, cards, buttons, tables, guidance boxes, images, infographics, responsive visual rules, and design anti-patterns
+Not Responsible For : Page-specific content, current work queues, migration lists, business strategy, Codex approval, Git workflow, reference records, or history
 Higher Priority Documents : Current User Instruction, AGENTS.md, PROJECT.md, docs/product-constitution.md
-Related Documents : docs/golden-page-template.md, docs/component-library.md, docs/page-template-standard.md, docs/anti-pattern-standard.md, docs/standards-hub.md
+Related Documents : docs/component-library.md, docs/golden-page-template.md, docs/page-template-standard.md, docs/anti-pattern-standard.md, docs/content-writing-standard.md
 Change Policy : Owner approval required before change
-Last Reviewed : 2026-07-09
-Review Trigger : Major visual direction change, recurring poor design output from Codex, new page family, image policy change, or component rhythm change
+Last Reviewed : 2026-07-25
+Review Trigger : Major visual direction change, recurring design inconsistency, new page family, image policy change, or component-system change
 
-## Design Position
+## 1. Design Position
 
-Korea Inside design is not decorative.
+Korea Inside uses a warm, editorial travel-magazine visual language to help international visitors understand Korea and make practical choices.
 
-It is a visual decision system that helps international visitors understand Korea quickly, practically, and confidently.
+The design should feel:
 
-Korea Inside must not become a cold information board.
+- useful, calm, and human
+- trustworthy without feeling institutional
+- visual without becoming decorative
+- editorial without becoming promotional
+- information-rich without becoming crowded
 
-The design must help users understand:
+Every core screen should make its purpose understandable within about three seconds.
 
-- where they are
-- what the place feels like
-- how they move
-- what is convenient
-- what to watch out for
-- what to do next
+## 2. Color Roles
 
-## Core Design Promise
+The default direction is a warm ivory and cream foundation.
 
-Use these principles as the design promise.
+- Prefer warm ivory or cream for broad page backgrounds and long-reading areas.
+- Prefer dark brown-black or charcoal for headings.
+- Prefer warm gray-brown for body text.
+- Use low-saturation borders and dividers.
+- Use charcoal green as the main functional color for stability, guidance, diagrams, and infographic structure.
+- Use reddish brown or ochre only for an already approved editorial emphasis.
+- Minimize large areas of pure white, pure black, or severe black-white contrast.
 
-- Practical, but not boring.
-- Trustworthy, but not cold.
-- Visual, but not fake.
-- Helpful, but not overwhelming.
+Blue is not a primary theme color for:
 
-## Visual Decision Design Principles
+- broad page backgrounds
+- main content cards
+- headings
+- large guidance boxes
+- the overall page theme
 
-Korea Inside pages must help users make decisions visually before they read long explanations.
+Blue may be used in a limited functional role for links, status, transport-system distinctions, or another established semantic meaning.
 
-A page should answer these questions quickly:
+Reuse an approved value from the existing CSS or an approved standard when an exact color is required. Do not invent or standardize a new HEX value in documentation without approval.
 
-- What is this about?
-- Is this relevant to my situation?
-- What should I compare?
-- What should I watch out for?
-- What should I do next?
+Color must never be the only way to communicate state, warning, selection, or meaning.
 
-## Warm Practical Design Tone
+## 3. Application and Transition Scope
 
-The visual tone should feel useful, calm, human, and grounded.
+### New Pages or Fully Redesigned Pages
 
-Avoid designs that feel:
+- Use the warm ivory and cream foundation.
+- Use charcoal or warm gray-brown for body copy.
+- Use charcoal green for guidance and infographic structure.
+- Do not use blue as the overall dominant page color.
 
-- too corporate
-- too empty
-- too text-heavy
-- too promotional
-- too much like a generic travel blog
-- too much like a SaaS dashboard
+### Minor Changes to Existing Production Pages
 
-## Page Rhythm
+- Preserve the current page structure and approved component family first.
+- Do not convert the entire page to the ivory system without separate user approval.
+- Do not force a new design system onto an existing page because of a small correction.
 
-Korea Inside pages should not be a flat list of information.
+### Full Redesign of an Existing Production Page
 
-Use a rhythm like:
+- Apply the new design engine only after explicit user approval.
+- Proceed one page at a time and review the rendered page before expanding the change.
+- Do not recolor the entire site as one batch.
 
-1. Scene
-2. Quick Answer
-3. Choice
-4. Practical Detail
-5. Warning or Tip
-6. Next Action
+"Reuse approved existing CSS" does not mean every new page must inherit a blue component or blue-led theme.
 
-The user should feel progression, not repetition.
+Reuse the nearest existing structure, but report the conflict when it does not fit the approved design direction for the page.
 
-## Image Policy
+Do not change the common header, navigation, footer, or `common.js` without separate explicit approval.
 
-Images are not decoration.
+## 4. Typography
 
-Images should help users understand real context, space, movement, atmosphere, or practical use.
+- Reuse the approved site typefaces and existing typographic tokens.
+- Use a clear heading hierarchy with strong but not harsh contrast.
+- Keep body copy comfortable for long reading on warm backgrounds.
+- Avoid excessive font-weight changes, all-caps blocks, decorative display type, and unexplained font-family additions.
+- Keep labels, captions, and helper text legible on mobile.
+- Let line length and spacing support browser translation and text expansion.
 
-Use images for:
+## 5. Content Width and Spacing
 
-- area atmosphere
-- transport movement
-- card or machine recognition
-- entrance or station context
-- real-life usage situation
-- visual comparison
+- Reuse established content-width and section-spacing patterns.
+- Keep long body text narrower than broad media or comparison sections.
+- Use whitespace to separate decisions and topics, not to make cards unnecessarily large.
+- Keep section rhythm consistent while allowing dense practical sections to use compact spacing.
+- Mobile spacing is the baseline; desktop should expand the same information hierarchy naturally.
+- Do not add a new spacing scale for one page when an approved token or nearby component already fits.
 
-Do not put essential information only inside images.
+## 6. Page Rhythm and Hierarchy
 
-Important information must remain real HTML text for translation, SEO, accessibility, and maintenance.
+Pages should progress through meaning rather than repeat equally weighted sections.
 
-## Card and Section Rhythm
+A common rhythm is:
 
-Cards should not be generic information boxes.
+1. Context or scene
+2. Quick answer
+3. Choice or comparison
+4. Practical detail
+5. Warning or tip
+6. Next useful action
 
-A Korea Inside card should help the user decide.
+This is a flexible rhythm, not a mandatory template. Use `golden-page-template.md` for detailed page flow.
 
-Good cards should include one or more of:
+Headings, images, tables, cards, and guidance boxes should make the recommended reading order obvious.
 
-- situation
-- good for
-- watch out
-- practical detail
-- next action
+## 7. Component Consistency
 
-Avoid repeated cards with only title, description, and button.
+Before creating or styling a component:
 
-## CTA and Next Action Rules
+1. Search for the nearest approved component in the same page family.
+2. Reuse it when it serves the same semantic role.
+3. Extend it only when the current task explicitly approves the change.
+4. Create a new component only when no existing pattern can express the required behavior.
 
-CTA should not feel like advertising.
+Do not invent page-specific versions of:
 
-CTA should feel like the next useful step.
+- card corners
+- shadows
+- borders
+- button height or typography
+- table structure
+- captions
+- warning and tip boxes
+- commercial CTA blocks
+- section spacing
+- content width
 
-Examples:
+Use `component-library.md` for component-level structure.
 
-- Check where to stay
-- Compare transport options
-- See what to prepare
-- Open the official source
-- Continue to the practical guide
+## 8. Cards, Buttons, Tables, and Guidance Boxes
 
-## What Korea Inside Must Avoid
+### Cards
 
-Avoid:
+- A card should organize a decision, option, action, or distinct information unit.
+- Avoid generic title-description-button grids that do not help a choice.
+- Keep padding, radius, shadow, border, and density aligned with the nearest approved family.
+- Include advantages, limitations, suitability, or next action when the card represents an option.
 
-- cold information-board design
-- endless text blocks
-- generic modern card grids
-- decorative images without practical meaning
-- fake travel mood
-- over-polished tourism promotion
-- unclear CTA buttons
-- burying warnings below promotional content
-- making every page look the same
-- making every section visually equal
+### Buttons and Links
 
-## Validation Checklist
+- Buttons represent actions; links represent navigation.
+- Keep primary, secondary, and text-action hierarchy clear.
+- Use pills and chips only for their established navigation, tag, or filter role.
+- Commercial CTA styling must remain secondary to the decision-support content.
 
-Before approving a design change, check:
+### Tables
 
-- Can the user understand the page purpose within 3 seconds?
-- Does the page show before it explains?
-- Does the visual hierarchy help decision-making?
-- Are images used as information, not decoration?
-- Are warnings and limitations visible?
-- Does the page feel practical but not boring?
-- Does the page feel trustworthy but not cold?
-- Does the page avoid generic card-grid repetition?
-- Is essential information real HTML text?
-- Does the design work on mobile?
-- Does the page still support browser translation?
+- Use semantic tables when side-by-side comparison materially improves understanding.
+- Keep labels concise and preserve readable mobile behavior.
+- Use a wrapper for overflow when necessary rather than shrinking text below legibility.
+- Do not use a table for prose that is easier to read as a list.
 
-Last updated: 2026-07-09
+### Guidance Boxes
 
-## Purpose
+- Warning boxes communicate risk, limitation, or mistake prevention.
+- Tip boxes communicate useful non-critical advice.
+- Neutral guidance boxes explain context without simulating urgency.
+- Use visible labels and text; do not rely on background color alone.
 
-This document audits the current KR Inside HTML/CSS component patterns and records how future pages should reuse them.
+## 9. Images
 
-This is documentation only. It does not introduce new HTML, CSS, JavaScript, assets, routes, or visual changes.
+Images are information, not decoration.
 
-## Scope
+Use images to clarify:
 
-- Checked project-wide HTML pages and `style.css`.
-- Compared current repeated patterns with existing documentation in `docs/component-library.md`, `docs/golden-page-template.md`, `docs/header.md`, and `docs/footer.md`.
-- Focused on reusable structure, duplicated component families, and practical design-system consistency.
+- a real object or interface
+- how something is used
+- scale, movement, location, or atmosphere
+- a practical difference between options
+- a place the visitor must recognize
 
-## Hybrid Recognition UX Direction
+Use actual, official, user-provided, or clearly referenced images when real-world accuracy matters. Do not use AI-generated representations of official cards, banknotes, kiosks, maps, app screens, payment interfaces, or other objects whose exact appearance affects user behavior.
 
-KR Inside should not become Western-style only. The design direction is a hybrid of global usability and Korean travel recognition.
+AI-created imagery may support atmosphere or a non-official illustrative context only when production is explicitly requested under `AGENTS.md`.
 
-| Layer | What it means | Design implication |
-|---|---|---|
-| Global UX | Clean layout, readable structure, mobile-first rhythm, simple cards, clear headings, and fast scanning. | Keep the current KR Inside spacing, typography, table, card, and section patterns. Do not add visual clutter or decorative complexity. |
-| Korean Experience | Real objects, real app screens, rich practical details, and visual recognition of how Korea works. | Use real or official/reference images for practical objects so visitors can recognize what they will see in Korea. |
+Essential labels, instructions, warnings, comparisons, and values must also appear as visible semantic HTML near the image. Do not rely on image text, `alt`, `title`, or `figcaption` alone.
 
-Major practical sections should create an "아~ 이거구나" moment: the user should instantly recognize the object, place, screen, or action before reading a long explanation.
+## 10. Infographics
 
-Examples:
+- Prefer a warm ivory background.
+- Prefer charcoal-green icons, arrows, numbers, lines, and structural elements.
+- Maintain enough lightness and contrast to separate background and internal elements.
+- Avoid unnecessary multicolor palettes within one infographic.
+- Keep essential text identifiable on mobile.
+- Reproduce every important statement as visible semantic HTML nearby.
+- Do not copy or lightly redraw an official map.
+- Do not simplify official guidance in a way that changes its meaning.
 
-- This is a T-money card.
-- This is a WOWPASS kiosk.
-- This is Korean money.
-- This is Hongdae street.
-- This is how Naver Map works.
+## 11. Responsive Design
 
-## Image-As-Information Standard
+- Design mobile first.
+- Preserve the same core content and decision logic on mobile and desktop.
+- Prevent excessive text width, oversized cards, clipped controls, and unreadable tables.
+- Keep touch targets and spacing usable without inflating the interface.
+- Allow layouts to reflow by page family instead of forcing every page into one grid.
+- Use existing responsive breakpoints and patterns unless the approved task requires another approach.
 
-Images are information, not decoration. Every important image must have a defined role before it is added.
+Responsive verification follows the QA level and screenshot limits in `AGENTS.md`.
 
-| Image role | Purpose | Examples |
-|---|---|---|
-| Recognition image | Helps the user identify a real object or place. | T-money card, WOWPASS card, WOWPASS kiosk, Korean banknotes, Naver Map app screen. |
-| Usage image | Shows how something is used in context. | Card tapping, kiosk charging, app balance screen, subway gate use. |
-| Value image | Helps the user understand scale, price, budget, or money feeling. | Korean banknotes with approximate foreign-currency values. |
-| Decision image | Helps the user choose between practical options. | T-money card beside WOWPASS card with short fit guidance. |
-| Location image | Helps the user recognize a district, station, airport area, or pickup point. | Hongdae street, Myeongdong street, airport arrival area, kiosk location context. |
+## 12. Page-family Flexibility
 
-Real objects should use actual, official, or clearly referenced images whenever available. This applies to WOWPASS cards, WOWPASS kiosks, Korean banknotes, app screens, and T-money cards.
+Maintain a common visual core while allowing different composition for:
 
-AI-generated images may be used for mood or place context when a real-object image is not required. Acceptable uses include Hongdae, Myeongdong, Gangnam, Ikseon-dong, airport atmosphere, and general neighborhood mood. Do not use AI images to represent official cards, kiosks, banknotes, app screens, maps, or payment interfaces.
+- practical information guides
+- comparison pages
+- hub pages
+- conversion pages
+- culture- or photography-led pages
 
-For browser translation and accessibility, important information in an image must also appear as visible semantic HTML near the image. Do not rely on image text, `alt`, `title`, or `figcaption` alone for essential instructions, labels, warnings, comparisons, or values.
+Consistency means shared roles, tokens, and behavior—not identical page layouts.
 
-## Show First, Explain Later
+## 13. Design QA
 
-Practical Korea guides should prefer this order inside major sections:
+Check:
 
-1. Image or visual recognition point.
-2. Short meaning.
-3. Practical explanation.
-4. Next action or decision guidance.
+- Is the page purpose clear within about three seconds?
+- Does the visual hierarchy support a decision?
+- Are broad backgrounds warm and readable?
+- Are text and background contrast sufficient without becoming harsh?
+- Is blue limited to an established functional role?
+- Are typography, width, spacing, cards, buttons, tables, and boxes consistent with approved patterns?
+- Are images and infographics informative and accurate?
+- Is essential image information repeated as visible text?
+- Does the layout remain readable and operable on mobile?
+- Does it support browser translation and text expansion?
+- Does the page family remain recognizable without making every page identical?
 
-Avoid long text before the user understands what they are looking at. Avoid manual-like writing unless the section is explicitly a procedure. Short looping demonstrations can be useful, but they should make the user feel "아~ 이렇게 사용하는구나." They are not full tutorials and should not become long step-by-step animations.
+## 14. Prohibited Design Patterns
 
-## Comparison Limits
-
-Comparisons are useful only when they help the visitor choose. Do not turn guide pages into broad VS pages by default.
-
-Use comparison when:
-
-- Two options are commonly confused.
-- The visitor must choose one before travel or at arrival.
-- A side-by-side view reduces mistakes.
-
-Keep comparisons compact. Prefer short decision guidance, fit/avoid notes, and one practical table over repeated long comparison sections.
-
-## Reference Pages
-
-Current highest-quality visual and structural references:
-
-| Reference | Why it matters |
-|---|---|
-| `where-to-stay-in-seoul.html` | Strong decision-guide structure, FAQ schema, area comparison, and stay-card patterns. |
-| `accommodation.html` | Recently aligned accommodation decision page using hero, quick answer, decision cards, warning box, checklist, comparison table, FAQ, and breadcrumb schema. |
-| `maps.html` | Strong app-comparison layout with visual assets, maps-specific cards, checklist, and compact tables. |
-| `payments.html` | Practical guide layout with quick answer, payment decision cards, warning/tip boxes, FAQ, and comparison-oriented sections. |
-| `tmoney.html` | Practical transport-card topic that should use real-card recognition and short usage guidance. |
-| `wowpass.html` | Existing WOWPASS card, machine, and use-flow imagery; future direction should shift from product comparison to traveler money-management guidance. |
-| `index.html` | Home hero, common header behavior, common footer, core CTA button styles, and homepage entry-card pattern. |
-
-## Component Inventory
-
-| Item | Current usage pages | Reusable? | Standard component? | Improvements |
-|---|---|---|---|---|
-| Header | All main HTML pages use a semantic `<header>` and the `.header` family. `index.html` and `esim.html` also use `data-common-header` with `common.js`. | Yes | Yes, but implementation is not fully centralized. | Keep the existing `.header`, `.header__inner`, `.brand`, `.nav`, `.nav-toggle`, and `.language-switcher` classes. Future migrations should align active-link state, ARIA labels, and `data-common-header` behavior page by page after approval. |
-| Footer | All main HTML pages use a semantic `<footer>` and the `.footer` family. | Yes | Yes | Continue using the documented footer structure in `docs/footer.md`. Keep footer brand text as visible HTML. Standardize future footer link groups without changing existing navigation unless approved. |
-| Hero | All major pages use a hero pattern. Variants include `hero-banner`, `page-hero`, `airport-page-hero`, `maps-hero`, `esim-hero`, and page-specific stay/payment hero patterns. | Yes, by page type | Partially | Define when to use each approved variant: homepage media hero, standard guide hero, two-column decision hero, app/media hero, and stay-cluster hero. Avoid creating another hero family unless no existing variant fits. |
-| Quick Answer | Used on decision pages such as `accommodation.html`, `apps.html`, `payments.html`, `where-to-stay-in-seoul.html`, `airport-bus.html`, `arex.html`, `rental-car.html`, `taxi.html`, `esim.html`, and several Seoul area pages. | Yes | Partially | Reuse the current near-top answer section pattern. Standardize labels such as `Quick answer`, `Best for`, `Choose this if`, and `Watch out` as visible HTML text. |
-| Comparison Table | Used across `accommodation.html`, `apps.html`, `payments.html`, `maps.html`, `esim.html`, `tmoney.html`, `wowpass.html`, `airport.html`, `checklist.html`, `where-to-stay-in-seoul.html`, and Seoul area pages. CSS includes `.info-table`, `.table-scroll`, `.esim-table`, and stay/payment table variants. | Yes | Yes, with variants | Prefer `.table-scroll` plus semantic `<table>` for comparisons. Use `<th scope>` where possible. Avoid horizontal overflow on 360px by testing table wrappers. |
-| Decision Cards | Used in `accommodation.html`, `payments.html`, `maps.html`, `airport.html`, `arrival.html`, `where-to-stay-in-seoul.html`, `wowpass.html`, and Seoul area pages. Class families include `.airport-action-card`, `.stay-decision-card`, `.payments-card`, `.maps-stack-card`, and `guide-card`. | Yes | Partially | Consolidate future card usage around existing card families before adding new CSS. Cards should include option name, best-fit user, main advantage, and limitation. |
-| Warning Box | Used in `accommodation.html`, `apps.html`, `checklist.html`, `payments.html`, and `wowpass.html`. CSS includes `.warning-box`. | Yes | Yes | Reserve warning boxes for risk, limitation, or mistake-prevention content. Keep labels visible as text and avoid using color alone to communicate risk. |
-| Tip Box | Used in `airport-bus.html`, `apps.html`, `arex.html`, `checklist.html`, `payments.html`, `rental-car.html`, `taxi.html`, and `tmoney.html`. CSS includes `.tip-box`. | Yes | Yes | Use tip boxes for practical non-critical advice. Do not mix warnings and tips in the same component. |
-| Checklist | Class-based checklist UI appears in `accommodation.html`, `checklist.html`, and `maps.html`; checklist-like lists appear in many guide pages. CSS includes `.checklist`, `.checklist__item`, `.checklist__checkbox`, and checked state styles. | Yes | Yes | Reuse `.checklist` for action-oriented booking/setup checks. Keep each item short and scannable. If interactive checked states are expanded later, document JS behavior before implementation. |
-| FAQ | FAQ sections appear on most major guide pages, including accommodation, airport, transport, apps, eSIM, maps, payments, taxi, T-money, WOWPASS, stay guide, and Seoul area pages. Variants include `.airport-faq`, `.payments-faq`, `.esim-faq`, and `<details>`. | Yes | Yes, with naming variants | Keep visible FAQ HTML aligned with FAQ JSON-LD. Future work should standardize FAQ wrapper naming while preserving existing page styles. |
-| CTA Buttons | Most pages use `.btn`, `.btn--primary`, `.btn--ghost`, `.btn--text`, `airport-pill`, `chip`, or page-specific CTA rows. | Yes | Partially | Use `.btn` for main actions, pills for in-page navigation, and chips for compact tags/links. Avoid inventing new button visuals unless the action hierarchy cannot be expressed with existing styles. |
-| Breadcrumb | Major guide pages use `.page-hero__breadcrumb`; `esim.html` has `.esim-breadcrumb`; structured data commonly uses `BreadcrumbList`. | Yes | Yes, with one variant exception | Keep visual breadcrumb near the hero and maintain matching Breadcrumb JSON-LD where SEO value exists. Consider aligning `esim-breadcrumb` naming in a future approved cleanup. |
-| Section spacing | Global `.section`, `.section__header`, `.section__title`, `.section__subtitle` exist. Page families also use `.airport-section`, `.esim-section`, payment/stay/map sections, and gray modifiers. | Yes | Partially | Use existing section families by page type. Avoid new section spacing rules unless the page cannot be expressed with `.section` or the approved page-family section class. |
-| Recognition media | Used where real objects or app screens help the user understand quickly, including maps, eSIM, T-money, and WOWPASS assets. | Yes | Partially | Use real-object images with visible HTML meaning and a clear image role. Avoid decorative image drops. Prefer "show first, explain later" for object-heavy Korea guides. |
-| Card spacing | Cards across home, airport, maps, payments, stay, WOWPASS, and KII dashboard share padding, border, radius, shadow, and hover patterns but use different class names. | Yes | Partially | Prefer existing card classes inside the same page family. Future CSS cleanup could introduce shared card tokens or utility classes, but only after impact review. |
-| Color palette | `style.css` defines core tokens: `--blue-deep`, `--blue-accent`, `--blue-light`, `--blue-muted`, gray scale, `--white`, and maps/card shadow tokens. | Yes | Yes | Continue using root variables. Avoid one-off colors unless tied to an approved visual need. Where custom colors exist, map them to existing tokens during future cleanup. |
-| Typography | Global type uses `--font-sans` with Inter/system fallback. Section headings, hero titles, eyebrows, and cards use consistent weights and sizes with some page-specific clamp values. | Yes | Yes | Keep visible text concise on mobile. Avoid new font families. Reduce page-specific heading scale only when text fitting or hierarchy requires it. |
-| Border radius | Root tokens include `--radius-sm` 8px, `--radius-md` 12px, `--radius-lg` 16px, and `--radius-xl` 20px. Pills use `999px`; a few one-off values exist. | Yes | Yes | Use radius tokens for cards, panels, tables, and forms. Reserve `999px` for pills/chips only. Avoid new arbitrary radius values. |
-| Shadow | Root tokens include `--shadow-sm`, `--shadow-md`, `--shadow-lg`; maps also uses `--maps-card-shadow`. | Yes | Yes | Use token shadows for cards and elevated panels. Keep shadows subtle. Future cleanup can reduce custom box-shadow values after visual regression checks. |
-| Responsive breakpoints | Current CSS uses breakpoints around 480, 540, 640, 720, 768, 860, 900, 960, 1024, and 1120px. Project QA expects 360/375, 768, and 1440px checks. | Yes | Partially | Keep existing breakpoints for current pages. For new work, prefer existing breakpoint families and verify at 360px, 768px, and 1440px. Consolidation should be a separate approved CSS cleanup. |
-
-## Duplicate Component Report
-
-| Duplicate area | Current duplicated forms | Impact | Recommended direction |
-|---|---|---|---|
-| Card shells | `.airport-action-card`, `.stay-decision-card`, `.payments-card`, `.maps-stack-card`, `.guide-card`, home entry cards, WOWPASS cards | Similar visual behavior is repeated with page-specific names. This is maintainable now but can grow CSS duplication. | Reuse the nearest page-family card first. If a new shared card is ever created, document it and migrate only with page-by-page approval. |
-| FAQ wrappers | `.airport-faq`, `.payments-faq`, `.esim-faq`, page-specific `<details>` styling | FAQ UX is consistent, but CSS naming differs by page family. | Keep existing wrappers. Future standard could be `.faq-list` plus page-family modifiers after approval. |
-| Hero variants | `hero-banner`, `page-hero`, `airport-page-hero`, `maps-hero`, `esim-hero`, stay/payment-specific heroes | The project has several strong hero patterns, but new pages may accidentally create another variant. | Choose an existing hero by content type before adding CSS. Document the chosen reference page in each page doc. |
-| Table wrappers | `.info-table`, `.table-scroll`, `.esim-table`, stay tables, payment tables, maps compact tables | Comparison content is strong, but mobile overflow rules may vary. | Use semantic tables with wrappers. Treat no-horizontal-scroll QA as required for every table-heavy page. |
-| CTA patterns | `.btn`, `.btn--primary`, `.btn--ghost`, `.btn--text`, `.airport-pill`, `.chip`, page-specific action rows | Button hierarchy can blur if pills, chips, and buttons are used interchangeably. | Use buttons for commands/primary actions, pills for in-page navigation, and chips for compact filters/tags/related links. |
-| Header markup | Header HTML repeats across pages; only `index.html` and `esim.html` currently use `data-common-header` with `common.js`. | Repeated static header is stable but harder to update globally. | Do not centralize automatically. Future migration should be explicit, page-scoped, and tested for menu behavior. |
-| Footer markup | Footer HTML repeats across pages. | Stable and SEO-safe, but global footer changes require many page edits. | Keep current footer. Use `docs/footer.md` as source for future manual alignment. |
-| Warning/tip labels | `.warning-box` and `.tip-box` exist, but some pages also use page-specific caution or note copy. | Message severity may become inconsistent. | Prefer standard `.warning-box` for risks and `.tip-box` for helpful notes. |
-
-## Reuse Policy For Future Work
-
-Before creating any new section or component:
-
-1. Search existing HTML and `style.css` for a similar component.
-2. Reuse the existing component if it fits the page purpose.
-3. Extend an existing page-family component if the structure is close.
-4. Create a new component only when no suitable existing pattern exists.
-5. If a reusable component is created, document where it should be reused and which pages may benefit later.
-
-## Current Standard Patterns
-
-| Pattern | Preferred existing source |
-|---|---|
-| Common header | `docs/header.md`, `index.html`, `esim.html`, `.header` CSS family |
-| Common footer | `docs/footer.md`, `.footer` CSS family |
-| Decision-guide hero | `accommodation.html`, `where-to-stay-in-seoul.html`, `.airport-page-hero` and stay hero patterns |
-| Practical quick answer | `accommodation.html`, `payments.html`, `apps.html` |
-| Comparison table | `.table-scroll`, `.info-table`, `accommodation.html`, `payments.html`, `maps.html` |
-| Decision cards | `accommodation.html`, `where-to-stay-in-seoul.html`, `payments.html`, `maps.html` |
-| Warning/tip boxes | `.warning-box`, `.tip-box` |
-| Checklist | `.checklist` in `checklist.html`, `accommodation.html`, `maps.html` |
-| FAQ | `.airport-faq`, `.payments-faq`, `.esim-faq`, semantic `<details>` |
-| CTA hierarchy | `.btn`, `.btn--primary`, `.btn--ghost`, `.btn--text`, `.airport-pill`, `.chip` |
-| Recognition image section | Real object or app screenshot, short meaning, practical explanation, next action |
-
-## Maintenance Notes
-
-- This audit did not modify HTML, CSS, JavaScript, images, or existing documentation.
-- `style.css` already has a usable token layer for colors, radius, shadow, typography, and layout width.
-- The biggest duplication risk is not visual inconsistency today; it is future growth of page-specific cards, FAQ wrappers, and hero variants.
-- Any future CSS consolidation should be handled as a separate approved task because shared CSS can affect many production pages.
-- Future object-heavy pages should be reviewed against the hybrid recognition UX direction before adding new sections, images, or animations.
+- broad pure-white or pure-black surfaces without an approved need
+- blue-led page themes, content cards, headings, or large guidance panels
+- arbitrary new HEX values
+- decorative images with no information role
+- AI-generated official objects or interfaces
+- excessive shadows, gradients, saturation, or multicolor infographic palettes
+- giant cards and empty spacing that slow scanning
+- image-only essential information
+- repeated commercial CTAs throughout body content
+- a one-off component when an approved equivalent exists
+- whole-site recoloring or migration without page-specific approval

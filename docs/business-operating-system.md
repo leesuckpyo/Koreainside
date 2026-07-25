@@ -9,9 +9,9 @@ Primary Responsibility : Business operating principles
 Source of Truth For : Business goal, revenue priority, KPI, growth loop, monetization rules, and business decision criteria
 Not Responsible For : Product UX principles, Codex behavior rules, documentation index, implementation details, page-specific standards, reference records, history records
 Higher Priority Documents : Current User Instruction
-Related Documents : PROJECT.md, AGENTS.md, docs/product-constitution.md, docs/standards-hub.md
+Related Documents : PROJECT.md, AGENTS.md, docs/product-constitution.md, docs/standards-hub.md, docs/content-writing-standard.md, docs/golden-page-template.md
 Change Policy : Owner approval required before change
-Last Reviewed : 2026-07-09
+Last Reviewed : 2026-07-25
 Review Trigger : Revenue model, KPI, target market priority, growth strategy, or business operating rule changes
 
 ================================================
@@ -127,6 +127,27 @@ UX를 해치지 않는다.
 SEO 때문에
 
 콘텐츠 품질을 해치지 않는다.
+
+================================================
+
+Affiliate Business and Operating Policy
+
+================================================
+
+This document is the source of truth for affiliate enrollment, revenue, performance, status, and operating policy.
+
+- Affiliate enrollment may be broad, but public application must remain selective.
+- Do not rank, feature, or recommend a partner more favorably merely because an affiliate application or partnership was approved.
+- Review placement, context, or removal when an affiliate placement produces no useful clicks, conversions, or revenue.
+- When a public affiliate link or tracking attribute changes, also review and verify the related classification in the administrator dashboard or measurement structure.
+- Never describe a pending, submitted, conditional, or unverified affiliate status as approved or complete.
+- Do not hide that an affiliate element may generate a commission for Korea Inside.
+- State that the user pays no additional cost only when the affiliate program's cost structure has been officially verified.
+- Do not claim "no additional cost" for an affiliate program whose cost structure has not been verified.
+
+Screen disclosure, decision context, wording, and CTA placement belong to `docs/content-writing-standard.md`.
+
+`docs/golden-page-template.md` is an implementation reference subordinate to this policy and the content-writing standard.
 
 ================================================
 

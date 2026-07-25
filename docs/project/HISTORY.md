@@ -8,3 +8,13 @@ Why this mattered:
 - The project moved closer to a practical decision-support structure for Korea travel essentials.
 
 Detailed change items are tracked in `CHANGELOG.md`.
+
+## Historical Roadmap Snapshot
+
+The former planning sequence was:
+
+Maps Guide → AREX Guide → Payments Guide → Apps Guide → Travel Checklist Guide
+
+This was a past roadmap sequence. It is preserved for context and is not the current execution order or approval to start any page.
+
+Completed page history remains in `CHANGELOG.md`. The Landing Page → Website → PWA → Mobile App principle remains recorded in `../decision-log.md` and `DECISIONS.md`.
