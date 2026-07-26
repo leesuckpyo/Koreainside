@@ -90,6 +90,225 @@ Do not change the common header, navigation, footer, or `common.js` without sepa
 - Keep labels, captions, and helper text legible on mobile.
 - Let line length and spacing support browser translation and text expansion.
 
+## Detailed Guide Typography Standard
+
+### Scope
+
+This standard governs long-form travel guides and problem-solving detail pages, including airport, transportation, accommodation, eSIM, map, payment, travel-tip, K-Beauty, and Taste Korea content. It applies to body copy, cards, FAQ answers, guidance boxes, comparison explanations, step-by-step instructions, and destination- or situation-specific details.
+
+Representative pages include:
+
+- `arex.html`
+- `airport-bus.html`
+- `airport-transfer.html`
+- `arrival.html`
+- `airport.html`
+- `tmoney.html`
+- `maps.html`
+- `taxi.html`
+- eSIM detail pages
+- long-form K-Beauty and Taste Korea detail pages
+
+### Official Type Scale
+
+#### General Detail-Page Body
+
+| Viewport | Font size | Line height |
+| --- | ---: | ---: |
+| Desktop | `18px` | `1.72` |
+| Mobile | `17px` | `1.68` |
+
+Apply this scale to:
+
+- general body paragraphs
+- body list items
+- definition-style content in `dd`
+- step-by-step explanations
+- destination- and situation-specific detail copy
+
+#### Card Body
+
+| Viewport | Font size | Line height |
+| --- | ---: | ---: |
+| Desktop | `18px` | `1.68` |
+| Mobile | `17px` | `1.65` |
+
+Do not reduce copy merely because it appears inside a card. Apply the same scale to choice cards, comparison cards, destination cards, and mistake-prevention cards.
+
+#### Guidance Box and Quick Answer Body
+
+| Viewport | Font size | Line height |
+| --- | ---: | ---: |
+| Desktop | `18px` | `1.72` |
+| Mobile | `17px` | `1.68` |
+
+Apply this scale to Quick Answer, Tip, Warning, Important Note, Editorial Decision, and Source Note copy.
+
+#### FAQ
+
+| Element | Viewport | Font size | Font weight | Line height |
+| --- | --- | ---: | ---: | ---: |
+| Question | Desktop | `17px` | `700` | `1.45` |
+| Question | Mobile | `16px` | `700` | `1.45` |
+| Answer | Desktop | `18px` | Inherited | `1.72` |
+| Answer | Mobile | `17px` | Inherited | `1.68` |
+
+Keep question and answer horizontal padding consistent within the FAQ component. Give long answers enough usable width for natural wrapping.
+
+#### Tables
+
+| Element | Viewport | Font size | Font weight | Line height |
+| --- | --- | ---: | ---: | ---: |
+| Title and header | Desktop | `15px` | `700` | `1.5` |
+| Title and header | Mobile | `14px` | `700` | `1.5` |
+| Body | Desktop | `15px` | Inherited | `1.6` |
+| Body | Mobile | `14px` | Inherited | `1.55` |
+
+#### Image Captions and Source Metadata
+
+Apply this scale to:
+
+- image captions
+- supporting information that displays only a URL or domain
+- research and verification dates
+- short source footnotes
+
+| Viewport | Font size | Line height |
+| --- | ---: | ---: |
+| Desktop | `14px` | `1.5` |
+| Mobile | `13px` | `1.5` |
+
+#### Official Source Lists
+
+Treat official source names and sentences explaining what was verified from each source as general detail-page body copy.
+
+| Viewport | Font size | Line height |
+| --- | ---: | ---: |
+| Desktop | `18px` | `1.72` |
+| Mobile | `17px` | `1.68` |
+
+- Do not reduce official source explanations to caption size.
+- Only URLs, research dates, verification dates, and short source metadata may use the `14px` desktop and `13px` mobile scale.
+- Official source descriptions remain subject to the rule that desktop detail-body copy must not be `16px` or below.
+
+#### Dates, Eyebrows, and Section Numbers
+
+Dates, eyebrows, section numbers, and equivalent metadata labels are outside the detail-body enlargement target. Preserve their established metadata hierarchy instead of forcing them to `18px`.
+
+### Heading Rules
+
+- Do not apply the body-copy `72–78ch` measure to `h1`, `h2`, or `h3`.
+- Let headings use enough of the available content container to wrap naturally.
+- Do not insert arbitrary `<br>` elements into `h1` or `h2`.
+- Do not reduce heading sizes excessively to force a preferred line count.
+- Adjust `max-width` and `line-height` before considering a size change.
+- Prefer two or three lines at most for desktop `h1` headings.
+- `text-wrap: balance` may be used in supporting browsers.
+- Let card titles and FAQ questions wrap naturally at word boundaries.
+
+Exact `h1`, `h2`, and `h3` sizes follow the approved page type and design. Heading sizes must not be used to compensate for undersized body copy.
+
+### Body Measure and Wrapping
+
+Apply the following rules only to long general body copy:
+
+- recommended reading measure: `72–78ch`
+- `text-align: left`
+- never use `text-align: justify`
+- `letter-spacing: normal`
+- `word-spacing: normal`
+- `word-break: normal`
+- `hyphens: none`
+- `overflow-wrap: break-word`
+
+Do not force the `72–78ch` measure onto:
+
+- `h1`, `h2`, or `h3`
+- section introductions
+- card titles
+- short card copy
+- FAQ questions
+- buttons
+- tabs
+- tables
+- guidance boxes
+
+Section introductions should use enough of the content width to avoid unnecessary extra lines from an overly narrow `max-width`.
+
+### Text Spacing
+
+- Keep `16px` between consecutive general paragraphs.
+- Keep at least `8px` between list items.
+- Keep `12px` between a card title and its body.
+- Keep `16px` between consecutive paragraphs inside a card.
+- Never reduce type size to equalize card heights.
+- Keep `12–16px` between an `h2` and its introduction.
+- Keep `24–32px` between a section introduction and its first content element.
+- Do not use empty space to inflate page length.
+
+### Common UI Exclusions
+
+Do not automatically apply the `18px` detail-body standard to:
+
+- the common header
+- navigation
+- the mobile hamburger control
+- buttons
+- menus
+- language controls
+- breadcrumbs
+- dates
+- eyebrows
+- section numbers
+- image captions
+- short table labels
+
+Do not change the root `html` or `body` font size to enlarge the whole interface. Scope the standard with explicit selectors for the detail-page content area.
+
+### Page-Level Consistency and Exceptions
+
+- Do not choose a new body size independently for each detail page.
+- Do not mix `15px`, `16px`, `17px`, and `18px` body copy across equivalent detail pages.
+- Apply the approved body values consistently to equivalent content roles.
+- Do not reduce card body copy to `15px` or below merely because it is inside a card.
+- Do not add an unapproved page-specific `font-size` override.
+- If an exception is necessary, report the target, reason, and replacement value and obtain user approval before implementation.
+
+### Rollout and QA
+
+The numeric scale is a site-wide standard, but implementation and QA proceed page by page.
+
+- Do not apply an unverified whole-site batch change.
+- Keep the approved values consistent from page to page.
+- Verify each page at `1440px`, `768px`, and `390px`.
+- Check cards, tables, buttons, headings, and shared UI for regressions.
+- Obtain approval for one rendered page before proceeding to the next page.
+
+In short: the values are shared globally; implementation and QA are sequential by page.
+
+### Codex Completion Criteria
+
+Confirm the following with browser computed styles:
+
+- general body: `18px` desktop and `17px` mobile
+- card body: `18px` desktop and `17px` mobile
+- FAQ answer: `18px` desktop and `17px` mobile
+- table body: `15px` desktop and `14px` mobile
+- image caption: `14px` desktop and `13px` mobile
+
+Also verify:
+
+- no desktop detail-body copy remains at `16px` or below
+- card body copy is not smaller than equivalent general body copy
+- no unapproved page-specific size override exists
+- the body measure is not applied to `h1` or `h2`
+- no `text-align: justify` exists in the detail content
+- the common header and navigation have not been enlarged
+- no page-level horizontal scrolling occurs at `1440px`, `768px`, or `390px`
+- buttons, tables, and cards wrap without layout defects
+
+If browser verification is unavailable, do not mark the implementation as passed. Report it as a Known QA Limitation.
+
 ## 5. Content Width and Spacing
 
 - Reuse established content-width and section-spacing patterns.
