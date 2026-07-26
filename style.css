@@ -8872,7 +8872,7 @@ ul, ol {
 }
 
 .arex-page main .arex-hero {
-  padding: 48px 0 clamp(3rem, 6vw, 5rem);
+  padding: 48px 0 64px;
   background:
     radial-gradient(circle at 88% 12%, rgba(213, 159, 58, 0.14), transparent 28rem),
     #F7F3EA;
@@ -8919,6 +8919,19 @@ ul, ol {
   font-size: clamp(2.45rem, 5.6vw, 5.15rem);
   line-height: 1.02;
   letter-spacing: -0.05em;
+}
+
+.arex-page main .arex-hero-visual {
+  width: 100%;
+  margin: 0 0 1.5rem;
+  background: #FFFDF8;
+  border: 1px solid #D8D0C2;
+}
+
+.arex-page main .arex-hero-visual img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .arex-page main .transfer-hero-answer {
@@ -9006,7 +9019,7 @@ ul, ol {
 }
 
 .arex-page main .arex-section {
-  padding: clamp(3.75rem, 7vw, 6.5rem) 0;
+  padding: clamp(3.5rem, 5vw, 4.5rem) 0;
 }
 
 .arex-page main .transfer-chapter--light {
@@ -9019,7 +9032,7 @@ ul, ol {
 
 .arex-page main .transfer-chapter__header {
   max-width: 850px;
-  margin-bottom: 2.25rem;
+  margin-bottom: 1.75rem;
 }
 
 .arex-page main .transfer-chapter h2 {
@@ -9032,7 +9045,7 @@ ul, ol {
 }
 
 .arex-page main .transfer-chapter h3 {
-  margin: 0 0 0.65rem;
+  margin: 0 0 0.7rem;
   color: #1D2B27;
   font-size: clamp(1.2rem, 2vw, 1.55rem);
   line-height: 1.2;
@@ -9042,11 +9055,12 @@ ul, ol {
 .arex-page main .transfer-chapter li,
 .arex-page main .transfer-chapter dd {
   color: #514C43;
-  line-height: 1.76;
+  line-height: 1.72;
+  text-align: left;
 }
 
 .arex-page main .transfer-chapter p + p {
-  margin-top: 1.1rem;
+  margin-top: 1rem;
 }
 
 .arex-page main .transfer-chapter strong {
@@ -9055,7 +9069,7 @@ ul, ol {
 
 .arex-page main .transfer-chapter__answer {
   max-width: 760px;
-  margin: 1rem 0 0;
+  margin: 0.875rem 0 0;
   color: #5E584E;
   font-size: clamp(1.05rem, 2vw, 1.2rem);
 }
@@ -9354,7 +9368,7 @@ ul, ol {
 
 @media (max-width: 720px) {
   .arex-page main .arex-hero {
-    padding-top: 40px;
+    padding: 40px 0 48px;
   }
 
   .arex-page main .arex-hero__title {
@@ -9368,6 +9382,10 @@ ul, ol {
 
   .arex-page main .transfer-fast-choice > div {
     padding: 1.2rem;
+  }
+
+  .arex-page main .transfer-chapter__header {
+    margin-bottom: 1.375rem;
   }
 
   .arex-page main .transfer-fast-choice,
@@ -9391,6 +9409,6 @@ ul, ol {
   }
 
   .arex-page main .arex-section {
-    padding: 3.75rem 0;
+    padding: 2.75rem 0;
   }
 }
