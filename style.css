@@ -8855,13 +8855,42 @@ ul, ol {
   color: #514C43;
 }
 
-.arex-page main .page-hero {
-  background: #F7F3EA;
-  border-bottom-color: #D8D0C2;
+.arex-page main a,
+.arex-page main a:visited {
+  color: #A43120;
+}
+
+.arex-page main a:hover {
+  color: #7D2418;
+}
+
+.arex-page main a:focus-visible,
+.arex-page main summary:focus-visible,
+.arex-page main [tabindex="0"]:focus-visible {
+  outline: 3px solid #B73722;
+  outline-offset: 3px;
+}
+
+.arex-page main .arex-hero {
+  padding: 48px 0 clamp(3rem, 6vw, 5rem);
+  background:
+    radial-gradient(circle at 88% 12%, rgba(213, 159, 58, 0.14), transparent 28rem),
+    #F7F3EA;
+  border-bottom: 1px solid #D8D0C2;
+}
+
+.arex-page main .arex-hero__copy {
+  width: 100%;
+}
+
+.arex-page main .page-hero__breadcrumb,
+.arex-page main .transfer-review-date {
+  color: #746C60;
+  font-size: 0.9rem;
 }
 
 .arex-page main .page-hero__breadcrumb {
-  color: #746C60;
+  margin: 0 0 36px;
 }
 
 .arex-page main .page-hero__breadcrumb a,
@@ -8869,115 +8898,499 @@ ul, ol {
   color: #514C43;
 }
 
-.arex-page main .page-hero__title {
+.arex-page main .eyebrow,
+.arex-page main .transfer-chapter__number,
+.arex-page main .arex-station-grid__service {
+  margin: 0 0 0.7rem;
+  color: #9B3322;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.arex-page main .arex-hero .eyebrow {
+  margin-bottom: 14px;
+}
+
+.arex-page main .arex-hero__title {
+  max-width: 1050px;
+  margin: 24px 0 1.5rem;
   color: #14130F;
+  font-size: clamp(2.45rem, 5.6vw, 5.15rem);
+  line-height: 1.02;
+  letter-spacing: -0.05em;
 }
 
-.arex-page main .page-hero__desc {
-  color: #514C43;
-}
-
-.arex-page main .guide-content {
-  background: #FFFDF8;
-}
-
-.arex-page main .guide-content h2,
-.arex-page main .guide-content h3 {
-  color: #14130F;
-}
-
-.arex-page main .guide-content p,
-.arex-page main .guide-content ul,
-.arex-page main .guide-content ol {
-  color: #514C43;
-}
-
-.arex-page main .guide-content strong {
-  color: #14130F;
-}
-
-.arex-page main .guide-content li::marker {
-  color: #B73722;
-}
-
-.arex-page main a,
-.arex-page main a:visited {
-  color: #B73722;
-}
-
-.arex-page main a:hover {
-  color: #8F2A1B;
-}
-
-.arex-page main a:focus-visible,
-.arex-page main summary:focus-visible {
-  outline: 3px solid #B73722;
-  outline-offset: 3px;
-}
-
-.arex-page main .tip-box {
-  background: #14130F;
-  border-left-color: #B73722;
-}
-
-.arex-page main .tip-box__label {
-  color: #D59F3A;
-}
-
-.arex-page main .tip-box p {
+.arex-page main .transfer-hero-answer {
+  width: 100%;
+  padding: 1.45rem 1.6rem;
+  background: #1D2B27;
+  border-left: 5px solid #D59F3A;
   color: #FFFDF8;
 }
 
-.arex-page main .info-table th,
-.arex-page main .info-table td {
-  border-bottom-color: #D8D0C2;
+.arex-page main .transfer-hero-answer p {
+  max-width: 78ch;
+  margin: 0;
+  color: #FFFDF8;
+  font-size: clamp(1rem, 2vw, 1.16rem);
+  line-height: 1.72;
 }
 
-.arex-page main .info-table th {
-  background: #F1EBDF;
-  color: #14130F;
+.arex-page main .transfer-hero-answer p + p {
+  margin-top: 1rem;
 }
 
-.arex-page main .info-table td {
+.arex-page main .transfer-hero-answer a,
+.arex-page main .transfer-hero-answer a:visited {
+  color: #F1C66E;
+}
+
+.arex-page main .transfer-fast-choice {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.arex-page main .transfer-fast-choice > div {
+  min-width: 0;
+  padding: 1.35rem 1.4rem;
   background: #FFFDF8;
+  border: 1px solid #D8D0C2;
+  border-top: 4px solid #9B3322;
+}
+
+.arex-page main .transfer-fast-choice p {
+  margin: 0;
+}
+
+.arex-page main .transfer-fast-choice p + p {
+  max-width: 58ch;
+  margin-top: 0.6rem;
+  line-height: 1.68;
+}
+
+.arex-page main .transfer-fast-choice strong {
+  color: #14130F;
+  font-size: 1.08rem;
+}
+
+.arex-page main .arex-quick-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  width: 100%;
+  margin-top: 1.5rem;
+}
+
+.arex-page main .arex-pill,
+.arex-page main .arex-pill:visited {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.65rem 0.95rem;
+  background: #EEE6D8;
+  border: 1px solid #D8D0C2;
+  color: #2D3B36;
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.arex-page main .arex-pill:hover {
+  background: #2D3B36;
+  color: #FFFDF8;
+}
+
+.arex-page main .arex-section {
+  padding: clamp(3.75rem, 7vw, 6.5rem) 0;
+}
+
+.arex-page main .transfer-chapter--light {
+  background: #FFFDF8;
+}
+
+.arex-page main .transfer-chapter--cream {
+  background: #F3EDE2;
+}
+
+.arex-page main .transfer-chapter__header {
+  max-width: 850px;
+  margin-bottom: 2.25rem;
+}
+
+.arex-page main .transfer-chapter h2 {
+  max-width: 900px;
+  margin: 0;
+  color: #14130F;
+  font-size: clamp(2rem, 4.3vw, 3.65rem);
+  line-height: 1.04;
+  letter-spacing: -0.04em;
+}
+
+.arex-page main .transfer-chapter h3 {
+  margin: 0 0 0.65rem;
+  color: #1D2B27;
+  font-size: clamp(1.2rem, 2vw, 1.55rem);
+  line-height: 1.2;
+}
+
+.arex-page main .transfer-chapter p,
+.arex-page main .transfer-chapter li,
+.arex-page main .transfer-chapter dd {
   color: #514C43;
+  line-height: 1.76;
 }
 
-.arex-page main .info-table tbody tr:nth-child(even) td {
-  background: #FBF8F1;
+.arex-page main .transfer-chapter p + p {
+  margin-top: 1.1rem;
 }
 
-.arex-page main .guide-content details {
-  background: #FBF8F1;
-}
-
-.arex-page main .guide-content details[open] {
-  background: #F5EDE3;
-}
-
-.arex-page main .guide-content summary {
+.arex-page main .transfer-chapter strong {
   color: #14130F;
 }
 
-.arex-page main .guide-content details p {
+.arex-page main .transfer-chapter__answer {
+  max-width: 760px;
+  margin: 1rem 0 0;
+  color: #5E584E;
+  font-size: clamp(1.05rem, 2vw, 1.2rem);
+}
+
+.arex-page main .transfer-chapter > .container > p {
+  max-width: 78ch;
+}
+
+.arex-page main .transfer-option-profile,
+.arex-page main .transfer-terminal-details,
+.arex-page main .arex-transfer-grid > div {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.arex-page main .transfer-option-profile > div,
+.arex-page main .transfer-terminal-details > div,
+.arex-page main .arex-transfer-grid > div > div {
+  min-width: 0;
+  padding: 1.4rem;
+  background: #FFFDF8;
+  border: 1px solid #D8D0C2;
+}
+
+.arex-page main .transfer-option-profile p {
+  max-width: 58ch;
+}
+
+.arex-page main .transfer-source-note {
+  margin-top: 1.5rem;
+  padding: 1.3rem 1.4rem;
+  background: #E9E1D3;
+  border-left: 4px solid #9B3322;
+}
+
+.arex-page main .transfer-source-note p {
+  margin: 0;
+}
+
+.arex-page main .transfer-source-note__label {
+  margin-bottom: 0.4rem !important;
+  color: #7D2418 !important;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.arex-page main .transfer-comparison {
+  max-width: 100%;
+  overflow-x: auto;
+  border: 1px solid #CFC5B5;
+  background: #FFFDF8;
+  -webkit-overflow-scrolling: touch;
+}
+
+.arex-page main .transfer-comparison table {
+  width: 100%;
+  min-width: 790px;
+  border-collapse: collapse;
+}
+
+.arex-page main .transfer-comparison caption {
+  padding: 1rem;
+  background: #1D2B27;
+  color: #FFFDF8;
+  font-weight: 800;
+  text-align: left;
+}
+
+.arex-page main .transfer-comparison th,
+.arex-page main .transfer-comparison td {
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid #D8D0C2;
   color: #514C43;
+  text-align: left;
+  vertical-align: top;
+}
+
+.arex-page main .transfer-comparison thead th {
+  background: #E8DFD0;
+  color: #14130F;
+}
+
+.arex-page main .transfer-comparison tbody th {
+  width: 22%;
+  background: #F3EDE2;
+  color: #1D2B27;
+}
+
+.arex-page main .transfer-comparison tbody tr:nth-child(even) td {
+  background: #FBF8F1;
+}
+
+.arex-page main .arex-station-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.arex-page main .arex-station-grid article {
+  padding: 1.4rem;
+  background: #FFFDF8;
+  border: 1px solid #D8D0C2;
+  border-top: 4px solid #2D3B36;
+}
+
+.arex-page main .arex-station-grid p {
+  margin: 0.65rem 0 0;
+}
+
+.arex-page main .arex-station-grid__service {
+  margin: 0 0 0.65rem !important;
+}
+
+.arex-page main .transfer-traveler-matrix > div {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.arex-page main .transfer-traveler-matrix article {
+  padding: 1.4rem;
+  background: #FFFDF8;
+  border: 1px solid #D8D0C2;
+}
+
+.arex-page main .transfer-traveler-matrix dl {
+  display: grid;
+  gap: 0.35rem 0.8rem;
+  grid-template-columns: minmax(7rem, 0.34fr) 1fr;
+  margin: 0;
+}
+
+.arex-page main .transfer-traveler-matrix dt {
+  color: #7D2418;
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.arex-page main .transfer-traveler-matrix dd {
+  margin: 0 0 0.45rem;
+}
+
+.arex-page main .transfer-terminal-flow {
+  margin: 0;
+  padding: 1.5rem;
+  background: #1D2B27;
+  color: #FFFDF8;
+}
+
+.arex-page main .transfer-terminal-flow figcaption {
+  margin-bottom: 1.25rem;
+  color: #F1C66E;
+  font-weight: 800;
+}
+
+.arex-page main .transfer-terminal-flow > div {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.arex-page main .transfer-terminal-lane {
+  padding: 1.25rem;
+  background: #FFFDF8;
+}
+
+.arex-page main .transfer-terminal-lane ol {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.arex-page main .transfer-terminal-lane li + li {
+  margin-top: 0.45rem;
+}
+
+.arex-page main .transfer-mistake-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.arex-page main .transfer-mistake-list li {
+  position: relative;
+  padding: 1rem 1rem 1rem 2.8rem;
+  background: #FFFDF8;
+  border: 1px solid #D8D0C2;
+}
+
+.arex-page main .transfer-mistake-list li::before {
+  content: "×";
+  position: absolute;
+  top: 0.85rem;
+  left: 1rem;
+  color: #B73722;
+  font-size: 1.35rem;
+  font-weight: 900;
+}
+
+.arex-page main .airport-faq {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.arex-page main .airport-faq details {
+  padding: 1rem 1.15rem;
+  background: #FFFDF8;
+  border: 1px solid #D8D0C2;
+}
+
+.arex-page main .airport-faq details[open] {
+  border-color: #9B3322;
+}
+
+.arex-page main .airport-faq summary {
+  color: #14130F;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.arex-page main .airport-faq p {
+  margin: 0.75rem 0 0;
+}
+
+.arex-page main .transfer-official-sources {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem 2rem;
+  padding-left: 1.25rem;
 }
 
 .arex-page main .related-links {
-  border-top-color: #D8D0C2;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #D8D0C2;
 }
 
 .arex-page main .related-links__title {
   color: #746C60;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
 .arex-page main .chip,
 .arex-page main .chip:visited {
-  background: #F1EBDF;
-  color: #14130F;
+  display: inline-block;
+  margin: 0.3rem 0.3rem 0.3rem 0;
+  padding: 0.62rem 0.82rem;
+  background: #E8DFD0;
+  color: #1D2B27;
+  font-weight: 700;
+  text-decoration: none;
 }
 
 .arex-page main .chip:hover {
-  background: #14130F;
+  background: #1D2B27;
   color: #FFFDF8;
+}
+
+.arex-page main .arex-infographic {
+  width: 100%;
+  max-width: 100%;
+  margin: 2rem 0;
+  background: #FFFDF8;
+  border: 1px solid #D8D0C2;
+}
+
+.arex-page main .arex-infographic img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+.arex-page main .arex-infographic figcaption {
+  padding: 0.8rem 1rem;
+  border-top: 1px solid #D8D0C2;
+  color: #5E584E;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 960px) {
+  .arex-page main .arex-station-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .arex-page main .arex-hero {
+    padding-top: 40px;
+  }
+
+  .arex-page main .arex-hero__title {
+    font-size: clamp(2.3rem, 10.5vw, 3.2rem);
+    line-height: 1.04;
+  }
+
+  .arex-page main .transfer-hero-answer {
+    padding: 1.25rem;
+  }
+
+  .arex-page main .transfer-fast-choice > div {
+    padding: 1.2rem;
+  }
+
+  .arex-page main .transfer-fast-choice,
+  .arex-page main .transfer-option-profile,
+  .arex-page main .transfer-terminal-details,
+  .arex-page main .arex-transfer-grid > div,
+  .arex-page main .arex-station-grid,
+  .arex-page main .transfer-traveler-matrix > div,
+  .arex-page main .transfer-terminal-flow > div,
+  .arex-page main .transfer-mistake-list,
+  .arex-page main .transfer-official-sources {
+    grid-template-columns: 1fr;
+  }
+
+  .arex-page main .transfer-traveler-matrix dl {
+    grid-template-columns: 1fr;
+  }
+
+  .arex-page main .transfer-traveler-matrix dd {
+    margin-bottom: 0.8rem;
+  }
+
+  .arex-page main .arex-section {
+    padding: 3.75rem 0;
+  }
 }
