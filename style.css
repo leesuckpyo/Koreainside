@@ -8916,9 +8916,8 @@ ul, ol {
   max-width: 1050px;
   margin: 24px 0 1.5rem;
   color: #14130F;
-  font-size: clamp(2.45rem, 5.6vw, 5.15rem);
-  line-height: 1.02;
-  letter-spacing: -0.05em;
+  font-size: clamp(2.5rem, 3.9vw, 3.5rem);
+  line-height: 1.08;
 }
 
 .arex-page main .arex-hero-visual {
@@ -8943,11 +8942,16 @@ ul, ol {
 }
 
 .arex-page main .transfer-hero-answer p {
-  max-width: 78ch;
   margin: 0;
   color: #FFFDF8;
-  font-size: clamp(1rem, 2vw, 1.16rem);
+  font-size: 18px;
   line-height: 1.72;
+  letter-spacing: normal;
+  text-align: left;
+  word-break: normal;
+  word-spacing: normal;
+  hyphens: none;
+  overflow-wrap: break-word;
 }
 
 .arex-page main .transfer-hero-answer p + p {
@@ -8976,6 +8980,14 @@ ul, ol {
 
 .arex-page main .transfer-fast-choice p {
   margin: 0;
+  font-size: 18px;
+  line-height: 1.68;
+  letter-spacing: normal;
+  text-align: left;
+  word-break: normal;
+  word-spacing: normal;
+  hyphens: none;
+  overflow-wrap: break-word;
 }
 
 .arex-page main .transfer-fast-choice p + p {
@@ -8986,7 +8998,7 @@ ul, ol {
 
 .arex-page main .transfer-fast-choice strong {
   color: #14130F;
-  font-size: 1.08rem;
+  font-size: inherit;
 }
 
 .arex-page main .arex-quick-links {
@@ -9039,24 +9051,40 @@ ul, ol {
   max-width: 900px;
   margin: 0;
   color: #14130F;
-  font-size: clamp(2rem, 4.3vw, 3.65rem);
-  line-height: 1.04;
-  letter-spacing: -0.04em;
+  font-size: clamp(2.25rem, 3vw, 2.75rem);
+  line-height: 1.12;
 }
 
 .arex-page main .transfer-chapter h3 {
   margin: 0 0 0.7rem;
   color: #1D2B27;
-  font-size: clamp(1.2rem, 2vw, 1.55rem);
+  font-size: clamp(1.5rem, 2vw, 1.75rem);
   line-height: 1.2;
+}
+
+.arex-page main .arex-hero__title,
+.arex-page main .transfer-chapter h2,
+.arex-page main .transfer-chapter h3 {
+  letter-spacing: normal;
+  text-align: left;
+  word-break: normal;
+  word-spacing: normal;
+  hyphens: none;
+  overflow-wrap: break-word;
 }
 
 .arex-page main .transfer-chapter p,
 .arex-page main .transfer-chapter li,
 .arex-page main .transfer-chapter dd {
   color: #514C43;
+  font-size: 18px;
   line-height: 1.72;
+  letter-spacing: normal;
   text-align: left;
+  word-break: normal;
+  word-spacing: normal;
+  hyphens: none;
+  overflow-wrap: break-word;
 }
 
 .arex-page main .transfer-chapter p + p {
@@ -9095,8 +9123,15 @@ ul, ol {
   border: 1px solid #D8D0C2;
 }
 
-.arex-page main .transfer-option-profile p {
-  max-width: 58ch;
+.arex-page main .transfer-option-profile p,
+.arex-page main .transfer-terminal-details p,
+.arex-page main .arex-transfer-grid > div > div p,
+.arex-page main .arex-station-grid article p,
+.arex-page main .transfer-traveler-matrix article dd,
+.arex-page main .transfer-terminal-lane li,
+.arex-page main .transfer-mistake-list li {
+  font-size: 18px;
+  line-height: 1.68;
 }
 
 .arex-page main .transfer-source-note {
@@ -9108,6 +9143,8 @@ ul, ol {
 
 .arex-page main .transfer-source-note p {
   margin: 0;
+  font-size: 18px;
+  line-height: 1.72;
 }
 
 .arex-page main .transfer-source-note__label {
@@ -9137,7 +9174,9 @@ ul, ol {
   padding: 1rem;
   background: #1D2B27;
   color: #FFFDF8;
-  font-weight: 800;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.5;
   text-align: left;
 }
 
@@ -9146,8 +9185,18 @@ ul, ol {
   padding: 0.9rem 1rem;
   border-bottom: 1px solid #D8D0C2;
   color: #514C43;
+  font-size: 15px;
   text-align: left;
   vertical-align: top;
+}
+
+.arex-page main .transfer-comparison th {
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.arex-page main .transfer-comparison td {
+  line-height: 1.6;
 }
 
 .arex-page main .transfer-comparison thead th {
@@ -9292,12 +9341,16 @@ ul, ol {
 
 .arex-page main .airport-faq summary {
   color: #14130F;
-  font-weight: 800;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.45;
   cursor: pointer;
 }
 
 .arex-page main .airport-faq p {
   margin: 0.75rem 0 0;
+  font-size: 18px;
+  line-height: 1.72;
 }
 
 .arex-page main .transfer-official-sources {
@@ -9305,6 +9358,11 @@ ul, ol {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.8rem 2rem;
   padding-left: 1.25rem;
+}
+
+.arex-page main .transfer-official-sources li {
+  font-size: 18px;
+  line-height: 1.72;
 }
 
 .arex-page main .related-links {
@@ -9356,8 +9414,37 @@ ul, ol {
   padding: 0.8rem 1rem;
   border-top: 1px solid #D8D0C2;
   color: #5E584E;
-  font-size: 0.9rem;
+  font-size: 14px;
   line-height: 1.5;
+}
+
+.arex-page main .transfer-comparison caption,
+.arex-page main .transfer-comparison th,
+.arex-page main .transfer-comparison td,
+.arex-page main .airport-faq summary,
+.arex-page main .arex-infographic figcaption {
+  letter-spacing: normal;
+  text-align: left;
+  word-break: normal;
+  word-spacing: normal;
+  hyphens: none;
+  overflow-wrap: break-word;
+}
+
+.arex-page main .transfer-chapter .transfer-chapter__number,
+.arex-page main .transfer-chapter .arex-station-grid__service {
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+}
+
+.arex-page main .transfer-chapter .transfer-source-note__label {
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+}
+
+.arex-page main .transfer-chapter .related-links__title {
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
 }
 
 @media (max-width: 960px) {
@@ -9372,8 +9459,18 @@ ul, ol {
   }
 
   .arex-page main .arex-hero__title {
-    font-size: clamp(2.3rem, 10.5vw, 3.2rem);
-    line-height: 1.04;
+    font-size: clamp(2.125rem, 8.8vw, 2.25rem);
+    line-height: 1.1;
+  }
+
+  .arex-page main .transfer-chapter h2 {
+    font-size: clamp(1.875rem, 7.5vw, 2rem);
+    line-height: 1.15;
+  }
+
+  .arex-page main .transfer-chapter h3 {
+    font-size: 1.375rem;
+    line-height: 1.2;
   }
 
   .arex-page main .transfer-hero-answer {
@@ -9382,6 +9479,54 @@ ul, ol {
 
   .arex-page main .transfer-fast-choice > div {
     padding: 1.2rem;
+  }
+
+  .arex-page main .transfer-hero-answer p,
+  .arex-page main .transfer-chapter p,
+  .arex-page main .transfer-chapter li,
+  .arex-page main .transfer-chapter dd,
+  .arex-page main .transfer-source-note p,
+  .arex-page main .transfer-official-sources li {
+    font-size: 17px;
+    line-height: 1.68;
+  }
+
+  .arex-page main .transfer-fast-choice p,
+  .arex-page main .transfer-option-profile p,
+  .arex-page main .transfer-terminal-details p,
+  .arex-page main .arex-transfer-grid > div > div p,
+  .arex-page main .arex-station-grid article p,
+  .arex-page main .transfer-traveler-matrix article dd,
+  .arex-page main .transfer-terminal-lane li,
+  .arex-page main .transfer-mistake-list li {
+    font-size: 17px;
+    line-height: 1.65;
+  }
+
+  .arex-page main .airport-faq summary {
+    font-size: 16px;
+    line-height: 1.45;
+  }
+
+  .arex-page main .airport-faq p {
+    font-size: 17px;
+    line-height: 1.68;
+  }
+
+  .arex-page main .transfer-comparison caption,
+  .arex-page main .transfer-comparison th {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .arex-page main .transfer-comparison td {
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  .arex-page main .arex-infographic figcaption {
+    font-size: 13px;
+    line-height: 1.5;
   }
 
   .arex-page main .transfer-chapter__header {
