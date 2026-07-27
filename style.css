@@ -5999,11 +5999,6 @@ ul, ol {
   border-bottom: 1px solid #D8D0C2;
 }
 
-.accommodation-page .accommodation-area-intro__inner {
-  width: 100%;
-  max-width: none;
-}
-
 .accommodation-page .accommodation-area-intro .section__title {
   margin-bottom: 10px;
   font-size: clamp(1.45rem, 2.4vw, 1.9rem);
@@ -6337,7 +6332,7 @@ ul, ol {
   align-self: stretch;
   display: grid;
   gap: 12px;
-  grid-template-rows: auto minmax(72px, auto) minmax(154px, auto) minmax(280px, auto) minmax(0, 1fr) auto;
+  grid-template-rows: auto 96px 154px 487px minmax(0, 1fr) 76px;
   height: 100%;
   border-color: #D8D0C2;
   background: #FFFDF8;
@@ -6455,8 +6450,8 @@ ul, ol {
   display: grid;
   gap: 8px;
   grid-row: 4;
-  grid-template-rows: repeat(2, minmax(136px, 1fr));
-  min-height: 280px;
+  grid-template-rows: 224px 255px;
+  min-height: 0;
 }
 
 .accommodation-page #area-comparison .stay-area-decision p {
@@ -6465,7 +6460,7 @@ ul, ol {
   justify-content: flex-start;
   height: 100%;
   margin: 0;
-  min-height: 136px;
+  min-height: 0;
   padding: 10px 11px;
   border: 1px solid #D8D0C2;
   border-left: 4px solid var(--blue-accent);
@@ -6763,7 +6758,6 @@ ul, ol {
 .accommodation-page main .section__header,
 .accommodation-page main .section__subtitle,
 .accommodation-page main .accommodation-decision-panel__header,
-.accommodation-page main .accommodation-area-intro__inner,
 .accommodation-page main .accommodation-area-intro p {
   width: 100%;
   max-width: none;
