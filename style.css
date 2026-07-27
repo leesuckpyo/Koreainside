@@ -9043,12 +9043,14 @@ ul, ol {
 }
 
 .arex-page main .transfer-chapter__header {
-  max-width: 850px;
+  width: 100%;
+  max-width: none;
   margin-bottom: 1.75rem;
 }
 
 .arex-page main .transfer-chapter h2 {
-  max-width: 900px;
+  width: 100%;
+  max-width: none;
   margin: 0;
   color: #14130F;
   font-size: clamp(2.25rem, 3vw, 2.75rem);
@@ -9096,14 +9098,24 @@ ul, ol {
 }
 
 .arex-page main .transfer-chapter__answer {
-  max-width: 760px;
+  width: 100%;
+  max-width: none;
   margin: 0.875rem 0 0;
   color: #5E584E;
   font-size: clamp(1.05rem, 2vw, 1.2rem);
 }
 
 .arex-page main .transfer-chapter > .container > p {
-  max-width: 78ch;
+  width: 100%;
+  max-width: none;
+}
+
+.arex-page main .transfer-chapter > .container > p + h3 {
+  margin-top: 1.5rem;
+}
+
+.arex-page main .transfer-chapter > .container > h3 + p {
+  margin-top: 0.5rem;
 }
 
 .arex-page main .transfer-option-profile,
