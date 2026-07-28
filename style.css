@@ -12434,3 +12434,951 @@ ul, ol {
 }
 
 /* End First-Time Visitors Stay Seoul */
+
+/* Luxury Hotels Stay Seoul */
+.luxury-stay-page main {
+  background: #F7F3EA;
+  color: #514C43;
+}
+
+.luxury-stay-page main a {
+  color: #3F5D52;
+}
+
+.luxury-stay-page main a:hover,
+.luxury-stay-page main a:focus {
+  color: #1D2B27;
+}
+
+.luxury-stay-page main .airport-page-hero {
+  padding: 64px 0 72px;
+  background: #F7F3EA;
+}
+
+.luxury-stay-page main .airport-page-hero__grid {
+  align-items: center;
+  gap: 48px;
+}
+
+.luxury-stay-page main .airport-page-hero__copy {
+  max-width: none;
+}
+
+.luxury-stay-page main .page-hero__breadcrumb {
+  margin-bottom: 18px;
+  color: #686158;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.luxury-stay-page main .page-hero__breadcrumb a {
+  color: #686158;
+}
+
+.luxury-stay-page main .eyebrow {
+  color: #3F5D52;
+}
+
+.luxury-stay-page main .airport-page-hero__title {
+  max-width: none;
+  margin-bottom: 22px;
+  color: #14130F;
+  font-size: 56px;
+  line-height: 1.08;
+  letter-spacing: normal;
+  text-wrap: balance;
+  word-break: normal;
+  hyphens: none;
+}
+
+.luxury-stay-page main .airport-page-hero__desc,
+.luxury-stay-page main .section__subtitle {
+  max-width: none;
+  color: #514C43;
+  font-size: 18px;
+  line-height: 1.72;
+  letter-spacing: normal;
+  text-align: left;
+  word-break: normal;
+  word-spacing: normal;
+  hyphens: none;
+  overflow-wrap: break-word;
+}
+
+.luxury-stay-page main .airport-quick-links {
+  align-items: stretch;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.luxury-stay-page main .airport-pill {
+  display: inline-flex;
+  min-height: 46px;
+  align-items: center;
+  justify-content: center;
+  padding: 11px 18px;
+  border: 1px solid #D8D0C2;
+  border-radius: var(--radius-md);
+  background: #FFFDF8;
+  color: #1D2B27;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.luxury-stay-page main .airport-pill:first-child {
+  border-color: #3F5D52;
+  background: #3F5D52;
+  color: #FFFDF8;
+}
+
+.luxury-stay-page main .airport-pill:hover,
+.luxury-stay-page main .airport-pill:focus {
+  border-color: #3F5D52;
+  background: #F3EDE2;
+  color: #1D2B27;
+  transform: none;
+}
+
+.luxury-stay-page main .airport-pill:first-child:hover,
+.luxury-stay-page main .airport-pill:first-child:focus {
+  border-color: #1D2B27;
+  background: #1D2B27;
+  color: #FFFDF8;
+}
+
+.luxury-stay-page main .airport-page-hero__grid > .airport-transport-card {
+  position: relative;
+  min-width: 0;
+  height: auto;
+  padding: 32px;
+  overflow: hidden;
+  border: 1px solid #D8D0C2;
+  border-radius: var(--radius-lg);
+  background: #FFFDF8;
+  box-shadow: var(--shadow-sm);
+}
+
+.luxury-stay-page main .airport-page-hero__grid > .airport-transport-card::before {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 6px;
+  background: #3F5D52;
+  content: "";
+}
+
+.luxury-stay-page main .airport-page-hero__grid > .airport-transport-card:hover {
+  border-color: #D8D0C2;
+  background: #FFFDF8;
+  box-shadow: var(--shadow-sm);
+  transform: none;
+}
+
+.luxury-stay-page main .airport-badge {
+  border: 0;
+  background: #E5ECE7;
+  color: #3F5D52;
+}
+
+.luxury-stay-page main .luxury-practical-answer h3 {
+  margin: 0 0 14px;
+  color: #1D2B27;
+  font-size: 28px;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+.luxury-stay-page main .luxury-practical-answer p,
+.luxury-stay-page main .luxury-practical-answer li {
+  color: #514C43;
+  font-size: 18px;
+  line-height: 1.68;
+}
+
+.luxury-stay-page main .luxury-practical-answer p {
+  margin: 0 0 16px;
+}
+
+.luxury-stay-page main .luxury-practical-answer li + li {
+  margin-top: 8px;
+}
+
+.luxury-stay-page main .airport-section {
+  padding: 68px 0;
+  background: #F7F3EA;
+}
+
+.luxury-stay-page main .airport-section--gray {
+  background: #F3EDE2;
+}
+
+.luxury-stay-page main .section__header {
+  width: 100%;
+  max-width: none;
+  margin-bottom: 32px;
+}
+
+.luxury-stay-page main .section__header--center .section__subtitle {
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+}
+
+.luxury-stay-page main .section__title,
+.luxury-stay-page main .section__title--lg {
+  width: 100%;
+  max-width: none;
+  color: #14130F;
+  font-size: clamp(2.25rem, 3vw, 2.75rem);
+  line-height: 1.12;
+  letter-spacing: normal;
+  text-wrap: balance;
+  word-break: normal;
+  word-spacing: normal;
+  hyphens: none;
+  overflow-wrap: break-word;
+}
+
+.luxury-stay-page main .section__subtitle {
+  margin-top: 0;
+}
+
+.luxury-stay-page main .stay-decision-grid,
+.luxury-stay-page main .airport-problem-grid,
+.luxury-stay-page main .guide-grid {
+  align-items: stretch;
+  gap: 18px;
+}
+
+.luxury-stay-page main .stay-decision-card,
+.luxury-stay-page main .airport-problem-card,
+.luxury-stay-page main .guide-card,
+.luxury-stay-page main .airport-faq details {
+  min-width: 0;
+  height: 100%;
+  padding: 24px;
+  border: 1px solid #D8D0C2;
+  border-radius: var(--radius-lg);
+  background: #FFFDF8;
+  box-shadow: var(--shadow-sm);
+}
+
+.luxury-stay-page main .stay-decision-card:hover,
+.luxury-stay-page main .airport-problem-card:hover,
+.luxury-stay-page main .guide-card:hover,
+.luxury-stay-page main .guide-card:focus {
+  border-color: #3F5D52;
+  background: #FFFDF8;
+  box-shadow: var(--shadow-md);
+  color: #1D2B27;
+  transform: translateY(-1px);
+}
+
+.luxury-stay-page main .airport-problem-card__title,
+.luxury-stay-page main .guide-card h3,
+.luxury-stay-page main .luxury-editorial-item h3,
+.luxury-stay-page main .luxury-summary-item h3 {
+  margin: 0 0 12px;
+  color: #1D2B27;
+  font-size: clamp(1.5rem, 2vw, 1.75rem);
+  line-height: 1.2;
+  letter-spacing: normal;
+  word-break: normal;
+  hyphens: none;
+  overflow-wrap: break-word;
+}
+
+.luxury-stay-page main .stay-decision-card p,
+.luxury-stay-page main .airport-problem-card p,
+.luxury-stay-page main .guide-card p,
+.luxury-stay-page main .luxury-editorial-item p,
+.luxury-stay-page main .luxury-summary-item p {
+  color: #514C43;
+  font-size: 18px;
+  line-height: 1.68;
+  letter-spacing: normal;
+  text-align: left;
+  word-break: normal;
+  word-spacing: normal;
+  hyphens: none;
+  overflow-wrap: break-word;
+}
+
+.luxury-stay-page main #quick-decision {
+  padding-top: 60px;
+  background: #F3EDE2;
+}
+
+.luxury-stay-page main #quick-decision .stay-decision-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.luxury-stay-page main #quick-decision .stay-decision-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: hidden;
+  padding-top: 30px;
+}
+
+.luxury-stay-page main #quick-decision .stay-decision-card::before {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 4px;
+  background: #D8D0C2;
+  content: "";
+}
+
+.luxury-stay-page main #quick-decision .stay-decision-card:nth-child(2)::before,
+.luxury-stay-page main #quick-decision .stay-decision-card:nth-child(3)::before,
+.luxury-stay-page main #quick-decision .stay-decision-card:nth-child(5)::before {
+  background: #3F5D52;
+}
+
+.luxury-stay-page main #quick-decision .stay-decision-card:nth-child(4)::before {
+  background: #B9653B;
+}
+
+.luxury-stay-page main .stay-decision-card__label {
+  margin-bottom: 12px;
+  color: #1D2B27;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.35;
+  letter-spacing: 0.04em;
+}
+
+.luxury-stay-page main .stay-decision-card p {
+  margin: 0;
+}
+
+.luxury-stay-page main .luxury-quick-grid,
+.luxury-stay-page main .luxury-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px 28px;
+}
+
+.luxury-stay-page main .luxury-editorial-item,
+.luxury-stay-page main .luxury-summary-item {
+  min-width: 0;
+  padding: 22px 0 0;
+  border-top: 2px solid #D8D0C2;
+}
+
+.luxury-stay-page main .luxury-editorial-item:nth-child(-n + 3),
+.luxury-stay-page main .luxury-summary-item:nth-child(-n + 3) {
+  border-top-color: #3F5D52;
+}
+
+.luxury-stay-page main .luxury-editorial-item p,
+.luxury-stay-page main .luxury-summary-item p {
+  margin: 0;
+}
+
+.luxury-stay-page main .luxury-summary-item__type {
+  margin-bottom: 8px;
+  color: #686158;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.45;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.luxury-stay-page main .luxury-transport-backup {
+  margin: 28px 0 0;
+  padding: 18px 0 0;
+  border-top: 1px solid #D8D0C2;
+  color: #514C43;
+  font-size: 18px;
+  line-height: 1.68;
+}
+
+.luxury-stay-page main .luxury-transport-backup strong {
+  color: #3F5D52;
+}
+
+.luxury-stay-page main .luxury-infographic-section {
+  padding: 0 0 68px;
+  background: #F7F3EA;
+}
+
+.luxury-stay-page main .luxury-stay-infographic {
+  margin: 0;
+}
+
+.luxury-stay-page main .luxury-stay-infographic img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.luxury-stay-page main .luxury-stay-infographic figcaption {
+  margin-top: 12px;
+  color: #686158;
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: normal;
+  text-align: left;
+  overflow-wrap: break-word;
+}
+
+.luxury-stay-page main .luxury-comparison-table {
+  max-width: 100%;
+  overflow-x: auto;
+  padding: 0;
+  border: 1px solid #D8D0C2;
+  border-radius: var(--radius-lg);
+  background: #FFFDF8;
+  box-shadow: var(--shadow-sm);
+  -webkit-overflow-scrolling: touch;
+}
+
+.luxury-stay-page main .airport-transport-card.luxury-comparison-table:hover {
+  border-color: #D8D0C2;
+  background: #FFFDF8;
+  box-shadow: var(--shadow-sm);
+  transform: none;
+}
+
+.luxury-stay-page main table {
+  min-width: 780px;
+  background: #FFFDF8;
+}
+
+.luxury-stay-page main th,
+.luxury-stay-page main td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #D8D0C2;
+  color: #514C43;
+  font-size: 15px;
+}
+
+.luxury-stay-page main th {
+  background: #F3EDE2;
+  color: #1D2B27;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.luxury-stay-page main td {
+  background: #FFFDF8;
+  line-height: 1.6;
+}
+
+.luxury-stay-page main .luxury-area-list {
+  border-top: 1px solid #D8D0C2;
+}
+
+.luxury-stay-page main .luxury-area-row {
+  display: grid;
+  grid-template-columns: minmax(0, 29fr) minmax(0, 71fr);
+  align-items: start;
+  gap: 32px;
+  padding: 36px 0;
+  border: 0;
+  border-bottom: 1px solid #D8D0C2;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.luxury-stay-page main .luxury-area-row__summary,
+.luxury-stay-page main .luxury-area-row__content {
+  min-width: 0;
+}
+
+.luxury-stay-page main .luxury-area-row__summary h3 {
+  margin: 0;
+  color: #1D2B27;
+  font-size: 28px;
+  line-height: 1.2;
+  letter-spacing: normal;
+  word-break: normal;
+  hyphens: none;
+  overflow-wrap: break-word;
+}
+
+.luxury-stay-page main .luxury-area-row__summary p,
+.luxury-stay-page main .luxury-area-row__content p,
+.luxury-stay-page main .luxury-area-row__content li {
+  color: #514C43;
+  font-size: 18px;
+  line-height: 1.72;
+  letter-spacing: normal;
+  word-break: normal;
+  word-spacing: normal;
+  hyphens: none;
+  overflow-wrap: break-word;
+}
+
+.luxury-stay-page main .luxury-area-row__summary p {
+  margin: 14px 0 0;
+}
+
+.luxury-stay-page main .luxury-area-row__content p {
+  margin: 0;
+}
+
+.luxury-stay-page main .luxury-area-row__content p + p {
+  margin-top: 18px;
+}
+
+.luxury-stay-page main .luxury-area-notes {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin: 22px 0 0;
+  padding: 18px 0 0;
+  border-top: 1px solid #D8D0C2;
+  list-style: none;
+}
+
+.luxury-stay-page main .luxury-area-notes li {
+  min-width: 0;
+}
+
+.luxury-stay-page main .luxury-area-notes strong {
+  display: block;
+  margin-bottom: 4px;
+  color: #3F5D52;
+}
+
+.luxury-stay-page main .luxury-booking-checklist {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 32px;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid #D8D0C2;
+  list-style: none;
+}
+
+.luxury-stay-page main .luxury-booking-checklist li {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 7px;
+  padding: 20px 0;
+  border-bottom: 1px solid #D8D0C2;
+  color: #514C43;
+  font-size: 18px;
+  line-height: 1.68;
+}
+
+.luxury-stay-page main .luxury-booking-checklist strong {
+  color: #1D2B27;
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+.luxury-stay-page main .mistake-list {
+  display: grid;
+  gap: 0;
+  border-top: 1px solid #D8D0C2;
+}
+
+.luxury-stay-page main .mistake-item {
+  display: grid;
+  grid-template-columns: minmax(0, 29fr) minmax(0, 71fr);
+  align-items: start;
+  gap: 32px;
+  min-width: 0;
+  padding: 22px 0;
+  border: 0;
+  border-bottom: 1px solid #D8D0C2;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.luxury-stay-page main .mistake-item p {
+  margin: 0;
+  color: #514C43;
+  font-size: 18px;
+  line-height: 1.68;
+}
+
+.luxury-stay-page main .mistake-item .mistake-item__bad {
+  color: #B9653B;
+  font-weight: 800;
+}
+
+.luxury-stay-page main .mistake-item .mistake-item__good {
+  color: #514C43;
+}
+
+.luxury-stay-page main .luxury-scenario-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.luxury-stay-page main .airport-problem-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.luxury-stay-page main .airport-problem-card__title {
+  font-size: 24px;
+}
+
+.luxury-stay-page main .airport-faq {
+  display: grid;
+  gap: 12px;
+  margin-top: 0;
+}
+
+.luxury-stay-page main .airport-faq details {
+  padding: 18px 20px;
+}
+
+.luxury-stay-page main .airport-faq details[open] {
+  border-color: #3F5D52;
+}
+
+.luxury-stay-page main .airport-faq summary {
+  color: #1D2B27;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.luxury-stay-page main .airport-faq p {
+  margin: 12px 0 0;
+  color: #514C43;
+  font-size: 18px;
+  line-height: 1.72;
+  letter-spacing: normal;
+  text-align: left;
+  overflow-wrap: break-word;
+}
+
+.luxury-stay-page main .guide-card {
+  color: #1D2B27;
+  text-decoration: none;
+}
+
+.luxury-stay-page main .guide-card__eyebrow {
+  display: inline-block;
+  color: #3F5D52;
+}
+
+.luxury-stay-page main #related-guides .guide-card h3 {
+  font-size: clamp(1.5rem, 2vw, 1.75rem);
+}
+
+.luxury-stay-page main .luxury-hotel-search__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: stretch;
+  gap: 16px;
+}
+
+.luxury-stay-page main .arrival-ota-card {
+  --ota-accent: #B9653B;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-width: 0;
+  min-height: 126px;
+  height: 100%;
+  padding: 28px 22px 22px;
+  overflow: hidden;
+  border: 1px solid #D8D0C2;
+  border-radius: var(--radius-lg);
+  background: #FFFDF8;
+  box-shadow: var(--shadow-sm);
+  color: #1D2B27;
+  text-decoration: none;
+  transition: border-color var(--transition), box-shadow var(--transition), background-color var(--transition);
+}
+
+.luxury-stay-page main .arrival-ota-card::before {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 6px;
+  background: var(--ota-accent);
+  content: "";
+}
+
+.luxury-stay-page main .arrival-ota-card--expedia {
+  --ota-accent: #d4ad42;
+}
+
+.luxury-stay-page main .arrival-ota-card--booking {
+  --ota-accent: #3f6f9f;
+}
+
+.luxury-stay-page main .arrival-ota-card--agoda {
+  --ota-accent: linear-gradient(
+    90deg,
+    #c95a52 0 20%,
+    #d88643 20% 40%,
+    #d8b94d 40% 60%,
+    #659563 60% 80%,
+    #647daf 80% 100%
+  );
+}
+
+.luxury-stay-page main .arrival-ota-card:hover,
+.luxury-stay-page main .arrival-ota-card:focus {
+  border-color: #3F5D52;
+  background: #F3EDE2;
+  box-shadow: var(--shadow-md);
+  color: #1D2B27;
+}
+
+.luxury-stay-page main .arrival-ota-card__name {
+  color: #1D2B27;
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1.3;
+  overflow-wrap: break-word;
+}
+
+.luxury-stay-page main .luxury-hotel-search__description {
+  margin: 12px 0 18px;
+  color: #514C43;
+  font-size: 18px;
+  line-height: 1.68;
+  letter-spacing: normal;
+  overflow-wrap: break-word;
+}
+
+.luxury-stay-page main .arrival-ota-card__cta {
+  margin-top: auto;
+  padding-top: 2px;
+  color: #3F5D52;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.4;
+  overflow-wrap: break-word;
+}
+
+.luxury-stay-page main .luxury-hotel-search__disclosure {
+  max-width: 900px;
+  margin: 14px 0 0;
+  color: #686158;
+  font-size: 14px;
+  line-height: 1.55;
+  overflow-wrap: break-word;
+}
+
+.luxury-stay-page main .luxury-final-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 32px;
+  border-top: 1px solid #D8D0C2;
+}
+
+.luxury-stay-page main .luxury-final-grid p {
+  margin: 0;
+  padding: 20px 0;
+  border-bottom: 1px solid #D8D0C2;
+  color: #514C43;
+  font-size: 18px;
+  line-height: 1.68;
+}
+
+.luxury-stay-page main .luxury-final-grid strong {
+  color: #1D2B27;
+}
+
+@media (min-width: 960px) {
+  .luxury-stay-page main .airport-page-hero__grid {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  }
+
+  .luxury-stay-page main .luxury-hotel-search__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 720px) and (max-width: 959px) {
+  .luxury-stay-page main .airport-page-hero__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .luxury-stay-page main #quick-decision .stay-decision-grid,
+  .luxury-stay-page main .luxury-quick-grid,
+  .luxury-stay-page main .luxury-summary-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .luxury-stay-page main .luxury-area-row,
+  .luxury-stay-page main .mistake-item {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .luxury-stay-page main .luxury-area-notes {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .luxury-stay-page main .luxury-hotel-search__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 719px) {
+  .luxury-stay-page main .airport-page-hero {
+    padding: 36px 0 48px;
+  }
+
+  .luxury-stay-page main .airport-page-hero__grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .luxury-stay-page main .airport-page-hero__title {
+    font-size: 36px;
+    line-height: 1.1;
+  }
+
+  .luxury-stay-page main .section__title,
+  .luxury-stay-page main .section__title--lg {
+    font-size: 32px;
+    line-height: 1.15;
+  }
+
+  .luxury-stay-page main .luxury-practical-answer h3,
+  .luxury-stay-page main .airport-problem-card__title,
+  .luxury-stay-page main .guide-card h3,
+  .luxury-stay-page main #related-guides .guide-card h3,
+  .luxury-stay-page main .luxury-editorial-item h3,
+  .luxury-stay-page main .luxury-summary-item h3,
+  .luxury-stay-page main .arrival-ota-card__name {
+    font-size: 22px;
+    line-height: 1.2;
+  }
+
+  .luxury-stay-page main .airport-page-hero__desc,
+  .luxury-stay-page main .section__subtitle,
+  .luxury-stay-page main .luxury-practical-answer p,
+  .luxury-stay-page main .luxury-practical-answer li,
+  .luxury-stay-page main .airport-faq p,
+  .luxury-stay-page main .luxury-transport-backup {
+    font-size: 17px;
+    line-height: 1.68;
+  }
+
+  .luxury-stay-page main .stay-decision-card p,
+  .luxury-stay-page main .airport-problem-card p,
+  .luxury-stay-page main .guide-card p,
+  .luxury-stay-page main .luxury-editorial-item p,
+  .luxury-stay-page main .luxury-summary-item p,
+  .luxury-stay-page main .luxury-hotel-search__description,
+  .luxury-stay-page main .luxury-booking-checklist li,
+  .luxury-stay-page main .luxury-booking-checklist strong,
+  .luxury-stay-page main .mistake-item p,
+  .luxury-stay-page main .luxury-final-grid p {
+    font-size: 17px;
+    line-height: 1.65;
+  }
+
+  .luxury-stay-page main .airport-faq summary {
+    font-size: 16px;
+    line-height: 1.45;
+  }
+
+  .luxury-stay-page main th {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .luxury-stay-page main td {
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  .luxury-stay-page main .luxury-stay-infographic figcaption {
+    font-size: 13px;
+  }
+
+  .luxury-stay-page main .airport-section {
+    padding: 48px 0;
+  }
+
+  .luxury-stay-page main .luxury-infographic-section {
+    padding-bottom: 48px;
+  }
+
+  .luxury-stay-page main #quick-decision {
+    padding-top: 48px;
+  }
+
+  .luxury-stay-page main .airport-page-hero__grid > .airport-transport-card,
+  .luxury-stay-page main .stay-decision-card,
+  .luxury-stay-page main .airport-problem-card,
+  .luxury-stay-page main .guide-card,
+  .luxury-stay-page main .airport-faq details,
+  .luxury-stay-page main .arrival-ota-card {
+    padding: 20px;
+  }
+
+  .luxury-stay-page main #quick-decision .stay-decision-card {
+    padding-top: 26px;
+  }
+
+  .luxury-stay-page main .airport-quick-links {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .luxury-stay-page main .airport-pill {
+    width: 100%;
+  }
+
+  .luxury-stay-page main #quick-decision .stay-decision-grid,
+  .luxury-stay-page main .luxury-quick-grid,
+  .luxury-stay-page main .luxury-summary-grid,
+  .luxury-stay-page main .luxury-booking-checklist,
+  .luxury-stay-page main .luxury-scenario-grid,
+  .luxury-stay-page main .luxury-hotel-search__grid,
+  .luxury-stay-page main .luxury-final-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .luxury-stay-page main .luxury-editorial-item,
+  .luxury-stay-page main .luxury-summary-item {
+    padding-top: 18px;
+  }
+
+  .luxury-stay-page main .luxury-area-row,
+  .luxury-stay-page main .mistake-item {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 28px 0;
+  }
+
+  .luxury-stay-page main .luxury-area-row__summary h3 {
+    font-size: 22px;
+    line-height: 1.2;
+  }
+
+  .luxury-stay-page main .luxury-area-row__summary p,
+  .luxury-stay-page main .luxury-area-row__content p,
+  .luxury-stay-page main .luxury-area-row__content li {
+    font-size: 17px;
+    line-height: 1.68;
+  }
+
+  .luxury-stay-page main .luxury-area-notes {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .luxury-stay-page main .section__header--center,
+  .luxury-stay-page main .section__header--center .section__subtitle {
+    text-align: left;
+  }
+}
+
+/* End Luxury Hotels Stay Seoul */
