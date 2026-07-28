@@ -13469,3 +13469,1051 @@ ul, ol {
 }
 
 /* End Luxury Hotels Stay Seoul */
+
+/* Nightlife Stay Seoul */
+.nightlife-stay-page main {
+  background: #F7F3EA;
+  color: #514C43;
+}
+
+.nightlife-stay-page main a,
+.nightlife-stay-page main a:visited {
+  color: #3F5D52;
+}
+
+.nightlife-stay-page main a:hover,
+.nightlife-stay-page main a:focus {
+  color: #1D2B27;
+}
+
+.nightlife-stay-page main .airport-page-hero {
+  padding: 64px 0 72px;
+  background: #F7F3EA;
+}
+
+.nightlife-stay-page main .airport-page-hero__grid {
+  align-items: center;
+  gap: 48px;
+}
+
+.nightlife-stay-page main .airport-page-hero__copy {
+  max-width: none;
+}
+
+.nightlife-stay-page main .page-hero__breadcrumb {
+  margin-bottom: 18px;
+  color: #686158;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.nightlife-stay-page main .page-hero__breadcrumb a,
+.nightlife-stay-page main .page-hero__breadcrumb a:visited {
+  color: #686158;
+}
+
+.nightlife-stay-page main .eyebrow {
+  color: #3F5D52;
+}
+
+.nightlife-stay-page main .airport-page-hero__title {
+  max-width: none;
+  margin-bottom: 22px;
+  color: #14130F;
+  font-size: 56px;
+  line-height: 1.08;
+  letter-spacing: normal;
+  text-wrap: balance;
+  word-break: normal;
+  hyphens: none;
+}
+
+.nightlife-stay-page main .airport-page-hero__desc,
+.nightlife-stay-page main .section__subtitle {
+  max-width: none;
+  color: #514C43;
+  font-size: 18px;
+  line-height: 1.72;
+  letter-spacing: normal;
+  text-align: left;
+  word-break: normal;
+  word-spacing: normal;
+  hyphens: none;
+  overflow-wrap: break-word;
+}
+
+.nightlife-stay-page main .nightlife-hero-decisions {
+  display: grid;
+  gap: 9px;
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid #D8D0C2;
+}
+
+.nightlife-stay-page main .nightlife-hero-decisions p {
+  margin: 0;
+  color: #514C43;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.nightlife-stay-page main .nightlife-hero-decisions strong {
+  color: #1D2B27;
+}
+
+.nightlife-stay-page main .airport-quick-links {
+  align-items: stretch;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.nightlife-stay-page main .airport-pill,
+.nightlife-stay-page main .airport-pill:visited {
+  display: inline-flex;
+  min-height: 46px;
+  align-items: center;
+  justify-content: center;
+  padding: 11px 18px;
+  border: 1px solid #D8D0C2;
+  border-radius: var(--radius-md);
+  background: #FFFDF8;
+  color: #1D2B27;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.nightlife-stay-page main .airport-pill:first-child,
+.nightlife-stay-page main .airport-pill:first-child:visited {
+  border-color: #3F5D52;
+  background: #3F5D52;
+  color: #FFFDF8;
+}
+
+.nightlife-stay-page main .airport-pill:hover,
+.nightlife-stay-page main .airport-pill:focus {
+  border-color: #3F5D52;
+  background: #F3EDE2;
+  color: #1D2B27;
+  transform: none;
+}
+
+.nightlife-stay-page main .airport-pill:first-child:hover,
+.nightlife-stay-page main .airport-pill:first-child:focus {
+  border-color: #1D2B27;
+  background: #1D2B27;
+  color: #FFFDF8;
+}
+
+.nightlife-stay-page main .airport-page-hero__grid > .airport-transport-card {
+  position: relative;
+  min-width: 0;
+  height: auto;
+  padding: 32px;
+  overflow: hidden;
+  border: 1px solid #D8D0C2;
+  border-radius: var(--radius-lg);
+  background: #FFFDF8;
+  box-shadow: var(--shadow-sm);
+}
+
+.nightlife-stay-page main .airport-page-hero__grid > .airport-transport-card::before {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 6px;
+  background: #3F5D52;
+  content: "";
+}
+
+.nightlife-stay-page main .airport-page-hero__grid > .airport-transport-card:hover {
+  border-color: #D8D0C2;
+  background: #FFFDF8;
+  box-shadow: var(--shadow-sm);
+  transform: none;
+}
+
+.nightlife-stay-page main .airport-badge {
+  border: 0;
+  background: #E5ECE7;
+  color: #3F5D52;
+}
+
+.nightlife-stay-page main .nightlife-practical-answer h3 {
+  margin: 0 0 14px;
+  color: #1D2B27;
+  font-size: 28px;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+.nightlife-stay-page main .nightlife-practical-answer p,
+.nightlife-stay-page main .nightlife-practical-answer li {
+  color: #514C43;
+  font-size: 18px;
+  line-height: 1.68;
+}
+
+.nightlife-stay-page main .nightlife-practical-answer p {
+  margin: 0 0 16px;
+}
+
+.nightlife-stay-page main .nightlife-practical-answer li + li {
+  margin-top: 8px;
+}
+
+.nightlife-stay-page main .nightlife-practical-answer strong {
+  color: #1D2B27;
+}
+
+.nightlife-stay-page main .airport-section {
+  padding: 68px 0;
+  background: #F7F3EA;
+}
+
+.nightlife-stay-page main .airport-section--gray {
+  background: #F3EDE2;
+}
+
+.nightlife-stay-page main .section__header {
+  width: 100%;
+  max-width: none;
+  margin-bottom: 32px;
+}
+
+.nightlife-stay-page main .section__header--center .section__subtitle {
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+}
+
+.nightlife-stay-page main .section__title,
+.nightlife-stay-page main .section__title--lg {
+  width: 100%;
+  max-width: none;
+  color: #14130F;
+  font-size: clamp(2.25rem, 3vw, 2.75rem);
+  line-height: 1.12;
+  letter-spacing: normal;
+  text-wrap: balance;
+  word-break: normal;
+  word-spacing: normal;
+  hyphens: none;
+  overflow-wrap: break-word;
+}
+
+.nightlife-stay-page main .section__subtitle {
+  margin-top: 0;
+}
+
+.nightlife-stay-page main .stay-decision-grid,
+.nightlife-stay-page main .airport-problem-grid,
+.nightlife-stay-page main .guide-grid {
+  align-items: stretch;
+  gap: 18px;
+}
+
+.nightlife-stay-page main .stay-decision-card,
+.nightlife-stay-page main .airport-problem-card,
+.nightlife-stay-page main .guide-card,
+.nightlife-stay-page main .airport-faq details {
+  min-width: 0;
+  height: 100%;
+  padding: 24px;
+  border: 1px solid #D8D0C2;
+  border-radius: var(--radius-lg);
+  background: #FFFDF8;
+  box-shadow: var(--shadow-sm);
+}
+
+.nightlife-stay-page main .stay-decision-card:hover,
+.nightlife-stay-page main .airport-problem-card:hover,
+.nightlife-stay-page main .guide-card:hover,
+.nightlife-stay-page main .guide-card:focus {
+  border-color: #3F5D52;
+  background: #FFFDF8;
+  box-shadow: var(--shadow-md);
+  color: #1D2B27;
+  transform: translateY(-1px);
+}
+
+.nightlife-stay-page main .airport-problem-card__title,
+.nightlife-stay-page main .guide-card h3,
+.nightlife-stay-page main .nightlife-editorial-item h3,
+.nightlife-stay-page main .nightlife-summary-item h3 {
+  margin: 0 0 12px;
+  color: #1D2B27;
+  font-size: clamp(1.5rem, 2vw, 1.75rem);
+  line-height: 1.2;
+  letter-spacing: normal;
+  word-break: normal;
+  hyphens: none;
+  overflow-wrap: break-word;
+}
+
+.nightlife-stay-page main .stay-decision-card p,
+.nightlife-stay-page main .airport-problem-card p,
+.nightlife-stay-page main .guide-card p,
+.nightlife-stay-page main .nightlife-editorial-item p,
+.nightlife-stay-page main .nightlife-summary-item p {
+  color: #514C43;
+  font-size: 18px;
+  line-height: 1.68;
+  letter-spacing: normal;
+  text-align: left;
+  word-break: normal;
+  word-spacing: normal;
+  hyphens: none;
+  overflow-wrap: break-word;
+}
+
+.nightlife-stay-page main #quick-decision {
+  padding-top: 60px;
+  background: #F3EDE2;
+}
+
+.nightlife-stay-page main #quick-decision .stay-decision-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.nightlife-stay-page main #quick-decision .stay-decision-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: hidden;
+  padding-top: 30px;
+}
+
+.nightlife-stay-page main #quick-decision .stay-decision-card::before {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 4px;
+  background: #D8D0C2;
+  content: "";
+}
+
+.nightlife-stay-page main #quick-decision .stay-decision-card:nth-child(1)::before,
+.nightlife-stay-page main #quick-decision .stay-decision-card:nth-child(2)::before,
+.nightlife-stay-page main #quick-decision .stay-decision-card:nth-child(5)::before {
+  background: #3F5D52;
+}
+
+.nightlife-stay-page main #quick-decision .stay-decision-card:nth-child(3)::before,
+.nightlife-stay-page main #quick-decision .stay-decision-card:nth-child(4)::before {
+  background: #B9653B;
+}
+
+.nightlife-stay-page main .stay-decision-card__label {
+  margin-bottom: 12px;
+  color: #1D2B27;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.35;
+  letter-spacing: 0.04em;
+}
+
+.nightlife-stay-page main .stay-decision-card p {
+  margin: 0;
+}
+
+.nightlife-stay-page main .nightlife-quick-grid,
+.nightlife-stay-page main .nightlife-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px 28px;
+}
+
+.nightlife-stay-page main .nightlife-editorial-item,
+.nightlife-stay-page main .nightlife-summary-item {
+  min-width: 0;
+  padding: 22px 0 0;
+  border-top: 2px solid #D8D0C2;
+}
+
+.nightlife-stay-page main .nightlife-editorial-item:nth-child(-n + 3),
+.nightlife-stay-page main .nightlife-summary-item:nth-child(-n + 3) {
+  border-top-color: #3F5D52;
+}
+
+.nightlife-stay-page main .nightlife-editorial-item p,
+.nightlife-stay-page main .nightlife-summary-item p {
+  margin: 0;
+}
+
+.nightlife-stay-page main .nightlife-summary-item__type {
+  margin-bottom: 8px;
+  color: #686158;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.45;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.nightlife-stay-page main .nightlife-infographic-section {
+  padding: 0 0 68px;
+  background: #F7F3EA;
+}
+
+.nightlife-stay-page main .nightlife-stay-infographic {
+  margin: 0;
+}
+
+.nightlife-stay-page main .nightlife-stay-infographic img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.nightlife-stay-page main .nightlife-comparison-table {
+  max-width: 100%;
+  overflow-x: auto;
+  padding: 0;
+  border: 1px solid #D8D0C2;
+  border-radius: var(--radius-lg);
+  background: #FFFDF8;
+  box-shadow: var(--shadow-sm);
+  -webkit-overflow-scrolling: touch;
+}
+
+.nightlife-stay-page main .airport-transport-card.nightlife-comparison-table:hover {
+  border-color: #D8D0C2;
+  background: #FFFDF8;
+  box-shadow: var(--shadow-sm);
+  transform: none;
+}
+
+.nightlife-stay-page main table {
+  min-width: 780px;
+  background: #FFFDF8;
+}
+
+.nightlife-stay-page main th,
+.nightlife-stay-page main td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #D8D0C2;
+  color: #514C43;
+  font-size: 15px;
+}
+
+.nightlife-stay-page main th {
+  background: #F3EDE2;
+  color: #1D2B27;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.nightlife-stay-page main td {
+  background: #FFFDF8;
+  line-height: 1.6;
+}
+
+.nightlife-stay-page main .nightlife-area-list {
+  border-top: 1px solid #D8D0C2;
+}
+
+.nightlife-stay-page main .nightlife-area-row {
+  display: grid;
+  grid-template-columns: minmax(0, 29fr) minmax(0, 71fr);
+  align-items: start;
+  gap: 32px;
+  padding: 36px 0;
+  border: 0;
+  border-bottom: 1px solid #D8D0C2;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.nightlife-stay-page main .nightlife-area-row__summary,
+.nightlife-stay-page main .nightlife-area-row__content {
+  min-width: 0;
+}
+
+.nightlife-stay-page main .nightlife-area-row__summary h3 {
+  margin: 0;
+  color: #1D2B27;
+  font-size: 28px;
+  line-height: 1.2;
+  letter-spacing: normal;
+  word-break: normal;
+  hyphens: none;
+  overflow-wrap: break-word;
+}
+
+.nightlife-stay-page main .nightlife-area-row__summary > p,
+.nightlife-stay-page main .nightlife-area-row__content p,
+.nightlife-stay-page main .nightlife-area-row__content li,
+.nightlife-stay-page main .nightlife-area-meta dd {
+  color: #514C43;
+  font-size: 18px;
+  line-height: 1.72;
+  letter-spacing: normal;
+  word-break: normal;
+  word-spacing: normal;
+  hyphens: none;
+  overflow-wrap: break-word;
+}
+
+.nightlife-stay-page main .nightlife-area-row__summary > p {
+  margin: 14px 0 0;
+}
+
+.nightlife-stay-page main .nightlife-area-copy p {
+  margin: 0;
+}
+
+.nightlife-stay-page main .nightlife-area-copy p + p {
+  margin-top: 18px;
+}
+
+.nightlife-stay-page main .nightlife-area-meta {
+  display: grid;
+  gap: 14px;
+  margin: 22px 0 0;
+  padding: 18px 0 0;
+  border-top: 1px solid #D8D0C2;
+}
+
+.nightlife-stay-page main .nightlife-area-meta div {
+  min-width: 0;
+}
+
+.nightlife-stay-page main .nightlife-area-meta dt {
+  margin-bottom: 4px;
+  color: #3F5D52;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.4;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.nightlife-stay-page main .nightlife-area-meta dd {
+  margin: 0;
+}
+
+.nightlife-stay-page main .nightlife-hotel-list {
+  display: grid;
+  gap: 0;
+  margin-top: 24px;
+}
+
+.nightlife-stay-page main .nightlife-hotel-pick {
+  margin-top: 0;
+  padding: 22px 0;
+  border-top: 1px solid #D8D0C2;
+}
+
+.nightlife-stay-page main .nightlife-hotel-pick:last-child {
+  padding-bottom: 0;
+}
+
+.nightlife-stay-page main .nightlife-area-row__content .nightlife-hotel-pick__eyebrow {
+  margin: 0 0 6px;
+  color: #3F5D52;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.4;
+  letter-spacing: 0.04em;
+}
+
+.nightlife-stay-page main .nightlife-hotel-pick h4 {
+  margin: 0;
+  color: #1D2B27;
+  font-size: 22px;
+  line-height: 1.28;
+  letter-spacing: normal;
+  word-break: normal;
+  hyphens: none;
+  overflow-wrap: break-word;
+}
+
+.nightlife-stay-page main .nightlife-area-row__content .nightlife-hotel-pick__best,
+.nightlife-stay-page main .nightlife-area-row__content .nightlife-hotel-pick__reason,
+.nightlife-stay-page main .nightlife-area-row__content .nightlife-hotel-pick__watch {
+  margin-top: 8px;
+}
+
+.nightlife-stay-page main .nightlife-hotel-pick strong {
+  color: #1D2B27;
+}
+
+.nightlife-stay-page main .nightlife-hotel-pick__links {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.nightlife-stay-page main .nightlife-hotel-pick__links a,
+.nightlife-stay-page main .nightlife-hotel-pick__links a:visited {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid #D8D0C2;
+  border-radius: 10px;
+  background: #FFFDF8;
+  color: #1D2B27;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.35;
+  text-align: center;
+  text-decoration: none;
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+.nightlife-stay-page main .nightlife-hotel-pick__links a:hover {
+  border-color: #3F5D52;
+  background: #F3EDE2;
+  color: #1D2B27;
+}
+
+.nightlife-stay-page main .nightlife-hotel-pick__links a:focus-visible {
+  outline: 3px solid #B9653B;
+  outline-offset: 3px;
+}
+
+.nightlife-stay-page main .nightlife-area-row__content .nightlife-hotel-pick__affiliate-note {
+  margin: 8px 0 0;
+  color: #686158;
+  font-size: 14px;
+  line-height: 1.55;
+  text-align: left;
+}
+
+.nightlife-stay-page main .nightlife-booking-checklist {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 32px;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid #D8D0C2;
+  list-style: none;
+}
+
+.nightlife-stay-page main .nightlife-booking-checklist li {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 7px;
+  padding: 20px 0;
+  border-bottom: 1px solid #D8D0C2;
+  color: #514C43;
+  font-size: 18px;
+  line-height: 1.68;
+}
+
+.nightlife-stay-page main .nightlife-booking-checklist strong {
+  color: #1D2B27;
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+.nightlife-stay-page main .nightlife-mistake-list {
+  display: grid;
+  gap: 0;
+  border-top: 1px solid #D8D0C2;
+}
+
+.nightlife-stay-page main .nightlife-mistake-item {
+  display: grid;
+  grid-template-columns: minmax(0, 29fr) minmax(0, 71fr);
+  align-items: start;
+  gap: 32px;
+  min-width: 0;
+  padding: 22px 0;
+  border: 0;
+  border-bottom: 1px solid #D8D0C2;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.nightlife-stay-page main .nightlife-mistake-item p {
+  margin: 0;
+  color: #514C43;
+  font-size: 18px;
+  line-height: 1.68;
+}
+
+.nightlife-stay-page main .nightlife-mistake-item .nightlife-mistake-item__bad {
+  color: #B9653B;
+  font-weight: 800;
+}
+
+.nightlife-stay-page main .nightlife-scenario-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.nightlife-stay-page main .airport-problem-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.nightlife-stay-page main .airport-problem-card__title {
+  font-size: 24px;
+}
+
+.nightlife-stay-page main .airport-faq {
+  display: grid;
+  gap: 12px;
+  margin-top: 0;
+}
+
+.nightlife-stay-page main .airport-faq details {
+  padding: 18px 20px;
+}
+
+.nightlife-stay-page main .airport-faq details[open] {
+  border-color: #3F5D52;
+}
+
+.nightlife-stay-page main .airport-faq summary {
+  color: #1D2B27;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.nightlife-stay-page main .airport-faq p {
+  margin: 12px 0 0;
+  color: #514C43;
+  font-size: 18px;
+  line-height: 1.72;
+  letter-spacing: normal;
+  text-align: left;
+  overflow-wrap: break-word;
+}
+
+.nightlife-stay-page main .guide-card,
+.nightlife-stay-page main .guide-card:visited {
+  color: #1D2B27;
+  text-decoration: none;
+}
+
+.nightlife-stay-page main .guide-card__eyebrow {
+  display: inline-block;
+  color: #3F5D52;
+}
+
+.nightlife-stay-page main #related-guides .guide-card h3 {
+  font-size: clamp(1.5rem, 2vw, 1.75rem);
+}
+
+.nightlife-stay-page main .nightlife-hotel-search__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: stretch;
+  gap: 16px;
+}
+
+.nightlife-stay-page main .arrival-ota-card,
+.nightlife-stay-page main .arrival-ota-card:visited {
+  --ota-accent: #B9653B;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-width: 0;
+  min-height: 126px;
+  height: 100%;
+  padding: 28px 22px 22px;
+  overflow: hidden;
+  border: 1px solid #D8D0C2;
+  border-radius: var(--radius-lg);
+  background: #FFFDF8;
+  box-shadow: var(--shadow-sm);
+  color: #1D2B27;
+  text-decoration: none;
+  transition: border-color var(--transition), box-shadow var(--transition), background-color var(--transition);
+}
+
+.nightlife-stay-page main .arrival-ota-card::before {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 6px;
+  background: var(--ota-accent);
+  content: "";
+}
+
+.nightlife-stay-page main .arrival-ota-card--expedia {
+  --ota-accent: #d4ad42;
+}
+
+.nightlife-stay-page main .arrival-ota-card--booking {
+  --ota-accent: #3f6f9f;
+}
+
+.nightlife-stay-page main .arrival-ota-card--agoda {
+  --ota-accent: linear-gradient(
+    90deg,
+    #c95a52 0 20%,
+    #d88643 20% 40%,
+    #d8b94d 40% 60%,
+    #659563 60% 80%,
+    #647daf 80% 100%
+  );
+}
+
+.nightlife-stay-page main .arrival-ota-card:hover,
+.nightlife-stay-page main .arrival-ota-card:focus {
+  border-color: #3F5D52;
+  background: #F3EDE2;
+  box-shadow: var(--shadow-md);
+  color: #1D2B27;
+}
+
+.nightlife-stay-page main .arrival-ota-card__name {
+  color: #1D2B27;
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1.3;
+  overflow-wrap: break-word;
+}
+
+.nightlife-stay-page main .nightlife-hotel-search__description {
+  margin: 12px 0 18px;
+  color: #514C43;
+  font-size: 18px;
+  line-height: 1.68;
+  letter-spacing: normal;
+  overflow-wrap: break-word;
+}
+
+.nightlife-stay-page main .arrival-ota-card__cta {
+  margin-top: auto;
+  padding-top: 2px;
+  color: #3F5D52;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.4;
+  overflow-wrap: break-word;
+}
+
+.nightlife-stay-page main .nightlife-hotel-search__disclosure {
+  margin: 14px 0 0;
+  color: #686158;
+  font-size: 14px;
+  line-height: 1.55;
+  overflow-wrap: break-word;
+}
+
+.nightlife-stay-page main .nightlife-final-copy {
+  border-top: 1px solid #D8D0C2;
+}
+
+.nightlife-stay-page main .nightlife-final-copy p {
+  margin: 0;
+  padding: 20px 0;
+  border-bottom: 1px solid #D8D0C2;
+  color: #514C43;
+  font-size: 18px;
+  line-height: 1.72;
+}
+
+.nightlife-stay-page main .nightlife-final-copy strong {
+  color: #1D2B27;
+}
+
+@media (min-width: 960px) {
+  .nightlife-stay-page main .airport-page-hero__grid {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  }
+
+  .nightlife-stay-page main .nightlife-hotel-search__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 720px) and (max-width: 959px) {
+  .nightlife-stay-page main .airport-page-hero__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .nightlife-stay-page main #quick-decision .stay-decision-grid,
+  .nightlife-stay-page main .nightlife-quick-grid,
+  .nightlife-stay-page main .nightlife-summary-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .nightlife-stay-page main .nightlife-area-row,
+  .nightlife-stay-page main .nightlife-mistake-item {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .nightlife-stay-page main .nightlife-hotel-search__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 719px) {
+  .nightlife-stay-page main .airport-page-hero {
+    padding: 36px 0 48px;
+  }
+
+  .nightlife-stay-page main .airport-page-hero__grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .nightlife-stay-page main .airport-page-hero__title {
+    font-size: 36px;
+    line-height: 1.1;
+  }
+
+  .nightlife-stay-page main .section__title,
+  .nightlife-stay-page main .section__title--lg {
+    font-size: 32px;
+    line-height: 1.15;
+  }
+
+  .nightlife-stay-page main .nightlife-practical-answer h3,
+  .nightlife-stay-page main .airport-problem-card__title,
+  .nightlife-stay-page main .guide-card h3,
+  .nightlife-stay-page main #related-guides .guide-card h3,
+  .nightlife-stay-page main .nightlife-editorial-item h3,
+  .nightlife-stay-page main .nightlife-summary-item h3,
+  .nightlife-stay-page main .arrival-ota-card__name {
+    font-size: 22px;
+    line-height: 1.2;
+  }
+
+  .nightlife-stay-page main .nightlife-hotel-pick h4 {
+    font-size: 20px;
+    line-height: 1.28;
+  }
+
+  .nightlife-stay-page main .airport-page-hero__desc,
+  .nightlife-stay-page main .section__subtitle,
+  .nightlife-stay-page main .nightlife-practical-answer p,
+  .nightlife-stay-page main .nightlife-practical-answer li,
+  .nightlife-stay-page main .airport-faq p {
+    font-size: 17px;
+    line-height: 1.68;
+  }
+
+  .nightlife-stay-page main .stay-decision-card p,
+  .nightlife-stay-page main .airport-problem-card p,
+  .nightlife-stay-page main .guide-card p,
+  .nightlife-stay-page main .nightlife-editorial-item p,
+  .nightlife-stay-page main .nightlife-summary-item p,
+  .nightlife-stay-page main .nightlife-hotel-search__description,
+  .nightlife-stay-page main .nightlife-booking-checklist li,
+  .nightlife-stay-page main .nightlife-booking-checklist strong,
+  .nightlife-stay-page main .nightlife-mistake-item p,
+  .nightlife-stay-page main .nightlife-final-copy p {
+    font-size: 17px;
+    line-height: 1.65;
+  }
+
+  .nightlife-stay-page main .airport-faq summary {
+    font-size: 16px;
+    line-height: 1.45;
+  }
+
+  .nightlife-stay-page main th {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .nightlife-stay-page main td {
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  .nightlife-stay-page main .airport-section {
+    padding: 48px 0;
+  }
+
+  .nightlife-stay-page main .nightlife-infographic-section {
+    padding-bottom: 48px;
+  }
+
+  .nightlife-stay-page main #quick-decision {
+    padding-top: 48px;
+  }
+
+  .nightlife-stay-page main .airport-page-hero__grid > .airport-transport-card,
+  .nightlife-stay-page main .stay-decision-card,
+  .nightlife-stay-page main .airport-problem-card,
+  .nightlife-stay-page main .guide-card,
+  .nightlife-stay-page main .airport-faq details,
+  .nightlife-stay-page main .arrival-ota-card {
+    padding: 20px;
+  }
+
+  .nightlife-stay-page main #quick-decision .stay-decision-card {
+    padding-top: 26px;
+  }
+
+  .nightlife-stay-page main .airport-quick-links {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .nightlife-stay-page main .airport-pill {
+    width: 100%;
+  }
+
+  .nightlife-stay-page main #quick-decision .stay-decision-grid,
+  .nightlife-stay-page main .nightlife-quick-grid,
+  .nightlife-stay-page main .nightlife-summary-grid,
+  .nightlife-stay-page main .nightlife-booking-checklist,
+  .nightlife-stay-page main .nightlife-scenario-grid,
+  .nightlife-stay-page main .nightlife-hotel-search__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .nightlife-stay-page main .nightlife-editorial-item,
+  .nightlife-stay-page main .nightlife-summary-item {
+    padding-top: 18px;
+  }
+
+  .nightlife-stay-page main .nightlife-area-row,
+  .nightlife-stay-page main .nightlife-mistake-item {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 28px 0;
+  }
+
+  .nightlife-stay-page main .nightlife-area-row__summary h3 {
+    font-size: 22px;
+    line-height: 1.2;
+  }
+
+  .nightlife-stay-page main .nightlife-area-row__summary > p,
+  .nightlife-stay-page main .nightlife-area-row__content p,
+  .nightlife-stay-page main .nightlife-area-row__content li,
+  .nightlife-stay-page main .nightlife-area-meta dd {
+    font-size: 17px;
+    line-height: 1.68;
+  }
+
+  .nightlife-stay-page main .nightlife-hotel-pick__links {
+    gap: 6px;
+  }
+
+  .nightlife-stay-page main .nightlife-hotel-pick__links a {
+    padding-right: 6px;
+    padding-left: 6px;
+  }
+
+  .nightlife-stay-page main .section__header--center,
+  .nightlife-stay-page main .section__header--center .section__subtitle {
+    text-align: left;
+  }
+}
+
+/* End Nightlife Stay Seoul */
