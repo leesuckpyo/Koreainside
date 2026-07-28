@@ -12950,6 +12950,84 @@ ul, ol {
   color: #3F5D52;
 }
 
+.luxury-stay-page main .luxury-hotel-pick {
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid #D8D0C2;
+}
+
+.luxury-stay-page main .luxury-area-row__content .luxury-hotel-pick__eyebrow {
+  margin: 0 0 6px;
+  color: #3F5D52;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.4;
+  letter-spacing: 0.04em;
+}
+
+.luxury-stay-page main .luxury-hotel-pick h4 {
+  margin: 0;
+  color: #1D2B27;
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  line-height: 1.28;
+  letter-spacing: normal;
+  word-break: normal;
+  hyphens: none;
+  overflow-wrap: break-word;
+}
+
+.luxury-stay-page main .luxury-area-row__content .luxury-hotel-pick__reason {
+  margin-top: 8px;
+}
+
+.luxury-stay-page main .luxury-hotel-pick__links {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.luxury-stay-page main .luxury-hotel-pick__links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid #D8D0C2;
+  border-radius: 10px;
+  background: #FFFDF8;
+  color: #1D2B27;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.35;
+  text-align: center;
+  text-decoration: none;
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+.luxury-stay-page main .luxury-hotel-pick__links a:hover {
+  border-color: #3F5D52;
+  background: #F3EDE2;
+  color: #1D2B27;
+}
+
+.luxury-stay-page main .luxury-hotel-pick__links a:focus-visible {
+  outline: 3px solid #B9653B;
+  outline-offset: 3px;
+}
+
+.luxury-stay-page main .luxury-area-row__content .luxury-hotel-pick__affiliate-note {
+  margin: 8px 0 0;
+  color: #686158;
+  font-size: 14px;
+  line-height: 1.55;
+  text-align: left;
+}
+
 .luxury-stay-page main .luxury-booking-checklist {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -13373,6 +13451,15 @@ ul, ol {
   .luxury-stay-page main .luxury-area-notes {
     grid-template-columns: 1fr;
     gap: 10px;
+  }
+
+  .luxury-stay-page main .luxury-hotel-pick__links {
+    gap: 6px;
+  }
+
+  .luxury-stay-page main .luxury-hotel-pick__links a {
+    padding-right: 6px;
+    padding-left: 6px;
   }
 
   .luxury-stay-page main .section__header--center,
