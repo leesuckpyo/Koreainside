@@ -14517,3 +14517,1046 @@ ul, ol {
 }
 
 /* End Nightlife Stay Seoul */
+
+/* Shopping Stay Seoul */
+.shopping-stay-page main {
+  color: #14130F;
+  background: #FFFDF8;
+}
+
+.shopping-stay-page main a {
+  color: #3F5D52;
+  text-underline-offset: 3px;
+}
+
+.shopping-stay-page main a:hover,
+.shopping-stay-page main a:focus {
+  color: #B9653B;
+}
+
+.shopping-stay-page main .airport-page-hero {
+  padding: 88px 0 82px;
+  background: #F7F3EA;
+  border-bottom: 1px solid #D8D0C2;
+}
+
+.shopping-stay-page main .airport-page-hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.14fr) minmax(320px, 0.86fr);
+  gap: clamp(40px, 6vw, 88px);
+  align-items: center;
+}
+
+.shopping-stay-page main .airport-page-hero__copy,
+.shopping-stay-page main .shopping-hero__answer,
+.shopping-stay-page main .shopping-area__summary,
+.shopping-stay-page main .shopping-area__body,
+.shopping-stay-page main .shopping-hotel-pick,
+.shopping-stay-page main .arrival-ota-card {
+  min-width: 0;
+}
+
+.shopping-stay-page main .page-hero__breadcrumb {
+  margin: 0 0 28px;
+  color: #686158;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.shopping-stay-page main .page-hero__breadcrumb a {
+  color: #514C43;
+}
+
+.shopping-stay-page main .eyebrow {
+  margin: 0 0 14px;
+  color: #B9653B;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.shopping-stay-page main .airport-page-hero__title {
+  max-width: 760px;
+  margin: 0;
+  color: #14130F;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(44px, 5vw, 72px);
+  font-weight: 500;
+  line-height: 1.03;
+  letter-spacing: -0.045em;
+}
+
+.shopping-stay-page main .airport-page-hero__desc {
+  max-width: 720px;
+  margin: 26px 0 0;
+  color: #514C43;
+  font-size: 19px;
+  line-height: 1.75;
+}
+
+.shopping-stay-page main .shopping-hero__decisions {
+  max-width: 720px;
+  margin: 28px 0 0;
+  padding-left: 20px;
+  border-left: 2px solid #3F5D52;
+}
+
+.shopping-stay-page main .shopping-hero__decisions p {
+  margin: 0;
+  color: #514C43;
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.shopping-stay-page main .shopping-hero__decisions p + p {
+  margin-top: 8px;
+}
+
+.shopping-stay-page main .shopping-hero__decisions strong {
+  color: #1D2B27;
+}
+
+.shopping-stay-page main .airport-quick-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 30px;
+}
+
+.shopping-stay-page main .airport-pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 8px 15px;
+  color: #1D2B27;
+  background: #FFFDF8;
+  border: 1px solid #D8D0C2;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.2;
+  text-decoration: none;
+}
+
+.shopping-stay-page main .airport-pill:first-child {
+  color: #FFFDF8;
+  background: #3F5D52;
+  border-color: #3F5D52;
+}
+
+.shopping-stay-page main .airport-pill:hover,
+.shopping-stay-page main .airport-pill:focus {
+  color: #FFFDF8;
+  background: #B9653B;
+  border-color: #B9653B;
+}
+
+.shopping-stay-page main .shopping-hero__answer {
+  position: relative;
+  padding: clamp(30px, 4vw, 48px);
+  background: #FFFDF8;
+  border: 1px solid #D8D0C2;
+  border-radius: 24px;
+  box-shadow: 0 18px 48px rgba(29, 43, 39, 0.08);
+}
+
+.shopping-stay-page main .shopping-hero__answer::before {
+  position: absolute;
+  top: 0;
+  right: 38px;
+  left: 38px;
+  height: 3px;
+  background: #B9653B;
+  content: "";
+}
+
+.shopping-stay-page main .airport-badge {
+  display: inline-flex;
+  margin-bottom: 20px;
+  color: #B9653B;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.shopping-stay-page main .shopping-hero__answer h3 {
+  margin: 0 0 22px;
+  color: #1D2B27;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(26px, 2.4vw, 36px);
+  font-weight: 500;
+  line-height: 1.16;
+}
+
+.shopping-stay-page main .shopping-hero__answer ul {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.shopping-stay-page main .shopping-hero__answer li {
+  padding: 12px 0;
+  color: #514C43;
+  border-top: 1px solid #D8D0C2;
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.shopping-stay-page main .shopping-hero__answer li:first-child {
+  border-top-color: #3F5D52;
+}
+
+.shopping-stay-page main .shopping-hero__answer strong {
+  color: #1D2B27;
+}
+
+.shopping-stay-page main .airport-section {
+  padding: clamp(60px, 6.5vw, 88px) 0;
+  background: #FFFDF8;
+}
+
+.shopping-stay-page main .airport-section--cream {
+  background: #F3EDE2;
+}
+
+.shopping-stay-page main .section__header {
+  width: 100%;
+  max-width: none;
+  margin: 0 0 clamp(32px, 3vw, 40px);
+}
+
+.shopping-stay-page main .section__header--center {
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+}
+
+.shopping-stay-page main .section__title {
+  margin: 0;
+  color: #14130F;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 500;
+}
+
+.shopping-stay-page main h2 {
+  width: 100%;
+  max-width: none;
+  font-size: 44px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-wrap: pretty;
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: normal;
+}
+
+.shopping-stay-page main .section__subtitle {
+  max-width: 790px;
+  margin: 20px 0 0;
+  color: #686158;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.shopping-stay-page main .section__header--center .section__subtitle {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.shopping-stay-page main .shopping-decision-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.shopping-stay-page main .shopping-decision-card {
+  padding: 28px;
+  background: #F7F3EA;
+  border: 1px solid #D8D0C2;
+  border-radius: 16px;
+}
+
+.shopping-stay-page main .shopping-decision-card__label {
+  display: block;
+  margin-bottom: 12px;
+  color: #3F5D52;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.shopping-stay-page main .shopping-decision-card p {
+  margin: 0;
+  color: #514C43;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.shopping-stay-page main .shopping-quick-answer {
+  margin: 0;
+  border-top: 1px solid #1D2B27;
+}
+
+.shopping-stay-page main .shopping-quick-answer > div {
+  display: grid;
+  grid-template-columns: minmax(150px, 0.25fr) minmax(0, 0.75fr);
+  gap: 28px;
+  padding: 22px 0;
+  border-bottom: 1px solid #D8D0C2;
+}
+
+.shopping-stay-page main .shopping-quick-answer dt {
+  color: #1D2B27;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 21px;
+  font-weight: 600;
+}
+
+.shopping-stay-page main .shopping-quick-answer dd {
+  margin: 0;
+  color: #514C43;
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+.shopping-stay-page main .shopping-comparison {
+  width: 100%;
+  border-top: 1px solid #1D2B27;
+}
+
+.shopping-stay-page main .shopping-comparison table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.shopping-stay-page main .shopping-comparison th,
+.shopping-stay-page main .shopping-comparison td {
+  padding: 16px 14px;
+  color: #514C43;
+  background: #FFFDF8;
+  border-bottom: 1px solid #D8D0C2;
+  font-size: 15px;
+  line-height: 1.45;
+  text-align: left;
+  vertical-align: top;
+  overflow-wrap: anywhere;
+}
+
+.shopping-stay-page main .shopping-comparison thead th {
+  color: #FFFDF8;
+  background: #3F5D52;
+  border-bottom-color: #D8D0C2;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.shopping-stay-page main .shopping-comparison tbody th {
+  color: #1D2B27;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.shopping-stay-page main .shopping-comparison tbody tr:nth-child(even) th,
+.shopping-stay-page main .shopping-comparison tbody tr:nth-child(even) td {
+  background: #F3EDE2;
+}
+
+.shopping-stay-page main .shopping-comparison th:nth-child(1) {
+  width: 14%;
+}
+
+.shopping-stay-page main .shopping-comparison th:nth-child(2) {
+  width: 23%;
+}
+
+.shopping-stay-page main .shopping-comparison th:nth-child(3) {
+  width: 18%;
+}
+
+.shopping-stay-page main .shopping-comparison th:nth-child(4) {
+  width: 17%;
+}
+
+.shopping-stay-page main .shopping-comparison th:nth-child(5) {
+  width: 28%;
+}
+
+.shopping-stay-page main .shopping-area-list {
+  border-top: 1px solid #1D2B27;
+}
+
+.shopping-stay-page main .shopping-area {
+  display: grid;
+  grid-template-columns: minmax(0, 29fr) minmax(0, 71fr);
+  gap: clamp(38px, 6vw, 82px);
+  padding: clamp(54px, 7vw, 88px) 0;
+  background: transparent;
+  border-bottom: 1px solid #D8D0C2;
+}
+
+.shopping-stay-page main .shopping-area__summary h3 {
+  margin: 0;
+  color: #14130F;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(30px, 3.2vw, 44px);
+  font-weight: 500;
+  line-height: 1.12;
+}
+
+.shopping-stay-page main .shopping-area__verdict {
+  margin: 16px 0 28px;
+  color: #3F5D52;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.shopping-stay-page main .shopping-area__summary > p:not(.shopping-area__verdict) {
+  margin: 0;
+  padding: 15px 0;
+  color: #686158;
+  border-top: 1px solid #D8D0C2;
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.shopping-stay-page main .shopping-area__summary > p strong {
+  color: #1D2B27;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.shopping-stay-page main .shopping-area__copy > p {
+  margin: 0 0 28px;
+  color: #514C43;
+  font-size: 18px;
+  line-height: 1.78;
+}
+
+.shopping-stay-page main .shopping-area__facts {
+  margin: 0;
+  border-top: 1px solid #1D2B27;
+}
+
+.shopping-stay-page main .shopping-area__facts > div {
+  display: grid;
+  grid-template-columns: minmax(120px, 0.22fr) minmax(0, 0.78fr);
+  gap: 24px;
+  padding: 18px 0;
+  border-bottom: 1px solid #D8D0C2;
+}
+
+.shopping-stay-page main .shopping-area__facts dt {
+  color: #1D2B27;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.shopping-stay-page main .shopping-area__facts dd {
+  margin: 0;
+  color: #514C43;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.shopping-stay-page main .shopping-hotel-pick {
+  margin-top: 34px;
+  padding: clamp(24px, 3vw, 34px);
+  background: #F7F3EA;
+  border: 1px solid #D8D0C2;
+  border-radius: 16px;
+}
+
+.shopping-stay-page main .shopping-hotel-pick__area {
+  margin: 0 0 8px;
+  color: #B9653B;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.shopping-stay-page main .shopping-hotel-pick h4 {
+  margin: 0 0 18px;
+  color: #1D2B27;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(22px, 2.4vw, 30px);
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.shopping-stay-page main .shopping-hotel-pick p {
+  margin: 9px 0 0;
+  color: #514C43;
+  font-size: 15px;
+  line-height: 1.62;
+}
+
+.shopping-stay-page main .shopping-hotel-pick p strong {
+  color: #1D2B27;
+}
+
+.shopping-stay-page main .shopping-hotel-pick__links {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 22px;
+}
+
+.shopping-stay-page main .shopping-hotel-pick__links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 43px;
+  padding: 9px 8px;
+  color: #FFFDF8;
+  background: #3F5D52;
+  border: 1px solid #3F5D52;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.shopping-stay-page main .shopping-hotel-pick__links a:hover,
+.shopping-stay-page main .shopping-hotel-pick__links a:focus {
+  color: #FFFDF8;
+  background: #B9653B;
+  border-color: #B9653B;
+}
+
+.shopping-stay-page main .shopping-hotel-pick .shopping-hotel-pick__affiliate-note {
+  margin-top: 10px;
+  color: #686158;
+  font-size: 12px;
+}
+
+.shopping-stay-page main .shopping-editorial-list {
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid #1D2B27;
+  list-style: none;
+}
+
+.shopping-stay-page main .shopping-editorial-list > li,
+.shopping-stay-page main .shopping-route-list__item {
+  position: relative;
+  padding: 28px 0;
+  color: #514C43;
+  border-bottom: 1px solid #D8D0C2;
+  font-size: 17px;
+  line-height: 1.68;
+}
+
+.shopping-stay-page main .shopping-route-list__item {
+  display: grid;
+  grid-template-columns: minmax(0, 0.32fr) minmax(0, 0.68fr);
+  gap: 36px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.shopping-stay-page main .shopping-route-list__heading h3 {
+  margin: 0;
+  color: #1D2B27;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.shopping-stay-page main .shopping-route-list p {
+  margin: 0;
+}
+
+.shopping-stay-page main .shopping-route-list__heading p {
+  margin-top: 10px;
+  color: #B9653B;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.shopping-stay-page main .shopping-booking-groups {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+}
+
+.shopping-stay-page main .shopping-booking-group {
+  min-width: 0;
+  padding: 0 32px;
+}
+
+.shopping-stay-page main .shopping-booking-group:first-child {
+  padding-left: 0;
+}
+
+.shopping-stay-page main .shopping-booking-group:last-child {
+  padding-right: 0;
+}
+
+.shopping-stay-page main .shopping-booking-group + .shopping-booking-group {
+  border-left: 1px solid #D8D0C2;
+}
+
+.shopping-stay-page main .shopping-booking-group h3 {
+  margin: 0 0 22px;
+  color: #1D2B27;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.shopping-stay-page main .shopping-booking-group ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.shopping-stay-page main .shopping-booking-group li {
+  margin: 0;
+  color: #514C43;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.shopping-stay-page main .shopping-booking-group li + li {
+  margin-top: 16px;
+}
+
+.shopping-stay-page main .shopping-booking-group li strong,
+.shopping-stay-page main .shopping-mistake-list > li strong {
+  color: #1D2B27;
+}
+
+.shopping-stay-page main .shopping-hotel-search {
+  background: #FFFDF8;
+}
+
+.shopping-stay-page main .shopping-hotel-search__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.shopping-stay-page main .shopping-hotel-search .arrival-ota-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 220px;
+  padding: 28px;
+  color: #1D2B27;
+  background: #F7F3EA;
+  border: 1px solid #D8D0C2;
+  border-radius: 16px;
+  text-decoration: none;
+}
+
+.shopping-stay-page main .shopping-hotel-search .arrival-ota-card:hover,
+.shopping-stay-page main .shopping-hotel-search .arrival-ota-card:focus {
+  color: #1D2B27;
+  border-color: #B9653B;
+  transform: translateY(-2px);
+}
+
+.shopping-stay-page main .shopping-hotel-search .arrival-ota-card > strong {
+  color: #1D2B27;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 25px;
+}
+
+.shopping-stay-page main .shopping-hotel-search__description {
+  display: block;
+  margin-top: 16px;
+  color: #686158;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.shopping-stay-page main .shopping-hotel-search__cta {
+  display: block;
+  margin-top: auto;
+  padding-top: 22px;
+  color: #B9653B;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.shopping-stay-page main .shopping-hotel-search__disclosure {
+  margin: 18px 0 0;
+  color: #686158;
+  font-size: 12px;
+  line-height: 1.55;
+  text-align: center;
+}
+
+.shopping-stay-page main .shopping-faq {
+  max-width: 900px;
+  margin: 0 auto;
+  border-top: 1px solid #1D2B27;
+}
+
+.shopping-stay-page main .shopping-faq details {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #D8D0C2;
+  border-radius: 0;
+}
+
+.shopping-stay-page main .shopping-faq summary {
+  position: relative;
+  padding: 24px 48px 24px 0;
+  color: #1D2B27;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.4;
+  cursor: pointer;
+  list-style: none;
+}
+
+.shopping-stay-page main .shopping-faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.shopping-stay-page main .shopping-faq summary::after {
+  position: absolute;
+  top: 24px;
+  right: 4px;
+  color: #B9653B;
+  font-family: Arial, sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+  content: "+";
+}
+
+.shopping-stay-page main .shopping-faq details[open] summary::after {
+  content: "−";
+}
+
+.shopping-stay-page main .shopping-faq details p {
+  max-width: 790px;
+  margin: -2px 0 0;
+  padding: 0 48px 24px 0;
+  color: #514C43;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.shopping-stay-page main .shopping-related-links {
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid #1D2B27;
+  list-style: none;
+}
+
+.shopping-stay-page main .shopping-related-links li {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.35fr) minmax(0, 0.65fr);
+  gap: 32px;
+  padding: 20px 0;
+  border-bottom: 1px solid #D8D0C2;
+}
+
+.shopping-stay-page main .shopping-related-links a {
+  color: #1D2B27;
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.shopping-stay-page main .shopping-related-links span {
+  color: #686158;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.shopping-stay-page main .shopping-final {
+  max-width: none;
+}
+
+.shopping-stay-page main .shopping-final__lead {
+  max-width: 900px;
+  margin-top: 22px;
+  color: #1D2B27;
+  font-size: 21px;
+  line-height: 1.7;
+}
+
+.shopping-stay-page main .shopping-final > p:not(.eyebrow):not(.shopping-final__lead) {
+  max-width: 900px;
+  margin: 20px 0 0;
+  color: #514C43;
+  font-size: 18px;
+  line-height: 1.75;
+}
+
+@media (max-width: 900px) {
+  .shopping-stay-page main .airport-page-hero__grid,
+  .shopping-stay-page main .shopping-area {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .shopping-stay-page main .airport-page-hero__grid {
+    gap: 42px;
+  }
+
+  .shopping-stay-page main .shopping-decision-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .shopping-stay-page main .shopping-area {
+    gap: 32px;
+  }
+
+  .shopping-stay-page main .shopping-area__summary {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 28px;
+  }
+
+  .shopping-stay-page main .shopping-area__summary h3,
+  .shopping-stay-page main .shopping-area__verdict {
+    grid-column: 1 / -1;
+  }
+
+}
+
+@media (max-width: 768px) {
+  .shopping-stay-page main h2 {
+    font-size: clamp(30px, 5vw, 32px);
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    white-space: normal;
+  }
+
+  .shopping-stay-page main .shopping-comparison table,
+  .shopping-stay-page main .shopping-comparison tbody {
+    display: block;
+  }
+
+  .shopping-stay-page main .shopping-comparison thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  .shopping-stay-page main .shopping-comparison tbody tr {
+    display: block;
+    padding: 12px 0;
+    background: #FFFDF8;
+    border-bottom: 1px solid #D8D0C2;
+  }
+
+  .shopping-stay-page main .shopping-comparison tbody tr:nth-child(even) {
+    background: #F3EDE2;
+  }
+
+  .shopping-stay-page main .shopping-comparison tbody th,
+  .shopping-stay-page main .shopping-comparison tbody td {
+    display: grid;
+    grid-template-columns: minmax(112px, 0.34fr) minmax(0, 0.66fr);
+    gap: 12px;
+    width: auto !important;
+    padding: 7px 12px;
+    background: transparent;
+    border-bottom: 0;
+    font-size: 14px;
+    line-height: 1.45;
+  }
+
+  .shopping-stay-page main .shopping-comparison tbody tr:nth-child(even) th,
+  .shopping-stay-page main .shopping-comparison tbody tr:nth-child(even) td {
+    background: transparent;
+  }
+
+  .shopping-stay-page main .shopping-comparison tbody th::before,
+  .shopping-stay-page main .shopping-comparison tbody td::before {
+    color: #686158;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    content: attr(data-label);
+  }
+
+  .shopping-stay-page main .shopping-route-list__item,
+  .shopping-stay-page main .shopping-booking-groups {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .shopping-stay-page main .shopping-route-list__item {
+    gap: 12px;
+  }
+
+  .shopping-stay-page main .shopping-booking-group {
+    padding: 26px 0;
+  }
+
+  .shopping-stay-page main .shopping-booking-group:first-child {
+    padding-top: 0;
+  }
+
+  .shopping-stay-page main .shopping-booking-group:last-child {
+    padding-bottom: 0;
+  }
+
+  .shopping-stay-page main .shopping-booking-group + .shopping-booking-group {
+    border-top: 1px solid #D8D0C2;
+    border-left: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .shopping-stay-page main .airport-page-hero {
+    padding: 58px 0 54px;
+  }
+
+  .shopping-stay-page main .airport-page-hero__title {
+    font-size: clamp(38px, 12vw, 50px);
+  }
+
+  .shopping-stay-page main .airport-page-hero__desc,
+  .shopping-stay-page main .section__subtitle {
+    font-size: 17px;
+  }
+
+  .shopping-stay-page main .shopping-hero__answer {
+    padding: 28px 22px;
+    border-radius: 18px;
+  }
+
+  .shopping-stay-page main .shopping-decision-grid,
+  .shopping-stay-page main .shopping-area__summary,
+  .shopping-stay-page main .shopping-quick-answer > div,
+  .shopping-stay-page main .shopping-area__facts > div,
+  .shopping-stay-page main .shopping-related-links li {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .shopping-stay-page main .shopping-decision-card {
+    padding: 23px;
+  }
+
+  .shopping-stay-page main .shopping-quick-answer > div,
+  .shopping-stay-page main .shopping-area__facts > div,
+  .shopping-stay-page main .shopping-related-links li {
+    gap: 8px;
+  }
+
+  .shopping-stay-page main .shopping-comparison tbody th,
+  .shopping-stay-page main .shopping-comparison tbody td {
+    grid-template-columns: minmax(96px, 0.36fr) minmax(0, 0.64fr);
+    gap: 8px;
+    padding: 7px 8px;
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  .shopping-stay-page main .shopping-area {
+    padding: 50px 0;
+  }
+
+  .shopping-stay-page main .shopping-area__summary {
+    display: block;
+  }
+
+  .shopping-stay-page main .shopping-area__summary > p:not(.shopping-area__verdict) {
+    padding: 13px 0;
+  }
+
+  .shopping-stay-page main .shopping-area__copy > p {
+    font-size: 17px;
+    line-height: 1.7;
+  }
+
+  .shopping-stay-page main .shopping-hotel-pick {
+    padding: 22px 18px;
+  }
+
+  .shopping-stay-page main .shopping-hotel-pick__links {
+    gap: 5px;
+  }
+
+  .shopping-stay-page main .shopping-hotel-pick__links a {
+    padding-right: 4px;
+    padding-left: 4px;
+    font-size: 11px;
+  }
+
+  .shopping-stay-page main .shopping-route-list__item {
+    gap: 10px;
+  }
+
+  .shopping-stay-page main .section__header {
+    margin-bottom: 30px;
+  }
+
+  .shopping-stay-page main .shopping-hotel-search__grid {
+    gap: 6px;
+  }
+
+  .shopping-stay-page main .shopping-hotel-search .arrival-ota-card {
+    min-height: 144px;
+    padding: 16px 8px;
+    border-radius: 10px;
+    text-align: center;
+  }
+
+  .shopping-stay-page main .shopping-hotel-search .arrival-ota-card > strong {
+    font-size: 16px;
+    overflow-wrap: anywhere;
+  }
+
+  .shopping-stay-page main .shopping-hotel-search__description {
+    display: none;
+  }
+
+  .shopping-stay-page main .shopping-hotel-search__cta {
+    padding-top: 14px;
+    font-size: 10px;
+    letter-spacing: 0;
+  }
+
+  .shopping-stay-page main .shopping-faq summary {
+    padding-right: 38px;
+    font-size: 18px;
+  }
+
+  .shopping-stay-page main .shopping-faq details p {
+    padding-right: 0;
+    font-size: 16px;
+  }
+
+  .shopping-stay-page main .section__header--center,
+  .shopping-stay-page main .section__header--center .section__subtitle {
+    text-align: left;
+  }
+}
+
+/* End Shopping Stay Seoul */
