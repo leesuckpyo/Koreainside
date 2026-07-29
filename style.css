@@ -15560,3 +15560,842 @@ ul, ol {
 }
 
 /* End Shopping Stay Seoul */
+
+/* Solo Stay Seoul */
+.solo-stay-page main {
+  color: #514C43;
+  background: #F7F3EA;
+  font-family: var(--font-sans);
+}
+
+.solo-stay-page main a {
+  color: #3F5D52;
+}
+
+.solo-stay-page main a:hover,
+.solo-stay-page main a:focus {
+  color: #B9653B;
+}
+
+.solo-stay-page main a:focus-visible,
+.solo-stay-page main summary:focus-visible {
+  outline: 2px solid #3F5D52;
+  outline-offset: 3px;
+}
+
+.solo-stay-page main .airport-page-hero {
+  padding: 82px 0 76px;
+  background: #F7F3EA;
+  border-bottom: 1px solid #D8D0C2;
+}
+
+.solo-stay-page main .solo-hero {
+  width: 100%;
+  max-width: none;
+}
+
+.solo-stay-page main .airport-section {
+  padding: clamp(60px, 6.5vw, 88px) 0;
+  background: #FFFDF8;
+}
+
+.solo-stay-page main .airport-section--gray {
+  background: #F3EDE2;
+}
+
+.solo-stay-page main .page-hero__breadcrumb {
+  margin: 0 0 40px;
+  color: #686158;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.solo-stay-page main .page-hero__breadcrumb a {
+  color: #514C43;
+}
+
+.solo-stay-page main .eyebrow {
+  margin: 0 0 16px;
+  color: #B9653B;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.solo-stay-page main .solo-hero-content {
+  width: 100%;
+  max-width: none;
+  inline-size: auto;
+  margin: 0;
+}
+
+.solo-stay-page main h1,
+.solo-stay-page main h2,
+.solo-stay-page main h3 {
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.solo-stay-page main h1,
+.solo-stay-page main .airport-page-hero__title {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  color: #14130F;
+  font-size: 56px;
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  white-space: normal;
+  overflow-wrap: normal;
+  word-break: normal;
+  text-wrap: pretty;
+}
+
+.solo-stay-page main .solo-hero .airport-page-hero__title {
+  width: 100%;
+  max-width: none;
+}
+
+.solo-stay-page main .airport-page-hero__desc {
+  width: 100%;
+  max-width: none;
+  margin: 22px 0 0;
+  color: #514C43;
+  font-size: 18px;
+  line-height: 1.65;
+  white-space: normal;
+  overflow-wrap: normal;
+  word-break: normal;
+  text-wrap: pretty;
+}
+
+.solo-stay-page main .solo-hero-verdict {
+  width: 100%;
+  max-width: none;
+  margin: 24px 0 0;
+  color: #1D2B27;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  white-space: normal;
+  overflow-wrap: normal;
+  word-break: normal;
+  text-wrap: pretty;
+}
+
+.solo-stay-page main .solo-hero-practical-copy,
+.solo-stay-page main .solo-hero-practical-list {
+  width: 100%;
+  max-width: none;
+  color: #514C43;
+  font-size: 18px;
+  line-height: 1.65;
+  white-space: normal;
+  overflow-wrap: normal;
+  word-break: normal;
+  text-wrap: pretty;
+}
+
+.solo-stay-page main .solo-hero-practical-copy {
+  margin: 18px 0 0;
+  padding-top: 16px;
+  border-top: 1px solid #D8D0C2;
+}
+
+.solo-stay-page main .solo-hero-practical-list {
+  margin: 20px 0 0;
+  padding-left: 22px;
+  list-style: disc;
+}
+
+.solo-stay-page main .solo-hero-practical-list li + li {
+  margin-top: 8px;
+}
+
+.solo-stay-page main .solo-hero-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  margin-top: 30px;
+}
+
+.solo-stay-page main .solo-hero-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0;
+  color: #3F5D52;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: #D8D0C2;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+.solo-stay-page main .solo-hero-links a:hover,
+.solo-stay-page main .solo-hero-links a:focus {
+  color: #B9653B;
+  text-decoration-color: currentColor;
+}
+
+.solo-stay-page main h2,
+.solo-stay-page main .section__title,
+.solo-stay-page main .section__title--lg {
+  width: 100%;
+  max-width: none;
+  margin-top: 0;
+  color: #14130F;
+  font-size: 44px;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-wrap: pretty;
+  white-space: normal;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+.solo-stay-page main h3 {
+  color: #1D2B27;
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+.solo-stay-page main .section__header {
+  width: 100%;
+  max-width: none;
+  margin-bottom: 36px;
+}
+
+.solo-stay-page main .section__header .eyebrow {
+  margin-bottom: 16px;
+}
+
+.solo-stay-page main .section__header .section__title {
+  margin-bottom: 0;
+}
+
+.solo-stay-page main .section__header .section__subtitle {
+  max-width: 860px;
+  margin-top: 22px;
+  color: #686158;
+  font-size: 18px;
+  line-height: 1.7;
+  overflow-wrap: normal;
+}
+
+.solo-stay-page main .section__header--center .section__subtitle {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.solo-stay-page main .section__header--center {
+  text-align: left;
+}
+
+.solo-stay-page main strong {
+  color: #1D2B27;
+}
+
+.solo-stay-page main .solo-decision-list,
+.solo-stay-page main .solo-editorial-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 44px;
+  border-top: 1px solid #D8D0C2;
+}
+
+.solo-stay-page main .solo-decision-item,
+.solo-stay-page main .solo-editorial-item {
+  min-width: 0;
+  padding: 30px 0;
+  border-bottom: 1px solid #D8D0C2;
+  align-self: start;
+}
+
+.solo-stay-page main .solo-decision-item > span {
+  display: block;
+  margin: 0 0 10px;
+  color: #B9653B;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.solo-stay-page main .solo-decision-item p,
+.solo-stay-page main .solo-editorial-item p {
+  margin: 0;
+  color: #514C43;
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+.solo-stay-page main .solo-editorial-item h3 {
+  margin: 0 0 10px;
+}
+
+.solo-stay-page main .solo-overview-list,
+.solo-stay-page main .solo-area-list,
+.solo-stay-page main .solo-mistake-list,
+.solo-stay-page main .solo-related-links {
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid #D8D0C2;
+}
+
+.solo-stay-page main .solo-overview-row {
+  display: grid;
+  grid-template-columns: minmax(0, 0.29fr) minmax(0, 0.71fr);
+  gap: 44px;
+  padding: 30px 0;
+  border-bottom: 1px solid #D8D0C2;
+}
+
+.solo-stay-page main .solo-overview-row__area {
+  margin: 0;
+  color: #1D2B27;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.solo-stay-page main .solo-overview-row dl {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px;
+  margin: 0;
+}
+
+.solo-stay-page main .solo-overview-row dl > div {
+  min-width: 0;
+}
+
+.solo-stay-page main .solo-overview-row dt {
+  margin: 0 0 8px;
+  color: #B9653B;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.solo-stay-page main .solo-overview-row dd {
+  margin: 0;
+  color: #514C43;
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+.solo-stay-page main .solo-area-row {
+  display: grid;
+  grid-template-columns: minmax(0, 0.29fr) minmax(0, 0.71fr);
+  gap: clamp(40px, 5vw, 64px);
+  padding: 34px 0;
+  border-bottom: 1px solid #D8D0C2;
+}
+
+.solo-stay-page main .solo-area-row__summary,
+.solo-stay-page main .solo-area-row__details {
+  min-width: 0;
+}
+
+.solo-stay-page main .solo-area-row__summary h3 {
+  margin: 0 0 12px;
+}
+
+.solo-stay-page main .solo-area-row__summary p,
+.solo-stay-page main .solo-area-row__details p,
+.solo-stay-page main .solo-area-row__details li {
+  color: #514C43;
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+.solo-stay-page main .solo-area-row__summary p,
+.solo-stay-page main .solo-area-row__details p {
+  margin: 0;
+}
+
+.solo-stay-page main .solo-area-row__details p + p {
+  margin-top: 12px;
+}
+
+.solo-stay-page main .solo-area-row__details ul {
+  margin: 18px 0 0;
+  padding-left: 22px;
+  list-style: disc;
+}
+
+.solo-stay-page main .solo-area-row__details li + li {
+  margin-top: 6px;
+}
+
+.solo-stay-page main .solo-comparison {
+  width: 100%;
+  border-top: 1px solid #D8D0C2;
+}
+
+.solo-stay-page main .solo-comparison table {
+  width: 100%;
+  min-width: 0;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+.solo-stay-page main .solo-comparison th,
+.solo-stay-page main .solo-comparison td {
+  padding: 16px 12px;
+  border-bottom: 1px solid #D8D0C2;
+  vertical-align: top;
+  text-align: left;
+  word-break: normal;
+  overflow-wrap: normal;
+}
+
+.solo-stay-page main .solo-comparison th {
+  color: #FFFDF8;
+  background: #3F5D52;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+}
+
+.solo-stay-page main .solo-comparison td {
+  color: #514C43;
+  background: #FFFDF8;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.solo-stay-page main .solo-comparison tbody tr:nth-child(even) td {
+  background: #F3EDE2;
+}
+
+.solo-stay-page main .solo-comparison th:nth-child(1) {
+  width: 14%;
+}
+
+.solo-stay-page main .solo-comparison th:nth-child(2) {
+  width: 21%;
+}
+
+.solo-stay-page main .solo-comparison th:nth-child(3) {
+  width: 18%;
+}
+
+.solo-stay-page main .solo-comparison th:nth-child(4) {
+  width: 14%;
+}
+
+.solo-stay-page main .solo-comparison th:nth-child(5) {
+  width: 14%;
+}
+
+.solo-stay-page main .solo-comparison th:nth-child(6) {
+  width: 19%;
+}
+
+.solo-stay-page main .solo-mistake-list {
+  list-style: none;
+}
+
+.solo-stay-page main .solo-mistake-item {
+  padding: 30px 0;
+  border-bottom: 1px solid #D8D0C2;
+}
+
+.solo-stay-page main .solo-mistake-item h3 {
+  margin: 0 0 10px;
+}
+
+.solo-stay-page main .solo-mistake-item p {
+  max-width: 900px;
+  margin: 0;
+  color: #514C43;
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+.solo-stay-page main .solo-related-links {
+  list-style: none;
+}
+
+.solo-stay-page main .solo-related-links li {
+  display: grid;
+  grid-template-columns: minmax(0, 0.17fr) minmax(0, 0.31fr) minmax(0, 0.52fr);
+  gap: 28px;
+  align-items: baseline;
+  padding: 24px 0;
+  border-bottom: 1px solid #D8D0C2;
+}
+
+.solo-stay-page main .solo-related-links__label {
+  color: #B9653B;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.solo-stay-page main .solo-related-links a {
+  color: #3F5D52;
+  font-family: var(--font-sans);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.4;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+.solo-stay-page main .solo-related-links li > span:last-child {
+  color: #686158;
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+.solo-stay-page main .solo-hotel-disclosure {
+  max-width: 760px;
+  margin: 0 0 22px;
+  color: #686158;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.solo-stay-page main .solo-hotel-list {
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid #D8D0C2;
+}
+
+.solo-stay-page main .solo-hotel-row {
+  display: grid;
+  grid-template-columns: minmax(0, 0.34fr) minmax(0, 0.66fr);
+  gap: clamp(36px, 5vw, 64px);
+  padding: 38px 0;
+  border-bottom: 1px solid #D8D0C2;
+}
+
+.solo-stay-page main .solo-hotel-row__summary,
+.solo-stay-page main .solo-hotel-row__booking {
+  min-width: 0;
+}
+
+.solo-stay-page main .solo-hotel-row__area {
+  margin: 0 0 10px;
+  color: #B9653B;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.solo-stay-page main .solo-hotel-row h3 {
+  margin: 0 0 18px;
+}
+
+.solo-stay-page main .solo-hotel-row__summary p:not(.solo-hotel-row__area) {
+  margin: 0;
+  color: #514C43;
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+.solo-stay-page main .solo-hotel-row__summary p + p {
+  margin-top: 12px;
+}
+
+.solo-stay-page main .solo-hotel-row__booking {
+  align-self: center;
+}
+
+.solo-stay-page main .solo-hotel-row__verdict {
+  max-width: 680px;
+  margin: 0;
+  color: #514C43;
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+.solo-stay-page main .solo-hotel-row__links {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  max-width: 520px;
+  margin-top: 20px;
+}
+
+.solo-stay-page main .solo-hotel-row__links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 43px;
+  padding: 9px 8px;
+  color: #FFFDF8;
+  background: #3F5D52;
+  border: 1px solid #3F5D52;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.solo-stay-page main .solo-hotel-row__links a:hover,
+.solo-stay-page main .solo-hotel-row__links a:focus {
+  color: #FFFDF8;
+  background: #B9653B;
+  border-color: #B9653B;
+}
+
+.solo-stay-page main .airport-faq__list {
+  display: grid;
+  gap: 12px;
+  max-width: 900px;
+  margin: 0;
+}
+
+.solo-stay-page main .airport-faq__list details {
+  min-width: 0;
+  padding: 0;
+  background: #FFFDF8;
+  border: 1px solid #D8D0C2;
+  border-radius: 12px;
+}
+
+.solo-stay-page main .airport-faq__list summary {
+  position: relative;
+  padding: 22px 52px 22px 22px;
+  color: #1D2B27;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.45;
+  cursor: pointer;
+  list-style: none;
+}
+
+.solo-stay-page main .airport-faq__list summary::-webkit-details-marker {
+  display: none;
+}
+
+.solo-stay-page main .airport-faq__list summary::after {
+  position: absolute;
+  top: 20px;
+  right: 22px;
+  color: #B9653B;
+  font-family: Arial, sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+  content: "+";
+}
+
+.solo-stay-page main .airport-faq__list details[open] summary::after {
+  content: "−";
+}
+
+.solo-stay-page main .airport-faq__list p {
+  margin: 0;
+  padding: 0 22px 22px;
+  color: #514C43;
+  font-size: 18px;
+  line-height: 1.72;
+}
+
+@media (max-width: 900px) {
+  .solo-stay-page main .solo-area-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .solo-stay-page main .solo-area-row {
+    gap: 20px;
+  }
+
+  .solo-stay-page main .solo-related-links li {
+    grid-template-columns: minmax(0, 0.2fr) minmax(0, 0.34fr) minmax(0, 0.46fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .solo-stay-page main h1,
+  .solo-stay-page main .airport-page-hero__title {
+    font-size: 36px;
+    line-height: 1.08;
+  }
+
+  .solo-stay-page main h2,
+  .solo-stay-page main .section__title,
+  .solo-stay-page main .section__title--lg {
+    font-size: clamp(30px, 7vw, 32px);
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    white-space: normal;
+  }
+
+  .solo-stay-page main h3 {
+    font-size: 22px;
+  }
+
+  .solo-stay-page main .solo-hero-verdict {
+    font-size: 24px;
+  }
+
+  .solo-stay-page main .airport-page-hero__desc,
+  .solo-stay-page main .solo-hero-practical-copy,
+  .solo-stay-page main .solo-hero-practical-list,
+  .solo-stay-page main .section__header .section__subtitle,
+  .solo-stay-page main .solo-decision-item p,
+  .solo-stay-page main .solo-editorial-item p,
+  .solo-stay-page main .solo-area-row__summary p,
+  .solo-stay-page main .solo-area-row__details p,
+  .solo-stay-page main .solo-area-row__details li,
+  .solo-stay-page main .solo-mistake-item p,
+  .solo-stay-page main .solo-overview-row dd,
+  .solo-stay-page main .solo-related-links li > span:last-child,
+  .solo-stay-page main .solo-hotel-row__summary p:not(.solo-hotel-row__area),
+  .solo-stay-page main .solo-hotel-row__verdict,
+  .solo-stay-page main .airport-faq__list p {
+    font-size: 17px;
+  }
+
+  .solo-stay-page main .section__header {
+    margin-bottom: 32px;
+  }
+
+  .solo-stay-page main .solo-decision-list,
+  .solo-stay-page main .solo-editorial-grid,
+  .solo-stay-page main .solo-overview-row,
+  .solo-stay-page main .solo-overview-row dl,
+  .solo-stay-page main .solo-hotel-row,
+  .solo-stay-page main .solo-related-links li {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .solo-stay-page main .solo-overview-row,
+  .solo-stay-page main .solo-hotel-row,
+  .solo-stay-page main .solo-related-links li {
+    gap: 12px;
+  }
+
+  .solo-stay-page main .solo-overview-row dl {
+    gap: 18px;
+  }
+
+  .solo-stay-page main .solo-hotel-row {
+    gap: 24px;
+  }
+
+  .solo-stay-page main .solo-comparison table,
+  .solo-stay-page main .solo-comparison tbody {
+    display: block;
+  }
+
+  .solo-stay-page main .solo-comparison thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  .solo-stay-page main .solo-comparison tbody tr {
+    display: block;
+    padding: 14px 0;
+    background: #FFFDF8;
+    border-bottom: 1px solid #D8D0C2;
+  }
+
+  .solo-stay-page main .solo-comparison tbody tr:nth-child(even) {
+    background: #F3EDE2;
+  }
+
+  .solo-stay-page main .solo-comparison tbody td {
+    display: grid;
+    grid-template-columns: 34% minmax(0, 66%);
+    gap: 12px;
+    width: auto;
+    padding: 7px 8px;
+    background: transparent;
+    border: 0;
+    font-size: 14px;
+    line-height: 1.45;
+  }
+
+  .solo-stay-page main .solo-comparison tbody td::before {
+    color: #B9653B;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    content: attr(data-label);
+  }
+
+  .solo-stay-page main .solo-hotel-row__links {
+    max-width: none;
+  }
+}
+
+@media (max-width: 390px) {
+  .solo-stay-page main h1,
+  .solo-stay-page main .airport-page-hero__title {
+    font-size: 34px;
+  }
+
+  .solo-stay-page main .solo-hero-verdict {
+    font-size: 23px;
+  }
+
+  .solo-stay-page main .solo-hero-links {
+    gap: 8px 20px;
+  }
+
+  .solo-stay-page main .solo-decision-item,
+  .solo-stay-page main .solo-editorial-item,
+  .solo-stay-page main .solo-overview-row,
+  .solo-stay-page main .solo-area-row,
+  .solo-stay-page main .solo-mistake-item {
+    padding-top: 27px;
+    padding-bottom: 27px;
+  }
+
+  .solo-stay-page main .solo-hotel-row {
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+
+  .solo-stay-page main .solo-hotel-row__links a {
+    padding-right: 6px;
+    padding-left: 6px;
+    font-size: 12px;
+  }
+
+  .solo-stay-page main .solo-comparison tbody td {
+    grid-template-columns: 35% minmax(0, 65%);
+    gap: 8px;
+    padding-right: 0;
+    padding-left: 0;
+    font-size: 13px;
+  }
+}
+
+/* End Solo Stay Seoul */
