@@ -16399,3 +16399,1122 @@ ul, ol {
 }
 
 /* End Solo Stay Seoul */
+
+/* Hongdae vs Myeongdong editorial comparison */
+.hongdae-myeongdong-page main {
+  overflow-x: clip;
+  background: #f7f3ea;
+  color: #514c43;
+}
+
+.hongdae-myeongdong-page main *,
+.hongdae-myeongdong-page main *::before,
+.hongdae-myeongdong-page main *::after {
+  box-sizing: border-box;
+}
+
+.hongdae-myeongdong-page main h1,
+.hongdae-myeongdong-page main h2,
+.hongdae-myeongdong-page main h3,
+.hongdae-myeongdong-page main h4 {
+  margin-top: 0;
+  color: #14130f;
+  text-wrap: balance;
+}
+
+.hongdae-myeongdong-page main h1 {
+  max-width: 820px;
+  margin-bottom: 30px;
+  font-size: 56px;
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+}
+
+.hongdae-myeongdong-page main h2 {
+  width: 100%;
+  max-width: none;
+  max-inline-size: none;
+  min-width: 0;
+  margin-bottom: 0;
+  margin-inline: 0;
+  font-size: clamp(36px, 3.2vw, 44px);
+  line-height: 1.13;
+  letter-spacing: -0.035em;
+  word-break: normal;
+  overflow-wrap: normal;
+  hyphens: none;
+}
+
+.hongdae-myeongdong-page main h3 {
+  margin-bottom: 14px;
+  color: #1d2b27;
+  font-size: 27px;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.hongdae-myeongdong-page main h4 {
+  margin-bottom: 18px;
+  color: #1d2b27;
+  font-size: 23px;
+  line-height: 1.28;
+  letter-spacing: -0.015em;
+}
+
+.hongdae-myeongdong-page main p,
+.hongdae-myeongdong-page main li {
+  font-size: 18px;
+  line-height: 1.72;
+}
+
+.hongdae-myeongdong-page main p {
+  margin-top: 0;
+}
+
+.hongdae-myeongdong-page main p + p {
+  margin-top: 16px;
+}
+
+.hongdae-myeongdong-page main a {
+  color: #3f5d52;
+  text-decoration-color: rgba(63, 93, 82, 0.45);
+  text-underline-offset: 0.18em;
+}
+
+.hongdae-myeongdong-page main a:hover,
+.hongdae-myeongdong-page main a:focus-visible {
+  color: #3f5d52;
+}
+
+.hongdae-myeongdong-page main strong {
+  color: #1d2b27;
+}
+
+.hongdae-myeongdong-page main .hm-hero {
+  padding: 88px 0 96px;
+  background: #f7f3ea;
+  border-bottom: 1px solid #d8d0c2;
+}
+
+.hongdae-myeongdong-page main .hm-hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.18fr) minmax(360px, 0.82fr);
+  gap: clamp(48px, 7vw, 96px);
+  align-items: center;
+}
+
+.hongdae-myeongdong-page main .hm-hero__copy {
+  min-width: 0;
+}
+
+.hongdae-myeongdong-page main .hm-breadcrumb {
+  margin-bottom: 42px;
+  color: #686158;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.hongdae-myeongdong-page main .hm-breadcrumb a {
+  color: #3f5d52;
+}
+
+.hongdae-myeongdong-page main .hm-eyebrow {
+  margin-bottom: 16px;
+  color: #b9653b;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.4;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.hongdae-myeongdong-page main .hm-hero__answer {
+  max-width: 760px;
+}
+
+.hongdae-myeongdong-page main .hm-hero__answer p {
+  margin-bottom: 0;
+  color: #514c43;
+  font-size: 19px;
+  line-height: 1.72;
+}
+
+.hongdae-myeongdong-page main .hm-hero__answer p:first-child {
+  color: #1d2b27;
+  font-weight: 700;
+}
+
+.hongdae-myeongdong-page main .hm-jump-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-top: 34px;
+}
+
+.hongdae-myeongdong-page main .hm-jump-links a {
+  padding-bottom: 4px;
+  border-bottom: 1px solid #3f5d52;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.4;
+  text-decoration: none;
+}
+
+.hongdae-myeongdong-page main .hm-practical-card {
+  position: relative;
+  min-width: 0;
+  padding: 38px;
+  overflow: hidden;
+  background: #fffdf8;
+  border: 1px solid #d8d0c2;
+  border-radius: 22px;
+  box-shadow: 0 20px 48px rgba(47, 42, 33, 0.08);
+}
+
+.hongdae-myeongdong-page main .hm-practical-card::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 5px;
+  background: #3f5d52;
+  content: "";
+}
+
+.hongdae-myeongdong-page main .hm-badge {
+  display: inline-flex;
+  margin-bottom: 20px;
+  padding: 7px 12px;
+  color: #fffdf8;
+  background: #3f5d52;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.3;
+  letter-spacing: 0.04em;
+}
+
+.hongdae-myeongdong-page main .hm-practical-card p {
+  margin-bottom: 24px;
+  color: #514c43;
+}
+
+.hongdae-myeongdong-page main .hm-practical-card ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.hongdae-myeongdong-page main .hm-practical-card li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(120px, 0.8fr);
+  gap: 18px;
+  padding: 16px 0;
+  border-top: 1px solid #d8d0c2;
+}
+
+.hongdae-myeongdong-page main .hm-practical-card li span {
+  color: #b9653b;
+  font-weight: 750;
+  text-align: right;
+}
+
+.hongdae-myeongdong-page main .hm-section {
+  padding: 104px 0;
+  background: #f7f3ea;
+}
+
+.hongdae-myeongdong-page main .hm-section--cream {
+  background: #f3ede2;
+}
+
+.hongdae-myeongdong-page main .hm-section__header {
+  width: 100%;
+  max-width: none;
+  max-inline-size: none;
+  min-width: 0;
+  margin-bottom: 48px;
+  margin-inline: 0;
+}
+
+.hongdae-myeongdong-page main .hm-section__intro {
+  width: 100%;
+  max-width: none;
+  max-inline-size: none;
+  min-width: 0;
+  margin-top: 22px;
+  margin-inline: 0;
+  color: #686158;
+  word-break: normal;
+  overflow-wrap: normal;
+  hyphens: none;
+}
+
+.hongdae-myeongdong-page main .hm-prose,
+.hongdae-myeongdong-page main .hm-prose--wide {
+  width: 100%;
+  max-width: none;
+  max-inline-size: none;
+  min-width: 0;
+  margin-inline: 0;
+  word-break: normal;
+  overflow-wrap: normal;
+  hyphens: none;
+}
+
+.hongdae-myeongdong-page main .hm-prose p {
+  margin-bottom: 0;
+  word-break: normal;
+  overflow-wrap: normal;
+  hyphens: none;
+}
+
+.hongdae-myeongdong-page main .hm-decision-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.hongdae-myeongdong-page main .hm-decision-card {
+  min-width: 0;
+  padding: 30px;
+  background: #fffdf8;
+  border: 1px solid #d8d0c2;
+  border-radius: 16px;
+}
+
+.hongdae-myeongdong-page main .hm-decision-card:nth-child(3n + 1) {
+  border-top: 4px solid #3f5d52;
+}
+
+.hongdae-myeongdong-page main .hm-decision-card:nth-child(3n + 2) {
+  border-top: 4px solid #b9653b;
+}
+
+.hongdae-myeongdong-page main .hm-decision-card:nth-child(3n + 3) {
+  border-top: 4px solid #d8d0c2;
+}
+
+.hongdae-myeongdong-page main .hm-decision-card__label {
+  margin-bottom: 12px;
+  color: #686158;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.4;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.hongdae-myeongdong-page main .hm-decision-card h3 {
+  font-size: 24px;
+}
+
+.hongdae-myeongdong-page main .hm-decision-card p:last-child {
+  margin-bottom: 0;
+}
+
+.hongdae-myeongdong-page main .hm-table-wrap {
+  width: 100%;
+  overflow: hidden;
+  background: #fffdf8;
+  border: 1px solid #d8d0c2;
+  border-radius: 8px;
+}
+
+.hongdae-myeongdong-page main .hm-comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.hongdae-myeongdong-page main .hm-comparison-table th,
+.hongdae-myeongdong-page main .hm-comparison-table td {
+  padding: 18px 20px;
+  color: #514c43;
+  border-right: 1px solid #d8d0c2;
+  border-bottom: 1px solid #d8d0c2;
+  font-size: 15px;
+  line-height: 1.6;
+  text-align: left;
+  vertical-align: top;
+  word-break: normal;
+  overflow-wrap: normal;
+  hyphens: none;
+}
+
+.hongdae-myeongdong-page main .hm-comparison-table th:last-child,
+.hongdae-myeongdong-page main .hm-comparison-table td:last-child {
+  border-right: 0;
+}
+
+.hongdae-myeongdong-page main .hm-comparison-table tbody tr:last-child th,
+.hongdae-myeongdong-page main .hm-comparison-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.hongdae-myeongdong-page main .hm-comparison-table thead th {
+  color: #fffdf8;
+  background: #3f5d52;
+  font-weight: 800;
+}
+
+.hongdae-myeongdong-page main .hm-comparison-table thead th:first-child {
+  width: 17%;
+}
+
+.hongdae-myeongdong-page main .hm-comparison-table thead th:nth-child(2),
+.hongdae-myeongdong-page main .hm-comparison-table thead th:nth-child(3) {
+  width: 29%;
+}
+
+.hongdae-myeongdong-page main .hm-comparison-table thead th:last-child {
+  width: 25%;
+}
+
+.hongdae-myeongdong-page main .hm-comparison-table tbody th {
+  color: #1d2b27;
+  background: #f7f3ea;
+  font-weight: 800;
+}
+
+.hongdae-myeongdong-page main .hm-table-note {
+  width: 100%;
+  max-width: none;
+  max-inline-size: none;
+  min-width: 0;
+  margin: 24px 0 0;
+  margin-inline: 0;
+  color: #686158;
+  word-break: normal;
+  overflow-wrap: normal;
+  hyphens: none;
+}
+
+.hongdae-myeongdong-page main .hm-editorial-row {
+  display: grid;
+  grid-template-columns: minmax(0, 29fr) minmax(0, 71fr);
+  gap: clamp(36px, 6vw, 72px);
+  min-width: 0;
+}
+
+.hongdae-myeongdong-page main .hm-editorial-row__label,
+.hongdae-myeongdong-page main .hm-editorial-row__content {
+  min-width: 0;
+}
+
+.hongdae-myeongdong-page main .hm-editorial-row__label {
+  align-self: start;
+}
+
+.hongdae-myeongdong-page main .hm-editorial-row__label p {
+  color: #686158;
+}
+
+.hongdae-myeongdong-page main .hm-row-kicker {
+  margin-bottom: 18px;
+  color: #1d2b27 !important;
+  font-size: 24px !important;
+  font-weight: 800;
+  line-height: 1.3 !important;
+  letter-spacing: -0.02em;
+}
+
+.hongdae-myeongdong-page main .hm-row-default {
+  color: #b9653b !important;
+  font-weight: 800;
+}
+
+.hongdae-myeongdong-page main .hm-district-row {
+  padding-top: 10px;
+}
+
+.hongdae-myeongdong-page main .hm-district-copy p {
+  margin-bottom: 0;
+}
+
+.hongdae-myeongdong-page main .hm-judgment-note {
+  padding: 22px 0 0;
+  margin-top: 26px;
+  color: #514c43;
+  border-top: 1px solid #b9653b;
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+.hongdae-myeongdong-page main .hm-priority-list {
+  border-top: 1px solid #d8d0c2;
+}
+
+.hongdae-myeongdong-page main .hm-priority-row {
+  padding: 42px 0;
+  border-bottom: 1px solid #d8d0c2;
+}
+
+.hongdae-myeongdong-page main .hm-priority-row p {
+  margin-bottom: 0;
+}
+
+.hongdae-myeongdong-page main .hm-scenarios {
+  margin-top: 86px;
+}
+
+.hongdae-myeongdong-page main .hm-scenarios h3 {
+  margin-bottom: 28px;
+  font-size: 28px;
+}
+
+.hongdae-myeongdong-page main .hm-scenarios ol {
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid #d8d0c2;
+  list-style: none;
+  counter-reset: hm-scenario;
+}
+
+.hongdae-myeongdong-page main .hm-scenarios li {
+  position: relative;
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr);
+  gap: 22px;
+  padding: 30px 0;
+  border-bottom: 1px solid #d8d0c2;
+  counter-increment: hm-scenario;
+}
+
+.hongdae-myeongdong-page main .hm-scenarios li::before {
+  color: #b9653b;
+  font-size: 19px;
+  font-weight: 800;
+  line-height: 1.5;
+  content: counter(hm-scenario, decimal-leading-zero);
+}
+
+.hongdae-myeongdong-page main .hm-scenarios li p {
+  grid-column: 2;
+  margin-bottom: 0;
+}
+
+.hongdae-myeongdong-page main .hm-scenarios li .hm-scenario-title {
+  margin-bottom: -12px;
+  color: #1d2b27;
+  font-size: 21px;
+  font-weight: 800;
+  line-height: 1.4;
+}
+
+.hongdae-myeongdong-page main .hm-numbered-list {
+  padding: 0;
+  margin: 34px 0;
+  border-top: 1px solid #d8d0c2;
+  list-style: none;
+  counter-reset: hm-route;
+}
+
+.hongdae-myeongdong-page main .hm-numbered-list li {
+  position: relative;
+  padding: 22px 0 22px 54px;
+  border-bottom: 1px solid #d8d0c2;
+  counter-increment: hm-route;
+}
+
+.hongdae-myeongdong-page main .hm-numbered-list li::before {
+  position: absolute;
+  top: 24px;
+  left: 0;
+  color: #b9653b;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1.4;
+  content: "0" counter(hm-route);
+}
+
+.hongdae-myeongdong-page main .hm-prose h3 {
+  margin-top: 52px;
+  margin-bottom: 18px;
+}
+
+.hongdae-myeongdong-page main .hm-hotel-region {
+  display: block;
+  width: 100%;
+  max-width: none;
+  max-inline-size: none;
+  min-width: 0;
+  margin-inline: 0;
+}
+
+.hongdae-myeongdong-page main .hm-hotel-region__list {
+  width: 100%;
+  max-width: none;
+  max-inline-size: none;
+  min-width: 0;
+  margin-inline: 0;
+}
+
+.hongdae-myeongdong-page main .hm-hotel-region + .hm-hotel-region {
+  margin-top: 88px;
+}
+
+.hongdae-myeongdong-page main .hm-hotel-guide {
+  width: 100%;
+  max-width: none;
+  max-inline-size: none;
+  min-width: 0;
+  padding-bottom: 46px;
+  margin-inline: 0;
+  border-bottom: 1px solid #d8d0c2;
+}
+
+.hongdae-myeongdong-page main .hm-hotel-guide h2 {
+  margin-bottom: 24px;
+}
+
+.hongdae-myeongdong-page main .hm-hotel-guide p {
+  width: 100%;
+  max-width: none;
+  max-inline-size: none;
+  min-width: 0;
+  margin-bottom: 0;
+  margin-inline: 0;
+  color: #686158;
+  word-break: normal;
+  overflow-wrap: normal;
+  hyphens: none;
+}
+
+.hongdae-myeongdong-page main .hm-hotel {
+  width: 100%;
+  max-width: none;
+  max-inline-size: none;
+  min-width: 0;
+  padding: 46px 0;
+  margin-inline: 0;
+  border-bottom: 1px solid #d8d0c2;
+}
+
+.hongdae-myeongdong-page main .hm-hotel + .hm-hotel {
+  padding-top: 46px;
+}
+
+.hongdae-myeongdong-page main .hm-hotel:last-child {
+  padding-bottom: 46px;
+}
+
+.hongdae-myeongdong-page main .hm-hotel h3 {
+  width: 100%;
+  max-width: none;
+  max-inline-size: none;
+  min-width: 0;
+  margin-inline: 0;
+  word-break: normal;
+  overflow-wrap: normal;
+  hyphens: none;
+}
+
+.hongdae-myeongdong-page main .hm-hotel p {
+  width: 100%;
+  max-width: none;
+  max-inline-size: none;
+  min-width: 0;
+  margin-bottom: 0;
+  margin-inline: 0;
+  word-break: normal;
+  overflow-wrap: normal;
+  hyphens: none;
+}
+
+.hongdae-myeongdong-page main .hm-ota-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.hongdae-myeongdong-page main .hm-ota-button {
+  display: inline-flex;
+  min-width: 0;
+  min-height: 46px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 12px;
+  color: #1d2b27;
+  background: #fffdf8;
+  border: 1px solid #d8d0c2;
+  border-top-width: 4px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  word-break: normal;
+  overflow-wrap: normal;
+  hyphens: none;
+}
+
+.hongdae-myeongdong-page main .hm-ota-button:hover,
+.hongdae-myeongdong-page main .hm-ota-button:focus-visible {
+  color: #14130f;
+  background: #f3ede2;
+}
+
+.hongdae-myeongdong-page main .hm-ota-button--expedia {
+  border-top-color: #26356b;
+}
+
+.hongdae-myeongdong-page main .hm-ota-button--booking {
+  border-top-color: #003b95;
+}
+
+.hongdae-myeongdong-page main .hm-ota-button--agoda {
+  border-top-color: #d63b37;
+}
+
+.hongdae-myeongdong-page main .hm-hotel-notices {
+  width: 100%;
+  max-width: none;
+  max-inline-size: none;
+  min-width: 0;
+  margin: 0 0 42px;
+}
+
+.hongdae-myeongdong-page main .hm-affiliate-note {
+  margin: 0 0 10px;
+  color: #686158;
+  font-size: 13px;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.hongdae-myeongdong-page main .hm-rate-note {
+  width: 100%;
+  max-width: none;
+  max-inline-size: none;
+  min-width: 0;
+  margin: 0;
+  color: #686158;
+  word-break: normal;
+  overflow-wrap: normal;
+  hyphens: none;
+}
+
+.hongdae-myeongdong-page main .hm-booking-checklist {
+  padding-top: 54px;
+  margin-top: 20px;
+  border-top: 1px solid #d8d0c2;
+}
+
+.hongdae-myeongdong-page main .hm-booking-checklist h3 {
+  margin-bottom: 26px;
+}
+
+.hongdae-myeongdong-page main .hm-booking-checklist ol {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 48px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  counter-reset: hm-check;
+}
+
+.hongdae-myeongdong-page main .hm-booking-checklist li {
+  position: relative;
+  padding: 15px 0 15px 42px;
+  border-bottom: 1px solid #d8d0c2;
+  counter-increment: hm-check;
+}
+
+.hongdae-myeongdong-page main .hm-booking-checklist li::before {
+  position: absolute;
+  left: 0;
+  color: #b9653b;
+  font-weight: 800;
+  content: counter(hm-check, decimal-leading-zero);
+}
+
+.hongdae-myeongdong-page main .hm-mistake-list {
+  border-top: 1px solid #d8d0c2;
+}
+
+.hongdae-myeongdong-page main .hm-mistake-row {
+  padding: 36px 0;
+  border-bottom: 1px solid #d8d0c2;
+}
+
+.hongdae-myeongdong-page main .hm-mistake-row p {
+  margin-bottom: 0;
+}
+
+.hongdae-myeongdong-page main .hm-mistake-row .hm-row-kicker {
+  font-size: 21px !important;
+}
+
+.hongdae-myeongdong-page main .hm-faq {
+  display: grid;
+  gap: 14px;
+}
+
+.hongdae-myeongdong-page main .hm-faq details {
+  background: #fffdf8;
+  border: 1px solid #d8d0c2;
+  border-radius: 14px;
+}
+
+.hongdae-myeongdong-page main .hm-faq details[open] {
+  border-color: #b9653b;
+}
+
+.hongdae-myeongdong-page main .hm-faq summary {
+  position: relative;
+  padding: 22px 58px 22px 24px;
+  color: #1d2b27;
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1.45;
+  list-style: none;
+}
+
+.hongdae-myeongdong-page main .hm-faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.hongdae-myeongdong-page main .hm-faq summary::after {
+  position: absolute;
+  top: 50%;
+  right: 24px;
+  color: #b9653b;
+  font-size: 24px;
+  line-height: 1;
+  content: "+";
+  transform: translateY(-50%);
+}
+
+.hongdae-myeongdong-page main .hm-faq details[open] summary::after {
+  content: "−";
+}
+
+.hongdae-myeongdong-page main .hm-faq p {
+  padding: 0 24px 24px;
+  margin: 0;
+}
+
+.hongdae-myeongdong-page main .hm-related-links {
+  display: grid;
+  border-top: 1px solid #d8d0c2;
+}
+
+.hongdae-myeongdong-page main .hm-related-links a {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(0, 0.75fr);
+  gap: 32px;
+  align-items: baseline;
+  padding: 22px 0;
+  border-bottom: 1px solid #d8d0c2;
+  text-decoration: none;
+}
+
+.hongdae-myeongdong-page main .hm-related-links a span:first-child {
+  color: #1d2b27;
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.4;
+}
+
+.hongdae-myeongdong-page main .hm-related-links a span:last-child {
+  color: #686158;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.hongdae-myeongdong-page main .hm-related-links a:hover span:first-child,
+.hongdae-myeongdong-page main .hm-related-links a:focus-visible span:first-child {
+  color: #b9653b;
+}
+
+.hongdae-myeongdong-page main .hm-final {
+  background: #fffdf8;
+  border-top: 1px solid #d8d0c2;
+}
+
+@media (max-width: 900px) {
+  .hongdae-myeongdong-page main .hm-hero {
+    padding: 70px 0 80px;
+  }
+
+  .hongdae-myeongdong-page main .hm-hero__grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 48px;
+  }
+
+  .hongdae-myeongdong-page main .hm-practical-card {
+    max-width: 720px;
+  }
+
+  .hongdae-myeongdong-page main .hm-section {
+    padding: 84px 0;
+  }
+
+  .hongdae-myeongdong-page main .hm-decision-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hongdae-myeongdong-page main .hm-editorial-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+  }
+
+  .hongdae-myeongdong-page main .hm-editorial-row__label {
+    max-width: 68ch;
+  }
+
+  .hongdae-myeongdong-page main .hm-priority-row,
+  .hongdae-myeongdong-page main .hm-mistake-row {
+    padding: 34px 0;
+  }
+
+  .hongdae-myeongdong-page main .hm-booking-checklist ol {
+    gap: 0 32px;
+  }
+}
+
+@media (max-width: 620px) {
+  .hongdae-myeongdong-page main h1 {
+    margin-bottom: 24px;
+    font-size: 36px;
+    line-height: 1.12;
+  }
+
+  .hongdae-myeongdong-page main h2 {
+    font-size: 32px;
+    line-height: 1.18;
+  }
+
+  .hongdae-myeongdong-page main h3 {
+    font-size: 22px;
+  }
+
+  .hongdae-myeongdong-page main h4 {
+    font-size: 20px;
+  }
+
+  .hongdae-myeongdong-page main p,
+  .hongdae-myeongdong-page main li {
+    font-size: 17px;
+    line-height: 1.68;
+  }
+
+  .hongdae-myeongdong-page main .hm-hero {
+    padding: 54px 0 64px;
+  }
+
+  .hongdae-myeongdong-page main .hm-breadcrumb {
+    margin-bottom: 30px;
+    font-size: 13px;
+  }
+
+  .hongdae-myeongdong-page main .hm-hero__answer p {
+    font-size: 17px;
+    line-height: 1.68;
+  }
+
+  .hongdae-myeongdong-page main .hm-jump-links {
+    gap: 12px 18px;
+    margin-top: 28px;
+  }
+
+  .hongdae-myeongdong-page main .hm-jump-links a {
+    font-size: 14px;
+  }
+
+  .hongdae-myeongdong-page main .hm-practical-card {
+    padding: 30px 22px;
+    border-radius: 16px;
+  }
+
+  .hongdae-myeongdong-page main .hm-practical-card li {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 4px;
+  }
+
+  .hongdae-myeongdong-page main .hm-practical-card li span {
+    text-align: left;
+  }
+
+  .hongdae-myeongdong-page main .hm-section {
+    padding: 68px 0;
+  }
+
+  .hongdae-myeongdong-page main .hm-section__header {
+    margin-bottom: 36px;
+  }
+
+  .hongdae-myeongdong-page main .hm-decision-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  .hongdae-myeongdong-page main .hm-decision-card {
+    padding: 24px 22px;
+  }
+
+  .hongdae-myeongdong-page main .hm-decision-card h3 {
+    font-size: 22px;
+  }
+
+  .hongdae-myeongdong-page main .hm-table-wrap {
+    overflow: visible;
+    background: transparent;
+    border: 0;
+  }
+
+  .hongdae-myeongdong-page main .hm-comparison-table,
+  .hongdae-myeongdong-page main .hm-comparison-table tbody,
+  .hongdae-myeongdong-page main .hm-comparison-table tr,
+  .hongdae-myeongdong-page main .hm-comparison-table th,
+  .hongdae-myeongdong-page main .hm-comparison-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .hongdae-myeongdong-page main .hm-comparison-table {
+    table-layout: auto;
+  }
+
+  .hongdae-myeongdong-page main .hm-comparison-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .hongdae-myeongdong-page main .hm-comparison-table tr {
+    margin-bottom: 18px;
+    overflow: hidden;
+    background: #fffdf8;
+    border: 1px solid #d8d0c2;
+    border-radius: 8px;
+  }
+
+  .hongdae-myeongdong-page main .hm-comparison-table tbody th,
+  .hongdae-myeongdong-page main .hm-comparison-table tbody td {
+    padding: 14px 16px;
+    border-right: 0;
+    border-bottom: 1px solid #d8d0c2;
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  .hongdae-myeongdong-page main .hm-comparison-table tbody td::before {
+    display: block;
+    margin-bottom: 3px;
+    color: #686158;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 1.4;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    content: attr(data-label);
+  }
+
+  .hongdae-myeongdong-page main .hm-comparison-table tbody tr:last-child th,
+  .hongdae-myeongdong-page main .hm-comparison-table tbody tr:last-child td {
+    border-bottom: 1px solid #d8d0c2;
+  }
+
+  .hongdae-myeongdong-page main .hm-comparison-table tbody tr th:last-child,
+  .hongdae-myeongdong-page main .hm-comparison-table tbody tr td:last-child {
+    border-bottom: 0;
+  }
+
+  .hongdae-myeongdong-page main .hm-row-kicker {
+    margin-bottom: 12px;
+    font-size: 21px !important;
+  }
+
+  .hongdae-myeongdong-page main .hm-scenarios {
+    margin-top: 64px;
+  }
+
+  .hongdae-myeongdong-page main .hm-scenarios li {
+    grid-template-columns: 38px minmax(0, 1fr);
+    gap: 10px;
+    padding: 24px 0;
+  }
+
+  .hongdae-myeongdong-page main .hm-scenarios li .hm-scenario-title {
+    margin-bottom: -8px;
+    font-size: 19px;
+  }
+
+  .hongdae-myeongdong-page main .hm-numbered-list li {
+    padding-left: 40px;
+  }
+
+  .hongdae-myeongdong-page main .hm-ota-row {
+    gap: 5px;
+  }
+
+  .hongdae-myeongdong-page main .hm-hotel-region + .hm-hotel-region {
+    margin-top: 68px;
+  }
+
+  .hongdae-myeongdong-page main .hm-hotel-guide {
+    padding-bottom: 34px;
+  }
+
+  .hongdae-myeongdong-page main .hm-hotel {
+    padding: 34px 0;
+  }
+
+  .hongdae-myeongdong-page main .hm-hotel + .hm-hotel {
+    padding-top: 34px;
+  }
+
+  .hongdae-myeongdong-page main .hm-hotel:last-child {
+    padding-bottom: 34px;
+  }
+
+  .hongdae-myeongdong-page main .hm-ota-button {
+    min-height: 44px;
+    padding: 8px 4px;
+    font-size: 14px;
+  }
+
+  .hongdae-myeongdong-page main .hm-booking-checklist ol {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .hongdae-myeongdong-page main .hm-faq summary {
+    padding: 20px 52px 20px 20px;
+    font-size: 16px;
+  }
+
+  .hongdae-myeongdong-page main .hm-faq summary::after {
+    right: 20px;
+  }
+
+  .hongdae-myeongdong-page main .hm-faq p {
+    padding: 0 20px 22px;
+    font-size: 17px;
+    line-height: 1.68;
+  }
+
+  .hongdae-myeongdong-page main .hm-related-links a {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 4px;
+  }
+
+  .hongdae-myeongdong-page main .hm-related-links a span:first-child {
+    font-size: 18px;
+  }
+
+  .hongdae-myeongdong-page main .hm-related-links a span:last-child {
+    font-size: 15px;
+  }
+}
