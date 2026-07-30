@@ -15349,6 +15349,1128 @@ ul, ol {
 
 /* End Shopping Stay Seoul */
 
+/* Budget Stay Seoul */
+.budget-stay-page main {
+  overflow-x: clip;
+  color: #514C43;
+  background: #F7F3EA;
+  font-family: "Roboto Flex", "Roboto", "Arial", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  font-optical-sizing: auto;
+  font-synthesis: none;
+  line-height: 1.7;
+  white-space: normal;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+}
+
+.budget-stay-page main *,
+.budget-stay-page main *::before,
+.budget-stay-page main *::after {
+  box-sizing: border-box;
+}
+
+.budget-stay-page main a {
+  color: #3F5D52;
+}
+
+.budget-stay-page main a:hover,
+.budget-stay-page main a:focus {
+  color: #B9653B;
+}
+
+.budget-stay-page main a:focus-visible,
+.budget-stay-page main button:focus-visible,
+.budget-stay-page main summary:focus-visible {
+  outline: 2px solid #3F5D52;
+  outline-offset: 3px;
+}
+
+.budget-stay-page main h1,
+.budget-stay-page main h2,
+.budget-stay-page main h3,
+.budget-stay-page main h4 {
+  width: 100%;
+  max-width: none;
+  margin-top: 0;
+  color: #14130F;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+}
+
+.budget-stay-page main h1 {
+  margin-bottom: 28px;
+  font-size: 52px;
+  font-weight: 560;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+.budget-stay-page main h2 {
+  margin-bottom: 0;
+  font-size: 36px;
+  font-weight: 570;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  text-wrap: pretty;
+}
+
+.budget-stay-page main h3 {
+  font-size: 24px;
+  font-weight: 570;
+  line-height: 1.25;
+  letter-spacing: -0.005em;
+}
+
+.budget-stay-page main h4 {
+  font-size: 22px;
+  font-weight: 570;
+  line-height: 1.3;
+  letter-spacing: -0.005em;
+}
+
+.budget-stay-page main p,
+.budget-stay-page main li,
+.budget-stay-page main dd {
+  text-wrap: pretty;
+}
+
+.budget-stay-page main strong {
+  color: #1D2B27;
+  font-weight: 570;
+}
+
+.budget-stay-page main .budget-hero {
+  padding: clamp(68px, 7vw, 104px) 0;
+  background: #F7F3EA;
+  border-bottom: 1px solid #D8D0C2;
+}
+
+.budget-stay-page main .budget-hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.56fr) minmax(320px, 0.84fr);
+  gap: clamp(44px, 6vw, 84px);
+  align-items: center;
+}
+
+.budget-stay-page main .budget-hero__copy,
+.budget-stay-page main .budget-practical-card {
+  min-width: 0;
+}
+
+.budget-stay-page main .budget-breadcrumb {
+  margin: 0 0 30px;
+  color: #686158;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.55;
+  letter-spacing: 0.02em;
+}
+
+.budget-stay-page main .budget-breadcrumb a {
+  color: #514C43;
+}
+
+.budget-stay-page main .budget-eyebrow {
+  margin: 0 0 16px;
+  color: #B9653B;
+  font-size: 15px;
+  font-weight: 550;
+  line-height: 1.3;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.budget-stay-page main .budget-hero__answer {
+  max-width: none;
+}
+
+.budget-stay-page main .budget-hero__answer p {
+  margin: 0;
+  color: #1D2B27;
+  font-size: 19px;
+  font-weight: 430;
+  line-height: 1.58;
+}
+
+.budget-stay-page main .budget-hero__answer p + p {
+  margin-top: 14px;
+}
+
+.budget-stay-page main .budget-jump-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  margin-top: 28px;
+}
+
+.budget-stay-page main .budget-jump-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: #3F5D52;
+  font-size: 15px;
+  font-weight: 550;
+  line-height: 1.3;
+  text-decoration: underline;
+  text-decoration-color: #D8D0C2;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+.budget-stay-page main .budget-practical-card {
+  padding: clamp(28px, 3vw, 40px);
+  background: #FFFDF8;
+  border: 1px solid #D8D0C2;
+  border-radius: 14px;
+  box-shadow: 0 18px 48px rgba(29, 43, 39, 0.08);
+}
+
+.budget-stay-page main .budget-badge {
+  display: inline-flex;
+  margin: 0 0 14px;
+  color: #B9653B;
+  font-size: 14px;
+  font-weight: 570;
+  line-height: 1.3;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.budget-stay-page main .budget-practical-card h3,
+.budget-stay-page main .budget-map-verdict h3 {
+  margin-bottom: 22px;
+}
+
+.budget-stay-page main .budget-practical-card dl,
+.budget-stay-page main .budget-map-verdict dl {
+  margin: 0;
+}
+
+.budget-stay-page main .budget-practical-card dl > div,
+.budget-stay-page main .budget-map-verdict dl > div {
+  padding: 16px 0;
+  border-top: 1px solid #D8D0C2;
+}
+
+.budget-stay-page main .budget-practical-card dt,
+.budget-stay-page main .budget-map-verdict dt {
+  margin-bottom: 6px;
+  color: #B9653B;
+  font-size: 14px;
+  font-weight: 570;
+  line-height: 1.35;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.budget-stay-page main .budget-practical-card dd,
+.budget-stay-page main .budget-map-verdict dd {
+  margin: 0;
+  color: #514C43;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.65;
+}
+
+.budget-stay-page main .budget-section {
+  padding: clamp(64px, 7vw, 96px) 0;
+  background: #FFFDF8;
+}
+
+.budget-stay-page main .budget-section--cream {
+  background: #F3EDE2;
+}
+
+.budget-stay-page main .budget-section__header {
+  width: 100%;
+  max-width: none;
+  margin-bottom: 34px;
+}
+
+.budget-stay-page main .budget-section__header > p:last-child:not(.budget-eyebrow) {
+  max-width: none;
+  margin: 20px 0 0;
+  color: #686158;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+.budget-stay-page main .budget-prose,
+.budget-stay-page main .budget-cost-notes,
+.budget-stay-page main .budget-final {
+  max-width: none;
+}
+
+.budget-stay-page main .budget-prose p,
+.budget-stay-page main .budget-cost-notes p,
+.budget-stay-page main .budget-final p {
+  margin: 0;
+  color: #514C43;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+.budget-stay-page main .budget-prose p + p,
+.budget-stay-page main .budget-cost-notes p + p,
+.budget-stay-page main .budget-final p + p {
+  margin-top: 16px;
+}
+
+.budget-stay-page main .budget-decision-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.budget-stay-page main .budget-decision-card {
+  min-width: 0;
+  padding: 28px;
+  background: #FFFDF8;
+  border: 1px solid #D8D0C2;
+  border-radius: 12px;
+}
+
+.budget-stay-page main .budget-decision-card__label,
+.budget-stay-page main .budget-hotel-card__area,
+.budget-stay-page main .budget-row-kicker {
+  margin: 0 0 10px;
+  color: #B9653B;
+  font-size: 14px;
+  font-weight: 570;
+  line-height: 1.35;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.budget-stay-page main .budget-decision-card h3 {
+  margin-bottom: 12px;
+}
+
+.budget-stay-page main .budget-decision-card p:last-child {
+  margin: 0;
+  color: #514C43;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.65;
+}
+
+.budget-stay-page main .budget-cost-formula {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 32px;
+  padding: 24px 0;
+  color: #1D2B27;
+  border-top: 1px solid #D8D0C2;
+  border-bottom: 1px solid #D8D0C2;
+  font-size: 18px;
+  font-weight: 570;
+  line-height: 1.45;
+}
+
+.budget-stay-page main .budget-cost-formula span:nth-child(even) {
+  color: #B9653B;
+}
+
+.budget-stay-page main .budget-table-wrap {
+  width: 100%;
+  border: 1px solid #D8D0C2;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.budget-stay-page main .budget-comparison-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+.budget-stay-page main .budget-comparison-table th,
+.budget-stay-page main .budget-comparison-table td {
+  padding: 16px 12px;
+  border-right: 1px solid #D8D0C2;
+  border-bottom: 1px solid #D8D0C2;
+  vertical-align: top;
+  text-align: left;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+.budget-stay-page main .budget-comparison-table tr > *:last-child {
+  border-right: 0;
+}
+
+.budget-stay-page main .budget-comparison-table tbody tr:last-child > * {
+  border-bottom: 0;
+}
+
+.budget-stay-page main .budget-comparison-table thead th {
+  color: #FFFDF8;
+  background: #3F5D52;
+  font-size: 15px;
+  font-weight: 570;
+  line-height: 1.45;
+}
+
+.budget-stay-page main .budget-comparison-table tbody th {
+  color: #1D2B27;
+  background: #F7F3EA;
+  font-size: 16px;
+  font-weight: 570;
+  line-height: 1.55;
+}
+
+.budget-stay-page main .budget-comparison-table td {
+  color: #514C43;
+  background: #FFFDF8;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.budget-stay-page main .budget-comparison-table tbody tr:nth-child(even) th,
+.budget-stay-page main .budget-comparison-table tbody tr:nth-child(even) td {
+  background: #F3EDE2;
+}
+
+.budget-stay-page main .budget-table-note {
+  margin: 22px 0 0;
+  color: #514C43;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.65;
+}
+
+.budget-stay-page main .budget-map-tabs,
+.budget-stay-page main .budget-map-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.budget-stay-page main .budget-map-tabs {
+  margin-bottom: 14px;
+}
+
+.budget-stay-page main .budget-map-filters {
+  margin-bottom: 24px;
+}
+
+.budget-stay-page main .budget-map-tabs button,
+.budget-stay-page main .budget-map-filters button,
+.budget-stay-page main #budget-map-load {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 9px 16px;
+  color: #3F5D52;
+  background: #FFFDF8;
+  border: 1px solid #D8D0C2;
+  border-radius: 999px;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 570;
+  line-height: 1.3;
+  text-align: center;
+  cursor: pointer;
+}
+
+.budget-stay-page main .budget-map-tabs button[aria-selected="true"],
+.budget-stay-page main .budget-map-filters button[aria-pressed="true"],
+.budget-stay-page main #budget-map-load {
+  color: #FFFDF8;
+  background: #3F5D52;
+  border-color: #3F5D52;
+}
+
+.budget-stay-page main .budget-map-tabs button:hover,
+.budget-stay-page main .budget-map-filters button:hover,
+.budget-stay-page main #budget-map-load:hover {
+  color: #FFFDF8;
+  background: #B9653B;
+  border-color: #B9653B;
+}
+
+.budget-stay-page main .budget-map-filters > span {
+  color: #686158;
+  font-size: 15px;
+  font-weight: 570;
+  line-height: 1.3;
+}
+
+.budget-stay-page main .budget-map-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.78fr) minmax(300px, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.budget-stay-page main .budget-map-column,
+.budget-stay-page main .budget-map-verdict {
+  min-width: 0;
+}
+
+.budget-stay-page main .budget-map-canvas {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 550px;
+  min-height: 520px;
+  background: #F3EDE2;
+  border: 1px solid #D8D0C2;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.budget-stay-page main .budget-map-canvas--ready {
+  display: block;
+}
+
+.budget-stay-page main .budget-map-canvas--unavailable {
+  min-height: 260px;
+  height: 260px;
+  background: #F3EDE2;
+}
+
+.budget-stay-page main .budget-map-placeholder {
+  max-width: 560px;
+  padding: 32px;
+  text-align: center;
+}
+
+.budget-stay-page main .budget-map-placeholder p {
+  margin: 0 0 18px;
+  color: #514C43;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.65;
+}
+
+.budget-stay-page main .budget-map-status,
+.budget-stay-page main .budget-map-error,
+.budget-stay-page main .budget-map-boundary-note,
+.budget-stay-page main .budget-affiliate-note,
+.budget-stay-page main .budget-rate-note {
+  margin: 14px 0 0;
+  color: #686158;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.65;
+}
+
+.budget-stay-page main .budget-map-error {
+  color: #B9653B;
+  font-weight: 570;
+}
+
+.budget-stay-page main .budget-marker-details {
+  min-height: 188px;
+  margin-top: 18px;
+  padding: 24px;
+  background: #F7F3EA;
+  border-left: 4px solid #3F5D52;
+}
+
+.budget-stay-page main .budget-marker-details h3 {
+  margin-bottom: 12px;
+}
+
+.budget-stay-page main .budget-marker-details p {
+  margin: 0;
+  color: #514C43;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.65;
+}
+
+.budget-stay-page main .budget-marker-details p + p {
+  margin-top: 10px;
+}
+
+.budget-stay-page main .budget-marker-details__meta {
+  color: #686158;
+}
+
+.budget-stay-page main .budget-marker-details a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-top: 10px;
+  font-size: 15px;
+  font-weight: 570;
+}
+
+.budget-stay-page main .budget-map-verdict {
+  padding: 28px;
+  background: #F3EDE2;
+  border: 1px solid #D8D0C2;
+  border-radius: 14px;
+}
+
+.budget-stay-page main .budget-map-marker {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  color: #FFFDF8;
+  background: #3F5D52;
+  border: 3px solid #FFFDF8;
+  border-radius: 50%;
+  font-family: "Roboto Flex", "Roboto", "Arial", sans-serif;
+  font-size: 16px;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.budget-stay-page main .budget-map-marker--airport {
+  background: #B9653B;
+}
+
+.budget-stay-page main .budget-map-marker--subway {
+  background: #3F5D52;
+}
+
+.budget-stay-page main .budget-map-marker--elevator {
+  color: #FFFDF8;
+  background: #686158;
+}
+
+.budget-stay-page main .budget-map-boundary-note {
+  margin-top: 22px;
+}
+
+.budget-stay-page main .budget-map-sources {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #D8D0C2;
+}
+
+.budget-stay-page main .budget-map-sources p {
+  margin: 0;
+  color: #514C43;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+.budget-stay-page main .budget-editorial-row {
+  display: grid;
+  grid-template-columns: minmax(0, 0.29fr) minmax(0, 0.71fr);
+  gap: clamp(40px, 5vw, 64px);
+  padding-top: 32px;
+  border-top: 1px solid #D8D0C2;
+}
+
+.budget-stay-page main .budget-editorial-row__label,
+.budget-stay-page main .budget-editorial-row__content {
+  min-width: 0;
+}
+
+.budget-stay-page main .budget-editorial-row__label p:last-child {
+  margin: 0;
+  color: #1D2B27;
+  font-size: 18px;
+  font-weight: 520;
+  line-height: 1.55;
+}
+
+.budget-stay-page main .budget-editorial-row__content p {
+  margin: 0;
+  color: #514C43;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+.budget-stay-page main .budget-editorial-row__content p + p {
+  margin-top: 16px;
+}
+
+.budget-stay-page main .budget-scenario-list {
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid #D8D0C2;
+  counter-reset: budget-scenario;
+  list-style: none;
+}
+
+.budget-stay-page main .budget-scenario-list li {
+  position: relative;
+  padding: 30px 0 30px 68px;
+  border-bottom: 1px solid #D8D0C2;
+  counter-increment: budget-scenario;
+}
+
+.budget-stay-page main .budget-scenario-list li::before {
+  position: absolute;
+  top: 30px;
+  left: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  color: #FFFDF8;
+  background: #3F5D52;
+  border-radius: 50%;
+  font-size: 16px;
+  font-weight: 570;
+  content: counter(budget-scenario);
+}
+
+.budget-stay-page main .budget-scenario-list h3 {
+  margin-bottom: 10px;
+}
+
+.budget-stay-page main .budget-scenario-list p {
+  max-width: none;
+  margin: 0;
+  color: #514C43;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+.budget-stay-page main .budget-affiliate-note {
+  max-width: none;
+  margin: -10px 0 24px;
+}
+
+.budget-stay-page main .budget-hotel-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.budget-stay-page main .budget-hotel-card {
+  min-width: 0;
+  padding: 28px;
+  background: #F7F3EA;
+  border: 1px solid #D8D0C2;
+  border-radius: 12px;
+}
+
+.budget-stay-page main .budget-hotel-card h4 {
+  margin-bottom: 18px;
+}
+
+.budget-stay-page main .budget-hotel-card > p:not(.budget-hotel-card__area) {
+  margin: 0;
+  color: #514C43;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.65;
+}
+
+.budget-stay-page main .budget-hotel-card > p + p {
+  margin-top: 12px;
+}
+
+.budget-stay-page main .budget-booking-options {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 22px;
+}
+
+.budget-stay-page main .budget-booking-options > span {
+  grid-column: 1 / -1;
+  color: #686158;
+  font-size: 14px;
+  font-weight: 570;
+  line-height: 1.35;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.budget-stay-page main .budget-booking-options a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 44px;
+  padding: 9px 8px;
+  color: #FFFDF8;
+  background: #3F5D52;
+  border: 1px solid #3F5D52;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 570;
+  line-height: 1.3;
+  text-align: center;
+  text-decoration: none;
+}
+
+.budget-stay-page main .budget-booking-options a:hover,
+.budget-stay-page main .budget-booking-options a:focus {
+  color: #FFFDF8;
+  background: #B9653B;
+  border-color: #B9653B;
+}
+
+.budget-stay-page main .budget-rate-note {
+  margin-top: 22px;
+}
+
+.budget-stay-page main .budget-checklist {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 44px;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid #D8D0C2;
+  list-style: none;
+}
+
+.budget-stay-page main .budget-checklist li {
+  display: grid;
+  grid-template-columns: minmax(150px, 0.4fr) minmax(0, 0.6fr);
+  gap: 18px;
+  padding: 20px 0;
+  border-bottom: 1px solid #D8D0C2;
+  color: #514C43;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.budget-stay-page main .budget-checklist span {
+  color: #686158;
+}
+
+.budget-stay-page main .budget-mistakes {
+  margin-top: 42px;
+  padding-top: 32px;
+  border-top: 1px solid #D8D0C2;
+}
+
+.budget-stay-page main .budget-mistakes h3 {
+  margin-bottom: 18px;
+}
+
+.budget-stay-page main .budget-mistakes ol {
+  max-width: none;
+  margin: 0;
+  padding-left: 24px;
+}
+
+.budget-stay-page main .budget-mistakes li {
+  color: #514C43;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+.budget-stay-page main .budget-mistakes li + li {
+  margin-top: 8px;
+}
+
+.budget-stay-page main .budget-faq {
+  display: grid;
+  gap: 12px;
+  max-width: 960px;
+}
+
+.budget-stay-page main .budget-faq details {
+  min-width: 0;
+  background: #F7F3EA;
+  border: 1px solid #D8D0C2;
+  border-radius: 12px;
+}
+
+.budget-stay-page main .budget-faq summary {
+  position: relative;
+  padding: 22px 54px 22px 22px;
+  color: #1D2B27;
+  font-size: 17px;
+  font-weight: 570;
+  line-height: 1.45;
+  cursor: pointer;
+  list-style: none;
+}
+
+.budget-stay-page main .budget-faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.budget-stay-page main .budget-faq summary::after {
+  position: absolute;
+  top: 19px;
+  right: 22px;
+  color: #B9653B;
+  font-size: 24px;
+  font-weight: 400;
+  content: "+";
+}
+
+.budget-stay-page main .budget-faq details[open] summary::after {
+  content: "−";
+}
+
+.budget-stay-page main .budget-faq p {
+  margin: 0;
+  padding: 0 22px 22px;
+  color: #514C43;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.65;
+}
+
+@media (max-width: 1100px) {
+  .budget-stay-page main .budget-hero__grid {
+    grid-template-columns: minmax(0, 1.35fr) minmax(300px, 0.85fr);
+    gap: 42px;
+  }
+
+  .budget-stay-page main .budget-hotel-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 1024px) {
+  .budget-stay-page main .budget-hero__grid,
+  .budget-stay-page main .budget-map-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .budget-stay-page main .budget-practical-card {
+    max-width: none;
+  }
+
+  .budget-stay-page main .budget-map-canvas {
+    height: 490px;
+    min-height: 460px;
+  }
+}
+
+@media (max-width: 900px) {
+  .budget-stay-page main .budget-editorial-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .budget-stay-page main .budget-comparison-table,
+  .budget-stay-page main .budget-comparison-table tbody,
+  .budget-stay-page main .budget-comparison-table tr,
+  .budget-stay-page main .budget-comparison-table th,
+  .budget-stay-page main .budget-comparison-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .budget-stay-page main .budget-comparison-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  .budget-stay-page main .budget-comparison-table tbody tr {
+    padding: 16px;
+    background: #FFFDF8;
+    border-bottom: 1px solid #D8D0C2;
+  }
+
+  .budget-stay-page main .budget-comparison-table tbody tr:last-child {
+    border-bottom: 0;
+  }
+
+  .budget-stay-page main .budget-comparison-table tbody th {
+    padding: 0 0 12px;
+    background: transparent;
+    border: 0;
+    font-size: 19px;
+  }
+
+  .budget-stay-page main .budget-comparison-table tbody td {
+    display: grid;
+    grid-template-columns: minmax(140px, 0.36fr) minmax(0, 0.64fr);
+    gap: 14px;
+    padding: 9px 0;
+    background: transparent;
+    border: 0;
+    font-size: 16px;
+  }
+
+  .budget-stay-page main .budget-comparison-table tbody td::before {
+    color: #B9653B;
+    font-size: 14px;
+    font-weight: 570;
+    line-height: 1.4;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    content: attr(data-label);
+  }
+}
+
+@media (max-width: 767px) {
+  .budget-stay-page main {
+    font-size: 17px;
+    line-height: 1.68;
+  }
+
+  .budget-stay-page main h1 {
+    font-size: 34px;
+    font-weight: 560;
+    line-height: 1.08;
+    letter-spacing: -0.012em;
+  }
+
+  .budget-stay-page main h2 {
+    font-size: 29px;
+    font-weight: 570;
+    line-height: 1.18;
+    letter-spacing: -0.01em;
+  }
+
+  .budget-stay-page main h3 {
+    font-size: 21px;
+    font-weight: 570;
+    line-height: 1.28;
+  }
+
+  .budget-stay-page main h4 {
+    font-size: 20px;
+    line-height: 1.3;
+  }
+
+  .budget-stay-page main .budget-hero {
+    padding: 58px 0 64px;
+  }
+
+  .budget-stay-page main .budget-hero__grid,
+  .budget-stay-page main .budget-decision-grid,
+  .budget-stay-page main .budget-checklist {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .budget-stay-page main .budget-hero__answer p,
+  .budget-stay-page main .budget-section__header > p:last-child:not(.budget-eyebrow),
+  .budget-stay-page main .budget-prose p,
+  .budget-stay-page main .budget-cost-notes p,
+  .budget-stay-page main .budget-map-sources p,
+  .budget-stay-page main .budget-editorial-row__label p:last-child,
+  .budget-stay-page main .budget-editorial-row__content p,
+  .budget-stay-page main .budget-scenario-list p,
+  .budget-stay-page main .budget-checklist li,
+  .budget-stay-page main .budget-mistakes li,
+  .budget-stay-page main .budget-final p {
+    font-size: 17px;
+    line-height: 1.68;
+  }
+
+  .budget-stay-page main .budget-practical-card dd,
+  .budget-stay-page main .budget-decision-card p:last-child,
+  .budget-stay-page main .budget-table-note,
+  .budget-stay-page main .budget-map-placeholder p,
+  .budget-stay-page main .budget-map-status,
+  .budget-stay-page main .budget-map-error,
+  .budget-stay-page main .budget-map-boundary-note,
+  .budget-stay-page main .budget-marker-details p,
+  .budget-stay-page main .budget-map-verdict dd,
+  .budget-stay-page main .budget-hotel-card > p:not(.budget-hotel-card__area),
+  .budget-stay-page main .budget-affiliate-note,
+  .budget-stay-page main .budget-rate-note,
+  .budget-stay-page main .budget-faq p {
+    font-size: 16px;
+    line-height: 1.62;
+  }
+
+  .budget-stay-page main .budget-faq summary {
+    font-size: 16px;
+  }
+
+  .budget-stay-page main .budget-map-canvas {
+    height: 390px;
+    min-height: 360px;
+  }
+
+  .budget-stay-page main .budget-map-tabs,
+  .budget-stay-page main .budget-map-filters {
+    gap: 8px;
+  }
+
+  .budget-stay-page main .budget-map-tabs button,
+  .budget-stay-page main .budget-map-filters button {
+    flex: 1 1 150px;
+  }
+
+  .budget-stay-page main .budget-checklist {
+    gap: 0;
+  }
+
+  .budget-stay-page main .budget-checklist li {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 4px;
+  }
+
+  .budget-stay-page main .budget-booking-options {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .budget-stay-page main .budget-scenario-list li {
+    padding-left: 58px;
+  }
+}
+
+@media (max-width: 520px) {
+  .budget-stay-page main .budget-comparison-table tbody td {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 3px;
+  }
+}
+
+@media (max-width: 390px) {
+  .budget-stay-page main .budget-practical-card,
+  .budget-stay-page main .budget-decision-card,
+  .budget-stay-page main .budget-map-verdict,
+  .budget-stay-page main .budget-hotel-card {
+    padding: 22px;
+  }
+
+  .budget-stay-page main .budget-map-canvas {
+    height: 370px;
+    min-height: 360px;
+  }
+
+  .budget-stay-page main .budget-map-placeholder,
+  .budget-stay-page main .budget-marker-details {
+    padding: 20px;
+  }
+
+  .budget-stay-page main .budget-jump-links {
+    gap: 8px 18px;
+  }
+
+  .budget-stay-page main .budget-scenario-list li {
+    padding: 76px 0 28px;
+  }
+
+  .budget-stay-page main .budget-scenario-list li::before {
+    top: 24px;
+  }
+}
+
+/* End Budget Stay Seoul */
+
 /* Solo Stay Seoul */
 .solo-stay-page main {
   color: #514C43;
