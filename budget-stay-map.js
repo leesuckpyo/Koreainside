@@ -7,7 +7,7 @@
     return;
   }
 
-  var SDK_URL = "https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=r63yjf5zan";
+  var SDK_URL = "https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=r63yjif5zan";
   var SOURCE_LINKS = {
     coordinates: "https://www.arcgis.com/home/item.html?id=a3ca58b3ef864e61aab932c5c592e729",
     accessibility: "https://english.seoul.go.kr/service/movement/public-transportation/subway-accessibility-facilities/",
