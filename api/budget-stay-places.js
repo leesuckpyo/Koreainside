@@ -1,6 +1,6 @@
 "use strict";
 
-var NAVER_LOCAL_SEARCH_URL = "https://naverapihub.apigw.ntruss.com/search/v1/local";
+const NAVER_LOCAL_SEARCH_ENDPOINT = "https://naverapihub.apigw.ntruss.com/search/v1/local";
 var CACHE_CONTROL = "public, s-maxage=21600, stale-while-revalidate=86400";
 var REQUEST_TIMEOUT_MS = 6000;
 var MAX_ITEMS_PER_CATEGORY = 3;
@@ -168,34 +168,102 @@ function normalizeItems(rawItems, area, category) {
   return normalized.slice(0, MAX_ITEMS_PER_CATEGORY);
 }
 
-async function fetchNaverItems(query, clientId, clientSecret) {
+function safeDiagnosticValue(value, depth) {
+  if (value == null) {
+    return null;
+  }
+
+  if (typeof value === "string") {
+    return value.trim().slice(0, 500);
+  }
+
+  if (typeof value === "number" || typeof value === "boolean") {
+    return value;
+  }
+
+  if (depth >= 2) {
+    return "[omitted]";
+  }
+
+  if (Array.isArray(value)) {
+    return value.slice(0, 5).map(function (item) {
+      return safeDiagnosticValue(item, depth + 1);
+    });
+  }
+
+  if (typeof value === "object") {
+    var safeObject = {};
+
+    Object.keys(value)
+      .slice(0, 10)
+      .forEach(function (key) {
+        if (!/(client|secret|authorization|api.?key|token|header|credential|env)/i.test(key)) {
+          safeObject[key] = safeDiagnosticValue(value[key], depth + 1);
+        }
+      });
+
+    return safeObject;
+  }
+
+  return null;
+}
+
+function logUpstreamError(response, url, responseText, area, category) {
+  var parsed = null;
+
+  try {
+    parsed = JSON.parse(responseText);
+  } catch (error) {
+    parsed = null;
+  }
+
+  console.error("NAVER_LOCAL_SEARCH_UPSTREAM_ERROR", {
+    upstreamStatus: response.status,
+    contentType: response.headers.get("content-type"),
+    pathname: url.pathname,
+    area: area,
+    category: category,
+    errorCode: safeDiagnosticValue(parsed && parsed.errorCode, 0),
+    errorMessage: safeDiagnosticValue(parsed && parsed.errorMessage, 0),
+    error: {
+      errorCode: safeDiagnosticValue(parsed && parsed.error && parsed.error.errorCode, 0),
+      message: safeDiagnosticValue(parsed && parsed.error && parsed.error.message, 0),
+      details: safeDiagnosticValue(parsed && parsed.error && parsed.error.details, 0)
+    }
+  });
+}
+
+async function fetchNaverItems(query, area, category, clientId, clientSecret) {
   var controller = new AbortController();
   var timeoutId = setTimeout(function () {
     controller.abort();
   }, REQUEST_TIMEOUT_MS);
-  var searchParams = new URLSearchParams({
-    query: query,
-    display: "5",
-    start: "1",
-    sort: "random",
-    format: "json"
-  });
+  var url = new URL(NAVER_LOCAL_SEARCH_ENDPOINT);
+
+  url.searchParams.set("query", query);
+  url.searchParams.set("display", "5");
+  url.searchParams.set("start", "1");
+  url.searchParams.set("sort", "random");
+  url.searchParams.set("format", "json");
 
   try {
-    var upstreamResponse = await fetch(NAVER_LOCAL_SEARCH_URL + "?" + searchParams.toString(), {
+    var upstreamResponse = await fetch(url.toString(), {
       method: "GET",
       headers: {
         "X-NCP-APIGW-API-KEY-ID": clientId,
-        "X-NCP-APIGW-API-KEY": clientSecret
+        "X-NCP-APIGW-API-KEY": clientSecret,
+        Accept: "application/json"
       },
       signal: controller.signal
     });
+    var responseText = await upstreamResponse.text();
 
     if (!upstreamResponse.ok) {
+      logUpstreamError(upstreamResponse, url, responseText, area, category);
       throw new Error("NAVER_LOCAL_SEARCH_FAILED");
     }
 
-    var payload = await upstreamResponse.json();
+    var payload = JSON.parse(responseText);
 
     if (!payload || !Array.isArray(payload.items)) {
       throw new Error("NAVER_LOCAL_SEARCH_INVALID_RESPONSE");
@@ -232,12 +300,19 @@ module.exports = async function budgetStayPlaces(request, response) {
     return sendJson(response, 503, { error: "Place information is temporarily unavailable." });
   }
 
+  clientId = clientId.trim();
+  clientSecret = clientSecret.trim();
+
+  if (!clientId || !clientSecret) {
+    return sendJson(response, 503, { error: "Place information is temporarily unavailable." });
+  }
+
   var rawItems;
 
   try {
     var resultSets = await Promise.all(
       SEARCH_QUERIES[area][category].map(function (query) {
-        return fetchNaverItems(query, clientId, clientSecret);
+        return fetchNaverItems(query, area, category, clientId, clientSecret);
       })
     );
     rawItems = resultSets.reduce(function (combined, resultSet) {
