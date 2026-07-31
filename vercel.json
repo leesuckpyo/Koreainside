@@ -5,5 +5,10 @@
       "destination": "/",
       "permanent": true
     }
-  ]
+  ],
+  "functions": {
+    "api/budget-stay-places.js": {
+      "regions": ["icn1"]
+    }
+  }
 }
