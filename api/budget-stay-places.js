@@ -1,8 +1,11 @@
 "use strict";
 
+var dns = require("node:dns");
+
 const NAVER_LOCAL_SEARCH_ENDPOINT = "https://naverapihub.apigw.ntruss.com/search/v1/local";
+const NAVER_LOCAL_SEARCH_HOSTNAME = "naverapihub.apigw.ntruss.com";
 var CACHE_CONTROL = "public, s-maxage=21600, stale-while-revalidate=86400";
-var REQUEST_TIMEOUT_MS = 6000;
+var REQUEST_TIMEOUT_MS = 20000;
 var MAX_ITEMS_PER_CATEGORY = 3;
 
 var AREA_CENTERS = {
@@ -233,12 +236,55 @@ function logUpstreamError(response, url, responseText, area, category) {
   });
 }
 
+async function logDnsDiagnostic() {
+  try {
+    var addresses = await dns.promises.lookup(NAVER_LOCAL_SEARCH_HOSTNAME, { all: true });
+
+    console.info("NAVER_LOCAL_SEARCH_DNS_DIAGNOSTIC", {
+      dnsResolved: true,
+      dnsErrorCode: null,
+      addressCount: Array.isArray(addresses) ? addresses.length : 0
+    });
+  } catch (error) {
+    console.error("NAVER_LOCAL_SEARCH_DNS_DIAGNOSTIC", {
+      dnsResolved: false,
+      dnsErrorCode: safeDiagnosticValue(error && error.code, 0),
+      addressCount: 0
+    });
+  }
+}
+
+function logFetchException(error, signal, elapsedMs) {
+  var cause = error && error.cause;
+
+  console.error("NAVER_LOCAL_SEARCH_FETCH_EXCEPTION", {
+    error: {
+      name: safeDiagnosticValue(error && error.name, 0),
+      message: safeDiagnosticValue(error && error.message, 0),
+      code: safeDiagnosticValue(error && error.code, 0),
+      cause: {
+        name: safeDiagnosticValue(cause && cause.name, 0),
+        code: safeDiagnosticValue(cause && cause.code, 0),
+        errno: safeDiagnosticValue(cause && cause.errno, 0),
+        syscall: safeDiagnosticValue(cause && cause.syscall, 0),
+        hostname: safeDiagnosticValue(cause && cause.hostname, 0),
+        message: safeDiagnosticValue(cause && cause.message, 0)
+      }
+    },
+    signal: {
+      aborted: Boolean(signal && signal.aborted)
+    },
+    elapsedMs: Math.max(0, Math.round(elapsedMs))
+  });
+}
+
 async function fetchNaverItems(query, area, category, clientId, clientSecret) {
   var controller = new AbortController();
   var timeoutId = setTimeout(function () {
     controller.abort();
   }, REQUEST_TIMEOUT_MS);
   var url = new URL(NAVER_LOCAL_SEARCH_ENDPOINT);
+  var requestStartedAt = Date.now();
 
   url.searchParams.set("query", query);
   url.searchParams.set("display", "5");
@@ -247,16 +293,24 @@ async function fetchNaverItems(query, area, category, clientId, clientSecret) {
   url.searchParams.set("format", "json");
 
   try {
-    var upstreamResponse = await fetch(url.toString(), {
-      method: "GET",
-      headers: {
-        "X-NCP-APIGW-API-KEY-ID": clientId,
-        "X-NCP-APIGW-API-KEY": clientSecret,
-        Accept: "application/json"
-      },
-      signal: controller.signal
-    });
-    var responseText = await upstreamResponse.text();
+    var upstreamResponse;
+    var responseText;
+
+    try {
+      upstreamResponse = await fetch(url.toString(), {
+        method: "GET",
+        headers: {
+          "X-NCP-APIGW-API-KEY-ID": clientId,
+          "X-NCP-APIGW-API-KEY": clientSecret,
+          Accept: "application/json"
+        },
+        signal: controller.signal
+      });
+      responseText = await upstreamResponse.text();
+    } catch (error) {
+      logFetchException(error, controller.signal, Date.now() - requestStartedAt);
+      throw error;
+    }
 
     if (!upstreamResponse.ok) {
       logUpstreamError(upstreamResponse, url, responseText, area, category);
@@ -310,6 +364,8 @@ module.exports = async function budgetStayPlaces(request, response) {
   var rawItems;
 
   try {
+    await logDnsDiagnostic();
+
     var resultSets = await Promise.all(
       SEARCH_QUERIES[area][category].map(function (query) {
         return fetchNaverItems(query, area, category, clientId, clientSecret);
