@@ -402,6 +402,10 @@
           <button type="button" aria-pressed="true" data-map-category="airport">Airport access</button>
           <button type="button" aria-pressed="true" data-map-category="subway">Subway and exits</button>
           <button type="button" aria-pressed="true" data-map-category="elevator">Elevator access</button>
+          <button type="button" aria-pressed="false" data-map-category="convenience">Convenience stores</button>
+          <button type="button" aria-pressed="false" data-map-category="pharmacy">Pharmacies</button>
+          <button type="button" aria-pressed="false" data-map-category="oliveyoung">Olive Young</button>
+          <button type="button" aria-pressed="false" data-map-category="daiso">Daiso</button>
         </div>
 
         <div class="budget-map-layout" id="budget-map-panel" role="tabpanel" aria-labelledby="budget-tab-hongdae">
@@ -414,28 +418,44 @@
             </div>
             <p id="budget-map-status" class="budget-map-status" role="status" aria-live="polite">The map loads only after you select the button.</p>
             <p id="budget-map-error" class="budget-map-error" role="alert" hidden>Interactive map is temporarily unavailable. Use the area comparisons below to continue planning.</p>
-            <div id="budget-marker-details" class="budget-marker-details" aria-live="polite">
-              <h3>Verified station points</h3>
-              <p>Select a marker after the map loads. Each point includes its source type and last-checked date.</p>
-            </div>
+            <p id="budget-place-error" class="budget-map-error" role="alert" aria-live="assertive" hidden>Nearby place information is temporarily unavailable. Use the verified transport points and area guidance to continue planning.</p>
+            <section id="budget-place-list" class="budget-place-list" aria-labelledby="budget-place-list-title" aria-live="polite" hidden>
+              <h3 id="budget-place-list-title">Nearby places</h3>
+              <ul></ul>
+            </section>
           </div>
 
-          <aside class="budget-map-verdict" id="budget-map-verdict" aria-labelledby="budget-map-verdict-title">
-            <p class="budget-badge">Korea Inside assessment</p>
-            <h3 id="budget-map-verdict-title">Hongdae budget verdict</h3>
-            <dl>
-              <div><dt>Best for</dt><dd data-verdict-field="bestFor">Solo travelers, airport-rail users and travelers who want many accommodation choices.</dd></div>
-              <div><dt>Why it may save money</dt><dd data-verdict-field="savings">Direct AREX access can reduce airport-transfer friction and simplify arrival.</dd></div>
-              <div><dt>Watch out</dt><dd data-verdict-field="watchOut">Weekend prices, nightlife noise and the walking distance from the AREX platform to the hotel.</dd></div>
-              <div><dt>Before booking</dt><dd data-verdict-field="beforeBooking">Confirm the exact exit, elevator, crossings and final outdoor walking route.</dd></div>
-            </dl>
+          <aside class="budget-map-verdict" aria-label="Map legend and selected map point">
+            <details class="budget-map-legend" open>
+              <summary>Map legend</summary>
+              <ul>
+                <li><span class="budget-map-legend__marker budget-map-marker--airport" aria-hidden="true">A</span><span>Airport / AREX access</span></li>
+                <li><span class="budget-map-legend__marker budget-map-marker--subway" aria-hidden="true">S</span><span>Subway station</span></li>
+                <li><span class="budget-map-legend__marker budget-map-marker--elevator" aria-hidden="true">E</span><span>Elevator access</span></li>
+                <li><span class="budget-map-legend__marker budget-map-marker--convenience" aria-hidden="true">C</span><span>Convenience store</span></li>
+                <li><span class="budget-map-legend__marker budget-map-marker--pharmacy" aria-hidden="true">P</span><span>Pharmacy</span></li>
+                <li><span class="budget-map-legend__marker budget-map-marker--oliveyoung" aria-hidden="true">O</span><span>Olive Young</span></li>
+                <li><span class="budget-map-legend__marker budget-map-marker--daiso" aria-hidden="true">D</span><span>Daiso</span></li>
+                <li><span class="budget-map-legend__area" aria-hidden="true"></span><span>Approximate practical walking area — not an administrative boundary or live movement data</span></li>
+              </ul>
+            </details>
+            <div class="budget-map-panel-divider" aria-hidden="true"></div>
+            <section class="budget-map-selection" aria-labelledby="budget-map-selection-title">
+              <h3 class="budget-map-selection__title" id="budget-map-selection-title">Selected map point</h3>
+              <div id="budget-marker-details" class="budget-marker-details" aria-live="polite">
+                <p>Select a map marker or nearby place name to view details.</p>
+              </div>
+            </section>
           </aside>
         </div>
 
-        <p class="budget-map-boundary-note">The shaded circle is an approximate Korea Inside planning area, not an administrative boundary or a live convenience-data layer.</p>
-        <div class="budget-map-sources">
-          <p><strong>Map data sources:</strong> station coordinates from the <a href="https://www.arcgis.com/home/item.html?id=a3ca58b3ef864e61aab932c5c592e729" target="_blank" rel="noopener noreferrer">KRIC Korea Subway Stations public dataset</a>; elevator availability from the <a href="https://english.seoul.go.kr/service/movement/public-transportation/subway-accessibility-facilities/" target="_blank" rel="noopener noreferrer">Seoul Metropolitan Government accessibility table</a>; airport-rail status from <a href="https://www.arex.or.kr/" target="_blank" rel="noopener noreferrer">AREX</a>. Last checked: July 2026.</p>
-        </div>
+        <details class="budget-map-sources">
+          <summary>Map data and verification</summary>
+          <div class="budget-map-sources__content">
+            <p>Station coordinates come from the <a href="https://www.arcgis.com/home/item.html?id=a3ca58b3ef864e61aab932c5c592e729" target="_blank" rel="noopener noreferrer">KRIC Korea Subway Stations public dataset</a>. Elevator information comes from the <a href="https://english.seoul.go.kr/service/movement/public-transportation/subway-accessibility-facilities/" target="_blank" rel="noopener noreferrer">Seoul Metropolitan Government accessibility table</a>. Airport-rail status is checked against <a href="https://www.arex.or.kr/" target="_blank" rel="noopener noreferrer">AREX</a>.</p>
+            <p>Nearby business search data is provided by NAVER API HUB. The shaded circle is an approximate Korea Inside practical walking area, not an administrative boundary or live movement data. Last checked: July 2026. Business listings and opening hours can change, so confirm the current listing before visiting.</p>
+          </div>
+        </details>
       </div>
     </section>
 

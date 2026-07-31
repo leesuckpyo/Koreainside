@@ -17,55 +17,31 @@
   var areas = {
     hongdae: {
       name: "Hongdae",
+      searchArea: "hongdae",
       center: { lat: 37.556748, lng: 126.923643 },
       zoom: 15,
-      radius: 850,
-      verdict: {
-        title: "Hongdae budget verdict",
-        bestFor: "Solo travelers, airport-rail users and travelers who want many accommodation choices.",
-        savings: "Direct AREX access can reduce airport-transfer friction and simplify arrival.",
-        watchOut: "Weekend prices, nightlife noise and the walking distance from the AREX platform to the hotel.",
-        beforeBooking: "Confirm the exact exit, elevator, crossings and final outdoor walking route."
-      }
+      radius: 850
     },
     gongdeok: {
       name: "Mapo / Gongdeok",
+      searchArea: "gongdeok",
       center: { lat: 37.543592, lng: 126.951664 },
       zoom: 15,
-      radius: 900,
-      verdict: {
-        title: "Mapo / Gongdeok budget verdict",
-        bestFor: "Travelers with large luggage, light sleepers and visitors who prefer a calmer western base.",
-        savings: "Gongdeok combines AREX with useful city connections while Mapo keeps central access practical.",
-        watchOut: "Hotel choice is narrower than Hongdae, and a multi-line station still requires an exact exit check.",
-        beforeBooking: "Confirm the AREX-to-lobby route, street elevator, taxi approach and luggage-storage rules."
-      }
+      radius: 900
     },
     sinchon: {
       name: "Sinchon",
+      searchArea: "sinchon",
       center: { lat: 37.555153, lng: 126.93689 },
       zoom: 15,
-      radius: 800,
-      verdict: {
-        title: "Sinchon budget verdict",
-        bestFor: "Longer stays that benefit from student-priced meals and a repeatable neighborhood routine.",
-        savings: "Daily food and practical services can keep recurring costs lower over a longer visit.",
-        watchOut: "Airport travel is less direct, and property quality, room setup and luggage access vary.",
-        beforeBooking: "Check which Sinchon station is meant, then verify laundry, stairs, storage and the final walk."
-      }
+      radius: 800
     },
     euljiro: {
       name: "Euljiro / Myeongdong",
+      searchArea: "euljiro-myeongdong",
       center: { lat: 37.566292, lng: 126.990873 },
       zoom: 15,
-      radius: 950,
-      verdict: {
-        title: "Euljiro / Myeongdong budget verdict",
-        bestFor: "Short first trips, central sightseeing and shopping-led itineraries.",
-        savings: "A central base can reduce repeated subway trips, long returns and shopping detours.",
-        watchOut: "Nightly rates may be higher, while underground passages, crowds and the wrong exit complicate luggage.",
-        beforeBooking: "Verify the station exit, elevator, airport-bus stop and final street route to the lobby."
-      }
+      radius: 950
     }
   };
 
@@ -283,19 +259,56 @@
   var categoryLabels = {
     airport: "Airport access",
     subway: "Subway and exits",
-    elevator: "Elevator access"
+    elevator: "Elevator access",
+    convenience: "Convenience store",
+    pharmacy: "Pharmacy",
+    oliveyoung: "Beauty and personal-care store",
+    daiso: "Discount variety store"
   };
 
   var categorySymbols = {
     airport: "A",
     subway: "S",
-    elevator: "E"
+    elevator: "E",
+    convenience: "C",
+    pharmacy: "P",
+    oliveyoung: "O",
+    daiso: "D"
   };
 
   var categoryClasses = {
     airport: "budget-map-marker--airport",
     subway: "budget-map-marker--subway",
-    elevator: "budget-map-marker--elevator"
+    elevator: "budget-map-marker--elevator",
+    convenience: "budget-map-marker--convenience",
+    pharmacy: "budget-map-marker--pharmacy",
+    oliveyoung: "budget-map-marker--oliveyoung",
+    daiso: "budget-map-marker--daiso"
+  };
+
+  var facilityCategoryOrder = ["convenience", "pharmacy", "oliveyoung", "daiso"];
+  var facilityCategories = new Set(facilityCategoryOrder);
+  var facilityAriaLabels = {
+    convenience: "Convenience store",
+    pharmacy: "Pharmacy",
+    oliveyoung: "Olive Young",
+    daiso: "Daiso"
+  };
+  var facilityPluralLabels = {
+    convenience: "convenience stores",
+    pharmacy: "pharmacies",
+    oliveyoung: "Olive Young stores",
+    daiso: "Daiso stores"
+  };
+  var facilityGuidance = {
+    convenience:
+      "Useful for drinks, snacks, transit cards and basic travel supplies. Check the current listing before visiting.",
+    pharmacy:
+      "Useful for basic medicines and travel health needs. Opening hours can change, so confirm the current listing before visiting.",
+    oliveyoung:
+      "Useful for skincare, toiletries and personal-care items. Product availability and opening hours can change, so confirm the current listing before visiting.",
+    daiso:
+      "Useful for low-cost travel supplies, storage items and everyday necessities. Stock and opening hours can change, so confirm the current listing before visiting."
   };
 
   var tabs = Array.prototype.slice.call(document.querySelectorAll("[data-map-area]"));
@@ -303,16 +316,13 @@
   var loadButton = document.getElementById("budget-map-load");
   var statusNode = document.getElementById("budget-map-status");
   var errorNode = document.getElementById("budget-map-error");
+  var placeErrorNode = document.getElementById("budget-place-error");
   var detailsNode = document.getElementById("budget-marker-details");
-  var verdictPanel = document.getElementById("budget-map-verdict");
-  var verdictTitle = document.getElementById("budget-map-verdict-title");
+  var placeListNode = document.getElementById("budget-place-list");
+  var placeListTitle = document.getElementById("budget-place-list-title");
+  var placeListItems = placeListNode.querySelector("ul");
+  var legendNode = document.querySelector(".budget-map-legend");
   var tabPanel = document.getElementById("budget-map-panel");
-  var verdictFields = {
-    bestFor: verdictPanel.querySelector('[data-verdict-field="bestFor"]'),
-    savings: verdictPanel.querySelector('[data-verdict-field="savings"]'),
-    watchOut: verdictPanel.querySelector('[data-verdict-field="watchOut"]'),
-    beforeBooking: verdictPanel.querySelector('[data-verdict-field="beforeBooking"]')
-  };
 
   var activeArea = "hongdae";
   var activeCategories = new Set(["airport", "subway", "elevator"]);
@@ -322,6 +332,10 @@
   var areaCircle = null;
   var infoWindow = null;
   var resizeTimer = null;
+  var placeCache = new Map();
+  var placeRequests = new Map();
+  var placeErrors = new Set();
+  var loadingPlaceKeys = new Set();
 
   function getAreaMarkers(areaKey) {
     return markers.filter(function (marker) {
@@ -336,69 +350,119 @@
       })
     );
 
-    activeCategories = new Set();
-
     filterButtons.forEach(function (button) {
       var category = button.getAttribute("data-map-category");
-      var available = availableCategories.has(category);
+      var available = facilityCategories.has(category) || availableCategories.has(category);
 
       button.hidden = !available;
-      button.setAttribute("aria-pressed", available ? "true" : "false");
-
-      if (available) {
-        activeCategories.add(category);
-      }
+      button.setAttribute("aria-pressed", available && activeCategories.has(category) ? "true" : "false");
     });
   }
 
-  function updateVerdict(areaKey) {
-    var verdict = areas[areaKey].verdict;
-
-    verdictTitle.textContent = verdict.title;
-    verdictFields.bestFor.textContent = verdict.bestFor;
-    verdictFields.savings.textContent = verdict.savings;
-    verdictFields.watchOut.textContent = verdict.watchOut;
-    verdictFields.beforeBooking.textContent = verdict.beforeBooking;
+  function resetMarkerDetails() {
+    var guidance = document.createElement("p");
+    guidance.textContent = "Select a map marker or nearby place name to view details.";
+    detailsNode.replaceChildren(guidance);
   }
 
-  function resetMarkerDetails(areaKey) {
-    var heading = document.createElement("h3");
-    var copy = document.createElement("p");
+  function appendLabeledText(node, label, value) {
+    var strong = document.createElement("strong");
+    strong.textContent = label;
+    node.appendChild(strong);
+    node.appendChild(document.createTextNode(value));
+  }
 
-    heading.textContent = areas[areaKey].name + " verified points";
-    copy.textContent = "Select a marker to read the assessment, traveler impact, source type and last-checked date.";
-    detailsNode.replaceChildren(heading, copy);
+  function toRadians(value) {
+    return (value * Math.PI) / 180;
+  }
+
+  function distanceFromAreaCenter(marker) {
+    var center = areas[marker.area].center;
+    var earthRadius = 6371000;
+    var latDelta = toRadians(marker.lat - center.lat);
+    var lngDelta = toRadians(marker.lng - center.lng);
+    var centerLat = toRadians(center.lat);
+    var markerLat = toRadians(marker.lat);
+    var a =
+      Math.sin(latDelta / 2) * Math.sin(latDelta / 2) +
+      Math.cos(centerLat) * Math.cos(markerLat) * Math.sin(lngDelta / 2) * Math.sin(lngDelta / 2);
+    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+    return Math.round(earthRadius * c);
+  }
+
+  function formatLastChecked(value) {
+    var checkedDate = new Date(value);
+    return Number.isNaN(checkedDate.getTime()) ? "Not available" : checkedDate.toISOString().slice(0, 10);
   }
 
   function showMarkerDetails(marker) {
     var heading = document.createElement("h3");
-    var assessment = document.createElement("p");
+    var type = document.createElement("p");
+    var address = document.createElement("p");
+    var distance = document.createElement("p");
     var impact = document.createElement("p");
-    var metadata = document.createElement("p");
+    var lastChecked = document.createElement("p");
     var sourceLink = document.createElement("a");
 
     heading.textContent = marker.name;
-    assessment.textContent = marker.assessment;
-    impact.innerHTML = "<strong>Traveler impact:</strong> ";
-    impact.appendChild(document.createTextNode(marker.travelerImpact));
-    metadata.className = "budget-marker-details__meta";
-    metadata.textContent = categoryLabels[marker.category] + " · " + marker.sourceType + " · Last checked " + marker.lastChecked;
+    appendLabeledText(type, "Type: ", categoryLabels[marker.category]);
+    appendLabeledText(address, "Address: ", "Not provided in the verified source.");
+    appendLabeledText(
+      distance,
+      "Approximate distance: ",
+      distanceFromAreaCenter(marker) + " m from the area center"
+    );
+    appendLabeledText(impact, "Traveler impact: ", marker.travelerImpact);
+    lastChecked.className = "budget-marker-details__meta";
+    appendLabeledText(lastChecked, "Last checked: ", marker.lastChecked);
     sourceLink.href = marker.link;
     sourceLink.target = "_blank";
     sourceLink.rel = "noopener noreferrer";
     sourceLink.textContent = "Open source";
-    detailsNode.replaceChildren(heading, assessment, impact, metadata, sourceLink);
+    detailsNode.replaceChildren(heading, type, address, distance, impact, lastChecked, sourceLink);
+  }
+
+  function showPlaceDetails(place) {
+    var heading = document.createElement("h3");
+    var type = document.createElement("p");
+    var address = document.createElement("p");
+    var distance = document.createElement("p");
+    var impact = document.createElement("p");
+    var lastChecked = document.createElement("p");
+    var children = [heading, type, address, distance, impact, lastChecked];
+
+    heading.textContent = place.name;
+    appendLabeledText(type, "Type: ", place.type);
+    appendLabeledText(address, "Road address: ", place.roadAddress || place.address || "Address unavailable");
+    appendLabeledText(distance, "Approximate distance: ", place.distanceMeters + " m from the area center");
+    appendLabeledText(impact, "Traveler impact: ", facilityGuidance[place.category]);
+    lastChecked.className = "budget-marker-details__meta";
+    appendLabeledText(lastChecked, "Last checked: ", formatLastChecked(place.lastChecked));
+
+    if (place.link) {
+      var placeLink = document.createElement("a");
+      placeLink.href = place.link;
+      placeLink.target = "_blank";
+      placeLink.rel = "noopener noreferrer";
+      placeLink.textContent = "Open place link";
+      children.push(placeLink);
+    }
+
+    detailsNode.replaceChildren.apply(detailsNode, children);
   }
 
   function markerIcon(marker) {
+    var ariaLabel = facilityCategories.has(marker.category)
+      ? facilityAriaLabels[marker.category]
+      : marker.name + ", " + categoryLabels[marker.category];
+
     return {
       content:
         '<button type="button" class="budget-map-marker ' +
         categoryClasses[marker.category] +
         '" aria-label="' +
-        marker.name +
-        ', ' +
-        categoryLabels[marker.category] +
+        ariaLabel +
         '">' +
         '<span aria-hidden="true">' +
         categorySymbols[marker.category] +
@@ -424,17 +488,391 @@
     }
   }
 
+  function getPlaceCacheKey(areaKey, category) {
+    return areas[areaKey].searchArea + "|" + category;
+  }
+
+  function getActiveFacilityCategories() {
+    return facilityCategoryOrder.filter(function (category) {
+      return activeCategories.has(category);
+    });
+  }
+
+  function getCachedPlaces(areaKey, category) {
+    var cached = placeCache.get(getPlaceCacheKey(areaKey, category));
+
+    if (!cached) {
+      return [];
+    }
+
+    return cached.items.map(function (place) {
+      return Object.assign({}, place, { lastChecked: cached.updatedAt });
+    });
+  }
+
+  function getVisiblePlaces() {
+    return getActiveFacilityCategories().reduce(function (places, category) {
+      return places.concat(
+        getCachedPlaces(activeArea, category).map(function (place) {
+          return Object.assign({}, place, { category: category });
+        })
+      );
+    }, []);
+  }
+
+  function normalizePlaceLink(value) {
+    if (value === null) {
+      return null;
+    }
+
+    if (typeof value !== "string") {
+      throw new Error("Invalid place link");
+    }
+
+    try {
+      var parsed = new URL(value);
+      return parsed.protocol === "http:" || parsed.protocol === "https:" ? parsed.href : null;
+    } catch (error) {
+      return null;
+    }
+  }
+
+  function normalizePlaceItem(item, category) {
+    if (
+      !item ||
+      typeof item.id !== "string" ||
+      typeof item.name !== "string" ||
+      typeof item.type !== "string" ||
+      typeof item.address !== "string" ||
+      typeof item.roadAddress !== "string" ||
+      item.type !== categoryLabels[category] ||
+      !Number.isFinite(item.lat) ||
+      !Number.isFinite(item.lng) ||
+      !Number.isFinite(item.distanceMeters) ||
+      item.distanceMeters < 0 ||
+      item.lat < 37.3 ||
+      item.lat > 37.75 ||
+      item.lng < 126.7 ||
+      item.lng > 127.3
+    ) {
+      throw new Error("Invalid place item");
+    }
+
+    var name = item.name.trim();
+
+    if (!name) {
+      throw new Error("Invalid place name");
+    }
+
+    return {
+      id: item.id,
+      name: name,
+      type: item.type,
+      address: item.address.trim(),
+      roadAddress: item.roadAddress.trim(),
+      lat: item.lat,
+      lng: item.lng,
+      link: normalizePlaceLink(item.link),
+      distanceMeters: Math.round(item.distanceMeters)
+    };
+  }
+
+  function validatePlaceResponse(payload, areaKey, category) {
+    if (
+      !payload ||
+      payload.area !== areas[areaKey].searchArea ||
+      payload.category !== category ||
+      typeof payload.updatedAt !== "string" ||
+      Number.isNaN(Date.parse(payload.updatedAt)) ||
+      !Array.isArray(payload.items) ||
+      payload.items.length > 3
+    ) {
+      throw new Error("Invalid place response");
+    }
+
+    var ids = new Set();
+    var items = payload.items.map(function (item) {
+      var normalized = normalizePlaceItem(item, category);
+
+      if (ids.has(normalized.id)) {
+        throw new Error("Duplicate place id");
+      }
+
+      ids.add(normalized.id);
+      return normalized;
+    });
+
+    return {
+      updatedAt: payload.updatedAt,
+      items: items
+    };
+  }
+
+  function formatHumanList(values) {
+    if (values.length === 0) {
+      return "";
+    }
+
+    if (values.length === 1) {
+      return values[0];
+    }
+
+    if (values.length === 2) {
+      return values[0] + " and " + values[1];
+    }
+
+    return values.slice(0, -1).join(", ") + " and " + values[values.length - 1];
+  }
+
+  function numberWord(value) {
+    var words = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"];
+    return words[value] || String(value);
+  }
+
+  function updatePlaceErrorVisibility() {
+    var hasActiveError = getActiveFacilityCategories().some(function (category) {
+      return placeErrors.has(getPlaceCacheKey(activeArea, category));
+    });
+
+    placeErrorNode.hidden = !hasActiveError;
+  }
+
+  function updateMapStatus() {
+    var areaName = areas[activeArea].name;
+    var activeFacility = getActiveFacilityCategories();
+    var loadingFacility = activeFacility.filter(function (category) {
+      return loadingPlaceKeys.has(getPlaceCacheKey(activeArea, category));
+    });
+
+    if (loadingFacility.length > 0) {
+      statusNode.textContent =
+        "Loading nearby " +
+        formatHumanList(
+          loadingFacility.map(function (category) {
+            return facilityPluralLabels[category];
+          })
+        ) +
+        " around " +
+        areaName +
+        "…";
+      return;
+    }
+
+    if (activeFacility.length > 0) {
+      var placeCount = getVisiblePlaces().length;
+      var resultText = placeCount + (placeCount === 1 ? " result shown. " : " results shown. ");
+
+      if (activeFacility.length === 1) {
+        var category = activeFacility[0];
+        var singleMessages = {
+          convenience:
+            "Showing nearby convenience stores around " +
+            areaName +
+            ". " +
+            resultText +
+            "Business details may change, so confirm the current listing before visiting.",
+          pharmacy:
+            "Showing nearby pharmacies around " +
+            areaName +
+            ". " +
+            resultText +
+            "Opening hours can change, so confirm the current listing before visiting.",
+          oliveyoung:
+            "Showing nearby Olive Young stores around " +
+            areaName +
+            ". " +
+            resultText +
+            "Store details may change, so confirm the current listing before visiting.",
+          daiso:
+            "Showing nearby Daiso stores around " +
+            areaName +
+            ". " +
+            resultText +
+            "Stock and opening hours may change, so confirm the current listing before visiting."
+        };
+        statusNode.textContent = singleMessages[category];
+        return;
+      }
+
+      statusNode.textContent =
+        "Showing nearby " +
+        formatHumanList(
+          activeFacility.map(function (category) {
+            return facilityPluralLabels[category];
+          })
+        ) +
+        " around " +
+        areaName +
+        ". " +
+        resultText +
+        "Store details and opening hours may change, so confirm the current listing before visiting.";
+      return;
+    }
+
+    if (map) {
+      var verifiedCount = getAreaMarkers(activeArea).filter(function (marker) {
+        return activeCategories.has(marker.category);
+      }).length;
+      statusNode.textContent =
+        areaName +
+        " shows " +
+        numberWord(verifiedCount) +
+        " verified transport and access " +
+        (verifiedCount === 1 ? "point." : "points.");
+      return;
+    }
+
+    statusNode.textContent = areaName + " selected. Load the map to show verified transport and access points.";
+  }
+
+  function renderPlaceList() {
+    var activeFacility = getActiveFacilityCategories();
+    var places = getVisiblePlaces();
+    var hasResolvedCategory = activeFacility.some(function (category) {
+      return placeCache.has(getPlaceCacheKey(activeArea, category));
+    });
+
+    placeListItems.replaceChildren();
+
+    if (activeFacility.length === 0 || (!hasResolvedCategory && places.length === 0)) {
+      placeListNode.hidden = true;
+      return;
+    }
+
+    placeListTitle.textContent = "Nearby places (" + places.length + ")";
+
+    if (places.length === 0) {
+      var emptyItem = document.createElement("li");
+      var emptyText = document.createElement("p");
+      emptyText.textContent = "No nearby results were returned for the selected filters.";
+      emptyItem.appendChild(emptyText);
+      placeListItems.appendChild(emptyItem);
+      placeListNode.hidden = false;
+      return;
+    }
+
+    places.forEach(function (place) {
+      var item = document.createElement("li");
+      var button = document.createElement("button");
+      var metadata = document.createElement("p");
+
+      button.type = "button";
+      button.textContent = place.name;
+      button.addEventListener("click", function () {
+        showPlaceDetails(place);
+
+        if (map && window.naver && window.naver.maps) {
+          map.panTo(new window.naver.maps.LatLng(place.lat, place.lng));
+        }
+      });
+      metadata.textContent =
+        place.type +
+        " · " +
+        (place.roadAddress || place.address || "Address unavailable") +
+        " · " +
+        place.distanceMeters +
+        " m from the area center";
+      item.append(button, metadata);
+      placeListItems.appendChild(item);
+    });
+
+    placeListNode.hidden = false;
+  }
+
+  function refreshMapInterface() {
+    updatePlaceErrorVisibility();
+
+    if (map) {
+      renderMapArea();
+      return;
+    }
+
+    resetMarkerDetails();
+    renderPlaceList();
+    updateMapStatus();
+  }
+
+  function loadPlaceCategory(areaKey, category) {
+    var cacheKey = getPlaceCacheKey(areaKey, category);
+
+    if (placeCache.has(cacheKey)) {
+      return Promise.resolve(placeCache.get(cacheKey));
+    }
+
+    if (placeRequests.has(cacheKey)) {
+      return placeRequests.get(cacheKey);
+    }
+
+    loadingPlaceKeys.add(cacheKey);
+    placeErrors.delete(cacheKey);
+
+    if (activeArea === areaKey) {
+      refreshMapInterface();
+    }
+
+    var requestPromise = fetch(
+      "/api/budget-stay-places?area=" +
+        encodeURIComponent(areas[areaKey].searchArea) +
+        "&category=" +
+        encodeURIComponent(category),
+      {
+        method: "GET",
+        headers: {
+          Accept: "application/json"
+        }
+      }
+    )
+      .then(function (response) {
+        if (!response.ok) {
+          throw new Error("Place request failed");
+        }
+
+        return response.json();
+      })
+      .then(function (payload) {
+        var validated = validatePlaceResponse(payload, areaKey, category);
+        placeCache.set(cacheKey, validated);
+        return validated;
+      })
+      .catch(function (error) {
+        placeErrors.add(cacheKey);
+        throw error;
+      })
+      .finally(function () {
+        loadingPlaceKeys.delete(cacheKey);
+        placeRequests.delete(cacheKey);
+
+        if (activeArea === areaKey) {
+          refreshMapInterface();
+        }
+      });
+
+    placeRequests.set(cacheKey, requestPromise);
+    return requestPromise;
+  }
+
+  function loadActivePlaceCategories(areaKey) {
+    getActiveFacilityCategories().forEach(function (category) {
+      loadPlaceCategory(areaKey, category).catch(function () {
+        return undefined;
+      });
+    });
+  }
+
   function renderMapArea() {
     if (!map || !window.naver || !window.naver.maps) {
       return;
     }
 
     var area = areas[activeArea];
-    var areaData = getAreaMarkers(activeArea).filter(function (marker) {
+    var verifiedData = getAreaMarkers(activeArea).filter(function (marker) {
       return activeCategories.has(marker.category);
     });
+    var placeData = getVisiblePlaces();
+    var areaData = verifiedData.concat(placeData);
 
     clearMapObjects();
+    resetMarkerDetails();
     map.setCenter(new window.naver.maps.LatLng(area.center.lat, area.center.lng));
     map.setZoom(area.zoom);
 
@@ -454,22 +892,25 @@
       var marker = new window.naver.maps.Marker({
         map: map,
         position: new window.naver.maps.LatLng(markerData.lat, markerData.lng),
-        title: markerData.name,
+        title: facilityCategories.has(markerData.category)
+          ? facilityAriaLabels[markerData.category]
+          : markerData.name,
         icon: markerIcon(markerData)
       });
 
       window.naver.maps.Event.addListener(marker, "click", function () {
-        showMarkerDetails(markerData);
+        if (facilityCategories.has(markerData.category)) {
+          showPlaceDetails(markerData);
+        } else {
+          showMarkerDetails(markerData);
+        }
       });
 
       mapMarkers.push(marker);
     });
 
-    statusNode.textContent =
-      areas[activeArea].name +
-      " map ready. " +
-      areaData.length +
-      (areaData.length === 1 ? " verified point is shown." : " verified points are shown.");
+    renderPlaceList();
+    updateMapStatus();
   }
 
   function failMap() {
@@ -564,6 +1005,7 @@
           mapDataControl: false
         });
         infoWindow = new window.naver.maps.InfoWindow();
+        window.naver.maps.Event.addListener(map, "click", resetMarkerDetails);
         mapRoot.classList.add("budget-map-canvas--ready");
         renderMapArea();
       })
@@ -591,14 +1033,9 @@
 
     tabPanel.setAttribute("aria-labelledby", nextTab.id);
     updateFilterAvailability(areaKey);
-    updateVerdict(areaKey);
-    resetMarkerDetails(areaKey);
-
-    if (map) {
-      renderMapArea();
-    } else {
-      statusNode.textContent = areas[areaKey].name + " selected. Load the map to show verified points.";
-    }
+    resetMarkerDetails();
+    loadActivePlaceCategories(areaKey);
+    refreshMapInterface();
 
     if (focusTab) {
       nextTab.focus();
@@ -643,8 +1080,14 @@
         activeCategories.add(category);
       }
 
-      if (map) {
-        renderMapArea();
+      resetMarkerDetails();
+
+      if (!isActive && facilityCategories.has(category)) {
+        loadPlaceCategory(activeArea, category).catch(function () {
+          return undefined;
+        });
+      } else {
+        refreshMapInterface();
       }
     });
   });
@@ -665,7 +1108,32 @@
     }, 160);
   });
 
+  function configureLegendDisclosure() {
+    if (!legendNode || typeof window.matchMedia !== "function") {
+      return;
+    }
+
+    var mobileLegend = window.matchMedia("(max-width: 1024px)");
+
+    function syncLegend(event) {
+      if (event.matches) {
+        legendNode.removeAttribute("open");
+      } else {
+        legendNode.setAttribute("open", "");
+      }
+    }
+
+    syncLegend(mobileLegend);
+
+    if (typeof mobileLegend.addEventListener === "function") {
+      mobileLegend.addEventListener("change", syncLegend);
+    } else if (typeof mobileLegend.addListener === "function") {
+      mobileLegend.addListener(syncLegend);
+    }
+  }
+
+  configureLegendDisclosure();
   updateFilterAvailability(activeArea);
-  updateVerdict(activeArea);
-  resetMarkerDetails(activeArea);
+  resetMarkerDetails();
+  renderPlaceList();
 })();
