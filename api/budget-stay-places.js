@@ -1,6 +1,7 @@
 "use strict";
 
 var dns = require("node:dns");
+const { validateHeaderValue } = require("node:http");
 
 const NAVER_LOCAL_SEARCH_ENDPOINT = "https://naverapihub.apigw.ntruss.com/search/v1/local";
 const NAVER_LOCAL_SEARCH_HOSTNAME = "naverapihub.apigw.ntruss.com";
@@ -254,37 +255,34 @@ async function logDnsDiagnostic() {
   }
 }
 
-function logFetchException(error, signal, elapsedMs) {
+function logRequestError(error, diagnostic) {
   var cause = error && error.cause;
+  var controller = diagnostic && diagnostic.controller;
 
-  console.error("NAVER_LOCAL_SEARCH_FETCH_EXCEPTION", {
-    error: {
-      name: safeDiagnosticValue(error && error.name, 0),
-      message: safeDiagnosticValue(error && error.message, 0),
-      code: safeDiagnosticValue(error && error.code, 0),
-      cause: {
-        name: safeDiagnosticValue(cause && cause.name, 0),
-        code: safeDiagnosticValue(cause && cause.code, 0),
-        errno: safeDiagnosticValue(cause && cause.errno, 0),
-        syscall: safeDiagnosticValue(cause && cause.syscall, 0),
-        hostname: safeDiagnosticValue(cause && cause.hostname, 0),
-        message: safeDiagnosticValue(cause && cause.message, 0)
-      }
-    },
-    signal: {
-      aborted: Boolean(signal && signal.aborted)
-    },
-    elapsedMs: Math.max(0, Math.round(elapsedMs))
+  console.error("[BudgetStayPlaces Error]", {
+    stage: diagnostic ? diagnostic.stage : "START",
+    upstreamStatus: diagnostic ? diagnostic.upstreamStatus : null,
+    elapsedMs: diagnostic ? Date.now() - diagnostic.startedAt : null,
+    name: safeDiagnosticValue(error && error.name, 0),
+    message: safeDiagnosticValue(error && error.message, 0),
+    code: safeDiagnosticValue(error && error.code, 0),
+    causeName: safeDiagnosticValue(cause && cause.name, 0),
+    causeMessage: safeDiagnosticValue(cause && cause.message, 0),
+    causeCode: safeDiagnosticValue(cause && cause.code, 0),
+    signalAborted: Boolean(controller && controller.signal.aborted)
   });
 }
 
-async function fetchNaverItems(query, area, category, clientId, clientSecret) {
+async function fetchNaverItems(query, area, category, clientId, clientSecret, diagnostic) {
+  diagnostic.stage = "BUILD_URL";
+
   var controller = new AbortController();
+  diagnostic.controller = controller;
+
   var timeoutId = setTimeout(function () {
     controller.abort();
   }, REQUEST_TIMEOUT_MS);
   var url = new URL(NAVER_LOCAL_SEARCH_ENDPOINT);
-  var requestStartedAt = Date.now();
 
   url.searchParams.set("query", query);
   url.searchParams.set("display", "5");
@@ -293,31 +291,33 @@ async function fetchNaverItems(query, area, category, clientId, clientSecret) {
   url.searchParams.set("format", "json");
 
   try {
-    var upstreamResponse;
-    var responseText;
+    diagnostic.stage = "FETCH_STARTED";
 
-    try {
-      upstreamResponse = await fetch(url.toString(), {
-        method: "GET",
-        headers: {
-          "X-NCP-APIGW-API-KEY-ID": clientId,
-          "X-NCP-APIGW-API-KEY": clientSecret,
-          Accept: "application/json"
-        },
-        signal: controller.signal
-      });
-      responseText = await upstreamResponse.text();
-    } catch (error) {
-      logFetchException(error, controller.signal, Date.now() - requestStartedAt);
-      throw error;
-    }
+    var upstreamResponse = await fetch(url.toString(), {
+      method: "GET",
+      headers: {
+        "X-NCP-APIGW-API-KEY-ID": clientId,
+        "X-NCP-APIGW-API-KEY": clientSecret,
+        Accept: "application/json"
+      },
+      signal: controller.signal
+    });
+
+    diagnostic.upstreamStatus = upstreamResponse.status;
+    diagnostic.stage = "FETCH_RESPONSE_RECEIVED";
+
+    diagnostic.stage = "RESPONSE_BODY_STARTED";
+    var responseText = await upstreamResponse.text();
+    diagnostic.stage = "RESPONSE_BODY_RECEIVED";
 
     if (!upstreamResponse.ok) {
       logUpstreamError(upstreamResponse, url, responseText, area, category);
       throw new Error("NAVER_LOCAL_SEARCH_FAILED");
     }
 
+    diagnostic.stage = "RESPONSE_PARSE_STARTED";
     var payload = JSON.parse(responseText);
+    diagnostic.stage = "RESPONSE_PARSED";
 
     if (!payload || !Array.isArray(payload.items)) {
       throw new Error("NAVER_LOCAL_SEARCH_INVALID_RESPONSE");
@@ -330,6 +330,15 @@ async function fetchNaverItems(query, area, category, clientId, clientSecret) {
 }
 
 module.exports = async function budgetStayPlaces(request, response) {
+  var diagnostic = {
+    stage: "START",
+    upstreamStatus: null,
+    startedAt: Date.now(),
+    controller: null
+  };
+
+  diagnostic.stage = "VALIDATE_REQUEST";
+
   if (request.method !== "GET") {
     response.setHeader("Allow", "GET");
     return sendJson(response, 405, { error: "Method not allowed." });
@@ -347,15 +356,12 @@ module.exports = async function budgetStayPlaces(request, response) {
     return sendJson(response, 400, { error: "Invalid area or category." });
   }
 
-  var clientId = process.env.NAVER_LOCAL_SEARCH_CLIENT_ID;
-  var clientSecret = process.env.NAVER_LOCAL_SEARCH_CLIENT_SECRET;
+  diagnostic.stage = "BUILD_QUERY";
+  var queries = SEARCH_QUERIES[area][category];
 
-  if (!clientId || !clientSecret) {
-    return sendJson(response, 503, { error: "Place information is temporarily unavailable." });
-  }
-
-  clientId = clientId.trim();
-  clientSecret = clientSecret.trim();
+  diagnostic.stage = "READ_CREDENTIALS";
+  const clientId = String(process.env.NAVER_LOCAL_SEARCH_CLIENT_ID ?? "").trim();
+  const clientSecret = String(process.env.NAVER_LOCAL_SEARCH_CLIENT_SECRET ?? "").trim();
 
   if (!clientId || !clientSecret) {
     return sendJson(response, 503, { error: "Place information is temporarily unavailable." });
@@ -364,22 +370,36 @@ module.exports = async function budgetStayPlaces(request, response) {
   var rawItems;
 
   try {
+    diagnostic.stage = "VALIDATE_CLIENT_ID_HEADER";
+    validateHeaderValue("X-NCP-APIGW-API-KEY-ID", clientId);
+
+    diagnostic.stage = "VALIDATE_CLIENT_SECRET_HEADER";
+    validateHeaderValue("X-NCP-APIGW-API-KEY", clientSecret);
+
     await logDnsDiagnostic();
 
     var resultSets = await Promise.all(
-      SEARCH_QUERIES[area][category].map(function (query) {
-        return fetchNaverItems(query, area, category, clientId, clientSecret);
+      queries.map(function (query) {
+        return fetchNaverItems(query, area, category, clientId, clientSecret, diagnostic);
       })
     );
     rawItems = resultSets.reduce(function (combined, resultSet) {
       return combined.concat(resultSet);
     }, []);
   } catch (error) {
-    return sendJson(response, 502, { error: "Place information is temporarily unavailable." });
+    logRequestError(error, diagnostic);
+    return sendJson(response, 502, {
+      error: "Place information is temporarily unavailable.",
+      stage: diagnostic.stage,
+      upstreamStatus: diagnostic.upstreamStatus
+    });
   }
 
   try {
+    diagnostic.stage = "NORMALIZE_RESPONSE";
     var items = normalizeItems(rawItems, area, category);
+
+    diagnostic.stage = "SEND_RESPONSE";
     response.setHeader("Cache-Control", CACHE_CONTROL);
     return sendJson(response, 200, {
       area: area,
@@ -388,6 +408,11 @@ module.exports = async function budgetStayPlaces(request, response) {
       items: items
     });
   } catch (error) {
-    return sendJson(response, 500, { error: "Place information is temporarily unavailable." });
+    logRequestError(error, diagnostic);
+    return sendJson(response, 500, {
+      error: "Place information is temporarily unavailable.",
+      stage: diagnostic.stage,
+      upstreamStatus: diagnostic.upstreamStatus
+    });
   }
 };
