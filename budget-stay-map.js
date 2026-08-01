@@ -7,7 +7,7 @@
     return;
   }
 
-  var SDK_URL = "https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=r63yif5zan&language=en";
+  var SDK_URL = "https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=r63yjif5zan&language=en";
   var SOURCE_LINKS = {
     coordinates: "https://www.arcgis.com/home/item.html?id=a3ca58b3ef864e61aab932c5c592e729",
     accessibility: "https://english.seoul.go.kr/service/movement/public-transportation/subway-accessibility-facilities/",
@@ -310,6 +310,16 @@
     daiso:
       "Useful for low-cost travel supplies, storage items and everyday necessities. Stock and opening hours can change, so confirm the current listing before visiting."
   };
+  var markerOverlapOffsets = [
+    { x: 11, y: 0 },
+    { x: -11, y: 0 },
+    { x: 0, y: 11 },
+    { x: 0, y: -11 },
+    { x: 8, y: 8 },
+    { x: -8, y: 8 },
+    { x: 8, y: -8 },
+    { x: -8, y: -8 }
+  ];
 
   var tabs = Array.prototype.slice.call(document.querySelectorAll("[data-map-area]"));
   var filterButtons = Array.prototype.slice.call(document.querySelectorAll("[data-map-category]"));
@@ -452,7 +462,55 @@
     detailsNode.replaceChildren.apply(detailsNode, children);
   }
 
-  function markerIcon(marker) {
+  function distanceBetweenMarkers(firstMarker, secondMarker) {
+    var earthRadius = 6371000;
+    var firstLat = toRadians(firstMarker.lat);
+    var secondLat = toRadians(secondMarker.lat);
+    var latDelta = toRadians(secondMarker.lat - firstMarker.lat);
+    var lngDelta = toRadians(secondMarker.lng - firstMarker.lng);
+    var calculation =
+      Math.sin(latDelta / 2) * Math.sin(latDelta / 2) +
+      Math.cos(firstLat) *
+        Math.cos(secondLat) *
+        Math.sin(lngDelta / 2) *
+        Math.sin(lngDelta / 2);
+
+    return earthRadius * 2 * Math.atan2(Math.sqrt(calculation), Math.sqrt(1 - calculation));
+  }
+
+  function markerDisplayOffset(marker, markerIndex, markerData) {
+    var overlapCount = 0;
+
+    for (var index = 0; index < markerIndex; index += 1) {
+      if (distanceBetweenMarkers(marker, markerData[index]) < 55) {
+        overlapCount += 1;
+      }
+    }
+
+    if (overlapCount === 0) {
+      return { x: 0, y: 0 };
+    }
+
+    return markerOverlapOffsets[(overlapCount - 1) % markerOverlapOffsets.length];
+  }
+
+  function markerZIndex(marker) {
+    if (marker.category === "airport") {
+      return 320;
+    }
+
+    if (marker.category === "subway") {
+      return 300;
+    }
+
+    if (marker.category === "elevator") {
+      return 280;
+    }
+
+    return 100;
+  }
+
+  function markerIcon(marker, displayOffset) {
     var ariaLabel = facilityCategories.has(marker.category)
       ? facilityAriaLabels[marker.category]
       : marker.name + ", " + categoryLabels[marker.category];
@@ -467,7 +525,7 @@
         '<span aria-hidden="true">' +
         categorySymbols[marker.category] +
         "</span></button>",
-      anchor: new window.naver.maps.Point(22, 22)
+      anchor: new window.naver.maps.Point(17 - displayOffset.x, 17 - displayOffset.y)
     };
   }
 
@@ -888,14 +946,16 @@
       clickable: false
     });
 
-    areaData.forEach(function (markerData) {
+    areaData.forEach(function (markerData, markerIndex) {
+      var displayOffset = markerDisplayOffset(markerData, markerIndex, areaData);
       var marker = new window.naver.maps.Marker({
         map: map,
         position: new window.naver.maps.LatLng(markerData.lat, markerData.lng),
         title: facilityCategories.has(markerData.category)
           ? facilityAriaLabels[markerData.category]
           : markerData.name,
-        icon: markerIcon(markerData)
+        icon: markerIcon(markerData, displayOffset),
+        zIndex: markerZIndex(markerData)
       });
 
       window.naver.maps.Event.addListener(marker, "click", function () {
@@ -917,6 +977,7 @@
     map = null;
     statusNode.textContent = "The written area comparison remains available below.";
     errorNode.hidden = false;
+    mapRoot.classList.remove("budget-map-canvas--ready");
     mapRoot.classList.add("budget-map-canvas--unavailable");
     mapRoot.replaceChildren();
   }
@@ -992,6 +1053,7 @@
     return loadSdk()
       .then(function () {
         mapRoot.replaceChildren();
+        mapRoot.classList.add("budget-map-canvas--ready");
         map = new window.naver.maps.Map(mapRoot, {
           center: new window.naver.maps.LatLng(areas[activeArea].center.lat, areas[activeArea].center.lng),
           zoom: areas[activeArea].zoom,
@@ -1006,7 +1068,6 @@
         });
         infoWindow = new window.naver.maps.InfoWindow();
         window.naver.maps.Event.addListener(map, "click", resetMarkerDetails);
-        mapRoot.classList.add("budget-map-canvas--ready");
         renderMapArea();
       })
       .catch(function () {
