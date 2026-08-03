@@ -9670,7 +9670,7 @@ ul, ol {
     }
     .taste-korea-page .taste-content *{box-sizing:border-box}
     .taste-korea-page .taste-content{scroll-behavior:smooth}
-    .taste-korea-page .taste-content{margin:0;color:var(--ink);background:var(--paper);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.65}
+    .taste-korea-page .taste-content{margin:0;color:var(--ink);background:var(--paper);font-family:"Roboto Flex","Roboto","Arial",sans-serif;font-size:18px;font-weight:400;line-height:1.6}
     .taste-korea-page .taste-content a{color:inherit;text-decoration:none}
     .taste-korea-page .taste-content img{display:block;width:100%}
     .taste-korea-page .taste-content .wrap{width:min(calc(100% - 40px),var(--max));margin-inline:auto}
@@ -9709,7 +9709,7 @@ ul, ol {
     .taste-korea-page .taste-content .exp-card img{position:absolute;inset:0;height:100%;object-fit:cover;z-index:-2}
     .taste-korea-page .taste-content .exp-card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 25%,rgba(10,9,7,.9) 100%);z-index:-1}
     .taste-korea-page .taste-content .exp-body{position:absolute;inset:auto 26px 24px}
-    .taste-korea-page .taste-content .exp-no{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:#f3c86d;font-weight:900}
+    .taste-korea-page .taste-content .exp-no{font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:#f3c86d;font-weight:600}
     .taste-korea-page .taste-content .exp-card h3{font-size:clamp(1.55rem,3vw,2.6rem);line-height:1;margin:.4rem 0 .7rem;color:white;letter-spacing:-.04em}
     .taste-korea-page .taste-content .exp-card p{margin:0;color:#e8e4dc;max-width:540px}
     .taste-korea-page .taste-content .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:15px}
@@ -9785,6 +9785,7 @@ ul, ol {
       .taste-korea-page .taste-content .footer-grid{grid-template-columns:1fr}
     }
     @media (max-width:640px){
+      .taste-korea-page .taste-content{font-size:17px;font-weight:400;line-height:1.58}
       .taste-korea-page .taste-content .wrap{width:min(calc(100% - 24px),var(--max))}
       .taste-korea-page .taste-content .section{padding:72px 0}
       .taste-korea-page .taste-content .nav{height:64px}
@@ -9816,8 +9817,8 @@ ul, ol {
     .taste-korea-page .taste-content .detail-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(20,19,15,.22))}
     .taste-korea-page .taste-content .detail-media img{height:100%;min-height:560px;object-fit:cover}
     .taste-korea-page .taste-content .detail-copy{padding:42px 42px 38px}
-    .taste-korea-page .taste-content .detail-kicker{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--red);font-weight:900;margin-bottom:10px}
-    .taste-korea-page .taste-content .detail-copy h3{font-size:clamp(1.75rem,3.2vw,3rem);line-height:1.02;letter-spacing:-.045em;margin:0 0 22px}
+    .taste-korea-page .taste-content .detail-kicker{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--red);font-weight:600;margin-bottom:10px}
+    .taste-korea-page .taste-content .detail-copy h3{font-size:42px;font-weight:600;line-height:1.1;letter-spacing:-.02em;margin:0 0 22px}
     .taste-korea-page .taste-content .detail-copy>p{color:#514c43;margin:0 0 17px}
     .taste-korea-page .taste-content .detail-copy em{font-style:italic}
     .taste-korea-page .taste-content .detail-compare{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:26px 0}
@@ -9826,7 +9827,7 @@ ul, ol {
     .taste-korea-page .taste-content .detail-compare span{display:block;color:#625d54;font-size:.83rem;line-height:1.45}
     .taste-korea-page .taste-content .decision-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:26px}
     .taste-korea-page .taste-content .decision-grid section{border-top:3px solid var(--gold);background:#fbf8f1;border-radius:0 0 14px 14px;padding:16px}
-    .taste-korea-page .taste-content .decision-grid h4{font-size:.76rem;text-transform:uppercase;letter-spacing:.08em;margin:0 0 8px;color:var(--red-dark)}
+    .taste-korea-page .taste-content .decision-grid h4{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin:0 0 8px;color:var(--red-dark)}
     .taste-korea-page .taste-content .decision-grid p{margin:0;color:#625d54;font-size:.85rem;line-height:1.5}
     .taste-korea-page .taste-content .detail-line{margin-top:22px!important;padding:15px 17px;border-left:4px solid var(--red);background:#f5ede3;border-radius:0 12px 12px 0;color:#403c35!important}
     .taste-korea-page .taste-content .source-notes{padding:72px 0;background:#eee7da;border-top:1px solid var(--line)}
@@ -9838,10 +9839,12 @@ ul, ol {
       .taste-korea-page .taste-content .experience-detail, .taste-korea-page .taste-content .experience-detail.reverse{grid-template-columns:1fr}
       .taste-korea-page .taste-content .experience-detail.reverse .detail-media{order:0}
       .taste-korea-page .taste-content .detail-media img{min-height:360px;max-height:460px}
+      .taste-korea-page .taste-content .detail-copy h3{font-size:36px}
       .taste-korea-page .taste-content .detail-compare, .taste-korea-page .taste-content .decision-grid{grid-template-columns:1fr}
     }
     @media (max-width:640px){
       .taste-korea-page .taste-content .detail-copy{padding:28px 22px 26px}
+      .taste-korea-page .taste-content .detail-copy h3{font-size:31px}
       .taste-korea-page .taste-content .detail-media img{min-height:270px;max-height:340px}
       .taste-korea-page .taste-content .source-notes ul{grid-template-columns:1fr}
     }
@@ -9855,8 +9858,8 @@ ul, ol {
     .taste-korea-page .taste-content .city-detail-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 46%,rgba(20,19,15,.28))}
     .taste-korea-page .taste-content .city-detail-media img{height:100%;min-height:520px;object-fit:cover}
     .taste-korea-page .taste-content .city-detail-copy{padding:40px}
-    .taste-korea-page .taste-content .city-detail-copy h3{font-size:clamp(2rem,4vw,3.7rem);line-height:.96;letter-spacing:-.05em;margin:0 0 10px}
-    .taste-korea-page .taste-content .city-position{display:inline-flex;align-items:center;gap:8px;margin-bottom:18px;font-size:.74rem;text-transform:uppercase;letter-spacing:.11em;font-weight:900;color:var(--red)}
+    .taste-korea-page .taste-content .city-detail-copy h3{font-size:48px;font-weight:600;line-height:1;letter-spacing:-.02em;margin:0 0 10px}
+    .taste-korea-page .taste-content .city-position{display:inline-flex;align-items:center;gap:8px;margin-bottom:18px;font-size:13px;text-transform:uppercase;letter-spacing:.11em;font-weight:600;color:var(--red)}
     .taste-korea-page .taste-content .city-position::before{content:"";width:24px;height:2px;background:var(--gold)}
     .taste-korea-page .taste-content .city-detail-copy>p{color:#514c43;margin:0 0 16px}
     .taste-korea-page .taste-content .city-base-table{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin:24px 0}
@@ -9902,12 +9905,14 @@ ul, ol {
       .taste-korea-page .taste-content .city-detail-card, .taste-korea-page .taste-content .city-detail-card:nth-child(even){grid-template-columns:1fr}
       .taste-korea-page .taste-content .city-detail-card:nth-child(even) .city-detail-media{order:0}
       .taste-korea-page .taste-content .city-detail-media img{min-height:340px;max-height:480px}
+      .taste-korea-page .taste-content .city-detail-copy h3{font-size:42px}
       .taste-korea-page .taste-content .city-summary-strip{grid-template-columns:repeat(2,1fr)}
       .taste-korea-page .taste-content .hood-detail-grid{grid-template-columns:1fr}
       .taste-korea-page .taste-content .quick-choice{grid-template-columns:repeat(2,1fr)}
     }
     @media(max-width:640px){
       .taste-korea-page .taste-content .city-detail-copy{padding:27px 22px}
+      .taste-korea-page .taste-content .city-detail-copy h3{font-size:38px}
       .taste-korea-page .taste-content .city-detail-media img{min-height:270px;max-height:360px}
       .taste-korea-page .taste-content .city-base-table, .taste-korea-page .taste-content .city-summary-strip, .taste-korea-page .taste-content .hood-facts, .taste-korea-page .taste-content .quick-choice, .taste-korea-page .taste-content .decision-intro{grid-template-columns:1fr}
       .taste-korea-page .taste-content .hood-detail{padding:22px}
