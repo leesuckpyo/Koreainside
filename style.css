@@ -20266,3 +20266,191 @@ body[data-section] main .hm-jump-links {
     gap: 28px;
   }
 }
+
+/* K-Beauty page typography hierarchy */
+body.k-beauty-page main.k-beauty-content {
+  font-family: "Roboto Flex", "Roboto", "Arial", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+body.k-beauty-page main.k-beauty-content .kb-hero h1 {
+  font-size: 64px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.025em;
+}
+
+body.k-beauty-page main.k-beauty-content .kb-hero h1 span {
+  font-size: 29px;
+  font-weight: 550;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+}
+
+body.k-beauty-page main.k-beauty-content .kb-hero__message {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.28;
+  letter-spacing: -0.01em;
+}
+
+body.k-beauty-page main.k-beauty-content .kb-hero__intro,
+body.k-beauty-page main.k-beauty-content .kb-section-lead {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+body.k-beauty-page main.k-beauty-content .kb-section-title {
+  font-size: 44px;
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+}
+
+body.k-beauty-page main.k-beauty-content .kb-principles h2 {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+body.k-beauty-page main.k-beauty-content .kb-principles p {
+  font-size: 16.5px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+body.k-beauty-page main.k-beauty-content .kb-detail h3 {
+  font-size: 38px;
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+}
+
+body.k-beauty-page main.k-beauty-content .kb-eyebrow,
+body.k-beauty-page main.k-beauty-content .kb-principles article > span,
+body.k-beauty-page main.k-beauty-content .kb-experience-grid article > span {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+body.k-beauty-page main.k-beauty-content .kb-detail__kicker,
+body.k-beauty-page main.k-beauty-content .kb-area__label {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+body.k-beauty-page main.k-beauty-content .kb-detail dt,
+body.k-beauty-page main.k-beauty-content .kb-area__body dt {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+body.k-beauty-page main.k-beauty-content .kb-detail dd,
+body.k-beauty-page main.k-beauty-content .kb-area__body dd,
+body.k-beauty-page main.k-beauty-content .kb-decision {
+  font-size: 16.5px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+body.k-beauty-page main.k-beauty-content .kb-decision strong {
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  body.k-beauty-page main.k-beauty-content .kb-hero h1 {
+    font-size: 56px;
+  }
+
+  body.k-beauty-page main.k-beauty-content .kb-hero h1 span {
+    font-size: 26px;
+  }
+
+  body.k-beauty-page main.k-beauty-content .kb-hero__message {
+    font-size: 19px;
+    line-height: 1.3;
+  }
+
+  body.k-beauty-page main.k-beauty-content .kb-section-title {
+    font-size: 38px;
+  }
+
+  body.k-beauty-page main.k-beauty-content .kb-principles h2 {
+    font-size: 19px;
+  }
+
+  body.k-beauty-page main.k-beauty-content .kb-detail h3 {
+    font-size: 34px;
+    line-height: 1.1;
+  }
+
+  body.k-beauty-page main.k-beauty-content .kb-principles p,
+  body.k-beauty-page main.k-beauty-content .kb-detail dd,
+  body.k-beauty-page main.k-beauty-content .kb-area__body dd {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  body.k-beauty-page main.k-beauty-content {
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 1.58;
+  }
+
+  body.k-beauty-page main.k-beauty-content .kb-hero h1 {
+    font-size: 46px;
+    line-height: 1;
+  }
+
+  body.k-beauty-page main.k-beauty-content .kb-hero h1 span {
+    font-size: 22px;
+    line-height: 1.1;
+  }
+
+  body.k-beauty-page main.k-beauty-content .kb-hero__message {
+    font-size: 18px;
+    line-height: 1.3;
+  }
+
+  body.k-beauty-page main.k-beauty-content .kb-hero__intro,
+  body.k-beauty-page main.k-beauty-content .kb-section-lead {
+    font-size: 17px;
+    line-height: 1.58;
+  }
+
+  body.k-beauty-page main.k-beauty-content .kb-section-title {
+    font-size: 34px;
+    line-height: 1.08;
+  }
+
+  body.k-beauty-page main.k-beauty-content .kb-principles h2 {
+    font-size: 18px;
+    line-height: 1.2;
+  }
+
+  body.k-beauty-page main.k-beauty-content .kb-detail h3 {
+    font-size: 30px;
+    line-height: 1.1;
+  }
+
+  body.k-beauty-page main.k-beauty-content .kb-detail dt,
+  body.k-beauty-page main.k-beauty-content .kb-area__body dt {
+    font-size: 12px;
+  }
+
+  body.k-beauty-page main.k-beauty-content .kb-principles p,
+  body.k-beauty-page main.k-beauty-content .kb-detail dd,
+  body.k-beauty-page main.k-beauty-content .kb-area__body dd,
+  body.k-beauty-page main.k-beauty-content .kb-decision {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+}
