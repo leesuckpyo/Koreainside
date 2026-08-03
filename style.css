@@ -1937,13 +1937,6 @@ ul, ol {
   color: #1D2B27;
 }
 
-.page-best-esim main.best-esim-page .best-esim-reviewed {
-  margin-top: 18px;
-  color: #746C60;
-  font-size: 13px;
-  line-height: 1.5;
-}
-
 .page-best-esim main.best-esim-page .best-esim-section {
   padding: 64px 0;
 }
@@ -1984,6 +1977,14 @@ ul, ol {
   gap: 16px;
 }
 
+.page-best-esim main.best-esim-page .best-esim-quick-grid.best-esim-quick-grid--balanced {
+  align-items: stretch;
+}
+
+.page-best-esim main.best-esim-page .best-esim-quick-grid--balanced > .best-esim-decision-card {
+  height: 100%;
+}
+
 .page-best-esim main.best-esim-page .best-esim-decision-card {
   padding: 22px;
   border: 1px solid #D8D0C2;
@@ -2010,6 +2011,96 @@ ul, ol {
   margin-top: 12px;
   font-size: 17px;
   line-height: 1.65;
+}
+
+.page-best-esim main.best-esim-page .best-esim-provider-choice__grid {
+  display: grid;
+  align-items: stretch;
+  gap: 18px;
+}
+
+.page-best-esim main.best-esim-page .best-esim-provider-choice__card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: 100%;
+  padding: 22px;
+  border: 1px solid #D8D0C2;
+  border-radius: var(--radius-sm);
+  background: #FFFDF8;
+  box-shadow: none;
+}
+
+.page-best-esim main.best-esim-page .best-esim-provider-choice__card h3 {
+  color: #1D2B27;
+  font-size: 22px;
+  font-weight: 570;
+  line-height: 1.24;
+  letter-spacing: normal;
+  text-wrap: pretty;
+}
+
+.page-best-esim main.best-esim-page .best-esim-provider-choice__card p {
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+.page-best-esim main.best-esim-page .best-esim-provider-choice__best-for {
+  margin-top: 12px;
+  color: #514C43;
+}
+
+.page-best-esim main.best-esim-page .best-esim-provider-choice__best-for strong {
+  display: block;
+  margin-bottom: 4px;
+  color: #3F5D52;
+  font-weight: 570;
+}
+
+.page-best-esim main.best-esim-page .best-esim-provider-choice__summary,
+.page-best-esim main.best-esim-page .best-esim-provider-choice__caution {
+  margin-top: 16px;
+}
+
+.page-best-esim main.best-esim-page .best-esim-provider-choice__caution {
+  padding-top: 16px;
+  border-top: 1px solid #D8D0C2;
+  color: #686158;
+}
+
+.page-best-esim main.best-esim-page .best-esim-provider-choice__caution strong {
+  color: #A43120;
+  font-weight: 570;
+}
+
+.page-best-esim main.best-esim-page .best-esim-provider-choice__cta-wrap {
+  min-width: 0;
+  margin-top: auto;
+  padding-top: 24px;
+}
+
+.page-best-esim main.best-esim-page .best-esim-provider-choice__cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  min-width: 0;
+  padding: 15px 16px;
+  border: 1px solid #D8D0C2;
+  border-radius: 12px;
+  background: #F7F3EA;
+  color: #1D2B27;
+  font-weight: 580;
+  line-height: 1.45;
+}
+
+.page-best-esim main.best-esim-page .best-esim-provider-choice__cta > span:first-child {
+  min-width: 0;
+}
+
+.page-best-esim main.best-esim-page .best-esim-provider-choice__cta-arrow {
+  flex: 0 0 auto;
 }
 
 .page-best-esim main.best-esim-page .best-esim-editorial-list,
@@ -2343,12 +2434,6 @@ ul, ol {
   line-height: 1.68;
 }
 
-.page-best-esim main.best-esim-page .best-esim-official-sources span {
-  color: #746C60;
-  font-size: 13px;
-  line-height: 1.5;
-}
-
 @media (min-width: 640px) {
   .page-best-esim main.best-esim-page .best-esim-hero__actions {
     flex-direction: row;
@@ -2392,10 +2477,6 @@ ul, ol {
     line-height: 1.72;
   }
 
-  .page-best-esim main.best-esim-page .best-esim-reviewed {
-    font-size: 14px;
-  }
-
   .page-best-esim main.best-esim-page .best-esim-section {
     padding: 80px 0;
   }
@@ -2417,6 +2498,23 @@ ul, ol {
 
   .page-best-esim main.best-esim-page .best-esim-decision-card {
     padding: 26px;
+  }
+
+  .page-best-esim main.best-esim-page .best-esim-provider-choice__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .page-best-esim main.best-esim-page .best-esim-provider-choice__card {
+    padding: 26px;
+  }
+
+  .page-best-esim main.best-esim-page .best-esim-provider-choice__card h3 {
+    font-size: 28px;
+  }
+
+  .page-best-esim main.best-esim-page .best-esim-provider-choice__card p {
+    font-size: 18px;
   }
 
   .page-best-esim main.best-esim-page .best-esim-decision-card h3,
@@ -2494,14 +2592,13 @@ ul, ol {
   }
 
   .page-best-esim main.best-esim-page .best-esim-official-sources li {
-    grid-template-columns: minmax(130px, 0.18fr) minmax(0, 0.62fr) minmax(150px, 0.2fr);
+    grid-template-columns: minmax(130px, 0.18fr) minmax(0, 0.82fr);
     gap: 28px;
     align-items: start;
     padding: 26px 0;
   }
 
-  .page-best-esim main.best-esim-page .best-esim-source-line,
-  .page-best-esim main.best-esim-page .best-esim-official-sources span {
+  .page-best-esim main.best-esim-page .best-esim-source-line {
     font-size: 14px;
   }
 }
@@ -2826,6 +2923,92 @@ ul, ol {
   hyphens: none;
 }
 
+.page-esim main.esim-page .esim-choice-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: stretch;
+  gap: 18px;
+  margin: 0 0 40px;
+}
+
+.page-esim main.esim-page .esim-choice-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: 100%;
+  padding: 24px;
+  border: 1px solid #D8D0C2;
+  border-radius: 14px;
+  background: #FFFDF8;
+  box-shadow: none;
+}
+
+.page-esim main.esim-page .esim-choice-card__body {
+  min-width: 0;
+}
+
+.page-esim main.esim-page .esim-choice-card__label {
+  margin: 0 0 12px;
+  color: #3F5D52;
+  font-size: 13px;
+  font-weight: 570;
+  line-height: 1.4;
+  letter-spacing: 0.1em;
+}
+
+.page-esim main.esim-page .esim-choice-card--number .esim-choice-card__label {
+  color: #A43120;
+}
+
+.page-esim main.esim-page .esim-choice-card h3 {
+  margin: 0;
+  color: #1D2B27;
+  font-size: 22px;
+  font-weight: 570;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-wrap: pretty;
+}
+
+.page-esim main.esim-page .esim-choice-card__summary {
+  margin: 12px 0 0;
+  color: #514C43;
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+.page-esim main.esim-page .esim-choice-card .esim-fact-list {
+  margin-top: 24px;
+}
+
+.page-esim main.esim-page .esim-choice-card__cta {
+  min-width: 0;
+  margin-top: auto;
+  padding-top: 24px;
+}
+
+.page-esim main.esim-page .esim-choice-card__cta-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-width: 0;
+  padding: 15px 16px;
+  border: 1px solid #D8D0C2;
+  border-radius: 12px;
+  background: #F7F3EA;
+  font-weight: 580;
+  line-height: 1.45;
+}
+
+.page-esim main.esim-page .esim-choice-card__cta-text {
+  min-width: 0;
+}
+
+.page-esim main.esim-page .esim-choice-card__cta-arrow {
+  flex: 0 0 auto;
+}
+
 .esim-editorial-row__body,
 .esim-fact-list,
 .esim-fact-list > div {
@@ -3059,6 +3242,27 @@ ul, ol {
   .esim-hero__actions {
     flex-direction: row;
     flex-wrap: wrap;
+  }
+}
+
+@media (min-width: 769px) {
+  .page-esim main.esim-page .esim-choice-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+
+  .page-esim main.esim-page .esim-choice-card {
+    padding: 30px;
+  }
+
+  .page-esim main.esim-page .esim-choice-card h3 {
+    font-size: 28px;
+  }
+
+  .page-esim main.esim-page .esim-choice-card__summary {
+    font-size: 18px;
+    line-height: 1.68;
   }
 }
 
