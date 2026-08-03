@@ -20552,3 +20552,94 @@ body.airport-page main .airport-faq p {
     line-height: 1.58;
   }
 }
+
+/* Arrival guide typography hierarchy */
+body.arrival-page main .arrival-hero__title {
+  font-family: "Roboto Flex", "Roboto", "Arial", sans-serif;
+  font-size: 56px;
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+}
+
+body.arrival-page main .arrival-section h2 {
+  font-family: "Roboto Flex", "Roboto", "Arial", sans-serif;
+  font-size: 44px;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+}
+
+body.arrival-page main .arrival-section h3 {
+  font-family: "Roboto Flex", "Roboto", "Arial", sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
+
+body.arrival-page main .arrival-hero__desc,
+body.arrival-page main .arrival-section__header > p:last-child,
+body.arrival-page main .arrival-official-cta__copy > p:not(.arrival-kicker),
+body.arrival-page main .arrival-choice-card > p:not(.arrival-route-line),
+body.arrival-page main .arrival-step__content > p,
+body.arrival-page main .arrival-source-panel > p,
+body.arrival-page main .arrival-terminal-card p,
+body.arrival-page main .arrival-terminal-note p,
+body.arrival-page main .arrival-checklist p,
+body.arrival-page main .arrival-transport-card p,
+body.arrival-page main .arrival-faq p,
+body.arrival-page main .arrival-next-grid p,
+body.arrival-page main .arrival-service-notice__inner > p:first-child {
+  font-family: "Roboto Flex", "Roboto", "Arial", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+@media (max-width: 1023px) {
+  body.arrival-page main .arrival-hero__title {
+    font-size: 46px;
+  }
+
+  body.arrival-page main .arrival-section h2 {
+    font-size: 38px;
+  }
+
+  body.arrival-page main .arrival-section h3 {
+    font-size: 25px;
+  }
+}
+
+@media (max-width: 719px) {
+  body.arrival-page main .arrival-hero__title {
+    font-size: 36px;
+    line-height: 1.08;
+  }
+
+  body.arrival-page main .arrival-section h2 {
+    font-size: 32px;
+  }
+
+  body.arrival-page main .arrival-section h3 {
+    font-size: 22px;
+    line-height: 1.22;
+  }
+
+  body.arrival-page main .arrival-hero__desc,
+  body.arrival-page main .arrival-section__header > p:last-child,
+  body.arrival-page main .arrival-official-cta__copy > p:not(.arrival-kicker),
+  body.arrival-page main .arrival-choice-card > p:not(.arrival-route-line),
+  body.arrival-page main .arrival-step__content > p,
+  body.arrival-page main .arrival-source-panel > p,
+  body.arrival-page main .arrival-terminal-card p,
+  body.arrival-page main .arrival-terminal-note p,
+  body.arrival-page main .arrival-checklist p,
+  body.arrival-page main .arrival-transport-card p,
+  body.arrival-page main .arrival-faq p,
+  body.arrival-page main .arrival-next-grid p,
+  body.arrival-page main .arrival-service-notice__inner > p:first-child {
+    font-size: 17px;
+    line-height: 1.58;
+  }
+}
