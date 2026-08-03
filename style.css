@@ -431,7 +431,16 @@ ul, ol {
 .site-header__logo {
   order: 1;
   flex: 0 0 auto;
+  width: 160px;
+  max-width: 160px;
   white-space: nowrap;
+}
+
+.site-brand__logo {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 
 .site-nav-toggle {
@@ -600,6 +609,16 @@ ul, ol {
 @media (max-width: 1099px) {
   body.body--nav-open {
     overflow: hidden;
+  }
+
+  .site-header__logo {
+    width: 125px;
+    max-width: 125px;
+  }
+
+  .site-brand__logo {
+    width: 100%;
+    height: auto;
   }
 
   .site-header--menu-open {
