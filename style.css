@@ -20643,3 +20643,89 @@ body.arrival-page main .arrival-service-notice__inner > p:first-child {
     line-height: 1.58;
   }
 }
+
+/* Airport transfer guide typography hierarchy */
+body.airport-transfer-page main .airport-page-hero__title {
+  font-family: "Roboto Flex", sans-serif;
+  font-size: 56px;
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+}
+
+body.airport-transfer-page main .transfer-chapter h2 {
+  font-family: "Roboto Flex", sans-serif;
+  font-size: 44px;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+}
+
+body.airport-transfer-page main .transfer-chapter h3 {
+  font-family: "Roboto Flex", sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
+
+body.airport-transfer-page main .transfer-hero-answer p,
+body.airport-transfer-page main .transfer-experience-note,
+body.airport-transfer-page main .transfer-chapter p:not(.transfer-chapter__number):not(.transfer-dark-summary__label):not(.transfer-source-note__label):not(.transfer-review-date),
+body.airport-transfer-page main .transfer-chapter li,
+body.airport-transfer-page main .transfer-chapter dd {
+  font-family: "Roboto Flex", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+body.airport-transfer-page main .transfer-chapter p:not(.transfer-chapter__number):not(.transfer-dark-summary__label):not(.transfer-source-note__label):not(.transfer-review-date) strong,
+body.airport-transfer-page main .transfer-chapter li strong {
+  font-weight: 600;
+}
+
+body.airport-transfer-page main .transfer-night-ladder li::before,
+body.airport-transfer-page main .transfer-mistake-list li::before,
+body.airport-transfer-page main .transfer-checklist li::before {
+  font-size: 16px;
+}
+
+@media (max-width: 1023px) {
+  body.airport-transfer-page main .airport-page-hero__title {
+    font-size: 46px;
+  }
+
+  body.airport-transfer-page main .transfer-chapter h2 {
+    font-size: 38px;
+  }
+
+  body.airport-transfer-page main .transfer-chapter h3 {
+    font-size: 25px;
+  }
+}
+
+@media (max-width: 719px) {
+  body.airport-transfer-page main .airport-page-hero__title {
+    font-size: 36px;
+    line-height: 1.08;
+  }
+
+  body.airport-transfer-page main .transfer-chapter h2 {
+    font-size: 32px;
+  }
+
+  body.airport-transfer-page main .transfer-chapter h3 {
+    font-size: 22px;
+    line-height: 1.22;
+  }
+
+  body.airport-transfer-page main .transfer-hero-answer p,
+  body.airport-transfer-page main .transfer-experience-note,
+  body.airport-transfer-page main .transfer-chapter p:not(.transfer-chapter__number):not(.transfer-dark-summary__label):not(.transfer-source-note__label):not(.transfer-review-date),
+  body.airport-transfer-page main .transfer-chapter li,
+  body.airport-transfer-page main .transfer-chapter dd {
+    font-size: 17px;
+    line-height: 1.58;
+  }
+}
