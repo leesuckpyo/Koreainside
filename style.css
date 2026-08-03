@@ -20463,3 +20463,92 @@ body.k-beauty-page main.k-beauty-content .kb-decision strong {
     line-height: 1.5;
   }
 }
+
+/* Airport guide typography hierarchy */
+body.airport-page main .airport-page-hero__title {
+  font-family: "Roboto Flex", "Roboto", "Arial", sans-serif;
+  font-size: 56px;
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+}
+
+body.airport-page main .section__title {
+  font-family: "Roboto Flex", "Roboto", "Arial", sans-serif;
+  font-size: 44px;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+}
+
+body.airport-page main h3 {
+  font-family: "Roboto Flex", "Roboto", "Arial", sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
+
+body.airport-page main .airport-page-hero__desc,
+body.airport-page main .section__subtitle,
+body.airport-page main .airport-action-card p,
+body.airport-page main .airport-official-map-link p,
+body.airport-page main .airport-transport-card p,
+body.airport-page main .airport-transport-card li,
+body.airport-page main .mistake-item__bad,
+body.airport-page main .mistake-item__good,
+body.airport-page main .airport-problem-card__problem,
+body.airport-page main .airport-problem-card__solution,
+body.airport-page main .airport-problem-card__backup,
+body.airport-page main .airport-faq p {
+  font-family: "Roboto Flex", "Roboto", "Arial", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+@media (max-width: 1023px) {
+  body.airport-page main .airport-page-hero__title {
+    font-size: 46px;
+  }
+
+  body.airport-page main .section__title {
+    font-size: 38px;
+  }
+
+  body.airport-page main h3 {
+    font-size: 25px;
+  }
+}
+
+@media (max-width: 719px) {
+  body.airport-page main .airport-page-hero__title {
+    font-size: 36px;
+    line-height: 1.08;
+  }
+
+  body.airport-page main .section__title {
+    font-size: 32px;
+  }
+
+  body.airport-page main h3 {
+    font-size: 22px;
+    line-height: 1.22;
+  }
+
+  body.airport-page main .airport-page-hero__desc,
+  body.airport-page main .section__subtitle,
+  body.airport-page main .airport-action-card p,
+  body.airport-page main .airport-official-map-link p,
+  body.airport-page main .airport-transport-card p,
+  body.airport-page main .airport-transport-card li,
+  body.airport-page main .mistake-item__bad,
+  body.airport-page main .mistake-item__good,
+  body.airport-page main .airport-problem-card__problem,
+  body.airport-page main .airport-problem-card__solution,
+  body.airport-page main .airport-problem-card__backup,
+  body.airport-page main .airport-faq p {
+    font-size: 17px;
+    line-height: 1.58;
+  }
+}
