@@ -4764,6 +4764,98 @@ ul, ol {
 
 }
 
+.footer--korea-editorial {
+  padding: 44px 0 30px;
+}
+
+.footer--korea-editorial .footer__grid {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 32px;
+  margin-bottom: 30px;
+}
+
+.footer--korea-editorial .footer__brand-block {
+  max-width: 55ch;
+}
+
+.footer--korea-editorial .footer__brand {
+  margin-bottom: 14px;
+}
+
+.footer--korea-editorial .footer__eyebrow {
+  margin-bottom: 12px;
+  color: #D8B94D;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1.4;
+}
+
+.footer--korea-editorial .footer__statement {
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1.55;
+}
+
+.footer--korea-editorial .footer__description {
+  max-width: 55ch;
+  margin-top: 14px;
+  color: rgba(255, 255, 255, 0.66);
+  font-size: 0.875rem;
+  line-height: 1.65;
+}
+
+.footer--korea-editorial .footer__nav {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.footer--korea-editorial .footer__heading {
+  margin-bottom: 14px;
+}
+
+.footer--korea-editorial .footer__bottom {
+  padding-top: 20px;
+  font-size: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .footer--korea-editorial {
+    padding: 52px 0 32px;
+  }
+
+  .footer--korea-editorial .footer__grid {
+    gap: 36px;
+    margin-bottom: 32px;
+  }
+
+  .footer--korea-editorial .footer__nav {
+    max-width: 520px;
+    gap: 40px;
+  }
+}
+
+@media (min-width: 960px) {
+  .footer--korea-editorial {
+    padding: 60px 0 34px;
+  }
+
+  .footer--korea-editorial .footer__grid {
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+    align-items: start;
+    gap: 64px;
+    margin-bottom: 36px;
+  }
+
+  .footer--korea-editorial .footer__nav {
+    max-width: none;
+    gap: 48px;
+    padding-top: 4px;
+  }
+}
+
 
 /* ── Airport visual page v4 ── */
 .airport-page-hero {
