@@ -20729,3 +20729,107 @@ body.airport-transfer-page main .transfer-checklist li::before {
     line-height: 1.58;
   }
 }
+
+/* Homepage typography hierarchy */
+body.page-home main {
+  font-family: "Roboto Flex", sans-serif;
+}
+
+body.page-home main h1 {
+  font-size: 56px;
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+}
+
+body.page-home main h2,
+body.page-home main .home-discover-intro h2,
+body.page-home main .home-journey__header h2,
+body.page-home main .home-trust__title,
+body.page-home main .first-hour-panel .section__title {
+  font-size: 44px;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+}
+
+body.page-home main h3,
+body.page-home main .home-taste-feature-copy h3,
+body.page-home main .home-journey-card h3,
+body.page-home main .home-esim-card h3 {
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
+
+body.page-home main .hero-banner__subtitle,
+body.page-home main .home-discover-intro > p:last-child,
+body.page-home main .home-taste-feature-copy > p:not(.home-taste-feature__eyebrow),
+body.page-home main .home-journey__header > p:last-child,
+body.page-home main .home-journey-card p,
+body.page-home main .home-trust__intro,
+body.page-home main .first-hour-panel__intro,
+body.page-home main .first-hour-list li,
+body.page-home main .home-esim-card > p:not(.home-esim-card__label) {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+@media (max-width: 1023px) {
+  body.page-home main h1 {
+    font-size: 46px;
+  }
+
+  body.page-home main h2,
+  body.page-home main .home-discover-intro h2,
+  body.page-home main .home-journey__header h2,
+  body.page-home main .home-trust__title,
+  body.page-home main .first-hour-panel .section__title {
+    font-size: 38px;
+  }
+
+  body.page-home main h3,
+  body.page-home main .home-taste-feature-copy h3,
+  body.page-home main .home-journey-card h3,
+  body.page-home main .home-esim-card h3 {
+    font-size: 25px;
+  }
+}
+
+@media (max-width: 719px) {
+  body.page-home main h1 {
+    font-size: 36px;
+    line-height: 1.08;
+  }
+
+  body.page-home main h2,
+  body.page-home main .home-discover-intro h2,
+  body.page-home main .home-journey__header h2,
+  body.page-home main .home-trust__title,
+  body.page-home main .first-hour-panel .section__title {
+    font-size: 32px;
+  }
+
+  body.page-home main h3,
+  body.page-home main .home-taste-feature-copy h3,
+  body.page-home main .home-journey-card h3,
+  body.page-home main .home-esim-card h3 {
+    font-size: 22px;
+    line-height: 1.22;
+  }
+
+  body.page-home main .hero-banner__subtitle,
+  body.page-home main .home-discover-intro > p:last-child,
+  body.page-home main .home-taste-feature-copy > p:not(.home-taste-feature__eyebrow),
+  body.page-home main .home-journey__header > p:last-child,
+  body.page-home main .home-journey-card p,
+  body.page-home main .home-trust__intro,
+  body.page-home main .first-hour-panel__intro,
+  body.page-home main .first-hour-list li,
+  body.page-home main .home-esim-card > p:not(.home-esim-card__label) {
+    font-size: 17px;
+    line-height: 1.58;
+  }
+}
