@@ -4899,6 +4899,11 @@ ul, ol {
   display: block;
 }
 
+body.airport-page main .airport-page-hero__photo img {
+  object-fit: contain;
+  object-position: center;
+}
+
 .airport-quick-links {
   display: flex;
   flex-wrap: wrap;
@@ -20228,6 +20233,10 @@ body[data-section] main .hm-jump-links {
   body[data-section] main .airport-page-hero__grid,
   body[data-section] main .hm-hero__grid {
     grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr);
+  }
+
+  body.airport-page main .airport-page-hero__grid {
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
   }
 }
 
