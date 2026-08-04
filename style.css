@@ -5876,6 +5876,7 @@ body.airport-page main .airport-page-hero__photo img {
 .airport-bus-page main {
   background: #F7F3EA;
   color: #514C43;
+  font-family: "Roboto Flex", sans-serif;
 }
 
 .airport-bus-page .page-hero {
@@ -5907,6 +5908,35 @@ body.airport-page main .airport-page-hero__photo img {
 .airport-bus-page .guide-content h2,
 .airport-bus-page .guide-content h3 {
   color: #14130F;
+}
+
+.airport-bus-page main .page-hero__title {
+  font-size: 56px;
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+}
+
+.airport-bus-page main .guide-content h2 {
+  font-size: 44px;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+}
+
+.airport-bus-page main .guide-content h3 {
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
+
+.airport-bus-page main .page-hero__desc,
+.airport-bus-page main .guide-content p:not(.eyebrow):not(.tip-box__label):not(.warning-box__label):not(.airport-official-map-link__tip):not(.related-links__title),
+.airport-bus-page main .guide-content li {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.6;
 }
 
 .airport-bus-page .guide-content p,
@@ -6170,6 +6200,44 @@ body.airport-page main .airport-page-hero__photo img {
   .airport-bus-page .airport-bus-media--image-right .airport-bus-media__copy {
     grid-column: 1;
     grid-row: 1;
+  }
+}
+
+@media (max-width: 1023px) {
+  .airport-bus-page main .page-hero__title {
+    font-size: 46px;
+  }
+
+  .airport-bus-page main .guide-content h2 {
+    font-size: 38px;
+  }
+
+  .airport-bus-page main .guide-content h3 {
+    font-size: 25px;
+  }
+}
+
+@media (max-width: 719px) {
+  .airport-bus-page main .page-hero__title {
+    font-size: 36px;
+    line-height: 1.08;
+  }
+
+  .airport-bus-page main .guide-content h2 {
+    font-size: 32px;
+    line-height: 1.1;
+  }
+
+  .airport-bus-page main .guide-content h3 {
+    font-size: 22px;
+    line-height: 1.22;
+  }
+
+  .airport-bus-page main .page-hero__desc,
+  .airport-bus-page main .guide-content p:not(.eyebrow):not(.tip-box__label):not(.warning-box__label):not(.airport-official-map-link__tip):not(.related-links__title),
+  .airport-bus-page main .guide-content li {
+    font-size: 17px;
+    line-height: 1.58;
   }
 }
 
