@@ -12102,6 +12102,7 @@ body.airport-page main .airport-page-hero__photo img {
 .family-stay-page main {
   background: #F7F3EA;
   color: #514C43;
+  font-family: "Roboto Flex", sans-serif;
 }
 
 .family-stay-page main a,
@@ -12145,8 +12146,9 @@ body.airport-page main .airport-page-hero__photo img {
 
 .family-stay-page main .airport-page-hero__title {
   color: #14130F;
-  font-size: clamp(2.5rem, 3.9vw, 3.5rem);
-  line-height: 1.08;
+  font-size: 56px;
+  font-weight: 600;
+  line-height: 1.05;
   letter-spacing: normal;
   text-wrap: balance;
   word-break: normal;
@@ -12158,7 +12160,8 @@ body.airport-page main .airport-page-hero__photo img {
   width: 100%;
   color: #514C43;
   font-size: 18px;
-  line-height: 1.72;
+  font-weight: 400;
+  line-height: 1.6;
   letter-spacing: normal;
   text-align: left;
   word-break: normal;
@@ -12236,15 +12239,14 @@ body.airport-page main .airport-page-hero__photo img {
 .family-stay-page main .airport-page-hero__grid > .airport-transport-card .section__title {
   margin-bottom: 14px;
   color: #1D2B27;
-  font-size: 28px;
-  line-height: 1.2;
 }
 
 .family-stay-page main .airport-page-hero__grid > .airport-transport-card p,
 .family-stay-page main .airport-page-hero__grid > .airport-transport-card li {
   color: #514C43;
   font-size: 18px;
-  line-height: 1.68;
+  font-weight: 400;
+  line-height: 1.6;
 }
 
 .family-stay-page main .airport-page-hero__grid > .airport-transport-card li + li {
@@ -12281,8 +12283,9 @@ body.airport-page main .airport-page-hero__photo img {
   width: 100%;
   max-width: none;
   color: #14130F;
-  font-size: clamp(2.25rem, 3vw, 2.75rem);
-  line-height: 1.12;
+  font-size: 44px;
+  font-weight: 600;
+  line-height: 1.1;
   letter-spacing: normal;
   text-wrap: balance;
   word-break: normal;
@@ -12348,7 +12351,8 @@ body.airport-page main .airport-page-hero__photo img {
 .family-stay-page main .guide-card h3 {
   margin: 0 0 12px;
   color: #1D2B27;
-  font-size: clamp(1.5rem, 2vw, 1.75rem);
+  font-size: 28px;
+  font-weight: 600;
   line-height: 1.2;
   letter-spacing: normal;
   word-break: normal;
@@ -12365,7 +12369,8 @@ body.airport-page main .airport-page-hero__photo img {
 .family-stay-page main .mistake-item p {
   color: #514C43;
   font-size: 18px;
-  line-height: 1.68;
+  font-weight: 400;
+  line-height: 1.6;
   letter-spacing: normal;
   text-align: left;
   word-break: normal;
@@ -12516,6 +12521,7 @@ body.airport-page main .airport-page-hero__photo img {
   margin: 0;
   color: #1D2B27;
   font-size: 28px;
+  font-weight: 600;
   line-height: 1.2;
   letter-spacing: normal;
   word-break: normal;
@@ -12528,7 +12534,8 @@ body.airport-page main .airport-page-hero__photo img {
 .family-stay-page main .family-area-row__content li {
   color: #514C43;
   font-size: 18px;
-  line-height: 1.72;
+  font-weight: 400;
+  line-height: 1.6;
   letter-spacing: normal;
   word-break: normal;
   word-spacing: normal;
@@ -12616,7 +12623,8 @@ body.airport-page main .airport-page-hero__photo img {
   margin: 12px 0 0;
   color: #514C43;
   font-size: 18px;
-  line-height: 1.72;
+  font-weight: 400;
+  line-height: 1.6;
   letter-spacing: normal;
   text-align: left;
   word-break: normal;
@@ -12627,10 +12635,6 @@ body.airport-page main .airport-page-hero__photo img {
 
 .family-stay-page main .guide-card__eyebrow {
   display: inline-block;
-}
-
-.family-stay-page main #related-guides .guide-card h3 {
-  font-size: clamp(1.5rem, 2vw, 1.75rem);
 }
 
 .family-stay-page main #final-recommendation .airport-transport-card {
@@ -12710,7 +12714,8 @@ body.airport-page main .airport-page-hero__photo img {
   margin: 12px 0 18px;
   color: #514C43;
   font-size: 18px;
-  line-height: 1.68;
+  font-weight: 400;
+  line-height: 1.6;
   letter-spacing: normal;
   word-break: normal;
   word-spacing: normal;
@@ -12749,6 +12754,25 @@ body.airport-page main .airport-page-hero__photo img {
   }
 }
 
+@media (max-width: 1023px) {
+  .family-stay-page main .airport-page-hero__title {
+    font-size: 46px;
+  }
+
+  .family-stay-page main .section__title,
+  .family-stay-page main .section__title--lg {
+    font-size: 38px;
+  }
+
+  .family-stay-page main .airport-transport-card h3,
+  .family-stay-page main .airport-action-card h3,
+  .family-stay-page main .airport-problem-card__title,
+  .family-stay-page main .guide-card h3,
+  .family-stay-page main .family-area-row__summary h3 {
+    font-size: 25px;
+  }
+}
+
 @media (min-width: 720px) and (max-width: 959px) {
   .family-stay-page main #priorities .airport-action-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -12764,21 +12788,23 @@ body.airport-page main .airport-page-hero__photo img {
 @media (max-width: 719px) {
   .family-stay-page main .airport-page-hero__title {
     font-size: 36px;
-    line-height: 1.1;
+    line-height: 1.08;
   }
 
   .family-stay-page main .section__title,
   .family-stay-page main .section__title--lg {
     font-size: 32px;
-    line-height: 1.15;
+    line-height: 1.1;
   }
 
-  .family-stay-page main .airport-page-hero__grid > .airport-transport-card .section__title,
   .family-stay-page main .airport-transport-card h3,
   .family-stay-page main .airport-action-card h3,
   .family-stay-page main .airport-problem-card__title,
-  .family-stay-page main .guide-card h3,
-  .family-stay-page main #related-guides .guide-card h3,
+  .family-stay-page main .guide-card h3 {
+    font-size: 22px;
+    line-height: 1.22;
+  }
+
   .family-stay-page main .arrival-ota-card__name {
     font-size: 22px;
     line-height: 1.2;
@@ -12790,7 +12816,7 @@ body.airport-page main .airport-page-hero__photo img {
   .family-stay-page main .airport-page-hero__grid > .airport-transport-card li,
   .family-stay-page main .airport-faq p {
     font-size: 17px;
-    line-height: 1.68;
+    line-height: 1.58;
   }
 
   .family-stay-page main .airport-transport-card p,
@@ -12802,7 +12828,7 @@ body.airport-page main .airport-page-hero__photo img {
   .family-stay-page main .mistake-item p,
   .family-stay-page main .family-hotel-search__description {
     font-size: 17px;
-    line-height: 1.65;
+    line-height: 1.58;
   }
 
   .family-stay-page main .airport-faq summary {
@@ -12871,14 +12897,14 @@ body.airport-page main .airport-page-hero__photo img {
 
   .family-stay-page main .family-area-row__summary h3 {
     font-size: 22px;
-    line-height: 1.2;
+    line-height: 1.22;
   }
 
   .family-stay-page main .family-area-row__summary p,
   .family-stay-page main .family-area-row__content p,
   .family-stay-page main .family-area-row__content li {
     font-size: 17px;
-    line-height: 1.68;
+    line-height: 1.58;
   }
 
   .family-stay-page main .section__header--center,
