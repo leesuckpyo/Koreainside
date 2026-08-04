@@ -15896,7 +15896,6 @@ body.airport-page main .airport-page-hero__photo img {
 
 .shopping-stay-page main .airport-page-hero__title {
   color: #14130F;
-  font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(44px, 5vw, 72px);
   font-weight: 500;
   line-height: 1.03;
@@ -15995,7 +15994,6 @@ body.airport-page main .airport-page-hero__photo img {
 .shopping-stay-page main .shopping-hero__answer h3 {
   margin: 0 0 22px;
   color: #1D2B27;
-  font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(26px, 2.4vw, 36px);
   font-weight: 500;
   line-height: 1.16;
@@ -16049,7 +16047,6 @@ body.airport-page main .airport-page-hero__photo img {
 .shopping-stay-page main .section__title {
   margin: 0;
   color: #14130F;
-  font-family: Georgia, "Times New Roman", serif;
   font-weight: 500;
 }
 
@@ -16123,7 +16120,6 @@ body.airport-page main .airport-page-hero__photo img {
 
 .shopping-stay-page main .shopping-quick-answer dt {
   color: #1D2B27;
-  font-family: Georgia, "Times New Roman", serif;
   font-size: 21px;
   font-weight: 600;
 }
@@ -16215,7 +16211,6 @@ body.airport-page main .airport-page-hero__photo img {
 .shopping-stay-page main .shopping-area__summary h3 {
   margin: 0;
   color: #14130F;
-  font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(30px, 3.2vw, 44px);
   font-weight: 500;
   line-height: 1.12;
@@ -16300,7 +16295,6 @@ body.airport-page main .airport-page-hero__photo img {
 .shopping-stay-page main .shopping-hotel-pick h4 {
   margin: 0 0 18px;
   color: #1D2B27;
-  font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(22px, 2.4vw, 30px);
   font-weight: 600;
   line-height: 1.25;
@@ -16384,7 +16378,6 @@ body.airport-page main .airport-page-hero__photo img {
 .shopping-stay-page main .shopping-route-list__heading h3 {
   margin: 0;
   color: #1D2B27;
-  font-family: Georgia, "Times New Roman", serif;
   font-size: 24px;
   font-weight: 600;
   line-height: 1.3;
@@ -16428,7 +16421,6 @@ body.airport-page main .airport-page-hero__photo img {
 .shopping-stay-page main .shopping-booking-group h3 {
   margin: 0 0 22px;
   color: #1D2B27;
-  font-family: Georgia, "Times New Roman", serif;
   font-size: 24px;
   font-weight: 600;
   line-height: 1.3;
@@ -16487,7 +16479,6 @@ body.airport-page main .airport-page-hero__photo img {
 
 .shopping-stay-page main .shopping-hotel-search .arrival-ota-card > strong {
   color: #1D2B27;
-  font-family: Georgia, "Times New Roman", serif;
   font-size: 25px;
 }
 
@@ -16537,7 +16528,6 @@ body.airport-page main .airport-page-hero__photo img {
   position: relative;
   padding: 24px 48px 24px 0;
   color: #1D2B27;
-  font-family: Georgia, "Times New Roman", serif;
   font-size: 20px;
   font-weight: 600;
   line-height: 1.4;
@@ -17578,7 +17568,7 @@ body.airport-page main .airport-page-hero__photo img {
   background: #3F5D52;
   border: 2px solid #FFFDF8;
   border-radius: 50%;
-  font-family: "Roboto Flex", "Roboto", "Arial", sans-serif;
+  font-family: "Roboto Flex", sans-serif;
   font-size: 12px;
   font-weight: 650;
   cursor: pointer;
@@ -19218,7 +19208,8 @@ body.airport-page main .airport-page-hero__photo img {
 .hongdae-myeongdong-page main p,
 .hongdae-myeongdong-page main li {
   font-size: 18px;
-  line-height: 1.72;
+  font-weight: 400;
+  line-height: 1.6;
 }
 
 .hongdae-myeongdong-page main p {
@@ -20034,7 +20025,7 @@ body.airport-page main .airport-page-hero__photo img {
   .hongdae-myeongdong-page main p,
   .hongdae-myeongdong-page main li {
     font-size: 17px;
-    line-height: 1.68;
+    line-height: 1.58;
   }
 
   .hongdae-myeongdong-page main .hm-breadcrumb {
@@ -20966,6 +20957,545 @@ body.page-home main .home-esim-card > p:not(.home-esim-card__label) {
   body.page-home main .first-hour-panel__intro,
   body.page-home main .first-hour-list li,
   body.page-home main .home-esim-card > p:not(.home-esim-card__label) {
+    font-size: 17px;
+    line-height: 1.58;
+  }
+}
+
+/* Seoul stay detail guide typography hierarchy */
+body.stay-cluster:is(
+  .first-time-stay-page,
+  .solo-stay-page,
+  .couples-stay-page,
+  .budget-stay-page,
+  .shopping-stay-page,
+  .nightlife-stay-page,
+  .luxury-stay-page,
+  .hongdae-myeongdong-page
+) main {
+  font-family: "Roboto Flex", sans-serif;
+}
+
+body.stay-cluster:is(
+  .first-time-stay-page,
+  .solo-stay-page,
+  .couples-stay-page,
+  .budget-stay-page,
+  .shopping-stay-page,
+  .nightlife-stay-page,
+  .luxury-stay-page,
+  .hongdae-myeongdong-page
+) main h1 {
+  font-size: 56px;
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+}
+
+body.stay-cluster:is(
+  .first-time-stay-page,
+  .solo-stay-page,
+  .couples-stay-page,
+  .budget-stay-page,
+  .shopping-stay-page,
+  .nightlife-stay-page,
+  .luxury-stay-page,
+  .hongdae-myeongdong-page
+) main h2 {
+  font-size: 44px;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+}
+
+body.stay-cluster:is(
+  .first-time-stay-page,
+  .solo-stay-page,
+  .couples-stay-page,
+  .budget-stay-page,
+  .shopping-stay-page,
+  .nightlife-stay-page,
+  .luxury-stay-page,
+  .hongdae-myeongdong-page
+) main h3,
+body.stay-cluster.first-time-stay-page main #related-guides .guide-card h3,
+body.stay-cluster.couples-stay-page main #related-guides .guide-card h3,
+body.stay-cluster.nightlife-stay-page main #related-guides .guide-card h3,
+body.stay-cluster.luxury-stay-page main #related-guides .guide-card h3 {
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
+
+body.stay-cluster:is(
+  .first-time-stay-page,
+  .solo-stay-page,
+  .couples-stay-page,
+  .budget-stay-page,
+  .shopping-stay-page,
+  .nightlife-stay-page,
+  .luxury-stay-page,
+  .hongdae-myeongdong-page
+) main h4 {
+  font-family: inherit;
+  font-weight: 600;
+}
+
+body.stay-cluster:is(
+  .first-time-stay-page,
+  .solo-stay-page,
+  .couples-stay-page,
+  .budget-stay-page,
+  .shopping-stay-page,
+  .nightlife-stay-page,
+  .luxury-stay-page,
+  .hongdae-myeongdong-page
+) main strong,
+body.stay-cluster:is(
+  .first-time-stay-page,
+  .solo-stay-page,
+  .couples-stay-page,
+  .budget-stay-page,
+  .shopping-stay-page,
+  .nightlife-stay-page,
+  .luxury-stay-page,
+  .hongdae-myeongdong-page
+) main summary,
+body.stay-cluster:is(
+  .first-time-stay-page,
+  .solo-stay-page,
+  .couples-stay-page,
+  .budget-stay-page,
+  .shopping-stay-page,
+  .nightlife-stay-page,
+  .luxury-stay-page,
+  .hongdae-myeongdong-page
+) main th,
+body.stay-cluster:is(
+  .first-time-stay-page,
+  .solo-stay-page,
+  .couples-stay-page,
+  .budget-stay-page,
+  .shopping-stay-page,
+  .nightlife-stay-page,
+  .luxury-stay-page,
+  .hongdae-myeongdong-page
+) main :is(.eyebrow, [class*="eyebrow"], [class*="badge"], [class*="label"], [class*="kicker"]) {
+  font-weight: 600;
+}
+
+body.stay-cluster:is(
+  .first-time-stay-page,
+  .solo-stay-page,
+  .couples-stay-page,
+  .budget-stay-page,
+  .shopping-stay-page,
+  .nightlife-stay-page,
+  .luxury-stay-page,
+  .hongdae-myeongdong-page
+) main :is(.page-hero__breadcrumb, .budget-breadcrumb, .hm-breadcrumb) {
+  font-weight: 400;
+}
+
+body.stay-cluster.budget-stay-page main :is(
+  .budget-map-selection__title,
+  .budget-map-legend__marker,
+  .budget-map-marker
+),
+body.stay-cluster.shopping-stay-page main :is(
+  .shopping-area__verdict,
+  .shopping-route-list__heading p,
+  .shopping-related-links a
+),
+body.stay-cluster.hongdae-myeongdong-page main :is(
+  .hm-hero__answer p:first-child,
+  .hm-practical-card li span,
+  .hm-row-default,
+  .hm-scenarios li .hm-scenario-title,
+  .hm-related-links a span:first-child
+) {
+  font-weight: 600;
+}
+
+body.stay-cluster.first-time-stay-page main .airport-page-hero__desc,
+body.stay-cluster.first-time-stay-page main .section__subtitle,
+body.stay-cluster.first-time-stay-page main .first-time-practical-answer p,
+body.stay-cluster.first-time-stay-page main .first-time-practical-answer li,
+body.stay-cluster.first-time-stay-page main .stay-decision-card p,
+body.stay-cluster.first-time-stay-page main .airport-problem-card p,
+body.stay-cluster.first-time-stay-page main .guide-card p,
+body.stay-cluster.first-time-stay-page main .first-time-editorial-item p,
+body.stay-cluster.first-time-stay-page main .first-time-summary-item p,
+body.stay-cluster.first-time-stay-page main .first-time-transport-backup,
+body.stay-cluster.first-time-stay-page main .first-time-area-row__summary p,
+body.stay-cluster.first-time-stay-page main .first-time-area-row__content p,
+body.stay-cluster.first-time-stay-page main .first-time-area-row__content li,
+body.stay-cluster.first-time-stay-page main .first-time-booking-checklist li,
+body.stay-cluster.first-time-stay-page main .mistake-item p,
+body.stay-cluster.first-time-stay-page main .airport-faq p,
+body.stay-cluster.first-time-stay-page main .first-time-hotel-search__description,
+body.stay-cluster.first-time-stay-page main .first-time-final-grid p,
+body.stay-cluster.couples-stay-page main .airport-page-hero__desc,
+body.stay-cluster.couples-stay-page main .section__subtitle,
+body.stay-cluster.couples-stay-page main .couples-practical-answer p,
+body.stay-cluster.couples-stay-page main .couples-practical-answer li,
+body.stay-cluster.couples-stay-page main .stay-decision-card p,
+body.stay-cluster.couples-stay-page main .airport-problem-card p,
+body.stay-cluster.couples-stay-page main .guide-card p,
+body.stay-cluster.couples-stay-page main .couples-editorial-item p,
+body.stay-cluster.couples-stay-page main .couples-summary-item p,
+body.stay-cluster.couples-stay-page main .couples-area-row__summary p,
+body.stay-cluster.couples-stay-page main .couples-area-row__content p,
+body.stay-cluster.couples-stay-page main .couples-area-row__content li,
+body.stay-cluster.couples-stay-page main .couples-booking-checklist li,
+body.stay-cluster.couples-stay-page main .mistake-item p,
+body.stay-cluster.couples-stay-page main .airport-faq p,
+body.stay-cluster.couples-stay-page main .couples-hotel-search__description,
+body.stay-cluster.couples-stay-page main .couples-final-grid p,
+body.stay-cluster.luxury-stay-page main .airport-page-hero__desc,
+body.stay-cluster.luxury-stay-page main .section__subtitle,
+body.stay-cluster.luxury-stay-page main .luxury-practical-answer p,
+body.stay-cluster.luxury-stay-page main .luxury-practical-answer li,
+body.stay-cluster.luxury-stay-page main .stay-decision-card p,
+body.stay-cluster.luxury-stay-page main .airport-problem-card p,
+body.stay-cluster.luxury-stay-page main .guide-card p,
+body.stay-cluster.luxury-stay-page main .luxury-editorial-item p,
+body.stay-cluster.luxury-stay-page main .luxury-summary-item p,
+body.stay-cluster.luxury-stay-page main .luxury-transport-backup,
+body.stay-cluster.luxury-stay-page main .luxury-area-row__summary p,
+body.stay-cluster.luxury-stay-page main .luxury-area-row__content p:not(.luxury-hotel-pick__affiliate-note),
+body.stay-cluster.luxury-stay-page main .luxury-area-row__content li,
+body.stay-cluster.luxury-stay-page main .luxury-booking-checklist li,
+body.stay-cluster.luxury-stay-page main .mistake-item p,
+body.stay-cluster.luxury-stay-page main .airport-faq p,
+body.stay-cluster.luxury-stay-page main .luxury-hotel-search__description,
+body.stay-cluster.luxury-stay-page main .luxury-final-grid p,
+body.stay-cluster.nightlife-stay-page main .airport-page-hero__desc,
+body.stay-cluster.nightlife-stay-page main .section__subtitle,
+body.stay-cluster.nightlife-stay-page main .nightlife-hero-decisions p,
+body.stay-cluster.nightlife-stay-page main .nightlife-practical-answer p,
+body.stay-cluster.nightlife-stay-page main .nightlife-practical-answer li,
+body.stay-cluster.nightlife-stay-page main .stay-decision-card p,
+body.stay-cluster.nightlife-stay-page main .airport-problem-card p,
+body.stay-cluster.nightlife-stay-page main .guide-card p,
+body.stay-cluster.nightlife-stay-page main .nightlife-editorial-item p,
+body.stay-cluster.nightlife-stay-page main .nightlife-summary-item p,
+body.stay-cluster.nightlife-stay-page main .nightlife-area-row__summary > p,
+body.stay-cluster.nightlife-stay-page main .nightlife-area-row__content p:not(.nightlife-hotel-pick__affiliate-note),
+body.stay-cluster.nightlife-stay-page main .nightlife-area-row__content li,
+body.stay-cluster.nightlife-stay-page main .nightlife-area-meta dd,
+body.stay-cluster.nightlife-stay-page main .nightlife-booking-checklist li,
+body.stay-cluster.nightlife-stay-page main .nightlife-mistake-item p,
+body.stay-cluster.nightlife-stay-page main .airport-faq p,
+body.stay-cluster.nightlife-stay-page main .nightlife-hotel-search__description,
+body.stay-cluster.nightlife-stay-page main .nightlife-final-copy p {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+body.stay-cluster.solo-stay-page main .solo-hero-verdict,
+body.stay-cluster.solo-stay-page main .airport-page-hero__desc,
+body.stay-cluster.solo-stay-page main .solo-hero-practical-copy,
+body.stay-cluster.solo-stay-page main .solo-hero-practical-list,
+body.stay-cluster.solo-stay-page main .section__header .section__subtitle,
+body.stay-cluster.solo-stay-page main .solo-decision-item p,
+body.stay-cluster.solo-stay-page main .solo-editorial-item p,
+body.stay-cluster.solo-stay-page main .solo-overview-row dd,
+body.stay-cluster.solo-stay-page main .solo-area-row__summary p,
+body.stay-cluster.solo-stay-page main .solo-area-row__details p,
+body.stay-cluster.solo-stay-page main .solo-area-row__details li,
+body.stay-cluster.solo-stay-page main .solo-mistake-item p,
+body.stay-cluster.solo-stay-page main .solo-related-links li > span:last-child,
+body.stay-cluster.solo-stay-page main .solo-hotel-row__summary p:not(.solo-hotel-row__area),
+body.stay-cluster.solo-stay-page main .solo-hotel-row__verdict,
+body.stay-cluster.solo-stay-page main .airport-faq__list p,
+body.stay-cluster.budget-stay-page main .budget-hero__answer p,
+body.stay-cluster.budget-stay-page main .budget-practical-card dd,
+body.stay-cluster.budget-stay-page main .budget-section__header > p:last-child:not(.budget-eyebrow),
+body.stay-cluster.budget-stay-page main .budget-prose p,
+body.stay-cluster.budget-stay-page main .budget-cost-notes p,
+body.stay-cluster.budget-stay-page main .budget-final p,
+body.stay-cluster.budget-stay-page main .budget-decision-card p:last-child,
+body.stay-cluster.budget-stay-page main .budget-table-note,
+body.stay-cluster.budget-stay-page main .budget-map-placeholder p,
+body.stay-cluster.budget-stay-page main .budget-map-status,
+body.stay-cluster.budget-stay-page main .budget-map-error,
+body.stay-cluster.budget-stay-page main .budget-marker-details p,
+body.stay-cluster.budget-stay-page main .budget-place-list p,
+body.stay-cluster.budget-stay-page main .budget-map-sources p,
+body.stay-cluster.budget-stay-page main .budget-editorial-row__content p,
+body.stay-cluster.budget-stay-page main .budget-scenario-list p,
+body.stay-cluster.budget-stay-page main .budget-hotel-card > p:not(.budget-hotel-card__area),
+body.stay-cluster.budget-stay-page main .budget-checklist li,
+body.stay-cluster.budget-stay-page main .budget-mistakes li,
+body.stay-cluster.budget-stay-page main .budget-faq p,
+body.stay-cluster.shopping-stay-page main .airport-page-hero__desc,
+body.stay-cluster.shopping-stay-page main .shopping-hero__decisions p,
+body.stay-cluster.shopping-stay-page main .shopping-hero__answer li,
+body.stay-cluster.shopping-stay-page main .section__subtitle,
+body.stay-cluster.shopping-stay-page main .shopping-decision-card p,
+body.stay-cluster.shopping-stay-page main .shopping-quick-answer dd,
+body.stay-cluster.shopping-stay-page main .shopping-area__summary > p:not(.shopping-area__verdict),
+body.stay-cluster.shopping-stay-page main .shopping-area__copy > p,
+body.stay-cluster.shopping-stay-page main .shopping-area__facts dd,
+body.stay-cluster.shopping-stay-page main .shopping-hotel-pick p:not(.shopping-hotel-pick__affiliate-note),
+body.stay-cluster.shopping-stay-page main .shopping-editorial-list > li,
+body.stay-cluster.shopping-stay-page main .shopping-route-list__item,
+body.stay-cluster.shopping-stay-page main .shopping-booking-group li,
+body.stay-cluster.shopping-stay-page main .shopping-hotel-search__description,
+body.stay-cluster.shopping-stay-page main .shopping-faq details p,
+body.stay-cluster.shopping-stay-page main .shopping-related-links a span:last-child,
+body.stay-cluster.shopping-stay-page main .shopping-final__lead,
+body.stay-cluster.shopping-stay-page main .shopping-final > p:not(.eyebrow):not(.shopping-final__lead),
+body.stay-cluster.hongdae-myeongdong-page main .hm-hero__answer p,
+body.stay-cluster.hongdae-myeongdong-page main .hm-judgment-note,
+body.stay-cluster.hongdae-myeongdong-page main .hm-faq p,
+body.stay-cluster.hongdae-myeongdong-page main .hm-related-links a span:last-child {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+body.stay-cluster.budget-stay-page main .budget-editorial-row__label p:last-child {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+body.stay-cluster.shopping-stay-page main .shopping-area__verdict {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+@media (max-width: 1023px) {
+  body.stay-cluster:is(
+    .first-time-stay-page,
+    .solo-stay-page,
+    .couples-stay-page,
+    .budget-stay-page,
+    .shopping-stay-page,
+    .nightlife-stay-page,
+    .luxury-stay-page,
+    .hongdae-myeongdong-page
+  ) main h1 {
+    font-size: 46px;
+  }
+
+  body.stay-cluster:is(
+    .first-time-stay-page,
+    .solo-stay-page,
+    .couples-stay-page,
+    .budget-stay-page,
+    .shopping-stay-page,
+    .nightlife-stay-page,
+    .luxury-stay-page,
+    .hongdae-myeongdong-page
+  ) main h2 {
+    font-size: 38px;
+  }
+
+  body.stay-cluster:is(
+    .first-time-stay-page,
+    .solo-stay-page,
+    .couples-stay-page,
+    .budget-stay-page,
+    .shopping-stay-page,
+    .nightlife-stay-page,
+    .luxury-stay-page,
+    .hongdae-myeongdong-page
+  ) main h3,
+  body.stay-cluster.first-time-stay-page main #related-guides .guide-card h3,
+  body.stay-cluster.couples-stay-page main #related-guides .guide-card h3,
+  body.stay-cluster.nightlife-stay-page main #related-guides .guide-card h3,
+  body.stay-cluster.luxury-stay-page main #related-guides .guide-card h3 {
+    font-size: 25px;
+  }
+}
+
+@media (max-width: 719px) {
+  body.stay-cluster:is(
+    .first-time-stay-page,
+    .solo-stay-page,
+    .couples-stay-page,
+    .budget-stay-page,
+    .shopping-stay-page,
+    .nightlife-stay-page,
+    .luxury-stay-page,
+    .hongdae-myeongdong-page
+  ) main h1 {
+    font-size: 36px;
+    line-height: 1.08;
+  }
+
+  body.stay-cluster:is(
+    .first-time-stay-page,
+    .solo-stay-page,
+    .couples-stay-page,
+    .budget-stay-page,
+    .shopping-stay-page,
+    .nightlife-stay-page,
+    .luxury-stay-page,
+    .hongdae-myeongdong-page
+  ) main h2 {
+    font-size: 32px;
+    line-height: 1.1;
+  }
+
+  body.stay-cluster:is(
+    .first-time-stay-page,
+    .solo-stay-page,
+    .couples-stay-page,
+    .budget-stay-page,
+    .shopping-stay-page,
+    .nightlife-stay-page,
+    .luxury-stay-page,
+    .hongdae-myeongdong-page
+  ) main h3,
+  body.stay-cluster.first-time-stay-page main #related-guides .guide-card h3,
+  body.stay-cluster.couples-stay-page main #related-guides .guide-card h3,
+  body.stay-cluster.nightlife-stay-page main #related-guides .guide-card h3,
+  body.stay-cluster.luxury-stay-page main #related-guides .guide-card h3 {
+    font-size: 22px;
+    line-height: 1.22;
+  }
+
+  body.stay-cluster.first-time-stay-page main .airport-page-hero__desc,
+  body.stay-cluster.first-time-stay-page main .section__subtitle,
+  body.stay-cluster.first-time-stay-page main .first-time-practical-answer p,
+  body.stay-cluster.first-time-stay-page main .first-time-practical-answer li,
+  body.stay-cluster.first-time-stay-page main .stay-decision-card p,
+  body.stay-cluster.first-time-stay-page main .airport-problem-card p,
+  body.stay-cluster.first-time-stay-page main .guide-card p,
+  body.stay-cluster.first-time-stay-page main .first-time-editorial-item p,
+  body.stay-cluster.first-time-stay-page main .first-time-summary-item p,
+  body.stay-cluster.first-time-stay-page main .first-time-transport-backup,
+  body.stay-cluster.first-time-stay-page main .first-time-area-row__summary p,
+  body.stay-cluster.first-time-stay-page main .first-time-area-row__content p,
+  body.stay-cluster.first-time-stay-page main .first-time-area-row__content li,
+  body.stay-cluster.first-time-stay-page main .first-time-booking-checklist li,
+  body.stay-cluster.first-time-stay-page main .mistake-item p,
+  body.stay-cluster.first-time-stay-page main .airport-faq p,
+  body.stay-cluster.first-time-stay-page main .first-time-hotel-search__description,
+  body.stay-cluster.first-time-stay-page main .first-time-final-grid p,
+  body.stay-cluster.couples-stay-page main .airport-page-hero__desc,
+  body.stay-cluster.couples-stay-page main .section__subtitle,
+  body.stay-cluster.couples-stay-page main .couples-practical-answer p,
+  body.stay-cluster.couples-stay-page main .couples-practical-answer li,
+  body.stay-cluster.couples-stay-page main .stay-decision-card p,
+  body.stay-cluster.couples-stay-page main .airport-problem-card p,
+  body.stay-cluster.couples-stay-page main .guide-card p,
+  body.stay-cluster.couples-stay-page main .couples-editorial-item p,
+  body.stay-cluster.couples-stay-page main .couples-summary-item p,
+  body.stay-cluster.couples-stay-page main .couples-area-row__summary p,
+  body.stay-cluster.couples-stay-page main .couples-area-row__content p,
+  body.stay-cluster.couples-stay-page main .couples-area-row__content li,
+  body.stay-cluster.couples-stay-page main .couples-booking-checklist li,
+  body.stay-cluster.couples-stay-page main .mistake-item p,
+  body.stay-cluster.couples-stay-page main .airport-faq p,
+  body.stay-cluster.couples-stay-page main .couples-hotel-search__description,
+  body.stay-cluster.couples-stay-page main .couples-final-grid p,
+  body.stay-cluster.luxury-stay-page main .airport-page-hero__desc,
+  body.stay-cluster.luxury-stay-page main .section__subtitle,
+  body.stay-cluster.luxury-stay-page main .luxury-practical-answer p,
+  body.stay-cluster.luxury-stay-page main .luxury-practical-answer li,
+  body.stay-cluster.luxury-stay-page main .stay-decision-card p,
+  body.stay-cluster.luxury-stay-page main .airport-problem-card p,
+  body.stay-cluster.luxury-stay-page main .guide-card p,
+  body.stay-cluster.luxury-stay-page main .luxury-editorial-item p,
+  body.stay-cluster.luxury-stay-page main .luxury-summary-item p,
+  body.stay-cluster.luxury-stay-page main .luxury-transport-backup,
+  body.stay-cluster.luxury-stay-page main .luxury-area-row__summary p,
+  body.stay-cluster.luxury-stay-page main .luxury-area-row__content p:not(.luxury-hotel-pick__affiliate-note),
+  body.stay-cluster.luxury-stay-page main .luxury-area-row__content li,
+  body.stay-cluster.luxury-stay-page main .luxury-booking-checklist li,
+  body.stay-cluster.luxury-stay-page main .mistake-item p,
+  body.stay-cluster.luxury-stay-page main .airport-faq p,
+  body.stay-cluster.luxury-stay-page main .luxury-hotel-search__description,
+  body.stay-cluster.luxury-stay-page main .luxury-final-grid p,
+  body.stay-cluster.nightlife-stay-page main .airport-page-hero__desc,
+  body.stay-cluster.nightlife-stay-page main .section__subtitle,
+  body.stay-cluster.nightlife-stay-page main .nightlife-hero-decisions p,
+  body.stay-cluster.nightlife-stay-page main .nightlife-practical-answer p,
+  body.stay-cluster.nightlife-stay-page main .nightlife-practical-answer li,
+  body.stay-cluster.nightlife-stay-page main .stay-decision-card p,
+  body.stay-cluster.nightlife-stay-page main .airport-problem-card p,
+  body.stay-cluster.nightlife-stay-page main .guide-card p,
+  body.stay-cluster.nightlife-stay-page main .nightlife-editorial-item p,
+  body.stay-cluster.nightlife-stay-page main .nightlife-summary-item p,
+  body.stay-cluster.nightlife-stay-page main .nightlife-area-row__summary > p,
+  body.stay-cluster.nightlife-stay-page main .nightlife-area-row__content p:not(.nightlife-hotel-pick__affiliate-note),
+  body.stay-cluster.nightlife-stay-page main .nightlife-area-row__content li,
+  body.stay-cluster.nightlife-stay-page main .nightlife-area-meta dd,
+  body.stay-cluster.nightlife-stay-page main .nightlife-booking-checklist li,
+  body.stay-cluster.nightlife-stay-page main .nightlife-mistake-item p,
+  body.stay-cluster.nightlife-stay-page main .airport-faq p,
+  body.stay-cluster.nightlife-stay-page main .nightlife-hotel-search__description,
+  body.stay-cluster.nightlife-stay-page main .nightlife-final-copy p,
+  body.stay-cluster.solo-stay-page main .solo-hero-verdict,
+  body.stay-cluster.solo-stay-page main .airport-page-hero__desc,
+  body.stay-cluster.solo-stay-page main .solo-hero-practical-copy,
+  body.stay-cluster.solo-stay-page main .solo-hero-practical-list,
+  body.stay-cluster.solo-stay-page main .section__header .section__subtitle,
+  body.stay-cluster.solo-stay-page main .solo-decision-item p,
+  body.stay-cluster.solo-stay-page main .solo-editorial-item p,
+  body.stay-cluster.solo-stay-page main .solo-overview-row dd,
+  body.stay-cluster.solo-stay-page main .solo-area-row__summary p,
+  body.stay-cluster.solo-stay-page main .solo-area-row__details p,
+  body.stay-cluster.solo-stay-page main .solo-area-row__details li,
+  body.stay-cluster.solo-stay-page main .solo-mistake-item p,
+  body.stay-cluster.solo-stay-page main .solo-related-links li > span:last-child,
+  body.stay-cluster.solo-stay-page main .solo-hotel-row__summary p:not(.solo-hotel-row__area),
+  body.stay-cluster.solo-stay-page main .solo-hotel-row__verdict,
+  body.stay-cluster.solo-stay-page main .airport-faq__list p,
+  body.stay-cluster.budget-stay-page main .budget-hero__answer p,
+  body.stay-cluster.budget-stay-page main .budget-practical-card dd,
+  body.stay-cluster.budget-stay-page main .budget-section__header > p:last-child:not(.budget-eyebrow),
+  body.stay-cluster.budget-stay-page main .budget-prose p,
+  body.stay-cluster.budget-stay-page main .budget-cost-notes p,
+  body.stay-cluster.budget-stay-page main .budget-final p,
+  body.stay-cluster.budget-stay-page main .budget-decision-card p:last-child,
+  body.stay-cluster.budget-stay-page main .budget-table-note,
+  body.stay-cluster.budget-stay-page main .budget-map-placeholder p,
+  body.stay-cluster.budget-stay-page main .budget-map-status,
+  body.stay-cluster.budget-stay-page main .budget-map-error,
+  body.stay-cluster.budget-stay-page main .budget-marker-details p,
+  body.stay-cluster.budget-stay-page main .budget-place-list p,
+  body.stay-cluster.budget-stay-page main .budget-map-sources p,
+  body.stay-cluster.budget-stay-page main .budget-editorial-row__content p,
+  body.stay-cluster.budget-stay-page main .budget-scenario-list p,
+  body.stay-cluster.budget-stay-page main .budget-hotel-card > p:not(.budget-hotel-card__area),
+  body.stay-cluster.budget-stay-page main .budget-checklist li,
+  body.stay-cluster.budget-stay-page main .budget-mistakes li,
+  body.stay-cluster.budget-stay-page main .budget-faq p,
+  body.stay-cluster.shopping-stay-page main .airport-page-hero__desc,
+  body.stay-cluster.shopping-stay-page main .shopping-hero__decisions p,
+  body.stay-cluster.shopping-stay-page main .shopping-hero__answer li,
+  body.stay-cluster.shopping-stay-page main .section__subtitle,
+  body.stay-cluster.shopping-stay-page main .shopping-decision-card p,
+  body.stay-cluster.shopping-stay-page main .shopping-quick-answer dd,
+  body.stay-cluster.shopping-stay-page main .shopping-area__summary > p:not(.shopping-area__verdict),
+  body.stay-cluster.shopping-stay-page main .shopping-area__copy > p,
+  body.stay-cluster.shopping-stay-page main .shopping-area__facts dd,
+  body.stay-cluster.shopping-stay-page main .shopping-hotel-pick p:not(.shopping-hotel-pick__affiliate-note),
+  body.stay-cluster.shopping-stay-page main .shopping-editorial-list > li,
+  body.stay-cluster.shopping-stay-page main .shopping-route-list__item,
+  body.stay-cluster.shopping-stay-page main .shopping-booking-group li,
+  body.stay-cluster.shopping-stay-page main .shopping-hotel-search__description,
+  body.stay-cluster.shopping-stay-page main .shopping-faq details p,
+  body.stay-cluster.shopping-stay-page main .shopping-related-links a span:last-child,
+  body.stay-cluster.shopping-stay-page main .shopping-final__lead,
+  body.stay-cluster.shopping-stay-page main .shopping-final > p:not(.eyebrow):not(.shopping-final__lead),
+  body.stay-cluster.hongdae-myeongdong-page main .hm-hero__answer p,
+  body.stay-cluster.hongdae-myeongdong-page main .hm-judgment-note,
+  body.stay-cluster.hongdae-myeongdong-page main .hm-faq p,
+  body.stay-cluster.hongdae-myeongdong-page main .hm-related-links a span:last-child {
+    font-size: 17px;
+    line-height: 1.58;
+  }
+
+  body.stay-cluster.budget-stay-page main .budget-editorial-row__label p:last-child,
+  body.stay-cluster.shopping-stay-page main .shopping-area__verdict {
     font-size: 17px;
     line-height: 1.58;
   }
