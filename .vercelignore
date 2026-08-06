@@ -4,3 +4,12 @@ kii-dashboard.html
 
 # Korea Inside Windows desktop administrator application
 korea-inside-admin/
+
+# Internal operating documents and working references
+AGENTS.md
+PROJECT.md
+codex-report.md
+docs/
+prompts/
+reference/
+backup/
