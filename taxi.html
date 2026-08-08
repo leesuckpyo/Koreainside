@@ -3,13 +3,102 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Practical taxi guide for Incheon Airport arrivals, late-night travel, Korean addresses and avoiding unofficial taxi offers.">
+  <meta name="description" content="Learn how to use taxis in Korea, including k.ride, Kakao T and Uber, Seoul taxi fares, foreign card payment, late-night surcharges, airport taxis and common mistakes.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.getkoreainside.com/taxi.html">
-  <title>How to Use Taxi in Korea | Korea Inside</title>
+  <title>Taxi in Korea: Fares, Apps, Payment &amp; Airport Tips | Korea Inside</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400..700&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the best taxi app for foreigners in Korea?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For most short-term visitors, k.ride is the simplest starting point because it is designed for international travelers, supports English, does not require a Kakao account, and allows overseas-issued card registration. Kakao T suits existing Kakao users, while Uber Taxi is familiar for existing Uber users."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is k.ride easier than Kakao T for tourists?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Often, yes. k.ride supports Google or Apple social login and overseas-issued card registration, while Kakao T requires a Kakao account. Kakao T remains useful if you already use Kakao services or want its wider range of taxi options."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Uber work in Korea?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Uber Taxi connects riders with licensed taxi drivers in Korea, and existing Uber users can use the familiar app. Available vehicle types and payment choices can vary, so confirm the option shown before requesting."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much is a taxi in Seoul?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For a regular midsize taxi in Seoul, the daytime base fare is ₩4,800 for the first 1.6 km, then distance and low-speed time charges apply. Traffic, tolls, route length, late-night hours, and travel outside Seoul can increase the total."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are Seoul taxis more expensive at night?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Seoul regular taxi surcharges apply from 10 PM to 4 AM. The highest period is 11 PM to 2 AM, when the surcharge level is 40% and the base fare is ₩6,700 for the first 1.6 km."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I pay for a Korean taxi with a foreign credit card?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Many Korean taxis accept cards, but an overseas-issued card is not guaranteed to work in every terminal or app. Carry cash or another card, and check the selected payment method before the ride."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use T-money in a taxi?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "T-money can be used for direct payment when the taxi's payment terminal supports it. Because terminal and card conditions can vary, keep another payment method available."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I take a taxi from Incheon Airport?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A taxi is practical when you have heavy luggage, several travelers, or a late arrival, but rail or airport bus may cost less for a solo traveler with light luggage. At Incheon Airport, use a designated taxi stand."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do taxi drivers in Korea speak English?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Some do, but you should not assume English service. Save the destination's Korean place name, road address, phone number, and map result so you can show the driver."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What should I do if I have a problem with a taxi?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Keep the receipt, full license plate number, ride time, and app record. In Seoul, use the taxi QR complaint channel if displayed or contact the Dasan Call Center at 120 or 02-120 for help with an unfair fare or other taxi issue."
+      }
+    }
+  ]
+}
+  </script>
 </head>
-<body data-section="transport">
+<body class="taxi-page" data-section="transport">
 <!-- GLOBAL_NAV_START -->
   <header class="header site-header" data-common-header>
     <div class="container header__inner site-header__inner">
@@ -58,22 +147,372 @@
   </header>
   <!-- GLOBAL_NAV_END -->
   <main>
-    <div class="page-hero">
+    <section class="taxi-hero" aria-labelledby="taxi-page-title">
       <div class="container">
-        <p class="page-hero__breadcrumb"><a href="/">Home</a> / <a href="airport.html">Airport</a> / Taxi</p>
-        <h1 class="page-hero__title">How to Use Taxi in Korea</h1>
-        <p class="page-hero__desc">Practical taxi guide for Incheon Airport arrivals, late-night travel, Korean addresses and avoiding unofficial taxi offers.</p>
+        <p class="taxi-hero__breadcrumb"><a href="/">Home</a> / Taxi Guide</p>
+        <p class="taxi-eyebrow">Transport Guide</p>
+        <h1 id="taxi-page-title">Taxi in Korea: How to Use Taxis, Apps and Fares</h1>
+        <p class="taxi-hero__intro">For most foreign visitors, use k.ride or Kakao T when you want an app-booked taxi. Uber Taxi is another option in Korea.</p>
+        <div class="taxi-quick-answer" aria-label="Quick answer">
+          <p class="taxi-quick-answer__label">Quick answer</p>
+          <dl>
+            <div>
+              <dt>Book in an app</dt>
+              <dd>Start with k.ride if you do not already use Kakao services. Kakao T and Uber Taxi are practical alternatives for existing users.</dd>
+            </div>
+            <div>
+              <dt>At Incheon Airport</dt>
+              <dd>Follow signs to a designated taxi stand. Do not accept an unsolicited ride offer inside or outside the terminal.</dd>
+            </div>
+            <div>
+              <dt>Before any ride</dt>
+              <dd>Save the destination's Korean place name, road address, phone number, and map result.</dd>
+            </div>
+          </dl>
+        </div>
       </div>
-    </div>
-    <article class="guide-content">
-      <div class="container">
-        <div class="tip-box"><p class="tip-box__label">Quick answer</p><p>Use the official taxi stand only. Save your destination address in Korean before leaving the airport.</p></div>
-        <h2>When should I use a taxi?</h2><p>Taxi is useful for families, late-night arrivals, heavy luggage, or hotels that are difficult to reach by train or airport bus.</p>
-        <h2>What to do</h2><ol><li>Follow signs for the official taxi stand.</li><li>Do not follow unofficial taxi offers inside the terminal.</li><li>Show your destination in Korean.</li><li>Keep your phone map open during the ride if possible.</li></ol>
-        <h2>Common mistakes</h2><ul><li>Showing only an English hotel name.</li><li>Accepting unofficial taxi offers.</li><li>Not preparing a backup payment method.</li></ul>
-        <h2>FAQ</h2><details><summary>Do taxi drivers speak English?</summary><p>Some do, but many do not. Korean address screenshots are very helpful.</p></details><details><summary>Can I pay by foreign card?</summary><p>Often yes, but prepare cash or another card as backup.</p></details><details><summary>Should I use Kakao T?</summary><p>Kakao T can be useful later in your trip, but airport official taxi stands are easier for first arrival.</p></details>
-        <div class="related-links"><p class="related-links__title">Related guides</p><a href="airport.html" class="chip">Airport hub</a><a href="payments.html" class="chip">Payments</a><a href="maps.html" class="chip">Maps</a><a href="apps.html" class="chip">Essential apps</a></div>
-      </div>
+    </section>
+
+    <article class="taxi-guide">
+      <section id="quick-decision" class="taxi-section taxi-section--soft" aria-labelledby="quick-decision-title">
+        <div class="container">
+          <div class="taxi-section__heading">
+            <p class="taxi-eyebrow">Quick decision</p>
+            <h2 id="quick-decision-title">Which Taxi Option Should You Use?</h2>
+            <p>Match the booking method to the situation. The easiest option is not the same for every traveler.</p>
+          </div>
+          <div class="taxi-decision-panel">
+            <dl class="taxi-decision-list">
+              <div><dt>First arrival at Incheon Airport</dt><dd>Use a designated taxi stand and confirm your destination before boarding.</dd></div>
+              <div><dt>App booking without Korean-language confidence</dt><dd>Start with k.ride, which is built for international travelers.</dd></div>
+              <div><dt>You already use Kakao services</dt><dd>Kakao T gives you several taxi types and direct or supported in-app payment choices.</dd></div>
+              <div><dt>You already use Uber</dt><dd>Uber Taxi keeps the familiar booking flow and dispatches licensed local taxis.</dd></div>
+              <div><dt>An available street taxi is nearby</dt><dd>Hail it directly, then show the driver the exact Korean destination.</dd></div>
+              <div><dt>Late night, luggage, or a group</dt><dd>A taxi can be practical, but check the surcharge and choose a vehicle that fits everyone and the bags.</dd></div>
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      <section id="taxi-apps" class="taxi-section" aria-labelledby="taxi-apps-title">
+        <div class="container">
+          <div class="taxi-section__heading">
+            <p class="taxi-eyebrow">App booking</p>
+            <h2 id="taxi-apps-title">Best Taxi Apps to Use in Korea</h2>
+            <p>Choose the app that matches the account and payment setup you already have. Vehicle types, service fees, and payment choices can differ inside each app.</p>
+          </div>
+          <div class="taxi-editorial-list">
+            <section class="taxi-editorial-row" aria-labelledby="kride-title">
+              <div>
+                <h3 id="kride-title">k.ride</h3>
+                <p class="taxi-row-fit"><strong>Best for:</strong> first-time visitors without a Kakao account</p>
+              </div>
+              <div>
+                <p>k.ride is operated by Kakao Mobility for international travelers. It supports English, Google or Apple social login, overseas-issued card registration, and translated destination search and driver chat.</p>
+                <p>Use it when you want an app-booked taxi without setting up the broader Kakao ecosystem. Check the estimated fare, selected vehicle type, and payment method before confirming.</p>
+              </div>
+            </section>
+            <section class="taxi-editorial-row" aria-labelledby="kakao-t-title">
+              <div>
+                <h3 id="kakao-t-title">Kakao T</h3>
+                <p class="taxi-row-fit"><strong>Best for:</strong> travelers who already use Kakao services</p>
+              </div>
+              <div>
+                <p>Kakao T is widely used in Korea and offers regular, larger, deluxe, and premium taxi options. It requires a Kakao account and phone verification.</p>
+                <p>Depending on the selected service and account setup, you may pay the driver by cash, card, or T-money, or use a supported in-app payment method. Confirm the payment label before requesting.</p>
+              </div>
+            </section>
+            <section class="taxi-editorial-row" aria-labelledby="uber-taxi-title">
+              <div>
+                <h3 id="uber-taxi-title">Uber Taxi</h3>
+                <p class="taxi-row-fit"><strong>Best for:</strong> travelers who already know the Uber app</p>
+              </div>
+              <div>
+                <p>Uber Taxi in Korea connects riders with licensed local taxi drivers. Existing users get a familiar request flow, vehicle details, live tracking, and the payment choices shown in their account.</p>
+                <p>Availability and vehicle types vary by location and time, so check the exact option displayed in the app rather than assuming every Uber product works the same way in Korea.</p>
+              </div>
+            </section>
+          </div>
+          <p class="taxi-context-link">Review other useful tools in the <a href="apps.html">Korea travel apps guide</a>. App booking and live tracking also require a working data connection, so <a href="esim.html">set up mobile data for Korea</a> before relying on a taxi app.</p>
+        </div>
+      </section>
+
+      <section id="without-app" class="taxi-section taxi-section--soft" aria-labelledby="without-app-title">
+        <div class="container">
+          <div class="taxi-section__heading">
+            <p class="taxi-eyebrow">Street and stand</p>
+            <h2 id="without-app-title">How to Take a Taxi Without an App</h2>
+            <p>A taxi stand or an available street taxi works well when the pickup point is obvious and you already have the destination ready in Korean.</p>
+          </div>
+          <div class="taxi-editorial-list">
+            <section class="taxi-editorial-row" aria-labelledby="find-taxi-title">
+              <h3 id="find-taxi-title">Find an available taxi</h3>
+              <p>Use an official taxi stand or hail a taxi from a safe curb. A windshield or dashboard sign showing <span lang="ko">빈차</span> means the taxi is available. Do not step into traffic to stop one.</p>
+            </section>
+            <section class="taxi-editorial-row" aria-labelledby="show-address-title">
+              <h3 id="show-address-title">Show the exact destination</h3>
+              <p>Show the driver the Korean place name and road address on your phone. Include the branch name and phone number when a hotel, restaurant, or clinic has several locations.</p>
+            </section>
+            <section class="taxi-editorial-row" aria-labelledby="confirm-route-title">
+              <h3 id="confirm-route-title">Confirm the trip after boarding</h3>
+              <p>Check that the destination shown by the driver matches your saved place, then keep your map open during the ride. This catches a wrong branch or misunderstood address early.</p>
+            </section>
+          </div>
+        </div>
+      </section>
+
+      <section id="seoul-fares" class="taxi-section" aria-labelledby="seoul-fares-title">
+        <div class="container">
+          <div class="taxi-section__heading">
+            <p class="taxi-eyebrow">Metered fare</p>
+            <h2 id="seoul-fares-title">Seoul Taxi Fares</h2>
+            <p>These are Seoul's official regular midsize taxi meter rates. They are not one nationwide fare: other cities and provinces can use different rates.</p>
+          </div>
+          <div class="taxi-table-scroll" role="region" aria-label="Seoul regular taxi fare table" tabindex="0">
+            <table class="taxi-fare-table">
+              <caption>Seoul regular midsize taxi meter rates</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Time</th>
+                  <th scope="col">Base fare</th>
+                  <th scope="col">Distance fare</th>
+                  <th scope="col">Low-speed time fare</th>
+                  <th scope="col">Late-night level</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">4 AM–10 PM</th>
+                  <td>₩4,800 up to 1.6 km</td>
+                  <td>₩100 per 131 m</td>
+                  <td>₩100 per 30 sec</td>
+                  <td>None</td>
+                </tr>
+                <tr>
+                  <th scope="row">10 PM–11 PM</th>
+                  <td>₩5,800 up to 1.6 km</td>
+                  <td>₩120 per 131 m</td>
+                  <td>₩120 per 30 sec</td>
+                  <td>20%</td>
+                </tr>
+                <tr>
+                  <th scope="row">11 PM–2 AM</th>
+                  <td>₩6,700 up to 1.6 km</td>
+                  <td>₩140 per 131 m</td>
+                  <td>₩140 per 30 sec</td>
+                  <td>40%</td>
+                </tr>
+                <tr>
+                  <th scope="row">2 AM–4 AM</th>
+                  <td>₩5,800 up to 1.6 km</td>
+                  <td>₩120 per 131 m</td>
+                  <td>₩120 per 30 sec</td>
+                  <td>20%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="taxi-fare-notes">
+            <p>Distance and low-speed time charges continue after the base distance. Tolls and an out-of-city surcharge can also apply.</p>
+            <p>Do not use this table to estimate premium, large, flexible-fare, or pre-priced app products. Check those terms in the app. The figures above come from the <a href="#sources">official Seoul fare source</a>.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="payment" class="taxi-section taxi-section--soft" aria-labelledby="payment-title">
+        <div class="container">
+          <div class="taxi-section__heading">
+            <p class="taxi-eyebrow">Payment</p>
+            <h2 id="payment-title">How to Pay for a Taxi in Korea</h2>
+            <p>Confirm whether the ride is set to pay in the app or directly to the driver. Never assume an overseas card will be approved by every app, issuer, or terminal.</p>
+          </div>
+          <dl class="taxi-fact-rows">
+            <div><dt>Card or cash</dt><dd>Many taxis accept card payment at the in-car terminal, and cash remains a direct-payment option. Keep another method ready in case an overseas card is declined.</dd></div>
+            <div><dt>T-money</dt><dd>A physical T-money card can pay the fare when the taxi's terminal supports it and the balance is sufficient. Do not make it your only backup.</dd></div>
+            <div><dt>In-app payment</dt><dd>k.ride supports overseas-issued card registration. Kakao T and Uber Taxi show the payment methods available for the selected service and account.</dd></div>
+            <div><dt>Receipt</dt><dd>Ask for a receipt and keep it until you have checked the final fare. It is useful if you need to identify the vehicle or report a payment problem.</dd></div>
+          </dl>
+          <p class="taxi-context-link">See the <a href="payments.html">Korea payment guide</a> for card and cash planning, and the <a href="tmoney.html">T-money guide</a> for transport-card use and balance rules.</p>
+        </div>
+      </section>
+
+      <section id="late-night" class="taxi-section" aria-labelledby="late-night-title">
+        <div class="container">
+          <div class="taxi-section__heading">
+            <p class="taxi-eyebrow">After transit hours</p>
+            <h2 id="late-night-title">Taking a Taxi Late at Night</h2>
+            <p>A taxi can be a practical fallback after buses or subways stop, but Seoul's regular taxi fare is higher from 10 PM to 4 AM.</p>
+          </div>
+          <ul class="taxi-practical-rows">
+            <li><strong>Know the highest period.</strong><span>The 11 PM–2 AM window carries Seoul's highest regular-taxi late-night level at 40%.</span></li>
+            <li><strong>Enter the destination first.</strong><span>An app shows the driver where you are going before pickup and reduces spoken-address confusion.</span></li>
+            <li><strong>Allow extra time.</strong><span>Demand can make matching slower in busy nightlife areas or during bad weather.</span></li>
+            <li><strong>Prepare the Korean address.</strong><span>Keep it available even when you booked in an app, especially for a hotel with several branches.</span></li>
+            <li><strong>Share the ride details.</strong><span>Send the plate number or app trip record to someone in your group when traveling late.</span></li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="incheon-airport" class="taxi-section taxi-section--soft" aria-labelledby="incheon-airport-title">
+        <div class="container">
+          <div class="taxi-section__heading">
+            <p class="taxi-eyebrow">Airport arrival</p>
+            <h2 id="incheon-airport-title">Taking a Taxi from Incheon Airport</h2>
+            <p>Use a designated taxi stand. Incheon Airport specifically warns travelers about illegal solicitation and overcharging by call vans posing as taxis.</p>
+          </div>
+          <ul class="taxi-practical-rows">
+            <li><strong>Follow terminal signs.</strong><span>After leaving the arrivals area, follow the official taxi signs to the curbside stand for your taxi type.</span></li>
+            <li><strong>Ignore unsolicited offers.</strong><span>Do not follow a person who approaches you with a private ride or asks you to negotiate a fare away from the designated stand.</span></li>
+            <li><strong>Show the Korean address.</strong><span>Confirm the hotel name, branch, and road address before the vehicle leaves.</span></li>
+            <li><strong>Choose for the real load.</strong><span>A taxi may be worth the cost for heavy luggage, a late arrival, or several travelers, but a regular sedan may not fit four people plus large suitcases.</span></li>
+          </ul>
+          <p class="taxi-context-link">Compare the full airport-to-Seoul journey in the <a href="airport-transfer.html">Airport Transfer Guide</a>. Use the <a href="arrival.html">Incheon Airport Arrival Guide</a> for terminal tasks, or compare the <a href="arex.html">AREX train</a> and <a href="airport-bus.html">airport bus</a> before choosing a taxi.</p>
+        </div>
+      </section>
+
+      <section id="taxi-problems" class="taxi-section" aria-labelledby="taxi-problems-title">
+        <div class="container">
+          <div class="taxi-section__heading">
+            <p class="taxi-eyebrow">Fare and ride checks</p>
+            <h2 id="taxi-problems-title">How to Avoid Taxi Problems</h2>
+            <p>Most rides are straightforward. A few simple records make a wrong destination, unclear surcharge, or disputed payment much easier to resolve.</p>
+          </div>
+          <dl class="taxi-fact-rows">
+            <div><dt>Before moving</dt><dd>Show the exact destination and, for an app call, match the plate number and vehicle details before boarding.</dd></div>
+            <div><dt>During the ride</dt><dd>For an ordinary metered taxi, confirm the meter is running. A separately approved premium, flexible, or pre-priced app product can use different fare rules.</dd></div>
+            <div><dt>At payment</dt><dd>Check the displayed fare, toll, late-night surcharge, and out-of-city surcharge. Ask for and keep the receipt.</dd></div>
+            <div><dt>If there is a problem</dt><dd>Save the full plate number, receipt, ride time, route, and app record. In Seoul, use the taxi QR complaint channel if displayed or contact 120 or 02-120.</dd></div>
+          </dl>
+          <p class="taxi-policy-note"><strong>Why the receipt matters in Seoul:</strong> Seoul says its improved taxi receipts show the final fare and boarding and alighting times in Korean and English, identify late-night or out-of-city surcharges, and include 120 reporting guidance. The city describes this as an ongoing service improvement, so do not assume every vehicle or terminal produces the same format.</p>
+        </div>
+      </section>
+
+      <section id="korean-address" class="taxi-section taxi-section--soft" aria-labelledby="korean-address-title">
+        <div class="container">
+          <div class="taxi-section__heading">
+            <p class="taxi-eyebrow">Destination strategy</p>
+            <h2 id="korean-address-title">Save Your Destination in Korean</h2>
+            <p>An English hotel name is not enough. Romanized names can match several branches, and the name used by a booking site may differ from the place name shown in a Korean map.</p>
+          </div>
+          <dl class="taxi-fact-rows">
+            <div><dt>Korean place name</dt><dd>Save the exact name from a Korean map result, including the branch or neighborhood when relevant.</dd></div>
+            <div><dt>Korean road address</dt><dd>Keep the full road address as selectable text or a clear screenshot that you can show without retyping.</dd></div>
+            <div><dt>Phone number</dt><dd>A local phone number helps the driver or hotel confirm a hard-to-find entrance.</dd></div>
+            <div><dt>NAVER Map result</dt><dd>Open the saved result before boarding and compare the pin with your booking confirmation.</dd></div>
+            <div><dt>Reservation details</dt><dd>Keep the hotel confirmation available so you can verify the branch, entrance, and contact details together.</dd></div>
+          </dl>
+          <p class="taxi-context-link">The <a href="maps.html">Korea map app guide</a> explains how to find the correct Korean place name, confirm the branch, and save a result before the ride.</p>
+        </div>
+      </section>
+
+      <section id="travel-situations" class="taxi-section" aria-labelledby="travel-situations-title">
+        <div class="container">
+          <div class="taxi-section__heading">
+            <p class="taxi-eyebrow">Real travel decisions</p>
+            <h2 id="travel-situations-title">When a Taxi Is Actually a Good Choice</h2>
+            <p>Use a taxi when it removes meaningful luggage, time, or navigation friction—not simply because it looks easier on a map.</p>
+          </div>
+          <ul class="taxi-scenario-list">
+            <li><strong>Airport arrival with luggage</strong><span>A taxi is a strong door-to-door choice for heavy bags or several travelers. For one person with light luggage, rail or bus is usually better for budget.</span></li>
+            <li><strong>Late-night return to the hotel</strong><span>A taxi is practical after your public-transport route has ended. Enter the destination first and account for the late-night surcharge.</span></li>
+            <li><strong>Family of four</strong><span>A taxi can reduce transfers, but a regular sedan may not fit four passengers and large suitcases. Check a larger option or split into two vehicles.</span></li>
+            <li><strong>Restaurant in a hard-to-find alley</strong><span>A taxi may get you close, not necessarily to the door. Save the Korean address and a nearby landmark, then expect a short final walk.</span></li>
+            <li><strong>Moving between hotels</strong><span>A taxi is often worth it with luggage and a direct cross-city route. During peak traffic, compare the driving time with the subway first.</span></li>
+            <li><strong>Short ride with an awkward subway transfer</strong><span>A taxi can be a sensible convenience purchase when it removes a long transfer or steep walk, especially when the road is not congested.</span></li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="common-mistakes" class="taxi-section taxi-section--soft" aria-labelledby="common-mistakes-title">
+        <div class="container">
+          <div class="taxi-section__heading">
+            <p class="taxi-eyebrow">Before you confirm</p>
+            <h2 id="common-mistakes-title">Common Taxi Mistakes</h2>
+            <p>Most avoidable taxi problems begin with an unclear destination, pickup point, vehicle, or payment choice.</p>
+          </div>
+          <ul class="taxi-mistake-list">
+            <li><strong>English hotel name only</strong><span>Save the Korean place name and road address.</span></li>
+            <li><strong>Wrong branch or wrong hotel</strong><span>Match the map pin, neighborhood, phone number, and reservation.</span></li>
+            <li><strong>No backup payment</strong><span>Carry another card or enough cash for the ride.</span></li>
+            <li><strong>Ignoring the late-night surcharge</strong><span>Check whether the ride falls between 10 PM and 4 AM.</span></li>
+            <li><strong>Wrong pickup side of the road</strong><span>Confirm the pin and direction of travel before requesting an app taxi.</span></li>
+            <li><strong>Boarding an unofficial airport ride</strong><span>Use only the designated taxi stand or a clearly matched app vehicle.</span></li>
+            <li><strong>Forgetting the final destination check</strong><span>Compare the driver's destination with your saved map result before moving.</span></li>
+            <li><strong>Assuming every driver speaks English</strong><span>Prepare the destination so the ride does not depend on spoken English.</span></li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="faq" class="taxi-section taxi-faq" aria-labelledby="faq-title">
+        <div class="container">
+          <div class="taxi-section__heading">
+            <p class="taxi-eyebrow">Taxi FAQ</p>
+            <h2 id="faq-title">Frequently Asked Questions</h2>
+          </div>
+          <div class="taxi-faq__list">
+            <details>
+              <summary>What is the best taxi app for foreigners in Korea?</summary>
+              <p>For most short-term visitors, k.ride is the simplest starting point because it is designed for international travelers, supports English, does not require a Kakao account, and allows overseas-issued card registration. Kakao T suits existing Kakao users, while Uber Taxi is familiar for existing Uber users.</p>
+            </details>
+            <details>
+              <summary>Is k.ride easier than Kakao T for tourists?</summary>
+              <p>Often, yes. k.ride supports Google or Apple social login and overseas-issued card registration, while Kakao T requires a Kakao account. Kakao T remains useful if you already use Kakao services or want its wider range of taxi options.</p>
+            </details>
+            <details>
+              <summary>Does Uber work in Korea?</summary>
+              <p>Yes. Uber Taxi connects riders with licensed taxi drivers in Korea, and existing Uber users can use the familiar app. Available vehicle types and payment choices can vary, so confirm the option shown before requesting.</p>
+            </details>
+            <details>
+              <summary>How much is a taxi in Seoul?</summary>
+              <p>For a regular midsize taxi in Seoul, the daytime base fare is ₩4,800 for the first 1.6 km, then distance and low-speed time charges apply. Traffic, tolls, route length, late-night hours, and travel outside Seoul can increase the total.</p>
+            </details>
+            <details>
+              <summary>Are Seoul taxis more expensive at night?</summary>
+              <p>Yes. Seoul regular taxi surcharges apply from 10 PM to 4 AM. The highest period is 11 PM to 2 AM, when the surcharge level is 40% and the base fare is ₩6,700 for the first 1.6 km.</p>
+            </details>
+            <details>
+              <summary>Can I pay for a Korean taxi with a foreign credit card?</summary>
+              <p>Many Korean taxis accept cards, but an overseas-issued card is not guaranteed to work in every terminal or app. Carry cash or another card, and check the selected payment method before the ride.</p>
+            </details>
+            <details>
+              <summary>Can I use T-money in a taxi?</summary>
+              <p>T-money can be used for direct payment when the taxi's payment terminal supports it. Because terminal and card conditions can vary, keep another payment method available.</p>
+            </details>
+            <details>
+              <summary>Should I take a taxi from Incheon Airport?</summary>
+              <p>A taxi is practical when you have heavy luggage, several travelers, or a late arrival, but rail or airport bus may cost less for a solo traveler with light luggage. At Incheon Airport, use a designated taxi stand.</p>
+            </details>
+            <details>
+              <summary>Do taxi drivers in Korea speak English?</summary>
+              <p>Some do, but you should not assume English service. Save the destination's Korean place name, road address, phone number, and map result so you can show the driver.</p>
+            </details>
+            <details>
+              <summary>What should I do if I have a problem with a taxi?</summary>
+              <p>Keep the receipt, full license plate number, ride time, and app record. In Seoul, use the taxi QR complaint channel if displayed or contact the Dasan Call Center at 120 or 02-120 for help with an unfair fare or other taxi issue.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section id="sources" class="taxi-section taxi-section--soft taxi-sources" aria-labelledby="sources-title">
+        <div class="container">
+          <div class="taxi-section__heading">
+            <p class="taxi-eyebrow">Primary references</p>
+            <h2 id="sources-title">Official Sources</h2>
+            <p>Use these official pages to recheck fares, app features, airport locations, and complaint procedures before travel.</p>
+          </div>
+          <ul>
+            <li><a href="https://english.seoul.go.kr/policy/transportation/modes-of-transport/taxi/" target="_blank" rel="noopener noreferrer">Seoul Metropolitan Government — Taxi fares</a><span>Regular sedan meter rates, late-night periods, and out-of-city surcharge rules.</span></li>
+            <li><a href="https://english.seoul.go.kr/seoul-cracks-down-on-taxi-overcharging-of-foreigners-with-english-receipts-and-other-service-improvements/" target="_blank" rel="noopener noreferrer">Seoul Metropolitan Government — English taxi receipts and fare complaints</a><span>English receipt fields, surcharge display, toll separation, and 120 reporting guidance.</span></li>
+            <li><a href="https://english.visitkorea.or.kr/svc/contents/contentsView.do?menuSn=477&amp;vcontsId=140661" target="_blank" rel="noopener noreferrer">VISITKOREA — Taxi guide</a><span>General taxi use, k.ride access, Uber Taxi, payment, and traveler support.</span></li>
+            <li><a href="https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=197907" target="_blank" rel="noopener noreferrer">VISITKOREA — Ride-hailing apps in Korea</a><span>Kakao T account requirements, direct payment choices, vehicle options, and k.ride features.</span></li>
+            <li><a href="https://airport.kr/ap_en/1515/subview.do" target="_blank" rel="noopener noreferrer">Incheon International Airport — Taxi Guide</a><span>Designated taxi stands, terminal pickup areas, surcharges, and the warning about illegal solicitation.</span></li>
+            <li><a href="https://kride.kakaomobility.com/?lang=en" target="_blank" rel="noopener noreferrer">Kakao Mobility — k.ride</a><span>Supported languages, destination and chat translation, fare estimates, and app payment.</span></li>
+            <li><a href="https://www.kakaomobility.com/service-kakaot/taxi" target="_blank" rel="noopener noreferrer">Kakao Mobility — Kakao T Taxi</a><span>Kakao T taxi dispatch and available service types.</span></li>
+            <li><a href="https://www.uber.com/kr/en/ride/ubertaxi/" target="_blank" rel="noopener noreferrer">Uber Taxi Korea — Official taxi service</a><span>Licensed local taxi dispatch, vehicle verification, ride tracking, and payment flow.</span></li>
+          </ul>
+        </div>
+      </section>
     </article>
   </main>
 <footer class="footer footer--korea-editorial">

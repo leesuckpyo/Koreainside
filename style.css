@@ -21713,3 +21713,658 @@ body.stay-cluster.shopping-stay-page main .shopping-area__verdict {
     line-height: 1.58;
   }
 }
+
+/* Taxi practical guide */
+
+.taxi-page main {
+  background: #FFFDF8;
+  color: #514C43;
+  font-family: "Roboto Flex", sans-serif;
+}
+
+.taxi-page main *,
+.taxi-page main *::before,
+.taxi-page main *::after {
+  box-sizing: border-box;
+}
+
+.taxi-page main h1,
+.taxi-page main h2,
+.taxi-page main h3 {
+  color: #14130F;
+  font-weight: 600;
+  text-wrap: balance;
+}
+
+.taxi-page main h1 {
+  max-width: 1040px;
+  margin: 0;
+  font-size: 56px;
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+}
+
+.taxi-page main h2 {
+  margin: 0;
+  font-size: 44px;
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+}
+
+.taxi-page main h3 {
+  margin: 0;
+  color: #1D2B27;
+  font-size: 28px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.taxi-page main p,
+.taxi-page main li,
+.taxi-page main dd {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.72;
+}
+
+.taxi-page main p {
+  margin: 0;
+}
+
+.taxi-page main p + p {
+  margin-top: 16px;
+}
+
+.taxi-page main strong {
+  color: #1D2B27;
+  font-weight: 600;
+}
+
+.taxi-page main a {
+  color: #3F5D52;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgba(63, 93, 82, 0.45);
+  text-underline-offset: 0.18em;
+  overflow-wrap: break-word;
+}
+
+.taxi-page main a:hover,
+.taxi-page main a:focus-visible {
+  color: #1D2B27;
+  text-decoration-color: currentColor;
+}
+
+.taxi-page main section[id] {
+  scroll-margin-top: 96px;
+}
+
+.taxi-hero {
+  padding: 68px 0 76px;
+  border-bottom: 1px solid #D8D0C2;
+  background: #F7F3EA;
+}
+
+.taxi-hero__breadcrumb {
+  margin-bottom: 28px;
+  color: #746C60;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.taxi-hero__breadcrumb a {
+  color: #514C43;
+  font-weight: 400;
+}
+
+.taxi-eyebrow,
+.taxi-quick-answer__label {
+  color: #3F5D52;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.taxi-hero > .container > .taxi-eyebrow {
+  margin-bottom: 20px;
+}
+
+.taxi-hero__intro {
+  max-width: 76ch;
+  margin-top: 24px;
+  color: #514C43;
+}
+
+.taxi-quick-answer {
+  margin-top: 36px;
+  padding: 24px 28px 26px;
+  border: 1px solid #D8D0C2;
+  border-radius: 16px;
+  background: #FFFDF8;
+  box-shadow: 0 8px 24px rgba(35, 26, 14, 0.06);
+}
+
+.taxi-quick-answer__label {
+  margin-bottom: 16px;
+}
+
+.taxi-quick-answer dl {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 0;
+}
+
+.taxi-quick-answer dl > div {
+  min-width: 0;
+  padding: 0 24px;
+  border-left: 1px solid #D8D0C2;
+}
+
+.taxi-quick-answer dl > div:first-child {
+  padding-left: 0;
+  border-left: 0;
+}
+
+.taxi-quick-answer dl > div:last-child {
+  padding-right: 0;
+}
+
+.taxi-quick-answer dt {
+  margin-bottom: 8px;
+  color: #514C43;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.taxi-quick-answer dd {
+  margin: 0;
+  color: #1D2B27;
+  font-size: 18px;
+  line-height: 1.68;
+}
+
+.taxi-guide {
+  background: #FFFDF8;
+}
+
+.taxi-section {
+  padding: 80px 0;
+  border-bottom: 1px solid #D8D0C2;
+}
+
+.taxi-section:last-child {
+  border-bottom: 0;
+}
+
+.taxi-section--soft {
+  background: #F7F3EA;
+}
+
+.taxi-section__heading {
+  margin-bottom: 34px;
+}
+
+.taxi-section__heading .taxi-eyebrow {
+  margin-bottom: 14px;
+}
+
+.taxi-section__heading > p:last-child:not(.taxi-eyebrow) {
+  max-width: 82ch;
+  margin-top: 14px;
+  color: #514C43;
+}
+
+.taxi-decision-panel {
+  padding: 0 28px;
+  border: 1px solid #D8D0C2;
+  border-radius: 16px;
+  background: #FFFDF8;
+  box-shadow: 0 6px 20px rgba(35, 26, 14, 0.05);
+}
+
+.taxi-decision-list {
+  margin: 0;
+}
+
+.taxi-decision-list > div {
+  display: grid;
+  grid-template-columns: minmax(230px, 0.8fr) minmax(0, 1.2fr);
+  gap: 32px;
+  padding: 22px 0;
+  border-bottom: 1px solid #D8D0C2;
+}
+
+.taxi-decision-list > div:last-child {
+  border-bottom: 0;
+}
+
+.taxi-decision-list dt,
+.taxi-decision-list dd {
+  min-width: 0;
+  font-size: 18px;
+  line-height: 1.68;
+}
+
+.taxi-decision-list dt {
+  color: #1D2B27;
+  font-weight: 600;
+}
+
+.taxi-decision-list dd {
+  margin: 0;
+  color: #514C43;
+}
+
+.taxi-editorial-list {
+  border-top: 2px solid #1D2B27;
+}
+
+.taxi-editorial-row {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.7fr) minmax(0, 1.3fr);
+  gap: 40px;
+  padding: 32px 0;
+  border-bottom: 1px solid #D8D0C2;
+}
+
+.taxi-editorial-row > * {
+  min-width: 0;
+}
+
+.taxi-editorial-row h3 {
+  margin-bottom: 12px;
+}
+
+.taxi-editorial-row > h3,
+.taxi-editorial-row > p {
+  margin: 0;
+}
+
+.taxi-editorial-row p {
+  max-width: 78ch;
+}
+
+.taxi-row-fit {
+  color: #686158;
+}
+
+.taxi-context-link,
+.taxi-policy-note {
+  max-width: 78ch;
+  margin-top: 32px;
+  padding: 20px 0 20px 22px;
+  border-left: 3px solid #3F5D52;
+}
+
+.taxi-table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  border-top: 2px solid #1D2B27;
+  border-bottom: 1px solid #D8D0C2;
+  -webkit-overflow-scrolling: touch;
+}
+
+.taxi-fare-table {
+  width: 100%;
+  min-width: 760px;
+  border-collapse: collapse;
+  color: #514C43;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.taxi-fare-table caption {
+  padding: 16px 18px;
+  color: #1D2B27;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.taxi-fare-table th,
+.taxi-fare-table td {
+  padding: 17px 18px;
+  border-top: 1px solid #D8D0C2;
+  text-align: left;
+  vertical-align: top;
+}
+
+.taxi-fare-table thead th {
+  background: #1D2B27;
+  color: #FFFDF8;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.taxi-fare-table tbody th {
+  color: #1D2B27;
+  font-weight: 600;
+}
+
+.taxi-fare-notes {
+  max-width: 78ch;
+  margin-top: 28px;
+}
+
+.taxi-fact-rows {
+  margin: 0;
+  border-top: 2px solid #1D2B27;
+}
+
+.taxi-fact-rows > div {
+  display: grid;
+  grid-template-columns: minmax(210px, 0.65fr) minmax(0, 1.35fr);
+  gap: 36px;
+  padding: 24px 0;
+  border-bottom: 1px solid #D8D0C2;
+}
+
+.taxi-fact-rows dt,
+.taxi-fact-rows dd {
+  min-width: 0;
+  font-size: 18px;
+  line-height: 1.72;
+}
+
+.taxi-fact-rows dt {
+  color: #1D2B27;
+  font-weight: 600;
+}
+
+.taxi-fact-rows dd {
+  margin: 0;
+  color: #514C43;
+}
+
+.taxi-practical-rows,
+.taxi-scenario-list,
+.taxi-mistake-list,
+.taxi-sources > .container > ul {
+  margin: 0;
+  padding: 0;
+  border-top: 2px solid #1D2B27;
+  list-style: none;
+}
+
+.taxi-practical-rows > li,
+.taxi-scenario-list > li,
+.taxi-mistake-list > li {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.7fr) minmax(0, 1.3fr);
+  gap: 36px;
+  padding: 22px 0;
+  border-bottom: 1px solid #D8D0C2;
+}
+
+.taxi-practical-rows strong,
+.taxi-practical-rows span,
+.taxi-scenario-list strong,
+.taxi-scenario-list span,
+.taxi-mistake-list strong,
+.taxi-mistake-list span {
+  min-width: 0;
+  font-size: 18px;
+  line-height: 1.72;
+}
+
+.taxi-practical-rows span,
+.taxi-scenario-list span,
+.taxi-mistake-list span {
+  color: #514C43;
+}
+
+.taxi-faq__list {
+  border: 1px solid #D8D0C2;
+  border-radius: 14px;
+  background: #FFFDF8;
+  box-shadow: 0 6px 20px rgba(35, 26, 14, 0.05);
+}
+
+.taxi-faq details + details {
+  border-top: 1px solid #D8D0C2;
+}
+
+.taxi-faq details[open] {
+  background: #F7F3EA;
+}
+
+.taxi-faq summary {
+  padding: 22px 26px;
+  color: #1D2B27;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.45;
+  cursor: pointer;
+}
+
+.taxi-faq details p {
+  max-width: 78ch;
+  padding: 0 26px 24px;
+  font-size: 18px;
+  line-height: 1.72;
+}
+
+.taxi-sources > .container > ul > li {
+  display: grid;
+  gap: 7px;
+  padding: 22px 0;
+  border-bottom: 1px solid #D8D0C2;
+}
+
+.taxi-sources > .container > ul > li > a,
+.taxi-sources > .container > ul > li > span {
+  max-width: 78ch;
+  font-size: 18px;
+  line-height: 1.72;
+}
+
+.taxi-page main summary:focus-visible,
+.taxi-page main .taxi-table-scroll:focus-visible,
+.taxi-page main a:focus-visible {
+  outline: 3px solid rgba(63, 93, 82, 0.35);
+  outline-offset: 3px;
+}
+
+@media (max-width: 900px) {
+  .taxi-page main h1 {
+    font-size: 46px;
+  }
+
+  .taxi-page main h2 {
+    font-size: 38px;
+  }
+
+  .taxi-page main h3 {
+    font-size: 25px;
+  }
+
+  .taxi-hero {
+    padding: 60px 0 66px;
+  }
+
+  .taxi-section {
+    padding: 72px 0;
+  }
+
+  .taxi-editorial-row {
+    gap: 32px;
+  }
+}
+
+@media (max-width: 720px) {
+  .taxi-quick-answer dl {
+    grid-template-columns: 1fr;
+  }
+
+  .taxi-quick-answer dl > div {
+    padding: 16px 0;
+    border-top: 1px solid #D8D0C2;
+    border-left: 0;
+  }
+
+  .taxi-quick-answer dl > div:first-child {
+    padding-top: 0;
+    border-top: 0;
+  }
+
+  .taxi-quick-answer dl > div:last-child {
+    padding-bottom: 0;
+  }
+
+  .taxi-decision-list > div,
+  .taxi-editorial-row,
+  .taxi-fact-rows > div,
+  .taxi-practical-rows > li,
+  .taxi-scenario-list > li,
+  .taxi-mistake-list > li {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  .taxi-page main h1 {
+    font-size: 36px;
+    line-height: 1.08;
+    letter-spacing: -0.04em;
+  }
+
+  .taxi-page main h2 {
+    font-size: 32px;
+    line-height: 1.1;
+  }
+
+  .taxi-page main h3 {
+    font-size: 22px;
+    line-height: 1.22;
+  }
+
+  .taxi-page main p,
+  .taxi-page main li,
+  .taxi-page main dd {
+    font-size: 17px;
+    line-height: 1.68;
+  }
+
+  .taxi-hero {
+    padding: 46px 0 52px;
+  }
+
+  .taxi-hero__breadcrumb {
+    margin-bottom: 22px;
+    font-size: 13px;
+  }
+
+  .taxi-hero > .container > .taxi-eyebrow {
+    margin-bottom: 16px;
+  }
+
+  .taxi-hero__intro {
+    margin-top: 20px;
+  }
+
+  .taxi-quick-answer {
+    margin-top: 28px;
+    padding: 20px;
+  }
+
+  .taxi-quick-answer dt {
+    font-size: 14px;
+  }
+
+  .taxi-quick-answer dd,
+  .taxi-decision-list dt,
+  .taxi-decision-list dd {
+    font-size: 17px;
+    line-height: 1.65;
+  }
+
+  .taxi-section {
+    padding: 60px 0;
+  }
+
+  .taxi-section__heading {
+    margin-bottom: 28px;
+  }
+
+  .taxi-decision-panel {
+    padding: 0 20px;
+  }
+
+  .taxi-decision-list > div {
+    padding: 19px 0;
+  }
+
+  .taxi-editorial-row {
+    padding: 26px 0;
+  }
+
+  .taxi-context-link,
+  .taxi-policy-note {
+    margin-top: 28px;
+    padding-left: 18px;
+  }
+
+  .taxi-fare-table {
+    min-width: 680px;
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  .taxi-fare-table caption,
+  .taxi-fare-table thead th {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .taxi-fare-table th,
+  .taxi-fare-table td {
+    padding: 14px;
+  }
+
+  .taxi-fact-rows > div,
+  .taxi-practical-rows > li,
+  .taxi-scenario-list > li,
+  .taxi-mistake-list > li {
+    padding: 20px 0;
+  }
+
+  .taxi-fact-rows dt,
+  .taxi-fact-rows dd,
+  .taxi-practical-rows strong,
+  .taxi-practical-rows span,
+  .taxi-scenario-list strong,
+  .taxi-scenario-list span,
+  .taxi-mistake-list strong,
+  .taxi-mistake-list span {
+    font-size: 17px;
+    line-height: 1.68;
+  }
+
+  .taxi-faq summary {
+    padding: 20px;
+    font-size: 16px;
+    line-height: 1.45;
+  }
+
+  .taxi-faq details p {
+    padding: 0 20px 22px;
+    font-size: 17px;
+    line-height: 1.68;
+  }
+
+  .taxi-sources > .container > ul > li {
+    padding: 20px 0;
+  }
+
+  .taxi-sources > .container > ul > li > a,
+  .taxi-sources > .container > ul > li > span {
+    font-size: 17px;
+    line-height: 1.68;
+  }
+}
