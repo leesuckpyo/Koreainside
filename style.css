@@ -22368,3 +22368,609 @@ body.stay-cluster.shopping-stay-page main .shopping-area__verdict {
     line-height: 1.68;
   }
 }
+
+/* Rental car decision guide */
+
+body.rental-car-page main {
+  background: #FFFDF8;
+  color: #514C43;
+  font-family: "Roboto Flex", sans-serif;
+}
+
+body.rental-car-page main *,
+body.rental-car-page main *::before,
+body.rental-car-page main *::after {
+  box-sizing: border-box;
+}
+
+body.rental-car-page main h1,
+body.rental-car-page main h2,
+body.rental-car-page main h3 {
+  color: #14130F;
+  font-weight: 600;
+  text-wrap: balance;
+}
+
+body.rental-car-page main h1 {
+  max-width: 860px;
+  margin: 0;
+  font-size: 56px;
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+}
+
+body.rental-car-page main h2 {
+  margin: 0;
+  font-size: 44px;
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+}
+
+body.rental-car-page main h3 {
+  margin: 0;
+  color: #1D2B27;
+  font-size: 27px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+body.rental-car-page main p,
+body.rental-car-page main li,
+body.rental-car-page main dd {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.72;
+}
+
+body.rental-car-page main p {
+  margin: 0;
+}
+
+body.rental-car-page main p + p {
+  margin-top: 16px;
+}
+
+body.rental-car-page main strong {
+  color: #1D2B27;
+  font-weight: 600;
+}
+
+body.rental-car-page main a {
+  color: #3F5D52;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgba(63, 93, 82, 0.45);
+  text-underline-offset: 0.18em;
+  overflow-wrap: break-word;
+}
+
+body.rental-car-page main a:hover,
+body.rental-car-page main a:focus-visible {
+  color: #1D2B27;
+  text-decoration-color: currentColor;
+}
+
+body.rental-car-page main section[id] {
+  scroll-margin-top: 96px;
+}
+
+body.rental-car-page main .rental-car-eyebrow,
+body.rental-car-page main .rental-car-hero__label {
+  color: #3F5D52;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+body.rental-car-page main .rental-car-hero {
+  padding: 68px 0 76px;
+  border-bottom: 1px solid #D8D0C2;
+  background: #F7F3EA;
+}
+
+body.rental-car-page main .rental-car-hero > .container > .rental-car-eyebrow {
+  margin-bottom: 22px;
+}
+
+body.rental-car-page main .rental-car-hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(300px, 0.55fr);
+  gap: 52px;
+  align-items: end;
+}
+
+body.rental-car-page main .rental-car-hero__grid > * {
+  min-width: 0;
+}
+
+body.rental-car-page main .rental-car-hero__intro {
+  max-width: 72ch;
+  margin-top: 24px;
+  color: #514C43;
+}
+
+body.rental-car-page main .rental-car-hero__answer {
+  padding: 24px 26px 26px;
+  border: 1px solid #D8D0C2;
+  border-radius: 16px;
+  background: #FFFDF8;
+  box-shadow: 0 8px 24px rgba(35, 26, 14, 0.06);
+}
+
+body.rental-car-page main .rental-car-hero__label {
+  margin-bottom: 15px;
+}
+
+body.rental-car-page main .rental-car-hero__answer p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+body.rental-car-page main .rental-car-guide {
+  background: #FFFDF8;
+}
+
+body.rental-car-page main .rental-car-section {
+  padding: 80px 0;
+  border-bottom: 1px solid #D8D0C2;
+}
+
+body.rental-car-page main .rental-car-section:last-child {
+  border-bottom: 0;
+}
+
+body.rental-car-page main .rental-car-section--soft,
+body.rental-car-page main .rental-car-section--booking {
+  background: #F7F3EA;
+}
+
+body.rental-car-page main .rental-car-section__heading {
+  margin-bottom: 34px;
+}
+
+body.rental-car-page main .rental-car-section__heading .rental-car-eyebrow {
+  margin-bottom: 14px;
+}
+
+body.rental-car-page main .rental-car-section__heading > p:last-child:not(.rental-car-eyebrow) {
+  max-width: 82ch;
+  margin-top: 14px;
+  color: #514C43;
+}
+
+body.rental-car-page main .rental-car-decision-panel {
+  padding: 0 28px;
+  border: 1px solid #D8D0C2;
+  border-radius: 16px;
+  background: #FFFDF8;
+  box-shadow: 0 6px 20px rgba(35, 26, 14, 0.05);
+}
+
+body.rental-car-page main .rental-car-decision-list,
+body.rental-car-page main .rental-car-fact-rows {
+  margin: 0;
+}
+
+body.rental-car-page main .rental-car-decision-list > div {
+  display: grid;
+  grid-template-columns: minmax(240px, 0.8fr) minmax(0, 1.2fr);
+  gap: 32px;
+  padding: 22px 0;
+  border-bottom: 1px solid #D8D0C2;
+}
+
+body.rental-car-page main .rental-car-decision-list > div:last-child {
+  border-bottom: 0;
+}
+
+body.rental-car-page main .rental-car-decision-list dt,
+body.rental-car-page main .rental-car-decision-list dd {
+  min-width: 0;
+  font-size: 18px;
+  line-height: 1.68;
+}
+
+body.rental-car-page main .rental-car-decision-list dt {
+  color: #1D2B27;
+  font-weight: 600;
+}
+
+body.rental-car-page main .rental-car-decision-list dd {
+  margin: 0;
+  color: #514C43;
+}
+
+body.rental-car-page main .rental-car-editorial-list,
+body.rental-car-page main .rental-car-fact-rows,
+body.rental-car-page main .rental-car-checklist,
+body.rental-car-page main .rental-car-practical-rows,
+body.rental-car-page main .rental-car-scenario-list,
+body.rental-car-page main .rental-car-mistake-list,
+body.rental-car-page main .rental-car-emergency-steps,
+body.rental-car-page main .rental-car-sources ul {
+  border-top: 2px solid #1D2B27;
+}
+
+body.rental-car-page main .rental-car-editorial-row {
+  display: grid;
+  grid-template-columns: minmax(230px, 0.7fr) minmax(0, 1.3fr);
+  gap: 40px;
+  padding: 32px 0;
+  border-bottom: 1px solid #D8D0C2;
+}
+
+body.rental-car-page main .rental-car-editorial-row > * {
+  min-width: 0;
+}
+
+body.rental-car-page main .rental-car-editorial-row h3 {
+  margin: 0;
+}
+
+body.rental-car-page main .rental-car-editorial-row p {
+  max-width: 78ch;
+}
+
+body.rental-car-page main .rental-car-policy-note,
+body.rental-car-page main .rental-car-context-note {
+  max-width: 78ch;
+  margin-top: 32px;
+  padding: 20px 0 20px 22px;
+  border-left: 3px solid #3F5D52;
+}
+
+body.rental-car-page main .rental-car-fact-rows > div {
+  display: grid;
+  grid-template-columns: minmax(230px, 0.65fr) minmax(0, 1.35fr);
+  gap: 36px;
+  padding: 24px 0;
+  border-bottom: 1px solid #D8D0C2;
+}
+
+body.rental-car-page main .rental-car-fact-rows dt,
+body.rental-car-page main .rental-car-fact-rows dd {
+  min-width: 0;
+  font-size: 18px;
+  line-height: 1.72;
+}
+
+body.rental-car-page main .rental-car-fact-rows dt {
+  color: #1D2B27;
+  font-weight: 600;
+}
+
+body.rental-car-page main .rental-car-fact-rows dd {
+  margin: 0;
+  color: #514C43;
+}
+
+body.rental-car-page main .rental-car-checklist,
+body.rental-car-page main .rental-car-practical-rows,
+body.rental-car-page main .rental-car-scenario-list,
+body.rental-car-page main .rental-car-mistake-list,
+body.rental-car-page main .rental-car-sources ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+body.rental-car-page main .rental-car-checklist > li,
+body.rental-car-page main .rental-car-practical-rows > li,
+body.rental-car-page main .rental-car-scenario-list > li,
+body.rental-car-page main .rental-car-mistake-list > li {
+  display: grid;
+  grid-template-columns: minmax(230px, 0.7fr) minmax(0, 1.3fr);
+  gap: 36px;
+  padding: 22px 0;
+  border-bottom: 1px solid #D8D0C2;
+}
+
+body.rental-car-page main .rental-car-checklist strong,
+body.rental-car-page main .rental-car-checklist span,
+body.rental-car-page main .rental-car-practical-rows strong,
+body.rental-car-page main .rental-car-practical-rows span,
+body.rental-car-page main .rental-car-scenario-list strong,
+body.rental-car-page main .rental-car-scenario-list span,
+body.rental-car-page main .rental-car-mistake-list strong,
+body.rental-car-page main .rental-car-mistake-list span {
+  min-width: 0;
+  font-size: 18px;
+  line-height: 1.72;
+}
+
+body.rental-car-page main .rental-car-checklist span,
+body.rental-car-page main .rental-car-practical-rows span,
+body.rental-car-page main .rental-car-scenario-list span,
+body.rental-car-page main .rental-car-mistake-list span {
+  color: #514C43;
+}
+
+body.rental-car-page main .rental-car-affiliate {
+  padding: 8px 0;
+}
+
+body.rental-car-page main .rental-car-affiliate__intro {
+  max-width: 82ch;
+  margin-top: 16px;
+}
+
+body.rental-car-page main .rental-car-affiliate__disclosure {
+  max-width: 82ch;
+  margin-top: 12px;
+  color: #746C60;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+body.rental-car-page main .rental-car-affiliate__banner {
+  width: 100%;
+  min-width: 0;
+  max-width: 728px;
+  margin: 28px auto 0;
+}
+
+body.rental-car-page main .rental-car-affiliate__banner .eg-affiliate-banners,
+body.rental-car-page main .rental-car-affiliate__banner iframe {
+  display: block;
+  max-width: 100%;
+  margin-inline: auto;
+}
+
+body.rental-car-page main .rental-car-emergency-steps {
+  margin-bottom: 0;
+  padding-left: 30px;
+}
+
+body.rental-car-page main .rental-car-emergency-steps > li {
+  padding: 22px 0 22px 8px;
+  border-bottom: 1px solid #D8D0C2;
+}
+
+body.rental-car-page main .rental-car-emergency-steps > li::marker {
+  color: #3F5D52;
+  font-weight: 700;
+}
+
+body.rental-car-page main .rental-car-emergency-steps strong,
+body.rental-car-page main .rental-car-emergency-steps span {
+  font-size: 18px;
+  line-height: 1.72;
+}
+
+body.rental-car-page main .rental-car-emergency-steps strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+body.rental-car-page main .rental-car-faq__list {
+  border: 1px solid #D8D0C2;
+  border-radius: 14px;
+  background: #FFFDF8;
+  box-shadow: 0 6px 20px rgba(35, 26, 14, 0.05);
+}
+
+body.rental-car-page main .rental-car-faq details + details {
+  border-top: 1px solid #D8D0C2;
+}
+
+body.rental-car-page main .rental-car-faq details[open] {
+  background: #F7F3EA;
+}
+
+body.rental-car-page main .rental-car-faq summary {
+  padding: 22px 26px;
+  color: #1D2B27;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.45;
+  cursor: pointer;
+}
+
+body.rental-car-page main .rental-car-faq details p {
+  max-width: 78ch;
+  padding: 0 26px 24px;
+  font-size: 18px;
+  line-height: 1.72;
+}
+
+body.rental-car-page main .rental-car-sources ul > li {
+  display: grid;
+  gap: 7px;
+  padding: 22px 0;
+  border-bottom: 1px solid #D8D0C2;
+}
+
+body.rental-car-page main .rental-car-sources ul > li > a,
+body.rental-car-page main .rental-car-sources ul > li > span {
+  max-width: 78ch;
+  font-size: 18px;
+  line-height: 1.72;
+  overflow-wrap: anywhere;
+}
+
+body.rental-car-page main summary:focus-visible,
+body.rental-car-page main a:focus-visible {
+  outline: 3px solid rgba(63, 93, 82, 0.35);
+  outline-offset: 3px;
+}
+
+@media (max-width: 900px) {
+  body.rental-car-page main h1 {
+    font-size: 46px;
+    line-height: 1.08;
+  }
+
+  body.rental-car-page main h2 {
+    font-size: 38px;
+  }
+
+  body.rental-car-page main .rental-car-hero {
+    padding: 60px 0 66px;
+  }
+
+  body.rental-car-page main .rental-car-hero__grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+  }
+
+  body.rental-car-page main .rental-car-hero__answer {
+    max-width: 680px;
+  }
+
+  body.rental-car-page main .rental-car-section {
+    padding: 72px 0;
+  }
+
+  body.rental-car-page main .rental-car-editorial-row {
+    gap: 32px;
+  }
+}
+
+@media (max-width: 767px) {
+  body.rental-car-page main .rental-car-affiliate__banner {
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 720px) {
+  body.rental-car-page main .rental-car-decision-list > div,
+  body.rental-car-page main .rental-car-editorial-row,
+  body.rental-car-page main .rental-car-fact-rows > div,
+  body.rental-car-page main .rental-car-checklist > li,
+  body.rental-car-page main .rental-car-practical-rows > li,
+  body.rental-car-page main .rental-car-scenario-list > li,
+  body.rental-car-page main .rental-car-mistake-list > li {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  body.rental-car-page main h1 {
+    font-size: 36px;
+    line-height: 1.08;
+    letter-spacing: -0.04em;
+  }
+
+  body.rental-car-page main h2 {
+    font-size: 32px;
+    line-height: 1.1;
+  }
+
+  body.rental-car-page main h3 {
+    font-size: 22px;
+    line-height: 1.22;
+  }
+
+  body.rental-car-page main p,
+  body.rental-car-page main li,
+  body.rental-car-page main dd {
+    font-size: 17px;
+    line-height: 1.68;
+  }
+
+  body.rental-car-page main .rental-car-hero {
+    padding: 46px 0 52px;
+  }
+
+  body.rental-car-page main .rental-car-hero > .container > .rental-car-eyebrow {
+    margin-bottom: 16px;
+  }
+
+  body.rental-car-page main .rental-car-hero__intro {
+    margin-top: 20px;
+  }
+
+  body.rental-car-page main .rental-car-hero__answer {
+    padding: 20px;
+  }
+
+  body.rental-car-page main .rental-car-hero__answer p {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  body.rental-car-page main .rental-car-section {
+    padding: 60px 0;
+  }
+
+  body.rental-car-page main .rental-car-section__heading {
+    margin-bottom: 28px;
+  }
+
+  body.rental-car-page main .rental-car-decision-panel {
+    padding: 0 20px;
+  }
+
+  body.rental-car-page main .rental-car-decision-list > div {
+    padding: 19px 0;
+  }
+
+  body.rental-car-page main .rental-car-decision-list dt,
+  body.rental-car-page main .rental-car-decision-list dd,
+  body.rental-car-page main .rental-car-fact-rows dt,
+  body.rental-car-page main .rental-car-fact-rows dd {
+    font-size: 17px;
+    line-height: 1.65;
+  }
+
+  body.rental-car-page main .rental-car-editorial-row {
+    padding: 26px 0;
+  }
+
+  body.rental-car-page main .rental-car-policy-note,
+  body.rental-car-page main .rental-car-context-note {
+    margin-top: 28px;
+    padding-left: 18px;
+  }
+
+  body.rental-car-page main .rental-car-fact-rows > div,
+  body.rental-car-page main .rental-car-checklist > li,
+  body.rental-car-page main .rental-car-practical-rows > li,
+  body.rental-car-page main .rental-car-scenario-list > li,
+  body.rental-car-page main .rental-car-mistake-list > li {
+    padding: 20px 0;
+  }
+
+  body.rental-car-page main .rental-car-checklist strong,
+  body.rental-car-page main .rental-car-checklist span,
+  body.rental-car-page main .rental-car-practical-rows strong,
+  body.rental-car-page main .rental-car-practical-rows span,
+  body.rental-car-page main .rental-car-scenario-list strong,
+  body.rental-car-page main .rental-car-scenario-list span,
+  body.rental-car-page main .rental-car-mistake-list strong,
+  body.rental-car-page main .rental-car-mistake-list span,
+  body.rental-car-page main .rental-car-emergency-steps strong,
+  body.rental-car-page main .rental-car-emergency-steps span {
+    font-size: 17px;
+    line-height: 1.68;
+  }
+
+  body.rental-car-page main .rental-car-affiliate__disclosure {
+    font-size: 14px;
+  }
+
+  body.rental-car-page main .rental-car-faq summary {
+    padding: 20px;
+    font-size: 16px;
+    line-height: 1.45;
+  }
+
+  body.rental-car-page main .rental-car-faq details p {
+    padding: 0 20px 22px;
+    font-size: 17px;
+    line-height: 1.68;
+  }
+
+  body.rental-car-page main .rental-car-sources ul > li {
+    padding: 20px 0;
+  }
+
+  body.rental-car-page main .rental-car-sources ul > li > a,
+  body.rental-car-page main .rental-car-sources ul > li > span {
+    font-size: 17px;
+    line-height: 1.68;
+  }
+}
