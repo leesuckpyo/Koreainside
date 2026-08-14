@@ -12471,12 +12471,61 @@ body.airport-page main .airport-page-hero__photo img {
   margin: 0;
 }
 
+.family-stay-page main .family-editorial-list,
+.family-stay-page main .family-mistake-list,
+.family-stay-page main .family-related-links {
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid #D8D0C2;
+}
+
+.family-stay-page main .family-editorial-row,
+.family-stay-page main .family-mistake-row {
+  display: grid;
+  grid-template-columns: minmax(0, 29fr) minmax(0, 71fr);
+  align-items: start;
+  gap: 32px;
+  min-width: 0;
+  padding: 28px 0;
+  border-bottom: 1px solid #D8D0C2;
+}
+
+.family-stay-page main .family-editorial-row h3,
+.family-stay-page main .family-mistake-row h3 {
+  margin: 0;
+  color: #1D2B27;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: normal;
+  word-break: normal;
+  hyphens: none;
+  overflow-wrap: break-word;
+}
+
+.family-stay-page main .family-editorial-row p,
+.family-stay-page main .family-mistake-row p,
+.family-stay-page main .family-final-recommendation > p:not(.eyebrow) {
+  max-width: 78ch;
+  margin: 0;
+  color: #514C43;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.68;
+  letter-spacing: normal;
+  text-align: left;
+  word-break: normal;
+  word-spacing: normal;
+  hyphens: none;
+  overflow-wrap: break-word;
+}
+
 .family-stay-page main #quick-answer .airport-transport-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .family-stay-page main .family-stay-infographic {
-  margin: 0;
+  margin: 48px 0 32px;
 }
 
 .family-stay-page main .family-stay-infographic img {
@@ -12529,6 +12578,19 @@ body.airport-page main .airport-page-hero__photo img {
 .family-stay-page main td {
   background: #FFFDF8;
   line-height: 1.6;
+}
+
+.family-stay-page main .family-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid #D8D0C2;
+  border-radius: var(--radius-md);
+  background: #FFFDF8;
+  -webkit-overflow-scrolling: touch;
+}
+
+.family-stay-page main .family-table-wrap table {
+  min-width: 980px;
 }
 
 .family-stay-page main .family-area-list {
@@ -12673,6 +12735,42 @@ body.airport-page main .airport-page-hero__photo img {
   display: inline-block;
 }
 
+.family-stay-page main .family-related-links {
+  list-style: none;
+}
+
+.family-stay-page main .family-related-links li {
+  border-bottom: 1px solid #D8D0C2;
+}
+
+.family-stay-page main .family-related-links a {
+  display: grid;
+  grid-template-columns: minmax(130px, 0.3fr) minmax(0, 0.7fr);
+  align-items: center;
+  gap: 28px;
+  min-width: 0;
+  padding: 22px 0;
+  text-decoration: none;
+}
+
+.family-stay-page main .family-related-link__title {
+  color: #1D2B27;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.35;
+  overflow-wrap: break-word;
+}
+
+.family-stay-page main .family-final-recommendation {
+  max-width: 900px;
+  padding-top: 28px;
+  border-top: 2px solid #1D2B27;
+}
+
+.family-stay-page main .family-final-recommendation .airport-quick-links {
+  margin-top: 24px;
+}
+
 .family-stay-page main #final-recommendation .airport-transport-card {
   padding: 30px;
 }
@@ -12814,6 +12912,8 @@ body.airport-page main .airport-page-hero__photo img {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .family-stay-page main .family-editorial-row,
+  .family-stay-page main .family-mistake-row,
   .family-stay-page main .family-area-row {
     grid-template-columns: 1fr;
     gap: 20px;
@@ -12836,7 +12936,9 @@ body.airport-page main .airport-page-hero__photo img {
   .family-stay-page main .airport-transport-card h3,
   .family-stay-page main .airport-action-card h3,
   .family-stay-page main .airport-problem-card__title,
-  .family-stay-page main .guide-card h3 {
+  .family-stay-page main .guide-card h3,
+  .family-stay-page main .family-editorial-row h3,
+  .family-stay-page main .family-mistake-row h3 {
     font-size: 22px;
     line-height: 1.22;
   }
@@ -12865,6 +12967,13 @@ body.airport-page main .airport-page-hero__photo img {
   .family-stay-page main .family-hotel-search__description {
     font-size: 17px;
     line-height: 1.58;
+  }
+
+  .family-stay-page main .family-editorial-row p,
+  .family-stay-page main .family-mistake-row p,
+  .family-stay-page main .family-final-recommendation > p:not(.eyebrow) {
+    font-size: 17px;
+    line-height: 1.68;
   }
 
   .family-stay-page main .airport-faq summary {
@@ -12929,6 +13038,19 @@ body.airport-page main .airport-page-hero__photo img {
     grid-template-columns: 1fr;
     gap: 18px;
     padding: 28px 0;
+  }
+
+  .family-stay-page main .family-editorial-row,
+  .family-stay-page main .family-mistake-row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 24px 0;
+  }
+
+  .family-stay-page main .family-related-links a {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 20px 0;
   }
 
   .family-stay-page main .family-area-row__summary h3 {
