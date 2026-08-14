@@ -16545,13 +16545,16 @@ body.airport-page main .airport-page-hero__photo img {
 
 .shopping-stay-page main .shopping-comparison {
   width: 100%;
+  overflow-x: auto;
   border-top: 1px solid #1D2B27;
+  -webkit-overflow-scrolling: touch;
 }
 
 .shopping-stay-page main .shopping-comparison table {
   width: 100%;
+  min-width: 1040px;
   border-collapse: collapse;
-  table-layout: fixed;
+  table-layout: auto;
 }
 
 .shopping-stay-page main .shopping-comparison th,
@@ -16564,7 +16567,9 @@ body.airport-page main .airport-page-hero__photo img {
   line-height: 1.45;
   text-align: left;
   vertical-align: top;
-  overflow-wrap: anywhere;
+  white-space: normal;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 .shopping-stay-page main .shopping-comparison thead th {
@@ -16588,23 +16593,28 @@ body.airport-page main .airport-page-hero__photo img {
 }
 
 .shopping-stay-page main .shopping-comparison th:nth-child(1) {
-  width: 14%;
+  width: 110px;
 }
 
 .shopping-stay-page main .shopping-comparison th:nth-child(2) {
-  width: 23%;
+  width: 220px;
 }
 
 .shopping-stay-page main .shopping-comparison th:nth-child(3) {
-  width: 18%;
+  width: 140px;
 }
 
 .shopping-stay-page main .shopping-comparison th:nth-child(4) {
-  width: 17%;
+  width: 170px;
 }
 
 .shopping-stay-page main .shopping-comparison th:nth-child(5) {
-  width: 28%;
+  width: 180px;
+}
+
+.shopping-stay-page main .shopping-comparison th:nth-child(6) {
+  width: 220px;
+  min-width: 220px;
 }
 
 .shopping-stay-page main .shopping-area-list {
@@ -17056,62 +17066,6 @@ body.airport-page main .airport-page-hero__photo img {
     white-space: normal;
   }
 
-  .shopping-stay-page main .shopping-comparison table,
-  .shopping-stay-page main .shopping-comparison tbody {
-    display: block;
-  }
-
-  .shopping-stay-page main .shopping-comparison thead {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    padding: 0;
-    overflow: hidden;
-    border: 0;
-    clip: rect(0 0 0 0);
-    white-space: nowrap;
-  }
-
-  .shopping-stay-page main .shopping-comparison tbody tr {
-    display: block;
-    padding: 12px 0;
-    background: #FFFDF8;
-    border-bottom: 1px solid #D8D0C2;
-  }
-
-  .shopping-stay-page main .shopping-comparison tbody tr:nth-child(even) {
-    background: #F3EDE2;
-  }
-
-  .shopping-stay-page main .shopping-comparison tbody th,
-  .shopping-stay-page main .shopping-comparison tbody td {
-    display: grid;
-    grid-template-columns: minmax(112px, 0.34fr) minmax(0, 0.66fr);
-    gap: 12px;
-    width: auto !important;
-    padding: 7px 12px;
-    background: transparent;
-    border-bottom: 0;
-    font-size: 14px;
-    line-height: 1.45;
-  }
-
-  .shopping-stay-page main .shopping-comparison tbody tr:nth-child(even) th,
-  .shopping-stay-page main .shopping-comparison tbody tr:nth-child(even) td {
-    background: transparent;
-  }
-
-  .shopping-stay-page main .shopping-comparison tbody th::before,
-  .shopping-stay-page main .shopping-comparison tbody td::before {
-    color: #686158;
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    content: attr(data-label);
-  }
-
   .shopping-stay-page main .shopping-route-list__item,
   .shopping-stay-page main .shopping-booking-groups {
     grid-template-columns: minmax(0, 1fr);
@@ -17170,15 +17124,6 @@ body.airport-page main .airport-page-hero__photo img {
   .shopping-stay-page main .shopping-area__facts > div,
   .shopping-stay-page main .shopping-related-links li {
     gap: 8px;
-  }
-
-  .shopping-stay-page main .shopping-comparison tbody th,
-  .shopping-stay-page main .shopping-comparison tbody td {
-    grid-template-columns: minmax(96px, 0.36fr) minmax(0, 0.64fr);
-    gap: 8px;
-    padding: 7px 8px;
-    font-size: 13px;
-    line-height: 1.4;
   }
 
   .shopping-stay-page main .shopping-area {
