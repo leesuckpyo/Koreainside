@@ -9520,6 +9520,270 @@ body.airport-page main .airport-page-hero__photo img {
   }
 }
 
+/* Accommodation long-form editorial layout */
+.accommodation-page .accommodation-area-intro p + p,
+.accommodation-page .accommodation-method-copy p + p,
+.accommodation-page .accommodation-area-detail__copy p + p {
+  margin-top: 16px;
+}
+
+.accommodation-page .accommodation-quick-summary {
+  grid-auto-rows: auto;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0;
+}
+
+.accommodation-page .accommodation-quick-summary__item {
+  grid-column: auto;
+  height: auto;
+  padding: 24px 28px;
+  border: 0;
+  border-top: 1px solid #D8D0C2;
+  border-radius: 0;
+  background: transparent;
+}
+
+.accommodation-page .accommodation-quick-summary__item:nth-child(odd) {
+  padding-left: 0;
+}
+
+.accommodation-page .accommodation-quick-summary__item:nth-child(even) {
+  padding-right: 0;
+  border-left: 1px solid #D8D0C2;
+}
+
+.accommodation-page .accommodation-quick-summary__item h3,
+.accommodation-page .accommodation-area-detail h3,
+.accommodation-page .accommodation-mistake-item h3 {
+  color: #1D1C18;
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
+
+.accommodation-page .accommodation-quick-summary__item strong {
+  margin-top: 2px;
+}
+
+.accommodation-page .accommodation-guide-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 48px;
+  border-bottom: 1px solid #D8D0C2;
+}
+
+.accommodation-page .accommodation-guide-list li {
+  border-top: 1px solid #D8D0C2;
+}
+
+.accommodation-page .accommodation-guide-list a {
+  display: block;
+  padding: 18px 0;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.45;
+  text-decoration: underline;
+  text-decoration-color: rgba(63, 74, 67, 0.3);
+  text-underline-offset: 4px;
+}
+
+.accommodation-page .accommodation-method-copy {
+  max-width: 900px;
+}
+
+.accommodation-page .accommodation-method-copy p,
+.accommodation-page .accommodation-area-detail__copy p,
+.accommodation-page .accommodation-mistake-item p {
+  color: #565047;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.72;
+  letter-spacing: normal;
+  text-align: left;
+  word-break: normal;
+  word-spacing: normal;
+  hyphens: none;
+  overflow-wrap: break-word;
+}
+
+.accommodation-page .accommodation-area-list {
+  border-bottom: 1px solid #D8D0C2;
+}
+
+.accommodation-page .accommodation-area-detail {
+  padding: 48px 0;
+  border-top: 1px solid #D8D0C2;
+}
+
+.accommodation-page .accommodation-area-detail h3 {
+  margin-bottom: 22px;
+}
+
+.accommodation-page .accommodation-area-detail__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-items: start;
+  gap: 42px;
+}
+
+.accommodation-page .accommodation-area-detail:nth-child(even) .accommodation-area-detail__media {
+  order: 2;
+}
+
+.accommodation-page .accommodation-area-detail__media {
+  overflow: hidden;
+  border-radius: var(--radius-md);
+}
+
+.accommodation-page .accommodation-area-detail__media img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.accommodation-page .accommodation-area-detail__copy {
+  min-width: 0;
+}
+
+.accommodation-page .accommodation-area-detail__copy .stay-area-card__link {
+  display: inline-block;
+  margin-top: 24px;
+  padding-top: 0;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.45;
+  text-decoration: underline;
+  text-decoration-color: rgba(63, 74, 67, 0.3);
+  text-underline-offset: 4px;
+}
+
+.accommodation-page .accommodation-comparison-table-wrap {
+  max-width: 100%;
+  margin-top: 64px;
+  overflow-x: auto;
+  border-top: 1px solid #D8D0C2;
+  border-bottom: 1px solid #D8D0C2;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-inline: contain;
+}
+
+.accommodation-page .accommodation-comparison-table-wrap:focus-visible {
+  outline: 3px solid #A43120;
+  outline-offset: 4px;
+}
+
+.accommodation-page .accommodation-comparison-table {
+  min-width: 1040px;
+}
+
+.accommodation-page .accommodation-comparison-table th,
+.accommodation-page .accommodation-comparison-table td {
+  border-color: #D8D0C2;
+}
+
+.accommodation-page .accommodation-comparison-table th {
+  color: #1D1C18;
+  background: #F3EDE2;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.accommodation-page .accommodation-comparison-table td {
+  color: #565047;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.accommodation-page .accommodation-comparison-table tbody tr:nth-child(even) th,
+.accommodation-page .accommodation-comparison-table tbody tr:nth-child(even) td {
+  background: rgba(255, 253, 248, 0.58);
+}
+
+.accommodation-page .accommodation-mistake-list {
+  border-bottom: 1px solid #D8D0C2;
+}
+
+.accommodation-page .accommodation-mistake-item {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.7fr) minmax(0, 1.3fr);
+  gap: 40px;
+  padding: 28px 0;
+  border-top: 1px solid #D8D0C2;
+}
+
+.accommodation-page .accommodation-mistake-item h3 {
+  font-size: 23px;
+}
+
+@media (max-width: 959px) {
+  .accommodation-page .accommodation-area-detail__layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .accommodation-page .accommodation-area-detail:nth-child(even) .accommodation-area-detail__media {
+    order: 0;
+  }
+}
+
+@media (max-width: 719px) {
+  .accommodation-page .accommodation-quick-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .accommodation-page .accommodation-quick-summary__item,
+  .accommodation-page .accommodation-quick-summary__item:nth-child(odd),
+  .accommodation-page .accommodation-quick-summary__item:nth-child(even) {
+    padding: 22px 0;
+    border-left: 0;
+  }
+
+  .accommodation-page .accommodation-quick-summary__item h3,
+  .accommodation-page .accommodation-area-detail h3 {
+    font-size: 22px;
+  }
+
+  .accommodation-page .accommodation-guide-list {
+    grid-template-columns: 1fr;
+  }
+
+  .accommodation-page .accommodation-guide-list a,
+  .accommodation-page .accommodation-area-detail__copy .stay-area-card__link {
+    font-size: 17px;
+  }
+
+  .accommodation-page .accommodation-method-copy p,
+  .accommodation-page .accommodation-area-detail__copy p,
+  .accommodation-page .accommodation-mistake-item p {
+    font-size: 17px;
+    line-height: 1.68;
+  }
+
+  .accommodation-page .accommodation-area-detail {
+    padding: 38px 0;
+  }
+
+  .accommodation-page .accommodation-comparison-table-wrap {
+    margin-top: 48px;
+  }
+
+  .accommodation-page .accommodation-comparison-table th,
+  .accommodation-page .accommodation-comparison-table td {
+    font-size: 14px;
+  }
+
+  .accommodation-page .accommodation-mistake-item {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 24px 0;
+  }
+
+  .accommodation-page .accommodation-mistake-item h3 {
+    font-size: 21px;
+  }
+}
+
 /* ── TASTE KOREA PAGE START ── */
     .taste-korea-page{
       --ink:#14130f;
