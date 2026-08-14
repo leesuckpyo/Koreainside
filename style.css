@@ -715,8 +715,8 @@ ul, ol {
 
   .site-nav__item[data-nav-section="stay"] .site-nav__group {
     display: grid;
-    grid-template-columns: repeat(2, minmax(190px, 1fr));
-    gap: 2px 8px;
+    grid-template-columns: minmax(190px, 1fr);
+    gap: 2px;
   }
 
   .site-nav__item[data-nav-section="stay"] .site-nav__group-label {
