@@ -13204,6 +13204,7 @@ body.airport-page main .airport-page-hero__photo img {
   color: #3F5D52;
 }
 
+.first-time-stay-page main .first-time-practical-answer h2,
 .first-time-stay-page main .first-time-practical-answer h3 {
   margin: 0 0 14px;
   color: #1D2B27;
@@ -13221,6 +13222,55 @@ body.airport-page main .airport-page-hero__photo img {
 
 .first-time-stay-page main .first-time-practical-answer li + li {
   margin-top: 8px;
+}
+
+.first-time-stay-page main .first-time-editorial-list,
+.first-time-stay-page main .first-time-mistake-list,
+.first-time-stay-page main .first-time-related-links {
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid #D8D0C2;
+}
+
+.first-time-stay-page main .first-time-editorial-row,
+.first-time-stay-page main .first-time-mistake-row {
+  display: grid;
+  grid-template-columns: minmax(0, 29fr) minmax(0, 71fr);
+  align-items: start;
+  gap: 32px;
+  min-width: 0;
+  padding: 28px 0;
+  border-bottom: 1px solid #D8D0C2;
+}
+
+.first-time-stay-page main .first-time-editorial-row h3,
+.first-time-stay-page main .first-time-mistake-row h3 {
+  margin: 0;
+  color: #1D2B27;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: normal;
+  word-break: normal;
+  hyphens: none;
+  overflow-wrap: break-word;
+}
+
+.first-time-stay-page main .first-time-editorial-row p,
+.first-time-stay-page main .first-time-mistake-row p,
+.first-time-stay-page main .first-time-final-recommendation > p:not(.eyebrow) {
+  max-width: 78ch;
+  margin: 0;
+  color: #514C43;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.72;
+  letter-spacing: normal;
+  text-align: left;
+  word-break: normal;
+  word-spacing: normal;
+  hyphens: none;
+  overflow-wrap: break-word;
 }
 
 .first-time-stay-page main .airport-section {
@@ -13688,6 +13738,38 @@ body.airport-page main .airport-page-hero__photo img {
   font-size: clamp(1.5rem, 2vw, 1.75rem);
 }
 
+.first-time-stay-page main .first-time-related-links {
+  list-style: none;
+}
+
+.first-time-stay-page main .first-time-related-links li {
+  border-bottom: 1px solid #D8D0C2;
+}
+
+.first-time-stay-page main .first-time-related-links a {
+  display: grid;
+  grid-template-columns: minmax(140px, 0.3fr) minmax(0, 0.7fr);
+  align-items: center;
+  gap: 28px;
+  min-width: 0;
+  padding: 22px 0;
+  text-decoration: none;
+}
+
+.first-time-stay-page main .first-time-related-link__title {
+  color: #1D2B27;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.35;
+  overflow-wrap: break-word;
+}
+
+.first-time-stay-page main .first-time-final-recommendation {
+  max-width: 900px;
+  padding-top: 28px;
+  border-top: 2px solid #1D2B27;
+}
+
 .first-time-stay-page main .first-time-hotel-search__grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
@@ -13818,6 +13900,8 @@ body.airport-page main .airport-page-hero__photo img {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .first-time-stay-page main .first-time-editorial-row,
+  .first-time-stay-page main .first-time-mistake-row,
   .first-time-stay-page main .first-time-area-row,
   .first-time-stay-page main .mistake-item {
     grid-template-columns: 1fr;
@@ -13846,6 +13930,7 @@ body.airport-page main .airport-page-hero__photo img {
     line-height: 1.15;
   }
 
+  .first-time-stay-page main .first-time-practical-answer h2,
   .first-time-stay-page main .first-time-practical-answer h3,
   .first-time-stay-page main .airport-problem-card__title,
   .first-time-stay-page main .guide-card h3,
@@ -13976,6 +14061,32 @@ body.airport-page main .airport-page-hero__photo img {
   .first-time-stay-page main .section__header--center,
   .first-time-stay-page main .section__header--center .section__subtitle {
     text-align: left;
+  }
+
+  .first-time-stay-page main .first-time-editorial-row,
+  .first-time-stay-page main .first-time-mistake-row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 24px 0;
+  }
+
+  .first-time-stay-page main .first-time-editorial-row h3,
+  .first-time-stay-page main .first-time-mistake-row h3 {
+    font-size: 22px;
+    line-height: 1.22;
+  }
+
+  .first-time-stay-page main .first-time-editorial-row p,
+  .first-time-stay-page main .first-time-mistake-row p,
+  .first-time-stay-page main .first-time-final-recommendation > p:not(.eyebrow) {
+    font-size: 17px;
+    line-height: 1.68;
+  }
+
+  .first-time-stay-page main .first-time-related-links a {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 20px 0;
   }
 }
 
