@@ -18674,9 +18674,9 @@ body.airport-page main .airport-page-hero__photo img {
 .solo-stay-page main .solo-hero-practical-copy,
 .solo-stay-page main .solo-hero-practical-list {
   color: #514C43;
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 400;
-  line-height: 1.65;
+  line-height: 1.72;
   text-wrap: pretty;
 }
 
@@ -18830,6 +18830,40 @@ body.airport-page main .airport-page-hero__photo img {
   margin: 0 0 10px;
 }
 
+.solo-stay-page main .solo-editorial-list {
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid #D8D0C2;
+}
+
+.solo-stay-page main .solo-editorial-row {
+  display: grid;
+  grid-template-columns: minmax(0, 0.29fr) minmax(0, 0.71fr);
+  gap: clamp(40px, 5vw, 64px);
+  min-width: 0;
+  padding: 30px 0;
+  border-bottom: 1px solid #D8D0C2;
+}
+
+.solo-stay-page main .solo-editorial-row h3 {
+  margin: 0;
+}
+
+.solo-stay-page main .solo-editorial-row p {
+  max-width: 78ch;
+  margin: 0;
+  color: #514C43;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.72;
+  letter-spacing: normal;
+  text-align: left;
+  word-break: normal;
+  word-spacing: normal;
+  hyphens: none;
+  overflow-wrap: break-word;
+}
+
 .solo-stay-page main .solo-overview-list,
 .solo-stay-page main .solo-area-list,
 .solo-stay-page main .solo-mistake-list,
@@ -18964,9 +18998,9 @@ body.airport-page main .airport-page-hero__photo img {
 .solo-stay-page main .solo-comparison td {
   color: #514C43;
   background: #FFFDF8;
-  font-size: 17px;
+  font-size: 15px;
   font-weight: 400;
-  line-height: 1.65;
+  line-height: 1.6;
 }
 
 .solo-stay-page main .solo-comparison tbody tr:nth-child(even) td {
@@ -19014,9 +19048,9 @@ body.airport-page main .airport-page-hero__photo img {
   max-width: 900px;
   margin: 0;
   color: #514C43;
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 400;
-  line-height: 1.65;
+  line-height: 1.72;
 }
 
 .solo-stay-page main .solo-related-links {
@@ -19052,9 +19086,9 @@ body.airport-page main .airport-page-hero__photo img {
 
 .solo-stay-page main .solo-related-links li > span:last-child {
   color: #686158;
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 400;
-  line-height: 1.65;
+  line-height: 1.72;
 }
 
 .solo-stay-page main .solo-hotel-disclosure {
@@ -19074,7 +19108,7 @@ body.airport-page main .airport-page-hero__photo img {
 
 .solo-stay-page main .solo-hotel-row {
   display: grid;
-  grid-template-columns: minmax(0, 0.34fr) minmax(0, 0.66fr);
+  grid-template-columns: minmax(0, 0.68fr) minmax(280px, 0.32fr);
   gap: clamp(36px, 5vw, 64px);
   padding: 38px 0;
   border-bottom: 1px solid #D8D0C2;
@@ -19102,9 +19136,9 @@ body.airport-page main .airport-page-hero__photo img {
 .solo-stay-page main .solo-hotel-row__summary p:not(.solo-hotel-row__area) {
   margin: 0;
   color: #514C43;
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 400;
-  line-height: 1.65;
+  line-height: 1.72;
 }
 
 .solo-stay-page main .solo-hotel-row__summary p + p {
@@ -19129,7 +19163,7 @@ body.airport-page main .airport-page-hero__photo img {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 8px;
   max-width: 520px;
-  margin-top: 20px;
+  margin-top: 0;
 }
 
 .solo-stay-page main .solo-hotel-row__links a {
@@ -19208,17 +19242,19 @@ body.airport-page main .airport-page-hero__photo img {
   margin: 0;
   padding: 0 22px 22px;
   color: #514C43;
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 400;
-  line-height: 1.65;
+  line-height: 1.72;
 }
 
 @media (max-width: 900px) {
-  .solo-stay-page main .solo-area-row {
+  .solo-stay-page main .solo-area-row,
+  .solo-stay-page main .solo-editorial-row {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .solo-stay-page main .solo-area-row {
+  .solo-stay-page main .solo-area-row,
+  .solo-stay-page main .solo-editorial-row {
     gap: 20px;
   }
 
@@ -19348,6 +19384,7 @@ body.airport-page main .airport-page-hero__photo img {
   }
 
   .solo-stay-page main .section__header .section__subtitle,
+  .solo-stay-page main .solo-editorial-row p,
   .solo-stay-page main .solo-area-row__summary p,
   .solo-stay-page main .solo-area-row__details p,
   .solo-stay-page main .solo-area-row__details li {
@@ -19364,10 +19401,14 @@ body.airport-page main .airport-page-hero__photo img {
   .solo-stay-page main .solo-related-links li > span:last-child,
   .solo-stay-page main .solo-hotel-row__summary p:not(.solo-hotel-row__area),
   .solo-stay-page main .solo-hotel-row__verdict,
-  .solo-stay-page main .airport-faq__list p,
+  .solo-stay-page main .airport-faq__list p {
+    font-size: 17px;
+    line-height: 1.68;
+  }
+
   .solo-stay-page main .solo-comparison tbody td {
-    font-size: 16px;
-    line-height: 1.62;
+    font-size: 14px;
+    line-height: 1.55;
   }
 
   .solo-stay-page main .airport-faq__list summary {
@@ -19375,7 +19416,7 @@ body.airport-page main .airport-page-hero__photo img {
   }
 
   .solo-stay-page main .solo-comparison tbody td::before {
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 550;
     line-height: 1.3;
   }
@@ -19388,6 +19429,7 @@ body.airport-page main .airport-page-hero__photo img {
 
   .solo-stay-page main .solo-decision-item,
   .solo-stay-page main .solo-editorial-item,
+  .solo-stay-page main .solo-editorial-row,
   .solo-stay-page main .solo-overview-row,
   .solo-stay-page main .solo-area-row,
   .solo-stay-page main .solo-mistake-item {
