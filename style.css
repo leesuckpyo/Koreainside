@@ -7686,6 +7686,7 @@ body.airport-page main .airport-page-hero__photo img {
   color: #3F5D52;
 }
 
+.couples-stay-page main .couples-practical-answer h2,
 .couples-stay-page main .couples-practical-answer h3 {
   margin: 0 0 14px;
   color: #1D2B27;
@@ -7703,6 +7704,20 @@ body.airport-page main .airport-page-hero__photo img {
 
 .couples-stay-page main .couples-practical-answer li + li {
   margin-top: 8px;
+}
+
+.couples-stay-page main .couples-hero-context {
+  max-width: 72ch;
+  margin: 16px 0 0;
+  color: #514C43;
+  font-size: 18px;
+  line-height: 1.72;
+  letter-spacing: normal;
+  text-align: left;
+  word-break: normal;
+  word-spacing: normal;
+  hyphens: none;
+  overflow-wrap: break-word;
 }
 
 .couples-stay-page main .airport-section {
@@ -7887,13 +7902,54 @@ body.airport-page main .airport-page-hero__photo img {
   text-transform: uppercase;
 }
 
+.couples-stay-page main .couples-editorial-list {
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid #D8D0C2;
+}
+
+.couples-stay-page main .couples-editorial-row {
+  display: grid;
+  grid-template-columns: minmax(0, 29fr) minmax(0, 71fr);
+  align-items: start;
+  gap: 32px;
+  min-width: 0;
+  padding: 30px 0;
+  border-bottom: 1px solid #D8D0C2;
+}
+
+.couples-stay-page main .couples-editorial-row h3 {
+  margin: 0;
+  color: #1D2B27;
+  font-size: 28px;
+  line-height: 1.2;
+  letter-spacing: normal;
+  word-break: normal;
+  hyphens: none;
+  overflow-wrap: break-word;
+}
+
+.couples-stay-page main .couples-editorial-row p {
+  max-width: 78ch;
+  margin: 0;
+  color: #514C43;
+  font-size: 18px;
+  line-height: 1.72;
+  letter-spacing: normal;
+  text-align: left;
+  word-break: normal;
+  word-spacing: normal;
+  hyphens: none;
+  overflow-wrap: break-word;
+}
+
 .couples-stay-page main .couples-infographic-section {
   padding: 0 0 68px;
   background: #F7F3EA;
 }
 
 .couples-stay-page main .couples-stay-infographic {
-  margin: 0;
+  margin: 0 0 32px;
 }
 
 .couples-stay-page main .couples-stay-infographic img {
@@ -8090,6 +8146,17 @@ body.airport-page main .airport-page-hero__photo img {
   line-height: 1.68;
 }
 
+.couples-stay-page main .mistake-item h3 {
+  margin: 0;
+  color: #B9653B;
+  font-size: 22px;
+  line-height: 1.35;
+  letter-spacing: normal;
+  word-break: normal;
+  hyphens: none;
+  overflow-wrap: break-word;
+}
+
 .couples-stay-page main .mistake-item .mistake-item__bad {
   color: #B9653B;
   font-weight: 800;
@@ -8151,6 +8218,46 @@ body.airport-page main .airport-page-hero__photo img {
 .couples-stay-page main .guide-card__eyebrow {
   display: inline-block;
   color: #3F5D52;
+}
+
+.couples-stay-page main .couples-related-links {
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid #D8D0C2;
+  list-style: none;
+}
+
+.couples-stay-page main .couples-related-links li {
+  display: grid;
+  grid-template-columns: minmax(0, 17fr) minmax(0, 31fr) minmax(0, 52fr);
+  align-items: baseline;
+  gap: 28px;
+  padding: 24px 0;
+  border-bottom: 1px solid #D8D0C2;
+}
+
+.couples-stay-page main .couples-related-links__label {
+  color: #B9653B;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.couples-stay-page main .couples-related-links a {
+  color: #3F5D52;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.4;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+.couples-stay-page main .couples-related-links li > span:last-child {
+  color: #686158;
+  font-size: 18px;
+  line-height: 1.72;
 }
 
 .couples-stay-page main #related-guides .guide-card h3 {
@@ -8274,6 +8381,19 @@ body.airport-page main .airport-page-hero__photo img {
   color: #1D2B27;
 }
 
+.couples-stay-page main .couples-final-copy {
+  max-width: 78ch;
+  padding-top: 24px;
+  border-top: 1px solid #D8D0C2;
+}
+
+.couples-stay-page main .couples-final-copy p {
+  margin: 0;
+  color: #514C43;
+  font-size: 18px;
+  line-height: 1.72;
+}
+
 @media (min-width: 960px) {
   .couples-stay-page main .couples-hotel-search__grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -8288,6 +8408,7 @@ body.airport-page main .airport-page-hero__photo img {
   }
 
   .couples-stay-page main .couples-area-row,
+  .couples-stay-page main .couples-editorial-row,
   .couples-stay-page main .mistake-item {
     grid-template-columns: 1fr;
     gap: 20px;
@@ -8300,6 +8421,11 @@ body.airport-page main .airport-page-hero__photo img {
 
   .couples-stay-page main .couples-hotel-search__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .couples-stay-page main .couples-related-links li {
+    grid-template-columns: minmax(0, 20fr) minmax(0, 34fr) minmax(0, 46fr);
+    gap: 20px;
   }
 }
 
@@ -8315,6 +8441,7 @@ body.airport-page main .airport-page-hero__photo img {
     line-height: 1.15;
   }
 
+  .couples-stay-page main .couples-practical-answer h2,
   .couples-stay-page main .couples-practical-answer h3,
   .couples-stay-page main .airport-problem-card__title,
   .couples-stay-page main .guide-card h3,
@@ -8327,6 +8454,7 @@ body.airport-page main .airport-page-hero__photo img {
   }
 
   .couples-stay-page main .airport-page-hero__desc,
+  .couples-stay-page main .couples-hero-context,
   .couples-stay-page main .section__subtitle,
   .couples-stay-page main .couples-practical-answer p,
   .couples-stay-page main .couples-practical-answer li,
@@ -8340,6 +8468,8 @@ body.airport-page main .airport-page-hero__photo img {
   .couples-stay-page main .guide-card p,
   .couples-stay-page main .couples-editorial-item p,
   .couples-stay-page main .couples-summary-item p,
+  .couples-stay-page main .couples-editorial-row p,
+  .couples-stay-page main .couples-related-links li > span:last-child,
   .couples-stay-page main .couples-hotel-search__description,
   .couples-stay-page main .couples-booking-checklist li,
   .couples-stay-page main .couples-booking-checklist strong,
@@ -8408,7 +8538,9 @@ body.airport-page main .airport-page-hero__photo img {
   .couples-stay-page main .couples-booking-checklist,
   .couples-stay-page main .couples-scenario-grid,
   .couples-stay-page main .couples-hotel-search__grid,
-  .couples-stay-page main .couples-final-grid {
+  .couples-stay-page main .couples-final-grid,
+  .couples-stay-page main .couples-editorial-row,
+  .couples-stay-page main .couples-related-links li {
     grid-template-columns: 1fr;
   }
 
@@ -8418,6 +8550,7 @@ body.airport-page main .airport-page-hero__photo img {
   }
 
   .couples-stay-page main .couples-area-row,
+  .couples-stay-page main .couples-editorial-row,
   .couples-stay-page main .mistake-item {
     grid-template-columns: 1fr;
     gap: 18px;
@@ -8427,6 +8560,16 @@ body.airport-page main .airport-page-hero__photo img {
   .couples-stay-page main .couples-area-row__summary h3 {
     font-size: 22px;
     line-height: 1.2;
+  }
+
+  .couples-stay-page main .couples-editorial-row h3,
+  .couples-stay-page main .mistake-item h3 {
+    font-size: 22px;
+    line-height: 1.2;
+  }
+
+  .couples-stay-page main .couples-related-links li {
+    gap: 12px;
   }
 
   .couples-stay-page main .couples-area-row__summary p,
