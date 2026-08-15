@@ -20035,6 +20035,19 @@ body.airport-page main .airport-page-hero__photo img {
   align-self: start;
 }
 
+.hongdae-myeongdong-page main .hm-choice-list {
+  border-top: 1px solid #d8d0c2;
+}
+
+.hongdae-myeongdong-page main .hm-choice-row {
+  padding: 42px 0;
+  border-bottom: 1px solid #d8d0c2;
+}
+
+.hongdae-myeongdong-page main .hm-choice-row p:last-child {
+  margin-bottom: 0;
+}
+
 .hongdae-myeongdong-page main .hm-editorial-row__label p {
   color: #686158;
 }
@@ -20332,7 +20345,7 @@ body.airport-page main .airport-page-hero__photo img {
   border-top: 1px solid #d8d0c2;
 }
 
-.hongdae-myeongdong-page main .hm-booking-checklist h3 {
+.hongdae-myeongdong-page main .hm-booking-checklist h2 {
   margin-bottom: 26px;
 }
 
@@ -20488,6 +20501,7 @@ body.airport-page main .airport-page-hero__photo img {
     max-width: 68ch;
   }
 
+  .hongdae-myeongdong-page main .hm-choice-row,
   .hongdae-myeongdong-page main .hm-priority-row,
   .hongdae-myeongdong-page main .hm-mistake-row {
     padding: 34px 0;
