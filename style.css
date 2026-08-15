@@ -2896,6 +2896,11 @@ ul, ol {
   box-shadow: none;
 }
 
+.page-esim main.esim-page .esim-answer-list p {
+  margin: 0;
+  color: #514C43;
+}
+
 .esim-answer-list li,
 .esim-check-list li {
   position: relative;
@@ -3041,6 +3046,10 @@ ul, ol {
   color: #514C43;
   font-size: 17px;
   line-height: 1.65;
+}
+
+.page-esim main.esim-page .esim-editorial-row__body p + p {
+  margin-top: 16px;
 }
 
 .esim-editorial-row__body .esim-check-list {
@@ -3340,6 +3349,15 @@ ul, ol {
   .esim-section h2 {
     font-size: 44px;
     line-height: 1.12;
+  }
+
+  .page-esim main.esim-page .esim-section[aria-labelledby="home-number-title"] .esim-section__header > p:not(.esim-eyebrow),
+  .page-esim main.esim-page .esim-section[aria-labelledby="group-esim-title"] .esim-section__header > p:not(.esim-eyebrow),
+  .page-esim main.esim-page .esim-section[aria-labelledby="recommended-esim-title"] .esim-section__header > p:not(.esim-eyebrow),
+  .page-esim main.esim-page .esim-section[aria-labelledby="korean-number-title"] .esim-section__header > p:not(.esim-eyebrow),
+  .page-esim main.esim-page .esim-section[aria-labelledby="trip-over-title"] .esim-section__header > p:not(.esim-eyebrow),
+  .page-esim main.esim-page .esim-section[aria-labelledby="recommendation-title"] .esim-section__header > p:not(.esim-eyebrow) {
+    max-width: none;
   }
 
   .esim-editorial-row {
