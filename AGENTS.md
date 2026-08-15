@@ -526,6 +526,19 @@ Do not copy an entire specialized standard into this file.
 
 Detailed voice, wording, recommendation, and editorial QA rules belong to `docs/content-writing-standard.md`.
 
+## Korea Inside Content Humanization Standard
+
+For Korea Inside Global English content, requests for "humanization," "humanize," "natural copy," removal of AI or mechanical writing, human-sounding sentences, or a natural travel-guide voice invoke this standard.
+
+- Humanization is not synonym replacement. Rewrite the complete thought in a natural order: situation → reason → practical consequence → trade-off or conclusion.
+- Preserve factual meaning, search intent, useful travel information, verified data, internal links, affiliate links, and tracking attributes. Any change to protected content or implementation data still requires explicit approval.
+- Remove repetitive recommendation templates, scoring-engine language, database-like labels, and mechanical classification patterns. Reduce repeated imperatives such as "Choose," "Check," "Verify," "Compare," "Confirm," and "Prioritize," and repeated labels such as "Best for," "Watch out," "Decision," "Recommendation," and "Alternative" when natural explanatory prose is clearer.
+- Prefer familiar everyday English over consultant, scoring-engine, database, process-document, or AI-planner language, while keeping an editorial travel-guide tone. Do not make the copy slang-heavy or overly casual, and never invent personal experience, reviews, ratings, prices, facilities, or other unverified facts.
+- Do not repeat one recommendation through Hero → cards → table → scenarios → final recommendation. Supporting sections must add information; cards and tables are exceptions, not the default structure.
+- When the user supplies finalized English copy, apply it exactly. Do not autonomously rewrite, shorten, translate, summarize, or improve it.
+
+Detailed definitions, examples, preservation checks, and humanization QA belong to the Active `docs/content-writing-standard.md`. This standard does not govern Korea Inside Japan or Japanese-language localization.
+
 ---
 
 ## Codex QA / Verification Rules

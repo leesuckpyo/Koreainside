@@ -109,6 +109,226 @@ A useful recommendation normally answers:
 
 Use the criteria defined in `decision-engine.md` when the recommendation is rule-based.
 
+## Korea Inside Humanization Standard
+
+This standard applies only to Korea Inside Global English content. It does not govern Korea Inside Japan or Japanese-language localization, which require separate localized standards.
+
+When a task requests "humanization," "humanize," "humanization," "natural copy," removal of AI or mechanical writing, human-sounding sentences, or a natural travel-guide voice, use the rules below together with the existing Brand Voice, Information Types, Common Writing Rules, and Recommendation Pattern.
+
+### Definition
+
+Humanization means converting mechanical, AI-generated, database-like, process-oriented, or recommendation-engine copy into natural editorial travel writing.
+
+Humanization is not synonym replacement.
+
+BAD:
+
+> Choose Gangnam when premium shopping and business are priorities.
+
+ALSO BAD:
+
+> Gangnam is good for travelers who prioritize premium shopping and business.
+
+GOOD:
+
+> Gangnam makes much more sense when meetings, shopping and dinner are already south of the river. Staying nearby avoids repeated cross-city journeys and leaves more of the day for the plans that brought you there.
+
+The GOOD version works because it explains the thought in a human order:
+
+situation → reason → practical consequence.
+
+### Language Humanization
+
+Prefer:
+
+- ordinary and familiar words
+- natural sentence rhythm
+- concrete travel situations
+- clear cause and effect
+- practical consequences
+- meaningful trade-offs
+- smooth transitions between paragraphs
+
+Reduce repetitive analytical wording such as:
+
+- optimize
+- prioritize
+- evaluate
+- verify
+- determine
+- recommended for
+- best suited for
+- strongest default
+- decision
+- alternative
+- use case
+- travel style
+- fit
+- criteria
+
+These words are not absolutely banned. The problem is repeated analytical, instructional, or classification-style use.
+
+### Context Humanization
+
+Do not repeatedly write condition → command → recommendation.
+
+Avoid patterns such as:
+
+- "If X, choose Y."
+- "If A matters, choose B."
+- "For C, choose D."
+
+Prefer natural explanation:
+
+> Jamsil becomes more appealing when several days already revolve around Lotte World, Seoul Sky and southeastern Seoul. If those plans appear only once, a more central hotel usually leaves the rest of the trip easier.
+
+The paragraph should explain why a choice works before telling the reader what conclusion to draw.
+
+### Human Thought Order
+
+Whenever possible, explain information in this order:
+
+1. What situation the traveler is actually in
+2. Why the location, service, or choice matters
+3. What changes in the real trip
+4. The practical trade-off, exception, or conclusion
+
+Do not begin every paragraph by telling the reader what to do. The reader should understand the reason naturally before reaching the recommendation.
+
+### Structural Humanization
+
+Humanization applies to page structure as well as sentences.
+
+Avoid AI-generated repetition such as:
+
+Hero recommendation → Quick Decision cards → second Quick Answer → traveler-style matrix → comparison table → Best for / Watch out → scenarios → Final Recommendation.
+
+One search question should normally receive one clear primary answer. Later sections must deepen that answer with new information instead of repeating the same recommendation in another visual format.
+
+Cards and tables remain useful when they perform the side-by-side comparison described in Common Writing Rules or serve a necessary visual function under `design-system.md`. They are exceptions, not the default structure for restating prose.
+
+### Editorial Tone
+
+The final page should feel like a travel guide edited by a knowledgeable person.
+
+It should not feel like:
+
+- an AI itinerary generator
+- a scoring engine
+- a database export
+- a SaaS dashboard
+- a consultant report
+- a decision matrix
+- an instruction manual
+
+The reader should feel that someone understands the travel situation and is explaining why a choice may or may not work. Keep the tone editorial rather than slang-heavy or overly casual.
+
+The distinctions among fact, direct verification, experience, judgment, and reader action remain governed by Information Types; humanization must not blur them.
+
+### No Fake Humanity
+
+Human writing does not mean fabricated experience. The existing Brand Voice and Common Writing Rules remain controlling.
+
+Never invent statements such as:
+
+- "I stayed here..."
+- "We found..."
+- "On my last visit..."
+- "Our experience was..."
+
+unless the experience was explicitly verified and provided.
+
+Humanization means natural reasoning, vocabulary, rhythm, and context. It does not mean pretending to have personal experience, inventing reviews or ratings, or adding unverified prices, facilities, or other facts.
+
+### Preservation Rules
+
+Humanization must not silently change:
+
+- factual meaning
+- primary search intent
+- title
+- `h1`
+- URL
+- canonical
+- robots
+- sitemap status
+- existing internal-link destinations
+- hotel names
+- affiliate URLs
+- affiliate IDs
+- tracking attributes
+- `data-link-stage`
+- `rel`
+- `target`
+- affiliate disclosure
+- verified facts
+- image `src`
+- image `alt`
+- structured data, except when an explicitly approved visible-copy change also requires synchronization
+- common Header
+- Navigation
+- Footer
+- `common.js`
+
+Any change to these items requires explicit approval. Search intent and SEO elements remain governed by `seo-standard.md`; visual components remain governed by `design-system.md`. This list defines the preservation boundary for humanization rather than replacing those standards.
+
+### Affiliate Preservation Check
+
+Never infer whether affiliate or OTA links exist. Before humanizing a page, inspect the actual current repository HEAD and record the existing count and exact destinations of:
+
+- Expedia links
+- Booking.com links
+- Agoda links
+- other affiliate links
+- tracking attributes
+- disclosures
+
+After humanization, compare the recorded before-and-after state. The current repository HEAD at the start of the approved task is the source of truth.
+
+Do not restore links from memory or assumptions. Do not remove existing commercial links unless explicitly approved. Affiliate placement and disclosure remain governed by the Affiliate Publication Policy below and `business-operating-system.md`.
+
+### Finalized Copy Rule
+
+When finalized English copy is supplied in the task:
+
+- apply it exactly
+- preserve punctuation and intended paragraph structure
+- do not simplify it
+- do not improve it
+- do not shorten it
+- do not translate it
+- do not replace words because another phrase appears "better"
+
+Codex's role in that case is implementation and verification, not autonomous copywriting.
+
+### Final Humanization QA
+
+Before reporting a humanization task complete, ask:
+
+- Does this sound like a person explaining the trip?
+- Does each paragraph add something new?
+- Is the same recommendation repeated elsewhere?
+- Is the reader being ordered around unnecessarily?
+- Did we merely replace one mechanical word with another?
+- Could a familiar everyday word replace an analytical expression?
+- Does the paragraph explain why before reaching the conclusion?
+- Are meaningful trade-offs preserved?
+- Does the copy still feel natural when translated?
+- Were facts, links, SEO, and affiliate data preserved?
+- Was any first-hand experience invented?
+
+If any answer exposes a problem, revise within the approved scope before completion. If the revision would exceed that scope, stop and request approval.
+
+### 운영 정의
+
+Korea Inside에서 “인간화”란 단순한 단어 치환이 아니다.
+
+AI형 반복 구조와 명령형·분류형 문장을 제거하고, 사람이 실제 여행 상황을 설명하는 순서에 따라 일상적으로 사용하는 자연스러운 단어와 문맥으로 문장 전체를 다시 구성하는 것을 의미한다.
+
+기본 흐름:
+
+상황 → 이유 → 실제 여행에서 생기는 변화 → 장단점 또는 결론
+
 ## 7. Affiliate Publication Policy
 
 - Place an affiliate CTA only in a context where the reader is making the relevant decision.
