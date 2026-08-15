@@ -1985,7 +1985,7 @@ ul, ol {
 }
 
 .page-best-esim main.best-esim-page .best-esim-section__header p:not(.best-esim-eyebrow) {
-  max-width: 78ch;
+  max-width: none;
   margin-top: 12px;
   color: #686158;
   text-wrap: pretty;
@@ -2153,6 +2153,7 @@ ul, ol {
   line-height: 1.68;
 }
 
+.page-best-esim main.best-esim-page .best-esim-editorial-row__body p + p,
 .page-best-esim main.best-esim-page .best-esim-provider-row__body p + p {
   margin-top: 16px;
 }
@@ -2375,7 +2376,7 @@ ul, ol {
 }
 
 .page-best-esim main.best-esim-page .best-esim-recommendation {
-  max-width: 78ch;
+  max-width: none;
   padding-top: 28px;
   border-top: 1px solid #D8D0C2;
   border-bottom: 1px solid #D8D0C2;
