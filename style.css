@@ -15650,6 +15650,8 @@ body.airport-page main .airport-page-hero__photo img {
   border-bottom: 1px solid #D8D0C2;
   color: #514C43;
   font-size: 15px;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 .nightlife-stay-page main th {
