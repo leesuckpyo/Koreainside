@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Foreign card works in stores but not on a Korean website? See how local verification, visitor checkouts and card authentication affect online payments in Korea.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.getkoreainside.com/korean-online-payments-foreigners.html">
+  <title>Korean Online Payments for Foreigners: Why Checkout Fails | Korea Inside</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.getkoreainside.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Payments",
+        "item": "https://www.getkoreainside.com/payments.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Online Payments",
+        "item": "https://www.getkoreainside.com/korean-online-payments-foreigners.html"
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Why does my foreign card work in Korean stores but fail online?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A physical card terminal and an online checkout can use different payment and identity-verification systems. The online service may require a visitor-compatible checkout, local verification or an additional issuer-authentication step even when the same card works normally in a shop."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do Korean websites always require a Korean phone number?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Some services still use local phone or identity verification, but visitor-facing alternatives exist. NAVER now offers passport verification for foreign visitors without a Korean mobile number, and CATCHTABLE Global allows signup without one."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can foreigners use NAVER booking and payment without a Korean phone number?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "NAVER says foreign users with an overseas-issued passport can use its passport-verification system without a Korean mobile number to access travel-related booking, ordering and payment functions through NAVER Map."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can tourists use CATCHTABLE without a Korean phone number?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, through CATCHTABLE Global. VISITKOREA states that international users can sign up with Google, Apple or email without a Korean phone number and can pay reservation deposits with overseas-issued cards."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is 3-D Secure?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It is an additional cardholder-authentication process used in some online card payments. The issuer may show its own authentication screen before the payment is completed. Toss Payments documents 3-D Secure support for Visa, Mastercard and JCB international-card transactions."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does an international-card option mean my card will definitely work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. It means the checkout supports an overseas-card payment route. The transaction can still depend on the card network, issuer authentication and final authorization."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Should I keep trying different foreign cards if a Korean website asks for local verification?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Usually that does not address the real problem. If the checkout is stopping before card payment because of local account or identity requirements, look first for a visitor/global route rather than repeatedly changing cards."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is an online payment failure the same as a card being declined in a store?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. They can overlap, but online checkout can introduce account verification and cardholder authentication that do not exist in a normal in-person purchase. If the card is also failing at staffed merchants, treat that as a separate card-decline problem."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="foreign-card-page card-declined-page" data-section="travel-tips">
+<!-- GLOBAL_NAV_START -->
+  <header class="header site-header" data-common-header>
+    <div class="container header__inner site-header__inner">
+      <a href="/" class="logo site-header__logo" aria-label="Korea Inside home">
+        <img class="site-brand__logo" src="images/korea-inside-logo.webp" alt="Korea Inside" width="2172" height="724">
+      </a>
+      <button class="site-nav-toggle" id="site-nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-primary-navigation"><span class="site-nav-toggle__bar"></span><span class="site-nav-toggle__bar"></span><span class="site-nav-toggle__bar"></span></button>
+      <nav class="site-nav" id="site-primary-navigation" aria-label="Primary navigation">
+        <ul class="site-nav__list">
+          <li class="site-nav__item" data-nav-section="discover">
+            <button class="site-nav__trigger" id="site-nav-trigger-discover" type="button" aria-expanded="false" aria-controls="site-nav-panel-discover" aria-haspopup="true">DISCOVER</button>
+            <div class="site-nav__panel" id="site-nav-panel-discover" aria-labelledby="site-nav-trigger-discover" hidden><div class="site-nav__group"><a class="site-nav__link" href="taste-korea.html">Taste Korea</a><a class="site-nav__link" href="k-beauty.html">K-Beauty</a></div></div>
+          </li>
+          <li class="site-nav__item" data-nav-section="stay">
+            <button class="site-nav__trigger" id="site-nav-trigger-stay" type="button" aria-expanded="false" aria-controls="site-nav-panel-stay" aria-haspopup="true">Stay</button>
+            <div class="site-nav__panel" id="site-nav-panel-stay" aria-labelledby="site-nav-trigger-stay" hidden><div class="site-nav__group"><p class="site-nav__group-label">Stay Guide</p><a class="site-nav__link" href="accommodation.html">Stay Guide</a><a class="site-nav__link" href="hongdae-vs-myeongdong.html">Hongdae vs Myeongdong</a><a class="site-nav__link" href="best-area-for-first-time-visitors-seoul.html">First-Time Visitors</a><a class="site-nav__link" href="best-area-for-families-seoul.html">Families</a><a class="site-nav__link" href="best-area-for-solo-travelers-seoul.html">Solo Travelers</a><a class="site-nav__link" href="best-area-for-couples-seoul.html">Couples</a><a class="site-nav__link" href="best-area-for-budget-travelers-seoul.html">Budget Travelers</a><a class="site-nav__link" href="best-area-for-shopping-seoul.html">Shopping</a><a class="site-nav__link" href="best-area-for-nightlife-seoul.html">Nightlife</a><a class="site-nav__link" href="best-area-for-luxury-hotels-seoul.html">Luxury Hotels</a></div></div>
+          </li>
+          <li class="site-nav__item" data-nav-section="esim">
+            <button class="site-nav__trigger" id="site-nav-trigger-esim" type="button" aria-expanded="false" aria-controls="site-nav-panel-esim" aria-haspopup="true">eSIM</button>
+            <div class="site-nav__panel" id="site-nav-panel-esim" aria-labelledby="site-nav-trigger-esim" hidden><div class="site-nav__group"><a class="site-nav__link" href="esim.html">eSIM Guide</a><a class="site-nav__link" href="best-esim-for-korea.html">Best eSIM for Korea</a><a class="site-nav__link" href="korea-esim-with-phone-number.html">Korea eSIM with a Phone Number</a></div></div>
+          </li>
+          <li class="site-nav__item" data-nav-section="airport">
+            <button class="site-nav__trigger" id="site-nav-trigger-airport" type="button" aria-expanded="false" aria-controls="site-nav-panel-airport" aria-haspopup="true">Airport</button>
+            <div class="site-nav__panel" id="site-nav-panel-airport" aria-labelledby="site-nav-trigger-airport" hidden><div class="site-nav__group"><a class="site-nav__link" href="airport.html">Airport Guide</a><a class="site-nav__link" href="arrival.html">Arrival Guide</a><a class="site-nav__link" href="airport-transfer.html">Airport Transfer</a><a class="site-nav__link" href="arex.html">AREX Guide</a><a class="site-nav__link" href="airport-bus.html">Airport Bus Guide</a></div></div>
+          </li>
+          <li class="site-nav__item" data-nav-section="maps">
+            <button class="site-nav__trigger" id="site-nav-trigger-maps" type="button" aria-expanded="false" aria-controls="site-nav-panel-maps" aria-haspopup="true">Maps</button>
+            <div class="site-nav__panel" id="site-nav-panel-maps" aria-labelledby="site-nav-trigger-maps" hidden><div class="site-nav__group"><a class="site-nav__link" href="maps.html">Maps Guide</a></div></div>
+          </li>
+          <li class="site-nav__item" data-nav-section="transport">
+            <button class="site-nav__trigger" id="site-nav-trigger-transport" type="button" aria-expanded="false" aria-controls="site-nav-panel-transport" aria-haspopup="true">Transport</button>
+            <div class="site-nav__panel site-nav__panel--end" id="site-nav-panel-transport" aria-labelledby="site-nav-trigger-transport" hidden><div class="site-nav__group"><p class="site-nav__group-label">Travel Cards</p><a class="site-nav__link" href="tmoney.html">T-money Guide</a><a class="site-nav__link" href="wowpass.html">WOWPASS Guide</a></div><div class="site-nav__group"><p class="site-nav__group-label">Other Transport</p><a class="site-nav__link" href="taxi.html">Taxi Guide</a><a class="site-nav__link" href="rental-car.html">Rental Car</a></div></div>
+          </li>
+          <li class="site-nav__item" data-nav-section="apps">
+            <button class="site-nav__trigger" id="site-nav-trigger-apps" type="button" aria-expanded="false" aria-controls="site-nav-panel-apps" aria-haspopup="true">Apps</button>
+            <div class="site-nav__panel site-nav__panel--end" id="site-nav-panel-apps" aria-labelledby="site-nav-trigger-apps" hidden><div class="site-nav__group"><a class="site-nav__link" href="apps.html">Essential Apps</a></div></div>
+          </li>
+          <li class="site-nav__item site-nav__item--active" data-nav-section="travel-tips">
+            <button class="site-nav__trigger site-nav__trigger--current" id="site-nav-trigger-travel-tips" type="button" aria-expanded="false" aria-controls="site-nav-panel-travel-tips" aria-haspopup="true" aria-current="true">Travel Tips</button>
+            <div class="site-nav__panel site-nav__panel--end" id="site-nav-panel-travel-tips" aria-labelledby="site-nav-trigger-travel-tips" hidden><div class="site-nav__group"><a class="site-nav__link" href="checklist.html">Korea Travel Checklist</a><a class="site-nav__link" href="payments.html">Paying in Korea</a></div></div>
+          </li>
+        </ul>
+      </nav>
+      <div class="language-switcher" aria-label="Language selector" data-supported-languages="EN JP KR TW VN"><button class="language-switcher__button" type="button" aria-disabled="true" disabled><span class="language-switcher__current">EN</span><span class="language-switcher__label">Language</span></button></div>
+    </div>
+  </header>
+  <!-- GLOBAL_NAV_END -->
+
+  <main>
+    <div class="page-hero payments-hero">
+      <div class="container">
+        <p class="page-hero__breadcrumb"><a href="/">Home</a> / <a href="payments.html">Payments</a> / Online Payments</p>
+        <h1 class="page-hero__title">Korean Online Payments for Foreigners</h1>
+        <p class="page-hero__desc">A foreign card can work perfectly well at a café in Seoul and then fail ten minutes later on a Korean website. The card may not be the problem.</p>
+        <p class="page-hero__desc">Online checkout in Korea can add identity verification, phone verification or a payment flow that never appears at a physical card terminal. Some services now provide a separate path for international visitors, so the useful question is often which checkout you are using, not simply whether Korea accepts foreign cards. Korean online payment systems can separate payment-method authentication from the later authorization step.</p>
+      </div>
+    </div>
+
+    <article class="guide-content payments-guide">
+      <div class="container">
+        <section id="checkout-stage" aria-labelledby="checkout-stage-title">
+          <h2 id="checkout-stage-title">Start by looking at the checkout, not the card</h2>
+          <p>When a card works in shops but fails only on a website or app, treating it as an ordinary card decline can send you in the wrong direction.</p>
+          <p>The site first has to offer a payment route that can handle an overseas user. After that, the service may have its own identity or account requirements, and the card issuer may still ask for authentication before approving the transaction. These are different stages, even though the traveler only sees one failed checkout screen.</p>
+          <p>That is why changing cards does not solve every online-payment problem. If the service itself expects a Korean verification flow, three different foreign cards can reach the same dead end.</p>
+        </section>
+
+        <section id="phone-verification" aria-labelledby="phone-verification-title">
+          <h2 id="phone-verification-title">A Korean phone number is sometimes the barrier — but not always</h2>
+          <p>Older advice about Korean websites often reduces the problem to one rule: “You need a Korean phone number.”</p>
+          <p>That is too broad now.</p>
+          <p>Some domestic services still use local identity or phone-based verification. Others have built separate routes for short-term visitors. The difference can be the version of the service you open, the way you create the account or the identity method the company supports.</p>
+          <p>This matters because the foreign card may be completely usable. The traveler can be blocked before the card is ever asked to pay.</p>
+        </section>
+
+        <section id="naver-verification" aria-labelledby="naver-verification-title">
+          <h2 id="naver-verification-title">NAVER is a good example of how quickly this is changing</h2>
+          <p>NAVER introduced passport-based verification for foreign visitors in June 2026. Travelers with passports issued outside Korea can use the verification process on a smartphone without a Korean mobile number, and NAVER says it can be used for travel-related booking, ordering and payment functions through NAVER Map.</p>
+          <p>That does not mean every NAVER service or every Korean website now works the same way. It means an old blanket statement such as “foreign tourists cannot use NAVER payments without a Korean phone number” is no longer accurate.</p>
+          <p>For travelers, the practical lesson is simpler: look for the visitor route before assuming the service is unavailable to you.</p>
+        </section>
+
+        <section id="global-checkout" aria-labelledby="global-checkout-title">
+          <h2 id="global-checkout-title">Sometimes the global version is the real solution</h2>
+          <p>CATCHTABLE shows the same idea from a different direction.</p>
+          <p>CATCHTABLE Global is designed for international visitors. According to VISITKOREA, travelers can create an account with Google, Apple or email without a Korean phone number and can pay reservation deposits with cards issued overseas.</p>
+          <p>A traveler who lands on a domestic booking flow may therefore have a much harder experience than someone using the global version of the same service.</p>
+          <p>A Korean service can be difficult to use through its domestic checkout and still offer an easier route for international visitors. Sometimes that route already exists; it is simply not the domestic version.</p>
+        </section>
+
+        <section id="issuer-authentication" aria-labelledby="issuer-authentication-title">
+          <h2 id="issuer-authentication-title">Even a foreign-card checkout can ask for another authentication step</h2>
+          <p>Reaching an international-card payment screen does not guarantee that the transaction will finish immediately.</p>
+          <p>For supported overseas-card payments, the issuing bank may ask for its own authentication. Toss Payments documents 3-D Secure flows for Visa, Mastercard and JCB, while UnionPay uses its own authentication system. The authentication screen belongs to the card issuer rather than to the Korean merchant.</p>
+          <p>This can explain a familiar situation: the Korean website appears to accept the card, but the payment stops when the issuer authentication does not complete.</p>
+          <p>That is different from a website that never offered an overseas-card checkout in the first place.</p>
+        </section>
+
+        <section id="checkout-troubleshooting" aria-labelledby="checkout-troubleshooting-title">
+          <h2 id="checkout-troubleshooting-title">When checkout stops, work out which stage you reached</h2>
+          <p>There is no reason to diagnose the entire Korean payment system every time a booking fails. A few observations usually narrow the problem.</p>
+          <ol class="foreign-card-prep-list">
+            <li><strong>Look for a global or visitor version of the service.</strong> A domestic checkout and an international checkout may have different account and payment requirements.</li>
+            <li><strong>Notice whether the problem happens before the card screen appears.</strong> If the site stops at Korean phone or identity verification, changing cards is unlikely to solve that stage.</li>
+            <li><strong>If the card screen appears, see whether the issuer asks for authentication.</strong> A bank-app approval, password or other issuer step means the transaction has progressed further than a local account-verification failure.</li>
+            <li><strong>Do not keep changing one thing after another without knowing what failed.</strong> A different card may help with an issuer-side problem, but it will not create an international checkout that the merchant does not offer.</li>
+            <li><strong>Use another booking route when one exists.</strong> A service's global version or another visitor-facing platform can be more useful than repeatedly forcing a domestic checkout.</li>
+          </ol>
+          <p>If your card is also being declined at normal shops and restaurants, that is a different problem. Use the <a href="card-declined-korea.html">Card Declined in Korea</a> guide to separate merchant-terminal issues from issuer-side declines.</p>
+        </section>
+
+        <section id="guide-scope" aria-labelledby="guide-scope-title">
+          <h2 id="guide-scope-title">Some payment problems start somewhere else</h2>
+          <p>The advice here is for problems that begin at an online checkout or verification screen.</p>
+          <p>It is not an ATM guide, a T-money top-up guide or a list of every Korean app that accepts foreign cards. Those systems have different rules.</p>
+          <p>It also does not mean every service with a global login will accept every overseas card. Account access, identity verification and payment acceptance are separate questions.</p>
+          <p>For the broader question of using an overseas card in shops and restaurants, see <a href="foreign-credit-cards-korea.html">Using Foreign Credit Cards in Korea</a>. For general payment planning, return to <a href="payments.html">How to Pay in Korea</a>.</p>
+        </section>
+
+        <section aria-labelledby="faq-title">
+          <h2 id="faq-title">Frequently asked questions</h2>
+          <div class="payments-faq">
+            <details><summary>Why does my foreign card work in Korean stores but fail online?</summary><p>A physical card terminal and an online checkout can use different payment and identity-verification systems. The online service may require a visitor-compatible checkout, local verification or an additional issuer-authentication step even when the same card works normally in a shop.</p></details>
+            <details><summary>Do Korean websites always require a Korean phone number?</summary><p>No. Some services still use local phone or identity verification, but visitor-facing alternatives exist. NAVER now offers passport verification for foreign visitors without a Korean mobile number, and CATCHTABLE Global allows signup without one.</p></details>
+            <details><summary>Can foreigners use NAVER booking and payment without a Korean phone number?</summary><p>NAVER says foreign users with an overseas-issued passport can use its passport-verification system without a Korean mobile number to access travel-related booking, ordering and payment functions through NAVER Map.</p></details>
+            <details><summary>Can tourists use CATCHTABLE without a Korean phone number?</summary><p>Yes, through CATCHTABLE Global. VISITKOREA states that international users can sign up with Google, Apple or email without a Korean phone number and can pay reservation deposits with overseas-issued cards.</p></details>
+            <details><summary>What is 3-D Secure?</summary><p>It is an additional cardholder-authentication process used in some online card payments. The issuer may show its own authentication screen before the payment is completed. Toss Payments documents 3-D Secure support for Visa, Mastercard and JCB international-card transactions.</p></details>
+            <details><summary>Does an international-card option mean my card will definitely work?</summary><p>No. It means the checkout supports an overseas-card payment route. The transaction can still depend on the card network, issuer authentication and final authorization.</p></details>
+            <details><summary>Should I keep trying different foreign cards if a Korean website asks for local verification?</summary><p>Usually that does not address the real problem. If the checkout is stopping before card payment because of local account or identity requirements, look first for a visitor/global route rather than repeatedly changing cards.</p></details>
+            <details><summary>Is an online payment failure the same as a card being declined in a store?</summary><p>No. They can overlap, but online checkout can introduce account verification and cardholder authentication that do not exist in a normal in-person purchase. If the card is also failing at staffed merchants, treat that as a separate card-decline problem.</p></details>
+          </div>
+        </section>
+
+        <section aria-labelledby="sources-title">
+          <h2 id="sources-title">Official references</h2>
+          <p><a href="https://www.navercorp.com/en/media/pressReleasesDetail?seq=10034413">NAVER — Passport Verification for Foreign Visitors</a></p>
+          <p><a href="https://navercorp.com/en/media/pressReleasesDetail?seq=10034414">NAVER Map — Foreign-user booking and payment updates</a></p>
+          <p><a href="https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=1590988">VISITKOREA — CATCHTABLE Global</a></p>
+          <p><a href="https://docs.tosspayments.com/en/overview">Toss Payments — Korean online payment process</a></p>
+          <p><a href="https://docs.tosspayments.com/resources/glossary/international-payment">Toss Payments — International payments and authentication</a></p>
+        </section>
+
+        <div class="related-links">
+          <p class="related-links__title">Related guides</p>
+          <a href="payments.html" class="chip">How to pay in Korea</a>
+          <a href="foreign-credit-cards-korea.html" class="chip">Using foreign credit cards in Korea</a>
+          <a href="card-declined-korea.html" class="chip">Card declined in Korea</a>
+          <a href="apps.html" class="chip">Essential apps</a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="footer footer--korea-editorial">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand-block">
+          <p class="footer__brand">Korea Inside</p>
+          <p class="footer__eyebrow">CREATED IN KOREA</p>
+          <p class="footer__statement">Practical Korea travel guidance, written and reviewed locally by a Korean editor.</p>
+          <p class="footer__description">Based on official sources, local context, and independent editorial judgment.</p>
+        </div>
+        <nav class="footer__nav" aria-label="Footer navigation">
+          <div class="footer__group">
+            <p class="footer__heading">PLAN YOUR TRIP</p>
+            <ul class="footer__links">
+              <li><a href="airport.html">Airport</a></li>
+              <li><a href="esim.html">eSIM</a></li>
+              <li><a href="checklist.html">Checklist</a></li>
+            </ul>
+          </div>
+          <div class="footer__group">
+            <p class="footer__heading">USE KOREA</p>
+            <ul class="footer__links">
+              <li><a href="tmoney.html">T-money</a></li>
+              <li><a href="payments.html">Payments</a></li>
+              <li><a href="maps.html">Maps</a></li>
+              <li><a href="apps.html">Apps</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2026 Korea Inside · Republic of Korea</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="common.js"></script>
+  <script>
+    window.va = window.va || function () {
+      (window.vaq = window.vaq || []).push(arguments);
+    };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

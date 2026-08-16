@@ -7306,6 +7306,9 @@ body.foreign-card-page .foreign-card-prep-list li {
 }
 
 .card-declined-page .payments-guide #atm-transit-failures a,
+.card-declined-page .payments-guide #online-failures a,
+.card-declined-page .payments-guide #checkout-troubleshooting a,
+.card-declined-page .payments-guide #guide-scope a,
 .card-declined-page .payments-guide section[aria-labelledby="sources-title"] a {
   color: #3F5D52;
   font-weight: 600;
@@ -7316,6 +7319,12 @@ body.foreign-card-page .foreign-card-prep-list li {
 
 .card-declined-page .payments-guide #atm-transit-failures a:hover,
 .card-declined-page .payments-guide #atm-transit-failures a:focus-visible,
+.card-declined-page .payments-guide #online-failures a:hover,
+.card-declined-page .payments-guide #online-failures a:focus-visible,
+.card-declined-page .payments-guide #checkout-troubleshooting a:hover,
+.card-declined-page .payments-guide #checkout-troubleshooting a:focus-visible,
+.card-declined-page .payments-guide #guide-scope a:hover,
+.card-declined-page .payments-guide #guide-scope a:focus-visible,
 .card-declined-page .payments-guide section[aria-labelledby="sources-title"] a:hover,
 .card-declined-page .payments-guide section[aria-labelledby="sources-title"] a:focus-visible {
   color: #1D2B27;
