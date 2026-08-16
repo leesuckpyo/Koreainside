@@ -22955,8 +22955,7 @@ body[data-section="apps"] main section[id] {
   scroll-margin-top: 96px;
 }
 
-body[data-section="apps"] main .apps-eyebrow,
-body[data-section="apps"] main .apps-hero__label {
+body[data-section="apps"] main .apps-eyebrow {
   color: #3F5D52;
   font-size: 13px;
   font-weight: 600;
@@ -22976,14 +22975,7 @@ body[data-section="apps"] main .apps-hero > .container > .apps-eyebrow {
 }
 
 body[data-section="apps"] main .apps-hero__grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.45fr) minmax(300px, 0.55fr);
-  gap: 52px;
-  align-items: end;
-}
-
-body[data-section="apps"] main .apps-hero__grid > * {
-  min-width: 0;
+  max-width: 82ch;
 }
 
 body[data-section="apps"] main .apps-hero__intro {
@@ -22992,20 +22984,13 @@ body[data-section="apps"] main .apps-hero__intro {
 }
 
 body[data-section="apps"] main .apps-hero__answer {
-  padding: 24px 26px 26px;
-  border: 1px solid #D8D0C2;
-  border-radius: 16px;
-  background: #FFFDF8;
-  box-shadow: 0 8px 24px rgba(35, 26, 14, 0.06);
-}
-
-body[data-section="apps"] main .apps-hero__label {
-  margin-bottom: 15px;
+  max-width: 72ch;
+  margin-top: 16px;
 }
 
 body[data-section="apps"] main .apps-hero__answer p {
-  font-size: 16px;
-  line-height: 1.6;
+  font-size: 18px;
+  line-height: 1.72;
 }
 
 body[data-section="apps"] main .apps-guide {
@@ -23036,46 +23021,6 @@ body[data-section="apps"] main .apps-section__heading .apps-eyebrow {
 body[data-section="apps"] main .apps-section__heading > p:last-child:not(.apps-eyebrow) {
   max-width: 82ch;
   margin-top: 14px;
-}
-
-body[data-section="apps"] main .apps-decision-panel {
-  padding: 0 28px;
-  border: 1px solid #D8D0C2;
-  border-radius: 16px;
-  background: #FFFDF8;
-  box-shadow: 0 6px 20px rgba(35, 26, 14, 0.05);
-}
-
-body[data-section="apps"] main .apps-decision-list {
-  margin: 0;
-}
-
-body[data-section="apps"] main .apps-decision-list > div {
-  display: grid;
-  grid-template-columns: minmax(240px, 0.8fr) minmax(0, 1.2fr);
-  gap: 32px;
-  padding: 22px 0;
-  border-bottom: 1px solid #D8D0C2;
-}
-
-body[data-section="apps"] main .apps-decision-list > div:last-child {
-  border-bottom: 0;
-}
-
-body[data-section="apps"] main .apps-decision-list dt,
-body[data-section="apps"] main .apps-decision-list dd {
-  min-width: 0;
-  font-size: 18px;
-  line-height: 1.68;
-}
-
-body[data-section="apps"] main .apps-decision-list dt {
-  color: #1D2B27;
-  font-weight: 600;
-}
-
-body[data-section="apps"] main .apps-decision-list dd {
-  margin: 0;
 }
 
 body[data-section="apps"] main .apps-table-scroll {
@@ -23115,11 +23060,12 @@ body[data-section="apps"] main .apps-table tbody th {
 
 body[data-section="apps"] main .apps-editorial-list,
 body[data-section="apps"] main .apps-checklist,
-body[data-section="apps"] main .apps-scenario-list,
-body[data-section="apps"] main .apps-problem-list,
-body[data-section="apps"] main .apps-mistake-list,
 body[data-section="apps"] main .apps-sources ul {
   border-top: 2px solid #1D2B27;
+}
+
+body[data-section="apps"] main .apps-editorial-list--continued {
+  margin-top: 32px;
 }
 
 body[data-section="apps"] main .apps-editorial-row {
@@ -23159,19 +23105,13 @@ body[data-section="apps"] main .apps-download-links a {
 }
 
 body[data-section="apps"] main .apps-checklist,
-body[data-section="apps"] main .apps-scenario-list,
-body[data-section="apps"] main .apps-problem-list,
-body[data-section="apps"] main .apps-mistake-list,
 body[data-section="apps"] main .apps-sources ul {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-body[data-section="apps"] main .apps-checklist > li,
-body[data-section="apps"] main .apps-scenario-list > li,
-body[data-section="apps"] main .apps-problem-list > li,
-body[data-section="apps"] main .apps-mistake-list > li {
+body[data-section="apps"] main .apps-checklist > li {
   display: grid;
   grid-template-columns: minmax(230px, 0.7fr) minmax(0, 1.3fr);
   gap: 36px;
@@ -23180,13 +23120,7 @@ body[data-section="apps"] main .apps-mistake-list > li {
 }
 
 body[data-section="apps"] main .apps-checklist strong,
-body[data-section="apps"] main .apps-checklist span,
-body[data-section="apps"] main .apps-scenario-list strong,
-body[data-section="apps"] main .apps-scenario-list span,
-body[data-section="apps"] main .apps-problem-list strong,
-body[data-section="apps"] main .apps-problem-list span,
-body[data-section="apps"] main .apps-mistake-list strong,
-body[data-section="apps"] main .apps-mistake-list span {
+body[data-section="apps"] main .apps-checklist span {
   min-width: 0;
   font-size: 18px;
   line-height: 1.72;
@@ -23260,12 +23194,7 @@ body[data-section="apps"] main .apps-table-scroll:focus-visible {
   }
 
   body[data-section="apps"] main .apps-hero__grid {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 32px;
-  }
-
-  body[data-section="apps"] main .apps-hero__answer {
-    max-width: 680px;
+    max-width: 78ch;
   }
 
   body[data-section="apps"] main .apps-section {
@@ -23278,12 +23207,8 @@ body[data-section="apps"] main .apps-table-scroll:focus-visible {
 }
 
 @media (max-width: 720px) {
-  body[data-section="apps"] main .apps-decision-list > div,
   body[data-section="apps"] main .apps-editorial-row,
-  body[data-section="apps"] main .apps-checklist > li,
-  body[data-section="apps"] main .apps-scenario-list > li,
-  body[data-section="apps"] main .apps-problem-list > li,
-  body[data-section="apps"] main .apps-mistake-list > li {
+  body[data-section="apps"] main .apps-checklist > li {
     grid-template-columns: minmax(0, 1fr);
     gap: 12px;
   }
@@ -23330,12 +23255,12 @@ body[data-section="apps"] main .apps-table-scroll:focus-visible {
   }
 
   body[data-section="apps"] main .apps-hero__answer {
-    padding: 20px;
+    margin-top: 14px;
   }
 
   body[data-section="apps"] main .apps-hero__answer p {
-    font-size: 16px;
-    line-height: 1.6;
+    font-size: 17px;
+    line-height: 1.68;
   }
 
   body[data-section="apps"] main .apps-section {
@@ -23346,24 +23271,8 @@ body[data-section="apps"] main .apps-table-scroll:focus-visible {
     margin-bottom: 28px;
   }
 
-  body[data-section="apps"] main .apps-decision-panel {
-    padding: 0 20px;
-  }
-
-  body[data-section="apps"] main .apps-decision-list > div {
-    padding: 19px 0;
-  }
-
-  body[data-section="apps"] main .apps-decision-list dt,
-  body[data-section="apps"] main .apps-decision-list dd,
   body[data-section="apps"] main .apps-checklist strong,
-  body[data-section="apps"] main .apps-checklist span,
-  body[data-section="apps"] main .apps-scenario-list strong,
-  body[data-section="apps"] main .apps-scenario-list span,
-  body[data-section="apps"] main .apps-problem-list strong,
-  body[data-section="apps"] main .apps-problem-list span,
-  body[data-section="apps"] main .apps-mistake-list strong,
-  body[data-section="apps"] main .apps-mistake-list span {
+  body[data-section="apps"] main .apps-checklist span {
     font-size: 17px;
     line-height: 1.68;
   }
@@ -23381,10 +23290,7 @@ body[data-section="apps"] main .apps-table-scroll:focus-visible {
     gap: 9px 18px;
   }
 
-  body[data-section="apps"] main .apps-checklist > li,
-  body[data-section="apps"] main .apps-scenario-list > li,
-  body[data-section="apps"] main .apps-problem-list > li,
-  body[data-section="apps"] main .apps-mistake-list > li {
+  body[data-section="apps"] main .apps-checklist > li {
     padding: 20px 0;
   }
 
