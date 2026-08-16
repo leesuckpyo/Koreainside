@@ -6899,37 +6899,9 @@ body.airport-page main .airport-page-hero__photo img {
   margin-top: 24px;
 }
 
-.payments-answer-list,
-.payments-card-grid,
-.payments-problem-grid,
 .payments-faq {
   display: grid;
   gap: 14px;
-}
-
-.payments-answer-list {
-  margin: 18px 0 0;
-  padding: 20px;
-  border-left: 4px solid #0f766e;
-  border-radius: var(--radius-sm);
-  background: var(--gray-50);
-}
-
-.payments-answer-list li {
-  position: relative;
-  padding-left: 22px;
-  color: var(--blue-muted);
-}
-
-.payments-answer-list li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.7em;
-  width: 7px;
-  height: 7px;
-  border-radius: 999px;
-  background: #0f766e;
 }
 
 .payments-table {
@@ -6943,8 +6915,6 @@ body.airport-page main .airport-page-hero__photo img {
   font-weight: 600;
 }
 
-.payments-card,
-.payments-link-panel,
 .payments-faq details {
   border: 1px solid var(--gray-200);
   border-radius: var(--radius-sm);
@@ -6952,36 +6922,30 @@ body.airport-page main .airport-page-hero__photo img {
   box-shadow: var(--shadow-sm);
 }
 
-.payments-card {
-  padding: 20px;
+.payments-editorial-list {
+  max-width: 860px;
+  margin: 24px auto 0;
+  border-top: 1px solid var(--gray-200);
 }
 
-.payments-card h3 {
+.payments-editorial-row {
+  padding: 24px 0;
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.payments-editorial-row h3 {
+  margin: 0 0 10px;
   color: var(--blue-deep);
-  font-size: 1.0625rem;
-  line-height: 1.25;
-  letter-spacing: 0;
-  margin-bottom: 8px;
 }
 
-.payments-card p {
-  color: var(--blue-muted);
+.payments-editorial-row p {
   margin: 0;
+  color: var(--blue-muted);
+  line-height: 1.65;
 }
 
-.payments-link-panel {
-  display: grid;
-  gap: 16px;
-  align-items: center;
-  padding: 22px;
-}
-
-.payments-link-panel h2 {
-  margin-top: 0;
-}
-
-.payments-link-panel p {
-  margin-bottom: 0;
+.payments-editorial-row .chip {
+  margin-top: 16px;
 }
 
 .payments-faq details {
@@ -7009,22 +6973,6 @@ body.airport-page main .airport-page-hero__photo img {
   .payments-hero__actions {
     flex-direction: row;
     flex-wrap: wrap;
-  }
-
-  .payments-card-grid,
-  .payments-problem-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (min-width: 960px) {
-  .payments-card-grid,
-  .payments-problem-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .payments-link-panel {
-    grid-template-columns: minmax(0, 1fr) auto;
   }
 }
 
