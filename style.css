@@ -6630,27 +6630,15 @@ body.airport-page main .airport-page-hero__photo img {
 }
 
 .tmoney-visual-grid,
-.tmoney-recharge-grid,
-.tmoney-option-grid,
-.tmoney-card-choice-grid,
-.tmoney-use-grid,
-.tmoney-limit-grid {
+.tmoney-recharge-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 18px;
+  gap: 28px;
 }
 
-.tmoney-step-panel,
-.tmoney-option-card,
-.tmoney-use-card,
-.tmoney-card-choice-grid > div,
-.tmoney-recharge-panel,
-.tmoney-limit-card {
-  background: var(--white);
-  border: 1px solid var(--gray-200);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm);
-  padding: 22px;
+.tmoney-step-panel {
+  border-top: 1px solid var(--gray-200);
+  border-bottom: 1px solid var(--gray-200);
 }
 
 .tmoney-mini-step {
@@ -6677,45 +6665,54 @@ body.airport-page main .airport-page-hero__photo img {
 }
 
 .tmoney-mini-step strong,
-.tmoney-option-card h3,
-.tmoney-use-card h3,
-.tmoney-card-choice-grid h3,
-.tmoney-recharge-panel h3 {
+.tmoney-editorial-row h3,
+.tmoney-recharge-copy h3 {
   color: var(--blue-deep);
 }
 
 .tmoney-mini-step p,
-.tmoney-option-card p,
-.tmoney-use-card p,
-.tmoney-card-choice-grid p,
-.tmoney-small-note {
+.tmoney-editorial-row p,
+.tmoney-recharge-copy p,
+.tmoney-prose p,
+.tmoney-refund-copy {
   color: var(--blue-muted);
   line-height: 1.65;
   margin: 0;
 }
 
-.tmoney-use-card span,
-.tmoney-option-card__icon {
-  display: inline-flex;
-  width: 44px;
-  height: 44px;
-  align-items: center;
-  justify-content: center;
-  border-radius: var(--radius-sm);
-  background: var(--blue-light);
-  font-size: 1.35rem;
-  margin-bottom: 12px;
+.tmoney-prose {
+  max-width: 820px;
+  margin: 0 auto;
 }
 
-.tmoney-option-card strong {
-  display: block;
-  color: var(--blue-accent);
-  margin-top: 14px;
+.tmoney-prose p + p,
+.tmoney-recharge-copy p + p {
+  margin-top: 16px;
 }
 
-.tmoney-option-card--highlight {
-  border-color: rgba(26, 86, 219, .35);
-  background: linear-gradient(180deg, #ffffff 0%, #f6f9ff 100%);
+.tmoney-editorial-list {
+  max-width: 860px;
+  margin: 0 auto;
+  border-top: 1px solid var(--gray-200);
+}
+
+.tmoney-editorial-row {
+  padding: 24px 0;
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.tmoney-editorial-row h3,
+.tmoney-recharge-copy h3 {
+  margin: 0 0 10px;
+}
+
+.tmoney-recharge-copy {
+  border-top: 1px solid var(--gray-200);
+}
+
+.tmoney-recharge-copy section {
+  padding: 24px 0;
+  border-bottom: 1px solid var(--gray-200);
 }
 
 .tmoney-table {
@@ -6726,74 +6723,40 @@ body.airport-page main .airport-page-hero__photo img {
   width: 100%;
 }
 
-.tmoney-limit-card {
-  text-align: center;
+.tmoney-comparison-notes {
+  margin-top: 28px;
 }
 
-.tmoney-limit-card span {
-  display: block;
-  color: var(--blue-muted);
-  font-size: .9rem;
+.tmoney-wowpass-link {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  align-items: center;
+  padding: 24px 0;
+  border-top: 1px solid var(--gray-200);
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.tmoney-wowpass-link .eyebrow {
   margin-bottom: 8px;
 }
 
-.tmoney-limit-card strong {
-  display: block;
-  color: var(--blue-deep);
-  font-size: 1.8rem;
-}
-
-.tmoney-small-note {
-  text-align: center;
-  font-size: .9rem;
-  margin-top: 16px;
-}
-
-.tmoney-wowpass-banner {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
-  align-items: center;
-  background: var(--blue-deep);
-  color: var(--white);
-  border-radius: var(--radius-xl);
-  padding: 28px;
-  box-shadow: var(--shadow-lg);
-}
-
-.tmoney-wowpass-banner .eyebrow {
-  color: #bfdbfe;
-  margin-bottom: 10px;
-}
-
-.tmoney-wowpass-banner h2 {
-  color: var(--white);
-  font-size: 1.6rem;
-  margin-bottom: 10px;
-}
-
-.tmoney-wowpass-banner p {
-  color: rgba(255,255,255,.78);
+.tmoney-wowpass-link p {
+  color: var(--blue-muted);
   line-height: 1.7;
   margin: 0;
 }
 
-.tmoney-wowpass-button {
-  display: inline-flex;
-  justify-content: center;
-  padding: 12px 18px;
-  border-radius: 999px;
-  background: var(--white);
-  color: var(--blue-deep);
-  font-weight: 900;
+.tmoney-wowpass-link__action {
+  color: var(--blue-accent);
+  font-weight: 800;
 }
 
-.tmoney-wowpass-button:hover {
+.tmoney-wowpass-link__action:hover {
   color: var(--blue-deep);
-  background: #eaf2ff;
 }
 
-.tmoney-refund-box {
+.tmoney-refund-copy {
   max-width: 760px;
   margin: 0 auto;
 }
@@ -6803,24 +6766,14 @@ body.airport-page main .airport-page-hero__photo img {
     grid-template-columns: minmax(0, 1.15fr) minmax(320px, .85fr);
   }
   .tmoney-visual-grid,
-  .tmoney-recharge-grid,
-  .tmoney-option-grid,
-  .tmoney-card-choice-grid {
+  .tmoney-recharge-grid {
     grid-template-columns: repeat(2, 1fr);
-  }
-  .tmoney-use-grid,
-  .tmoney-limit-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-  .tmoney-limit-grid {
-    grid-template-columns: repeat(3, 1fr);
   }
   .tmoney-visual-card--wide {
     min-height: 100%;
   }
-  .tmoney-wowpass-banner {
+  .tmoney-wowpass-link {
     grid-template-columns: 1fr auto;
-    padding: 34px;
   }
 }
 /* ── End T-money upgraded landing page ── */
