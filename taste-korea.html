@@ -138,7 +138,7 @@
     }
 
     .taste-korea-page .taste-content .next-step-intro,
-    .taste-korea-page .taste-content .next-step-grid {
+    .taste-korea-page .taste-content .next-step-list {
       position: relative;
       z-index: 1;
     }
@@ -158,46 +158,37 @@
       line-height: 1.65;
     }
 
-    .taste-korea-page .taste-content .next-step-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
+    .taste-korea-page .taste-content .next-step-list {
       margin-top: 30px;
+      border-bottom: 1px solid rgba(255, 255, 255, .28);
     }
 
-    .taste-korea-page .taste-content .next-step-card {
-      display: flex;
+    .taste-korea-page .taste-content .next-step-row {
+      display: grid;
+      grid-template-columns: minmax(120px, .28fr) minmax(0, 1fr) auto;
+      gap: 24px;
+      align-items: center;
       min-width: 0;
-      min-height: 218px;
-      flex-direction: column;
-      padding: 24px;
-      border: 1px solid rgba(99, 36, 28, .14);
-      border-radius: 20px;
-      background: var(--white);
-      color: var(--ink);
-      box-shadow: 0 8px 22px rgba(31, 18, 13, .08);
+      padding: 26px 2px;
+      border-top: 1px solid rgba(255, 255, 255, .28);
+      color: white;
       text-decoration: none;
+      transition: color .18s ease, border-color .18s ease;
     }
 
-    .taste-korea-page .taste-content a.next-step-card {
-      transition: transform .18s ease, border-color .18s ease, background-color .18s ease;
+    .taste-korea-page .taste-content .next-step-row:hover {
+      border-color: rgba(240, 198, 106, .72);
+      color: #f6d98d;
     }
 
-    .taste-korea-page .taste-content a.next-step-card:hover {
-      transform: translateY(-2px);
-      border-color: rgba(99, 36, 28, .34);
-      background: #fffdf9;
-    }
-
-    .taste-korea-page .taste-content a.next-step-card:focus-visible {
+    .taste-korea-page .taste-content .next-step-row:focus-visible {
       outline: 3px solid var(--gold);
       outline-offset: 3px;
     }
 
-    .taste-korea-page .taste-content .next-step-card__label {
+    .taste-korea-page .taste-content .next-step-row__label {
       display: block;
-      margin-bottom: 12px;
-      color: var(--red-dark);
+      color: #f0c66a;
       font-size: .7rem;
       font-weight: 900;
       line-height: 1.2;
@@ -205,43 +196,36 @@
       text-transform: uppercase;
     }
 
-    .taste-korea-page .taste-content .next-step-card__title {
-      margin: 0 0 10px;
-      color: var(--ink);
-      font-size: 1.28rem;
-      line-height: 1.15;
-      letter-spacing: -.025em;
+    .taste-korea-page .taste-content .next-step-row__title {
+      grid-column: 2;
+      margin: 0 0 6px;
+      color: inherit;
+      font-size: 1.18rem;
+      line-height: 1.25;
     }
 
-    .taste-korea-page .taste-content .stay-panel .next-step-card__description {
+    .taste-korea-page .taste-content .stay-panel .next-step-row__description {
+      grid-column: 2;
       max-width: none;
       margin: 0;
-      color: #625d54;
-      font-size: .88rem;
-      line-height: 1.55;
+      color: #f1d9d2;
+      font-size: 1rem;
+      line-height: 1.65;
     }
 
-    .taste-korea-page .taste-content .next-step-card__action,
-    .taste-korea-page .taste-content .next-step-card__status {
+    .taste-korea-page .taste-content .next-step-row__title + .next-step-row__description {
+      margin-top: 0;
+    }
+
+    .taste-korea-page .taste-content .next-step-row__action {
+      grid-column: 3;
+      grid-row: 1 / span 2;
       display: block;
-      margin-top: auto;
-      padding-top: 20px;
-      color: var(--red-dark);
+      color: inherit;
       font-size: .82rem;
       font-weight: 900;
       line-height: 1.35;
-    }
-
-    .taste-korea-page .taste-content .next-step-card--disabled {
-      cursor: default;
-      opacity: .8;
-      border-color: rgba(255, 255, 255, .42);
-      background: #f6eee5;
-      box-shadow: none;
-    }
-
-    .taste-korea-page .taste-content .next-step-card__status {
-      color: #7e4b42;
+      white-space: nowrap;
     }
 
     .taste-korea-page #experiences .section-lead {
@@ -304,11 +288,6 @@
     .taste-korea-page #seoul .hood-type {
       font-size: .7rem;
       letter-spacing: .05em;
-    }
-
-    .taste-korea-page #seoul .seoul-photo-grid figcaption {
-      padding: 4px 7px;
-      font-size: .65rem;
     }
 
     .taste-korea-page .taste-content .stay-transition-card {
@@ -544,13 +523,13 @@
         padding: 42px 32px;
       }
 
-      .taste-korea-page .taste-content .next-step-grid {
-        grid-template-columns: 1fr;
-        gap: 12px;
+      .taste-korea-page .taste-content .next-step-row {
+        grid-template-columns: minmax(110px, .3fr) minmax(0, 1fr);
       }
 
-      .taste-korea-page .taste-content .next-step-card {
-        min-height: 0;
+      .taste-korea-page .taste-content .next-step-row__action {
+        grid-column: 2;
+        grid-row: auto;
       }
     }
 
@@ -621,12 +600,26 @@
         line-height: 1.58;
       }
 
-      .taste-korea-page .taste-content .next-step-grid {
+      .taste-korea-page .taste-content .next-step-list {
         margin-top: 24px;
       }
 
-      .taste-korea-page .taste-content .next-step-card {
-        padding: 21px;
+      .taste-korea-page .taste-content .next-step-row {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 23px 0;
+      }
+
+      .taste-korea-page .taste-content .next-step-row__title,
+      .taste-korea-page .taste-content .stay-panel .next-step-row__description,
+      .taste-korea-page .taste-content .next-step-row__action {
+        grid-column: 1;
+        grid-row: auto;
+      }
+
+      .taste-korea-page .taste-content .next-step-row__action {
+        margin-top: 3px;
+        white-space: normal;
       }
     }
   </style>
@@ -699,121 +692,87 @@
 <p class="section-lead">Markets, barbecue, cafés and regional food create very different kinds of days. Some are quick and energetic; others make more sense when you give the neighborhood—or even another city—time to become part of the experience.</p>
 <div class="experience-grid">
 <article class="exp-card"><img alt="Vendor cooking street food at Gwangjang Market" src="images/taste-korea/gwangjang-vendor.jpg" width="1280" height="853" loading="lazy" decoding="async"><div class="exp-body"><h3>Markets &amp; Street Food</h3><p>Markets are lively because the food is only part of what is happening. Gwangjang, Mangwon and Namdaemun each work differently depending on whether you want a concentrated food stop, a neighborhood walk or a larger shopping day.</p><div class="tags"><span class="tag">Gwangjang</span><span class="tag">Mangwon</span><span class="tag">Namdaemun</span></div></div></article>
-<article class="exp-card"><img alt="Travelers sharing Korean pork belly dishes at a dining table" src="images/taste-korea/pork-belly-dishes.webp" width="1408" height="768" loading="lazy" decoding="async"><div class="exp-body"><h3>BBQ &amp; Late-night Dining</h3><p>Korean barbecue is usually a longer, more social meal than a quick dinner. The neighborhood matters too: Mapo feels different from Hongdae after dark, and Euljiro brings another kind of central-Seoul evening.</p><div class="tags"><span class="tag">Mapo</span><span class="tag">Hongdae</span><span class="tag">Euljiro</span></div></div></article>
+<article class="exp-card"><img alt="Travelers sharing Korean pork belly dishes at a dining table" src="images/taste-korea/pork-belly-dishes.webp" width="1408" height="768" loading="lazy" decoding="async"><div class="exp-body"><h3>BBQ &amp; Late-night Dining</h3><p>Korean barbecue is usually a longer, more social meal than a quick dinner. The neighborhood shapes the rest of the evening: Mapo feels different from Hongdae after dark, and Euljiro brings another kind of central-Seoul night.</p><div class="tags"><span class="tag">Mapo</span><span class="tag">Hongdae</span><span class="tag">Euljiro</span></div></div></article>
 <article class="exp-card"><img alt="A café street in Seongsu representing Seoul's café and trend spaces" src="images/taste-korea/seongsu-cafe-street.webp" width="1408" height="768" loading="lazy" decoding="async"><div class="exp-body"><h3>Cafés &amp; Trend Spaces</h3><p>A café day in Seoul is often as much about the streets around the café as the coffee itself. Seongsu, Yeonnam and Ikseon-dong each combine cafés with a very different kind of neighborhood.</p><div class="tags"><span class="tag">Seongsu</span><span class="tag">Yeonnam</span><span class="tag">Ikseon-dong</span></div></div></article>
-<article class="exp-card"><img alt="A Korean bibimbap meal representing traditional and regional food" src="images/taste-korea/jeonju-bibimbap-guide.webp" width="1408" height="768" loading="lazy" decoding="async"><div class="exp-body"><h3>Traditional &amp; Regional Food</h3><p>Regional food becomes more memorable when the place adds something to the meal. Markets, local dining habits, traditional neighborhoods and the pace of the city can matter as much as the dish itself.</p><div class="tags"><span class="tag">Jeonju</span><span class="tag">Jongno</span><span class="tag">Gyeongju</span></div></div></article>
+<article class="exp-card"><img alt="A Korean bibimbap meal representing traditional and regional food" src="images/taste-korea/jeonju-bibimbap-guide.webp" width="1408" height="768" loading="lazy" decoding="async"><div class="exp-body"><h3>Traditional &amp; Regional Food</h3><p>A regional dish lands differently when the city around it is part of the day. Markets, local dining habits, traditional neighborhoods and the pace of the place can stay with you as much as the dish itself.</p><div class="tags"><span class="tag">Jeonju</span><span class="tag">Jongno</span><span class="tag">Gyeongju</span></div></div></article>
 <article class="exp-card"><img alt="Fresh fish displayed at Jagalchi Market in Busan" src="images/taste-korea/jagalchi-market.jpg" width="1280" height="800" loading="lazy" decoding="async"><div class="exp-body"><h3>Seafood &amp; Coastal Food</h3><p>Seafood feels different when the market, harbor or island landscape is part of the day. Busan and Jeju are the clearest examples, but they create very different kinds of trips.</p><div class="tags"><span class="tag">Busan</span><span class="tag">Jeju</span><span class="tag">Tongyeong</span></div></div></article>
 <article class="exp-card"><img alt="Travelers taking part in a Korean kimchi-making experience" src="images/taste-korea/kimchi-making-experience.webp" width="1408" height="768" loading="lazy" decoding="async"><div class="exp-body"><h3>Cooking &amp; Guided Experiences</h3><p>A cooking class, market walk or food tour can add context that is hard to get from a menu alone, especially when you want to understand ingredients, ordering or the story behind a dish.</p><div class="tags"><span class="tag">Cooking class</span><span class="tag">Market tour</span><span class="tag">Food walk</span></div></div></article>
 </div>
-<div class="choice-strip"><b>Key question</b><p>Do you want to taste many things quickly, spend a whole evening around food, or build part of your route around one region?</p></div><div aria-label="Detailed food experience guides" class="experience-details">
-<article class="experience-detail" id="markets-guide">
-<div class="detail-media"><img src="images/taste-korea/gwangjang-vendor.jpg" alt="Vendor cooking street food at Gwangjang Market" width="1280" height="853" loading="lazy" decoding="async"></div>
-<div class="detail-copy">
-<h3>Three Seoul markets, three very different days</h3>
-<p>Seoul’s traditional markets are not interchangeable. Gwangjang Market is the easiest place to experience a busy, concentrated market atmosphere, with food stalls beside textiles, groceries and traditional goods.</p>
-<p>Mangwon Market is smaller and feels more connected to the surrounding neighborhood. It fits naturally with a slower local day or a walk toward the Hangang. Namdaemun is much larger, and food is only one part of a shopping district filled with clothing, kitchenware, accessories and everyday goods.</p>
-<p>Gwangjang makes sense when the market itself is one of the day’s main experiences. Mangwon works better when you want the neighborhood around it as well. Namdaemun fits a day when food and shopping already belong together.</p>
-<p>Popular meal times can bring crowded aisles, queues and limited seating, while opening hours and payment methods still vary from stall to stall. There is usually no reason to book a hotel beside a market for one visit; Jongno becomes more useful as a base when Gwangjang is part of a wider palace, Dongdaemun or Euljiro itinerary.</p>
+<section class="experience-editorial-block" aria-labelledby="food-experience-detail-title">
+<div class="experience-editorial-heading">
+<div class="eyebrow">FOOD EXPERIENCES</div>
+<h2 class="section-title" id="food-experience-detail-title">Food has a different rhythm in every setting.</h2>
+<p class="section-lead">The same meal can feel completely different in a crowded market, around a barbecue table or beside the coast. The details below are less about ranking those settings than understanding what kind of day each one creates.</p>
 </div>
+<div aria-label="Detailed food experience guides" class="experience-details">
+<article class="experience-editorial-row" id="markets-guide">
+<h3>Three Seoul markets, three very different days</h3>
+<p>Seoul’s traditional markets are not interchangeable. Gwangjang Market offers a busy, concentrated market atmosphere, with food stalls beside textiles, groceries and traditional goods.</p>
+<p>Mangwon Market is smaller and more closely tied to the surrounding neighborhood, so it can sit comfortably inside a slower local day or a walk toward the Hangang. Namdaemun is much larger. Food shares the district with clothing, kitchenware, accessories and everyday shopping.</p>
+<p>At Gwangjang, the market can easily become one of the day’s main events. Mangwon leaves more room for the streets around it, while Namdaemun belongs naturally in a broader shopping day. Popular meal times bring crowded aisles, queues and limited seating, and opening hours and payment methods still vary from stall to stall.</p>
 </article>
-<article class="experience-detail reverse" id="bbq-guide">
-<div class="detail-media"><img src="images/taste-korea/pork-belly-dishes.webp" alt="Travelers sharing Korean pork belly dishes at a dining table" width="1408" height="768" loading="lazy" decoding="async"></div>
-<div class="detail-copy">
+<article class="experience-editorial-row" id="bbq-guide">
 <h3>Barbecue changes with the neighborhood</h3>
 <p>A Korean barbecue restaurant is usually more than a place to eat grilled meat. At many gogi-jip, the meal unfolds around the table with vegetables, sauces, side dishes, stews or noodles. Some restaurants leave the grilling to diners, while others have staff take care of it.</p>
-<p>The neighborhood changes the rest of the evening. Mapo has plenty of barbecue and a more everyday after-work atmosphere. Hongdae adds bars, younger crowds and late-night activity. Euljiro brings older restaurants, narrow alleys and a more textured central-Seoul night, while Gangnam tends to feel more polished and can be more expensive.</p>
-<p>Barbecue works especially well with friends, family or a partner because the meal often takes time. Solo dining is possible, but minimum orders and solo policies still vary by restaurant. Popular places can also mean a wait.</p>
-<p>Staying nearby begins to matter when late dinners are a repeated part of the trip. One barbecue reservation is not a reason to move hotels; several nights ending in the same area may be.</p>
-</div>
+<p>Mapo brings an everyday after-work atmosphere. Hongdae carries dinner toward bars, younger crowds and late-night activity. Euljiro adds older restaurants and narrow alleys, while Gangnam tends to feel more polished and can be more expensive.</p>
+<p>Barbecue is rarely a rushed meal. The slower pace is part of the appeal for friends, families or couples. Solo dining is possible, but minimum orders and solo policies vary by restaurant, and popular places may involve a wait.</p>
 </article>
-<article class="experience-detail" id="cafes-guide">
-<div class="detail-media"><img src="images/taste-korea/seongsu-cafe-street.webp" alt="A café street in Seongsu representing Seoul's café and trend spaces" width="1408" height="768" loading="lazy" decoding="async"></div>
-<div class="detail-copy">
+<article class="experience-editorial-row" id="cafes-guide">
 <h3>The neighborhood is part of the café day</h3>
-<p>A café-focused day in Seoul can feel completely different depending on the area. Seongsu combines large cafés with converted industrial buildings, select shops, pop-ups and brand spaces. Yeonnam feels smaller and more residential, with cafés and casual restaurants that connect naturally to Hongdae.</p>
-<p>Ikseon-dong offers another mood altogether, with cafés and restaurants in and around renovated hanok buildings and narrow central-Seoul lanes.</p>
-<p>Seongsu is a good fit when design, fashion, beauty and brand spaces are already part of the day. Yeonnam works well for slower neighborhood walking, while Ikseon-dong pairs more naturally with Jongno and historic Seoul.</p>
-<p>Weekend queues can be long, and social-media photos rarely show the real crowd or noise level. A single café afternoon does not usually justify changing hotels; staying nearby makes more sense when cafés, shopping and the same neighborhood keep appearing across several days.</p>
-</div>
+<p>Seongsu combines large cafés with converted industrial buildings, select shops, pop-ups and brand spaces. Yeonnam feels smaller and more residential, with cafés and casual restaurants that flow naturally into Hongdae.</p>
+<p>Ikseon-dong has another mood altogether: renovated hanok buildings, narrow central-Seoul lanes and cafés that pair easily with Jongno and historic Seoul. A Seongsu afternoon often stretches into fashion, beauty and design, while Yeonnam leaves more time for unhurried neighborhood walking.</p>
+<p>Weekend queues can be long, and social-media photos rarely show the real crowd or noise level. The streets around the café are part of the day, but one café alone does not need to dictate the rest of the trip.</p>
 </article>
-<article class="experience-detail reverse" id="regional-guide">
-<div class="detail-media"><img src="images/taste-korea/jeonju-bibimbap-guide.webp" alt="A Korean bibimbap meal representing traditional and regional food" width="1408" height="768" loading="lazy" decoding="async"></div>
-<div class="detail-copy">
-<h3>Regional food makes more sense when the place matters too</h3>
-<p>Traditional Korean food can mean many different things: a formal multi-course meal, a market breakfast, a local soup, temple food, a regional specialty or a meal in a historic neighborhood.</p>
-<p>The most rewarding regional food trips are not simply collections of famous dishes. The surrounding city explains more—why a dish developed there, how people eat it, and what else belongs naturally in the same day.</p>
-<p>Jeonju is a clear example. Bibimbap may be its best-known dish, but markets, traditional drinks and Hanok Village give the food a wider setting. In Seoul, Jongno, Insa-dong and the palace districts can offer traditional tea, hanok dining, market food and Korean meals without adding another city.</p>
-<p>Words such as “traditional” or “authentic” do not guarantee a better restaurant, especially in busy visitor districts. In Seoul, staying nearby is optional. In a regional city such as Jeonju, an evening and morning can make the trip feel much less rushed.</p>
-</div>
+<article class="experience-editorial-row" id="regional-guide">
+<h3>Regional food begins with the place around it</h3>
+<p>Traditional Korean food can mean a formal multi-course meal, a market breakfast, a local soup, temple food, a regional specialty or a meal in a historic neighborhood. A list of famous dishes tells only part of that story.</p>
+<p>The surrounding city adds the context: why a dish developed there, how people eat it and what else belongs in the same day. Jeonju is a clear example. Bibimbap may be its best-known dish, but markets, traditional drinks and Hanok Village give the food a wider setting.</p>
+<p>Seoul can provide some of that context without another city. Jongno, Insa-dong and the palace districts bring together traditional tea, hanok dining, market food and Korean meals. Words such as “traditional” or “authentic” still do not guarantee a better restaurant, especially in busy visitor districts.</p>
 </article>
-<article class="experience-detail" id="seafood-guide">
-<div class="detail-media"><img src="images/taste-korea/jagalchi-market.jpg" alt="Fresh fish displayed at Jagalchi Market in Busan" width="1280" height="800" loading="lazy" decoding="async"></div>
-<div class="detail-copy">
-<h3>Busan and Jeju offer two very different coastal food trips</h3>
-<p>In Busan, seafood can be part of a compact urban day. Jagalchi Market, harbor activity and Nampo-dong sit close enough together for the market itself to become part of the experience rather than just the place where dinner happens.</p>
-<p>Jeju is different. Black pork, seafood and island dishes are spread across Jeju City, Seogwipo and smaller coastal areas, so food has to fit a wider driving and sightseeing route.</p>
-<p>Busan suits travelers who want the port, market and city around the meal. Jeju makes more sense when food is already part of a nature, coast and road-trip itinerary.</p>
-<p>Seafood prices can vary by species, weight, season and preparation, so the total price and serving method are worth confirming before ordering. For accommodation, the city or island route matters far more than being beside one particular restaurant.</p>
-</div>
+<article class="experience-editorial-row" id="seafood-guide">
+<h3>Busan and Jeju create different coastal meals</h3>
+<p>In Busan, seafood can be part of a compact urban day. Jagalchi Market, harbor activity and Nampo-dong sit close enough together for the market to become part of the outing rather than simply the place where dinner happens.</p>
+<p>Jeju spreads the day much farther. Black pork, seafood and island dishes appear across Jeju City, Seogwipo and smaller coastal areas, so meals need to sit inside a wider driving and sightseeing route.</p>
+<p>Busan keeps the port, market and city close to the table; Jeju connects food to the coast and the road between stops. Seafood prices can vary by species, weight, season and preparation, so the total price and serving method are worth confirming before ordering.</p>
 </article>
-<article class="experience-detail reverse" id="guided-guide">
-<div class="detail-media"><img src="images/taste-korea/kimchi-making-experience.webp" alt="Travelers taking part in a Korean kimchi-making experience" width="1408" height="768" loading="lazy" decoding="async"></div>
-<div class="detail-copy">
-<h3>Classes and food walks can add context to the meal</h3>
-<p>Guided food experiences usually take one of three forms. A market walk helps explain ingredients, vendors and ordering before you eat. A cooking class focuses on preparing dishes and learning techniques. A small-group food tour gives up some independence in exchange for several tastings and more explanation along the way.</p>
-<p>These experiences can be especially useful for first-time visitors, solo travelers, families or anyone who wants more context than an unguided meal provides.</p>
-<p>Language, duration, group size, cancellation terms and walking distance can make a real difference to the experience. Dietary restrictions and allergies should be discussed before payment rather than assumed from the menu or class title.</p>
-<p>There is rarely a reason to stay nearby just for a class or food tour, unless it begins very early, ends late or sits naturally among several other activities in the same neighborhood.</p>
-</div>
+<article class="experience-editorial-row" id="guided-guide">
+<h3>Classes and food walks add context to the meal</h3>
+<p>A market walk can explain ingredients, vendors and ordering before you eat. A cooking class focuses on preparing dishes and learning techniques. A small-group food tour gives up some independence in exchange for several tastings and more explanation along the way.</p>
+<p>That extra context can be useful on a first trip, when traveling alone or with family, or whenever an unguided meal leaves too many questions unanswered.</p>
+<p>Language, duration, group size, cancellation terms and walking distance can change the day considerably. Dietary restrictions and allergies should be discussed before payment rather than assumed from the menu or class title.</p>
 </article>
 </div>
+</section>
 </div>
 </section>
 <section class="section cities" id="cities">
 <div class="wrap">
 <h2 class="section-title">Let food help shape your route.</h2>
-<p class="section-lead">A famous dish alone is rarely a good reason to add another city. Seoul, Busan, Jeonju and Jeju offer different combinations of food, atmosphere and sightseeing, and the best fit depends on what else you want from the trip.</p>
+<p class="section-lead">A famous dish alone is rarely a good reason to add another city. Seoul, Busan, Jeonju and Jeju bring together food, atmosphere and sightseeing in very different ways, and the time between meals is often what separates one trip from another.</p>
 <div class="city-detail-stack">
-<article class="city-detail-card">
-<div class="city-detail-media"><img alt="Gwangjang Market in Seoul" src="images/taste-korea/gwangjang-market.jpg" width="1280" height="716" loading="lazy" decoding="async"></div>
-<div class="city-detail-copy">
+<article class="city-editorial-row">
 <h3>Seoul</h3>
 <p>Seoul’s strength is range. Traditional markets, Korean barbecue, trend-led cafés, regional restaurants, modern dining and late-night food can all fit inside one trip without leaving the city.</p>
 <p>The challenge is distance. Jongno, Seongsu, Mapo and Hongdae are not one compact food district, and crossing Seoul for every famous restaurant can turn a food day into a transport day.</p>
-<p>A better approach is to let each day stay mostly within one or two connected areas. Jongno and Euljiro work well for markets and older central Seoul, Mapo and Hongdae for barbecue and late evenings, Seongsu for cafés and brands, and Myeongdong when first-trip convenience matters more than having a strong food identity outside the hotel door.</p>
-<p>For first-time visitors, Seoul is still the easiest place to combine food with shopping, culture, beauty and nightlife. Staying near a food neighborhood becomes useful when the same area appears repeatedly in the itinerary, especially late at night.</p>
-</div>
+<p>Days feel calmer when they stay mostly within one or two connected areas. Jongno and Euljiro bring together markets and older central Seoul; Mapo and Hongdae carry barbecue into later evenings; Seongsu links cafés with brands; and Myeongdong keeps several parts of the city within easy reach. For a first trip, that range also leaves room for shopping, culture, beauty and nightlife.</p>
 </article>
-<article class="city-detail-card">
-<div class="city-detail-media"><img alt="Seafood stalls at Jagalchi Market" src="images/taste-korea/jagalchi-market.jpg" width="1280" height="800" loading="lazy" decoding="async"></div>
-<div class="city-detail-copy">
-<div class="city-position">Coastal energy</div>
+<article class="city-editorial-row">
 <h3>Busan</h3>
 <p>Busan brings food closer to the port, the sea and the rhythm of a coastal city. Seafood markets, local soups, noodles, beach districts, cafés and evening views can all belong to the same trip without making seafood the only reason to go.</p>
 <p>Nampo is the clearest area for markets and port atmosphere. Haeundae and Gwangalli connect food with beaches and evening walks, while Seomyeon offers central transport and late dining with less of the coast.</p>
-<p>Busan is spread out, so trying to cross between market and beach districts several times a day quickly becomes tiring. A one- or two-night stay usually makes more sense than a rushed food-only day trip when the coast is part of what you came to experience.</p>
-</div>
+<p>The city is spread out, and crossing repeatedly between market and beach districts quickly becomes tiring. When the coast is part of the reason for going, one or two nights give the port, beaches and evening food more room than a rushed food-only day trip.</p>
 </article>
-<article class="city-detail-card">
-<div class="city-detail-media"><img alt="Bibimbap served in Jeonju" src="images/taste-korea/jeonju-bibimbap.jpg" width="1280" height="960" loading="lazy" decoding="async"></div>
-<div class="city-detail-copy">
-<div class="city-position">Traditional focus</div>
+<article class="city-editorial-row">
 <h3>Jeonju</h3>
 <p>Jeonju is not a smaller version of Seoul. Its appeal comes from bringing regional food, hanok streets, markets, traditional drinks and a slower pace into a more compact trip.</p>
 <p>Bibimbap may be the name most visitors know, but it is not enough on its own. Jeonju becomes more rewarding when food, architecture, craft and the evening atmosphere support one another.</p>
-<p>This works particularly well for travelers who want regional identity and traditional culture more than nightlife or endless choice. Hanok Village is busy with visitors, and a famous dish name does not guarantee a distinctive meal, but staying overnight gives the city an evening and morning that a rushed return trip misses.</p>
-</div>
+<p>The city has more to offer someone drawn to regional identity and traditional culture than to nightlife or endless choice. Hanok Village is busy with visitors, and a famous dish name does not guarantee a distinctive meal. Staying overnight, though, opens up an evening and morning that a rushed return trip misses.</p>
 </article>
-<article class="city-detail-card">
-<div class="city-detail-media"><img alt="A Jeju silver hairtail meal representing the island's regional food" src="images/taste-korea/jeju-silver-hairtail-dish.webp" width="1408" height="768" loading="lazy" decoding="async"></div>
-<div class="city-detail-copy">
-<div class="city-position">Island ingredients</div>
+<article class="city-editorial-row">
 <h3>Jeju</h3>
-<p>Jeju’s food makes the most sense inside a larger island trip. Black pork, seafood, local soups, markets and cafés are spread across Jeju City, Seogwipo and the coast rather than concentrated into one food neighborhood.</p>
+<p>Jeju’s food belongs inside a larger island trip. Black pork, seafood, local soups, markets and cafés are spread across Jeju City, Seogwipo and the coast rather than concentrated into one food neighborhood.</p>
 <p>That geography matters. A restaurant can look excellent and still be a poor stop if it adds a long detour, parking stress or unnecessary backtracking.</p>
-<p>Jeju City works well around the airport and markets, Seogwipo with southern sights, Seongsan and Gujwa with the eastern coast, and Aewol or Hallim with western drives and beaches. Food is easiest to enjoy when it fits the route you already want to travel.</p>
-<p>Queues, parking and limited public transport can reshape the day, so accommodation is better judged by the wider island itinerary than by one famous restaurant.</p>
-</div>
+<p>Jeju City sits naturally with the airport and markets, Seogwipo with southern sights, Seongsan and Gujwa with the eastern coast, and Aewol or Hallim with western drives and beaches. Queues, parking and limited public transport can reshape the day, so meals and accommodation are both easier to judge against the route across the island than against one famous restaurant.</p>
 </article>
 </div>
 <aside class="stay-transition-card stay-transition-card--ota" aria-labelledby="stay-transition-card-korea-title">
@@ -836,76 +795,68 @@
 <section class="section" id="seoul">
 <div class="wrap">
 <h2 class="section-title">In Seoul, neighborhood changes the food trip.</h2>
-<p class="section-lead">The most useful Seoul base is not simply the area with the most restaurants. What matters is how the neighborhood fits the meals, evenings and other activities that keep appearing in your itinerary.</p>
-<div class="seoul-layout">
-<div class="seoul-photo">
-<div class="seoul-photo-grid" aria-label="Seoul food neighborhoods">
-<figure><img src="images/taste-korea/jongno-hanok-modern.webp" alt="Traditional and modern dining streets representing Jongno in Seoul" width="1376" height="768" loading="lazy" decoding="async"><figcaption>Jongno</figcaption></figure>
-<figure><img src="images/taste-korea/mapo-bbq-street.webp" alt="A lively Korean barbecue street representing Mapo at night" width="1672" height="941" loading="lazy" decoding="async"><figcaption>Mapo</figcaption></figure>
-<figure><img src="images/taste-korea/hongdae-yeonnam-night.webp" alt="A youthful evening dining and café street representing Hongdae and Yeonnam" width="1672" height="941" loading="lazy" decoding="async"><figcaption>Hongdae &amp; Yeonnam</figcaption></figure>
-<figure><img src="images/taste-korea/euljiro-night-food-alley.webp" alt="A narrow local food alley representing Euljiro at night" width="1672" height="941" loading="lazy" decoding="async"><figcaption>Euljiro</figcaption></figure>
-<figure><img src="images/taste-korea/seongsu-cafe-street.webp" alt="A modern café street representing Seongsu in Seoul" width="1408" height="768" loading="lazy" decoding="async"><figcaption>Seongsu</figcaption></figure>
-<figure><img src="images/taste-korea/myeongdong-food-street.webp" alt="A busy shopping and food street representing Myeongdong at night" width="1672" height="941" loading="lazy" decoding="async"><figcaption>Myeongdong</figcaption></figure>
+<p class="section-lead">The most useful Seoul base is not simply the area with the most restaurants. The better clue is whether the same neighborhood keeps returning through meals, evenings and the other things you want to do.</p>
+<div class="hood-comparison">
+<table>
+<caption>How the Seoul food neighborhoods differ</caption>
+<thead><tr><th scope="col">Area</th><th scope="col">Food character</th><th scope="col">Evening feel</th><th scope="col">Hotel location</th></tr></thead>
+<tbody>
+<tr><th scope="row">Jongno</th><td>Markets, traditional food and historic Seoul</td><td>Central and varied</td><td>Palaces, Gwangjang, Euljiro and Dongdaemun nearby</td></tr>
+<tr><th scope="row">Mapo</th><td>Barbecue and local evening dining</td><td>Relaxed and local</td><td>Repeated dinner nights; easy Gongdeok connections</td></tr>
+<tr><th scope="row">Hongdae &amp; Yeonnam</th><td>Cafés, casual food and late nights</td><td>Lively and youthful</td><td>Late dining and nightlife more than once</td></tr>
+<tr><th scope="row">Euljiro</th><td>Older restaurants, alleys and bars</td><td>Atmospheric after dark</td><td>Several central-Seoul evenings after dark</td></tr>
+<tr><th scope="row">Seongsu</th><td>Cafés, brands and desserts</td><td>Busier by day</td><td>Several days focused on eastern Seoul</td></tr>
+<tr><th scope="row">Myeongdong</th><td>Easy meals and shopping-day food</td><td>Convenient rather than local</td><td>A first trip spread across several food areas</td></tr>
+</tbody>
+</table>
 </div>
-</div>
-</div>
-<div class="hood-detail-grid">
-<article class="hood-detail">
-<div class="hood-detail-head"><div><h3>Jongno</h3></div></div>
+<div class="neighborhood-editorial-list">
+<article class="neighborhood-editorial-row">
+<h3>Jongno</h3>
 <p>Jongno brings markets, traditional food and historic Seoul into the same central part of the city.</p>
-<p>Gwangjang Market, Insa-dong, Ikseon-dong, the palace areas and older dining streets can all fit naturally into days that mix food with sightseeing rather than sending you across Seoul between unrelated stops.</p>
-<p>The district is broad, so the exact hotel location still matters. Gwangjang and Ikseon-dong can feel busy and visitor-oriented, while quieter side streets have a different pace. Jongno works particularly well when palaces, Euljiro or Dongdaemun are already part of the trip.</p>
+<p>Gwangjang Market, Insa-dong, Ikseon-dong, the palace areas and older dining streets can all sit naturally inside days that mix food with sightseeing rather than sending you across Seoul between unrelated stops.</p>
+<p>The district is broad, so Gwangjang and Ikseon-dong can feel busy and visitor-oriented while quieter side streets move at a different pace. Palaces, Euljiro and Dongdaemun all sit comfortably in the same wider part of the city.</p>
 </article>
-<article class="hood-detail">
-<div class="hood-detail-head"><div><h3>Mapo</h3></div></div>
+<article class="neighborhood-editorial-row">
+<h3>Mapo</h3>
 <p>Mapo is more about barbecue and everyday evening dining than a dense list of famous sights.</p>
-<p>Mapo, Gongdeok and nearby residential-business districts offer plenty of local restaurants and transport connections without the constant intensity of Hongdae. It is especially comfortable when dinner matters more than having major attractions immediately outside the hotel.</p>
-<p>Daytime sightseeing is less concentrated than in Jongno or Myeongdong, and English support varies from place to place. Staying here becomes more convincing when repeated barbecue nights or Gongdeok’s transport links already fit the wider itinerary.</p>
+<p>Mapo, Gongdeok and nearby residential-business districts offer plenty of local restaurants and transport connections without the constant intensity of Hongdae. Mapo is appealing if you care more about an easy dinner nearby than having major sights outside the hotel.</p>
+<p>Daytime sightseeing is less concentrated than in Jongno or Myeongdong, and English support varies from place to place. It becomes a stronger base if several evenings already end around Mapo, or if Gongdeok’s transport links make the rest of Seoul easier.</p>
 </article>
-<article class="hood-detail">
-<div class="hood-detail-head"><div><h3>Hongdae &amp; Yeonnam</h3></div></div>
+<article class="neighborhood-editorial-row">
+<h3>Hongdae &amp; Yeonnam</h3>
 <p>Hongdae and Yeonnam make it easy for cafés and casual meals to continue into the evening.</p>
-<p>Hongdae is energetic and nightlife-led, while Yeonnam brings smaller cafés, restaurants and neighborhood walking. Together they suit travelers who like a food day that can turn naturally into drinks, music or a late walk back to the hotel.</p>
-<p>That energy also means crowds and noise, particularly on weekends. A hotel just outside the busiest streets can be more comfortable than one in the middle of them. Staying in the area makes the most sense when late dining and nightlife are likely to happen more than once.</p>
+<p>Hongdae is energetic and nightlife-led, while Yeonnam brings smaller cafés, restaurants and neighborhood walking. Together they create the kind of day that can drift into drinks, music or a late walk back to the hotel.</p>
+<p>That energy also means crowds and noise, particularly on weekends. A room just outside the busiest streets can be more comfortable than one in the middle of them, especially when late dining is likely to happen more than once.</p>
 </article>
-<article class="hood-detail">
-<div class="hood-detail-head"><div><h3>Euljiro</h3></div></div>
+<article class="neighborhood-editorial-row">
+<h3>Euljiro</h3>
 <p>Euljiro mixes older restaurants, bars and industrial alleys with newer cafés and a very different evening atmosphere from nearby Myeongdong.</p>
-<p>The area still carries traces of printing and workshop streets, and that layered urban texture is a large part of its appeal. It suits travelers who enjoy older restaurants and central-Seoul nights more than polished tourist streets.</p>
-<p>The lanes can be confusing, and daytime Euljiro feels different from the evening. Families or first-time visitors looking for the simplest base may feel more comfortable in nearby Myeongdong or Jongno, while Euljiro becomes more interesting when several central evenings are already in the plan.</p>
+<p>The area still carries traces of printing and workshop streets, and that layered urban texture is a large part of its appeal. Older restaurants and central-Seoul nights take priority here over polished visitor streets.</p>
+<p>The lanes can be confusing, and daytime Euljiro feels different from the evening. Families or first-time visitors looking for the simplest base may feel more comfortable in nearby Myeongdong or Jongno. Euljiro reveals more of itself after dark and over several central evenings.</p>
 </article>
-<article class="hood-detail">
-<div class="hood-detail-head"><div><h3>Seongsu</h3></div></div>
+<article class="neighborhood-editorial-row">
+<h3>Seongsu</h3>
 <p>In Seongsu, cafés, brands and design spaces often shape the day more than traditional Korean food.</p>
 <p>Large cafés, pop-ups, beauty, fashion and converted industrial spaces make the neighborhood as much a part of the experience as the meal itself.</p>
-<p>Prices and queues can rise on busy weekends, and travelers visiting for only one afternoon can reach Seongsu easily from another part of Seoul. Staying nearby is more useful when eastern Seoul, cafés and brand spaces keep returning across several days.</p>
+<p>Prices and queues can rise on busy weekends. One afternoon is easy to reach from another part of Seoul; several days built around eastern Seoul, cafés and brand spaces give the neighborhood a much larger role.</p>
 </article>
-<article class="hood-detail">
-<div class="hood-detail-head"><div><h3>Myeongdong</h3></div></div>
+<article class="neighborhood-editorial-row">
+<h3>Myeongdong</h3>
 <p>Myeongdong’s strength is convenience rather than a distinctive local food identity.</p>
 <p>Shopping, airport connections and central transport make it easy to reach Namdaemun, Euljiro and Jongno without changing hotels, which is useful on a first trip when food is only one part of a much larger itinerary.</p>
 <p>The area itself is more visitor-oriented than Mapo or Jongno, and its late-night local character is less distinctive. Even so, Myeongdong can be a very practical base for families and first-time visitors who want several food areas within easy reach rather than one particular dining neighborhood outside the door.</p>
 </article>
 </div>
-<div class="hood-comparison">
-<table>
-<caption>How the Seoul food neighborhoods differ</caption>
-<thead><tr><th scope="col">Area</th><th scope="col">Food character</th><th scope="col">Evening feel</th><th scope="col">Why staying nearby can help</th></tr></thead>
-<tbody>
-<tr><th scope="row">Jongno</th><td>Markets, traditional food and historic Seoul</td><td>Central and varied</td><td>Useful when palaces, Gwangjang, Euljiro or Dongdaemun share the same itinerary</td></tr>
-<tr><th scope="row">Mapo</th><td>Barbecue and local evening dining</td><td>Relaxed and local</td><td>Helpful for repeated dinner nights or Gongdeok transport</td></tr>
-<tr><th scope="row">Hongdae &amp; Yeonnam</th><td>Cafés, casual food and late nights</td><td>Lively and youthful</td><td>Strong fit when nightlife and late dining happen often</td></tr>
-<tr><th scope="row">Euljiro</th><td>Older restaurants, alleys and bars</td><td>Atmospheric after dark</td><td>Useful for repeated central-Seoul evenings</td></tr>
-<tr><th scope="row">Seongsu</th><td>Cafés, brands and desserts</td><td>Busier by day</td><td>More useful when eastern Seoul repeats across several days</td></tr>
-<tr><th scope="row">Myeongdong</th><td>Easy meals and shopping-day food</td><td>Convenient rather than local</td><td>Practical for a first trip with several different food areas</td></tr>
-</tbody>
-</table>
+<div class="stay-location-note">
+<p>One market or one restaurant is rarely a reason to choose a hotel, particularly when it is easy to reach by subway. Location becomes useful when the same neighborhood keeps returning across several evenings or several days, or when a very early start, late finish or awkward journey home would otherwise complicate the day.</p>
+<p>Even then, the neighborhood name is only part of the decision. Room size, cancellation terms and the walk from the station still shape the stay.</p>
 </div>
 <aside class="stay-transition-card stay-transition-card--ota" aria-labelledby="stay-transition-card-title">
 <div class="stay-transition-card__copy">
 <p class="stay-transition-card__eyebrow">STAY OPTIONS</p>
 <h3 class="stay-transition-card__title" id="stay-transition-card-title">When one Seoul area keeps appearing in your plans</h3>
-<p class="stay-transition-card__description">That is usually the point when staying nearby becomes worth considering. Room size, cancellation terms and the walk from the station still matter just as much as the neighborhood name.</p>
+<p class="stay-transition-card__description">A hotel search becomes more useful once the same part of Seoul has begun to anchor several days or evenings.</p>
 </div>
 <div class="taste-ota-actions">
 <div class="taste-ota-grid" aria-label="Seoul accommodation booking options">
@@ -916,17 +867,6 @@
 <p class="taste-affiliate-disclosure">Affiliate disclosure: Links to Expedia, Booking.com, and Agoda may be affiliate links. Korea Inside may earn a commission at no extra cost to you. Booking through these links helps support this independent guide.</p>
 </div>
 </aside>
-</div>
-</section>
-<section class="section decision" id="decision">
-<div class="wrap">
-<h2 class="section-title">Does food need to influence where you stay?</h2>
-<p class="section-lead">Not always. A market visit or one dinner reservation should not control the whole hotel decision. Location starts to matter when the same neighborhood keeps appearing in your evenings, café days or wider food plans.</p>
-<div class="decision-intro">
-<article><h3>When staying nearby really helps</h3><p>Late dinners, repeated visits to the same area, several related activities or a difficult trip back to the hotel can make location genuinely useful.</p></article>
-<article><h3>When it probably does not matter</h3><p>One market, one restaurant reservation or a stop that is easy to reach by subway is rarely enough reason to move the whole trip into another neighborhood.</p></article>
-</div>
-<p>You rarely need a hotel beside every restaurant you want to try. Food should influence the hotel location only when the same part of the city already fits the rest of the trip.</p>
 </div>
 </section>
 <section class="section taste-faq" id="food-travel-faq">
@@ -992,27 +932,35 @@
 <div class="next-step-intro">
 <div class="eyebrow taste-stay-eyebrow">CONTINUE PLANNING</div>
 <h2>Planning the rest of your Korea trip</h2>
-<p>Once the food side of the trip starts to take shape, accommodation, mobile data and shopping are usually the next practical pieces to sort out.</p>
+<p>Food may be the fun part, but a few practical choices still shape the trip: where to stay, how to get online and how much shopping you want to build into the day.</p>
 </div>
-<div class="next-step-grid">
-<a class="next-step-card" href="accommodation.html" data-link-stage="internal" data-provider="korea-inside" data-placement="taste-footer-hub" data-destination="stay">
-<span class="next-step-card__label">STAY IN KOREA</span>
-<h3 class="next-step-card__title">Seoul neighborhoods can feel very different once transport, evenings and the rest of your itinerary are taken into account.</h3>
-<span class="next-step-card__action">Explore where to stay →</span>
+<div class="next-step-list">
+<a class="next-step-row" href="accommodation.html" data-link-stage="internal" data-provider="korea-inside" data-placement="taste-footer-hub" data-destination="stay">
+<span class="next-step-row__label">STAY IN KOREA</span>
+<h3 class="next-step-row__title">Where to stay in Korea</h3>
+<p class="next-step-row__description">A neighborhood that feels convenient in the daytime can feel very different after a late dinner or a long ride back across Seoul.</p>
+<span class="next-step-row__action">Where to stay guide →</span>
 </a>
-<a class="next-step-card" href="k-beauty.html" data-link-stage="internal" data-provider="korea-inside" data-placement="taste-footer-hub" data-destination="k-beauty">
-<span class="next-step-card__label">K-BEAUTY</span>
-<h3 class="next-step-card__title">Shopping for K-beauty in Korea</h3>
-<p class="next-step-card__description">Skincare, makeup, personal color, salons and clinics all require different levels of planning. Start with the experience you actually want, then decide where in Seoul it fits best.</p>
-<span class="next-step-card__action">Explore the K-Beauty guide →</span>
+<a class="next-step-row" href="k-beauty.html" data-link-stage="internal" data-provider="korea-inside" data-placement="taste-footer-hub" data-destination="k-beauty">
+<span class="next-step-row__label">K-BEAUTY</span>
+<h3 class="next-step-row__title">Shopping for K-beauty in Korea</h3>
+<p class="next-step-row__description">Skincare and makeup shopping can stay spontaneous. Personal color, salons and clinics are easier when the appointment sits near the neighborhoods already in your day.</p>
+<span class="next-step-row__action">K-Beauty guide →</span>
 </a>
-<a class="next-step-card" href="esim.html" data-link-stage="internal" data-provider="korea-inside" data-placement="taste-footer-hub" data-destination="esim">
-<span class="next-step-card__label">eSIM</span>
-<h3 class="next-step-card__title">An eSIM can make the first day easier when it is compatible with your phone and ready before you need maps or messages.</h3>
-<span class="next-step-card__action">See Korea eSIM options →</span>
+<a class="next-step-row" href="esim.html" data-link-stage="internal" data-provider="korea-inside" data-placement="taste-footer-hub" data-destination="esim">
+<span class="next-step-row__label">eSIM</span>
+<h3 class="next-step-row__title">Mobile data for Korea</h3>
+<p class="next-step-row__description">An eSIM can make the first day easier when it is compatible with your phone and ready before you need maps or messages.</p>
+<span class="next-step-row__action">Korea eSIM guide →</span>
 </a>
 </div>
 </div>
+</div>
+</section>
+<section class="taste-closing" aria-label="A final thought on food travel in Korea">
+<div class="wrap">
+<p>A good food trip leaves room for the rest of Korea. Not every meal needs a famous name or a reservation; markets, neighborhood streets, the mood after dinner and the restaurant you enter without a plan can be part of the story too.</p>
+<p>The meals people remember often belong to a larger day rather than a checklist of dishes.</p>
 </div>
 </section>
 </main>
