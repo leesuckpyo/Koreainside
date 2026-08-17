@@ -5918,11 +5918,11 @@ body.airport-page main .airport-page-hero__photo img {
 }
 
 .airport-bus-page main .page-hero__desc,
-.airport-bus-page main .guide-content p:not(.eyebrow):not(.tip-box__label):not(.warning-box__label):not(.airport-official-map-link__tip):not(.related-links__title),
+.airport-bus-page main .guide-content p:not(.tip-box__label):not(.related-links__title),
 .airport-bus-page main .guide-content li {
   font-size: 18px;
   font-weight: 400;
-  line-height: 1.6;
+  line-height: 1.72;
 }
 
 .airport-bus-page .guide-content p,
@@ -5951,10 +5951,6 @@ body.airport-page main .airport-page-hero__photo img {
   outline-offset: 3px;
 }
 
-.airport-bus-page .eyebrow {
-  color: #B73722;
-}
-
 .airport-bus-page .tip-box {
   background: #14130F;
   border-left-color: #D59F3A;
@@ -5968,100 +5964,9 @@ body.airport-page main .airport-page-hero__photo img {
   color: #D59F3A;
 }
 
-.airport-bus-page .airport-bus-section.airport-section--gray {
-  background: #F1EBDF;
-}
-
-.airport-bus-page .airport-official-map-link-wrap {
-  background: #FFFDF8;
-}
-
-.airport-bus-page .airport-official-map-link {
-  background: #FBF8F1;
-  border-color: #D8D0C2;
-}
-
-.airport-bus-page .airport-official-map-link p {
-  color: #514C43;
-}
-
-.airport-bus-page .guide-content .airport-official-map-link__tip {
-  color: #746C60;
-}
-
-.airport-bus-page .airport-official-map-link__button,
-.airport-bus-page .airport-official-map-link__button:visited {
-  background: #14130F;
+.airport-bus-page main .tip-box a,
+.airport-bus-page main .tip-box a:visited {
   color: #FFFDF8;
-}
-
-.airport-bus-page .airport-official-map-link__button:hover {
-  background: #B73722;
-  color: #FFFDF8;
-}
-
-.airport-bus-page .airport-action-card {
-  background: #F1EBDF;
-  border-color: #D8D0C2;
-}
-
-.airport-bus-page .airport-action-card h3 {
-  color: #14130F;
-}
-
-.airport-bus-page .airport-action-card p {
-  color: #514C43;
-}
-
-.airport-bus-page .airport-action-card--link,
-.airport-bus-page .airport-action-card--link:visited {
-  color: #14130F;
-}
-
-.airport-bus-page .airport-action-card--link:hover {
-  background: #F5EDE3;
-  border-color: #B73722;
-  color: #14130F;
-}
-
-.airport-bus-page .airport-action-card__cta {
-  color: #B73722;
-}
-
-.airport-bus-page .warning-box {
-  background: #F5EDE3;
-  border-left-color: #B73722;
-}
-
-.airport-bus-page .warning-box__label {
-  color: #B73722;
-}
-
-.airport-bus-page .warning-box p {
-  color: #514C43;
-}
-
-.airport-bus-page .info-table th,
-.airport-bus-page .info-table td {
-  border-bottom-color: #D8D0C2;
-}
-
-.airport-bus-page .info-table th {
-  background: #F1EBDF;
-  color: #14130F;
-}
-
-.airport-bus-page .info-table td {
-  background: #FFFDF8;
-  color: #514C43;
-}
-
-.airport-bus-page .info-table tbody tr:nth-child(even) td {
-  background: #FBF8F1;
-}
-
-.airport-bus-page .airport-bus-media__steps li::marker {
-  color: #B73722;
 }
 
 .airport-bus-page .airport-faq details {
@@ -6089,31 +5994,121 @@ body.airport-page main .airport-page-hero__photo img {
   color: #746C60;
 }
 
-.airport-bus-page .chip,
-.airport-bus-page .chip:visited {
-  background: #F1EBDF;
-  color: #14130F;
+.airport-bus-page main .page-hero__desc + .page-hero__desc {
+  margin-top: 16px;
 }
 
-.airport-bus-page .chip:hover {
-  background: #14130F;
-  color: #FFFDF8;
+.airport-bus-page main .airport-bus-section {
+  margin-top: 72px;
+  padding-top: 64px;
+  border-top: 1px solid #D8D0C2;
+}
+
+.airport-bus-page main .tip-box + .airport-bus-section {
+  margin-top: 48px;
+  padding-top: 0;
+  border-top: 0;
+}
+
+.airport-bus-page main .airport-bus-section > p,
+.airport-bus-page main .airport-bus-row p,
+.airport-bus-page main .airport-bus-media__copy p,
+.airport-bus-page main .airport-faq p {
+  max-width: 76ch;
+  overflow-wrap: break-word;
+}
+
+.airport-bus-page main .airport-bus-section > p + p,
+.airport-bus-page main .airport-bus-row p + p,
+.airport-bus-page main .airport-bus-media__copy p + p,
+.airport-bus-page main .related-links p + p {
+  margin-top: 16px;
+}
+
+.airport-bus-page main .airport-bus-row-list {
+  margin-top: 32px;
+  border-top: 1px solid #D8D0C2;
+}
+
+.airport-bus-page main .airport-bus-row {
+  min-width: 0;
+  padding: 28px 0;
+  border-bottom: 1px solid #D8D0C2;
+}
+
+.airport-bus-page main .airport-bus-row h3 {
+  margin: 0 0 12px;
+}
+
+.airport-bus-page main .airport-bus-row > :last-child {
+  margin-bottom: 0;
+}
+
+.airport-bus-page main .airport-bus-context-link {
+  margin-top: 18px;
+  font-weight: 600;
+}
+
+.airport-bus-page main .airport-bus-steps {
+  margin: 32px 0;
+  padding-left: 30px;
+}
+
+.airport-bus-page main .airport-bus-steps li {
+  min-width: 0;
+  padding: 18px 0 18px 6px;
+  border-top: 1px solid #D8D0C2;
+  overflow-wrap: break-word;
+}
+
+.airport-bus-page main .airport-bus-steps li:last-child {
+  border-bottom: 1px solid #D8D0C2;
+}
+
+.airport-bus-page main .airport-bus-steps li::marker {
+  color: #B73722;
+  font-weight: 600;
+}
+
+.airport-bus-page main .airport-bus-steps strong,
+.airport-bus-page main .airport-bus-steps span {
+  display: block;
+}
+
+.airport-bus-page main .airport-bus-steps strong + span {
+  margin-top: 8px;
+}
+
+.airport-bus-page main .airport-bus-checklist,
+.airport-bus-page main .airport-bus-source-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 32px;
+  margin-top: 28px;
+  padding-left: 22px;
+}
+
+.airport-bus-page main .airport-bus-checklist li,
+.airport-bus-page main .airport-bus-source-list li {
+  min-width: 0;
+  padding: 12px 0;
+  border-bottom: 1px solid #D8D0C2;
+  overflow-wrap: break-word;
+}
+
+.airport-bus-page main .related-links p:not(.related-links__title) {
+  margin-bottom: 0;
+  overflow-wrap: break-word;
+}
+
+.airport-bus-page main .airport-faq summary,
+.airport-bus-page main .airport-bus-row h3,
+.airport-bus-page main .airport-bus-section h2,
+.airport-bus-page main .airport-bus-section h3 {
+  overflow-wrap: break-word;
 }
 
 /* Airport bus editorial photo layout */
-.airport-bus-page .tip-box + .airport-bus-section {
-  margin-top: 44px;
-}
-
-.airport-bus-page .airport-bus-section.airport-section--gray {
-  padding: 24px 20px;
-  border-radius: var(--radius-xl);
-}
-
-.airport-bus-page .airport-bus-section > .eyebrow {
-  margin-bottom: 8px;
-}
-
 .airport-bus-page .airport-bus-media {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
@@ -6159,8 +6154,7 @@ body.airport-page main .airport-page-hero__photo img {
   margin-top: 0;
 }
 
-.airport-bus-page .airport-bus-media__copy > :last-child,
-.airport-bus-page .airport-bus-media__steps {
+.airport-bus-page .airport-bus-media__copy > :last-child {
   margin-bottom: 0;
 }
 
@@ -6169,10 +6163,6 @@ body.airport-page main .airport-page-hero__photo img {
 }
 
 @media (min-width: 860px) {
-  .airport-bus-page .airport-bus-section.airport-section--gray {
-    padding: 36px 40px;
-  }
-
   .airport-bus-page .airport-bus-media {
     grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
     gap: 32px;
@@ -6220,10 +6210,30 @@ body.airport-page main .airport-page-hero__photo img {
   }
 
   .airport-bus-page main .page-hero__desc,
-  .airport-bus-page main .guide-content p:not(.eyebrow):not(.tip-box__label):not(.warning-box__label):not(.airport-official-map-link__tip):not(.related-links__title),
+  .airport-bus-page main .guide-content p:not(.tip-box__label):not(.related-links__title),
   .airport-bus-page main .guide-content li {
     font-size: 17px;
-    line-height: 1.58;
+    line-height: 1.68;
+  }
+
+  .airport-bus-page main .airport-bus-section {
+    margin-top: 56px;
+    padding-top: 48px;
+  }
+
+  .airport-bus-page main .tip-box + .airport-bus-section {
+    margin-top: 40px;
+    padding-top: 0;
+  }
+
+  .airport-bus-page main .airport-bus-row {
+    padding: 24px 0;
+  }
+
+  .airport-bus-page main .airport-bus-checklist,
+  .airport-bus-page main .airport-bus-source-list {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
   }
 }
 
