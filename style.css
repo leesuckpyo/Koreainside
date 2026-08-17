@@ -18448,6 +18448,10 @@ body.foreign-card-page .foreign-card-prep-list li {
     width: 100%;
   }
 
+  .budget-stay-page main .budget-comparison-table {
+    min-width: 0;
+  }
+
   .budget-stay-page main .budget-comparison-table thead {
     position: absolute;
     width: 1px;
@@ -18475,6 +18479,7 @@ body.foreign-card-page .foreign-card-prep-list li {
     background: transparent;
     border: 0;
     font-size: 19px;
+    overflow-wrap: anywhere;
   }
 
   .budget-stay-page main .budget-comparison-table tbody td {
@@ -18485,6 +18490,7 @@ body.foreign-card-page .foreign-card-prep-list li {
     background: transparent;
     border: 0;
     font-size: 16px;
+    overflow-wrap: anywhere;
   }
 
   .budget-stay-page main .budget-comparison-table tbody td::before {
@@ -20542,6 +20548,7 @@ body.foreign-card-page .foreign-card-prep-list li {
   }
 
   .hongdae-myeongdong-page main .hm-comparison-table {
+    min-width: 0;
     table-layout: auto;
   }
 
@@ -20572,6 +20579,7 @@ body.foreign-card-page .foreign-card-prep-list li {
     border-bottom: 1px solid #d8d0c2;
     font-size: 14px;
     line-height: 1.55;
+    overflow-wrap: anywhere;
   }
 
   .hongdae-myeongdong-page main .hm-comparison-table tbody td::before {
