@@ -4835,7 +4835,31 @@ ul, ol {
 
 .footer--korea-editorial .footer__bottom {
   padding-top: 20px;
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
+}
+
+.footer--korea-editorial .footer__business {
+  min-width: 0;
+  max-width: 100%;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.66);
+  font-size: 0.875rem;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+.footer--korea-editorial .footer__business a {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: inherit;
+  line-height: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.footer--korea-editorial .footer__business a:hover,
+.footer--korea-editorial .footer__business a:focus-visible {
+  color: var(--white);
 }
 
 @media (min-width: 768px) {
@@ -4873,6 +4897,58 @@ ul, ol {
   }
 }
 
+
+/* Affiliate disclosure */
+.legal-page .legal-hero {
+  padding: 64px 0 42px;
+  background: #F7F3EA;
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.legal-page .legal-hero__title {
+  max-width: 900px;
+  color: var(--blue-deep);
+  font-size: clamp(2.25rem, 6vw, 4.25rem);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+.legal-page .legal-content {
+  padding: 52px 0 84px;
+}
+
+.legal-page .legal-content__inner {
+  max-width: 760px;
+}
+
+.legal-page .legal-content__inner p {
+  margin: 0;
+  color: #514C43;
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+.legal-page .legal-content__inner p + p {
+  margin-top: 20px;
+}
+
+.legal-page .legal-content__inner a {
+  color: var(--blue-deep);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+@media (max-width: 639px) {
+  .legal-page .legal-hero {
+    padding: 48px 0 32px;
+  }
+
+  .legal-page .legal-content {
+    padding: 40px 0 64px;
+  }
+}
 
 /* ── Airport visual page v4 ── */
 .airport-page-hero {
