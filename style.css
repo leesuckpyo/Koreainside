@@ -22161,6 +22161,69 @@ body.airport-transfer-page main .transfer-checklist li::before {
   }
 }
 
+/* Incheon Airport private transfer detail-page type scale */
+body.private-transfer-page main .transfer-chapter p:not(.transfer-source-note__label):not(.transfer-review-date),
+body.private-transfer-page main .transfer-chapter li,
+body.private-transfer-page main .transfer-chapter dd {
+  font-size: 18px;
+  line-height: 1.72;
+}
+
+body.private-transfer-page main .airport-faq summary {
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+body.private-transfer-page main .airport-faq p {
+  font-size: 18px;
+  line-height: 1.72;
+}
+
+body.private-transfer-page main .transfer-comparison caption,
+body.private-transfer-page main .transfer-comparison th,
+body.private-transfer-page main .transfer-comparison td {
+  font-size: 15px;
+}
+
+body.private-transfer-page main .transfer-comparison caption,
+body.private-transfer-page main .transfer-comparison th {
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+body.private-transfer-page main .transfer-comparison td {
+  line-height: 1.6;
+}
+
+@media (max-width: 719px) {
+  body.private-transfer-page main .transfer-chapter p:not(.transfer-source-note__label):not(.transfer-review-date),
+  body.private-transfer-page main .transfer-chapter li,
+  body.private-transfer-page main .transfer-chapter dd {
+    font-size: 17px;
+    line-height: 1.68;
+  }
+
+  body.private-transfer-page main .airport-faq summary {
+    font-size: 16px;
+  }
+
+  body.private-transfer-page main .airport-faq p {
+    font-size: 17px;
+    line-height: 1.68;
+  }
+
+  body.private-transfer-page main .transfer-comparison caption,
+  body.private-transfer-page main .transfer-comparison th,
+  body.private-transfer-page main .transfer-comparison td {
+    font-size: 14px;
+  }
+
+  body.private-transfer-page main .transfer-comparison td {
+    line-height: 1.55;
+  }
+}
+
 /* Homepage typography hierarchy */
 body.page-home main {
   font-family: "Roboto Flex", sans-serif;
