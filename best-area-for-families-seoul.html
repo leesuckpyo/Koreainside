@@ -10,6 +10,53 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400..600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <style>
+    .family-stay-page main .family-area-row {
+      grid-template-columns: minmax(0, 280px) minmax(0, 1fr);
+      column-gap: 44px;
+    }
+
+    .family-stay-page main .family-area-photo {
+      width: 100%;
+      margin: 20px 0 0;
+    }
+
+    .family-stay-page main .family-area-photo img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+    }
+
+    .family-stay-page main .family-area-photo figcaption {
+      margin-top: 10px;
+      color: #686158;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 959px) {
+      .family-stay-page main .family-area-row {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .family-stay-page main .family-area-photo {
+        max-width: 560px;
+        margin-top: 18px;
+      }
+    }
+
+    @media (max-width: 719px) {
+      .family-stay-page main .family-area-row {
+        gap: 18px;
+      }
+
+      .family-stay-page main .family-area-photo figcaption {
+        font-size: 13px;
+      }
+    }
+  </style>
   <script type="application/ld+json">
 {
     "@context":  "https://schema.org",
@@ -347,6 +394,10 @@
           <article class="family-area-row">
             <div class="family-area-row__summary">
               <h3>Myeongdong</h3>
+              <figure class="family-area-photo">
+                <img src="images/Accommodation/myeongdong-day-shopping-street.webp" alt="Myeongdong shopping street in central Seoul" width="5472" height="3648" loading="lazy" decoding="async">
+                <figcaption>Photo: Korea Tourism Organization / Lee Beom-su</figcaption>
+              </figure>
             </div>
             <div class="family-area-row__content">
               <p>Myeongdong is the simplest all-round base for many families visiting Seoul for the first time. Food, shopping and central sightseeing are easy to combine, and adults do not have to plan every meal or evening stop in advance.</p>
@@ -357,6 +408,10 @@
           <article class="family-area-row">
             <div class="family-area-row__summary">
               <h3>Jamsil</h3>
+              <figure class="family-area-photo">
+                <img src="images/Accommodation/jamsil-seokchon-lake-autumn.jpg" alt="Seokchon Lake and Lotte World Tower in Jamsil, Seoul" width="4000" height="2673" loading="lazy" decoding="async">
+                <figcaption>Photo: Korea Tourism Organization / Kim Seung-rae</figcaption>
+              </figure>
             </div>
             <div class="family-area-row__content">
               <p>Jamsil is an easy family choice when Lotte World, Seoul Sky, Seokchon Lake or other attractions in southeastern Seoul take up a large part of the itinerary. Wide roads, modern shopping complexes and large indoor facilities can also make rainy or very hot days easier with children.</p>
@@ -367,6 +422,10 @@
           <article class="family-area-row">
             <div class="family-area-row__summary">
               <h3>Mapo / Gongdeok</h3>
+              <figure class="family-area-photo">
+                <img src="images/Accommodation/mapo-pork-rib-street-day.jpg" alt="Restaurant street in Mapo, Seoul" width="5472" height="3648" loading="lazy" decoding="async">
+                <figcaption>Photo: Korea Tourism Organization / Lee Beom-su</figcaption>
+              </figure>
             </div>
             <div class="family-area-row__content">
               <p>Mapo and Gongdeok are practical choices for families who want a calmer base with convenient airport connections. Gongdeok has direct all-stop AREX service, and the surrounding area has plenty of everyday restaurants without the constant crowds of Seoul's major tourist districts.</p>
