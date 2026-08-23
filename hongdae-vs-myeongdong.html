@@ -21,9 +21,44 @@
       text-align: left;
     }
 
+    .hongdae-myeongdong-page main .hm-editorial-media {
+      width: 100%;
+      max-width: 900px;
+      margin: 28px auto 32px;
+    }
+
+    .hongdae-myeongdong-page main .hm-editorial-media--terminal {
+      margin-bottom: 0;
+    }
+
+    .hongdae-myeongdong-page main .hm-editorial-media img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-lg);
+    }
+
+    .hongdae-myeongdong-page main .hm-editorial-pair {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      width: 100%;
+      max-width: 900px;
+      margin: 28px auto 0;
+    }
+
+    .hongdae-myeongdong-page main .hm-editorial-pair .hm-editorial-media {
+      min-width: 0;
+      margin: 0;
+    }
+
     @media (max-width: 620px) {
       .hongdae-myeongdong-page main .hm-hero-caption {
         font-size: 11px;
+      }
+
+      .hongdae-myeongdong-page main .hm-editorial-pair {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -406,8 +441,22 @@
         </header>
         <div class="hm-prose hm-prose--wide" data-word-count-section="hongdae">
           <p>Hongdae is easier to justify when the neighborhood itself is part of the trip. Cafés, casual restaurants, shopping, live music and late-night activity can all stay close to the hotel, and Hongik University Station gives the area direct all-stop AREX access as well as Line 2.</p>
+          <figure class="hm-editorial-media">
+            <img src="images/Accommodation/hongdae-busy-main-street.webp" alt="Busy shopping street in Hongdae, Seoul" width="5472" height="3648" loading="lazy" decoding="async">
+            <figcaption class="hm-hero-caption">Photo: Korea Tourism Organization / Lee Beom-su</figcaption>
+          </figure>
           <p>The station is much larger than the phrase “near Hongik University Station” suggests. A hotel can look perfectly placed on a map while the actual route from the AREX platform still includes long corridors, level changes, elevators and a busy final walk. That matters most on arrival and departure days with luggage.</p>
           <p>Hongdae also changes from block to block. The central streets stay lively late, Yeonnam feels more café-oriented, and Hapjeong can offer a calmer edge without moving far away. A room a few minutes from the busiest streets can preserve most of Hongdae's advantages while making sleep noticeably easier.</p>
+          <div class="hm-editorial-pair">
+            <figure class="hm-editorial-media">
+              <img src="images/Accommodation/hongdae-tree-lined-street.webp" alt="Tree-lined street in the Hongdae area of Seoul" width="5472" height="3648" loading="lazy" decoding="async">
+              <figcaption class="hm-hero-caption">Photo: Korea Tourism Organization / Lee Beom-su</figcaption>
+            </figure>
+            <figure class="hm-editorial-media">
+              <img src="images/Accommodation/hongdae-night-street.webp" alt="Hongdae street at night in Seoul" width="5616" height="3744" loading="lazy" decoding="async">
+              <figcaption class="hm-hero-caption">Photo: Korea Tourism Organization / Kim Ji-ho</figcaption>
+            </figure>
+          </div>
         </div>
       </div>
     </section>
@@ -420,9 +469,13 @@
         </header>
         <div class="hm-prose hm-prose--wide" data-word-count-section="myeongdong">
           <p>Myeongdong is the easier all-round base for many first-time trips because shopping, meals and central sightseeing fit together without much explanation. City Hall, Namdaemun, Jongno and palace routes are easier to combine from this part of Seoul, although “central” does not mean every attraction is comfortably walkable.</p>
+          <figure class="hm-editorial-media">
+            <img src="images/Accommodation/myeongdong-day-shopping-street.webp" alt="Pedestrian shopping street in Myeongdong, Seoul" width="5472" height="3648" loading="lazy" decoding="async">
+            <figcaption class="hm-hero-caption">Photo: Korea Tourism Organization / Lee Beom-su</figcaption>
+          </figure>
           <p>The hotel location inside Myeongdong matters more than the district name suggests. Some properties work better from Myeongdong Station, others from Euljiro 1-ga, and an apparent underground shortcut can involve stairs, crowds or a much less convenient elevator route when luggage is involved.</p>
           <p>Myeongdong is less nightlife-led than Hongdae, but it is not automatically quiet. Main shopping streets, deliveries and large roads can still affect a room. Its real advantage is flexibility: a first-time itinerary can change during the day without turning every new plan into a long trip across Seoul.</p>
-          <figure class="stay-hero-media" style="margin: 32px 0 0;">
+          <figure class="hm-editorial-media hm-editorial-media--terminal">
             <img src="images/Accommodation/myeongdong-crowded-shopping-street.webp" alt="Crowds walking between shops and digital displays in Myeongdong, Seoul" width="876" height="584" loading="lazy" decoding="async">
           </figure>
         </div>
