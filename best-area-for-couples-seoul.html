@@ -10,6 +10,53 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400..600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <style>
+    .couples-stay-page main .couples-area-row {
+      grid-template-columns: minmax(0, 280px) minmax(0, 1fr);
+      column-gap: 44px;
+    }
+
+    .couples-stay-page main .couples-area-photo {
+      width: 100%;
+      margin: 20px 0 0;
+    }
+
+    .couples-stay-page main .couples-area-photo img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+    }
+
+    .couples-stay-page main .couples-area-photo figcaption {
+      margin-top: 10px;
+      color: #686158;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 959px) {
+      .couples-stay-page main .couples-area-row {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .couples-stay-page main .couples-area-photo {
+        max-width: 560px;
+        margin-top: 18px;
+      }
+    }
+
+    @media (max-width: 719px) {
+      .couples-stay-page main .couples-area-row {
+        gap: 18px;
+      }
+
+      .couples-stay-page main .couples-area-photo figcaption {
+        font-size: 13px;
+      }
+    }
+  </style>
   <script type="application/ld+json">
 {
     "@context":  "https://schema.org",
@@ -260,72 +307,102 @@
           <article class="couples-area-row">
             <div class="couples-area-row__summary">
               <h3>Hongdae</h3>
-              <p>Hongdae works well for couples who want the neighborhood to remain part of the trip after sightseeing ends. Cafés, restaurants, music and nightlife make spontaneous evenings easy, and Hongik University Station also provides direct all-stop AREX access.</p>
+              <figure class="couples-area-photo">
+                <img src="images/Accommodation/hongdae-busy-main-street.webp" alt="Busy shopping street in Hongdae, Seoul" width="5472" height="3648" loading="lazy" decoding="async">
+                <figcaption>Photo: Korea Tourism Organization / Lee Beom-su</figcaption>
+              </figure>
             </div>
             <div class="couples-area-row__content">
+              <p>Hongdae works well for couples who want the neighborhood to remain part of the trip after sightseeing ends. Cafés, restaurants, music and nightlife make spontaneous evenings easy, and Hongik University Station also provides direct all-stop AREX access.</p>
               <p>The busiest nightlife streets can stay noisy late. A hotel a few minutes away from the main evening blocks can keep the same cafés and transport nearby while making the return at night noticeably calmer.</p>
             </div>
           </article>
           <article class="couples-area-row">
             <div class="couples-area-row__summary">
               <h3>Seongsu</h3>
-              <p>Seongsu suits couples who enjoy spending time in a neighborhood rather than moving quickly from one major attraction to another. Cafés, design stores, fashion, pop-ups and newer Korean brands make it easy to build a relaxed afternoon without a strict itinerary.</p>
+              <figure class="couples-area-photo">
+                <img src="images/Accommodation/seongsu-alley.webp" alt="Street in Seongsu, Seoul" width="1536" height="1024" loading="lazy" decoding="async">
+              </figure>
             </div>
             <div class="couples-area-row__content">
+              <p>Seongsu suits couples who enjoy spending time in a neighborhood rather than moving quickly from one major attraction to another. Cafés, design stores, fashion, pop-ups and newer Korean brands make it easy to build a relaxed afternoon without a strict itinerary.</p>
               <p>It is less efficient for palace-heavy sightseeing and airport travel than some central or western districts. Seongsu therefore works best when the neighborhood itself is one of the experiences you want from the trip.</p>
             </div>
           </article>
           <article class="couples-area-row">
             <div class="couples-area-row__summary">
               <h3>Insadong</h3>
-              <p>Insadong gives couples easy access to palaces, traditional streets and some of the most walkable historic parts of central Seoul. It suits trips where cafés, cultural sightseeing and quiet evening walks matter more than late nightlife.</p>
+              <figure class="couples-area-photo">
+                <img src="images/Accommodation/insadong-shopping-street-evening.jpg" alt="Shopping street in Insadong, Seoul" width="9328" height="6500" loading="lazy" decoding="async">
+                <figcaption>Photo: Korea Tourism Organization / Live Studio</figcaption>
+              </figure>
             </div>
             <div class="couples-area-row__content">
+              <p>Insadong gives couples easy access to palaces, traditional streets and some of the most walkable historic parts of central Seoul. It suits trips where cafés, cultural sightseeing and quiet evening walks matter more than late nightlife.</p>
               <p>The neighborhood settles down earlier than Hongdae or Itaewon, and some hotels sit along smaller streets. Couples looking for active nights may find it too quiet, while others will see that calmer atmosphere as the main reason to stay here.</p>
             </div>
           </article>
           <article class="couples-area-row">
             <div class="couples-area-row__summary">
               <h3>Myeongdong</h3>
-              <p>Myeongdong is the easiest practical base for couples visiting Seoul for the first time. Central sightseeing, shopping and meals are simple to combine, and it is easy to change plans without spending much of the day crossing the city.</p>
+              <figure class="couples-area-photo">
+                <img src="images/Accommodation/myeongdong-day-shopping-street.webp" alt="Myeongdong shopping street in central Seoul" width="5472" height="3648" loading="lazy" decoding="async">
+                <figcaption>Photo: Korea Tourism Organization / Lee Beom-su</figcaption>
+              </figure>
             </div>
             <div class="couples-area-row__content">
+              <p>Myeongdong is the easiest practical base for couples visiting Seoul for the first time. Central sightseeing, shopping and meals are simple to combine, and it is easy to change plans without spending much of the day crossing the city.</p>
               <p>The neighborhood is busy and visitor-oriented rather than intimate or residential. Couples who care more about convenience than local atmosphere often find that trade-off worthwhile, especially on a shorter first trip.</p>
             </div>
           </article>
           <article class="couples-area-row">
             <div class="couples-area-row__summary">
               <h3>Gangnam</h3>
-              <p>Gangnam makes sense for couples whose plans already include shopping, restaurants, clinics, business or appointments south of the Han River. The area stays active into the evening and offers plenty to do without returning to central Seoul after dinner.</p>
+              <figure class="couples-area-photo">
+                <img src="images/Accommodation/gangnam-station-street.jpg" alt="Street near Gangnam Station in Seoul" width="5000" height="3333" loading="lazy" decoding="async">
+                <figcaption>Photo: Korea Tourism Organization / Live Studio (Kim Hak-ri)</figcaption>
+              </figure>
             </div>
             <div class="couples-area-row__content">
+              <p>Gangnam makes sense for couples whose plans already include shopping, restaurants, clinics, business or appointments south of the Han River. The area stays active into the evening and offers plenty to do without returning to central Seoul after dinner.</p>
               <p>For a trip focused on palaces, Insadong and historic central Seoul, the repeated cross-city travel can become tiring. Gangnam is a strong base when the itinerary gives it a clear reason to be one.</p>
             </div>
           </article>
           <article class="couples-area-row">
             <div class="couples-area-row__summary">
               <h3>Jamsil</h3>
-              <p>Jamsil works especially well when Lotte World, Seoul Sky, Seokchon Lake or southeastern Seoul are important parts of the trip. The lake and large modern complexes also make it easy to combine an attraction day with dinner and an evening walk nearby.</p>
+              <figure class="couples-area-photo">
+                <img src="images/Accommodation/jamsil-seokchon-lake-autumn.jpg" alt="Seokchon Lake and Lotte World Tower in Jamsil" width="4000" height="2673" loading="lazy" decoding="async">
+                <figcaption>Photo: Korea Tourism Organization / Kim Seung-rae</figcaption>
+              </figure>
             </div>
             <div class="couples-area-row__content">
+              <p>Jamsil works especially well when Lotte World, Seoul Sky, Seokchon Lake or southeastern Seoul are important parts of the trip. The lake and large modern complexes also make it easy to combine an attraction day with dinner and an evening walk nearby.</p>
               <p>The main trade-off is distance from many historic central sights. Couples planning only one day around Jamsil usually gain more flexibility by staying centrally and traveling here when needed.</p>
             </div>
           </article>
           <article class="couples-area-row">
             <div class="couples-area-row__summary">
               <h3>Itaewon</h3>
-              <p>Itaewon is useful for couples who want international dining, bars and evenings that feel different from Seoul's major shopping districts. It also connects naturally with nearby Hannam and other parts of Yongsan for restaurants, galleries and cafés.</p>
+              <figure class="couples-area-photo">
+                <img src="images/Accommodation/itaewon-night-street.webp" alt="Itaewon street at night in Seoul" width="1536" height="1024" loading="lazy" decoding="async">
+              </figure>
             </div>
             <div class="couples-area-row__content">
+              <p>Itaewon is useful for couples who want international dining, bars and evenings that feel different from Seoul's major shopping districts. It also connects naturally with nearby Hannam and other parts of Yongsan for restaurants, galleries and cafés.</p>
               <p>The terrain is the main practical issue. Hills and smaller side streets can make a hotel that looks close on a map less convenient in reality, particularly with luggage or after a long day.</p>
             </div>
           </article>
           <article class="couples-area-row">
             <div class="couples-area-row__summary">
               <h3>Mapo / Gongdeok</h3>
-              <p>Mapo and Gongdeok work well for couples who prefer a calmer base with straightforward airport access. Gongdeok has direct all-stop AREX service, while the surrounding neighborhoods offer everyday restaurants and a more residential evening atmosphere.</p>
+              <figure class="couples-area-photo">
+                <img src="images/Accommodation/mapo-pork-rib-street-day.jpg" alt="Restaurant street in Mapo, Seoul" width="5472" height="3648" loading="lazy" decoding="async">
+                <figcaption>Photo: Korea Tourism Organization / Lee Beom-su</figcaption>
+              </figure>
             </div>
             <div class="couples-area-row__content">
+              <p>Mapo and Gongdeok work well for couples who prefer a calmer base with straightforward airport access. Gongdeok has direct all-stop AREX service, while the surrounding neighborhoods offer everyday restaurants and a more residential evening atmosphere.</p>
               <p>Major sightseeing areas are not immediately outside the hotel, so most days begin with a subway ride. In return, arrival and departure are easier and the neighborhood can feel more relaxed at the end of the day.</p>
             </div>
           </article>
