@@ -35,6 +35,34 @@
       line-height: 1.5;
     }
 
+    .first-time-stay-page main .first-time-area-next-step {
+      text-decoration: none;
+    }
+
+    .first-time-stay-page main .first-time-area-next-step__copy,
+    .first-time-stay-page main .first-time-area-next-step__description {
+      display: block;
+      min-width: 0;
+    }
+
+    .first-time-stay-page main .first-time-area-next-step__description {
+      margin-top: 6px;
+      color: #514C43;
+      font-size: 18px;
+      line-height: 1.72;
+    }
+
+    .first-time-stay-page main .first-time-area-next-step:hover .first-time-related-link__title,
+    .first-time-stay-page main .first-time-area-next-step:focus-visible .first-time-related-link__title {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .first-time-stay-page main .first-time-area-next-step:focus-visible {
+      outline: 2px solid #1D2B27;
+      outline-offset: 4px;
+    }
+
     @media (max-width: 959px) {
       .first-time-stay-page main .first-time-area-row {
         grid-template-columns: 1fr;
@@ -54,6 +82,11 @@
 
       .first-time-stay-page main .first-time-area-photo figcaption {
         font-size: 13px;
+      }
+
+      .first-time-stay-page main .first-time-area-next-step__description {
+        font-size: 17px;
+        line-height: 1.68;
       }
     }
   </style>
@@ -430,8 +463,18 @@
               </figure>
             </div>
             <div class="first-time-area-row__content">
-              <p>Myeongdong is the easiest all-round starting point for many first-time visitors. Central sightseeing, shopping and meals are simple to combine, and the neighborhood is easy to understand even when Seoul still feels unfamiliar.</p>
-              <p>It is busy and strongly oriented toward visitors, but that convenience can be useful on a short first trip. Hotel rooms are often compact, so the actual room size and walking route from the station deserve as much attention as the location itself.</p>
+              <p>Myeongdong is one of the easiest places to understand on a first trip to Seoul. Shopping streets, restaurants, convenience stores, currency exchange shops and major beauty stores are packed into a relatively small area, so many everyday travel needs can be handled without going far.</p>
+              <p>Its location also works well for a sightseeing-heavy itinerary. Myeongdong Station and the Euljiro side of the neighborhood give travelers several ways to move across central Seoul, while City Hall, Namdaemun, Namsan and the Jongno area are all within easy reach. That makes it practical if your days mix shopping, historic sights and meals in different parts of the city.</p>
+              <p>The trade-off is that Myeongdong is busy and strongly geared toward visitors. Streets can feel crowded, hotel rooms are often compact, and staying on the wrong side of the district can add more walking than the map suggests. For a short first trip, though, that convenience is often worth the compromise.</p>
+              <div class="first-time-editorial-list">
+                <a class="first-time-editorial-row first-time-area-next-step" href="hongdae-vs-myeongdong.html#myeongdong-hotels-guide">
+                  <span class="guide-card__eyebrow">NEXT STEP</span>
+                  <span class="first-time-area-next-step__copy">
+                    <span class="first-time-related-link__title">Compare our 5 Myeongdong hotel picks</span>
+                    <span class="first-time-area-next-step__description">See which hotel works best for your daily routes in Seoul. →</span>
+                  </span>
+                </a>
+              </div>
             </div>
           </article>
 
