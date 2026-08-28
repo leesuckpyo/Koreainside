@@ -10,6 +10,152 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400..600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <style>
+    .hongdae-myeongdong-page main .hotel-editorial-image {
+      margin: 24px 0;
+    }
+
+    .hongdae-myeongdong-page main .hotel-editorial-image img {
+      display: block;
+      width: 58%;
+      max-width: 680px;
+      height: auto;
+      border-radius: 12px;
+    }
+
+    .hongdae-myeongdong-page main .hotel-airport-route {
+      margin: 28px 0 24px;
+      padding: 20px 0 18px;
+      border-block: 1px solid #d8d0c2;
+    }
+
+    .hongdae-myeongdong-page main .hotel-airport-route__stops {
+      display: flex;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .hongdae-myeongdong-page main .hotel-airport-route__stop {
+      position: relative;
+      flex: 1 1 0;
+      min-width: 0;
+      padding: 0 10px;
+      text-align: center;
+    }
+
+    .hongdae-myeongdong-page main .hotel-airport-route__stop::before {
+      position: relative;
+      z-index: 1;
+      display: block;
+      width: 10px;
+      height: 10px;
+      margin: 0 auto 12px;
+      background: #1d2b27;
+      border-radius: 50%;
+      content: "";
+    }
+
+    .hongdae-myeongdong-page main .hotel-airport-route__stop:not(:last-child)::after {
+      position: absolute;
+      top: 4px;
+      left: calc(50% + 5px);
+      width: calc(100% - 10px);
+      border-top: 2px solid #d8d0c2;
+      content: "";
+    }
+
+    .hongdae-myeongdong-page main .hotel-airport-route__label,
+    .hongdae-myeongdong-page main .hotel-airport-route__value {
+      display: block;
+      min-width: 0;
+      overflow-wrap: break-word;
+    }
+
+    .hongdae-myeongdong-page main .hotel-airport-route__label {
+      margin-bottom: 4px;
+      color: #686158;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .hongdae-myeongdong-page main .hotel-airport-route__value {
+      color: #1d2b27;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1.45;
+    }
+
+    .hongdae-myeongdong-page main .hotel-airport-route__value--key {
+      font-weight: 800;
+    }
+
+    .hongdae-myeongdong-page main .hotel-airport-route__stop:nth-child(2) .hotel-airport-route__value--key,
+    .hongdae-myeongdong-page main .hotel-airport-route__stop:nth-last-child(2) .hotel-airport-route__value--key {
+      color: #b9653b;
+    }
+
+    .hongdae-myeongdong-page main .hotel-airport-route__stop:nth-last-child(3) .hotel-airport-route__value--key {
+      color: #3f5d52;
+    }
+
+    .hongdae-myeongdong-page main .hotel-airport-route__value--muted {
+      color: #686158;
+    }
+
+    .hongdae-myeongdong-page main .hotel-airport-route__value--hotel {
+      font-size: 15px;
+    }
+
+    .hongdae-myeongdong-page main .hotel-airport-route-note {
+      margin: 20px 0 0;
+      color: #686158;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 640px) {
+      .hongdae-myeongdong-page main .hotel-editorial-image img {
+        width: 100%;
+        max-width: none;
+      }
+
+      .hongdae-myeongdong-page main .hotel-airport-route {
+        padding: 14px 0;
+      }
+
+      .hongdae-myeongdong-page main .hotel-airport-route__stops {
+        display: block;
+      }
+
+      .hongdae-myeongdong-page main .hotel-airport-route__stop {
+        display: grid;
+        grid-template-columns: 18px minmax(88px, 0.42fr) minmax(0, 1fr);
+        gap: 10px;
+        align-items: start;
+        padding: 8px 0;
+        text-align: left;
+      }
+
+      .hongdae-myeongdong-page main .hotel-airport-route__stop::before {
+        margin: 5px 0 0;
+      }
+
+      .hongdae-myeongdong-page main .hotel-airport-route__stop:not(:last-child)::after {
+        top: 18px;
+        left: 4px;
+        width: 0;
+        height: calc(100% - 4px);
+        border-top: 0;
+        border-left: 2px solid #d8d0c2;
+      }
+
+      .hongdae-myeongdong-page main .hotel-airport-route__label {
+        margin-bottom: 0;
+      }
+    }
+  </style>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -305,11 +451,29 @@
           <div class="hm-hotel-region__list">
             <article class="hm-hotel">
               <h3>L7 MYEONGDONG by LOTTE HOTELS</h3>
+              <figure class="hotel-editorial-image">
+                <img
+                  src="images/stay/myeongdong/l7-myeongdong-by-lotte-hotels-exterior.jpg"
+                  alt="Exterior of L7 MYEONGDONG by LOTTE HOTELS near Myeongdong Station"
+                  loading="lazy"
+                  decoding="async"
+                >
+              </figure>
               <p><strong>Why it works.</strong> L7 MYEONGDONG by LOTTE HOTELS is the clearest starting point when Myeongdong Station itself is part of the reason for staying here. The subway, shopping streets and hotel fit into the same daily routine.</p>
               <p><strong>Location and daily routes.</strong> It works especially well on a first trip, when Line 4 or Seoul Station matters and when shopping bags are likely to return to the hotel during the day.</p>
               <p><strong>The luggage reality.</strong> Exit 9 is the shortest route to L7 MYEONGDONG by LOTTE HOTELS, but it involves stairs. Exit 7 is about 133 metres from the hotel and has an escalator, so it can be the easier option with a large suitcase even though the walk is slightly longer. From Exit 7, the final approach follows a broad, mostly level sidewalk.</p>
               <p>Light luggage: Exit 9. Large suitcase: Exit 7.</p>
               <p><strong>Who should choose it.</strong> Start here if this is your first Seoul trip and an easy-to-remember Myeongdong Station base matters. Look elsewhere when most days are concentrated around areas better served from another subway line.</p>
+              <div class="hotel-airport-route">
+                <ol class="hotel-airport-route__stops" aria-label="Airport bus route from Incheon Airport to L7 MYEONGDONG by LOTTE HOTELS">
+                  <li class="hotel-airport-route__stop"><span class="hotel-airport-route__label">Airport</span><span class="hotel-airport-route__value">ICN</span></li>
+                  <li class="hotel-airport-route__stop"><span class="hotel-airport-route__label">Airport bus</span><strong class="hotel-airport-route__value hotel-airport-route__value--key">6015</strong></li>
+                  <li class="hotel-airport-route__stop"><span class="hotel-airport-route__label">Mid stop</span><span class="hotel-airport-route__value hotel-airport-route__value--muted">Gongdeok</span></li>
+                  <li class="hotel-airport-route__stop"><span class="hotel-airport-route__label">Get off</span><strong class="hotel-airport-route__value hotel-airport-route__value--key">Myeongdong Station (L7 / Sejong Hotel)</strong></li>
+                  <li class="hotel-airport-route__stop"><span class="hotel-airport-route__label">Final walk</span><strong class="hotel-airport-route__value hotel-airport-route__value--key">≈70–100 m</strong></li>
+                  <li class="hotel-airport-route__stop"><span class="hotel-airport-route__label">Hotel</span><span class="hotel-airport-route__value hotel-airport-route__value--hotel">L7 MYEONGDONG by LOTTE HOTELS</span></li>
+                </ol>
+              </div>
               <div class="hm-ota-row" aria-label="Booking links for L7 MYEONGDONG by LOTTE HOTELS">
                 <a class="hm-ota-button hm-ota-button--expedia" href="https://www.expedia.com/Seoul-Hotels-L7-Myeongdong-By-LOTTE.h12511672.Hotel-Information" target="_blank" rel="noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="where_to_stay_in_myeongdong" data-placement="myeongdong_guide_hotel_l7_myeongdong" data-link-stage="direct_non_affiliate" aria-label="View L7 MYEONGDONG by LOTTE HOTELS on Expedia">Expedia</a>
                 <a class="hm-ota-button hm-ota-button--booking" href="https://www.booking.com/hotel/kr/l7-myeongdong-by-lotte.en-gb.html" target="_blank" rel="noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="booking" data-page-category="stay" data-content-topic="where_to_stay_in_myeongdong" data-placement="myeongdong_guide_hotel_l7_myeongdong" data-link-stage="direct_pending" aria-label="View L7 MYEONGDONG by LOTTE HOTELS on Booking.com">Booking.com</a>
@@ -323,6 +487,16 @@
               <p><strong>Location and daily routes.</strong> The position works well when City Hall, Gwanghwamun, Jongno and the northern side of central Seoul appear repeatedly in the itinerary. Line 2 can be more useful than returning to Myeongdong Station each day.</p>
               <p><strong>The trade-off.</strong> This location is less useful when Line 4 anchors the trip or when you want the pedestrian shopping core directly outside the hotel. Airport services and stops can change, so check the current official route for your travel date.</p>
               <p><strong>Who should choose it.</strong> Choose it when a full-service stay and northern central Seoul routes matter together. A station-oriented Myeongdong hotel may be more practical when hotel facilities are secondary.</p>
+              <div class="hotel-airport-route">
+                <ol class="hotel-airport-route__stops" aria-label="Airport bus route from Incheon Airport to THE GRAND LOTTE SEOUL">
+                  <li class="hotel-airport-route__stop"><span class="hotel-airport-route__label">Airport</span><span class="hotel-airport-route__value">ICN</span></li>
+                  <li class="hotel-airport-route__stop"><span class="hotel-airport-route__label">Airport bus</span><strong class="hotel-airport-route__value hotel-airport-route__value--key">6701</strong></li>
+                  <li class="hotel-airport-route__stop"><span class="hotel-airport-route__label">Mid stop</span><span class="hotel-airport-route__value hotel-airport-route__value--muted">Gongdeok</span></li>
+                  <li class="hotel-airport-route__stop"><span class="hotel-airport-route__label">Get off</span><strong class="hotel-airport-route__value hotel-airport-route__value--key">Euljiro 1-ga (Lotte Hotel Seoul)</strong></li>
+                  <li class="hotel-airport-route__stop"><span class="hotel-airport-route__label">Final walk</span><strong class="hotel-airport-route__value hotel-airport-route__value--key">≈0–50 m</strong></li>
+                  <li class="hotel-airport-route__stop"><span class="hotel-airport-route__label">Hotel</span><span class="hotel-airport-route__value hotel-airport-route__value--hotel">THE GRAND LOTTE SEOUL</span></li>
+                </ol>
+              </div>
               <div class="hm-ota-row" aria-label="Booking links for THE GRAND LOTTE SEOUL">
                 <a class="hm-ota-button hm-ota-button--expedia" href="https://www.expedia.com/Seoul-Hotels-Lotte-Hotel-Seoul.h445260.Hotel-Information" target="_blank" rel="noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="where_to_stay_in_myeongdong" data-placement="myeongdong_guide_hotel_lotte_hotel_seoul" data-link-stage="direct_non_affiliate" aria-label="View THE GRAND LOTTE SEOUL on Expedia">Expedia</a>
                 <a class="hm-ota-button hm-ota-button--booking" href="https://www.booking.com/hotel/kr/lotte-seoul-seoul.en-gb.html" target="_blank" rel="noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="booking" data-page-category="stay" data-content-topic="where_to_stay_in_myeongdong" data-placement="myeongdong_guide_hotel_lotte_hotel_seoul" data-link-stage="direct_pending" aria-label="View THE GRAND LOTTE SEOUL on Booking.com">Booking.com</a>
@@ -336,6 +510,16 @@
               <p><strong>Location and daily routes.</strong> Shopping, restaurants and central Seoul plans stay close, making the hotel a strong match for couples or travelers who expect to return during the day.</p>
               <p><strong>The trade-off.</strong> A central pedestrian setting can be busy, and the reason to pay more is the combination of location and hotel quality rather than the shortest possible route from a subway entrance.</p>
               <p><strong>Who should choose it.</strong> Choose Le Méridien Seoul, Myeongdong when central Myeongdong and the hotel experience both matter. A simpler station-oriented property is better when location alone drives the decision.</p>
+              <div class="hotel-airport-route">
+                <ol class="hotel-airport-route__stops" aria-label="Airport bus route from Incheon Airport to Le Méridien Seoul, Myeongdong">
+                  <li class="hotel-airport-route__stop"><span class="hotel-airport-route__label">Airport</span><span class="hotel-airport-route__value">ICN</span></li>
+                  <li class="hotel-airport-route__stop"><span class="hotel-airport-route__label">Airport bus</span><strong class="hotel-airport-route__value hotel-airport-route__value--key">6701</strong></li>
+                  <li class="hotel-airport-route__stop"><span class="hotel-airport-route__label">Mid stop</span><span class="hotel-airport-route__value hotel-airport-route__value--muted">Gongdeok</span></li>
+                  <li class="hotel-airport-route__stop"><span class="hotel-airport-route__label">Get off</span><strong class="hotel-airport-route__value hotel-airport-route__value--key">Myeongdong (Aloft Seoul / Le Meridien)</strong></li>
+                  <li class="hotel-airport-route__stop"><span class="hotel-airport-route__label">Final walk</span><strong class="hotel-airport-route__value hotel-airport-route__value--key">≈100–150 m</strong></li>
+                  <li class="hotel-airport-route__stop"><span class="hotel-airport-route__label">Hotel</span><span class="hotel-airport-route__value hotel-airport-route__value--hotel">Le Méridien Seoul, Myeongdong</span></li>
+                </ol>
+              </div>
               <div class="hm-ota-row" aria-label="Booking links for Le Méridien Seoul, Myeongdong">
                 <a class="hm-ota-button hm-ota-button--expedia" href="https://www.expedia.com/Seoul-Hotels-Le-Meridien-Seoul.h89303596.Hotel-Information" target="_blank" rel="noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="where_to_stay_in_myeongdong" data-placement="myeongdong_guide_hotel_le_meridien_myeongdong" data-link-stage="direct_non_affiliate" aria-label="View Le Méridien Seoul, Myeongdong on Expedia">Expedia</a>
                 <a class="hm-ota-button hm-ota-button--booking" href="https://www.booking.com/hotel/kr/le-meridien-seoul-myeongdong.en-gb.html" target="_blank" rel="noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="booking" data-page-category="stay" data-content-topic="where_to_stay_in_myeongdong" data-placement="myeongdong_guide_hotel_le_meridien_myeongdong" data-link-stage="direct_pending" aria-label="View Le Méridien Seoul, Myeongdong on Booking.com">Booking.com</a>
@@ -349,6 +533,16 @@
               <p><strong>Location and daily routes.</strong> Lines 2 and 3 can be more useful than Line 4 for a traveler spending several days moving across Seoul. The area also steps away from the most concentrated tourist-shopping streets.</p>
               <p><strong>The trade-off.</strong> You do not walk directly into the main Myeongdong shopping core when leaving the hotel, and the final route still matters with luggage. Check this exact property rather than another Nine Tree location with a similar name.</p>
               <p><strong>Who should choose it.</strong> Choose Nine Tree II when the trip is about moving across Seoul rather than repeatedly returning to Myeongdong Station. Stay closer to the center when the Myeongdong atmosphere outside the door matters more.</p>
+              <div class="hotel-airport-route">
+                <ol class="hotel-airport-route__stops" aria-label="Airport bus route from Incheon Airport to NINE TREE BY PARNAS SEOUL MYEONGDONG II">
+                  <li class="hotel-airport-route__stop"><span class="hotel-airport-route__label">Airport</span><span class="hotel-airport-route__value">ICN</span></li>
+                  <li class="hotel-airport-route__stop"><span class="hotel-airport-route__label">Airport bus</span><strong class="hotel-airport-route__value hotel-airport-route__value--key">6015</strong></li>
+                  <li class="hotel-airport-route__stop"><span class="hotel-airport-route__label">Mid stop</span><span class="hotel-airport-route__value hotel-airport-route__value--muted">Gongdeok</span></li>
+                  <li class="hotel-airport-route__stop"><span class="hotel-airport-route__label">Get off</span><strong class="hotel-airport-route__value hotel-airport-route__value--key">Euljiro 2-ga / Pine Avenue</strong></li>
+                  <li class="hotel-airport-route__stop"><span class="hotel-airport-route__label">Final walk</span><strong class="hotel-airport-route__value hotel-airport-route__value--key">≈350–450 m</strong></li>
+                  <li class="hotel-airport-route__stop"><span class="hotel-airport-route__label">Hotel</span><span class="hotel-airport-route__value hotel-airport-route__value--hotel">NINE TREE BY PARNAS SEOUL MYEONGDONG II</span></li>
+                </ol>
+              </div>
               <div class="hm-ota-row" aria-label="Booking links for NINE TREE BY PARNAS SEOUL MYEONGDONG II">
                 <a class="hm-ota-button hm-ota-button--expedia" href="https://www.expedia.com/Seoul-Hotels-Nine-Tree-Premier-Hotel-Myeongdong-2.h17447885.Hotel-Information" target="_blank" rel="noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="where_to_stay_in_myeongdong" data-placement="myeongdong_guide_hotel_nine_tree_myeongdong_2" data-link-stage="direct_non_affiliate" aria-label="View NINE TREE BY PARNAS SEOUL MYEONGDONG II on Expedia">Expedia</a>
                 <a class="hm-ota-button hm-ota-button--booking" href="https://www.booking.com/hotel/kr/nine-tree-premier-myeongdong.en-gb.html" target="_blank" rel="noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="booking" data-page-category="stay" data-content-topic="where_to_stay_in_myeongdong" data-placement="myeongdong_guide_hotel_nine_tree_myeongdong_2" data-link-stage="direct_pending" aria-label="View NINE TREE BY PARNAS SEOUL MYEONGDONG II on Booking.com">Booking.com</a>
@@ -362,6 +556,15 @@
               <p><strong>Location and daily routes.</strong> The station-focused position can work well on a short first visit when Line 4 and the central shopping streets shape most days.</p>
               <p><strong>The trade-off.</strong> Station proximity does not answer every luggage question. The useful elevator, street route and current airport connection still need to be checked before arrival, while travelers seeking a quieter or more full-service stay may prefer another hotel.</p>
               <p><strong>Who should choose it.</strong> Choose Skypark 3 when location simplicity beats hotel facilities. It is less compelling when the hotel experience or routes farther north matter more.</p>
+              <div class="hotel-airport-route">
+                <ol class="hotel-airport-route__stops" aria-label="Airport bus route from Incheon Airport to Hotel Skypark Myeongdong Ⅲ">
+                  <li class="hotel-airport-route__stop"><span class="hotel-airport-route__label">Airport</span><span class="hotel-airport-route__value">ICN</span></li>
+                  <li class="hotel-airport-route__stop"><span class="hotel-airport-route__label">Airport bus</span><strong class="hotel-airport-route__value hotel-airport-route__value--key">6001 / 6015</strong></li>
+                  <li class="hotel-airport-route__stop"><span class="hotel-airport-route__label">Get off</span><strong class="hotel-airport-route__value hotel-airport-route__value--key">Myeongdong Station</strong></li>
+                  <li class="hotel-airport-route__stop"><span class="hotel-airport-route__label">Final walk</span><strong class="hotel-airport-route__value hotel-airport-route__value--key">≈70–100 m</strong></li>
+                  <li class="hotel-airport-route__stop"><span class="hotel-airport-route__label">Hotel</span><span class="hotel-airport-route__value hotel-airport-route__value--hotel">Hotel Skypark Myeongdong Ⅲ</span></li>
+                </ol>
+              </div>
               <div class="hm-ota-row" aria-label="Booking links for Hotel Skypark Myeongdong Ⅲ">
                 <a class="hm-ota-button hm-ota-button--expedia" href="https://www.expedia.com/Seoul-Hotels-HOTEL-SKYPARK-Myeongdong-III.h4465738.Hotel-Information" target="_blank" rel="noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="where_to_stay_in_myeongdong" data-placement="myeongdong_guide_hotel_skypark_myeongdong_3" data-link-stage="direct_non_affiliate" aria-label="View Hotel Skypark Myeongdong Ⅲ on Expedia">Expedia</a>
                 <a class="hm-ota-button hm-ota-button--booking" href="https://www.booking.com/hotel/kr/skypark-myeongdong-3.en-gb.html" target="_blank" rel="noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="booking" data-page-category="stay" data-content-topic="where_to_stay_in_myeongdong" data-placement="myeongdong_guide_hotel_skypark_myeongdong_3" data-link-stage="direct_pending" aria-label="View Hotel Skypark Myeongdong Ⅲ on Booking.com">Booking.com</a>
@@ -369,6 +572,7 @@
               </div>
             </article>
           </div>
+          <p class="hotel-airport-route-note">Airport limousine routes and stop locations can change. Check current official information before travel.</p>
         </section>
       </div>
     </section>
