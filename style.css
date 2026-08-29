@@ -20821,6 +20821,27 @@ body.foreign-card-page .foreign-card-prep-list li {
   hyphens: none;
 }
 
+.hongdae-myeongdong-page main .hm-hotel-photo-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin: 18px 0 24px;
+}
+
+.hongdae-myeongdong-page main .hm-hotel-photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.hongdae-myeongdong-page main .hm-hotel-photo-row .hm-hotel-photo-credit {
+  grid-column: 1 / -1;
+  margin-top: -6px;
+}
+
 .hongdae-myeongdong-page main .hm-hotel p {
   width: 100%;
   max-width: none;
@@ -21277,6 +21298,16 @@ body.foreign-card-page .foreign-card-prep-list li {
 
   .hongdae-myeongdong-page main .hm-hotel:last-child {
     padding-bottom: 34px;
+  }
+
+  .hongdae-myeongdong-page main .hm-hotel-photo-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+    margin: 16px 0 22px;
+  }
+
+  .hongdae-myeongdong-page main .hm-hotel-photo-row .hm-hotel-photo-credit {
+    margin-top: -2px;
   }
 
   .hongdae-myeongdong-page main .hm-ota-button {
