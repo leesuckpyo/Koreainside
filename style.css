@@ -22868,6 +22868,440 @@ body.stay-cluster.shopping-stay-page main .shopping-area__verdict {
   }
 }
 
+/* Where to Stay in Hongdae detail guide */
+.hongdae-detail-page main .hongdae-detail-hero-media,
+.hongdae-detail-page main .hongdae-detail-photo-pair figure {
+  margin: 0;
+}
+
+.hongdae-detail-page main .hongdae-detail-hero-media img,
+.hongdae-detail-page main .hongdae-detail-photo-pair img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.hongdae-detail-page main .hongdae-detail-hero-media img {
+  aspect-ratio: 4 / 3;
+}
+
+.hongdae-detail-page main .hongdae-detail-photo-pair img {
+  aspect-ratio: 3 / 2;
+}
+
+.hongdae-detail-page main .hongdae-detail-hero-media figcaption,
+.hongdae-detail-page main .hongdae-detail-photo-pair figcaption,
+.hongdae-detail-page main .hongdae-map-figure__note {
+  margin-top: 10px;
+  color: #686158;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.hongdae-detail-page main .hongdae-detail-photo-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.hongdae-detail-page main .hongdae-map-figure {
+  margin: 52px 0 0;
+}
+
+.hongdae-detail-page main .hongdae-map-figure > figcaption {
+  margin-bottom: 16px;
+  color: #1d2b27;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.hongdae-detail-page main .hongdae-context-map,
+.hongdae-detail-page main .hongdae-local-map {
+  overflow: hidden;
+  background: #fffdf8;
+  border: 1px solid #d8d0c2;
+  border-radius: 16px;
+}
+
+.hongdae-detail-page main .hongdae-context-map {
+  padding: 42px;
+}
+
+.hongdae-detail-page main .hongdae-context-map__route {
+  display: grid;
+  grid-template-columns: minmax(140px, 1fr) minmax(110px, 0.72fr) minmax(180px, 1.2fr) minmax(90px, 0.62fr) minmax(170px, 1.1fr);
+  gap: 0;
+  align-items: center;
+}
+
+.hongdae-detail-page main .hongdae-context-map__place {
+  display: flex;
+  min-height: 112px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  color: #1d2b27;
+  background: #f3ede2;
+  border: 1px solid #d8d0c2;
+  border-radius: 14px;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.hongdae-detail-page main .hongdae-context-map__place small {
+  margin-top: 6px;
+  color: #686158;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.hongdae-detail-page main .hongdae-context-map__place--hongdae {
+  color: #fffdf8;
+  background: #3f5d52;
+  border-color: #3f5d52;
+}
+
+.hongdae-detail-page main .hongdae-context-map__place--hongdae strong,
+.hongdae-detail-page main .hongdae-context-map__place--hongdae small {
+  color: #fffdf8;
+}
+
+.hongdae-detail-page main .hongdae-context-map__connection {
+  position: relative;
+  height: 2px;
+  background: #b9653b;
+}
+
+.hongdae-detail-page main .hongdae-context-map__connection::after {
+  position: absolute;
+  top: 50%;
+  right: -1px;
+  width: 9px;
+  height: 9px;
+  border-top: 2px solid #b9653b;
+  border-right: 2px solid #b9653b;
+  content: "";
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.hongdae-detail-page main .hongdae-context-map__connection span {
+  position: absolute;
+  right: 0;
+  bottom: 10px;
+  left: 0;
+  color: #686158;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.hongdae-detail-page main .hongdae-context-map__secondary {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  padding-top: 62px;
+  margin-top: 30px;
+  color: #686158;
+  font-size: 14px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.hongdae-detail-page main .hongdae-context-map__secondary::before {
+  position: absolute;
+  top: 18px;
+  right: -42px;
+  left: -42px;
+  height: 18px;
+  background: #f3ede2;
+  border-top: 1px solid #d8d0c2;
+  border-bottom: 1px solid #d8d0c2;
+  content: "";
+}
+
+.hongdae-detail-page main .hongdae-context-map__river {
+  color: #3f5d52;
+  font-weight: 700;
+}
+
+.hongdae-detail-page main .hongdae-local-map {
+  position: relative;
+  min-height: 620px;
+  padding: 32px;
+}
+
+.hongdae-detail-page main .hongdae-local-map__rail {
+  position: absolute;
+  z-index: 1;
+  background: #d8d0c2;
+}
+
+.hongdae-detail-page main .hongdae-local-map__rail span {
+  position: absolute;
+  padding: 4px 8px;
+  color: #514c43;
+  background: #fffdf8;
+  border: 1px solid #d8d0c2;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+.hongdae-detail-page main .hongdae-local-map__rail--arex {
+  top: 48%;
+  right: 8%;
+  left: 8%;
+  height: 5px;
+  background: #3f5d52;
+  transform: rotate(-8deg);
+}
+
+.hongdae-detail-page main .hongdae-local-map__rail--arex span {
+  top: -30px;
+  left: 5%;
+}
+
+.hongdae-detail-page main .hongdae-local-map__rail--line2 {
+  top: 12%;
+  bottom: 10%;
+  left: 52%;
+  width: 5px;
+  background: #b9653b;
+  transform: rotate(18deg);
+}
+
+.hongdae-detail-page main .hongdae-local-map__rail--line2 span {
+  right: 12px;
+  bottom: 5%;
+}
+
+.hongdae-detail-page main .hongdae-local-map__rail--gyeongui {
+  top: 7%;
+  bottom: 47%;
+  left: 36%;
+  width: 3px;
+  transform: rotate(-14deg);
+}
+
+.hongdae-detail-page main .hongdae-local-map__rail--gyeongui span {
+  top: 0;
+  left: 12px;
+}
+
+.hongdae-detail-page main .hongdae-local-map__zone,
+.hongdae-detail-page main .hongdae-local-map__station {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  max-width: 240px;
+  flex-direction: column;
+  padding: 16px 18px;
+  background: #f3ede2;
+  border: 1px solid #d8d0c2;
+  border-radius: 12px;
+  line-height: 1.35;
+}
+
+.hongdae-detail-page main .hongdae-local-map__zone strong,
+.hongdae-detail-page main .hongdae-local-map__station strong {
+  font-size: 16px;
+}
+
+.hongdae-detail-page main .hongdae-local-map__zone span,
+.hongdae-detail-page main .hongdae-local-map__station span,
+.hongdae-detail-page main .hongdae-local-map__zone small {
+  margin-top: 5px;
+  color: #686158;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.hongdae-detail-page main .hongdae-local-map__station {
+  color: #fffdf8;
+  background: #3f5d52;
+  border-color: #3f5d52;
+}
+
+.hongdae-detail-page main .hongdae-local-map__station strong,
+.hongdae-detail-page main .hongdae-local-map__station span {
+  color: #fffdf8;
+}
+
+.hongdae-detail-page main .hongdae-local-map__zone--yeonnam {
+  top: 10%;
+  left: 8%;
+}
+
+.hongdae-detail-page main .hongdae-local-map__station--hongik {
+  top: 40%;
+  left: 37%;
+  max-width: 280px;
+  transform: translate(-12%, -10%);
+}
+
+.hongdae-detail-page main .hongdae-local-map__zone--main {
+  top: 23%;
+  right: 8%;
+}
+
+.hongdae-detail-page main .hongdae-local-map__zone--seogyo {
+  right: 10%;
+  bottom: 10%;
+}
+
+.hongdae-detail-page main .hongdae-local-map__station--hapjeong {
+  bottom: 12%;
+  left: 28%;
+}
+
+.hongdae-detail-page main .hongdae-local-map__station--sangsu {
+  right: 36%;
+  bottom: 4%;
+}
+
+@media (max-width: 900px) {
+  .hongdae-detail-page main .hongdae-context-map {
+    padding: 30px;
+  }
+
+  .hongdae-detail-page main .hongdae-context-map__route {
+    grid-template-columns: minmax(120px, 1fr) minmax(80px, 0.55fr) minmax(150px, 1.2fr) minmax(70px, 0.5fr) minmax(140px, 1.1fr);
+  }
+
+  .hongdae-detail-page main .hongdae-context-map__secondary::before {
+    right: -30px;
+    left: -30px;
+  }
+}
+
+@media (max-width: 620px) {
+  .hongdae-detail-page main .hongdae-detail-photo-pair {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+    margin-top: 40px;
+  }
+
+  .hongdae-detail-page main .hongdae-map-figure {
+    margin-top: 42px;
+  }
+
+  .hongdae-detail-page main .hongdae-map-figure > figcaption {
+    font-size: 18px;
+  }
+
+  .hongdae-detail-page main .hongdae-context-map {
+    padding: 22px;
+  }
+
+  .hongdae-detail-page main .hongdae-context-map__route {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+
+  .hongdae-detail-page main .hongdae-context-map__place {
+    min-height: 96px;
+  }
+
+  .hongdae-detail-page main .hongdae-context-map__connection {
+    width: 2px;
+    height: 58px;
+    margin: 0 auto;
+  }
+
+  .hongdae-detail-page main .hongdae-context-map__connection::after {
+    top: auto;
+    right: auto;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) rotate(135deg);
+  }
+
+  .hongdae-detail-page main .hongdae-context-map__connection span {
+    top: 50%;
+    right: auto;
+    bottom: auto;
+    left: 14px;
+    width: 110px;
+    text-align: left;
+    transform: translateY(-50%);
+  }
+
+  .hongdae-detail-page main .hongdae-context-map__secondary {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+    padding-top: 48px;
+  }
+
+  .hongdae-detail-page main .hongdae-context-map__secondary::before {
+    top: 14px;
+    right: -22px;
+    left: -22px;
+  }
+
+  .hongdae-detail-page main .hongdae-local-map {
+    display: grid;
+    min-height: 0;
+    gap: 12px;
+    padding: 22px;
+  }
+
+  .hongdae-detail-page main .hongdae-local-map__rail,
+  .hongdae-detail-page main .hongdae-local-map__zone,
+  .hongdae-detail-page main .hongdae-local-map__station {
+    position: static;
+    width: auto;
+    max-width: none;
+    height: auto;
+    min-height: 0;
+    transform: none;
+  }
+
+  .hongdae-detail-page main .hongdae-local-map__rail {
+    display: none;
+  }
+
+  .hongdae-detail-page main .hongdae-local-map__zone,
+  .hongdae-detail-page main .hongdae-local-map__station {
+    padding: 16px;
+  }
+
+  .hongdae-detail-page main .hongdae-local-map__zone--yeonnam {
+    order: 1;
+  }
+
+  .hongdae-detail-page main .hongdae-local-map__station--hongik {
+    order: 2;
+  }
+
+  .hongdae-detail-page main .hongdae-local-map__zone--main {
+    order: 3;
+  }
+
+  .hongdae-detail-page main .hongdae-local-map__zone--seogyo {
+    order: 4;
+  }
+
+  .hongdae-detail-page main .hongdae-local-map__station--hapjeong {
+    order: 5;
+  }
+
+  .hongdae-detail-page main .hongdae-local-map__station--sangsu {
+    order: 6;
+  }
+}
+
 /* Taxi practical guide */
 
 .taxi-page main {
