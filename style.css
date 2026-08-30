@@ -22920,6 +22920,12 @@ body.stay-cluster.shopping-stay-page main .shopping-area__verdict {
   margin: 0;
 }
 
+@media (min-width: 1024px) {
+  .hongdae-detail-page main .hongdae-detail-hero-media {
+    margin-top: 61px;
+  }
+}
+
 .hongdae-detail-page main .hongdae-detail-hero-media img,
 .hongdae-detail-page main .hongdae-detail-photo-pair img {
   display: block;
