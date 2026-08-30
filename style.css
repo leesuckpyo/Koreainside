@@ -20837,6 +20837,21 @@ body.foreign-card-page .foreign-card-prep-list li {
   border-radius: 12px;
 }
 
+.hongdae-myeongdong-page main .hm-family-building-photo {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin: 18px 0 24px;
+}
+
+.hongdae-myeongdong-page main .hm-family-building-photo img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
 .hongdae-myeongdong-page main .hm-hotel-photo-row .hm-hotel-photo-credit {
   grid-column: 1 / -1;
   margin-top: -6px;
