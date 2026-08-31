@@ -53,25 +53,36 @@
     }
 
     .hm-detail-guide-link-wrap {
-      margin-top: 24px;
+      display: flex;
+      justify-content: center;
+      margin: 18px 0 24px;
     }
 
     .hm-detail-guide-link {
-      display: inline-block;
-      padding: 10px 14px;
-      border: 1px solid #d5cdbe;
-      border-radius: 4px;
-      background: transparent;
-      color: #1f4f6f;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 22px;
+      border: 0;
+      border-radius: 999px;
+      background: #18845a;
+      color: #fff;
       font-weight: 600;
-      line-height: 1.35;
       text-decoration: none;
+      transition: background-color 180ms ease, transform 180ms ease;
     }
 
-    .hm-detail-guide-link:hover,
-    .hm-detail-guide-link:focus-visible {
-      background: transparent;
-      text-decoration: underline;
+    .hm-detail-guide-link:hover {
+      background: #126c49;
+      transform: translateY(-2px);
+    }
+
+    .hm-detail-guide-arrow {
+      transition: transform 180ms ease;
+    }
+
+    .hm-detail-guide-link:hover .hm-detail-guide-arrow {
+      transform: translate(3px, -3px);
     }
 
     @media (max-width: 620px) {
@@ -532,6 +543,9 @@
           <header class="hm-hotel-guide">
             <h2 id="hongdae-hotels-guide">Hongdae Hotels Guide</h2>
             <p>These five Hongdae hotels suit different versions of the same stay. Some shorten the walk from Hongik University Station, some sit farther from the busiest streets, and others make the hotel itself a larger part of the trip. Korea Inside selected them for how their locations work with airport rail and everyday travel around Seoul — not simply by price or star rating.</p>
+            <div class="hm-detail-guide-link-wrap">
+              <a class="hm-detail-guide-link" href="where-to-stay-in-hongdae.html">View full Hongdae stay guide <span class="hm-detail-guide-arrow" aria-hidden="true">↗</span></a>
+            </div>
             <p>A useful price comparison needs the same dates, room type and cancellation conditions because weekend rates can move sharply. The real walk from Hongik University Station and the room's likely exposure to street noise matter just as much as the displayed rate.</p>
           </header>
 
@@ -591,16 +605,15 @@
               </div>
             </article>
           </div>
-
-          <div class="hm-detail-guide-link-wrap">
-            <a class="hm-detail-guide-link" href="where-to-stay-in-hongdae.html">See the full Hongdae stay guide →</a>
-          </div>
         </section>
 
         <section class="hm-hotel-region" aria-labelledby="myeongdong-hotels-guide">
           <header class="hm-hotel-guide">
             <h2 id="myeongdong-hotels-guide">Myeongdong Hotels Guide</h2>
             <p>These five hotels show how much the exact part of Myeongdong can change a stay. A hotel near Myeongdong Station works differently from one closer to Euljiro 1-ga, City Hall or Jongno. Korea Inside selected them for their subway access and day-to-day usefulness around central Seoul — not simply by price or star rating.</p>
+            <div class="hm-detail-guide-link-wrap">
+              <a class="hm-detail-guide-link" href="where-to-stay-in-myeongdong.html">View full Myeongdong stay guide <span class="hm-detail-guide-arrow" aria-hidden="true">↗</span></a>
+            </div>
           </header>
 
           <div class="hm-hotel-region__list">
