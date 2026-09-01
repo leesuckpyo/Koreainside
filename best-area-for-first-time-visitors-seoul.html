@@ -35,32 +35,38 @@
       line-height: 1.5;
     }
 
-    .first-time-stay-page main .first-time-area-next-step {
+    .first-time-stay-page main .first-time-area-guide-button,
+    .first-time-stay-page main .first-time-area-guide-button:visited {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      max-width: 100%;
+      margin-top: 20px;
+      padding: 12px 18px;
+      border-radius: 8px;
+      background: var(--blue-accent);
+      color: #fff;
+      font-weight: 600;
+      line-height: 1.35;
+      text-align: center;
       text-decoration: none;
+      box-sizing: border-box;
+      transition: background-color 0.18s ease, transform 0.18s ease;
     }
 
-    .first-time-stay-page main .first-time-area-next-step__copy,
-    .first-time-stay-page main .first-time-area-next-step__description {
-      display: block;
-      min-width: 0;
+    .first-time-stay-page main .first-time-area-guide-button:hover,
+    .first-time-stay-page main .first-time-area-guide-button:focus-visible {
+      background: var(--blue-deep);
+      color: #fff;
     }
 
-    .first-time-stay-page main .first-time-area-next-step__description {
-      margin-top: 6px;
-      color: #514C43;
-      font-size: 18px;
-      line-height: 1.72;
+    .first-time-stay-page main .first-time-area-guide-button:hover {
+      transform: translateY(-1px);
     }
 
-    .first-time-stay-page main .first-time-area-next-step:hover .first-time-related-link__title,
-    .first-time-stay-page main .first-time-area-next-step:focus-visible .first-time-related-link__title {
-      text-decoration: underline;
-      text-underline-offset: 4px;
-    }
-
-    .first-time-stay-page main .first-time-area-next-step:focus-visible {
-      outline: 2px solid #1D2B27;
-      outline-offset: 4px;
+    .first-time-stay-page main .first-time-area-guide-button:focus-visible {
+      outline: 3px solid var(--blue-accent);
+      outline-offset: 3px;
     }
 
     @media (max-width: 959px) {
@@ -84,9 +90,9 @@
         font-size: 13px;
       }
 
-      .first-time-stay-page main .first-time-area-next-step__description {
-        font-size: 17px;
-        line-height: 1.68;
+      .first-time-stay-page main .first-time-area-guide-button {
+        padding: 11px 16px;
+        white-space: normal;
       }
     }
   </style>
@@ -461,12 +467,7 @@
               <p>Myeongdong is one of the easiest places to understand on a first trip to Seoul. Shopping streets, restaurants, convenience stores, currency exchange shops and major beauty stores are packed into a relatively small area, so many everyday travel needs can be handled without going far.</p>
               <p>Its location also works well for a sightseeing-heavy itinerary. Myeongdong Station and the Euljiro side of the neighborhood give travelers several ways to move across central Seoul, while City Hall, Namdaemun, Namsan and the Jongno area are all within easy reach. That makes it practical if your days mix shopping, historic sights and meals in different parts of the city.</p>
               <p>The trade-off is that Myeongdong is busy and strongly geared toward visitors. Streets can feel crowded, hotel rooms are often compact, and staying on the wrong side of the district can add more walking than the map suggests. For a short first trip, though, that convenience is often worth the compromise.</p>
-              <div class="first-time-editorial-list">
-                <a class="first-time-editorial-row first-time-area-next-step" href="where-to-stay-in-myeongdong.html">
-                  <span class="first-time-related-link__title">Where to Stay in Myeongdong</span>
-                  <span class="first-time-area-next-step__description">See which part of Myeongdong fits your trip, then compare 5 hotels by subway access, luggage convenience, airport connections and the routes you’ll actually use around Seoul. →</span>
-                </a>
-              </div>
+              <a class="first-time-area-guide-button" href="where-to-stay-in-myeongdong.html">Where to Stay in Myeongdong →</a>
             </div>
           </article>
 
@@ -481,7 +482,7 @@
             <div class="first-time-area-row__content">
               <p>Hongdae is a stronger fit for travelers who want cafés, nightlife and an active neighborhood after sightseeing ends. Hongik University Station also has direct all-stop AREX service, which makes the airport journey easy to understand on a first visit.</p>
               <p>The busiest streets can stay noisy late into the night, and the station itself is large. A hotel slightly away from the main nightlife blocks can offer the same transport convenience with a more comfortable return at night.</p>
-              <p><a href="where-to-stay-in-hongdae.html">See where to stay in Hongdae, including airport access, quieter areas and our selected stays. →</a></p>
+              <a class="first-time-area-guide-button" href="where-to-stay-in-hongdae.html">Where to Stay in Hongdae →</a>
             </div>
           </article>
 
