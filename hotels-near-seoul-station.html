@@ -17,15 +17,60 @@
       padding: 80px 0;
     }
 
+    body.seoul-station-page main .hm-hero {
+      --detail-hero-last-gap: 72px;
+      position: relative;
+      isolation: isolate;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      background: #1d2b27;
+      border-bottom: 0;
+    }
+
+    body.seoul-station-page main .hm-hero::after {
+      position: absolute;
+      z-index: 1;
+      inset: 0;
+      background: linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0.72) 0%,
+        rgba(0, 0, 0, 0.68) 34%,
+        rgba(0, 0, 0, 0.28) 62%,
+        rgba(0, 0, 0, 0) 100%
+      );
+      content: "";
+    }
+
     body.seoul-station-page main .hm-hero__grid {
+      position: relative;
+      z-index: 2;
       grid-template-columns: minmax(0, 1fr);
+      align-items: center;
+      min-height: 100%;
     }
 
     body.seoul-station-page main .hm-hero__copy {
-      max-width: 78ch;
+      max-width: 58%;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+    }
+
+    body.seoul-station-page main .hm-hero .hm-breadcrumb,
+    body.seoul-station-page main .hm-hero .hm-breadcrumb a {
+      color: rgba(255, 255, 255, 0.88);
+    }
+
+    body.seoul-station-page main .hm-hero h1 {
+      color: #fff;
+    }
+
+    body.seoul-station-page main .hm-hero .hm-hero__answer p,
+    body.seoul-station-page main .hm-hero .hm-hero__answer p:first-child {
+      color: rgba(255, 255, 255, 0.95);
     }
 
     body.seoul-station-page main .seoul-station-hero-media {
+      position: absolute;
+      inset: 0;
       min-width: 0;
       margin: 0;
     }
@@ -33,17 +78,21 @@
     body.seoul-station-page main .seoul-station-hero-media img {
       display: block;
       width: 100%;
-      height: auto;
-      aspect-ratio: 16 / 9;
+      height: 100%;
       object-fit: cover;
-      border-radius: 12px;
     }
 
     body.seoul-station-page main .seoul-station-hero-media figcaption {
-      margin-top: 10px;
-      color: #686158;
+      position: absolute;
+      z-index: 2;
+      right: 0;
+      bottom: 20px;
+      left: 0;
+      margin: 0 auto;
+      color: rgba(255, 255, 255, 0.85);
       font-size: 14px;
       line-height: 1.5;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
     }
 
     body.seoul-station-page main :is(.hm-section__header, .hm-prose--wide, .hm-hotel-guide) {
@@ -145,6 +194,10 @@
         padding: 72px 0;
       }
 
+      body.seoul-station-page main .hm-hero__copy {
+        max-width: 78%;
+      }
+
       body.seoul-station-page main .seoul-station-fit-grid {
         grid-template-columns: minmax(0, 1fr);
       }
@@ -163,6 +216,32 @@
     @media (max-width: 719px) {
       body.seoul-station-page main .hm-section {
         padding: 56px 0;
+      }
+
+      body.seoul-station-page main .hm-hero {
+        --detail-hero-last-gap: 64px;
+      }
+
+      body.seoul-station-page main .hm-hero::after {
+        background: linear-gradient(
+          90deg,
+          rgba(0, 0, 0, 0.8) 0%,
+          rgba(0, 0, 0, 0.76) 58%,
+          rgba(0, 0, 0, 0.66) 100%
+        );
+      }
+
+      body.seoul-station-page main .hm-hero__copy {
+        max-width: 100%;
+      }
+
+      body.seoul-station-page main .seoul-station-hero-media img {
+        object-position: 68% center;
+      }
+
+      body.seoul-station-page main .seoul-station-hero-media figcaption {
+        bottom: 16px;
+        font-size: 13px;
       }
 
       body.seoul-station-page main .seoul-station-quick-decision .hm-decision-grid,
@@ -289,6 +368,10 @@
 
   <main>
     <section class="hm-hero">
+      <figure class="seoul-station-hero-media">
+        <img src="images/Accommodation/seoul-station-city-view.jpg" alt="Seoul Station and surrounding city streets" width="6000" height="4000" decoding="async" fetchpriority="high">
+        <figcaption class="container">Photo: Korea Tourism Organization / An Yeong-gwan</figcaption>
+      </figure>
       <div class="container hm-hero__grid">
         <div class="hm-hero__copy">
           <p class="hm-breadcrumb"><a href="/">Home</a> / Hotels Near Seoul Station</p>
@@ -299,10 +382,6 @@
             <p>For travelers spending most of their time sightseeing, shopping, eating out, and staying out late in Seoul, Myeongdong, Hongdae, or Jongno may still be a better base.</p>
           </div>
         </div>
-        <figure class="seoul-station-hero-media">
-          <img src="images/Accommodation/seoul-station-city-view.jpg" alt="Seoul Station and surrounding city streets" width="6000" height="4000" decoding="async" fetchpriority="high">
-          <figcaption>Photo: Korea Tourism Organization / An Yeong-gwan</figcaption>
-        </figure>
       </div>
     </section>
 
