@@ -22,44 +22,19 @@
     }
 
     body.seoul-station-page main .hm-hero__copy {
-      display: grid;
-      grid-template-columns: minmax(0, 1.38fr) minmax(0, 1fr);
-      grid-template-areas:
-        "breadcrumb media"
-        "title media"
-        "answer media";
-      column-gap: 48px;
-      max-width: none;
-      align-items: start;
-    }
-
-    body.seoul-station-page main .hm-hero .hm-breadcrumb {
-      grid-area: breadcrumb;
-    }
-
-    body.seoul-station-page main .hm-hero h1 {
-      grid-area: title;
-    }
-
-    body.seoul-station-page main .hm-hero__answer {
-      grid-area: answer;
-      margin-top: var(--detail-hero-title-gap);
+      max-width: 78ch;
     }
 
     body.seoul-station-page main .seoul-station-hero-media {
-      display: flex;
-      grid-area: media;
-      flex-direction: column;
       min-width: 0;
       margin: 0;
-      align-self: stretch;
     }
 
     body.seoul-station-page main .seoul-station-hero-media img {
       display: block;
-      flex: 1 1 0;
       width: 100%;
-      min-height: 0;
+      height: auto;
+      aspect-ratio: 16 / 9;
       object-fit: cover;
       border-radius: 12px;
     }
@@ -182,28 +157,6 @@
         padding: 36px 0 28px;
         border-top: 1px solid #d8d0c2;
         border-left: 0;
-      }
-    }
-
-    @media (max-width: 1023px) {
-      body.seoul-station-page main .hm-hero__copy {
-        grid-template-columns: minmax(0, 1fr);
-        grid-template-areas:
-          "breadcrumb"
-          "title"
-          "media"
-          "answer";
-        column-gap: 0;
-      }
-
-      body.seoul-station-page main .seoul-station-hero-media {
-        margin-top: var(--detail-hero-title-gap);
-      }
-
-      body.seoul-station-page main .seoul-station-hero-media img {
-        flex: none;
-        height: auto;
-        aspect-ratio: 3 / 2;
       }
     }
 
@@ -340,16 +293,16 @@
         <div class="hm-hero__copy">
           <p class="hm-breadcrumb"><a href="/">Home</a> / Hotels Near Seoul Station</p>
           <h1>Hotels Near Seoul Station</h1>
-          <figure class="seoul-station-hero-media">
-            <img src="images/Accommodation/seoul-station-city-view.jpg" alt="Seoul Station and surrounding city streets" width="6000" height="4000" decoding="async" fetchpriority="high">
-            <figcaption>Photo: Korea Tourism Organization / An Yeong-gwan</figcaption>
-          </figure>
           <div class="hm-hero__answer">
             <p>Seoul Station is not the default place I would choose for a first trip spent entirely in Seoul. Its advantage is what happens before and after your stay: KTX trains to other Korean cities, AREX to Incheon Airport, and an easier start when you have an early train or a work trip outside Seoul.</p>
             <p>If your itinerary includes Busan, Gyeongju, Daejeon, Daegu, or another city by rail, staying nearby can remove an unnecessary cross-Seoul trip on travel day. The same applies if you arrive on the AREX and plan to continue by KTX, or return to Seoul for one night before flying home.</p>
             <p>For travelers spending most of their time sightseeing, shopping, eating out, and staying out late in Seoul, Myeongdong, Hongdae, or Jongno may still be a better base.</p>
           </div>
         </div>
+        <figure class="seoul-station-hero-media">
+          <img src="images/Accommodation/seoul-station-city-view.jpg" alt="Seoul Station and surrounding city streets" width="6000" height="4000" decoding="async" fetchpriority="high">
+          <figcaption>Photo: Korea Tourism Organization / An Yeong-gwan</figcaption>
+        </figure>
       </div>
     </section>
 
