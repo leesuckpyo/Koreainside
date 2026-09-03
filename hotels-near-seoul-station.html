@@ -276,6 +276,23 @@
         gap: 14px;
       }
     }
+
+    body.seoul-station-page main #travel-scenarios .seoul-station-scenarios li::before,
+    body.seoul-station-page main #booking-checks .seoul-station-booking-checklist li::before {
+      content: none;
+    }
+
+    body.seoul-station-page main #travel-scenarios .seoul-station-scenarios li {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    body.seoul-station-page main #travel-scenarios .seoul-station-scenarios li p {
+      grid-column: 1;
+    }
+
+    body.seoul-station-page main #booking-checks .seoul-station-booking-checklist li {
+      padding-left: 0;
+    }
   </style>
   <script type="application/ld+json">
   {
