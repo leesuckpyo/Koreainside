@@ -119,6 +119,56 @@
       transform: translate(3px, -3px);
     }
 
+    .hongdae-myeongdong-page main .hm-booking-strip {
+      margin-top: 24px;
+      padding: 18px 0 20px;
+      border-top: 1px solid #d8d0c2;
+      border-bottom: 1px solid var(--gray-200);
+    }
+
+    .hongdae-myeongdong-page main .hm-booking-strip__eyebrow,
+    .hongdae-myeongdong-page main .hm-booking-strip__title {
+      max-width: none;
+      margin: 0;
+    }
+
+    .hongdae-myeongdong-page main .hm-booking-strip__eyebrow {
+      color: var(--blue-accent);
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1.2;
+      letter-spacing: 0.08em;
+    }
+
+    .hongdae-myeongdong-page main .hm-booking-strip__title {
+      margin-top: 4px;
+      color: var(--blue-muted);
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .hongdae-myeongdong-page main .hm-booking-strip .hm-ota-row {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .hongdae-myeongdong-page main .hm-booking-strip .hm-ota-button {
+      width: 100%;
+      min-height: 48px;
+      padding: 11px 14px;
+      border: 1px solid var(--gray-200);
+      background: var(--white);
+      color: var(--blue-deep);
+    }
+
+    .hongdae-myeongdong-page main .hm-booking-strip .hm-ota-button:hover,
+    .hongdae-myeongdong-page main .hm-booking-strip .hm-ota-button:focus-visible {
+      border-color: var(--blue-deep);
+      background: var(--blue-deep);
+      color: var(--white);
+    }
+
     @media (max-width: 620px) {
       .hongdae-myeongdong-page main .hm-hero-caption {
         font-size: 11px;
@@ -126,6 +176,14 @@
 
       .hongdae-myeongdong-page main .hm-editorial-pair {
         grid-template-columns: 1fr;
+      }
+
+      .hongdae-myeongdong-page main .hm-booking-strip {
+        padding: 16px 0 18px;
+      }
+
+      .hongdae-myeongdong-page main .hm-booking-strip .hm-ota-row {
+        grid-template-columns: minmax(0, 1fr);
       }
     }
   </style>
@@ -540,30 +598,42 @@
               <h3>Holiday Inn Express Seoul Hongdae</h3>
               <p>Arrival and departure days are the main reason to look at Holiday Inn Express Seoul Hongdae. IHG places the hotel about a minute from Hongik University Station Exit 5, in the same building as AK Plaza, and the station gives you the all-stop AREX. Complimentary breakfast is included for staying guests, which also makes an early start simpler.</p>
               <p>The catch is underground rather than on the map. Exit 5 is close to the hotel, but the AREX platform is still inside a large station, so travelers with heavy luggage should judge the platform-to-exit route rather than the advertised walk from the exit alone.</p>
-              <div class="hm-ota-row" aria-label="Booking links for Holiday Inn Express Seoul Hongdae">
-                <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/gp9ZVxh" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_holiday_inn_hongdae" data-link-stage="affiliate" aria-label="View Holiday Inn Express Seoul Hongdae on Expedia">Expedia</a>
-                <a class="hm-ota-button hm-ota-button--booking" href="https://www.booking.com/hotel/kr/holiday-inn-express-seoul-hongdae.html" target="_blank" rel="noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="booking" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_holiday_inn_hongdae" data-link-stage="direct_pending" aria-label="View Holiday Inn Express Seoul Hongdae on Booking.com">Booking.com</a>
-                <a class="hm-ota-button hm-ota-button--agoda" href="https://www.agoda.com/holiday-inn-express-seoul-hongdae/hotel/seoul-kr.html?cid=1969180&amp;hl=en-us" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="agoda" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_holiday_inn_hongdae" data-link-stage="affiliate" aria-label="View Holiday Inn Express Seoul Hongdae on Agoda">Agoda</a>
+              <div class="hm-booking-strip">
+                <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
+                <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
+                <div class="hm-ota-row" aria-label="Booking links for Holiday Inn Express Seoul Hongdae">
+                  <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/gp9ZVxh" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_holiday_inn_hongdae" data-link-stage="affiliate" aria-label="View Holiday Inn Express Seoul Hongdae on Expedia">Expedia</a>
+                  <a class="hm-ota-button hm-ota-button--trip" href="https://www.trip.com/hotels/seoul-hotel-detail-21908084/holiday-inn-express-seoul-hongdae-by-ihg/" target="_blank" rel="noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="trip.com" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_holiday_inn_hongdae" data-link-stage="direct_pending" aria-label="View Holiday Inn Express Seoul Hongdae on Trip.com">Trip.com</a>
+                  <a class="hm-ota-button hm-ota-button--agoda" href="https://www.agoda.com/holiday-inn-express-seoul-hongdae/hotel/seoul-kr.html?cid=1969180&amp;hl=en-us" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="agoda" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_holiday_inn_hongdae" data-link-stage="affiliate" aria-label="View Holiday Inn Express Seoul Hongdae on Agoda">Agoda</a>
+                </div>
               </div>
             </article>
 
             <article class="hm-hotel">
               <h3>Amanti Hotel Seoul</h3>
               <p>The extra walk is the whole point of Amanti Hotel Seoul. The hotel's own directions put it roughly 450 meters from Hongik University Station Exit 1: about 150 meters to the Hongdae Entrance intersection, then another 300 meters toward the hotel. That distance is noticeable with suitcases or rain, but it also moves the stay away from the tight station-side cluster. Choose it only if that exchange works for your trip.</p>
-              <div class="hm-ota-row" aria-label="Booking links for Amanti Hotel Seoul">
-                <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/nAJeDAp" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_amanti_hongdae" data-link-stage="affiliate" aria-label="View Amanti Hotel Seoul on Expedia">Expedia</a>
-                <a class="hm-ota-button hm-ota-button--booking" href="https://www.booking.com/hotel/kr/amanti-seoul.en-gb.html" target="_blank" rel="noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="booking" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_amanti_hongdae" data-link-stage="direct_pending" aria-label="View Amanti Hotel Seoul on Booking.com">Booking.com</a>
-                <a class="hm-ota-button hm-ota-button--agoda" href="https://www.agoda.com/amanti-hotel-seoul/hotel/seoul-kr.html?cid=1969180&amp;hl=en-us" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="agoda" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_amanti_hongdae" data-link-stage="affiliate" aria-label="View Amanti Hotel Seoul on Agoda">Agoda</a>
+              <div class="hm-booking-strip">
+                <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
+                <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
+                <div class="hm-ota-row" aria-label="Booking links for Amanti Hotel Seoul">
+                  <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/nAJeDAp" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_amanti_hongdae" data-link-stage="affiliate" aria-label="View Amanti Hotel Seoul on Expedia">Expedia</a>
+                  <a class="hm-ota-button hm-ota-button--trip" href="https://www.trip.com/hotels/seoul-hotel-detail-5276189/amanti-hotel-seoul/" target="_blank" rel="noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="trip.com" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_amanti_hongdae" data-link-stage="direct_pending" aria-label="View Amanti Hotel Seoul on Trip.com">Trip.com</a>
+                  <a class="hm-ota-button hm-ota-button--agoda" href="https://www.agoda.com/amanti-hotel-seoul/hotel/seoul-kr.html?cid=1969180&amp;hl=en-us" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="agoda" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_amanti_hongdae" data-link-stage="affiliate" aria-label="View Amanti Hotel Seoul on Agoda">Agoda</a>
+                </div>
               </div>
             </article>
 
             <article class="hm-hotel">
               <h3>9 Brick Hotel</h3>
               <p>For a trip that will end in central Hongdae several nights, 9 Brick has a straightforward advantage: its Hongik-ro 5-gil address puts the hotel inside the area you are likely to return to for restaurants, shopping and evenings out. The same central position deserves more scrutiny if you are a light sleeper or expect to roll large suitcases back and forth from the station.</p>
-              <div class="hm-ota-row" aria-label="Booking links for 9 Brick Hotel">
-                <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/2iBX3Ao" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_9_brick_hongdae" data-link-stage="affiliate" aria-label="View 9 Brick Hotel on Expedia">Expedia</a>
-                <a class="hm-ota-button hm-ota-button--booking" href="https://www.booking.com/hotel/kr/9brick.en-gb.html" target="_blank" rel="noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="booking" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_9_brick_hongdae" data-link-stage="direct_pending" aria-label="View 9 Brick Hotel on Booking.com">Booking.com</a>
-                <a class="hm-ota-button hm-ota-button--agoda" href="https://www.agoda.com/nine-brick-hotel/hotel/seoul-kr.html?cid=1969180&amp;hl=en-us" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="agoda" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_9_brick_hongdae" data-link-stage="affiliate" aria-label="View 9 Brick Hotel on Agoda">Agoda</a>
+              <div class="hm-booking-strip">
+                <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
+                <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
+                <div class="hm-ota-row" aria-label="Booking links for 9 Brick Hotel">
+                  <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/2iBX3Ao" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_9_brick_hongdae" data-link-stage="affiliate" aria-label="View 9 Brick Hotel on Expedia">Expedia</a>
+                  <a class="hm-ota-button hm-ota-button--trip" href="https://www.trip.com/hotels/seoul-hotel-detail-7770251/9-brick-hotel/" target="_blank" rel="noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="trip.com" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_9_brick_hongdae" data-link-stage="direct_pending" aria-label="View 9 Brick Hotel on Trip.com">Trip.com</a>
+                  <a class="hm-ota-button hm-ota-button--agoda" href="https://www.agoda.com/nine-brick-hotel/hotel/seoul-kr.html?cid=1969180&amp;hl=en-us" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="agoda" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_9_brick_hongdae" data-link-stage="affiliate" aria-label="View 9 Brick Hotel on Agoda">Agoda</a>
+                </div>
               </div>
             </article>
 
@@ -571,10 +641,14 @@
               <h3>L7 Hongdae</h3>
               <p>Room layout gives L7 Hongdae a clearer reason to be on this shortlist than the vague idea of a “more polished” stay. Lotte lists 24.8㎡ standard rooms as well as triple and family-twin configurations, so friends or a small family can compare an actual sleeping arrangement instead of automatically taking two rooms.</p>
               <p>Its Yanghwa-ro location keeps Hongdae close, but the room configuration only matters if the final rate still makes sense for your dates. Compare the room you would actually book, not just the L7 name against a cheaper headline price elsewhere.</p>
-              <div class="hm-ota-row" aria-label="Booking links for L7 Hongdae">
-                <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/HiafyNb" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_l7_hongdae" data-link-stage="affiliate" aria-label="View L7 Hongdae on Expedia">Expedia</a>
-                <a class="hm-ota-button hm-ota-button--booking" href="https://www.booking.com/hotel/kr/l7-hongdae.html" target="_blank" rel="noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="booking" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_l7_hongdae" data-link-stage="direct_pending" aria-label="View L7 Hongdae on Booking.com">Booking.com</a>
-                <a class="hm-ota-button hm-ota-button--agoda" href="https://www.agoda.com/l7-hongdae-by-lotte/hotel/seoul-kr.html?cid=1969180&amp;hl=en-us" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="agoda" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_l7_hongdae" data-link-stage="affiliate" aria-label="View L7 Hongdae on Agoda">Agoda</a>
+              <div class="hm-booking-strip">
+                <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
+                <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
+                <div class="hm-ota-row" aria-label="Booking links for L7 Hongdae">
+                  <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/HiafyNb" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_l7_hongdae" data-link-stage="affiliate" aria-label="View L7 Hongdae on Expedia">Expedia</a>
+                  <a class="hm-ota-button hm-ota-button--trip" href="https://www.trip.com/hotels/seoul-hotel-detail-14186936/l7-hongdae-by-lotte-hotels/" target="_blank" rel="noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="trip.com" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_l7_hongdae" data-link-stage="direct_pending" aria-label="View L7 Hongdae on Trip.com">Trip.com</a>
+                  <a class="hm-ota-button hm-ota-button--agoda" href="https://www.agoda.com/l7-hongdae-by-lotte/hotel/seoul-kr.html?cid=1969180&amp;hl=en-us" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="agoda" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_l7_hongdae" data-link-stage="affiliate" aria-label="View L7 Hongdae on Agoda">Agoda</a>
+                </div>
               </div>
             </article>
 
@@ -582,10 +656,14 @@
               <h3>RYSE, Autograph Collection</h3>
               <p>RYSE is the one Hongdae hotel here where the property itself can reasonably take up part of the itinerary. Marriott lists its own restaurant, the rooftop Side Note Club, fitness facilities and design-focused rooms and suites, so there is more to use after you come back from the neighborhood.</p>
               <p>That also makes it easier to rule out. If you expect to leave after breakfast and return only to sleep, you may be paying for parts of the hotel that barely matter to your trip.</p>
-              <div class="hm-ota-row" aria-label="Booking links for RYSE, Autograph Collection">
-                <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/oPcVbUW" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_ryse_hongdae" data-link-stage="affiliate" aria-label="View RYSE, Autograph Collection on Expedia">Expedia</a>
-                <a class="hm-ota-button hm-ota-button--booking" href="https://www.booking.com/hotel/kr/ryse-autograph-collection-korea.en-gb.html" target="_blank" rel="noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="booking" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_ryse_hongdae" data-link-stage="direct_pending" aria-label="View RYSE, Autograph Collection on Booking.com">Booking.com</a>
-                <a class="hm-ota-button hm-ota-button--agoda" href="https://www.agoda.com/ryse-autograph-collection_2/hotel/seoul-kr.html?cid=1969180&amp;hl=en-us" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="agoda" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_ryse_hongdae" data-link-stage="affiliate" aria-label="View RYSE, Autograph Collection on Agoda">Agoda</a>
+              <div class="hm-booking-strip">
+                <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
+                <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
+                <div class="hm-ota-row" aria-label="Booking links for RYSE, Autograph Collection">
+                  <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/oPcVbUW" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_ryse_hongdae" data-link-stage="affiliate" aria-label="View RYSE, Autograph Collection on Expedia">Expedia</a>
+                  <a class="hm-ota-button hm-ota-button--trip" href="https://www.trip.com/hotels/seoul-hotel-detail-687886/ryse-autograph-collection/" target="_blank" rel="noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="trip.com" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_ryse_hongdae" data-link-stage="direct_pending" aria-label="View RYSE, Autograph Collection on Trip.com">Trip.com</a>
+                  <a class="hm-ota-button hm-ota-button--agoda" href="https://www.agoda.com/ryse-autograph-collection_2/hotel/seoul-kr.html?cid=1969180&amp;hl=en-us" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="agoda" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_ryse_hongdae" data-link-stage="affiliate" aria-label="View RYSE, Autograph Collection on Agoda">Agoda</a>
+                </div>
               </div>
             </article>
           </div>
@@ -605,10 +683,14 @@
             <article class="hm-hotel">
               <h3>L7 MYEONGDONG by LOTTE HOTELS</h3>
               <p>If Myeongdong Station is going to anchor the trip, L7 Myeongdong keeps that decision simple. The hotel is on Toegye-ro just off the station side of the district, while Lotte also provides a 24-hour guest lounge inside the property. That combination works well when you expect to return to the hotel between shopping or sightseeing stops; it matters less if most of your days will begin toward City Hall, Jongno or Euljiro instead.</p>
-              <div class="hm-ota-row" aria-label="Booking links for L7 MYEONGDONG by LOTTE HOTELS">
-                <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/IXBHVSC" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_l7_myeongdong" data-link-stage="affiliate" aria-label="View L7 MYEONGDONG by LOTTE HOTELS on Expedia">Expedia</a>
-                <a class="hm-ota-button hm-ota-button--booking" href="https://www.booking.com/hotel/kr/l7-myeongdong-by-lotte.en-gb.html" target="_blank" rel="noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="booking" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_l7_myeongdong" data-link-stage="direct_pending" aria-label="View L7 MYEONGDONG by LOTTE HOTELS on Booking.com">Booking.com</a>
-                <a class="hm-ota-button hm-ota-button--agoda" href="https://www.agoda.com/l7-myeongdong-by-lotte/hotel/seoul-kr.html?cid=1969180&amp;hl=en-us" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="agoda" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_l7_myeongdong" data-link-stage="affiliate" aria-label="View L7 MYEONGDONG by LOTTE HOTELS on Agoda">Agoda</a>
+              <div class="hm-booking-strip">
+                <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
+                <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
+                <div class="hm-ota-row" aria-label="Booking links for L7 MYEONGDONG by LOTTE HOTELS">
+                  <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/IXBHVSC" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_l7_myeongdong" data-link-stage="affiliate" aria-label="View L7 MYEONGDONG by LOTTE HOTELS on Expedia">Expedia</a>
+                  <a class="hm-ota-button hm-ota-button--trip" href="https://www.trip.com/hotels/seoul-hotel-detail-3732591/l7-myeongdong-by-lotte-hotels/" target="_blank" rel="noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="trip.com" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_l7_myeongdong" data-link-stage="direct_pending" aria-label="View L7 MYEONGDONG by LOTTE HOTELS on Trip.com">Trip.com</a>
+                  <a class="hm-ota-button hm-ota-button--agoda" href="https://www.agoda.com/l7-myeongdong-by-lotte/hotel/seoul-kr.html?cid=1969180&amp;hl=en-us" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="agoda" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_l7_myeongdong" data-link-stage="affiliate" aria-label="View L7 MYEONGDONG by LOTTE HOTELS on Agoda">Agoda</a>
+                </div>
               </div>
             </article>
 
@@ -616,10 +698,14 @@
               <h3>THE GRAND LOTTE SEOUL</h3>
               <p>Move the map north before comparing The Grand Lotte Seoul with the Myeongdong Station hotels. The hotel sits at 30 Eulji-ro near Euljiro 1-ga, so City Hall, Gwanghwamun and Jongno fit more naturally into the same stay as Myeongdong shopping.</p>
               <p>It is a weaker match if you expect Myeongdong Station to be your daily reference point or want the pedestrian shopping streets immediately outside the entrance. Older maps and booking references may still show the former name, Lotte Hotel Seoul.</p>
-              <div class="hm-ota-row" aria-label="Booking links for THE GRAND LOTTE SEOUL">
-                <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/T0rQEOB" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_lotte_hotel_seoul" data-link-stage="affiliate" aria-label="View THE GRAND LOTTE SEOUL on Expedia">Expedia</a>
-                <a class="hm-ota-button hm-ota-button--booking" href="https://www.booking.com/hotel/kr/lotte-seoul-seoul.en-gb.html" target="_blank" rel="noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="booking" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_lotte_hotel_seoul" data-link-stage="direct_pending" aria-label="View THE GRAND LOTTE SEOUL on Booking.com">Booking.com</a>
-                <a class="hm-ota-button hm-ota-button--agoda" href="https://www.agoda.com/lotte-hotel-seoul/hotel/seoul-kr.html?cid=1969180&amp;hl=en-us" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="agoda" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_lotte_hotel_seoul" data-link-stage="affiliate" aria-label="View THE GRAND LOTTE SEOUL on Agoda">Agoda</a>
+              <div class="hm-booking-strip">
+                <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
+                <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
+                <div class="hm-ota-row" aria-label="Booking links for THE GRAND LOTTE SEOUL">
+                  <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/T0rQEOB" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_lotte_hotel_seoul" data-link-stage="affiliate" aria-label="View THE GRAND LOTTE SEOUL on Expedia">Expedia</a>
+                  <a class="hm-ota-button hm-ota-button--trip" href="https://www.trip.com/hotels/seoul-hotel-detail-988396/lotte-hotel-seoul/" target="_blank" rel="noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="trip.com" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_lotte_hotel_seoul" data-link-stage="direct_pending" aria-label="View THE GRAND LOTTE SEOUL on Trip.com">Trip.com</a>
+                  <a class="hm-ota-button hm-ota-button--agoda" href="https://www.agoda.com/lotte-hotel-seoul/hotel/seoul-kr.html?cid=1969180&amp;hl=en-us" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="agoda" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_lotte_hotel_seoul" data-link-stage="affiliate" aria-label="View THE GRAND LOTTE SEOUL on Agoda">Agoda</a>
+                </div>
               </div>
             </article>
 
@@ -627,20 +713,28 @@
               <h3>Le Méridien Seoul, Myeongdong</h3>
               <p>One practical detail can matter more than the Le Méridien name: Marriott lists check-in at 4:00 p.m. The hotel is inside the Myeongdong core at 38 Myeongdong 8na-gil, but travelers arriving in Seoul early should not compare the first afternoon as though it works exactly like a hotel with an earlier room-access time.</p>
               <p>Choose it because you want to stay inside Myeongdong and are willing to give the hotel itself more weight in the budget. If the simplest luggage route or the lowest room cost matters more, compare it against the station-side alternatives before paying for the brand.</p>
-              <div class="hm-ota-row" aria-label="Booking links for Le Méridien Seoul, Myeongdong">
-                <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/68FtXfG" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_le_meridien_myeongdong" data-link-stage="affiliate" aria-label="View Le Méridien Seoul, Myeongdong on Expedia">Expedia</a>
-                <a class="hm-ota-button hm-ota-button--booking" href="https://www.booking.com/hotel/kr/le-meridien-seoul-myeongdong.en-gb.html" target="_blank" rel="noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="booking" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_le_meridien_myeongdong" data-link-stage="direct_pending" aria-label="View Le Méridien Seoul, Myeongdong on Booking.com">Booking.com</a>
-                <a class="hm-ota-button hm-ota-button--agoda" href="https://www.agoda.com/le-meridien-seoul-myeongdong/hotel/seoul-kr.html?cid=1969180&amp;hl=en-us" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="agoda" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_le_meridien_myeongdong" data-link-stage="affiliate" aria-label="View Le Méridien Seoul, Myeongdong on Agoda">Agoda</a>
+              <div class="hm-booking-strip">
+                <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
+                <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
+                <div class="hm-ota-row" aria-label="Booking links for Le Méridien Seoul, Myeongdong">
+                  <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/68FtXfG" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_le_meridien_myeongdong" data-link-stage="affiliate" aria-label="View Le Méridien Seoul, Myeongdong on Expedia">Expedia</a>
+                  <a class="hm-ota-button hm-ota-button--trip" href="https://www.trip.com/hotels/seoul-hotel-detail-100560549/le-mridien-seoul-myeongdong/" target="_blank" rel="noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="trip.com" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_le_meridien_myeongdong" data-link-stage="direct_pending" aria-label="View Le Méridien Seoul, Myeongdong on Trip.com">Trip.com</a>
+                  <a class="hm-ota-button hm-ota-button--agoda" href="https://www.agoda.com/le-meridien-seoul-myeongdong/hotel/seoul-kr.html?cid=1969180&amp;hl=en-us" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="agoda" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_le_meridien_myeongdong" data-link-stage="affiliate" aria-label="View Le Méridien Seoul, Myeongdong on Agoda">Agoda</a>
+                </div>
               </div>
             </article>
 
             <article class="hm-hotel">
               <h3>NINE TREE BY PARNAS SEOUL MYEONGDONG II</h3>
               <p>Despite the name, Nine Tree by Parnas Seoul Myeongdong II is easier to understand as an Euljiro 3-ga hotel. Parnas lists Exit 11 at about 254 meters, or a four-minute walk. That makes Lines 2 and 3 a real daily advantage if you will move around central Seoul, but it is not the hotel to choose simply because you want Myeongdong Station or the main shopping street immediately outside the door.</p>
-              <div class="hm-ota-row" aria-label="Booking links for NINE TREE BY PARNAS SEOUL MYEONGDONG II">
-                <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/bxX2xYM" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_nine_tree_myeongdong_2" data-link-stage="affiliate" aria-label="View NINE TREE BY PARNAS SEOUL MYEONGDONG II on Expedia">Expedia</a>
-                <a class="hm-ota-button hm-ota-button--booking" href="https://www.booking.com/hotel/kr/nine-tree-premier-myeongdong.en-gb.html" target="_blank" rel="noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="booking" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_nine_tree_myeongdong_2" data-link-stage="direct_pending" aria-label="View NINE TREE BY PARNAS SEOUL MYEONGDONG II on Booking.com">Booking.com</a>
-                <a class="hm-ota-button hm-ota-button--agoda" href="https://www.agoda.com/nine-tree-premier-hotel-myeong-dong-2/hotel/seoul-kr.html?cid=1969180&amp;hl=en-us" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="agoda" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_nine_tree_myeongdong_2" data-link-stage="affiliate" aria-label="View NINE TREE BY PARNAS SEOUL MYEONGDONG II on Agoda">Agoda</a>
+              <div class="hm-booking-strip">
+                <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
+                <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
+                <div class="hm-ota-row" aria-label="Booking links for NINE TREE BY PARNAS SEOUL MYEONGDONG II">
+                  <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/bxX2xYM" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_nine_tree_myeongdong_2" data-link-stage="affiliate" aria-label="View NINE TREE BY PARNAS SEOUL MYEONGDONG II on Expedia">Expedia</a>
+                  <a class="hm-ota-button hm-ota-button--trip" href="https://www.trip.com/hotels/seoul-hotel-detail-6651308/nine-tree-by-parnas-seoul-myeongdong-2/" target="_blank" rel="noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="trip.com" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_nine_tree_myeongdong_2" data-link-stage="direct_pending" aria-label="View NINE TREE BY PARNAS SEOUL MYEONGDONG II on Trip.com">Trip.com</a>
+                  <a class="hm-ota-button hm-ota-button--agoda" href="https://www.agoda.com/nine-tree-premier-hotel-myeong-dong-2/hotel/seoul-kr.html?cid=1969180&amp;hl=en-us" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="agoda" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_nine_tree_myeongdong_2" data-link-stage="affiliate" aria-label="View NINE TREE BY PARNAS SEOUL MYEONGDONG II on Agoda">Agoda</a>
+                </div>
               </div>
             </article>
 
@@ -648,10 +742,14 @@
               <h3>Hotel Skypark Myeongdong Ⅲ</h3>
               <p>Hotel Skypark Myeongdong III is the literal station-convenience pick in this group. The hotel says Myeongdong Station Exit 9 is directly in front, with an airport-limousine stop nearby, and it also lists triple and quad room types. That is a concrete advantage for a first visit, a small group or anyone trying to reduce the street walk with luggage.</p>
               <p>The reason to book it is the route and room setup. If you want the hotel itself to be a larger part of the trip, compare the more full-service options before deciding.</p>
-              <div class="hm-ota-row" aria-label="Booking links for Hotel Skypark Myeongdong Ⅲ">
-                <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/y99xk9i" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_skypark_myeongdong_3" data-link-stage="affiliate" aria-label="View Hotel Skypark Myeongdong Ⅲ on Expedia">Expedia</a>
-                <a class="hm-ota-button hm-ota-button--booking" href="https://www.booking.com/hotel/kr/skypark-myeongdong-3.en-gb.html" target="_blank" rel="noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="booking" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_skypark_myeongdong_3" data-link-stage="direct_pending" aria-label="View Hotel Skypark Myeongdong Ⅲ on Booking.com">Booking.com</a>
-                <a class="hm-ota-button hm-ota-button--agoda" href="https://www.agoda.com/hotel-skypark-myeongdong-iii/hotel/seoul-kr.html?cid=1969180&amp;hl=en-us" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="agoda" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_skypark_myeongdong_3" data-link-stage="affiliate" aria-label="View Hotel Skypark Myeongdong Ⅲ on Agoda">Agoda</a>
+              <div class="hm-booking-strip">
+                <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
+                <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
+                <div class="hm-ota-row" aria-label="Booking links for Hotel Skypark Myeongdong Ⅲ">
+                  <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/y99xk9i" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_skypark_myeongdong_3" data-link-stage="affiliate" aria-label="View Hotel Skypark Myeongdong Ⅲ on Expedia">Expedia</a>
+                  <a class="hm-ota-button hm-ota-button--trip" href="https://www.trip.com/hotels/seoul-hotel-detail-988482/hotel-skypark-myeongdong-3/" target="_blank" rel="noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="trip.com" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_skypark_myeongdong_3" data-link-stage="direct_pending" aria-label="View Hotel Skypark Myeongdong Ⅲ on Trip.com">Trip.com</a>
+                  <a class="hm-ota-button hm-ota-button--agoda" href="https://www.agoda.com/hotel-skypark-myeongdong-iii/hotel/seoul-kr.html?cid=1969180&amp;hl=en-us" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="agoda" data-page-category="stay" data-content-topic="hongdae_vs_myeongdong" data-placement="comparison_hotel_skypark_myeongdong_3" data-link-stage="affiliate" aria-label="View Hotel Skypark Myeongdong Ⅲ on Agoda">Agoda</a>
+                </div>
               </div>
             </article>
           </div>
