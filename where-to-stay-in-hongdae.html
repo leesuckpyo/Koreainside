@@ -10,6 +10,72 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400..600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <style>
+    .hongdae-detail-page main .hm-booking-strip {
+      margin-top: 24px;
+      padding: 18px 0 20px;
+      border-top: 1px solid #d8d0c2;
+      border-bottom: 1px solid var(--gray-200);
+    }
+
+    .hongdae-detail-page main .hm-booking-strip__eyebrow,
+    .hongdae-detail-page main .hm-booking-strip__title {
+      max-width: none;
+      margin: 0;
+    }
+
+    .hongdae-detail-page main .hm-booking-strip__eyebrow {
+      color: var(--blue-accent);
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1.2;
+      letter-spacing: 0.08em;
+    }
+
+    .hongdae-detail-page main .hm-booking-strip__title {
+      margin-top: 4px;
+      color: var(--blue-muted);
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .hongdae-detail-page main .hm-booking-strip .hm-ota-row {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .hongdae-detail-page main .hm-booking-strip .hm-ota-row--two {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .hongdae-detail-page main .hm-booking-strip .hm-ota-button {
+      width: 100%;
+      min-height: 48px;
+      padding: 11px 14px;
+      border: 1px solid var(--gray-200);
+      background: var(--white);
+      color: var(--blue-deep);
+    }
+
+    .hongdae-detail-page main .hm-booking-strip .hm-ota-button:hover,
+    .hongdae-detail-page main .hm-booking-strip .hm-ota-button:focus-visible {
+      border-color: var(--blue-deep);
+      background: var(--blue-deep);
+      color: var(--white);
+    }
+
+    @media (max-width: 620px) {
+      .hongdae-detail-page main .hm-booking-strip {
+        padding: 16px 0 18px;
+      }
+
+      .hongdae-detail-page main .hm-booking-strip .hm-ota-row,
+      .hongdae-detail-page main .hm-booking-strip .hm-ota-row--two {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+  </style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -281,9 +347,13 @@
                   <figcaption class="hongdae-map-figure__note">Photo: Kakao Map road view</figcaption>
                 </figure>
                 <p class="hm-affiliate-note">Finding the apartment: JSM Studio Hongdae may not appear under its booking name on Naver Map or KakaoMap. Search for the building name “파라다이스텔” or copy the Korean address below.<br>Korean address: 서울특별시 마포구 양화로 157<br>English address: 157 Yanghwa-ro, Mapo-gu, Seoul 03995, South Korea</p>
-                <div class="hm-ota-row" aria-label="Booking links for JSM Studio Hongdae">
-                  <a class="hm-ota-button hm-ota-button--booking" href="https://www.booking.com/hotel/kr/jsm-studio-hongdae-seoul.html" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="booking" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_family_jsm_studio" data-link-stage="direct_pending" aria-label="View JSM Studio Hongdae on Booking.com">Booking.com</a>
-                  <a class="hm-ota-button hm-ota-button--agoda" href="https://www.agoda.com/jsm-studio/hotel/seoul-kr.html?cid=1969180&amp;hl=en-us" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="agoda" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_family_jsm_studio" data-link-stage="affiliate" aria-label="View JSM Studio Hongdae on Agoda">Agoda</a>
+                <div class="hm-booking-strip">
+                  <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
+                  <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
+                  <div class="hm-ota-row hm-ota-row--two" aria-label="Booking links for JSM Studio Hongdae">
+                    <a class="hm-ota-button hm-ota-button--trip" href="https://www.trip.com/hotels/seoul-hotel-detail-7621834/jsm-studio/" target="_blank" rel="noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="trip.com" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_family_jsm_studio" data-link-stage="direct_pending" aria-label="View JSM Studio Hongdae on Trip.com">Trip.com</a>
+                    <a class="hm-ota-button hm-ota-button--agoda" href="https://www.agoda.com/jsm-studio/hotel/seoul-kr.html?cid=1969180&amp;hl=en-us" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="agoda" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_family_jsm_studio" data-link-stage="affiliate" aria-label="View JSM Studio Hongdae on Agoda">Agoda</a>
+                  </div>
                 </div>
               </div>
             </article>
@@ -302,10 +372,14 @@
                 </figure>
                 <p class="hm-affiliate-note">Booking note: Room capacity varies by booking site. Booking.com and Expedia currently list the main room options for up to 5 guests, while Agoda lists specific two-bedroom units for up to 6. If you are travelling as a group of six, check the exact room capacity before paying.</p>
                 <p class="hm-affiliate-note">Finding the property: If “Stay Here, Again” does not appear by name on Naver Map or KakaoMap, search for “위더스빌딩” or copy the Korean address below. The accommodation is on the 6th–7th floors of the building.<br>Building: 위더스빌딩<br>Korean address: 서울특별시 마포구 월드컵북로2길 19<br>English address: 19 World Cup buk-ro 2-gil, Mapo-gu, Seoul 03995, South Korea</p>
-                <div class="hm-ota-row" aria-label="Booking links for Stay Here, Again">
-                  <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/tqawN4T" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_family_stay_here_again" data-link-stage="affiliate" aria-label="View Stay Here, Again on Expedia">Expedia</a>
-                  <a class="hm-ota-button hm-ota-button--booking" href="https://www.booking.com/hotel/kr/stay-here-again-seoul3.html" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="booking" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_family_stay_here_again" data-link-stage="direct_pending" aria-label="View Stay Here, Again on Booking.com">Booking.com</a>
-                  <a class="hm-ota-button hm-ota-button--agoda" href="https://www.agoda.com/stay-here-again/hotel/seoul-kr.html?cid=1969180&amp;hl=en-us" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="agoda" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_family_stay_here_again" data-link-stage="affiliate" aria-label="View Stay Here, Again on Agoda">Agoda</a>
+                <div class="hm-booking-strip">
+                  <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
+                  <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
+                  <div class="hm-ota-row" aria-label="Booking links for Stay Here, Again">
+                    <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/tqawN4T" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_family_stay_here_again" data-link-stage="affiliate" aria-label="View Stay Here, Again on Expedia">Expedia</a>
+                    <a class="hm-ota-button hm-ota-button--trip" href="https://www.trip.com/hotels/seoul-hotel-detail-134265745/stay-here-again/" target="_blank" rel="noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="trip.com" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_family_stay_here_again" data-link-stage="direct_pending" aria-label="View Stay Here, Again on Trip.com">Trip.com</a>
+                    <a class="hm-ota-button hm-ota-button--agoda" href="https://www.agoda.com/stay-here-again/hotel/seoul-kr.html?cid=1969180&amp;hl=en-us" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="agoda" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_family_stay_here_again" data-link-stage="affiliate" aria-label="View Stay Here, Again on Agoda">Agoda</a>
+                  </div>
                 </div>
               </div>
             </article>
@@ -329,10 +403,14 @@
               </div>
               <p>L7 HONGDAE earns its place here by keeping most of central Hongdae within the same walking routine as the hotel. That matters on a trip with several evenings in the neighborhood: dinner, shopping or a late return does not have to end with another subway ride.</p>
               <p>Airport access is still straightforward through Hongik University Station, but that is not the main reason to pay for L7. The stronger case is having a full-service hotel in the middle of an area you expect to use repeatedly. A light sleeper who would rather trade that convenience for a calmer street should look farther from the center.</p>
-              <div class="hm-ota-row" aria-label="Booking links for L7 HONGDAE by LOTTE HOTELS">
-                <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/HiafyNb" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_hotel_l7_hongdae" data-link-stage="affiliate" aria-label="View L7 HONGDAE by LOTTE HOTELS on Expedia">Expedia</a>
-                <a class="hm-ota-button hm-ota-button--booking" href="https://www.booking.com/hotel/kr/l7-hongdae.html" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="booking" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_hotel_l7_hongdae" data-link-stage="direct_pending" aria-label="View L7 HONGDAE by LOTTE HOTELS on Booking.com">Booking.com</a>
-                <a class="hm-ota-button hm-ota-button--agoda" href="https://www.agoda.com/l7-hongdae-by-lotte/hotel/seoul-kr.html?cid=1969180&amp;hl=en-us" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="agoda" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_hotel_l7_hongdae" data-link-stage="affiliate" aria-label="View L7 HONGDAE by LOTTE HOTELS on Agoda">Agoda</a>
+              <div class="hm-booking-strip">
+                <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
+                <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
+                <div class="hm-ota-row" aria-label="Booking links for L7 HONGDAE by LOTTE HOTELS">
+                  <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/HiafyNb" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_hotel_l7_hongdae" data-link-stage="affiliate" aria-label="View L7 HONGDAE by LOTTE HOTELS on Expedia">Expedia</a>
+                  <a class="hm-ota-button hm-ota-button--trip" href="https://www.trip.com/hotels/seoul-hotel-detail-14186936/l7-hongdae-by-lotte-hotels/" target="_blank" rel="noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="trip.com" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_hotel_l7_hongdae" data-link-stage="direct_pending" aria-label="View L7 HONGDAE by LOTTE HOTELS on Trip.com">Trip.com</a>
+                  <a class="hm-ota-button hm-ota-button--agoda" href="https://www.agoda.com/l7-hongdae-by-lotte/hotel/seoul-kr.html?cid=1969180&amp;hl=en-us" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="agoda" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_hotel_l7_hongdae" data-link-stage="affiliate" aria-label="View L7 HONGDAE by LOTTE HOTELS on Agoda">Agoda</a>
+                </div>
               </div>
             </article>
 
@@ -344,10 +422,14 @@
               </div>
               <p>RYSE only becomes the stronger choice when the hotel itself is part of what you are paying for. Its central Hongdae location already puts restaurants, shopping and late-night streets nearby; the extra reason to stay here is that you expect the design, rooms and time spent inside the property to matter too.</p>
               <p>If most days begin outside the hotel and end with you coming back only to sleep, that premium is harder to justify. Hongik University Station still keeps airport and Line 2 travel simple, but travelers choosing mainly by location can get much of that convenience without choosing RYSE.</p>
-              <div class="hm-ota-row" aria-label="Booking links for RYSE, Autograph Collection">
-                <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/oPcVbUW" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_hotel_ryse" data-link-stage="affiliate" aria-label="View RYSE, Autograph Collection on Expedia">Expedia</a>
-                <a class="hm-ota-button hm-ota-button--booking" href="https://www.booking.com/hotel/kr/ryse-autograph-collection-korea.en-gb.html" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="booking" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_hotel_ryse" data-link-stage="direct_pending" aria-label="View RYSE, Autograph Collection on Booking.com">Booking.com</a>
-                <a class="hm-ota-button hm-ota-button--agoda" href="https://www.agoda.com/ryse-autograph-collection_2/hotel/seoul-kr.html?cid=1969180&amp;hl=en-us" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="agoda" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_hotel_ryse" data-link-stage="affiliate" aria-label="View RYSE, Autograph Collection on Agoda">Agoda</a>
+              <div class="hm-booking-strip">
+                <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
+                <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
+                <div class="hm-ota-row" aria-label="Booking links for RYSE, Autograph Collection">
+                  <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/oPcVbUW" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_hotel_ryse" data-link-stage="affiliate" aria-label="View RYSE, Autograph Collection on Expedia">Expedia</a>
+                  <a class="hm-ota-button hm-ota-button--trip" href="https://www.trip.com/hotels/seoul-hotel-detail-687886/ryse-autograph-collection/" target="_blank" rel="noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="trip.com" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_hotel_ryse" data-link-stage="direct_pending" aria-label="View RYSE, Autograph Collection on Trip.com">Trip.com</a>
+                  <a class="hm-ota-button hm-ota-button--agoda" href="https://www.agoda.com/ryse-autograph-collection_2/hotel/seoul-kr.html?cid=1969180&amp;hl=en-us" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="agoda" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_hotel_ryse" data-link-stage="affiliate" aria-label="View RYSE, Autograph Collection on Agoda">Agoda</a>
+                </div>
               </div>
             </article>
           </div>
@@ -368,10 +450,14 @@
               </div>
               <p>Arrival day is where Holiday Inn Express Seoul Hongdae has the clearest advantage. The all-stop AREX reaches Hongik University Station directly, so a traveler arriving with luggage can remove one of the more annoying parts of a Seoul hotel transfer: changing trains before even reaching the neighborhood.</p>
               <p>After check-in, the hotel is less about atmosphere than efficiency. Line 2 handles much of the onward travel across Seoul, while central Hongdae remains accessible without making nightlife the reason for the booking. Travelers who want the hotel or the surrounding streets to feel like a larger part of the trip have stronger alternatives nearby.</p>
-              <div class="hm-ota-row" aria-label="Booking links for Holiday Inn Express Seoul Hongdae">
-                <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/gp9ZVxh" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_hotel_holiday_inn_express" data-link-stage="affiliate" aria-label="View Holiday Inn Express Seoul Hongdae on Expedia">Expedia</a>
-                <a class="hm-ota-button hm-ota-button--booking" href="https://www.booking.com/hotel/kr/holiday-inn-express-seoul-hongdae.html" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="booking" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_hotel_holiday_inn_express" data-link-stage="direct_pending" aria-label="View Holiday Inn Express Seoul Hongdae on Booking.com">Booking.com</a>
-                <a class="hm-ota-button hm-ota-button--agoda" href="https://www.agoda.com/holiday-inn-express-seoul-hongdae/hotel/seoul-kr.html?cid=1969180&amp;hl=en-us" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="agoda" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_hotel_holiday_inn_express" data-link-stage="affiliate" aria-label="View Holiday Inn Express Seoul Hongdae on Agoda">Agoda</a>
+              <div class="hm-booking-strip">
+                <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
+                <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
+                <div class="hm-ota-row" aria-label="Booking links for Holiday Inn Express Seoul Hongdae">
+                  <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/gp9ZVxh" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_hotel_holiday_inn_express" data-link-stage="affiliate" aria-label="View Holiday Inn Express Seoul Hongdae on Expedia">Expedia</a>
+                  <a class="hm-ota-button hm-ota-button--trip" href="https://www.trip.com/hotels/seoul-hotel-detail-21908084/holiday-inn-express-seoul-hongdae-by-ihg/" target="_blank" rel="noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="trip.com" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_hotel_holiday_inn_express" data-link-stage="direct_pending" aria-label="View Holiday Inn Express Seoul Hongdae on Trip.com">Trip.com</a>
+                  <a class="hm-ota-button hm-ota-button--agoda" href="https://www.agoda.com/holiday-inn-express-seoul-hongdae/hotel/seoul-kr.html?cid=1969180&amp;hl=en-us" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="agoda" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_hotel_holiday_inn_express" data-link-stage="affiliate" aria-label="View Holiday Inn Express Seoul Hongdae on Agoda">Agoda</a>
+                </div>
               </div>
             </article>
 
@@ -383,10 +469,14 @@
                 <figcaption class="hongdae-map-figure__note hm-hotel-photo-credit">Photo: © Korea Tourism Organization</figcaption>
               </figure>
               <p>Mercure sits between two needs that often compete in Hongdae: an easy airport arrival and a hotel that still feels connected to the main streets after the suitcase is put down. The all-stop AREX and Airport Limousine 6002 cover the arrival side, while central Hongdae is close enough to use on foot in the evening. That same position is the drawback for a light sleeper; choosing Mercure means accepting more late activity than a stay farther toward the quieter edges of the area.</p>
-              <div class="hm-ota-row" aria-label="Booking links for Mercure Ambassador Seoul Hongdae">
-                <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/UhWl3mr" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_hotel_mercure_ambassador" data-link-stage="affiliate" aria-label="View Mercure Ambassador Seoul Hongdae on Expedia">Expedia</a>
-                <a class="hm-ota-button hm-ota-button--booking" href="https://www.booking.com/hotel/kr/mercure-ambassador-seoul-hongdae.en-gb.html" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="booking" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_hotel_mercure_ambassador" data-link-stage="direct_pending" aria-label="View Mercure Ambassador Seoul Hongdae on Booking.com">Booking.com</a>
-                <a class="hm-ota-button hm-ota-button--agoda" href="https://www.agoda.com/mercure-ambassador-seoul-hongdae/hotel/seoul-kr.html?cid=1969180&amp;hl=en-us" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="agoda" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_hotel_mercure_ambassador" data-link-stage="affiliate" aria-label="View Mercure Ambassador Seoul Hongdae on Agoda">Agoda</a>
+              <div class="hm-booking-strip">
+                <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
+                <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
+                <div class="hm-ota-row" aria-label="Booking links for Mercure Ambassador Seoul Hongdae">
+                  <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/UhWl3mr" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_hotel_mercure_ambassador" data-link-stage="affiliate" aria-label="View Mercure Ambassador Seoul Hongdae on Expedia">Expedia</a>
+                  <a class="hm-ota-button hm-ota-button--trip" href="https://www.trip.com/hotels/seoul-hotel-detail-57079911/mercure-ambassador-seoul-hongdae/" target="_blank" rel="noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="trip.com" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_hotel_mercure_ambassador" data-link-stage="direct_pending" aria-label="View Mercure Ambassador Seoul Hongdae on Trip.com">Trip.com</a>
+                  <a class="hm-ota-button hm-ota-button--agoda" href="https://www.agoda.com/mercure-ambassador-seoul-hongdae/hotel/seoul-kr.html?cid=1969180&amp;hl=en-us" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="agoda" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_hotel_mercure_ambassador" data-link-stage="affiliate" aria-label="View Mercure Ambassador Seoul Hongdae on Agoda">Agoda</a>
+                </div>
               </div>
             </article>
           </div>
@@ -406,10 +496,14 @@
                 <img class="hm-hotel-photo" src="images/Accommodation/9-brick-hotel-room.jpg" alt="Guest room at 9 Brick Hotel" width="1082" height="587" loading="lazy" decoding="async">
               </div>
               <p>9 Brick is mainly about keeping central Hongdae close without moving into one of the fuller-service hotels above. Restaurants, shopping and late-night streets remain walkable, which matters when several evenings already end here. The drawback is exactly the same location: someone who expects early nights or is sensitive to street activity may get more value from a less central hotel even if the map looks slightly less convenient.</p>
-              <div class="hm-ota-row" aria-label="Booking links for 9 Brick Hotel">
-                <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/2iBX3Ao" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_hotel_9_brick" data-link-stage="affiliate" aria-label="View 9 Brick Hotel on Expedia">Expedia</a>
-                <a class="hm-ota-button hm-ota-button--booking" href="https://www.booking.com/hotel/kr/9brick.en-gb.html" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="booking" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_hotel_9_brick" data-link-stage="direct_pending" aria-label="View 9 Brick Hotel on Booking.com">Booking.com</a>
-                <a class="hm-ota-button hm-ota-button--agoda" href="https://www.agoda.com/nine-brick-hotel/hotel/seoul-kr.html?cid=1969180&amp;hl=en-us" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="agoda" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_hotel_9_brick" data-link-stage="affiliate" aria-label="View 9 Brick Hotel on Agoda">Agoda</a>
+              <div class="hm-booking-strip">
+                <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
+                <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
+                <div class="hm-ota-row" aria-label="Booking links for 9 Brick Hotel">
+                  <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/2iBX3Ao" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_hotel_9_brick" data-link-stage="affiliate" aria-label="View 9 Brick Hotel on Expedia">Expedia</a>
+                  <a class="hm-ota-button hm-ota-button--trip" href="https://www.trip.com/hotels/seoul-hotel-detail-7770251/9-brick-hotel/" target="_blank" rel="noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="trip.com" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_hotel_9_brick" data-link-stage="direct_pending" aria-label="View 9 Brick Hotel on Trip.com">Trip.com</a>
+                  <a class="hm-ota-button hm-ota-button--agoda" href="https://www.agoda.com/nine-brick-hotel/hotel/seoul-kr.html?cid=1969180&amp;hl=en-us" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="agoda" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_hotel_9_brick" data-link-stage="affiliate" aria-label="View 9 Brick Hotel on Agoda">Agoda</a>
+                </div>
               </div>
             </article>
 
@@ -421,10 +515,14 @@
               </figure>
               <p>Junibino changes the geography of the stay rather than simply offering a cheaper version of central Hongdae. It sits toward Hapjeong, where Line 2 and Line 6 become part of the daily route and the busiest Hongdae streets are no longer immediately outside the hotel.</p>
               <p>That extra distance can be welcome at night, but it also means giving up the shortest Hongik University Station and AREX routine. Airport Limousine 6002 still serves the Hapjeong area. Pick Junibino because that shift toward Hapjeong suits the trip, not because the hotel happens to carry Hongdae in its name.</p>
-              <div class="hm-ota-row" aria-label="Booking links for Junibino Hotel Hongdae">
-                <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/n8QxJWh" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_hotel_junibino" data-link-stage="affiliate" aria-label="View Junibino Hotel Hongdae on Expedia">Expedia</a>
-                <a class="hm-ota-button hm-ota-button--booking" href="https://www.booking.com/hotel/kr/junibino-seoul1.html" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="booking" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_hotel_junibino" data-link-stage="direct_pending" aria-label="View Junibino Hotel Hongdae on Booking.com">Booking.com</a>
-                <a class="hm-ota-button hm-ota-button--agoda" href="https://www.agoda.com/junibino-hotel/hotel/seoul-kr.html?cid=1969180&amp;hl=en-us" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="agoda" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_hotel_junibino" data-link-stage="affiliate" aria-label="View Junibino Hotel Hongdae on Agoda">Agoda</a>
+              <div class="hm-booking-strip">
+                <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
+                <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
+                <div class="hm-ota-row" aria-label="Booking links for Junibino Hotel Hongdae">
+                  <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/n8QxJWh" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_hotel_junibino" data-link-stage="affiliate" aria-label="View Junibino Hotel Hongdae on Expedia">Expedia</a>
+                  <a class="hm-ota-button hm-ota-button--trip" href="https://www.trip.com/hotels/seoul-hotel-detail-99996748/junibino-hotel-hongdae/" target="_blank" rel="noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="trip.com" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_hotel_junibino" data-link-stage="direct_pending" aria-label="View Junibino Hotel Hongdae on Trip.com">Trip.com</a>
+                  <a class="hm-ota-button hm-ota-button--agoda" href="https://www.agoda.com/junibino-hotel/hotel/seoul-kr.html?cid=1969180&amp;hl=en-us" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="agoda" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_hotel_junibino" data-link-stage="affiliate" aria-label="View Junibino Hotel Hongdae on Agoda">Agoda</a>
+                </div>
               </div>
             </article>
           </div>
@@ -449,10 +547,14 @@
                 </figure>
               </div>
               <p>Amanti asks you to accept a little more walking in exchange for not sleeping in the middle of Hongdae’s busiest streets. Central Hongdae is still close enough to reach on foot, but that extra distance should not be read as a guarantee of silence; road exposure and room direction can still change the night. It is a conventional hotel for someone willing to trade a shorter walk for a little more separation from the late-night core.</p>
-              <div class="hm-ota-row" aria-label="Booking links for Amanti Hotel Seoul">
-                <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/nAJeDAp" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_hotel_amanti" data-link-stage="affiliate" aria-label="View Amanti Hotel Seoul on Expedia">Expedia</a>
-                <a class="hm-ota-button hm-ota-button--booking" href="https://www.booking.com/hotel/kr/amanti-seoul.en-gb.html" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="booking" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_hotel_amanti" data-link-stage="direct_pending" aria-label="View Amanti Hotel Seoul on Booking.com">Booking.com</a>
-                <a class="hm-ota-button hm-ota-button--agoda" href="https://www.agoda.com/amanti-hotel-seoul/hotel/seoul-kr.html?cid=1969180&amp;hl=en-us" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="agoda" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_hotel_amanti" data-link-stage="affiliate" aria-label="View Amanti Hotel Seoul on Agoda">Agoda</a>
+              <div class="hm-booking-strip">
+                <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
+                <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
+                <div class="hm-ota-row" aria-label="Booking links for Amanti Hotel Seoul">
+                  <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/nAJeDAp" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_hotel_amanti" data-link-stage="affiliate" aria-label="View Amanti Hotel Seoul on Expedia">Expedia</a>
+                  <a class="hm-ota-button hm-ota-button--trip" href="https://www.trip.com/hotels/seoul-hotel-detail-5276189/amanti-hotel-seoul/" target="_blank" rel="noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="trip.com" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_hotel_amanti" data-link-stage="direct_pending" aria-label="View Amanti Hotel Seoul on Trip.com">Trip.com</a>
+                  <a class="hm-ota-button hm-ota-button--agoda" href="https://www.agoda.com/amanti-hotel-seoul/hotel/seoul-kr.html?cid=1969180&amp;hl=en-us" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="agoda" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_hotel_amanti" data-link-stage="affiliate" aria-label="View Amanti Hotel Seoul on Agoda">Agoda</a>
+                </div>
               </div>
             </article>
 
@@ -460,8 +562,13 @@
               <h3>Localstitch Creator Town Seogyo</h3>
               <p>Localstitch is easier to understand once the private room stops being the center of the comparison. Coworking areas, lounges, a shared kitchen and laundry are the facilities that change the stay here, while some of the private rooms remain compact.</p>
               <p>That setup has real value on a longer trip or when work will take up part of the day. It is much less convincing for someone who mainly wants a spacious conventional hotel room. The Seogyo location also steps away from the busiest part of central Hongdae without promising a silent night.</p>
-              <div class="hm-ota-row" aria-label="Booking links for Localstitch Creator Town Seogyo">
-                <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/T2y0kSO" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_hotel_localstitch" data-link-stage="affiliate" aria-label="View Localstitch Creator Town Seogyo on Expedia">Expedia</a>
+              <div class="hm-booking-strip">
+                <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
+                <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
+                <div class="hm-ota-row hm-ota-row--two" aria-label="Booking links for Localstitch Creator Town Seogyo">
+                  <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/T2y0kSO" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_hotel_localstitch" data-link-stage="affiliate" aria-label="View Localstitch Creator Town Seogyo on Expedia">Expedia</a>
+                  <a class="hm-ota-button hm-ota-button--trip" href="https://www.trip.com/hotels/seoul-hotel-detail-111484411/local-stitch-creator-town-seogyo/" target="_blank" rel="noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="trip.com" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_hotel_localstitch" data-link-stage="direct_pending" aria-label="View Localstitch Creator Town Seogyo on Trip.com">Trip.com</a>
+                </div>
               </div>
             </article>
           </div>
@@ -478,9 +585,13 @@
               <h3>Batwo Stay - For foreigners only</h3>
               <p>Batwo is easy to rule in or out. Guests must be 18–35, and children are not accepted. If that fits your trip, it gives you a guesthouse-style base near Hongik University Station with private-room and dormitory options, plus a shared kitchen, lounge and laundry facilities.</p>
               <p>This is a better fit if you care more about a practical base and shared facilities than hotel service. Check the exact room type before paying if privacy matters to you. If you are travelling with children or anyone outside the accepted age range, skip it.</p>
-              <div class="hm-ota-row" aria-label="Booking links for Batwo Stay - For foreigners only">
-                <a class="hm-ota-button hm-ota-button--booking" href="https://www.booking.com/hotel/kr/batwo-stay.en-gb.html" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="booking" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_guesthouse_batwo_stay" data-link-stage="direct_pending" aria-label="View Batwo Stay - For foreigners only on Booking.com">Booking.com</a>
-                <a class="hm-ota-button hm-ota-button--agoda" href="https://www.agoda.com/batwo-stay/hotel/seoul-kr.html?cid=1969180&amp;hl=en-us" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="agoda" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_guesthouse_batwo_stay" data-link-stage="affiliate" aria-label="View Batwo Stay - For foreigners only on Agoda">Agoda</a>
+              <div class="hm-booking-strip">
+                <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
+                <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
+                <div class="hm-ota-row hm-ota-row--two" aria-label="Booking links for Batwo Stay - For foreigners only">
+                  <a class="hm-ota-button hm-ota-button--trip" href="https://www.trip.com/hotels/seoul-hotel-detail-102436570/batwo-stay/" target="_blank" rel="noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="trip.com" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_guesthouse_batwo_stay" data-link-stage="direct_pending" aria-label="View Batwo Stay - For foreigners only on Trip.com">Trip.com</a>
+                  <a class="hm-ota-button hm-ota-button--agoda" href="https://www.agoda.com/batwo-stay/hotel/seoul-kr.html?cid=1969180&amp;hl=en-us" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="agoda" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_guesthouse_batwo_stay" data-link-stage="affiliate" aria-label="View Batwo Stay - For foreigners only on Agoda">Agoda</a>
+                </div>
               </div>
             </article>
 
@@ -488,10 +599,14 @@
               <h3>Hotel Baroato 2nd</h3>
               <p>Baroato 2nd is the more straightforward option if you want a private room near Hongik University Station without paying for facilities you do not plan to use. It has single, double and larger room types, but children are not accepted, so this is an adults-only choice rather than a family stay.</p>
               <p>The detail to notice before booking is the building itself: there is no elevator. That matters if you are arriving with a heavy suitcase. Late arrival also needs checking — current booking information is not fully consistent about what happens after 10 p.m., so contact the property in advance if your flight or airport transfer could bring you in late.</p>
-              <div class="hm-ota-row" aria-label="Booking links for Hotel Baroato 2nd">
-                <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/hQTismd" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_hotel_baroato_2nd" data-link-stage="affiliate" aria-label="View Hotel Baroato 2nd on Expedia">Expedia</a>
-                <a class="hm-ota-button hm-ota-button--booking" href="https://www.booking.com/hotel/kr/baroato-2nd.en-gb.html" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="booking" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_hotel_baroato_2nd" data-link-stage="direct_pending" aria-label="View Hotel Baroato 2nd on Booking.com">Booking.com</a>
-                <a class="hm-ota-button hm-ota-button--agoda" href="https://www.agoda.com/hotel-baroato-2nd/hotel/seoul-kr.html?cid=1969180&amp;hl=en-us" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="agoda" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_hotel_baroato_2nd" data-link-stage="affiliate" aria-label="View Hotel Baroato 2nd on Agoda">Agoda</a>
+              <div class="hm-booking-strip">
+                <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
+                <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
+                <div class="hm-ota-row" aria-label="Booking links for Hotel Baroato 2nd">
+                  <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/hQTismd" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_hotel_baroato_2nd" data-link-stage="affiliate" aria-label="View Hotel Baroato 2nd on Expedia">Expedia</a>
+                  <a class="hm-ota-button hm-ota-button--trip" href="https://www.trip.com/hotels/seoul-hotel-detail-9365213/hotel-baroato-2nd/" target="_blank" rel="noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="trip.com" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_hotel_baroato_2nd" data-link-stage="direct_pending" aria-label="View Hotel Baroato 2nd on Trip.com">Trip.com</a>
+                  <a class="hm-ota-button hm-ota-button--agoda" href="https://www.agoda.com/hotel-baroato-2nd/hotel/seoul-kr.html?cid=1969180&amp;hl=en-us" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="agoda" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_hotel_baroato_2nd" data-link-stage="affiliate" aria-label="View Hotel Baroato 2nd on Agoda">Agoda</a>
+                </div>
               </div>
             </article>
           </div>
@@ -507,10 +622,14 @@
             <article class="hm-hotel" id="hongdae-style-details">
               <h3>Hongdae Style Guesthouse</h3>
               <p>Hongdae Style Guesthouse keeps Hongik University Station close while offering private rooms in several sizes, plus a shared kitchen and luggage storage. That range lets a solo traveler, couple or small group use the same property without forcing every booking into the same room setup. What it does not offer is full hotel service, so anyone who needs a conventional hotel experience should rule that out before comparing the price.</p>
-              <div class="hm-ota-row" aria-label="Booking links for Hongdae Style Guesthouse">
-                <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/vXOcg4g" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_guesthouse_hongdae_style" data-link-stage="affiliate" aria-label="View Hongdae Style Guesthouse on Expedia">Expedia</a>
-                <a class="hm-ota-button hm-ota-button--booking" href="https://www.booking.com/hotel/kr/hongdae-style-guesthouse.en-gb.html" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="booking" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_guesthouse_hongdae_style" data-link-stage="direct_pending" aria-label="View Hongdae Style Guesthouse on Booking.com">Booking.com</a>
-                <a class="hm-ota-button hm-ota-button--agoda" href="https://www.agoda.com/hongdae-style-guesthouse_2/hotel/seoul-kr.html?cid=1969180&amp;hl=en-us" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="agoda" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_guesthouse_hongdae_style" data-link-stage="affiliate" aria-label="View Hongdae Style Guesthouse on Agoda">Agoda</a>
+              <div class="hm-booking-strip">
+                <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
+                <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
+                <div class="hm-ota-row" aria-label="Booking links for Hongdae Style Guesthouse">
+                  <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/vXOcg4g" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_guesthouse_hongdae_style" data-link-stage="affiliate" aria-label="View Hongdae Style Guesthouse on Expedia">Expedia</a>
+                  <a class="hm-ota-button hm-ota-button--trip" href="https://www.trip.com/hotels/seoul-hotel-detail-7615968/hongdae-style-guesthouse/" target="_blank" rel="noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="trip.com" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_guesthouse_hongdae_style" data-link-stage="direct_pending" aria-label="View Hongdae Style Guesthouse on Trip.com">Trip.com</a>
+                  <a class="hm-ota-button hm-ota-button--agoda" href="https://www.agoda.com/hongdae-style-guesthouse_2/hotel/seoul-kr.html?cid=1969180&amp;hl=en-us" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="agoda" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_guesthouse_hongdae_style" data-link-stage="affiliate" aria-label="View Hongdae Style Guesthouse on Agoda">Agoda</a>
+                </div>
               </div>
             </article>
 
@@ -518,10 +637,14 @@
               <h3>TwoTwo House</h3>
               <p>TwoTwo House gives you a different side of Hongdae. It sits toward Yeonnam and the Gyeongui Line Forest Park while keeping Hongik University Station within walking distance. A shared kitchen, laundry facilities and private-room options make it useful when you are staying more than a night or two.</p>
               <p>There is one practical drawback to notice before booking: the property does not have an elevator. Booking sites also do not currently agree on the child policy or the exact rules for late arrival, so check both directly with the property if either matters to your trip.</p>
-              <div class="hm-ota-row" aria-label="Booking links for TwoTwo House">
-                <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/L07tDqC" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_guesthouse_twotwo_house" data-link-stage="affiliate" aria-label="View TwoTwo House on Expedia">Expedia</a>
-                <a class="hm-ota-button hm-ota-button--booking" href="https://www.booking.com/hotel/kr/twotwo-house-seoul.en-gb.html" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="booking" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_guesthouse_twotwo_house" data-link-stage="direct_pending" aria-label="View TwoTwo House on Booking.com">Booking.com</a>
-                <a class="hm-ota-button hm-ota-button--agoda" href="https://www.agoda.com/twotwo-house/hotel/seoul-kr.html?cid=1969180&amp;hl=en-us" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="agoda" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_guesthouse_twotwo_house" data-link-stage="affiliate" aria-label="View TwoTwo House on Agoda">Agoda</a>
+              <div class="hm-booking-strip">
+                <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
+                <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
+                <div class="hm-ota-row" aria-label="Booking links for TwoTwo House">
+                  <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/L07tDqC" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_guesthouse_twotwo_house" data-link-stage="affiliate" aria-label="View TwoTwo House on Expedia">Expedia</a>
+                  <a class="hm-ota-button hm-ota-button--trip" href="https://www.trip.com/hotels/seoul-hotel-detail-2649909/twotwo-house/" target="_blank" rel="noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="trip.com" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_guesthouse_twotwo_house" data-link-stage="direct_pending" aria-label="View TwoTwo House on Trip.com">Trip.com</a>
+                  <a class="hm-ota-button hm-ota-button--agoda" href="https://www.agoda.com/twotwo-house/hotel/seoul-kr.html?cid=1969180&amp;hl=en-us" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="agoda" data-page-category="stay" data-content-topic="hongdae_stay" data-placement="hongdae_guide_guesthouse_twotwo_house" data-link-stage="affiliate" aria-label="View TwoTwo House on Agoda">Agoda</a>
+                </div>
               </div>
             </article>
           </div>
