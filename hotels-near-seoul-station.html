@@ -293,6 +293,66 @@
     body.seoul-station-page main #booking-checks .seoul-station-booking-checklist li {
       padding-left: 0;
     }
+
+    body.seoul-station-page main .hm-booking-strip {
+      margin-top: 24px;
+      padding: 18px 0 20px;
+      border-top: 1px solid #d8d0c2;
+      border-bottom: 1px solid var(--gray-200);
+    }
+
+    body.seoul-station-page main .hm-booking-strip__eyebrow,
+    body.seoul-station-page main .hm-booking-strip__title {
+      max-width: none;
+      margin: 0;
+    }
+
+    body.seoul-station-page main .hm-booking-strip__eyebrow {
+      color: var(--blue-accent);
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1.2;
+      letter-spacing: 0.08em;
+    }
+
+    body.seoul-station-page main .hm-booking-strip__title {
+      margin-top: 4px;
+      color: var(--blue-muted);
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    body.seoul-station-page main .hm-booking-strip .hm-ota-row {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    body.seoul-station-page main .hm-booking-strip .hm-ota-button {
+      width: 100%;
+      min-height: 48px;
+      padding: 11px 14px;
+      border: 1px solid var(--gray-200);
+      background: var(--white);
+      color: var(--blue-deep);
+    }
+
+    body.seoul-station-page main .hm-booking-strip .hm-ota-button:hover,
+    body.seoul-station-page main .hm-booking-strip .hm-ota-button:focus-visible {
+      border-color: var(--blue-deep);
+      background: var(--blue-deep);
+      color: var(--white);
+    }
+
+    @media (max-width: 620px) {
+      body.seoul-station-page main .hm-booking-strip {
+        padding: 16px 0 18px;
+      }
+
+      body.seoul-station-page main .hm-booking-strip .hm-ota-row {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
   </style>
   <script type="application/ld+json">
   {
@@ -545,8 +605,14 @@
               <p>Four Points is the hotel I would start with when Seoul Station itself is the reason for the stay. It works particularly well for a business trip, an overnight between Incheon Airport and a KTX journey, or the final night in Seoul before heading to the airport. Unlike the smaller stays around the station, you are getting a conventional full-service hotel with a 24-hour hotel environment, restaurants, a fitness center, and rooms with proper work desks and Wi-Fi.</p>
               <p>The important detail is what “connected to Seoul Station” actually means. The hotel connects to the station through the underground passage at Exit 12, but the walk from Seoul Station is still roughly 8–15 minutes. KTX, AREX, GTX-A and subway passengers still have to move through a large station complex before reaching the hotel side. That indoor route is useful in bad weather, but this is not a hotel where you step off the train and walk straight into the lobby.</p>
               <p>I would be less enthusiastic about paying for Four Points if you only need a bed for a few hours before an early train, or if most of the trip is about cafés, nightlife and sightseeing elsewhere in Seoul. Rooms can also feel compact once several suitcases are open. In those cases, the value of the full-service hotel has to matter enough to justify choosing it over a smaller station stay or a more interesting neighborhood.</p>
-              <div class="hm-ota-row" aria-label="Booking links for Four Points by Sheraton Josun, Seoul Station">
-                <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/PxMxujU" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hotels_near_seoul_station" data-placement="seoul_station_guide_hotel_four_points" data-link-stage="affiliate" aria-label="View Four Points by Sheraton Josun, Seoul Station on Expedia">Expedia</a>
+              <div class="hm-booking-strip">
+                <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
+                <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
+                <div class="hm-ota-row" aria-label="Booking links for Four Points by Sheraton Josun, Seoul Station">
+                  <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/PxMxujU" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hotels_near_seoul_station" data-placement="seoul_station_guide_hotel_four_points" data-link-stage="affiliate" aria-label="View Four Points by Sheraton Josun, Seoul Station on Expedia">Expedia</a>
+                  <a class="hm-ota-button hm-ota-button--trip" href="https://www.trip.com/hotels/seoul-hotel-detail-1919822/four-points-by-sheraton-josun-seoul-station/" target="_blank" rel="noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="trip.com" data-page-category="stay" data-content-topic="hotels_near_seoul_station" data-placement="seoul_station_guide_hotel_four_points" data-link-stage="direct_pending" aria-label="View Four Points by Sheraton Josun, Seoul Station on Trip.com">Trip.com</a>
+                  <a class="hm-ota-button hm-ota-button--agoda" href="https://www.agoda.com/four-points-by-sheraton-seoul-namsan/hotel/seoul-kr.html?cid=1969180&amp;hl=en-us" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="agoda" data-page-category="stay" data-content-topic="hotels_near_seoul_station" data-placement="seoul_station_guide_hotel_four_points" data-link-stage="affiliate" aria-label="View Four Points by Sheraton Josun, Seoul Station on Agoda">Agoda</a>
+                </div>
               </div>
             </div>
           </article>
@@ -561,8 +627,14 @@
               <p>Hotelette is the kind of place to consider when the night is mostly about sleeping close to Seoul Station and leaving again the next morning. It sits right by Exit 10, and for a solo traveler with a backpack or small carry-on, that proximity can matter more than having a large room or full hotel facilities.</p>
               <p>The room is the limiting factor, not the location. The rooms are very compact, and a full-size suitcase can quickly take over the available floor space. The hotel itself has an elevator, but Exit 10 includes a short flight of stairs. That is manageable with light luggage and much less appealing with a large case.</p>
               <p>There is also a clear family filter: children are not allowed, and there are no cots or extra beds. This is therefore not a small family hotel disguised as a budget option. It is a narrow-purpose stay for one adult who values the station more than room space.</p>
-              <div class="hm-ota-row" aria-label="Booking links for Hotelette Seoul Station">
-                <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/cCYmLCy" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hotels_near_seoul_station" data-placement="seoul_station_guide_hotel_hotelette" data-link-stage="affiliate" aria-label="View Hotelette Seoul Station on Expedia">Expedia</a>
+              <div class="hm-booking-strip">
+                <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
+                <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
+                <div class="hm-ota-row" aria-label="Booking links for Hotelette Seoul Station">
+                  <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/cCYmLCy" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hotels_near_seoul_station" data-placement="seoul_station_guide_hotel_hotelette" data-link-stage="affiliate" aria-label="View Hotelette Seoul Station on Expedia">Expedia</a>
+                  <a class="hm-ota-button hm-ota-button--trip" href="https://www.trip.com/hotels/seoul-hotel-detail-686683/hotelette-seoul-station/" target="_blank" rel="noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="trip.com" data-page-category="stay" data-content-topic="hotels_near_seoul_station" data-placement="seoul_station_guide_hotel_hotelette" data-link-stage="direct_pending" aria-label="View Hotelette Seoul Station on Trip.com">Trip.com</a>
+                  <a class="hm-ota-button hm-ota-button--agoda" href="https://www.agoda.com/hotelette-seoul-station/hotel/seoul-kr.html?cid=1969180&amp;hl=en-us" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="agoda" data-page-category="stay" data-content-topic="hotels_near_seoul_station" data-placement="seoul_station_guide_hotel_hotelette" data-link-stage="affiliate" aria-label="View Hotelette Seoul Station on Agoda">Agoda</a>
+                </div>
               </div>
             </div>
           </article>
@@ -577,8 +649,14 @@
               <p>ZIYOLK fills a gap that Hotelette does not. The rooms are still compact, but there is a real four-person option: the Family Room is 21㎡ with two double beds, while the Double and Twin rooms are 10㎡ and 12㎡. That makes it worth considering for a couple or small group that wants to stay very close to Seoul Station without moving up to a larger full-service hotel.</p>
               <p>Exit 10 is the shortest approach for most guests. The catch is the final approach: there is a short but fairly steep slope, and Exit 10 itself is not the easiest choice with heavy luggage.</p>
               <p>I would choose ZIYOLK for a short rail-focused stay rather than for room space. The rooms fill up quickly once a suitcase is opened. Self-service check-in outside staffed hours can help with a late arrival, but soundproofing and the compact layout are reasons not to treat the Family Room as a roomy family hotel.</p>
-              <div class="hm-ota-row" aria-label="Booking links for ZIYOLK Seoul Station">
-                <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/U4RowSz" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hotels_near_seoul_station" data-placement="seoul_station_guide_hotel_ziyolk" data-link-stage="affiliate" aria-label="View ZIYOLK Seoul Station on Expedia">Expedia</a>
+              <div class="hm-booking-strip">
+                <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
+                <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
+                <div class="hm-ota-row" aria-label="Booking links for ZIYOLK Seoul Station">
+                  <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/U4RowSz" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hotels_near_seoul_station" data-placement="seoul_station_guide_hotel_ziyolk" data-link-stage="affiliate" aria-label="View ZIYOLK Seoul Station on Expedia">Expedia</a>
+                  <a class="hm-ota-button hm-ota-button--trip" href="https://www.trip.com/hotels/seoul-hotel-detail-1171947/ziyolk-seoul-station/" target="_blank" rel="noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="trip.com" data-page-category="stay" data-content-topic="hotels_near_seoul_station" data-placement="seoul_station_guide_hotel_ziyolk" data-link-stage="direct_pending" aria-label="View ZIYOLK Seoul Station on Trip.com">Trip.com</a>
+                  <a class="hm-ota-button hm-ota-button--agoda" href="https://www.agoda.com/k-pop-hotel-seoul-station/hotel/seoul-kr.html?cid=1969180&amp;hl=en-us" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="agoda" data-page-category="stay" data-content-topic="hotels_near_seoul_station" data-placement="seoul_station_guide_hotel_ziyolk" data-link-stage="affiliate" aria-label="View ZIYOLK Seoul Station on Agoda">Agoda</a>
+                </div>
               </div>
             </div>
           </article>
@@ -593,8 +671,14 @@
               <p>If Seoul Station matters but you do not want the station to dominate the whole stay, Hotel Manu is where the balance starts to shift. It sits on the Sungnyemun and Namdaemun side rather than directly beside the platforms, so you can still use KTX while having a more natural route toward Namdaemun Market, Myeongdong and central Seoul.</p>
               <p>The walk needs a little explanation. One practical route is to use the outdoor elevator up to Seoullo 7017 and follow the elevated walkway toward the hotel, which can be easier with luggage than blindly following the nearest station exit. But “close to Seoul Station” still does not mean close to the KTX platform. The size of the station complex adds time after you reach the station itself.</p>
               <p>That is why I would not pick Manu for a dawn departure when shaving every possible minute off the station approach is the priority. Its stronger case is a mixed itinerary—one or two rail trips, then meals, sightseeing or business in central Seoul. Room type still matters because some rooms are compact.</p>
-              <div class="hm-ota-row" aria-label="Booking links for Hotel Manu Seoul">
-                <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/3UNB7g2" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hotels_near_seoul_station" data-placement="seoul_station_guide_hotel_manu" data-link-stage="affiliate" aria-label="View Hotel Manu Seoul on Expedia">Expedia</a>
+              <div class="hm-booking-strip">
+                <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
+                <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
+                <div class="hm-ota-row" aria-label="Booking links for Hotel Manu Seoul">
+                  <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/3UNB7g2" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hotels_near_seoul_station" data-placement="seoul_station_guide_hotel_manu" data-link-stage="affiliate" aria-label="View Hotel Manu Seoul on Expedia">Expedia</a>
+                  <a class="hm-ota-button hm-ota-button--trip" href="https://www.trip.com/hotels/seoul-hotel-detail-988781/hotel-manu-seoul-station/" target="_blank" rel="noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="trip.com" data-page-category="stay" data-content-topic="hotels_near_seoul_station" data-placement="seoul_station_guide_hotel_manu" data-link-stage="direct_pending" aria-label="View Hotel Manu Seoul on Trip.com">Trip.com</a>
+                  <a class="hm-ota-button hm-ota-button--agoda" href="https://www.agoda.com/hotel-manu/hotel/seoul-kr.html?cid=1969180&amp;hl=en-us" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="agoda" data-page-category="stay" data-content-topic="hotels_near_seoul_station" data-placement="seoul_station_guide_hotel_manu" data-link-stage="affiliate" aria-label="View Hotel Manu Seoul on Agoda">Agoda</a>
+                </div>
               </div>
             </div>
           </article>
@@ -609,8 +693,14 @@
               <p>Hotel Gracery only belongs in this guide when Seoul Station is part of the trip rather than the whole reason for the stay. The hotel is much more naturally tied to City Hall and Namdaemun. Seoul Station is walkable, but this is enough distance that I would not treat it as a station-front hotel.</p>
               <p>Where Gracery becomes more convincing is a business or mixed city itinerary. The hotel has a business center with laptops and printing, coin laundry, a 24-hour front desk, and self-service luggage lockers.</p>
               <p>I would choose it when meetings around City Hall or central Seoul occupy most of the stay and KTX is needed only once or twice. I would not choose it simply because a booking site labels it “near Seoul Station,” especially before an early train. Gracery earns its place by giving the days in Seoul more convenience, not by giving you the shortest route to a KTX platform.</p>
-              <div class="hm-ota-row" aria-label="Booking links for Hotel Gracery Seoul">
-                <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/8UvodZC" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hotels_near_seoul_station" data-placement="seoul_station_guide_hotel_gracery" data-link-stage="affiliate" aria-label="View Hotel Gracery Seoul on Expedia">Expedia</a>
+              <div class="hm-booking-strip">
+                <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
+                <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
+                <div class="hm-ota-row" aria-label="Booking links for Hotel Gracery Seoul">
+                  <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/8UvodZC" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hotels_near_seoul_station" data-placement="seoul_station_guide_hotel_gracery" data-link-stage="affiliate" aria-label="View Hotel Gracery Seoul on Expedia">Expedia</a>
+                  <a class="hm-ota-button hm-ota-button--trip" href="https://www.trip.com/hotels/seoul-hotel-detail-20286662/hotel-gracery-seoul/" target="_blank" rel="noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="trip.com" data-page-category="stay" data-content-topic="hotels_near_seoul_station" data-placement="seoul_station_guide_hotel_gracery" data-link-stage="direct_pending" aria-label="View Hotel Gracery Seoul on Trip.com">Trip.com</a>
+                  <a class="hm-ota-button hm-ota-button--agoda" href="https://www.agoda.com/hotel-gracery-seoul/hotel/seoul-kr.html?cid=1969180&amp;hl=en-us" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="agoda" data-page-category="stay" data-content-topic="hotels_near_seoul_station" data-placement="seoul_station_guide_hotel_gracery" data-link-stage="affiliate" aria-label="View Hotel Gracery Seoul on Agoda">Agoda</a>
+                </div>
               </div>
             </div>
           </article>
@@ -625,8 +715,14 @@
               <p>UH Suite The Seoul becomes much more interesting once three or more people are traveling together. Its Family City Suite sleeps up to six in three separate bedrooms with three beds and a living room, while the Private City Suite takes up to four with two bedrooms and a living area. That is a very different proposition from squeezing four people into one compact station hotel room.</p>
               <p>The location also fits the kind of trip this page is about. This is the kind of property that becomes especially useful when Seoul Station is part of a family’s onward journey—such as returning from another city for a final night in Seoul or leaving by KTX the next morning.</p>
               <p>I would still check the exact room type before booking. “Suite” does not automatically mean every bedroom or living area is large. For a couple, paying for this layout may be unnecessary. For four to six people who want separate sleeping spaces near Seoul Station, however, it solves a problem the smaller hotels in this guide simply do not.</p>
-              <div class="hm-ota-row" aria-label="Booking links for UH Suite The Seoul">
-                <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/PjID01X" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hotels_near_seoul_station" data-placement="seoul_station_guide_hotel_uh_suite" data-link-stage="affiliate" aria-label="View UH Suite The Seoul on Expedia">Expedia</a>
+              <div class="hm-booking-strip">
+                <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
+                <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
+                <div class="hm-ota-row" aria-label="Booking links for UH Suite The Seoul">
+                  <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/PjID01X" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hotels_near_seoul_station" data-placement="seoul_station_guide_hotel_uh_suite" data-link-stage="affiliate" aria-label="View UH Suite The Seoul on Expedia">Expedia</a>
+                  <a class="hm-ota-button hm-ota-button--trip" href="https://www.trip.com/hotels/seoul-hotel-detail-81300866/uh-suite-the-seoul/" target="_blank" rel="noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="trip.com" data-page-category="stay" data-content-topic="hotels_near_seoul_station" data-placement="seoul_station_guide_hotel_uh_suite" data-link-stage="direct_pending" aria-label="View UH Suite The Seoul on Trip.com">Trip.com</a>
+                  <a class="hm-ota-button hm-ota-button--agoda" href="https://www.agoda.com/uh-suite-the-seoul/hotel/seoul-kr.html?cid=1969180&amp;hl=en-us" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="agoda" data-page-category="stay" data-content-topic="hotels_near_seoul_station" data-placement="seoul_station_guide_hotel_uh_suite" data-link-stage="affiliate" aria-label="View UH Suite The Seoul on Agoda">Agoda</a>
+                </div>
               </div>
             </div>
           </article>
@@ -641,8 +737,14 @@
               <p>Ramada is worth considering when several people are traveling together and the trip involves both the airport and Seoul Station. The hotel is not beside the KTX platforms—the walk from Seoul Station Exit 3 is about 10–15 minutes—but it has something the closer compact stays do not: a wide range of larger room configurations for three, four, and even five guests.</p>
               <p>The airport connection is the other reason to look at it. K-Limousine route 6702 currently stops at Ramada Hotel &amp; Suites Namdaemun. For a family arriving with several people and then taking KTX the next day, that can be simpler than moving everyone through AREX, Seoul Station, and another hotel transfer on the same evening.</p>
               <p>Room choice matters here. Available configurations include rooms with three single beds, two double beds, a double plus two singles, and four single beds. I would not choose Ramada if the only goal is the shortest possible walk to an early KTX. It works better when room layout and airport access matter enough to accept the longer station walk.</p>
-              <div class="hm-ota-row" aria-label="Booking links for Ramada Hotel &amp; Suites by Wyndham Seoul Namdaemun">
-                <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/pbkvCNs" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hotels_near_seoul_station" data-placement="seoul_station_guide_hotel_ramada_namdaemun" data-link-stage="affiliate" aria-label="View Ramada Hotel &amp; Suites by Wyndham Seoul Namdaemun on Expedia">Expedia</a>
+              <div class="hm-booking-strip">
+                <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
+                <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
+                <div class="hm-ota-row" aria-label="Booking links for Ramada Hotel &amp; Suites by Wyndham Seoul Namdaemun">
+                  <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/pbkvCNs" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hotels_near_seoul_station" data-placement="seoul_station_guide_hotel_ramada_namdaemun" data-link-stage="affiliate" aria-label="View Ramada Hotel &amp; Suites by Wyndham Seoul Namdaemun on Expedia">Expedia</a>
+                  <a class="hm-ota-button hm-ota-button--trip" href="https://www.trip.com/hotels/seoul-hotel-detail-47855370/ramada-hotel-suites-seoul-namdaemun/" target="_blank" rel="noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="trip.com" data-page-category="stay" data-content-topic="hotels_near_seoul_station" data-placement="seoul_station_guide_hotel_ramada_namdaemun" data-link-stage="direct_pending" aria-label="View Ramada Hotel &amp; Suites by Wyndham Seoul Namdaemun on Trip.com">Trip.com</a>
+                  <a class="hm-ota-button hm-ota-button--agoda" href="https://www.agoda.com/ramada-hotel-and-suites-seoul-namdaemun_2/hotel/seoul-kr.html?cid=1969180&amp;hl=en-us" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="agoda" data-page-category="stay" data-content-topic="hotels_near_seoul_station" data-placement="seoul_station_guide_hotel_ramada_namdaemun" data-link-stage="affiliate" aria-label="View Ramada Hotel &amp; Suites by Wyndham Seoul Namdaemun on Agoda">Agoda</a>
+                </div>
               </div>
             </div>
           </article>
@@ -657,8 +759,14 @@
               <p>Travel House is the option I would look at when a hotel room stops being the most practical setup. Several apartment configurations can accommodate four to six or more guests, with kitchen facilities, a washing machine, dining space, a lift, and luggage storage. For a family or group spending several nights in Seoul between trips to other Korean cities, being able to wash clothes and eat something simple in the apartment can matter more than having a hotel lobby or daily full-service facilities.</p>
               <p>The property is on the west side of Seoul Station, around the Exit 15 approach. I would not publish a precise platform-to-door time because map estimates vary. The useful point is that this is part of the station’s west-side apartment cluster.</p>
               <p>Group capacity needs a reality check, though. A unit that technically sleeps five or six is not automatically comfortable for five or six adults. Check the exact bed layout, bathroom count and apartment type before booking—especially for a larger family.</p>
-              <div class="hm-ota-row" aria-label="Booking links for Travel House">
-                <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/2QmkyS6" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hotels_near_seoul_station" data-placement="seoul_station_guide_hotel_travel_house" data-link-stage="affiliate" aria-label="View Travel House on Expedia">Expedia</a>
+              <div class="hm-booking-strip">
+                <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
+                <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
+                <div class="hm-ota-row" aria-label="Booking links for Travel House">
+                  <a class="hm-ota-button hm-ota-button--expedia" href="https://expedia.com/affiliate/2QmkyS6" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="expedia" data-page-category="stay" data-content-topic="hotels_near_seoul_station" data-placement="seoul_station_guide_hotel_travel_house" data-link-stage="affiliate" aria-label="View Travel House on Expedia">Expedia</a>
+                  <a class="hm-ota-button hm-ota-button--trip" href="https://www.trip.com/hotels/seoul-hotel-detail-14968995/lv-xing-zhi-jia/" target="_blank" rel="noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="trip.com" data-page-category="stay" data-content-topic="hotels_near_seoul_station" data-placement="seoul_station_guide_hotel_travel_house" data-link-stage="direct_pending" aria-label="View Travel House on Trip.com">Trip.com</a>
+                  <a class="hm-ota-button hm-ota-button--agoda" href="https://www.agoda.com/travel-house/hotel/seoul-kr.html?cid=1969180&amp;hl=en-us" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="agoda" data-page-category="stay" data-content-topic="hotels_near_seoul_station" data-placement="seoul_station_guide_hotel_travel_house" data-link-stage="affiliate" aria-label="View Travel House on Agoda">Agoda</a>
+                </div>
               </div>
             </div>
           </article>
