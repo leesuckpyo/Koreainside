@@ -11,7 +11,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400..600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <style>
+    body.accommodation-page main .accommodation-area-guide-button,
     body.accommodation-page main #gangnam-guide-cta,
+    body.accommodation-page main .accommodation-area-guide-button:visited,
     body.accommodation-page main #gangnam-guide-cta:visited {
       display: inline-flex;
       align-items: center;
@@ -31,22 +33,27 @@
       transition: background-color 0.18s ease, transform 0.18s ease;
     }
 
+    body.accommodation-page main .accommodation-area-guide-button:hover,
     body.accommodation-page main #gangnam-guide-cta:hover,
+    body.accommodation-page main .accommodation-area-guide-button:focus-visible,
     body.accommodation-page main #gangnam-guide-cta:focus-visible {
       background: var(--blue-deep);
       color: #fff;
     }
 
+    body.accommodation-page main .accommodation-area-guide-button:hover,
     body.accommodation-page main #gangnam-guide-cta:hover {
       transform: translateY(-1px);
     }
 
+    body.accommodation-page main .accommodation-area-guide-button:focus-visible,
     body.accommodation-page main #gangnam-guide-cta:focus-visible {
       outline: 3px solid var(--blue-accent);
       outline-offset: 3px;
     }
 
     @media (max-width: 719px) {
+      body.accommodation-page main .accommodation-area-guide-button,
       body.accommodation-page main #gangnam-guide-cta {
         padding: 11px 16px;
         white-space: normal;
@@ -400,6 +407,9 @@
                 <p>Hongdae is one of the easiest areas to recommend to travelers who want Seoul to stay active after dinner. Cafés, restaurants, bars, live music and late-night streets are all part of the neighborhood, and Hongik University Station also has direct all-stop AREX service to Incheon Airport.</p>
                 <p>That convenience comes with more noise and more people, particularly around the busiest nightlife streets. Staying a few minutes away from the main pedestrian areas can give you the Hongdae location without putting the busiest part of the neighborhood directly outside the hotel.</p>
                 <a href="hongdae-vs-myeongdong.html#hongdae" class="stay-area-card__link">Compare Hongdae and Myeongdong</a>
+                <div>
+                  <a class="accommodation-area-guide-button" href="where-to-stay-in-hongdae.html">Read the Hongdae guide →</a>
+                </div>
               </div>
             </div>
           </article>
@@ -414,6 +424,9 @@
                 <p>Myeongdong remains the easiest all-round base for many first-time visitors. Central Seoul sights are relatively easy to reach, shopping and food are immediately available, and the neighborhood is straightforward to understand even when you have only been in Korea for a day or two.</p>
                 <p>It is busy and visitor-oriented rather than residential, but that is often an advantage on a short first trip. Travelers who want a more local evening atmosphere may prefer another neighborhood, while those prioritizing convenience usually find Myeongdong difficult to beat.</p>
                 <a href="hongdae-vs-myeongdong.html#myeongdong" class="stay-area-card__link">See the Hongdae vs Myeongdong comparison</a>
+                <div>
+                  <a class="accommodation-area-guide-button" href="where-to-stay-in-myeongdong.html">Read the Myeongdong guide →</a>
+                </div>
               </div>
             </div>
           </article>
@@ -427,8 +440,10 @@
               <div class="accommodation-area-detail__copy">
                 <p>Gangnam works best when the trip already has a reason to be south of the Han River. Business meetings, clinics, salons, shopping and appointments around Gangnam, Sinsa or nearby districts are much easier when the hotel is in the same part of the city.</p>
                 <p>For travelers spending most days around palaces, Myeongdong, Insadong or other northern Seoul sights, Gangnam can add unnecessary subway time. It is a strong location for the right itinerary rather than the automatic premium choice for every visitor.</p>
-                <a id="gangnam-guide-cta" href="where-to-stay-in-gangnam.html">Read the Gangnam guide →</a>
                 <a href="best-area-for-luxury-hotels-seoul.html#area-comparison" class="stay-area-card__link">Best Seoul areas for luxury hotels</a>
+                <div>
+                  <a id="gangnam-guide-cta" class="accommodation-area-guide-button" href="where-to-stay-in-gangnam.html">Read the Gangnam guide →</a>
+                </div>
               </div>
             </div>
           </article>
@@ -442,7 +457,9 @@
               <div class="accommodation-area-detail__copy">
                 <p>Insadong suits travelers who want central sightseeing without the constant commercial energy of Myeongdong. Palaces, traditional streets, Ikseondong and several historic parts of central Seoul are within easy reach, while evenings are generally calmer than in the major nightlife districts.</p>
                 <p>Some accommodation is tucked into smaller streets, so the final walk from the station deserves more attention when traveling with heavy luggage. For culture-focused trips and quieter evenings, the location is one of central Seoul's most appealing alternatives.</p>
-                <a href="where-to-stay-in-insadong.html" class="stay-area-card__link" id="insadong-guide-cta">Read the Insadong guide →</a>
+                <div>
+                  <a id="insadong-guide-cta" class="accommodation-area-guide-button" href="where-to-stay-in-insadong.html">Read the Insadong guide →</a>
+                </div>
               </div>
             </div>
           </article>
@@ -457,6 +474,9 @@
                 <p>Seoul Station is primarily a practical base. AREX, KTX and multiple subway connections make it especially useful for travelers arriving with large luggage, taking rail trips outside Seoul or leaving for the airport early in the day.</p>
                 <p>The station area does not have the same evening character as Hongdae, Myeongdong or Insadong, so most visitors stay here for logistics rather than atmosphere. When transport is the priority, that trade-off can be completely worthwhile.</p>
                 <a href="best-area-for-solo-travelers-seoul.html#area-guides" class="stay-area-card__link">Best Seoul areas for solo travelers</a>
+                <div>
+                  <a class="accommodation-area-guide-button" href="hotels-near-seoul-station.html">Read the Seoul Station guide →</a>
+                </div>
               </div>
             </div>
           </article>
@@ -470,8 +490,10 @@
               <div class="accommodation-area-detail__copy">
                 <p>Dongdaemun combines major transport connections with shopping, Dongdaemun Design Plaza and a part of Seoul that stays active later than many sightseeing districts. It can work well for travelers who expect to shop at night or spend significant time in the eastern side of central Seoul.</p>
                 <p>The district is spread across large roads and several station areas, so two hotels described as being in Dongdaemun can feel quite different in practice. The exact station and walking route matter more here than the district name alone.</p>
-                <a id="dongdaemun-guide-cta" href="where-to-stay-in-dongdaemun.html">Read the Dongdaemun guide →</a>
                 <a href="best-area-for-budget-travelers-seoul.html#area-comparison" class="stay-area-card__link">Best budget areas to stay in Seoul</a>
+                <div>
+                  <a id="dongdaemun-guide-cta" class="accommodation-area-guide-button" href="where-to-stay-in-dongdaemun.html">Read the Dongdaemun guide →</a>
+                </div>
               </div>
             </div>
           </article>
@@ -486,6 +508,9 @@
                 <p>Jamsil is particularly useful for families and travelers whose plans revolve around Lotte World, Seokchon Lake, major events or the eastern side of Seoul. The neighborhood is modern, spacious and generally easier to navigate with children than many dense central districts.</p>
                 <p>Its main disadvantage is distance from much of the classic first-time sightseeing in northern and central Seoul. Jamsil makes sense when the attractions around Jamsil are a major part of the trip, not simply because the hotels look convenient on a map.</p>
                 <a href="best-area-for-families-seoul.html#area-comparison" class="stay-area-card__link">Best Seoul areas for families</a>
+                <div>
+                  <a class="accommodation-area-guide-button" href="where-to-stay-in-jamsil.html">Read the Jamsil guide →</a>
+                </div>
               </div>
             </div>
           </article>
@@ -528,6 +553,9 @@
                 <p>Mapo and Gongdeok are strong alternatives for travelers who want airport convenience without staying in the middle of Hongdae. Gongdeok has direct all-stop AREX service, and the surrounding neighborhoods offer good restaurants and a more everyday residential feel.</p>
                 <p>They are less immediately recognizable as sightseeing bases, but that can be an advantage for travelers who value easier arrival and departure, calmer evenings and efficient subway connections over having major attractions directly outside the hotel.</p>
                 <a href="best-area-for-solo-travelers-seoul.html#area-guides" class="stay-area-card__link">Best Seoul areas for solo travelers</a>
+                <div>
+                  <a class="accommodation-area-guide-button" href="hotels-near-gongdeok-station.html">Read the Mapo / Gongdeok guide →</a>
+                </div>
               </div>
             </div>
           </article>
