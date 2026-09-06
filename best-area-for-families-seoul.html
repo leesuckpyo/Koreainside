@@ -54,6 +54,49 @@
     }
   </style>
   <style>
+    body.family-stay-page main #dongdaemun-guide-cta,
+    body.family-stay-page main #dongdaemun-guide-cta:visited {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+      max-width: 100%;
+      margin-top: 20px;
+      padding: 12px 18px;
+      border-radius: 8px;
+      background: var(--blue-accent);
+      color: #fff;
+      font-weight: 600;
+      line-height: 1.35;
+      text-align: center;
+      text-decoration: none;
+      box-sizing: border-box;
+      transition: background-color 0.18s ease, transform 0.18s ease;
+    }
+
+    body.family-stay-page main #dongdaemun-guide-cta:hover,
+    body.family-stay-page main #dongdaemun-guide-cta:focus-visible {
+      background: var(--blue-deep);
+      color: #fff;
+    }
+
+    body.family-stay-page main #dongdaemun-guide-cta:hover {
+      transform: translateY(-1px);
+    }
+
+    body.family-stay-page main #dongdaemun-guide-cta:focus-visible {
+      outline: 3px solid var(--blue-accent);
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 719px) {
+      body.family-stay-page main #dongdaemun-guide-cta {
+        padding: 11px 16px;
+        white-space: normal;
+      }
+    }
+  </style>
+  <style>
     .family-stay-page main .family-area-row {
       grid-template-columns: minmax(0, 280px) minmax(0, 1fr);
       column-gap: 44px;
@@ -519,6 +562,7 @@
             <div class="family-area-row__content">
               <p>Dongdaemun can suit families who want shopping, Dongdaemun Design Plaza and easy access to the eastern side of central Seoul. Large malls and late opening hours also give families more flexibility when sightseeing runs longer than expected.</p>
               <p>The district covers a wide area, so hotel convenience varies significantly depending on the exact subway station and street. A short distance on a booking map does not always mean an easy stroller or luggage route.</p>
+              <a id="dongdaemun-guide-cta" href="where-to-stay-in-dongdaemun.html">Read the Dongdaemun guide →</a>
             </div>
           </article>
 

@@ -53,6 +53,49 @@
       }
     }
   </style>
+  <style>
+    body.shopping-stay-page main #dongdaemun-guide-cta,
+    body.shopping-stay-page main #dongdaemun-guide-cta:visited {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+      max-width: 100%;
+      margin-top: 20px;
+      padding: 12px 18px;
+      border-radius: 8px;
+      background: var(--blue-accent);
+      color: #fff;
+      font-weight: 600;
+      line-height: 1.35;
+      text-align: center;
+      text-decoration: none;
+      box-sizing: border-box;
+      transition: background-color 0.18s ease, transform 0.18s ease;
+    }
+
+    body.shopping-stay-page main #dongdaemun-guide-cta:hover,
+    body.shopping-stay-page main #dongdaemun-guide-cta:focus-visible {
+      background: var(--blue-deep);
+      color: #fff;
+    }
+
+    body.shopping-stay-page main #dongdaemun-guide-cta:hover {
+      transform: translateY(-1px);
+    }
+
+    body.shopping-stay-page main #dongdaemun-guide-cta:focus-visible {
+      outline: 3px solid var(--blue-accent);
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 719px) {
+      body.shopping-stay-page main #dongdaemun-guide-cta {
+        padding: 11px 16px;
+        white-space: normal;
+      }
+    }
+  </style>
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -410,6 +453,7 @@
                 <p>Dongdaemun becomes a stronger place to stay when fashion shopping continues late into the evening and more than one visit is planned. The district has large fashion complexes, retail shopping and a different rhythm from Seoul's daytime shopping neighborhoods.</p>
                 <p>Not every building serves the same kind of shopper. Some are easier for ordinary visitors, while others are more closely associated with wholesale, quantity buying or trade-oriented shopping. Opening hours can also vary significantly by building and day.</p>
                 <p>For travelers planning only one Dongdaemun evening, staying centrally and visiting from another neighborhood may be easier. The area becomes more convincing as a hotel base when late fashion shopping is genuinely one of the main reasons for the trip.</p>
+                <a id="dongdaemun-guide-cta" href="where-to-stay-in-dongdaemun.html">Read the Dongdaemun guide →</a>
               </div>
             </div>
           </article>

@@ -54,6 +54,49 @@
     }
   </style>
   <style>
+    body.accommodation-page main #dongdaemun-guide-cta,
+    body.accommodation-page main #dongdaemun-guide-cta:visited {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+      max-width: 100%;
+      margin-top: 20px;
+      padding: 12px 18px;
+      border-radius: 8px;
+      background: var(--blue-accent);
+      color: #fff;
+      font-weight: 600;
+      line-height: 1.35;
+      text-align: center;
+      text-decoration: none;
+      box-sizing: border-box;
+      transition: background-color 0.18s ease, transform 0.18s ease;
+    }
+
+    body.accommodation-page main #dongdaemun-guide-cta:hover,
+    body.accommodation-page main #dongdaemun-guide-cta:focus-visible {
+      background: var(--blue-deep);
+      color: #fff;
+    }
+
+    body.accommodation-page main #dongdaemun-guide-cta:hover {
+      transform: translateY(-1px);
+    }
+
+    body.accommodation-page main #dongdaemun-guide-cta:focus-visible {
+      outline: 3px solid var(--blue-accent);
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 719px) {
+      body.accommodation-page main #dongdaemun-guide-cta {
+        padding: 11px 16px;
+        white-space: normal;
+      }
+    }
+  </style>
+  <style>
     .accommodation-page #area-comparison #insadong-guide-cta,
     .accommodation-page #area-comparison #insadong-guide-cta:visited {
       display: inline-flex;
@@ -427,6 +470,7 @@
               <div class="accommodation-area-detail__copy">
                 <p>Dongdaemun combines major transport connections with shopping, Dongdaemun Design Plaza and a part of Seoul that stays active later than many sightseeing districts. It can work well for travelers who expect to shop at night or spend significant time in the eastern side of central Seoul.</p>
                 <p>The district is spread across large roads and several station areas, so two hotels described as being in Dongdaemun can feel quite different in practice. The exact station and walking route matter more here than the district name alone.</p>
+                <a id="dongdaemun-guide-cta" href="where-to-stay-in-dongdaemun.html">Read the Dongdaemun guide →</a>
                 <a href="best-area-for-budget-travelers-seoul.html#area-comparison" class="stay-area-card__link">Best budget areas to stay in Seoul</a>
               </div>
             </div>
