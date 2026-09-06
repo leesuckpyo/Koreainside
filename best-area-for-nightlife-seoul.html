@@ -10,6 +10,49 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400..600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <style>
+    body.nightlife-stay-page main #gangnam-guide-cta,
+    body.nightlife-stay-page main #gangnam-guide-cta:visited {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+      max-width: 100%;
+      margin-top: 20px;
+      padding: 12px 18px;
+      border-radius: 8px;
+      background: var(--blue-accent);
+      color: #fff;
+      font-weight: 600;
+      line-height: 1.35;
+      text-align: center;
+      text-decoration: none;
+      box-sizing: border-box;
+      transition: background-color 0.18s ease, transform 0.18s ease;
+    }
+
+    body.nightlife-stay-page main #gangnam-guide-cta:hover,
+    body.nightlife-stay-page main #gangnam-guide-cta:focus-visible {
+      background: var(--blue-deep);
+      color: #fff;
+    }
+
+    body.nightlife-stay-page main #gangnam-guide-cta:hover {
+      transform: translateY(-1px);
+    }
+
+    body.nightlife-stay-page main #gangnam-guide-cta:focus-visible {
+      outline: 3px solid var(--blue-accent);
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 719px) {
+      body.nightlife-stay-page main #gangnam-guide-cta {
+        padding: 11px 16px;
+        white-space: normal;
+      }
+    }
+  </style>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -348,6 +391,7 @@
               <p>Gangnam makes the most sense when upscale bars, clubs or late dinners overlap with daytime plans south of the Han River. In that kind of itinerary, staying nearby avoids repeatedly crossing Seoul after a late night.</p>
               <p>It is less convincing as a nightlife base when the rest of the trip revolves around palaces, Myeongdong, Insadong or other parts of historic central Seoul. The journey that feels manageable before dinner can become much less appealing at the end of the night.</p>
               <p>Gangnam also tends to suit a higher spending level than Hongdae's casual nightlife, so the choice is as much about the style of the evening as the location.</p>
+              <a id="gangnam-guide-cta" href="where-to-stay-in-gangnam.html">Read the Gangnam guide →</a>
             </div>
           </article>
           <article class="nightlife-area-row" data-area-detail>

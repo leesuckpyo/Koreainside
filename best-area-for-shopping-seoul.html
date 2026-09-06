@@ -10,6 +10,49 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400..600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <style>
+    body.shopping-stay-page main #gangnam-guide-cta,
+    body.shopping-stay-page main #gangnam-guide-cta:visited {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+      max-width: 100%;
+      margin-top: 20px;
+      padding: 12px 18px;
+      border-radius: 8px;
+      background: var(--blue-accent);
+      color: #fff;
+      font-weight: 600;
+      line-height: 1.35;
+      text-align: center;
+      text-decoration: none;
+      box-sizing: border-box;
+      transition: background-color 0.18s ease, transform 0.18s ease;
+    }
+
+    body.shopping-stay-page main #gangnam-guide-cta:hover,
+    body.shopping-stay-page main #gangnam-guide-cta:focus-visible {
+      background: var(--blue-deep);
+      color: #fff;
+    }
+
+    body.shopping-stay-page main #gangnam-guide-cta:hover {
+      transform: translateY(-1px);
+    }
+
+    body.shopping-stay-page main #gangnam-guide-cta:focus-visible {
+      outline: 3px solid var(--blue-accent);
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 719px) {
+      body.shopping-stay-page main #gangnam-guide-cta {
+        padding: 11px 16px;
+        white-space: normal;
+      }
+    }
+  </style>
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -333,6 +376,7 @@
                 <p>Gangnam works best when premium shopping is already a major part of the itinerary, but it helps to remember that “Gangnam shopping” is not one compact neighborhood. Samseong and COEX suit large malls and department-store shopping, while Apgujeong and Cheongdam lead toward luxury brands, fashion and a more spread-out street-shopping experience.</p>
                 <p>Staying in Gangnam makes sense when several shopping days are already south of the Han River. It is less efficient when most sightseeing happens around palaces, Myeongdong and historic central Seoul, because repeated cross-city journeys can become tiring.</p>
                 <p>Airport travel is also less direct than Hongdae or Gongdeok. On a shopping-heavy trip, that matters most on departure day when suitcases are likely to be heavier than they were on arrival.</p>
+                <a id="gangnam-guide-cta" href="where-to-stay-in-gangnam.html">Read the Gangnam guide →</a>
               </div>
             </div>
           </article>

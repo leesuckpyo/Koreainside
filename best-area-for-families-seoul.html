@@ -11,6 +11,49 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400..600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <style>
+    body.family-stay-page main #gangnam-guide-cta,
+    body.family-stay-page main #gangnam-guide-cta:visited {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+      max-width: 100%;
+      margin-top: 20px;
+      padding: 12px 18px;
+      border-radius: 8px;
+      background: var(--blue-accent);
+      color: #fff;
+      font-weight: 600;
+      line-height: 1.35;
+      text-align: center;
+      text-decoration: none;
+      box-sizing: border-box;
+      transition: background-color 0.18s ease, transform 0.18s ease;
+    }
+
+    body.family-stay-page main #gangnam-guide-cta:hover,
+    body.family-stay-page main #gangnam-guide-cta:focus-visible {
+      background: var(--blue-deep);
+      color: #fff;
+    }
+
+    body.family-stay-page main #gangnam-guide-cta:hover {
+      transform: translateY(-1px);
+    }
+
+    body.family-stay-page main #gangnam-guide-cta:focus-visible {
+      outline: 3px solid var(--blue-accent);
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 719px) {
+      body.family-stay-page main #gangnam-guide-cta {
+        padding: 11px 16px;
+        white-space: normal;
+      }
+    }
+  </style>
+  <style>
     .family-stay-page main .family-area-row {
       grid-template-columns: minmax(0, 280px) minmax(0, 1fr);
       column-gap: 44px;
@@ -504,6 +547,7 @@
             <div class="family-area-row__content">
               <p>Gangnam makes sense for families when clinics, business, shopping or attractions south of the Han River already shape the trip. Modern facilities and large commercial areas can be convenient, and many hotels are comfortable for longer stays.</p>
               <p>It is less efficient for a first family trip centered on palaces, Myeongdong and older central Seoul. Repeated cross-city journeys can become tiring with children, so the location works best when there is a clear reason to spend several days in southern Seoul.</p>
+              <a id="gangnam-guide-cta" href="where-to-stay-in-gangnam.html">Read the Gangnam guide →</a>
             </div>
           </article>
         </div>

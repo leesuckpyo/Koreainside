@@ -11,6 +11,49 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400..600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <style>
+    body.solo-stay-page main #gangnam-guide-cta,
+    body.solo-stay-page main #gangnam-guide-cta:visited {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+      max-width: 100%;
+      margin-top: 20px;
+      padding: 12px 18px;
+      border-radius: 8px;
+      background: var(--blue-accent);
+      color: #fff;
+      font-weight: 600;
+      line-height: 1.35;
+      text-align: center;
+      text-decoration: none;
+      box-sizing: border-box;
+      transition: background-color 0.18s ease, transform 0.18s ease;
+    }
+
+    body.solo-stay-page main #gangnam-guide-cta:hover,
+    body.solo-stay-page main #gangnam-guide-cta:focus-visible {
+      background: var(--blue-deep);
+      color: #fff;
+    }
+
+    body.solo-stay-page main #gangnam-guide-cta:hover {
+      transform: translateY(-1px);
+    }
+
+    body.solo-stay-page main #gangnam-guide-cta:focus-visible {
+      outline: 3px solid var(--blue-accent);
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 719px) {
+      body.solo-stay-page main #gangnam-guide-cta {
+        padding: 11px 16px;
+        white-space: normal;
+      }
+    }
+  </style>
+  <style>
     .solo-stay-page main .solo-area-row {
       grid-template-columns: minmax(0, 280px) minmax(0, 1fr);
       column-gap: 44px;
@@ -360,6 +403,7 @@
             <div class="solo-area-row__details">
               <p>Gangnam works best for solo travelers whose plans already include business, clinics, shopping or appointments south of the Han River. It has plenty of restaurants and evening activity, so there is little need to travel elsewhere simply to find something to do after the day's main plans are finished.</p>
               <p>For a first trip focused on palaces, Myeongdong, Insadong and historic central Seoul, the repeated cross-city journeys can become tiring. Gangnam is therefore a strong base when the itinerary gives it a clear reason to be one.</p>
+              <a id="gangnam-guide-cta" href="where-to-stay-in-gangnam.html">Read the Gangnam guide →</a>
             </div>
           </article>
         </div>

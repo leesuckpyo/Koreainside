@@ -11,6 +11,49 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400..600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <style>
+    body.couples-stay-page main #gangnam-guide-cta,
+    body.couples-stay-page main #gangnam-guide-cta:visited {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+      max-width: 100%;
+      margin-top: 20px;
+      padding: 12px 18px;
+      border-radius: 8px;
+      background: var(--blue-accent);
+      color: #fff;
+      font-weight: 600;
+      line-height: 1.35;
+      text-align: center;
+      text-decoration: none;
+      box-sizing: border-box;
+      transition: background-color 0.18s ease, transform 0.18s ease;
+    }
+
+    body.couples-stay-page main #gangnam-guide-cta:hover,
+    body.couples-stay-page main #gangnam-guide-cta:focus-visible {
+      background: var(--blue-deep);
+      color: #fff;
+    }
+
+    body.couples-stay-page main #gangnam-guide-cta:hover {
+      transform: translateY(-1px);
+    }
+
+    body.couples-stay-page main #gangnam-guide-cta:focus-visible {
+      outline: 3px solid var(--blue-accent);
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 719px) {
+      body.couples-stay-page main #gangnam-guide-cta {
+        padding: 11px 16px;
+        white-space: normal;
+      }
+    }
+  </style>
+  <style>
     .couples-stay-page main .couples-area-row {
       grid-template-columns: minmax(0, 280px) minmax(0, 1fr);
       column-gap: 44px;
@@ -370,6 +413,7 @@
             <div class="couples-area-row__content">
               <p>Gangnam makes sense for couples whose plans already include shopping, restaurants, clinics, business or appointments south of the Han River. The area stays active into the evening and offers plenty to do without returning to central Seoul after dinner.</p>
               <p>For a trip focused on palaces, Insadong and historic central Seoul, the repeated cross-city travel can become tiring. Gangnam is a strong base when the itinerary gives it a clear reason to be one.</p>
+              <a id="gangnam-guide-cta" href="where-to-stay-in-gangnam.html">Read the Gangnam guide →</a>
             </div>
           </article>
           <article class="couples-area-row">

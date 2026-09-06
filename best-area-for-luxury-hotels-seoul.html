@@ -10,6 +10,49 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400..600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <style>
+    body.luxury-stay-page main #gangnam-guide-cta,
+    body.luxury-stay-page main #gangnam-guide-cta:visited {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+      max-width: 100%;
+      margin-top: 20px;
+      padding: 12px 18px;
+      border-radius: 8px;
+      background: var(--blue-accent);
+      color: #fff;
+      font-weight: 600;
+      line-height: 1.35;
+      text-align: center;
+      text-decoration: none;
+      box-sizing: border-box;
+      transition: background-color 0.18s ease, transform 0.18s ease;
+    }
+
+    body.luxury-stay-page main #gangnam-guide-cta:hover,
+    body.luxury-stay-page main #gangnam-guide-cta:focus-visible {
+      background: var(--blue-deep);
+      color: #fff;
+    }
+
+    body.luxury-stay-page main #gangnam-guide-cta:hover {
+      transform: translateY(-1px);
+    }
+
+    body.luxury-stay-page main #gangnam-guide-cta:focus-visible {
+      outline: 3px solid var(--blue-accent);
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 719px) {
+      body.luxury-stay-page main #gangnam-guide-cta {
+        padding: 11px 16px;
+        white-space: normal;
+      }
+    }
+  </style>
   <script type="application/ld+json">
 {
     "@context":  "https://schema.org",
@@ -331,6 +374,7 @@
               <p>Gangnam is the easiest luxury base to justify when the trip already belongs south of the Han River. Premium shopping, restaurants, meetings, clinics and appointments can stay within the same broad part of Seoul, which makes the hotel location useful throughout the day rather than only at night.</p>
               <p>The trade-off appears when the itinerary shifts toward palaces, Insadong or other parts of historic central Seoul. Repeated cross-city travel can turn a prestigious address into an inconvenient one, especially during busy traffic periods.</p>
               <p>Gangnam therefore works best when the schedule gives the location a clear reason to be expensive.</p>
+              <a id="gangnam-guide-cta" href="where-to-stay-in-gangnam.html">Read the Gangnam guide →</a>
             </div>
           </article>
 
