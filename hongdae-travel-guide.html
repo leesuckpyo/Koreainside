@@ -17,6 +17,92 @@
     .hongdae-myeongdong-page main > .hm-section {
       background-color: #ffffff;
     }
+
+    .hongdae-myeongdong-page main .hongdae-stay-bridge {
+      background: var(--white);
+    }
+
+    .hongdae-myeongdong-page main .hongdae-stay-bridge__content {
+      padding: 28px 0;
+      border-block: 1px solid var(--gray-200);
+    }
+
+    .hongdae-myeongdong-page main .hongdae-stay-bridge__kicker {
+      margin: 0 0 8px;
+      color: var(--blue-accent);
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1.4;
+      letter-spacing: 0.08em;
+    }
+
+    .hongdae-myeongdong-page main .hongdae-stay-bridge__title {
+      margin: 0 0 12px;
+      font-size: clamp(22px, 2.4vw, 28px);
+      line-height: 1.35;
+    }
+
+    .hongdae-myeongdong-page main .hongdae-stay-bridge__body {
+      max-width: 76ch;
+      margin: 0 0 16px;
+    }
+
+    .hongdae-myeongdong-page main .hongdae-stay-bridge__link,
+    .hongdae-myeongdong-page main .hongdae-stay-bridge__link:visited {
+      display: inline-flex;
+      align-items: center;
+      max-width: 100%;
+      color: var(--blue-accent);
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1.5;
+      text-decoration: underline;
+      text-underline-offset: 0.2em;
+    }
+
+    .hongdae-myeongdong-page main .hongdae-stay-bridge__link:hover,
+    .hongdae-myeongdong-page main .hongdae-stay-bridge__link:focus-visible {
+      color: var(--blue-deep);
+    }
+
+    .hongdae-myeongdong-page main .hongdae-stay-bridge__link:focus-visible {
+      outline: 2px solid var(--blue-deep);
+      outline-offset: 4px;
+    }
+
+    .hongdae-myeongdong-page main .hongdae-stay-bridge__link--cta,
+    .hongdae-myeongdong-page main .hongdae-stay-bridge__link--cta:visited {
+      padding: 10px 18px;
+      border-radius: var(--radius-sm);
+      background: var(--blue-accent);
+      color: var(--white);
+      text-decoration: none;
+      transition: background-color 180ms ease;
+    }
+
+    .hongdae-myeongdong-page main .hongdae-stay-bridge__link--cta:hover,
+    .hongdae-myeongdong-page main .hongdae-stay-bridge__link--cta:focus-visible {
+      background: var(--blue-deep);
+      color: var(--white);
+    }
+
+    #hongdae-stay-bridge-1 .hongdae-stay-bridge__content,
+    #hongdae-stay-bridge-2 .hongdae-stay-bridge__content {
+      padding-block: 22px;
+    }
+
+    #hongdae-stay-bridge-1 .hongdae-stay-bridge__title,
+    #hongdae-stay-bridge-2 .hongdae-stay-bridge__title {
+      font-size: 30px;
+      line-height: 1.35;
+    }
+
+    @media (max-width: 719px) {
+      #hongdae-stay-bridge-1 .hongdae-stay-bridge__title,
+      #hongdae-stay-bridge-2 .hongdae-stay-bridge__title {
+        font-size: 25px;
+      }
+    }
   </style>
 
 <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
@@ -43,12 +129,12 @@
             <button class="site-nav__trigger" id="site-nav-trigger-discover" type="button" aria-expanded="false" aria-controls="site-nav-panel-discover" aria-haspopup="true">DISCOVER</button>
             <div class="site-nav__panel" id="site-nav-panel-discover" aria-labelledby="site-nav-trigger-discover" hidden><div class="site-nav__group"><a class="site-nav__link" href="taste-korea.html">Taste Korea</a><a class="site-nav__link" href="k-beauty.html">K-Beauty</a></div></div>
           </li>
-          <li class="site-nav__item" data-nav-section="travel-guides">
-            <button class="site-nav__trigger" id="site-nav-trigger-travel-guides" type="button" aria-expanded="false" aria-controls="site-nav-panel-travel-guides" aria-haspopup="true">Travel Guides</button>
+          <li class="site-nav__item site-nav__item--active" data-nav-section="travel-guides">
+            <button class="site-nav__trigger site-nav__trigger--current" id="site-nav-trigger-travel-guides" type="button" aria-expanded="false" aria-controls="site-nav-panel-travel-guides" aria-haspopup="true" aria-current="true">Travel Guides</button>
             <div class="site-nav__panel" id="site-nav-panel-travel-guides" aria-labelledby="site-nav-trigger-travel-guides" hidden><div class="site-nav__group"><a class="site-nav__link" href="hongdae-travel-guide.html">Hongdae Guide</a></div></div>
           </li>
-          <li class="site-nav__item site-nav__item--active" data-nav-section="stay">
-            <button class="site-nav__trigger site-nav__trigger--current" id="site-nav-trigger-stay" type="button" aria-expanded="false" aria-controls="site-nav-panel-stay" aria-haspopup="true" aria-current="true">Stay</button>
+          <li class="site-nav__item" data-nav-section="stay">
+            <button class="site-nav__trigger" id="site-nav-trigger-stay" type="button" aria-expanded="false" aria-controls="site-nav-panel-stay" aria-haspopup="true">Stay</button>
             <div class="site-nav__panel" id="site-nav-panel-stay" aria-labelledby="site-nav-trigger-stay" hidden><div class="site-nav__group"><p class="site-nav__group-label">Stay Guide</p><a class="site-nav__link" href="accommodation.html">Stay Guide</a><a class="site-nav__link" href="hongdae-vs-myeongdong.html">Hongdae vs Myeongdong</a><a class="site-nav__link" href="best-area-for-first-time-visitors-seoul.html">First-Time Visitors</a><a class="site-nav__link" href="best-area-for-families-seoul.html">Families</a><a class="site-nav__link" href="best-area-for-solo-travelers-seoul.html">Solo Travelers</a><a class="site-nav__link" href="best-area-for-couples-seoul.html">Couples</a><a class="site-nav__link" href="best-area-for-budget-travelers-seoul.html">Budget Travelers</a><a class="site-nav__link" href="best-area-for-shopping-seoul.html">Shopping</a><a class="site-nav__link" href="best-area-for-nightlife-seoul.html">Nightlife</a><a class="site-nav__link" href="best-area-for-luxury-hotels-seoul.html">Luxury Hotels</a></div></div>
           </li>
           <li class="site-nav__item" data-nav-section="esim">
@@ -113,6 +199,17 @@
         </div>
       </div>
     </section>
+
+    <aside class="hongdae-stay-bridge" id="hongdae-stay-bridge-1" aria-labelledby="hongdae-stay-bridge-1-title">
+      <div class="container">
+        <div class="hongdae-stay-bridge__content">
+          <p class="hongdae-stay-bridge__kicker">STAY IN HONGDAE</p>
+          <h2 class="hongdae-stay-bridge__title" id="hongdae-stay-bridge-1-title">Planning to stay in Hongdae?</h2>
+          <p class="hongdae-stay-bridge__body">Once Hongdae feels like part of your trip rather than just a place to visit, the next decision is where in the neighborhood to sleep.</p>
+          <a class="hongdae-stay-bridge__link" href="where-to-stay-in-hongdae.html">See where to stay in Hongdae</a>
+        </div>
+      </div>
+    </aside>
 
     <section class="hm-section" id="hongdae-where-to-start">
       <div class="container">
@@ -259,6 +356,17 @@
         </div>
       </div>
     </section>
+
+    <aside class="hongdae-stay-bridge" id="hongdae-stay-bridge-2" aria-labelledby="hongdae-stay-bridge-2-title">
+      <div class="container">
+        <div class="hongdae-stay-bridge__content">
+          <p class="hongdae-stay-bridge__kicker">HOTEL LOCATION</p>
+          <h2 class="hongdae-stay-bridge__title" id="hongdae-stay-bridge-2-title">Your hotel location changes this route.</h2>
+          <p class="hongdae-stay-bridge__body">Hongik University Station, central Hongdae, Yeonnam and the Hapjeong side do not give you the same daily walk, airport access or late-evening return.</p>
+          <a class="hongdae-stay-bridge__link" href="where-to-stay-in-hongdae.html">Compare where to stay in Hongdae</a>
+        </div>
+      </div>
+    </aside>
 
     <section class="hm-section" id="hongdae-food">
       <div class="container">
@@ -524,6 +632,17 @@
         </div>
       </div>
     </section>
+
+    <aside class="hongdae-stay-bridge" id="hongdae-stay-bridge-3" aria-labelledby="hongdae-stay-bridge-3-title">
+      <div class="container">
+        <div class="hongdae-stay-bridge__content">
+          <p class="hongdae-stay-bridge__kicker">AFTER DINNER</p>
+          <h2 class="hongdae-stay-bridge__title" id="hongdae-stay-bridge-3-title">If this is the Hongdae you want, staying nearby matters.</h2>
+          <p class="hongdae-stay-bridge__body">A hotel that feels ordinary in the afternoon can become much more convenient when you want to walk back after live music, drinks, karaoke or a late meal.</p>
+          <a class="hongdae-stay-bridge__link hongdae-stay-bridge__link--cta" href="where-to-stay-in-hongdae.html">See the Hongdae stay guide</a>
+        </div>
+      </div>
+    </aside>
 
     <section class="hm-section" id="hongdae-mangwon-extension">
       <div class="container">
