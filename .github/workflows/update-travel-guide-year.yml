@@ -1,0 +1,77 @@
+name: Update travel guide year
+
+on:
+  schedule:
+    # UTC Dec 31 15:15 = KST Jan 1 00:15. GitHub may delay scheduled runs.
+    # Public repositories can disable schedules after 60 days of inactivity.
+    - cron: '15 15 31 12 *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-travel-guide-year
+  cancel-in-progress: false
+
+jobs:
+  update-year:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v7
+        with:
+          ref: main
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+
+      - name: Determine current year in Asia/Seoul
+        id: kst
+        shell: bash
+        run: |
+          year=$(python -c "import runpy; print(runpy.run_path('scripts/update-guide-year.py')['current_kst_year']())")
+          echo "year=$year" >> "$GITHUB_OUTPUT"
+          echo "Current Asia/Seoul year: $year"
+
+      - name: Update marked H1 years
+        env:
+          GUIDE_YEAR: ${{ steps.kst.outputs.year }}
+        run: python scripts/update-guide-year.py --year "$GUIDE_YEAR"
+
+      - name: Commit changed HTML and push to main
+        env:
+          GUIDE_YEAR: ${{ steps.kst.outputs.year }}
+        shell: bash
+        run: |
+          mapfile -d '' -t changed_files < <(git diff --name-only -z)
+          if [ "${#changed_files[@]}" -eq 0 ]; then
+            echo "No year changes; nothing to commit."
+            exit 0
+          fi
+          for file in "${changed_files[@]}"; do
+            if [[ "$file" != *.html ]]; then
+              echo "::error::Unexpected non-HTML change; refusing to commit."
+              exit 1
+            fi
+          done
+          git diff --check
+          git diff --stat
+          git add -- "${changed_files[@]}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Update travel guide year to $GUIDE_YEAR"
+          if ! git push origin HEAD:main > "$RUNNER_TEMP/guide-year-push.log" 2>&1; then
+            cat "$RUNNER_TEMP/guide-year-push.log"
+            if grep -Eqi 'GH006|GH013|protected branch|repository rule' "$RUNNER_TEMP/guide-year-push.log"; then
+              echo "::error::scheduled direct push blocked by branch protection"
+            else
+              echo "::error::Direct push failed; inspect the push error."
+            fi
+            exit 1
+          fi
+          # The existing Vercel Git integration handles Production deployment.
