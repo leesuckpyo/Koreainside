@@ -86,6 +86,26 @@
       color: var(--white);
     }
 
+    .hongdae-myeongdong-page main .seongsu-contextual-cta {
+      max-width: 740px;
+      margin: 24px 0 0;
+      padding: 20px;
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-md);
+      background: var(--gray-50);
+    }
+
+    .hongdae-myeongdong-page main .seongsu-contextual-cta p + p {
+      margin-top: 12px;
+    }
+
+    .hongdae-myeongdong-page main .seongsu-contextual-cta small {
+      display: block;
+      color: var(--gray-600);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
     @media (max-width: 719px) {
       .hongdae-myeongdong-page main .seongsu-stay-bridge__title {
         font-size: 25px;
@@ -94,6 +114,38 @@
 
     #seongsu-routes .seongsu-timeline {
       margin: 24px 0 32px;
+    }
+
+    .hongdae-myeongdong-page main .seongsu-editorial-figure {
+      width: 100%;
+      max-width: 740px;
+      margin: 28px auto 34px;
+    }
+
+    .hongdae-myeongdong-page main .seongsu-editorial-figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-sm);
+    }
+
+    .hongdae-myeongdong-page main .seongsu-photo-credit {
+      margin-top: 10px;
+      color: var(--gray-600);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    #seongsu-at-a-glance-map {
+      margin-top: -16px;
+    }
+
+    #seongsu-at-a-glance-map img {
+      width: 100%;
+      max-width: 880px;
+      height: auto;
+      margin-left: auto;
+      margin-right: auto;
     }
   </style>
 </head>
@@ -255,6 +307,12 @@
       </div>
     </section>
 
+    <figure class="container" id="seongsu-at-a-glance-map">
+      <a href="images/seongsu/seongsu-at-a-glance-map.webp" target="_blank" rel="noopener">
+        <img src="images/seongsu/seongsu-at-a-glance-map.webp" width="1376" height="768" alt="Illustrated Seongsu map showing Seoul Forest, Seoul Forest Station, Ttukseom Station, Seongsu Station, Yeonmujang-gil, pop-ups, cafés, and hands-on beauty areas." loading="lazy" decoding="async">
+      </a>
+    </figure>
+
     <section class="hm-section" id="seongsu-where-to-start">
       <div class="container">
         <header class="hm-section__header">
@@ -317,6 +375,12 @@
           <p>The street is not simply a row of trendy stores.</p>
           <p>Traces of former shoe factories and industrial buildings now coexist here with cafés, galleries, clothing shops and brand pop-ups. Check active pop-up dates before visiting because the temporary layer changes.</p>
           <p>That is almost a summary of Seongsu itself.</p>
+          <figure class="seongsu-editorial-figure">
+            <picture>
+              <source media="(max-width: 768px)" srcset="images/seongsu/seongsu-yeonmujang-gil-2026-mobile.webp" type="image/webp" width="768" height="576">
+              <img src="images/seongsu/seongsu-yeonmujang-gil-2026.webp" width="1400" height="1050" alt="Street scene along Yeonmujang-gil in Seongsu, Seoul." loading="lazy" decoding="async">
+            </picture>
+          </figure>
           <h3>Use the street as a spine, not a checklist</h3>
           <p>You do not need to enter everything along Yeonmujang-gil.</p>
           <p>Use the street to connect the places you actually care about.</p>
@@ -376,6 +440,10 @@
             <li>whether the event is mainly shopping, exhibition or an interactive experience</li>
           </ul>
           <p>A beautiful saved post does not tell you any of those things.</p>
+          <h3>Some pop-ups are activities, not just temporary shops</h3>
+          <p>Some Seongsu pop-ups are worth time even when shopping is not the main reason you entered. Depending on the event, the visit may include product testing, games, photo zones, samples, DIY elements or limited goods. In those cases, the pop-up itself becomes part of the day's activity.</p>
+          <p>That changes the schedule. A ten-minute browse and a timed-entry experience with several things to do inside should not be given the same amount of time. If a pop-up needs a reservation or has multiple activity zones, give it a real time block and let it replace another shopping stop.</p>
+          <p>If the experience is mostly a photo wall and merchandise for a brand you do not care about, keep walking. An interactive format does not automatically make it worth your time.</p>
           <h3>Interest comes before the queue</h3>
           <p>A long line can make an event look more important than it is.</p>
           <p>That is not a good reason to join it.</p>
@@ -428,6 +496,12 @@
           <p>and someone interested in how Seongsu converts old industrial buildings into new commercial spaces.</p>
           <p>If neither matters to you, it is another shop.</p>
           <p>If both matter, one stop solves two interests.</p>
+          <figure class="seongsu-editorial-figure">
+            <picture>
+              <source media="(max-width: 768px)" srcset="images/seongsu/seongsu-musinsa-industrial-retail-2026-mobile.webp" type="image/webp" width="768" height="432">
+              <img src="images/seongsu/seongsu-musinsa-industrial-retail-2026.webp" width="1400" height="788" alt="Red-brick Musinsa retail space in a former industrial building in Seongsu, Seoul." loading="lazy" decoding="async">
+            </picture>
+          </figure>
           <h3>The permanent layer keeps changing too</h3>
           <p>Seongsu keeps adding large permanent retail spaces.</p>
           <p>Musinsa Mega Store Seongsu, for example, opened as a much larger fashion and beauty space combining shopping with spatial experiences.</p>
@@ -489,6 +563,52 @@
           <p>Go to AMORE when the slower product experience interests you more.</p>
           <p>Then leave enough of Seongsu for fashion, industrial streets, food or Seoul Forest.</p>
           <p>The goal is not to prove that you visited every famous beauty space.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="hm-section" id="seongsu-hands-on">
+      <div class="container">
+        <header class="hm-section__header">
+          <h2>Hands-On Seongsu: When an Experience Is Worth Booking</h2>
+        </header>
+        <div class="hm-prose hm-prose--wide">
+          <p>Seongsu is not only a place to browse stores and pop-ups. Some of the neighborhood's better activities give you something to make, test or understand rather than another bag to carry.</p>
+          <p>The trade-off is time. Once you book a fixed session, it becomes one of the anchors of the day. Treat it as a replacement for another flagship or pop-up block, not something to stack on top of an already full route.</p>
+          <h3>Skincare making fits Seongsu better than another cosmetics stop</h3>
+          <p>A hands-on skincare class makes sense when K-beauty is one of the reasons you chose Seongsu and you want to do more than compare products on shelves.</p>
+          <p>Current Seongsu options include experiences where you check your skin, choose a suitable cleanser line and make or package your own skincare product. That turns part of the beauty stop into an activity rather than another round of browsing.</p>
+          <p>Choose this when you would rather make one product than spend the same hour inside another large beauty store.</p>
+          <aside class="seongsu-contextual-cta" aria-labelledby="seongsu-whipped-house-cta-title">
+            <p id="seongsu-whipped-house-cta-title"><strong>Want a hands-on K-beauty stop in Seongsu?</strong></p>
+            <p>Make and package your own WHIPPED pack cleanser instead of spending another hour browsing cosmetics shelves.</p>
+            <p><a class="seongsu-stay-bridge__link seongsu-stay-bridge__link--cta" href="https://creatrip.com/en/spot/14309?utm_source=AFF-bootb2v&amp;aff_id=AFF-bootb2v" target="_blank" rel="sponsored noopener noreferrer">Check the WHIPPED HOUSE skincare experience →</a></p>
+            <p><small>Affiliate link — Korea Inside may earn a commission at no extra cost to you.</small></p>
+          </aside>
+          <h3>Personal color is useful when it changes what you buy afterward</h3>
+          <p>A personal color session can be worth booking when you still have beauty or fashion shopping ahead of you.</p>
+          <p>Seongsu has English-friendly personal color options close enough to combine with the rest of the neighborhood. The value is highest when the result actually changes the shades, clothes or makeup you look for later in the day.</p>
+          <p>If you already know your palette or do not plan to shop around it, the session is easier to skip.</p>
+          <aside class="seongsu-contextual-cta" aria-labelledby="seongsu-personal-color-cta-title">
+            <p id="seongsu-personal-color-cta-title"><strong>Want to shop with your color palette in mind?</strong></p>
+            <p>Get a personal color analysis near Seongsu Station first, then use the result when choosing makeup, clothes or accessories later in the day.</p>
+            <p><a class="seongsu-stay-bridge__link seongsu-stay-bridge__link--cta" href="https://creatrip.com/en/spot/14830?utm_source=AFF-bootb2v&amp;aff_id=AFF-bootb2v" target="_blank" rel="sponsored noopener noreferrer">Check a Seongsu personal color session →</a></p>
+            <p><small>Affiliate link — Korea Inside may earn a commission at no extra cost to you.</small></p>
+          </aside>
+          <h3>Perfume making works when you want a slower creative hour</h3>
+          <p>Seongsu's fragrance and design culture also makes perfume workshops a natural fit.</p>
+          <p>Current workshops let travelers build a custom scent in roughly an hour to an hour and a half, and some support multiple languages through guided tutorials.</p>
+          <p>This is a better choice when you want to take home something personal and actually made in Seongsu, rather than adding another flagship to the itinerary.</p>
+          <aside class="seongsu-contextual-cta" aria-labelledby="seongsu-perfume-cta-title">
+            <p id="seongsu-perfume-cta-title"><strong>Want a slower creative break in Seongsu?</strong></p>
+            <p>Make your own perfume at .NOTE Seongsu in a private, self-paced session with multilingual video guidance.</p>
+            <p><a class="seongsu-stay-bridge__link seongsu-stay-bridge__link--cta" href="https://creatrip.com/en/spot/14808?utm_source=AFF-bootb2v&amp;aff_id=AFF-bootb2v" target="_blank" rel="sponsored noopener noreferrer">Check the .NOTE Seongsu perfume experience →</a></p>
+            <p><small>Affiliate link — Korea Inside may earn a commission at no extra cost to you.</small></p>
+          </aside>
+          <h3>One booked experience is usually enough</h3>
+          <p>A skincare class, personal color session or perfume workshop can each make sense.</p>
+          <p>Doing all three usually does not.</p>
+          <p>Pick the one that best matches what you already came to Seongsu for, then let the neighborhood stay flexible around it.</p>
         </div>
       </div>
     </section>
@@ -565,6 +685,12 @@
           <p>A fashion store may still feel like a warehouse.</p>
           <p>A café may still reveal the proportions of the factory that came before it.</p>
           <p>The industrial past is part of the current design language.</p>
+          <figure class="seongsu-editorial-figure">
+            <picture>
+              <source media="(max-width: 768px)" srcset="images/seongsu/seongsu-industrial-street-2026-mobile.webp" type="image/webp" width="768" height="432">
+              <img src="images/seongsu/seongsu-industrial-street-2026.webp" width="1400" height="788" alt="Brick industrial building beside a busy modern street in Seongsu, Seoul." loading="lazy" decoding="async">
+            </picture>
+          </figure>
           <h3>The shoe industry is still present</h3>
           <p>Do not treat Handmade Shoes Street as a museum district that stopped working years ago.</p>
           <p>Design, development, manufacturing and sales still operate in the district today.</p>
@@ -611,6 +737,13 @@
           <p>You can sit without ordering another drink.</p>
           <p>You can decide whether the day needs more Seongsu afterward.</p>
           <p>That is why the park works particularly well after the busiest commercial part of the afternoon.</p>
+          <figure class="seongsu-editorial-figure">
+            <picture>
+              <source media="(max-width: 768px)" srcset="images/seongsu/seoul-forest-boardwalk-mobile.webp" type="image/webp" width="768" height="576">
+              <img src="images/seongsu/seoul-forest-boardwalk.webp" width="1400" height="1050" alt="Tree-lined boardwalk and resting area inside Seoul Forest in Seongsu, Seoul." loading="lazy" decoding="async">
+            </picture>
+            <figcaption class="seongsu-photo-credit">Photo: CartoonChess / Wikimedia Commons · CC BY-SA 4.0 · converted to WebP for web use.</figcaption>
+          </figure>
           <h3>You do not need to cover the whole park</h3>
           <p>Seoul Forest is too large to treat as a quick box to tick.</p>
           <p>If you only have 30 or 40 minutes, use one section and enjoy the change of environment.</p>
@@ -820,6 +953,7 @@
           <h3>Route 4 — Fashion and K-beauty focused</h3>
           <p>If shopping is genuinely the reason for the visit:</p>
           <p>Seongsu Station → OLIVE YOUNG N or AMORE → one major fashion / design flagship → current pop-up if relevant → meal → optional Seoul Forest</p>
+          <p>If you book a fixed-time beauty or fragrance experience, let it replace one flagship or pop-up stop rather than adding it on top of the route.</p>
           <p>Choose OLIVE YOUNG N or AMORE first according to the kind of beauty experience you want.</p>
           <p>Choose one major fashion space according to your interests.</p>
           <p>Then ask whether a temporary pop-up deserves the remaining time.</p>
