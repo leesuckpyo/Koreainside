@@ -83,6 +83,179 @@
     #insadong-routes .hm-numbered-list > li::before {
       content: counter(hm-route, decimal-leading-zero);
     }
+
+    body.hongdae-myeongdong-page main .insadong-guide-hero {
+      --detail-hero-last-gap: 72px;
+      position: relative;
+      isolation: isolate;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      background: #1d2b27;
+      border-bottom: 0;
+    }
+
+    body.hongdae-myeongdong-page main .insadong-guide-hero::after {
+      position: absolute;
+      z-index: 1;
+      inset: 0;
+      background: linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0.72) 0%,
+        rgba(0, 0, 0, 0.68) 34%,
+        rgba(0, 0, 0, 0.28) 62%,
+        rgba(0, 0, 0, 0) 100%
+      );
+      content: "";
+    }
+
+    body.hongdae-myeongdong-page main .insadong-guide-hero .hm-hero__grid {
+      position: relative;
+      z-index: 2;
+      grid-template-columns: minmax(0, 1fr);
+      align-items: center;
+      min-height: 100%;
+    }
+
+    body.hongdae-myeongdong-page main .insadong-guide-hero .hm-hero__copy {
+      max-width: 58%;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+    }
+
+    body.hongdae-myeongdong-page main .insadong-guide-hero .hm-breadcrumb,
+    body.hongdae-myeongdong-page main .insadong-guide-hero .hm-breadcrumb a {
+      color: rgba(255, 255, 255, 0.88);
+    }
+
+    body.hongdae-myeongdong-page main .insadong-guide-hero h1 {
+      color: #fff;
+    }
+
+    body.hongdae-myeongdong-page main .insadong-guide-hero .hm-hero__answer p {
+      color: rgba(255, 255, 255, 0.95);
+    }
+
+    body.hongdae-myeongdong-page main .insadong-guide-hero__media {
+      position: absolute;
+      inset: 0;
+      min-width: 0;
+      margin: 0;
+    }
+
+    body.hongdae-myeongdong-page main .insadong-guide-hero__media picture,
+    body.hongdae-myeongdong-page main .insadong-guide-hero__media img {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    body.hongdae-myeongdong-page main .insadong-guide-hero__media img {
+      object-fit: cover;
+      object-position: center 48%;
+    }
+
+    body.hongdae-myeongdong-page main .insadong-guide-intro {
+      padding-top: 32px;
+      padding-bottom: 40px;
+    }
+
+    body.hongdae-myeongdong-page main .insadong-guide-intro .hm-hero__answer p {
+      color: inherit;
+    }
+
+    body.hongdae-myeongdong-page main .insadong-guide-intro .hm-hero__answer p + p {
+      margin-top: 18px;
+    }
+
+    @media (min-width: 901px) {
+      body.hongdae-myeongdong-page main .insadong-guide-hero {
+        height: clamp(560px, 42vw, 620px);
+        aspect-ratio: auto;
+      }
+    }
+
+    @media (max-width: 900px) {
+      body.hongdae-myeongdong-page main .insadong-guide-hero .hm-hero__copy {
+        max-width: 78%;
+      }
+    }
+
+    @media (max-width: 719px) {
+      body.hongdae-myeongdong-page main .insadong-guide-hero {
+        --detail-hero-last-gap: 80px;
+        height: auto;
+        min-height: 0;
+        aspect-ratio: auto;
+      }
+
+      body.hongdae-myeongdong-page main .insadong-guide-hero .hm-hero__grid {
+        min-height: 0;
+      }
+
+      body.hongdae-myeongdong-page main .insadong-guide-hero::after {
+        background: linear-gradient(
+          90deg,
+          rgba(0, 0, 0, 0.8) 0%,
+          rgba(0, 0, 0, 0.76) 58%,
+          rgba(0, 0, 0, 0.66) 100%
+        );
+      }
+
+      body.hongdae-myeongdong-page main .insadong-guide-hero .hm-hero__copy {
+        max-width: 100%;
+      }
+
+      body.hongdae-myeongdong-page main .insadong-guide-hero__media img {
+        object-position: center;
+      }
+
+      body.hongdae-myeongdong-page main .insadong-guide-intro {
+        padding-top: 24px;
+        padding-bottom: 28px;
+      }
+
+      body.hongdae-myeongdong-page main .insadong-guide-intro .hm-hero__answer p + p {
+        margin-top: 16px;
+      }
+    }
+    .hongdae-myeongdong-page main .hm-editorial-image {
+      max-width: 740px;
+      margin: 28px auto 34px;
+    }
+
+    .hongdae-myeongdong-page main .hm-editorial-image img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .hongdae-myeongdong-page main .hm-editorial-image figcaption {
+      margin-top: 10px;
+      color: #686158;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    body.hongdae-myeongdong-page main .insadong-guide-hero__media figcaption {
+      position: absolute;
+      z-index: 2;
+      right: 20px;
+      bottom: 12px;
+      left: 20px;
+      width: fit-content;
+      margin: 0;
+      padding: 4px 8px;
+      background: rgba(0, 0, 0, 0.65);
+      color: #fff;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 719px) {
+      .hongdae-myeongdong-page main .hm-editorial-image figcaption {
+        font-size: 13px;
+      }
+    }
+
   </style>
 </head>
 <body class="stay-cluster hongdae-myeongdong-page" data-section="travel-guides">
@@ -139,26 +312,36 @@
   <!-- GLOBAL_NAV_END -->
 
   <main>
-    <section class="hm-hero">
-      <div class="container">
+    <section class="hm-hero insadong-guide-hero">
+      <!-- Source file: 인사동거리_1_공공1유형_라이브스튜디오_jF0fia.jpg | Photo: Live Studio | License: KOGL Type 1 (공공1유형) -->
+      <figure class="insadong-guide-hero__media">
+        <img src="images/insadong/insadong-travel-guide-hero.webp" alt="A stone lantern, leafy trees and traditional buildings along an alley in Insadong, Seoul." width="2160" height="1440" loading="eager" decoding="async" fetchpriority="high">
+        <figcaption>Photo: Live Studio · KOGL Type 1</figcaption>
+      </figure>
+      <div class="container hm-hero__grid">
         <div class="hm-hero__copy">
           <p class="hm-breadcrumb"><a href="/">Home</a> / Insadong Travel Guide 2026</p>
           <h1>Insadong Travel Guide <span data-guide-year="current">2026</span></h1>
           <div class="hm-hero__answer">
             <p>Insadong is easy to plan badly in two opposite ways.</p>
-            <p>You can walk straight down the main street, look at a few souvenir shops and wonder why the neighborhood is famous.</p>
-            <p>Or you can save twenty craft shops, five tea houses, Ssamzie-gil, Jogyesa and several nearby neighborhoods and turn a relaxed part of Seoul into another checklist.</p>
-            <p>For most travelers, Insadong does not need a full sightseeing day by itself.</p>
-            <p>Give the neighborhood a few hours for Korean crafts, a proper meal, one traditional tea stop and the streets that catch your attention.</p>
-            <p>If this is your first trip to Seoul, Insadong becomes stronger when it sits inside a larger historic route:</p>
-            <p>Gyeongbokgung → Bukchon → Insadong → Jogyesa → one evening choice</p>
-            <p>That last choice might be Ikseon-dong, Cheonggyecheon or simply dinner around Jongno.</p>
-            <p>The point is not to complete Insadong.</p>
-            <p>It is to slow down enough to notice why this part of central Seoul still feels different from another shopping district.</p>
           </div>
         </div>
       </div>
     </section>
+
+    <div class="container insadong-guide-intro">
+      <div class="hm-hero__answer">
+        <p>You can walk straight down the main street, look at a few souvenir shops and wonder why the neighborhood is famous.</p>
+        <p>Or you can save twenty craft shops, five tea houses, Ssamzie-gil, Jogyesa and several nearby neighborhoods and turn a relaxed part of Seoul into another checklist.</p>
+        <p>For most travelers, Insadong does not need a full sightseeing day by itself.</p>
+        <p>Give the neighborhood a few hours for Korean crafts, a proper meal, one traditional tea stop and the streets that catch your attention.</p>
+        <p>If this is your first trip to Seoul, Insadong becomes stronger when it sits inside a larger historic route:</p>
+        <p>Gyeongbokgung → Bukchon → Insadong → Jogyesa → one evening choice</p>
+        <p>That last choice might be Ikseon-dong, Cheonggyecheon or simply dinner around Jongno.</p>
+        <p>The point is not to complete Insadong.</p>
+        <p>It is to slow down enough to notice why this part of central Seoul still feels different from another shopping district.</p>
+      </div>
+    </div>
 
     <section class="hm-section" id="insadong-travel-guide">
       <div class="container">
@@ -171,6 +354,11 @@
           <p>By the time you reach Insadong, you do not necessarily need another large attraction.</p>
           <p>You need somewhere to eat, browse, sit down, buy something worth carrying home and decide how much more of central Seoul you still want.</p>
           <p>That is the role Insadong plays particularly well.</p>
+          <!-- Source file: 인사동거리_1_공공1유형_한국관광공사 이범수_cthIqa.jpg | Photo: Korea Tourism Organization / Lee Beom-su | License: KOGL Type 1 (공공1유형) -->
+          <figure class="hm-editorial-image">
+            <img src="images/insadong/insadong-main-street.webp" alt="Crowds walking along Insadong-gil past shops, galleries and trees in Seoul." width="1480" height="987" loading="lazy" decoding="async">
+            <figcaption>Photo: Korea Tourism Organization / Lee Beom-su · KOGL Type 1</figcaption>
+          </figure>
           <h3>Come here for Korean crafts, not just generic souvenirs</h3>
           <p>The main street has plenty of easy tourist shopping.</p>
           <p>That is not the whole reason to visit.</p>
@@ -350,6 +538,11 @@
           <p>A small gallery, ceramic shop, tea house or restaurant can be a better reason to turn than another shop directly in front of you.</p>
           <p>But do not enter every alley just because a guide tells you the interesting places are hidden.</p>
           <p>Turn when something actually gives you a reason.</p>
+          <!-- Source file: 인사동거리_1_공공1유형_한국관광공사 김지호_pH98Oa.jpg | Photo: Korea Tourism Organization / Kim Ji-ho | License: KOGL Type 1 (공공1유형) -->
+          <figure class="hm-editorial-image">
+            <img src="images/insadong/insadong-slow-browsing-street.webp" alt="Small decorative figures outside a shop beside a wet, leaf-strewn walkway in Insadong." width="1480" height="987" loading="lazy" decoding="async">
+            <figcaption>Photo: Korea Tourism Organization / Kim Ji-ho · KOGL Type 1</figcaption>
+          </figure>
           <h3>You do not need to enter every shop</h3>
           <p>Insadong creates the same problem as Myeongdong and Seongsu in a different form.</p>
           <p>There are enough shops that browsing can quietly consume the afternoon.</p>
@@ -388,6 +581,11 @@
           <p>A bookmark, stationery item, small decorative object or other light gift may solve the problem better than a fragile item you have to protect for the rest of the trip.</p>
           <p>You do not need an heirloom every time you buy a souvenir.</p>
           <p>Cheap and convenient can be the correct choice when that is what you actually want.</p>
+          <!-- Source file: 인사동거리_1_공공1유형_한국관광공사 김지호_pH98La.jpg | Photo: Korea Tourism Organization / Kim Ji-ho | License: KOGL Type 1 (공공1유형) -->
+          <figure class="hm-editorial-image">
+            <img src="images/insadong/insadong-souvenir-street.webp" alt="Masks, small gifts and souvenir displays beside a pedestrian street in Insadong." width="1480" height="987" loading="lazy" decoding="async">
+            <figcaption>Photo: Korea Tourism Organization / Kim Ji-ho · KOGL Type 1</figcaption>
+          </figure>
           <h3>If Korean paper or stationery interests you</h3>
           <p>Give that category real time.</p>
           <p>Hanji, calligraphy-related goods and Korean stationery offer something different from a generic souvenir shelf.</p>
@@ -406,6 +604,11 @@
           <p>But personalization takes time.</p>
           <p>If it is one of the reasons you came to Insadong, give it a real place in the itinerary.</p>
           <p>If not, do not let an unplanned workshop consume the tea, lunch or neighborhood walk you cared about more.</p>
+          <!-- Source file: 인사동거리_1_공공1유형_한국관광공사 이범수_cthIVa.jpg | Photo: Korea Tourism Organization / Lee Beom-su | License: KOGL Type 1 (공공1유형) -->
+          <figure class="hm-editorial-image">
+            <img src="images/insadong/insadong-craft-detail.webp" alt="Carved seals and calligraphy brushes displayed in an Insadong shop window." width="1480" height="987" loading="lazy" decoding="async">
+            <figcaption>Photo: Korea Tourism Organization / Lee Beom-su · KOGL Type 1</figcaption>
+          </figure>
           <h3>Price should follow the reason you are buying</h3>
           <p>Do not compare a simple tourist gift and a handmade craft as though they are competing products.</p>
           <p>They solve different problems.</p>
@@ -669,6 +872,11 @@
           <p>It is about changing the purpose of the day.</p>
           <p>History and crafts can finish.</p>
           <p>Dinner can begin.</p>
+          <!-- Source file: 인사동거리_1_공공1유형_라이브스튜디오_jF0fDa.jpg | Photo: Live Studio | License: KOGL Type 1 (공공1유형) -->
+          <figure class="hm-editorial-image">
+            <img src="images/insadong/insadong-evening-street.webp" alt="Pedestrians walking past illuminated shops and restaurants on an Insadong street at dusk." width="1480" height="1031" loading="lazy" decoding="async">
+            <figcaption>Photo: Live Studio · KOGL Type 1</figcaption>
+          </figure>
           <h3>Do not combine places because the map makes them look easy</h3>
           <p>Central Seoul is compact enough to create bad itineraries.</p>
           <p>Five places can all be “only 15 minutes away” from one another.</p>
