@@ -1,0 +1,131 @@
+{
+  "timezone": "Asia/Seoul",
+  "events": [
+    {
+      "id": "hongdae-saram-eul-bora-2026",
+      "page": "hongdae-travel-guide.html",
+      "area": "Hongdae",
+      "start": "2026-09-12",
+      "end": "2026-09-12"
+    },
+    {
+      "id": "hongdae-seoul-wow-book-festival-2026",
+      "page": "hongdae-travel-guide.html",
+      "area": "Hongdae",
+      "start": "2026-10-16",
+      "end": "2026-10-18"
+    },
+    {
+      "id": "hongdae-sangsang-kang-jae-gu-2026",
+      "page": "hongdae-travel-guide.html",
+      "area": "Hongdae",
+      "start": null,
+      "end": "2026-09-13"
+    },
+    {
+      "id": "hongdae-sangsang-meta-human-2026",
+      "page": "hongdae-travel-guide.html",
+      "area": "Hongdae",
+      "start": null,
+      "end": "2026-09-13"
+    },
+    {
+      "id": "hongdae-sangsang-ghost-society-2026",
+      "page": "hongdae-travel-guide.html",
+      "area": "Hongdae",
+      "start": null,
+      "end": "2026-09-27"
+    },
+    {
+      "id": "hongdae-sangsang-character-park-2026",
+      "page": "hongdae-travel-guide.html",
+      "area": "Hongdae",
+      "start": null,
+      "end": "2026-09-20"
+    },
+    {
+      "id": "hongdae-sangsang-live-hall-september-2026",
+      "page": "hongdae-travel-guide.html",
+      "area": "Hongdae",
+      "start": "2026-09-13",
+      "end": "2026-09-14"
+    },
+    {
+      "id": "hongdae-ak-ballop-choonsik-2026",
+      "page": "hongdae-travel-guide.html",
+      "area": "Hongdae",
+      "start": null,
+      "end": "2026-09-18"
+    },
+    {
+      "id": "hongdae-ak-ahro-full-moon-2026",
+      "page": "hongdae-travel-guide.html",
+      "area": "Hongdae",
+      "start": null,
+      "end": "2026-09-14"
+    },
+    {
+      "id": "hongdae-ak-umamusume-2026",
+      "page": "hongdae-travel-guide.html",
+      "area": "Hongdae",
+      "start": null,
+      "end": "2026-09-20"
+    },
+    {
+      "id": "hongdae-ak-marriage-bound-to-fail-2026",
+      "page": "hongdae-travel-guide.html",
+      "area": "Hongdae",
+      "start": null,
+      "end": "2026-09-20"
+    },
+    {
+      "id": "hongdae-live-club-day-82-2026",
+      "page": "hongdae-travel-guide.html",
+      "area": "Hongdae",
+      "start": "2026-08-28",
+      "end": "2026-08-28"
+    },
+    {
+      "id": "seongsu-seoul-international-garden-show-2026",
+      "page": "seongsu-travel-guide.html",
+      "area": "Seongsu",
+      "start": null,
+      "end": "2026-10-27"
+    },
+    {
+      "id": "seongsu-spotify-house-seoul-2026",
+      "page": "seongsu-travel-guide.html",
+      "area": "Seongsu",
+      "start": "2026-09-10",
+      "end": "2026-09-13"
+    },
+    {
+      "id": "seongsu-manyo-soybean-mill-2026",
+      "page": "seongsu-travel-guide.html",
+      "area": "Seongsu",
+      "start": "2026-09-09",
+      "end": "2026-09-21"
+    },
+    {
+      "id": "seongsu-byredo-future-memories-2026",
+      "page": "seongsu-travel-guide.html",
+      "area": "Seongsu",
+      "start": "2026-09-11",
+      "end": "2026-09-20"
+    },
+    {
+      "id": "myeongdong-olive-young-sanrio-2026",
+      "page": "myeongdong-travel-guide.html",
+      "area": "Myeongdong",
+      "start": null,
+      "end": "2026-09-30"
+    },
+    {
+      "id": "myeongdong-nanta-september-2026",
+      "page": "myeongdong-travel-guide.html",
+      "area": "Myeongdong",
+      "start": "2026-09-01",
+      "end": "2026-09-30"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+.ki-event-status {
+  display: inline-block;
+  margin-inline-start: 0.4em;
+  padding: 0.15em 0.55em;
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.5;
+  vertical-align: baseline;
+}
+
+.ki-event-status:empty {
+  display: none;
+}
+
+.ki-event-status--upcoming {
+  color: var(--blue-muted);
+  background: var(--blue-light);
+}
+
+.ki-event-status--happening {
+  color: #3f5d52;
+  background: rgba(63, 93, 82, 0.1);
+}
+
+.ki-event-status--ended {
+  color: var(--gray-600);
+  background: var(--gray-100);
+}
