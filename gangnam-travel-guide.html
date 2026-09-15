@@ -19,6 +19,155 @@
       background-color: #ffffff;
     }
 
+    body.hongdae-myeongdong-page main .gangnam-guide-hero {
+      --detail-hero-last-gap: 72px;
+      position: relative;
+      isolation: isolate;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      background: #1d2b27;
+      border-bottom: 0;
+    }
+
+    body.hongdae-myeongdong-page main .gangnam-guide-hero::after {
+      position: absolute;
+      z-index: 1;
+      inset: 0;
+      background: linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0.72) 0%,
+        rgba(0, 0, 0, 0.68) 34%,
+        rgba(0, 0, 0, 0.28) 62%,
+        rgba(0, 0, 0, 0) 100%
+      );
+      content: "";
+    }
+
+    body.hongdae-myeongdong-page main .gangnam-guide-hero .hm-hero__grid {
+      position: relative;
+      z-index: 2;
+      grid-template-columns: minmax(0, 1fr);
+      align-items: center;
+      min-height: 100%;
+    }
+
+    body.hongdae-myeongdong-page main .gangnam-guide-hero .hm-hero__copy {
+      max-width: 58%;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+    }
+
+    body.hongdae-myeongdong-page main .gangnam-guide-hero .hm-breadcrumb,
+    body.hongdae-myeongdong-page main .gangnam-guide-hero .hm-breadcrumb a {
+      color: rgba(255, 255, 255, 0.88);
+    }
+
+    body.hongdae-myeongdong-page main .gangnam-guide-hero h1 {
+      color: #fff;
+    }
+
+    body.hongdae-myeongdong-page main .gangnam-guide-hero .hm-hero__answer p {
+      color: rgba(255, 255, 255, 0.95);
+    }
+
+    body.hongdae-myeongdong-page main .gangnam-guide-hero__media {
+      position: absolute;
+      inset: 0;
+      min-width: 0;
+      margin: 0;
+    }
+
+    body.hongdae-myeongdong-page main .gangnam-guide-hero__media img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+    }
+
+    body.hongdae-myeongdong-page main .gangnam-guide-hero__media figcaption {
+      position: absolute;
+      z-index: 2;
+      right: 20px;
+      bottom: 12px;
+      left: 20px;
+      width: fit-content;
+      margin: 0;
+      padding: 4px 8px;
+      background: rgba(0, 0, 0, 0.65);
+      color: #fff;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    body.hongdae-myeongdong-page main .gangnam-guide-intro {
+      padding-top: 32px;
+      padding-bottom: 40px;
+    }
+
+    body.hongdae-myeongdong-page main .gangnam-guide-intro .hm-hero__answer p {
+      color: inherit;
+    }
+
+    body.hongdae-myeongdong-page main .gangnam-guide-intro .hm-hero__answer p + p {
+      margin-top: 18px;
+    }
+
+    @media (min-width: 901px) {
+      body.hongdae-myeongdong-page main .gangnam-guide-hero {
+        height: clamp(560px, 42vw, 620px);
+        aspect-ratio: auto;
+      }
+    }
+
+    @media (max-width: 900px) {
+      body.hongdae-myeongdong-page main .gangnam-guide-hero .hm-hero__copy {
+        max-width: 78%;
+      }
+    }
+
+    @media (max-width: 719px) {
+      body.hongdae-myeongdong-page main .gangnam-guide-hero {
+        --detail-hero-last-gap: 80px;
+        height: auto;
+        min-height: 0;
+        aspect-ratio: auto;
+      }
+
+      body.hongdae-myeongdong-page main .gangnam-guide-hero .hm-hero__grid {
+        min-height: 0;
+      }
+
+      body.hongdae-myeongdong-page main .gangnam-guide-hero::after {
+        background: linear-gradient(
+          90deg,
+          rgba(0, 0, 0, 0.8) 0%,
+          rgba(0, 0, 0, 0.76) 58%,
+          rgba(0, 0, 0, 0.66) 100%
+        );
+      }
+
+      body.hongdae-myeongdong-page main .gangnam-guide-hero .hm-hero__copy {
+        max-width: 100%;
+      }
+
+      body.hongdae-myeongdong-page main .gangnam-guide-hero__media img {
+        object-position: center;
+      }
+
+      body.hongdae-myeongdong-page main .gangnam-guide-intro {
+        padding-top: 24px;
+        padding-bottom: 28px;
+      }
+
+      body.hongdae-myeongdong-page main .gangnam-guide-intro .hm-hero__answer p + p {
+        margin-top: 16px;
+      }
+    }
+
+    body.hongdae-myeongdong-page main .gangnam-guide-intro .hm-hero__answer p:first-child {
+      font-weight: 400;
+    }
+
     .hongdae-myeongdong-page main .gangnam-stay-bridge__link,
     .hongdae-myeongdong-page main .gangnam-stay-bridge__link:visited {
       display: inline-flex;
@@ -50,7 +199,7 @@
       margin: 28px auto 34px;
     }
 
-    .hongdae-myeongdong-page main .hm-hero .hm-editorial-image {
+    .hongdae-myeongdong-page main .gangnam-guide-intro .hm-editorial-image {
       max-width: 880px;
     }
 
@@ -72,7 +221,7 @@
     }
 
     @media (max-width: 768px) {
-      .hongdae-myeongdong-page main .hm-hero .hm-editorial-image,
+      .hongdae-myeongdong-page main .gangnam-guide-intro .hm-editorial-image,
       .hongdae-myeongdong-page main .hm-section .hm-editorial-image {
         max-width: 100%;
       }
@@ -238,13 +387,30 @@
   <!-- GLOBAL_NAV_END -->
 
   <main>
-    <section class="hm-hero">
-      <div class="container">
+    <section class="hm-hero gangnam-guide-hero">
+      <!--
+      source ID: ARP006631
+      source title: 강남역
+      license: KOGL Type 1
+      source: Visit Seoul
+      -->
+      <figure class="gangnam-guide-hero__media">
+        <img src="images/gangnam/gangnam-travel-guide-hero.webp" alt="Modern high-rise buildings around Gangnam Station in Seoul." width="2160" height="1475" loading="eager" decoding="async" fetchpriority="high">
+        <figcaption>Photo: Visit Seoul · KOGL Type 1</figcaption>
+      </figure>
+      <div class="container hm-hero__grid">
         <div class="hm-hero__copy">
           <p class="hm-breadcrumb"><a href="/">Home</a> / Gangnam Travel Guide 2026</p>
           <h1>Gangnam Travel Guide <span data-guide-year="current">2026</span></h1>
           <div class="hm-hero__answer">
             <p>Gangnam is famous enough that many travelers arrive with an image of it before they know what they actually want to do there.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container gangnam-guide-intro">
+          <div class="hm-hero__answer">
             <p>The first thing to understand is geography.</p>
             <p>Gangnam Station, COEX, Bongeunsa, Apgujeong, Dosan Park and Cheongdam are not one compact sightseeing neighborhood. They sit in separate parts of a large district, and moving between the main visitor areas usually means using the subway, a bus or a taxi.</p>
             <p>For a first visit, the clearest route is:</p>
@@ -254,13 +420,11 @@
             <p>Most travelers do not need both in one day.</p>
             <p>And if your first Seoul trip is only three or four days and your priorities are Gyeongbokgung, Bukchon, Insadong, Jongno and other central or historic areas, Gangnam can wait for another trip. Its value is strongest when something here matches what you actually came to Seoul to do.</p>
           </div>
-        </div>
         <figure class="hm-editorial-image">
           <img src="images/gangnam/gangnam-bongeunsa-hero-desktop.webp" srcset="images/gangnam/gangnam-bongeunsa-hero-mobile.webp 768w, images/gangnam/gangnam-bongeunsa-hero-desktop.webp 1600w" sizes="(max-width: 768px) 100vw, 880px" width="1600" height="1067" alt="Bongeunsa Temple with modern high-rises in Gangnam, Seoul" loading="eager" fetchpriority="high" decoding="async">
           <figcaption>Bongeunsa Temple in the middle of modern Gangnam.<br>Photo: Seoul Tourism Organization · KOGL Type 1</figcaption>
         </figure>
-      </div>
-    </section>
+    </div>
 
     <section class="hm-section" id="gangnam-travel-guide">
       <div class="container">
