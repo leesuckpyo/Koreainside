@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preload" as="image" type="image/webp" href="images/gangnam/gangnam-travel-guide-hero-1600-v20260916.webp" imagesrcset="images/gangnam/gangnam-travel-guide-hero-1200-v20260916.webp 1200w, images/gangnam/gangnam-travel-guide-hero-1600-v20260916.webp 1600w, images/gangnam/gangnam-travel-guide-hero-2160-v20260916.webp 2160w" imagesizes="100vw" fetchpriority="high">
+  <link rel="preload" as="image" type="image/webp" href="images/gangnam/gangnam-travel-guide-hero-1600-v20260916.webp" imagesrcset="images/gangnam/gangnam-travel-guide-hero-1200-v20260916.webp 1200w, images/gangnam/gangnam-travel-guide-hero-1600-v20260916.webp 1600w, images/gangnam/gangnam-travel-guide-hero-2160-v20260916.webp 2160w" imagesizes="(max-width: 1120px) calc(100vw - 40px), 1080px" fetchpriority="high">
   <meta name="description" content="Plan a realistic day in Gangnam, Seoul. Compare COEX, Bongeunsa, Apgujeong, Cheongdam and Gangnam Station, with practical routes, shopping, K-pop and stay advice.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.getkoreainside.com/gangnam-travel-guide.html">
@@ -21,63 +21,15 @@
     }
 
     body.hongdae-myeongdong-page main .gangnam-guide-hero {
-      --detail-hero-last-gap: 72px;
-      position: relative;
-      isolation: isolate;
-      aspect-ratio: 16 / 9;
-      overflow: hidden;
       background: transparent;
       border-bottom: 0;
     }
 
-    body.hongdae-myeongdong-page main .gangnam-guide-hero::after {
-      visibility: hidden;
-      position: absolute;
-      z-index: 1;
-      inset: 0;
-      background: linear-gradient(
-        90deg,
-        rgba(0, 0, 0, 0.72) 0%,
-        rgba(0, 0, 0, 0.68) 34%,
-        rgba(0, 0, 0, 0.28) 62%,
-        rgba(0, 0, 0, 0) 100%
-      );
-      content: "";
-    }
-
-    body.hongdae-myeongdong-page main .gangnam-guide-hero[data-hero-image-ready]::after {
-      visibility: visible;
-    }
-
     body.hongdae-myeongdong-page main .gangnam-guide-hero .hm-hero__grid {
-      position: relative;
-      z-index: 2;
       grid-template-columns: minmax(0, 1fr);
-      align-items: center;
-      min-height: 100%;
-    }
-
-    body.hongdae-myeongdong-page main .gangnam-guide-hero .hm-hero__copy {
-      max-width: 58%;
-      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
-    }
-
-    body.hongdae-myeongdong-page main .gangnam-guide-hero .hm-breadcrumb,
-    body.hongdae-myeongdong-page main .gangnam-guide-hero .hm-breadcrumb a {
-      color: rgba(255, 255, 255, 0.88);
-    }
-
-    body.hongdae-myeongdong-page main .gangnam-guide-hero h1 {
-      color: #fff;
-    }
-
-    body.hongdae-myeongdong-page main .gangnam-guide-hero .hm-hero__answer p {
-      color: rgba(255, 255, 255, 0.95);
     }
 
     body.hongdae-myeongdong-page main .gangnam-guide-hero__media {
-      position: absolute;
-      inset: 0;
       min-width: 0;
       margin: 0;
     }
@@ -85,22 +37,12 @@
     body.hongdae-myeongdong-page main .gangnam-guide-hero__media img {
       display: block;
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center center;
+      height: auto;
     }
 
     body.hongdae-myeongdong-page main .gangnam-guide-hero__media figcaption {
-      position: absolute;
-      z-index: 2;
-      right: 20px;
-      bottom: 12px;
-      left: 20px;
-      width: fit-content;
-      margin: 0;
-      padding: 4px 8px;
-      background: rgba(0, 0, 0, 0.65);
-      color: #fff;
+      margin-top: 10px;
+      color: #686158;
       font-size: 13px;
       line-height: 1.5;
     }
@@ -118,48 +60,7 @@
       margin-top: 18px;
     }
 
-    @media (min-width: 901px) {
-      body.hongdae-myeongdong-page main .gangnam-guide-hero {
-        height: clamp(560px, 42vw, 620px);
-        aspect-ratio: auto;
-      }
-    }
-
-    @media (max-width: 900px) {
-      body.hongdae-myeongdong-page main .gangnam-guide-hero .hm-hero__copy {
-        max-width: 78%;
-      }
-    }
-
     @media (max-width: 719px) {
-      body.hongdae-myeongdong-page main .gangnam-guide-hero {
-        --detail-hero-last-gap: 80px;
-        height: auto;
-        min-height: 0;
-        aspect-ratio: auto;
-      }
-
-      body.hongdae-myeongdong-page main .gangnam-guide-hero .hm-hero__grid {
-        min-height: 0;
-      }
-
-      body.hongdae-myeongdong-page main .gangnam-guide-hero::after {
-        background: linear-gradient(
-          90deg,
-          rgba(0, 0, 0, 0.8) 0%,
-          rgba(0, 0, 0, 0.76) 58%,
-          rgba(0, 0, 0, 0.66) 100%
-        );
-      }
-
-      body.hongdae-myeongdong-page main .gangnam-guide-hero .hm-hero__copy {
-        max-width: 100%;
-      }
-
-      body.hongdae-myeongdong-page main .gangnam-guide-hero__media img {
-        object-position: center;
-      }
-
       body.hongdae-myeongdong-page main .gangnam-guide-intro {
         padding-top: 24px;
         padding-bottom: 28px;
@@ -394,16 +295,6 @@
 
   <main>
     <section class="hm-hero gangnam-guide-hero">
-      <!--
-      source ID: ARP006631
-      source title: 강남역
-      license: KOGL Type 1
-      source: Visit Seoul
-      -->
-      <figure class="gangnam-guide-hero__media">
-        <img src="images/gangnam/gangnam-travel-guide-hero-1600-v20260916.webp" srcset="images/gangnam/gangnam-travel-guide-hero-1200-v20260916.webp 1200w, images/gangnam/gangnam-travel-guide-hero-1600-v20260916.webp 1600w, images/gangnam/gangnam-travel-guide-hero-2160-v20260916.webp 2160w" sizes="100vw" alt="Modern high-rise buildings around Gangnam Station in Seoul." width="1600" height="1093" loading="eager" decoding="async" fetchpriority="high">
-        <figcaption>Photo: Visit Seoul · KOGL Type 1</figcaption>
-      </figure>
       <div class="container hm-hero__grid">
         <div class="hm-hero__copy">
           <p class="hm-breadcrumb"><a href="/">Home</a> / Gangnam Travel Guide 2026</p>
@@ -412,36 +303,17 @@
             <p>Gangnam is famous enough that many travelers arrive with an image of it before they know what they actually want to do there.</p>
           </div>
         </div>
+        <!--
+      source ID: ARP006631
+      source title: 강남역
+      license: KOGL Type 1
+      source: Visit Seoul
+      -->
+        <figure class="gangnam-guide-hero__media">
+          <img src="images/gangnam/gangnam-travel-guide-hero-1600-v20260916.webp" srcset="images/gangnam/gangnam-travel-guide-hero-1200-v20260916.webp 1200w, images/gangnam/gangnam-travel-guide-hero-1600-v20260916.webp 1600w, images/gangnam/gangnam-travel-guide-hero-2160-v20260916.webp 2160w" sizes="(max-width: 1120px) calc(100vw - 40px), 1080px" alt="Modern high-rise buildings around Gangnam Station in Seoul." width="1600" height="1093" loading="eager" decoding="async" fetchpriority="high">
+          <figcaption>Photo: Visit Seoul · KOGL Type 1</figcaption>
+        </figure>
       </div>
-      <script data-hero-image-loading>
-        (function () {
-          const hero = document.currentScript.closest(".hm-hero");
-          const image = hero.querySelector("figure img");
-          if (!image) return;
-
-          const reveal = () => {
-            if (!image.complete || image.naturalWidth === 0) return;
-            const source = image.currentSrc || image.src;
-            const show = () => {
-              if (image.complete && image.naturalWidth > 0 &&
-                  (image.currentSrc || image.src) === source) {
-                hero.setAttribute("data-hero-image-ready", "");
-              }
-            };
-            if (typeof image.decode === "function") {
-              image.decode().then(show, () => {});
-            } else {
-              show();
-            }
-          };
-
-          image.addEventListener("load", reveal);
-          image.addEventListener("error", () => {
-            hero.removeAttribute("data-hero-image-ready");
-          });
-          reveal();
-        })();
-      </script>
     </section>
 
     <div class="container gangnam-guide-intro">

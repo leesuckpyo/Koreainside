@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preload" as="image" type="image/webp" href="images/seongsu/seongsu-travel-guide-hero-1600-v20260916.webp" imagesrcset="images/seongsu/seongsu-travel-guide-hero-1200-v20260916.webp 1200w, images/seongsu/seongsu-travel-guide-hero-1600-v20260916.webp 1600w, images/seongsu/seongsu-travel-guide-hero-2000-v20260916.webp 2000w" imagesizes="100vw" fetchpriority="high" media="(min-width: 720px)">
+  <link rel="preload" as="image" type="image/webp" href="images/seongsu/seongsu-travel-guide-hero-1600-v20260916.webp" imagesrcset="images/seongsu/seongsu-travel-guide-hero-1200-v20260916.webp 1200w, images/seongsu/seongsu-travel-guide-hero-1600-v20260916.webp 1600w, images/seongsu/seongsu-travel-guide-hero-2000-v20260916.webp 2000w" imagesizes="(max-width: 1120px) calc(100vw - 40px), 1080px" fetchpriority="high" media="(min-width: 720px)">
   <link rel="preload" as="image" type="image/webp" href="images/seongsu/seongsu-travel-guide-hero-mobile-1200-v20260916.webp" media="(max-width: 719px)" fetchpriority="high">
   <meta name="description" content="Plan Seongsu in 2026 with practical routes for shopping, pop-ups, K-beauty, cafés and Seoul Forest — plus what to check before you go.">
   <link rel="canonical" href="https://www.getkoreainside.com/seongsu-travel-guide.html">
@@ -153,63 +153,15 @@
     }
 
     body.hongdae-myeongdong-page main .seongsu-guide-hero {
-      --detail-hero-last-gap: 72px;
-      position: relative;
-      isolation: isolate;
-      aspect-ratio: 16 / 9;
-      overflow: hidden;
       background: transparent;
       border-bottom: 0;
     }
 
-    body.hongdae-myeongdong-page main .seongsu-guide-hero::after {
-      visibility: hidden;
-      position: absolute;
-      z-index: 1;
-      inset: 0;
-      background: linear-gradient(
-        90deg,
-        rgba(0, 0, 0, 0.72) 0%,
-        rgba(0, 0, 0, 0.68) 34%,
-        rgba(0, 0, 0, 0.28) 62%,
-        rgba(0, 0, 0, 0) 100%
-      );
-      content: "";
-    }
-
-    body.hongdae-myeongdong-page main .seongsu-guide-hero[data-hero-image-ready]::after {
-      visibility: visible;
-    }
-
     body.hongdae-myeongdong-page main .seongsu-guide-hero .hm-hero__grid {
-      position: relative;
-      z-index: 2;
       grid-template-columns: minmax(0, 1fr);
-      align-items: center;
-      min-height: 100%;
-    }
-
-    body.hongdae-myeongdong-page main .seongsu-guide-hero .hm-hero__copy {
-      max-width: 58%;
-      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
-    }
-
-    body.hongdae-myeongdong-page main .seongsu-guide-hero .hm-breadcrumb,
-    body.hongdae-myeongdong-page main .seongsu-guide-hero .hm-breadcrumb a {
-      color: rgba(255, 255, 255, 0.88);
-    }
-
-    body.hongdae-myeongdong-page main .seongsu-guide-hero h1 {
-      color: #fff;
-    }
-
-    body.hongdae-myeongdong-page main .seongsu-guide-hero .hm-hero__answer p {
-      color: rgba(255, 255, 255, 0.95);
     }
 
     body.hongdae-myeongdong-page main .seongsu-guide-hero__media {
-      position: absolute;
-      inset: 0;
       min-width: 0;
       margin: 0;
     }
@@ -218,12 +170,7 @@
     body.hongdae-myeongdong-page main .seongsu-guide-hero__media img {
       display: block;
       width: 100%;
-      height: 100%;
-    }
-
-    body.hongdae-myeongdong-page main .seongsu-guide-hero__media img {
-      object-fit: cover;
-      object-position: center 48%;
+      height: auto;
     }
 
     body.hongdae-myeongdong-page main .seongsu-guide-intro {
@@ -239,48 +186,7 @@
       margin-top: 18px;
     }
 
-    @media (min-width: 901px) {
-      body.hongdae-myeongdong-page main .seongsu-guide-hero {
-        height: clamp(560px, 42vw, 620px);
-        aspect-ratio: auto;
-      }
-    }
-
-    @media (max-width: 900px) {
-      body.hongdae-myeongdong-page main .seongsu-guide-hero .hm-hero__copy {
-        max-width: 78%;
-      }
-    }
-
     @media (max-width: 719px) {
-      body.hongdae-myeongdong-page main .seongsu-guide-hero {
-        --detail-hero-last-gap: 80px;
-        height: auto;
-        min-height: 0;
-        aspect-ratio: auto;
-      }
-
-      body.hongdae-myeongdong-page main .seongsu-guide-hero .hm-hero__grid {
-        min-height: 0;
-      }
-
-      body.hongdae-myeongdong-page main .seongsu-guide-hero::after {
-        background: linear-gradient(
-          90deg,
-          rgba(0, 0, 0, 0.8) 0%,
-          rgba(0, 0, 0, 0.76) 58%,
-          rgba(0, 0, 0, 0.66) 100%
-        );
-      }
-
-      body.hongdae-myeongdong-page main .seongsu-guide-hero .hm-hero__copy {
-        max-width: 100%;
-      }
-
-      body.hongdae-myeongdong-page main .seongsu-guide-hero__media img {
-        object-position: center;
-      }
-
       body.hongdae-myeongdong-page main .seongsu-guide-intro {
         padding-top: 24px;
         padding-bottom: 28px;
@@ -347,12 +253,6 @@
 
   <main>
     <section class="hm-hero seongsu-guide-hero">
-      <figure class="seongsu-guide-hero__media">
-        <picture>
-          <source media="(max-width: 719px)" srcset="images/seongsu/seongsu-travel-guide-hero-mobile-1200-v20260916.webp" type="image/webp" width="1200" height="900">
-          <img src="images/seongsu/seongsu-travel-guide-hero-1600-v20260916.webp" srcset="images/seongsu/seongsu-travel-guide-hero-1200-v20260916.webp 1200w, images/seongsu/seongsu-travel-guide-hero-1600-v20260916.webp 1600w, images/seongsu/seongsu-travel-guide-hero-2000-v20260916.webp 2000w" sizes="100vw" alt="Red-brick industrial architecture and a busy modern street in Seongsu, Seoul." width="1600" height="901" loading="eager" decoding="async" fetchpriority="high">
-        </picture>
-      </figure>
       <div class="container hm-hero__grid">
         <div class="hm-hero__copy">
           <p class="hm-breadcrumb"><a href="/">Home</a> / Seongsu Travel Guide 2026</p>
@@ -361,36 +261,13 @@
             <p>Seongsu is one of the easiest Seoul neighborhoods to plan badly.</p>
           </div>
         </div>
+        <figure class="seongsu-guide-hero__media">
+          <picture>
+            <source media="(max-width: 719px)" srcset="images/seongsu/seongsu-travel-guide-hero-mobile-1200-v20260916.webp" type="image/webp" width="1200" height="900">
+            <img src="images/seongsu/seongsu-travel-guide-hero-1600-v20260916.webp" srcset="images/seongsu/seongsu-travel-guide-hero-1200-v20260916.webp 1200w, images/seongsu/seongsu-travel-guide-hero-1600-v20260916.webp 1600w, images/seongsu/seongsu-travel-guide-hero-2000-v20260916.webp 2000w" sizes="(max-width: 1120px) calc(100vw - 40px), 1080px" alt="Red-brick industrial architecture and a busy modern street in Seongsu, Seoul." width="1600" height="901" loading="eager" decoding="async" fetchpriority="high">
+          </picture>
+        </figure>
       </div>
-      <script data-hero-image-loading>
-        (function () {
-          const hero = document.currentScript.closest(".hm-hero");
-          const image = hero.querySelector("figure img");
-          if (!image) return;
-
-          const reveal = () => {
-            if (!image.complete || image.naturalWidth === 0) return;
-            const source = image.currentSrc || image.src;
-            const show = () => {
-              if (image.complete && image.naturalWidth > 0 &&
-                  (image.currentSrc || image.src) === source) {
-                hero.setAttribute("data-hero-image-ready", "");
-              }
-            };
-            if (typeof image.decode === "function") {
-              image.decode().then(show, () => {});
-            } else {
-              show();
-            }
-          };
-
-          image.addEventListener("load", reveal);
-          image.addEventListener("error", () => {
-            hero.removeAttribute("data-hero-image-ready");
-          });
-          reveal();
-        })();
-      </script>
     </section>
 
     <div class="container seongsu-guide-intro">

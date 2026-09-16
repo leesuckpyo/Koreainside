@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preload" as="image" type="image/webp" href="images/jamsil/jamsil-travel-guide-hero-1600-v20260916.webp" imagesrcset="images/jamsil/jamsil-travel-guide-hero-1200-v20260916.webp 1200w, images/jamsil/jamsil-travel-guide-hero-1600-v20260916.webp 1600w, images/jamsil/jamsil-travel-guide-hero-2160-v20260916.webp 2160w" imagesizes="100vw" fetchpriority="high">
+  <link rel="preload" as="image" type="image/webp" href="images/jamsil/jamsil-travel-guide-hero-1600-v20260916.webp" imagesrcset="images/jamsil/jamsil-travel-guide-hero-1200-v20260916.webp 1200w, images/jamsil/jamsil-travel-guide-hero-1600-v20260916.webp 1600w, images/jamsil/jamsil-travel-guide-hero-2160-v20260916.webp 2160w" imagesizes="(max-width: 1120px) calc(100vw - 40px), 1080px" fetchpriority="high">
   <meta name="description" content="Plan a day in Jamsil with Lotte World, Seoul Sky, Seokchon Lake, Songridan-gil, concerts and baseball. Choose the route that fits your trip.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.getkoreainside.com/jamsil-travel-guide.html">
@@ -20,62 +20,15 @@
     }
 
     body.hongdae-myeongdong-page main .jamsil-guide-hero {
-      --detail-hero-last-gap: 72px;
-      position: relative;
-      isolation: isolate;
-      aspect-ratio: 16 / 9;
-      overflow: hidden;
       background: transparent;
       border-bottom: 0;
     }
 
-    body.hongdae-myeongdong-page main .jamsil-guide-hero::after {
-      visibility: hidden;
-      position: absolute;
-      z-index: 1;
-      inset: 0;
-      background: linear-gradient(
-        90deg,
-        rgba(0, 0, 0, 0.72) 0%,
-        rgba(0, 0, 0, 0.68) 34%,
-        rgba(0, 0, 0, 0.28) 62%,
-        rgba(0, 0, 0, 0) 100%
-      );
-      content: "";
-    }
-
-    body.hongdae-myeongdong-page main .jamsil-guide-hero[data-hero-image-ready]::after {
-      visibility: visible;
-    }
-
     body.hongdae-myeongdong-page main .jamsil-guide-hero .hm-hero__grid {
-      position: relative;
-      z-index: 2;
       grid-template-columns: minmax(0, 1fr);
-      align-items: center;
-      min-height: 100%;
-    }
-
-    body.hongdae-myeongdong-page main .jamsil-guide-hero .hm-hero__copy {
-      max-width: 58%;
-      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
-    }
-
-    body.hongdae-myeongdong-page main .jamsil-guide-hero h1 {
-      color: #fff;
-    }
-
-    body.hongdae-myeongdong-page main .jamsil-guide-hero .hm-hero__answer p {
-      color: rgba(255, 255, 255, 0.95);
-    }
-
-    body.hongdae-myeongdong-page main .jamsil-guide-hero .hm-hero__answer strong {
-      color: inherit;
     }
 
     body.hongdae-myeongdong-page main .jamsil-guide-hero__media {
-      position: absolute;
-      inset: 0;
       min-width: 0;
       margin: 0;
     }
@@ -83,67 +36,14 @@
     body.hongdae-myeongdong-page main .jamsil-guide-hero__media img {
       display: block;
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center bottom;
+      height: auto;
     }
 
     body.hongdae-myeongdong-page main .jamsil-guide-hero__media figcaption {
-      position: absolute;
-      z-index: 2;
-      right: 20px;
-      bottom: 12px;
-      left: 20px;
-      width: fit-content;
-      margin: 0;
-      padding: 4px 8px;
-      background: rgba(0, 0, 0, 0.65);
-      color: #fff;
+      margin-top: 10px;
+      color: #686158;
       font-size: 13px;
       line-height: 1.5;
-    }
-
-    @media (min-width: 901px) {
-      body.hongdae-myeongdong-page main .jamsil-guide-hero {
-        height: clamp(560px, 42vw, 620px);
-        aspect-ratio: auto;
-      }
-    }
-
-    @media (max-width: 900px) {
-      body.hongdae-myeongdong-page main .jamsil-guide-hero .hm-hero__copy {
-        max-width: 78%;
-      }
-    }
-
-    @media (max-width: 719px) {
-      body.hongdae-myeongdong-page main .jamsil-guide-hero {
-        --detail-hero-last-gap: 80px;
-        height: auto;
-        min-height: 0;
-        aspect-ratio: auto;
-      }
-
-      body.hongdae-myeongdong-page main .jamsil-guide-hero .hm-hero__grid {
-        min-height: 0;
-      }
-
-      body.hongdae-myeongdong-page main .jamsil-guide-hero::after {
-        background: linear-gradient(
-          90deg,
-          rgba(0, 0, 0, 0.8) 0%,
-          rgba(0, 0, 0, 0.76) 58%,
-          rgba(0, 0, 0, 0.66) 100%
-        );
-      }
-
-      body.hongdae-myeongdong-page main .jamsil-guide-hero .hm-hero__copy {
-        max-width: 100%;
-      }
-
-      body.hongdae-myeongdong-page main .jamsil-guide-hero__media img {
-        object-position: center;
-      }
     }
 
     .hongdae-myeongdong-page main .hm-section .hm-editorial-image {
@@ -442,50 +342,24 @@
 
   <main>
     <section class="hm-hero jamsil-guide-hero">
-      <!-- source ID: ARP008a91 | source title: 석촌호수공원 | license: KOGL Type 1 | source: Visit Seoul -->
-      <figure class="jamsil-guide-hero__media">
-        <img src="images/jamsil/jamsil-travel-guide-hero-1600-v20260916.webp" srcset="images/jamsil/jamsil-travel-guide-hero-1200-v20260916.webp 1200w, images/jamsil/jamsil-travel-guide-hero-1600-v20260916.webp 1600w, images/jamsil/jamsil-travel-guide-hero-2160-v20260916.webp 2160w" sizes="100vw" alt="Jamsil skyline with Lotte World Tower, Magic Island and Seokchon Lake in Seoul." width="1600" height="1067" loading="eager" fetchpriority="high" decoding="async">
-        <figcaption>Photo: Visit Seoul · KOGL Type 1</figcaption>
-      </figure>
       <div class="container hm-hero__grid">
         <div class="hm-hero__copy">
+          <p class="hm-breadcrumb"><a href="/">Home</a> / Jamsil Travel Guide 2026</p>
           <h1>Jamsil Travel Guide <span data-guide-year="current">2026</span></h1>
           <div class="hm-hero__answer">
             <p>Jamsil gets confusing when you treat everything with “Lotte” in the name as one attraction.</p>
-            <p>For most travelers, the better question is simpler: <strong>Are you coming for Lotte World, for the tower-and-lake side of Jamsil, or for a game or concert?</strong></p>
-            <p>Those are three different days. Trying to combine all three usually means spending more time walking, waiting and crossing Songpa than actually enjoying any of them.</p>
           </div>
         </div>
+        <!-- source ID: ARP008a91 | source title: 석촌호수공원 | license: KOGL Type 1 | source: Visit Seoul -->
+        <figure class="jamsil-guide-hero__media">
+          <img src="images/jamsil/jamsil-travel-guide-hero-1600-v20260916.webp" srcset="images/jamsil/jamsil-travel-guide-hero-1200-v20260916.webp 1200w, images/jamsil/jamsil-travel-guide-hero-1600-v20260916.webp 1600w, images/jamsil/jamsil-travel-guide-hero-2160-v20260916.webp 2160w" sizes="(max-width: 1120px) calc(100vw - 40px), 1080px" alt="Jamsil skyline with Lotte World Tower, Magic Island and Seokchon Lake in Seoul." width="1600" height="1067" loading="eager" fetchpriority="high" decoding="async">
+          <figcaption>Photo: Visit Seoul · KOGL Type 1</figcaption>
+        </figure>
+        <div class="hm-hero__answer">
+          <p>For most travelers, the better question is simpler: <strong>Are you coming for Lotte World, for the tower-and-lake side of Jamsil, or for a game or concert?</strong></p>
+          <p>Those are three different days. Trying to combine all three usually means spending more time walking, waiting and crossing Songpa than actually enjoying any of them.</p>
+        </div>
       </div>
-      <script data-hero-image-loading>
-        (function () {
-          const hero = document.currentScript.closest(".hm-hero");
-          const image = hero.querySelector("figure img");
-          if (!image) return;
-
-          const reveal = () => {
-            if (!image.complete || image.naturalWidth === 0) return;
-            const source = image.currentSrc || image.src;
-            const show = () => {
-              if (image.complete && image.naturalWidth > 0 &&
-                  (image.currentSrc || image.src) === source) {
-                hero.setAttribute("data-hero-image-ready", "");
-              }
-            };
-            if (typeof image.decode === "function") {
-              image.decode().then(show, () => {});
-            } else {
-              show();
-            }
-          };
-
-          image.addEventListener("load", reveal);
-          image.addEventListener("error", () => {
-            hero.removeAttribute("data-hero-image-ready");
-          });
-          reveal();
-        })();
-      </script>
     </section>
 
     <section class="hm-section" id="choose-your-jamsil" aria-labelledby="choose-your-jamsil-title">
