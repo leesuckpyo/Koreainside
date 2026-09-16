@@ -22,29 +22,158 @@
       grid-template-columns: minmax(0, 1fr);
     }
 
-    body.lotte-world-page main .hm-hero .hm-editorial-image {
-      width: 100%;
-      max-width: 880px;
-      min-width: 0;
-      margin: 0 auto;
+    body.hongdae-myeongdong-page main .hongdae-guide-hero {
+      --detail-hero-last-gap: 72px;
+      position: relative;
+      isolation: isolate;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      background: #1d2b27;
+      border-bottom: 0;
     }
 
-    body.lotte-world-page main .hm-hero .hm-editorial-image img {
+    body.hongdae-myeongdong-page main .hongdae-guide-hero::after {
+      position: absolute;
+      z-index: 1;
+      inset: 0;
+      background: linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0.72) 0%,
+        rgba(0, 0, 0, 0.68) 34%,
+        rgba(0, 0, 0, 0.28) 62%,
+        rgba(0, 0, 0, 0) 100%
+      );
+      content: "";
+    }
+
+    body.hongdae-myeongdong-page main .hongdae-guide-hero .hm-hero__grid {
+      position: relative;
+      z-index: 2;
+      grid-template-columns: minmax(0, 1fr);
+      align-items: center;
+      min-height: 100%;
+    }
+
+    body.hongdae-myeongdong-page main .hongdae-guide-hero .hm-hero__copy {
+      max-width: 58%;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+    }
+
+    body.hongdae-myeongdong-page main .hongdae-guide-hero .hm-breadcrumb,
+    body.hongdae-myeongdong-page main .hongdae-guide-hero .hm-breadcrumb a {
+      color: rgba(255, 255, 255, 0.88);
+    }
+
+    body.hongdae-myeongdong-page main .hongdae-guide-hero h1 {
+      color: #fff;
+    }
+
+    body.hongdae-myeongdong-page main .hongdae-guide-hero .hm-hero__answer p {
+      color: rgba(255, 255, 255, 0.95);
+    }
+
+    body.hongdae-myeongdong-page main .hongdae-guide-hero__media {
+      position: absolute;
+      inset: 0;
+      min-width: 0;
+      margin: 0;
+    }
+
+    body.hongdae-myeongdong-page main .hongdae-guide-hero__media picture,
+    body.hongdae-myeongdong-page main .hongdae-guide-hero__media img {
       display: block;
       width: 100%;
-      height: auto;
+      height: 100%;
     }
 
-    body.lotte-world-page main .hm-hero .hm-editorial-image figcaption {
-      margin-top: 10px;
-      color: #686158;
-      font-size: 14px;
-      line-height: 1.5;
+    body.hongdae-myeongdong-page main .hongdae-guide-hero__media img {
+      object-fit: cover;
+      object-position: center 70%;
+    }
+
+    @media (min-width: 901px) {
+      body.hongdae-myeongdong-page main .hongdae-guide-hero {
+        height: clamp(560px, 42vw, 620px);
+        aspect-ratio: auto;
+      }
+    }
+
+    @media (max-width: 900px) {
+      body.hongdae-myeongdong-page main .hongdae-guide-hero .hm-hero__copy {
+        max-width: 78%;
+      }
     }
 
     @media (max-width: 719px) {
-      body.lotte-world-page main .hm-hero .hm-editorial-image figcaption {
-        font-size: 13px;
+      body.hongdae-myeongdong-page main .hongdae-guide-hero {
+        --detail-hero-last-gap: 80px;
+        height: auto;
+        min-height: 0;
+        aspect-ratio: auto;
+      }
+
+      body.hongdae-myeongdong-page main .hongdae-guide-hero .hm-hero__grid {
+        min-height: 0;
+      }
+
+      body.hongdae-myeongdong-page main .hongdae-guide-hero::after {
+        background: linear-gradient(
+          90deg,
+          rgba(0, 0, 0, 0.8) 0%,
+          rgba(0, 0, 0, 0.76) 58%,
+          rgba(0, 0, 0, 0.66) 100%
+        );
+      }
+
+      body.hongdae-myeongdong-page main .hongdae-guide-hero .hm-hero__copy {
+        max-width: 100%;
+      }
+
+      body.hongdae-myeongdong-page main .hongdae-guide-hero__media img {
+        object-position: center 70%;
+      }
+    }
+
+    body.hongdae-myeongdong-page main .hongdae-guide-hero .hm-hero__answer strong {
+      color: inherit;
+    }
+
+    body.hongdae-myeongdong-page main .hongdae-guide-hero__media figcaption {
+      position: absolute;
+      z-index: 2;
+      right: 20px;
+      bottom: 12px;
+      left: 20px;
+      width: fit-content;
+      margin: 0;
+      padding: 4px 8px;
+      background: rgba(0, 0, 0, 0.65);
+      color: #fff;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    body.hongdae-myeongdong-page main .hongdae-guide-intro {
+      padding-top: 32px;
+      padding-bottom: 40px;
+    }
+
+    body.hongdae-myeongdong-page main .hongdae-guide-intro .hm-hero__answer p {
+      color: inherit;
+    }
+
+    body.hongdae-myeongdong-page main .hongdae-guide-intro .hm-hero__answer p + p {
+      margin-top: 18px;
+    }
+
+    @media (max-width: 719px) {
+      body.hongdae-myeongdong-page main .hongdae-guide-intro {
+        padding-top: 24px;
+        padding-bottom: 28px;
+      }
+
+      body.hongdae-myeongdong-page main .hongdae-guide-intro .hm-hero__answer p + p {
+        margin-top: 16px;
       }
     }
 
@@ -261,22 +390,30 @@
 
   <main>
     <!-- Exact public copy: Korea_Inside_Lotte_World_Seoul_Approved_Public_Copy_2026-09-16.md. Image permission pending. -->
-    <section class="hm-hero" aria-labelledby="lotte-world-title">
+    <section class="hm-hero hongdae-guide-hero" aria-labelledby="lotte-world-title">
+      <figure class="hongdae-guide-hero__media">
+        <picture>
+          <img src="images/lotte-world/lotte-world-magic-island-hero.webp" alt="Lotte World Magic Island and Seokchon Lake in Seoul" width="3000" height="2000" loading="eager" decoding="async" fetchpriority="high">
+        </picture>
+        <figcaption>Photo: Seoul Tourism Organization · KOGL Type 1</figcaption>
+      </figure>
       <div class="container hm-hero__grid">
         <div class="hm-hero__copy">
+          <p class="hm-breadcrumb"><a href="/">Home</a> / Lotte World Seoul Guide 2026</p>
           <h1 id="lotte-world-title">Lotte World Seoul <span class="lotte-world-guide-year">Guide <span data-guide-year="current">2026</span></span></h1>
           <div class="hm-hero__answer">
             <p><strong>Tickets, Magic Pass, ride priorities and a realistic plan for your day</strong></p>
-            <p>If rides are the reason you are coming to Lotte World, treat it as the main event and give it the day. Long queues, moving between Adventure and Magic Island, meals, breaks and weather can use far more time than the map suggests.</p>
-            <p>Do not start with a list of every ride. First understand what is actually in the park, then pick the <strong>3–5 rides you would genuinely regret missing</strong> and build the rest of the day around them. That decision also makes it much easier to judge whether an After4 ticket or Magic Pass is actually worth paying for.</p>
           </div>
         </div>
-        <figure class="hm-editorial-image">
-          <img src="images/lotte-world/lotte-world-adventure-hero.webp" alt="Lotte World Adventure indoor theme park in Seoul" width="5692" height="3795" loading="eager" fetchpriority="high" decoding="async">
-          <figcaption>Lotte World Adventure's indoor park in Jamsil, Seoul.<br>Photo: Seoul Tourism Organization · KOGL Type 1</figcaption>
-        </figure>
       </div>
     </section>
+
+    <div class="container hongdae-guide-intro">
+      <div class="hm-hero__answer">
+        <p>If rides are the reason you are coming to Lotte World, treat it as the main event and give it the day. Long queues, moving between Adventure and Magic Island, meals, breaks and weather can use far more time than the map suggests.</p>
+        <p>Do not start with a list of every ride. First understand what is actually in the park, then pick the <strong>3–5 rides you would genuinely regret missing</strong> and build the rest of the day around them. That decision also makes it much easier to judge whether an After4 ticket or Magic Pass is actually worth paying for.</p>
+      </div>
+    </div>
 
     <section class="hm-section" id="short-answer" aria-labelledby="short-answer-title">
       <div class="container">
