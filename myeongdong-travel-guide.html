@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preload" as="image" href="images/myeongdong/myeongdong-travel-guide-hero.webp" fetchpriority="high">
   <meta name="description" content="Plan Myeongdong in 2026 with practical advice on K-beauty, shopping, food, routes and evenings — including Namsan, Namdaemun, Euljiro and NANTA.">
   <link rel="canonical" href="https://www.getkoreainside.com/myeongdong-travel-guide.html">
   <title>Myeongdong Travel Guide 2026 | What to Do, Eat &amp; Shop</title>
@@ -124,11 +125,12 @@
       isolation: isolate;
       aspect-ratio: 16 / 9;
       overflow: hidden;
-      background: #1d2b27;
+      background: #f7f3ea;
       border-bottom: 0;
     }
 
     body.hongdae-myeongdong-page main .myeongdong-guide-hero::after {
+      visibility: hidden;
       position: absolute;
       z-index: 1;
       inset: 0;
@@ -140,6 +142,10 @@
         rgba(0, 0, 0, 0) 100%
       );
       content: "";
+    }
+
+    body.hongdae-myeongdong-page main .myeongdong-guide-hero[data-hero-image-ready]::after {
+      visibility: visible;
     }
 
     body.hongdae-myeongdong-page main .myeongdong-guide-hero .hm-hero__grid {
@@ -361,6 +367,35 @@
           </div>
         </div>
       </div>
+      <script data-hero-image-loading>
+        (function () {
+          const hero = document.currentScript.closest(".hm-hero");
+          const image = hero.querySelector("figure img");
+          if (!image) return;
+
+          const reveal = () => {
+            if (!image.complete || image.naturalWidth === 0) return;
+            const source = image.currentSrc || image.src;
+            const show = () => {
+              if (image.complete && image.naturalWidth > 0 &&
+                  (image.currentSrc || image.src) === source) {
+                hero.setAttribute("data-hero-image-ready", "");
+              }
+            };
+            if (typeof image.decode === "function") {
+              image.decode().then(show, () => {});
+            } else {
+              show();
+            }
+          };
+
+          image.addEventListener("load", reveal);
+          image.addEventListener("error", () => {
+            hero.removeAttribute("data-hero-image-ready");
+          });
+          reveal();
+        })();
+      </script>
     </section>
 
     <div class="container myeongdong-guide-intro">

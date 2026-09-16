@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preload" as="image" href="images/hongdae/hongdae-travel-guide-hero.webp" fetchpriority="high">
   <meta name="description" content="Plan Hongdae in 2026 with practical routes, neighborhood choices and real travel decisions — from Yeonnam and Hongdae's busy core to food, shopping and evenings.">
   <link rel="canonical" href="https://www.getkoreainside.com/hongdae-travel-guide.html">
   <title>Hongdae Travel Guide 2026 | Korea Inside</title>
@@ -221,11 +222,12 @@
       isolation: isolate;
       aspect-ratio: 16 / 9;
       overflow: hidden;
-      background: #1d2b27;
+      background: #f7f3ea;
       border-bottom: 0;
     }
 
     body.hongdae-myeongdong-page main .hongdae-guide-hero::after {
+      visibility: hidden;
       position: absolute;
       z-index: 1;
       inset: 0;
@@ -237,6 +239,10 @@
         rgba(0, 0, 0, 0) 100%
       );
       content: "";
+    }
+
+    body.hongdae-myeongdong-page main .hongdae-guide-hero[data-hero-image-ready]::after {
+      visibility: visible;
     }
 
     body.hongdae-myeongdong-page main .hongdae-guide-hero .hm-hero__grid {
@@ -407,6 +413,35 @@
           </div>
         </div>
       </div>
+      <script data-hero-image-loading>
+        (function () {
+          const hero = document.currentScript.closest(".hm-hero");
+          const image = hero.querySelector("figure img");
+          if (!image) return;
+
+          const reveal = () => {
+            if (!image.complete || image.naturalWidth === 0) return;
+            const source = image.currentSrc || image.src;
+            const show = () => {
+              if (image.complete && image.naturalWidth > 0 &&
+                  (image.currentSrc || image.src) === source) {
+                hero.setAttribute("data-hero-image-ready", "");
+              }
+            };
+            if (typeof image.decode === "function") {
+              image.decode().then(show, () => {});
+            } else {
+              show();
+            }
+          };
+
+          image.addEventListener("load", reveal);
+          image.addEventListener("error", () => {
+            hero.removeAttribute("data-hero-image-ready");
+          });
+          reveal();
+        })();
+      </script>
     </section>
 
     <div class="container hongdae-guide-intro">
