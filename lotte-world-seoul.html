@@ -175,9 +175,23 @@
     }
 
     .hongdae-myeongdong-page main .lotte-world-contextual-cta__link--cta:hover,
+    .hongdae-myeongdong-page main .lotte-world-contextual-cta__link--cta:focus,
     .hongdae-myeongdong-page main .lotte-world-contextual-cta__link--cta:focus-visible {
       background: var(--blue-deep);
       color: var(--white);
+    }
+
+    .lotte-world-page main .lotte-world-contextual-cta__link--cta,
+    .lotte-world-page main .lotte-world-contextual-cta__link--cta:visited,
+    .lotte-world-page main .lotte-world-contextual-cta__link--cta:hover,
+    .lotte-world-page main .lotte-world-contextual-cta__link--cta:focus,
+    .lotte-world-page main .lotte-world-contextual-cta__link--cta:focus-visible,
+    .lotte-world-page main .lotte-world-contextual-cta__link--cta:active {
+      color: #fff;
+    }
+
+    .lotte-world-page main .lotte-world-contextual-cta__link--cta strong {
+      color: #fff;
     }
 
     .hongdae-myeongdong-page main .lotte-world-contextual-cta {
@@ -198,6 +212,64 @@
       color: var(--gray-600);
       font-size: 14px;
       line-height: 1.5;
+    }
+
+    .hongdae-myeongdong-page main .jamsil-stay-bridge {
+      background: var(--white);
+    }
+
+    .hongdae-myeongdong-page main .jamsil-stay-bridge__content {
+      padding: 22px 0;
+      border-block: 1px solid var(--gray-200);
+    }
+
+    .hongdae-myeongdong-page main .jamsil-stay-bridge__kicker {
+      margin: 0 0 8px;
+      color: var(--blue-accent);
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1.4;
+      letter-spacing: 0.08em;
+    }
+
+    .hongdae-myeongdong-page main .jamsil-stay-bridge__title {
+      margin: 0 0 12px;
+      font-size: 30px;
+      line-height: 1.35;
+    }
+
+    .hongdae-myeongdong-page main .jamsil-stay-bridge__body {
+      max-width: 76ch;
+      margin: 0 0 16px;
+    }
+
+    .hongdae-myeongdong-page main .jamsil-stay-bridge__link,
+    .hongdae-myeongdong-page main .jamsil-stay-bridge__link:visited {
+      display: inline-flex;
+      align-items: center;
+      max-width: 100%;
+      color: var(--blue-accent);
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1.5;
+      text-decoration: underline;
+      text-underline-offset: 0.2em;
+    }
+
+    .hongdae-myeongdong-page main .jamsil-stay-bridge__link:hover,
+    .hongdae-myeongdong-page main .jamsil-stay-bridge__link:focus-visible {
+      color: var(--blue-deep);
+    }
+
+    .hongdae-myeongdong-page main .jamsil-stay-bridge__link:focus-visible {
+      outline: 2px solid var(--blue-deep);
+      outline-offset: 4px;
+    }
+
+    @media (max-width: 719px) {
+      .hongdae-myeongdong-page main .jamsil-stay-bridge__title {
+        font-size: 25px;
+      }
     }
   </style>
   <script type="application/ld+json">
@@ -331,7 +403,7 @@
     <section class="hm-hero hongdae-guide-hero" aria-labelledby="lotte-world-title">
       <div class="container hm-hero__grid">
         <div class="hm-hero__copy">
-          <p class="hm-breadcrumb"><a href="/">Home</a> / Lotte World Seoul Guide 2026</p>
+          <p class="hm-breadcrumb"><a href="/">Home</a> / Lotte World Seoul Guide <span data-guide-year="current">2026</span></p>
           <h1 id="lotte-world-title">Lotte World Seoul <span class="lotte-world-guide-year">Guide <span data-guide-year="current">2026</span></span></h1>
           <div class="hm-hero__answer">
             <p><strong>Tickets, Magic Pass, ride priorities and a realistic plan for your day</strong></p>
@@ -371,6 +443,19 @@
             Check height restrictions before deciding which rides matter and whether a Magic Pass is worth the extra cost. Plan around energy and breaks, not a target ride count.</p>
           <p><strong>One rule before you buy anything:</strong><br>
             Choose your must-rides first. Choose your Magic Pass second.</p>
+          <aside class="lotte-world-contextual-cta">
+            <p>Already planning a Lotte World day? Check the current ticket price on Trip.com.</p>
+            <p><a class="lotte-world-contextual-cta__link"
+             href="https://www.trip.com/t/A0oe7sS8MW2"
+             target="_blank"
+             rel="sponsored noopener noreferrer"
+             data-affiliate-track="true"
+             data-affiliate-brand="trip.com"
+             data-page-category="travel-guides"
+             data-content-topic="lotte-world-adventure"
+             data-placement="lotte-world-intro"
+             data-link-stage="affiliate">Check Lotte World tickets on Trip.com</a></p>
+          </aside>
         </div>
       </div>
     </section>
@@ -888,6 +973,19 @@
           </ul>
           <p>That is why the ride list comes before the pass.</p>
           <p><strong>Choose the rides first. Choose the Magic Pass second.</strong></p>
+          <aside class="lotte-world-contextual-cta">
+            <p>Know the rides you want? Check the ticket price for your visit date before you keep planning.</p>
+            <p><a class="lotte-world-contextual-cta__link"
+             href="https://www.trip.com/t/A0oe7sS8MW2"
+             target="_blank"
+             rel="sponsored noopener noreferrer"
+             data-affiliate-track="true"
+             data-affiliate-brand="trip.com"
+             data-page-category="travel-guides"
+             data-content-topic="lotte-world-adventure"
+             data-placement="lotte-world-must-rides"
+             data-link-stage="affiliate">Check Lotte World tickets on Trip.com</a></p>
+          </aside>
         </div>
       </div>
     </section>
@@ -1111,6 +1209,20 @@
           <p>If the answer is three or four rides that genuinely matter on a crowded day, the extra cost can make sense.</p>
           <p>If the answer is one ride and four attractions you would not have chosen anyway, keep the money.</p>
           <p><strong>The ride should justify the pass. The pass should never decide the ride.</strong></p>
+          <aside class="lotte-world-contextual-cta">
+            <p>Ready to book admission? Check the current Lotte World ticket price on Trip.com.</p>
+            <p><small>Magic Pass is separate unless the booking product specifically says otherwise.</small></p>
+            <p><a class="lotte-world-contextual-cta__link lotte-world-contextual-cta__link--cta"
+             href="https://www.trip.com/t/A0oe7sS8MW2"
+             target="_blank"
+             rel="sponsored noopener noreferrer"
+             data-affiliate-track="true"
+             data-affiliate-brand="trip.com"
+             data-page-category="travel-guides"
+             data-content-topic="lotte-world-adventure"
+             data-placement="lotte-world-magic-pass"
+             data-link-stage="affiliate">Check Lotte World tickets on Trip.com</a></p>
+          </aside>
         </div>
       </div>
     </section>
@@ -1192,6 +1304,17 @@
         </div>
       </div>
     </section>
+
+    <aside class="jamsil-stay-bridge" id="lotte-world-stay-bridge-kids" aria-labelledby="lotte-world-stay-bridge-kids-title">
+      <div class="container">
+        <div class="jamsil-stay-bridge__content">
+          <p class="jamsil-stay-bridge__kicker">STAY GUIDE</p>
+          <h2 class="jamsil-stay-bridge__title" id="lotte-world-stay-bridge-kids-title">Traveling with children? Your hotel location can make the rest of the Seoul trip much easier.</h2>
+          <p class="jamsil-stay-bridge__body">A hotel near Lotte World can make the park day easier, but it is not automatically the best base for the rest of your Seoul trip.</p>
+          <a class="jamsil-stay-bridge__link" href="accommodation.html">Compare where to stay in Seoul</a>
+        </div>
+      </div>
+    </aside>
 
     <section class="hm-section" id="weather" aria-labelledby="weather-title">
       <div class="container">
@@ -1284,6 +1407,17 @@
         </div>
       </div>
     </section>
+
+    <aside class="jamsil-stay-bridge" id="lotte-world-stay-bridge-transport" aria-labelledby="lotte-world-stay-bridge-transport-title">
+      <div class="container">
+        <div class="jamsil-stay-bridge__content">
+          <p class="jamsil-stay-bridge__kicker">STAY GUIDE</p>
+          <h2 class="jamsil-stay-bridge__title" id="lotte-world-stay-bridge-transport-title">Still deciding where to stay in Seoul?</h2>
+          <p class="jamsil-stay-bridge__body">Your hotel location affects airport access, luggage handling and how much subway time you spend getting around the city.</p>
+          <a class="jamsil-stay-bridge__link" href="accommodation.html">Find the right area to stay</a>
+        </div>
+      </div>
+    </aside>
 
     <section class="hm-section" id="what-not-to-combine" aria-labelledby="what-not-to-combine-title">
       <div class="container">
@@ -1401,6 +1535,17 @@
         </div>
       </div>
     </section>
+
+    <aside class="jamsil-stay-bridge" id="lotte-world-stay-bridge-final" aria-labelledby="seoul-stay-title">
+      <div class="container">
+        <div class="jamsil-stay-bridge__content">
+          <p class="jamsil-stay-bridge__kicker">STAY GUIDE</p>
+          <h2 class="jamsil-stay-bridge__title" id="seoul-stay-title">Planning the rest of your Seoul stay?</h2>
+          <p class="jamsil-stay-bridge__body">Where you sleep can change airport access, daily subway time, luggage handling and how easy it is to get back after a long day.</p>
+          <a class="jamsil-stay-bridge__link" href="accommodation.html">Compare where to stay in Seoul</a>
+        </div>
+      </div>
+    </aside>
   </main>
 
 <footer class="footer footer--korea-editorial">
@@ -1439,6 +1584,7 @@
     </div>
   </footer>
 
+  <script src="guide-year.js" defer></script>
   <script src="common.js"></script>
   <script src="affiliate-tracking.js"></script>
   <script defer src="/_vercel/insights/script.js"></script>
