@@ -103,33 +103,19 @@ Existing features, SEO structure, FAQ, content, navigation, CSS, JavaScript, ass
 
 However, if the user explicitly instructs deletion, replacement, restructuring, or modification, Codex may perform that action within the approved scope only.
 
-This means:
-
-- Do not delete or change existing work by default.
-- Do delete or change existing work when the user explicitly instructs it.
-- If the instruction is unclear, stop and ask for approval.
-
 ### Creation Rule
 
 Codex must create files, folders, pages, documents, components, assets, or projects only when the user explicitly instructs it to do so.
 
-If creation appears necessary to complete the task, Codex must not create it automatically.
-
-Codex must report the reason and wait for explicit user approval.
+If creation appears necessary but is not approved, report the reason and wait for explicit user approval before creating it.
 
 ### Modification Rule
 
-Codex must modify only the files and sections explicitly requested by the user.
-
 Do not edit, refactor, rename, reformat, optimize, clean up, or improve unrelated files, pages, components, CSS rules, JavaScript code, navigation structures, documentation files, assets, or metadata.
 
-Even if Codex finds an issue outside the requested scope, Codex must not fix it automatically.
-
-Codex must report the issue separately and wait for user approval.
+Report issues outside the requested scope separately and wait for user approval before fixing them.
 
 ### No Helpful Extra Work Rule
-
-Codex must not make helpful improvements outside the requested task.
 
 The following actions require explicit user instruction:
 
@@ -187,8 +173,6 @@ When the current user instruction explicitly asks for Markdown cleanup, Codex ma
 
 Codex must show all deletions, replacements, and merges in the diff.
 
-Codex must not commit before explicit user approval.
-
 ### Backup and Restore Rule
 
 Backup ZIPs, older Git versions, patch files, and external files are reference materials only unless the user explicitly approves their use.
@@ -206,11 +190,14 @@ For every task, Codex must follow this sequence:
 1. Run `git status`.
 2. Confirm the working tree state.
 3. Read the relevant Markdown documentation.
-4. Identify the exact files and actions allowed by the current user instruction.
-5. Modify only the approved files and sections.
-6. Show the full diff without abbreviation.
-7. Wait for user approval.
-8. Commit only after explicit user approval.
+4. Confirm the approved files, sections, actions, protection boundaries, and validation criteria. The current user instruction may already provide this approval.
+5. Explain the impact before changing protected files, shared components, URLs, or structure. If approval is missing or the scope must change, present the proposed diff and wait for explicit approval before editing.
+6. Apply only the approved changes. Existing approval does not extend to additional files or actions.
+7. Complete self-review and the minimum verification required by the selected QA level.
+8. Show the full resulting diff without abbreviation and report using Reporting Format.
+9. Stop after the approved task. Perform Git actions only as explicitly authorized under Approval & Git Workflow.
+
+Scope approval precedes editing; review of the resulting diff follows implementation. Neither grants commit or push approval.
 
 ### Stop Conditions
 
@@ -326,22 +313,12 @@ Implementation rules:
 
 - Prefer small, reviewable changes.
 - Work on one feature or one page per task.
-- Keep work limited to the current user instruction.
 - Avoid large batches of unrelated changes.
 - Implement the smallest change necessary.
-- Protect existing work.
-- If instructions are ambiguous, stop and ask instead of making assumptions.
 - If a requested change is technically possible but likely harmful, explain the risks and safer alternatives before implementation, then wait for approval.
 - If technical debt must be introduced, explain it explicitly.
 
-Scope control rules:
-
-- Edit the files and sections explicitly requested or approved in the current user instruction.
-- Treat unrelated pages and components as out of scope unless the user explicitly includes them.
-- Treat Header, Footer, Hero, navigation, shared JavaScript, common CSS, and shared components as out of scope unless the user explicitly includes them.
-- Refactor CSS or rename classes only when the user explicitly instructs or approves that action.
-- Move, rename, delete, or reorganize files only when explicitly instructed or approved.
-- Stop and ask when the requested scope is unclear.
+Apply the User Instruction First and Scope Control section and the Existing File Protection section throughout implementation.
 
 File scope limits per task unless explicitly approved:
 
@@ -356,22 +333,13 @@ Stop and request approval if the task needs to exceed these limits.
 
 ## Approval & Git Workflow
 
-For every implementation:
-
-1. Analyze the request.
-2. Identify the exact files, sections, and actions approved by the current user instruction.
-3. Modify only the approved files and sections.
-4. Show the full diff without abbreviation.
-5. Wait for explicit user approval before commit or follow-up work.
-6. Stop immediately after the requested task is complete.
-
-For documentation-rule changes, limit edits to named documents, show the full diff without abbreviation, and wait for Product Owner approval before commit or follow-up work.
+Use Required Work Sequence for implementation, including documentation-rule changes.
 
 Approval rules:
 
-- Stop and wait for explicit user approval.
 - Treat approval as explicit only when the Product Owner clearly gives it.
 - Proceed to the next task only after a new user instruction.
+- Stage only explicitly approved files using named paths. Never use `git add .` or `git add -A`.
 - Create a local commit only when the user asks for or approves a commit.
 - Do not push automatically after commit.
 - Push to GitHub only when the Product Owner explicitly instructs or approves the push.
@@ -382,7 +350,6 @@ Completion rules:
 
 - After applying the approved change, perform only the minimum verification required by the selected QA level, report the result, and stop immediately.
 - Do not continue into automatic QA, screenshot generation, extra verification, extra improvements, refactoring, commits, pushes, or another task unless the user explicitly requests it.
-- Do not proceed to the next task without a new user instruction.
 
 After explicit commit approval:
 
@@ -414,6 +381,7 @@ Protected files and areas:
 - Navigation
 - Header
 - Footer
+- Hero
 - Common components
 - Existing URLs
 - Existing images
@@ -423,6 +391,8 @@ Protected files and areas:
 - Accordion behavior
 - `common.js` events and related common CSS
 - Existing backup folders
+
+Preserve pre-existing user modifications and untracked files. Do not modify, delete, revert, or stage them without explicit approval for those files and actions.
 
 ### Authentication and Secret Protection
 
@@ -442,14 +412,7 @@ Modification rules:
 - Delete or replace images only when requested.
 - Rewrite working code only when the user approves the specific benefit.
 
-If a requested implementation requires modifying a protected file:
-
-1. Explain why the modification is necessary.
-2. List every affected file.
-3. Explain the expected impact.
-4. Identify technical, SEO, maintenance, and user experience risks when relevant.
-5. Show the complete diff.
-6. Wait for approval.
+For protected-file changes, follow Required Work Sequence. Before editing, explain the reason, list every affected file, and identify the expected impact and relevant technical, SEO, maintenance, and user experience risks.
 
 When the user explicitly approves creating new content, prefer new HTML pages or Markdown documentation instead of modifying existing production pages whenever that is the safer option.
 
@@ -459,12 +422,7 @@ When the user explicitly approves creating new content, prefer new HTML pages or
 
 Respect the existing project structure. Reorganize folders, rename files, move files, change URLs, or introduce redirects only with explicit approval.
 
-Existing URLs are stable. If a URL change is necessary:
-
-- Explain the reason.
-- Explain the SEO impact.
-- Suggest a migration strategy.
-- Wait for approval.
+Existing URLs are stable. A URL change requires explicit approval under Required Work Sequence; explain the reason, SEO impact, and migration strategy before applying it.
 
 Prefer extending the existing architecture instead of replacing it.
 
@@ -477,12 +435,7 @@ Large refactoring requires:
 - Risk assessment
 - Approval
 
-Before modifying a shared component:
-
-- Explain which pages will be affected.
-- Explain possible side effects.
-- Show the complete diff.
-- Wait for approval.
+Before modifying a shared component, explain which pages will be affected and the possible side effects. Apply the approval and full-diff requirements in Required Work Sequence.
 
 Each page owns its own assets. Current structure includes:
 
@@ -519,6 +472,8 @@ Do not copy an entire specialized standard into this file.
 - Content titles, `h1`, core conclusions, image direction, copy direction, and major section structure follow the user's approval or an approved final specification.
 - Codex implements the approved final specification as given.
 - Codex must not independently change a title, image direction, copy direction, or recommendation conclusion.
+- Do not independently author or rewrite public copy without the user's explicit approval. Content marked `DONE LOCKED` must not be reopened or changed without explicit approval for that content.
+- When the user supplies finalized English copy, apply it exactly. Do not autonomously rewrite, shorten, translate, summarize, or improve it.
 - If a technical constraint or existing structure conflicts with the approved specification, report the difference and alternatives instead of making an unapproved substitute.
 - Within the approved scope, Codex may correct only changes that do not alter the approved purpose, such as a simple typo, grammar error, or clearly broken link.
 - Keep content-direction decisions separate from the implementation role.
@@ -529,14 +484,12 @@ Detailed voice, wording, recommendation, and editorial QA rules belong to `docs/
 
 For Korea Inside Global English content, requests for "humanization," "humanize," "natural copy," removal of AI or mechanical writing, human-sounding sentences, or a natural travel-guide voice invoke this standard.
 
-- Humanization is not synonym replacement. Rewrite the complete thought in a natural order: situation → reason → practical consequence → trade-off or conclusion.
-- Preserve factual meaning, search intent, useful travel information, verified data, internal links, affiliate links, and tracking attributes. Any change to protected content or implementation data still requires explicit approval.
-- Remove repetitive recommendation templates, scoring-engine language, database-like labels, and mechanical classification patterns. Reduce repeated imperatives such as "Choose," "Check," "Verify," "Compare," "Confirm," and "Prioritize," and repeated labels such as "Best for," "Watch out," "Decision," "Recommendation," and "Alternative" when natural explanatory prose is clearer.
-- Prefer familiar everyday English over consultant, scoring-engine, database, process-document, or AI-planner language, while keeping an editorial travel-guide tone. Do not make the copy slang-heavy or overly casual, and never invent personal experience, reviews, ratings, prices, facilities, or other unverified facts.
-- Do not repeat one recommendation through Hero → cards → table → scenarios → final recommendation. Supporting sections must add information; cards and tables are exceptions, not the default structure.
-- When the user supplies finalized English copy, apply it exactly. Do not autonomously rewrite, shorten, translate, summarize, or improve it.
+Follow the Humanization Standard in `docs/content-writing-standard.md` for rewriting complete thoughts, natural language, phrase patterns, examples, and editorial QA. Humanization is not synonym replacement.
 
-Detailed definitions, examples, preservation checks, and humanization QA belong to the Active `docs/content-writing-standard.md`. This standard does not govern Korea Inside Japan or Japanese-language localization.
+- Preserve factual meaning, search intent, useful travel information, verified data, internal links, affiliate links, and tracking attributes. Any change to protected content or implementation data still requires explicit approval.
+- Apply Content Direction and Implementation Boundary, including finalized-copy and `DONE LOCKED` protection, before any humanization work.
+
+This standard does not govern Korea Inside Japan or Japanese-language localization.
 
 ---
 
@@ -547,13 +500,6 @@ Detailed definitions, examples, preservation checks, and humanization QA belong 
 Verification must be proportional to the scope and risk of the change.
 
 The primary objective is to complete the requested implementation efficiently. Verification supports implementation and must never become the main task.
-
-For every implementation:
-
-1. Complete the approved change.
-2. Perform only the minimum verification required by the selected QA level.
-3. Report the result.
-4. Stop immediately.
 
 Do not delay task completion with unnecessary verification.
 
@@ -677,10 +623,6 @@ Stop QA and report as "Known QA Limitation" when:
 - The Product Owner has already confirmed the result on a real device.
 - Additional QA would not change the implementation decision.
 
-### Product Owner / User Verification Priority
-
-If the Product Owner confirms the result or will verify the browser directly, do not repeat automated visual checks unless explicitly requested.
-
 ### Reporting Format
 
 For every task, report:
@@ -691,18 +633,11 @@ For every task, report:
 - Time
 - Priority
 - Changed files
+- Diff summary
+- Affected pages
 - Verification level used
 - QA result
 - Known QA limitations, if any
-
-Important:
-
-- Do not perform full QA for minor changes.
-- Do not delay implementation with excessive verification.
-- Time is also a quality factor.
-- For document changes, modify only the named documents and sections, show the full diff without abbreviation, and wait for Product Owner approval before commit or follow-up work.
-- After the approved implementation and required verification level are complete, report the result and stop immediately.
-- Do not continue with additional QA, screenshots, improvements, refactoring, commits, pushes, or another task unless explicitly requested by the Product Owner.
 
 ---
 
@@ -719,18 +654,6 @@ Whenever major research documentation is explicitly requested or approved, creat
 - Important findings
 - Assumptions
 - Items requiring future verification
-
-After completing a task, report:
-
-- Impact
-- Time
-- Priority
-- Changed files
-- Diff summary
-- Affected pages
-- Verification level used
-- QA result
-- Known QA limitations, if any
 
 ---
 

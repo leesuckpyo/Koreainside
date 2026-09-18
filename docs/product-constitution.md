@@ -18,7 +18,7 @@ Review Trigger : Product mission, target user, product philosophy, non-goal, or 
 
 Korea Inside Product Constitution defines the highest product principles for the project.
 
-This document is used above all Handbooks.
+This priority applies to product purpose, philosophy, and product decision principles. The current user instruction is the highest execution authority. Root `AGENTS.md` is the source of truth for file-change permission, scope, approval, and Git rules. Product principles do not override that execution authority.
 
 ## 1. Mission
 
