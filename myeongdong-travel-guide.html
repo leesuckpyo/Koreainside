@@ -15,10 +15,88 @@
   <script src="event-status.js" defer></script>
   <style>
     body.hongdae-myeongdong-page,
-    .hongdae-myeongdong-page main,
-    .hongdae-myeongdong-page main > .hm-hero,
-    .hongdae-myeongdong-page main > .hm-section {
+    .hongdae-myeongdong-page main {
       background-color: #ffffff;
+    }
+
+    .hongdae-myeongdong-page main {
+      --myeongdong-h1-size: 56px;
+      --myeongdong-h1-line-height: 1.05;
+      --myeongdong-h2-size: 42px;
+      --myeongdong-h3-size: 28px;
+      --myeongdong-h3-line-height: 1.2;
+      --myeongdong-body-size: 18px;
+      --myeongdong-body-line-height: 1.68;
+      --myeongdong-section-space: 72px;
+      --myeongdong-first-section-space: 88px;
+      --myeongdong-h2-gap: 24px;
+      --myeongdong-h3-top: 44px;
+      --myeongdong-h3-bottom: 16px;
+      --myeongdong-image-top: 32px;
+      --myeongdong-image-bottom: 36px;
+      --myeongdong-breadcrumb-gap: 20px;
+      --myeongdong-lead-gap: 24px;
+    }
+
+    body.hongdae-myeongdong-page main .myeongdong-guide-hero {
+      --detail-hero-breadcrumb-gap: var(--myeongdong-breadcrumb-gap);
+      --detail-hero-title-gap: var(--myeongdong-lead-gap);
+    }
+
+    body.stay-cluster.hongdae-myeongdong-page main .myeongdong-guide-hero h1 {
+      font-size: var(--myeongdong-h1-size);
+      font-weight: 600;
+      line-height: var(--myeongdong-h1-line-height);
+      letter-spacing: -0.025em;
+    }
+
+    body.stay-cluster.hongdae-myeongdong-page main .hm-section__header h2 {
+      font-size: var(--myeongdong-h2-size);
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+    }
+
+    body.stay-cluster.hongdae-myeongdong-page main .hm-prose h3 {
+      margin-top: var(--myeongdong-h3-top);
+      margin-bottom: var(--myeongdong-h3-bottom);
+      font-size: var(--myeongdong-h3-size);
+      font-weight: 600;
+      line-height: var(--myeongdong-h3-line-height);
+      letter-spacing: -0.015em;
+    }
+
+    body.stay-cluster.hongdae-myeongdong-page main :is(
+      .hm-prose p,
+      .hm-prose li,
+      .hm-hero__answer p,
+      .myeongdong-guide-intro p,
+      .myeongdong-contextual-cta p,
+      .myeongdong-stay-bridge__body
+    ) {
+      font-size: var(--myeongdong-body-size);
+      font-weight: 400;
+      line-height: var(--myeongdong-body-line-height);
+    }
+
+    .hongdae-myeongdong-page main .hm-prose,
+    .hongdae-myeongdong-page main .hm-prose--wide {
+      max-width: 900px;
+      max-inline-size: 900px;
+      margin-inline: 0;
+    }
+
+    .hongdae-myeongdong-page main .hm-section {
+      padding: var(--myeongdong-section-space) 0;
+      background: #ffffff;
+    }
+
+    .hongdae-myeongdong-page main .hm-section__header {
+      margin-bottom: var(--myeongdong-h2-gap);
+    }
+
+    .hongdae-myeongdong-page main #myeongdong-travel-guide {
+      padding-top: var(--myeongdong-first-section-space);
     }
 
     .hongdae-myeongdong-page main .myeongdong-stay-bridge {
@@ -26,7 +104,7 @@
     }
 
     .hongdae-myeongdong-page main .myeongdong-stay-bridge__content {
-      padding: 22px 0;
+      padding: 28px 0;
       border-block: 1px solid var(--gray-200);
     }
 
@@ -41,7 +119,7 @@
 
     .hongdae-myeongdong-page main .myeongdong-stay-bridge__title {
       margin: 0 0 12px;
-      font-size: 30px;
+      font-size: clamp(22px, 2.4vw, 28px);
       line-height: 1.35;
     }
 
@@ -76,9 +154,11 @@
     .hongdae-myeongdong-page main .myeongdong-stay-bridge__link--cta,
     .hongdae-myeongdong-page main .myeongdong-stay-bridge__link--cta:visited {
       padding: 10px 18px;
-      border-radius: var(--radius-sm);
+      border-radius: 8px;
       background: var(--blue-accent);
       color: var(--white);
+      font-size: 16px;
+      line-height: 1.5;
       text-decoration: none;
       transition: background-color 180ms ease;
     }
@@ -89,12 +169,23 @@
       color: var(--white);
     }
 
+    #myeongdong-stay-bridge-1 .myeongdong-stay-bridge__content,
+    #myeongdong-stay-bridge-2 .myeongdong-stay-bridge__content {
+      padding-block: 22px;
+    }
+
+    #myeongdong-stay-bridge-1 .myeongdong-stay-bridge__title,
+    #myeongdong-stay-bridge-2 .myeongdong-stay-bridge__title {
+      font-size: 30px;
+      line-height: 1.35;
+    }
+
     .hongdae-myeongdong-page main .myeongdong-contextual-cta {
       max-width: 740px;
       margin: 24px 0 0;
       padding: 20px;
       border: 1px solid var(--gray-200);
-      border-radius: var(--radius-md);
+      border-radius: 12px;
       background: var(--gray-50);
     }
 
@@ -110,16 +201,38 @@
     }
 
     @media (max-width: 719px) {
-      .hongdae-myeongdong-page main .myeongdong-stay-bridge__title {
+      #myeongdong-stay-bridge-1 .myeongdong-stay-bridge__title,
+      #myeongdong-stay-bridge-2 .myeongdong-stay-bridge__title {
         font-size: 25px;
       }
     }
 
     #myeongdong-routes .myeongdong-timeline {
+      width: 100%;
+      max-width: 900px;
       margin: 24px 0 32px;
     }
 
+    #myeongdong-routes .hm-numbered-list {
+      padding: 0;
+      margin: 34px 0;
+      border-top: 1px solid var(--gray-200);
+      list-style: none;
+      counter-reset: none;
+    }
+
+    #myeongdong-routes .hm-numbered-list li {
+      padding: 22px 0;
+      border-bottom: 1px solid var(--gray-200);
+      counter-increment: none;
+    }
+
+    #myeongdong-routes .hm-numbered-list li::before {
+      content: none;
+    }
+
     body.hongdae-myeongdong-page main .myeongdong-guide-hero {
+      padding-bottom: 0;
       background: transparent;
       border-bottom: 0;
     }
@@ -129,49 +242,56 @@
     }
 
     body.hongdae-myeongdong-page main .myeongdong-guide-hero__media {
+      width: 100%;
+      max-width: 1080px;
       min-width: 0;
       margin: 0;
+    }
+
+    body.hongdae-myeongdong-page main .myeongdong-guide-hero__media picture {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
     }
 
     body.hongdae-myeongdong-page main .myeongdong-guide-hero__media img {
       display: block;
       width: 100%;
-      height: auto;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 0;
     }
 
     body.hongdae-myeongdong-page main .myeongdong-guide-hero__media figcaption {
       margin-top: 10px;
       color: #686158;
-      font-size: 13px;
+      font-size: 14px;
       line-height: 1.5;
     }
 
     body.hongdae-myeongdong-page main .myeongdong-guide-intro {
-      padding-top: 32px;
-      padding-bottom: 40px;
+      padding-top: var(--myeongdong-image-top);
+      padding-right: 20px;
+      padding-bottom: 0;
+      padding-left: 20px;
     }
 
     body.hongdae-myeongdong-page main .myeongdong-guide-intro .hm-hero__answer p {
       color: inherit;
     }
 
+    body.hongdae-myeongdong-page main .myeongdong-guide-intro .hm-hero__answer {
+      max-width: 900px;
+    }
+
     body.hongdae-myeongdong-page main .myeongdong-guide-intro .hm-hero__answer p + p {
-      margin-top: 18px;
+      margin-top: 16px;
     }
 
-    @media (max-width: 719px) {
-      body.hongdae-myeongdong-page main .myeongdong-guide-intro {
-        padding-top: 24px;
-        padding-bottom: 28px;
-      }
-
-      body.hongdae-myeongdong-page main .myeongdong-guide-intro .hm-hero__answer p + p {
-        margin-top: 16px;
-      }
-    }
     .hongdae-myeongdong-page main .hm-editorial-image {
       max-width: 740px;
-      margin: 28px auto 34px;
+      margin: var(--myeongdong-image-top) auto var(--myeongdong-image-bottom);
     }
 
     .hongdae-myeongdong-page main .hm-editorial-image img {
@@ -187,7 +307,43 @@
       line-height: 1.5;
     }
 
+    @media (max-width: 1023px) {
+      .hongdae-myeongdong-page main {
+        --myeongdong-h1-size: 44px;
+        --myeongdong-h2-size: 36px;
+        --myeongdong-h3-size: 25px;
+        --myeongdong-body-line-height: 1.65;
+        --myeongdong-section-space: 64px;
+        --myeongdong-first-section-space: 72px;
+        --myeongdong-h2-gap: 22px;
+        --myeongdong-h3-top: 40px;
+        --myeongdong-image-top: 28px;
+        --myeongdong-image-bottom: 32px;
+        --myeongdong-breadcrumb-gap: 18px;
+        --myeongdong-lead-gap: 22px;
+      }
+    }
+
     @media (max-width: 719px) {
+      .hongdae-myeongdong-page main {
+        --myeongdong-h1-size: 36px;
+        --myeongdong-h1-line-height: 1.08;
+        --myeongdong-h2-size: 32px;
+        --myeongdong-h3-size: 22px;
+        --myeongdong-h3-line-height: 1.22;
+        --myeongdong-body-size: 17px;
+        --myeongdong-section-space: 52px;
+        --myeongdong-first-section-space: 56px;
+        --myeongdong-h2-gap: 20px;
+        --myeongdong-h3-top: 36px;
+        --myeongdong-h3-bottom: 14px;
+        --myeongdong-image-top: 24px;
+        --myeongdong-image-bottom: 28px;
+        --myeongdong-breadcrumb-gap: 14px;
+        --myeongdong-lead-gap: 22px;
+      }
+
+      body.hongdae-myeongdong-page main .myeongdong-guide-hero__media figcaption,
       .hongdae-myeongdong-page main .hm-editorial-image figcaption {
         font-size: 13px;
       }
@@ -260,7 +416,9 @@
         </div>
         <!-- Source file: 명동거리_1_공공1유형_한국관광공사 이범수_DbLy7P.webp | Photo: Korea Tourism Organization / Lee Beom-su | License: KOGL Type 1 (공공1유형) -->
         <figure class="myeongdong-guide-hero__media">
-          <img src="images/myeongdong/myeongdong-travel-guide-hero-1600-v20260916.webp" srcset="images/myeongdong/myeongdong-travel-guide-hero-1200-v20260916.webp 1200w, images/myeongdong/myeongdong-travel-guide-hero-1600-v20260916.webp 1600w, images/myeongdong/myeongdong-travel-guide-hero-2160-v20260916.webp 2160w" sizes="(max-width: 1120px) calc(100vw - 40px), 1080px" alt="Busy pedestrian shopping street in Myeongdong, Seoul." width="1600" height="1067" loading="eager" decoding="async" fetchpriority="high">
+          <picture>
+            <img src="images/myeongdong/myeongdong-travel-guide-hero-1600-v20260916.webp" srcset="images/myeongdong/myeongdong-travel-guide-hero-1200-v20260916.webp 1200w, images/myeongdong/myeongdong-travel-guide-hero-1600-v20260916.webp 1600w, images/myeongdong/myeongdong-travel-guide-hero-2160-v20260916.webp 2160w" sizes="(max-width: 1120px) calc(100vw - 40px), 1080px" alt="Busy pedestrian shopping street in Myeongdong, Seoul." width="1600" height="1067" loading="eager" decoding="async" fetchpriority="high">
+          </picture>
           <figcaption>Photo: Korea Tourism Organization / Lee Beom-su · KOGL Type 1</figcaption>
         </figure>
       </div>
@@ -398,7 +556,7 @@
       </div>
     </section>
 
-    <aside class="myeongdong-stay-bridge" id="myeongdong-stay-bridge-1" aria-labelledby="myeongdong-stay-bridge-1-title">
+    <aside class="myeongdong-stay-bridge internal-link-block-v1" id="myeongdong-stay-bridge-1" aria-labelledby="myeongdong-stay-bridge-1-title">
       <div class="container">
         <div class="myeongdong-stay-bridge__content">
           <p class="myeongdong-stay-bridge__kicker">STAY IN MYEONGDONG</p>
@@ -506,7 +664,7 @@
       </div>
     </section>
 
-    <aside class="myeongdong-stay-bridge" id="myeongdong-stay-bridge-2" aria-labelledby="myeongdong-stay-bridge-2-title">
+    <aside class="myeongdong-stay-bridge internal-link-block-v1" id="myeongdong-stay-bridge-2" aria-labelledby="myeongdong-stay-bridge-2-title">
       <div class="container">
         <div class="myeongdong-stay-bridge__content">
           <p class="myeongdong-stay-bridge__kicker">SHOPPING + HOTEL</p>
@@ -621,7 +779,7 @@
           <p>If possible, use this sequence:</p>
           <p>personal color → K-beauty shopping</p>
           <p>Then the appointment changes the rest of the day rather than becoming an isolated souvenir experience.</p>
-          <aside class="myeongdong-contextual-cta" aria-labelledby="myeongdong-personal-color-cta-title">
+          <aside class="myeongdong-contextual-cta affiliate-cta-v1" aria-labelledby="myeongdong-personal-color-cta-title">
             <p id="myeongdong-personal-color-cta-title"><strong>Shopping for K-beauty in Myeongdong?</strong></p>
             <p>A personal color session before a large makeup purchase can help narrow down shades and products that actually suit you.</p>
             <p><a class="myeongdong-stay-bridge__link myeongdong-stay-bridge__link--cta" href="https://creatrip.com/en/spot/13645?utm_source=AFF-bootb2v&amp;aff_id=AFF-bootb2v" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="creatrip" data-page-category="travel-guides" data-content-topic="personal-color" data-placement="myeongdong-guide-personal-color" data-link-stage="contextual">Check a Myeongdong personal color session →</a></p>
@@ -640,7 +798,7 @@
           <p>The Myeongdong theater is actively operating in September 2026, with evening performances on most dates and additional afternoon shows on selected days.</p>
           <p>That makes it particularly practical for families, mixed-language groups and travelers who want something predictable after dinner.</p>
           <p>It is also a useful bad-weather option.</p>
-          <aside class="myeongdong-contextual-cta" aria-labelledby="myeongdong-nanta-cta-title">
+          <aside class="myeongdong-contextual-cta affiliate-cta-v1" aria-labelledby="myeongdong-nanta-cta-title">
             <p id="myeongdong-nanta-cta-title"><strong>Want an easy evening show in Myeongdong?</strong></p>
             <p>NANTA is a non-verbal comedy and percussion show that works well for families, mixed-language groups and rainy evenings.</p>
             <p><a class="myeongdong-stay-bridge__link myeongdong-stay-bridge__link--cta" href="https://affiliate.klook.com/sl/w5qi2fo" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="klook" data-page-category="travel-guides" data-content-topic="myeongdong-nanta" data-placement="myeongdong-guide-nanta" data-link-stage="contextual">Check Myeongdong NANTA tickets →</a></p>
@@ -709,7 +867,7 @@
           <p>shopping → hotel → drop bags / short rest → Namsan</p>
           <p>is often more sensible than carrying everything uphill because your original itinerary had no break in it.</p>
           <p>The same attraction becomes easier simply because you changed the sequence.</p>
-          <aside class="myeongdong-contextual-cta" aria-labelledby="myeongdong-n-seoul-tower-cta-title">
+          <aside class="myeongdong-contextual-cta affiliate-cta-v1" aria-labelledby="myeongdong-n-seoul-tower-cta-title">
             <p id="myeongdong-n-seoul-tower-cta-title"><strong>Good weather for Namsan?</strong></p>
             <p>If visibility is clear, N Seoul Tower is an easy way to finish a Myeongdong day with a city view.</p>
             <p><a class="myeongdong-stay-bridge__link myeongdong-stay-bridge__link--cta" href="https://affiliate.klook.com/sl/GPcwXmZ" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="klook" data-page-category="travel-guides" data-content-topic="n-seoul-tower" data-placement="myeongdong-guide-n-seoul-tower" data-link-stage="contextual">Check N Seoul Tower tickets →</a></p>
@@ -920,7 +1078,7 @@
       </div>
     </section>
 
-    <aside class="myeongdong-stay-bridge" id="myeongdong-stay-bridge-3" aria-labelledby="myeongdong-stay-bridge-3-title">
+    <aside class="myeongdong-stay-bridge editorial-nav-cta-v1" id="myeongdong-stay-bridge-3" aria-labelledby="myeongdong-stay-bridge-3-title">
       <div class="container">
         <div class="myeongdong-stay-bridge__content">
           <p class="myeongdong-stay-bridge__kicker">USING MYEONGDONG AS A BASE</p>
@@ -1076,7 +1234,7 @@
       </div>
     </section>
 
-    <aside class="myeongdong-stay-bridge" id="myeongdong-final-stay" aria-labelledby="myeongdong-final-stay-title">
+    <aside class="myeongdong-stay-bridge editorial-nav-cta-v1" id="myeongdong-final-stay" aria-labelledby="myeongdong-final-stay-title">
       <div class="container">
         <div class="myeongdong-stay-bridge__content">
           <p class="myeongdong-stay-bridge__kicker">STAYING IN MYEONGDONG</p>
