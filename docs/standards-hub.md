@@ -11,7 +11,7 @@ Not Responsible For : File-change approval, product philosophy, business strateg
 Higher Priority Documents : Current User Instruction, AGENTS.md
 Related Documents : PROJECT.md, AGENTS.md, docs/product-constitution.md, docs/business-operating-system.md, docs/conflict-resolution-standard.md
 Change Policy : Owner approval required before change
-Last Reviewed : 2026-07-25
+Last Reviewed : 2026-09-18
 Review Trigger : Documentation role, source-of-truth mapping, document inventory, or reference-order change
 
 ## 1. Purpose
@@ -96,6 +96,7 @@ Historical records are consulted selectively for context; current repository sta
 | Document | Role |
 |---|---|
 | `design-system.md` | Site-wide visual language, color roles, typography, spacing, images, infographics, responsive design, and design QA |
+| `design-travel-guide.md` | Travel Guide family-specific typography, spacing, image, CTA, internal-link, affiliate, and responsive standards |
 | `component-library.md` | Reusable component structures and variants |
 | `golden-page-template.md` | Detailed page structure and decision flow |
 | `page-template-standard.md` | Minimum page skeleton checklist |

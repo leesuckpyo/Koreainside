@@ -11,7 +11,7 @@ Not Responsible For : Product philosophy, business strategy, documentation index
 Higher Priority Documents : Current User Instruction
 Related Documents : PROJECT.md, docs/product-constitution.md, docs/business-operating-system.md, docs/standards-hub.md
 Change Policy : Owner approval required before change
-Last Reviewed : 2026-07-25
+Last Reviewed : 2026-09-18
 Review Trigger : Codex workflow, approval policy, protected file policy, git workflow, or AI behavior rule changes
 
 ## Project Base and Implementation Contract
@@ -285,6 +285,7 @@ Keep detailed professional rules in their source-of-truth documents instead of d
 - Documentation roles and reference order: `docs/standards-hub.md`
 - Content writing and editorial QA: `docs/content-writing-standard.md`
 - Visual design and component rules: `docs/design-system.md`
+- Travel Guide family design: `docs/design-travel-guide.md`
 - SEO: `docs/seo-standard.md`
 - Multilingual SEO: `docs/multilingual-seo-strategy.md`
 - Decision logic: `docs/decision-engine.md`
@@ -293,6 +294,8 @@ Keep detailed professional rules in their source-of-truth documents instead of d
 - Business and monetization principles: `docs/business-operating-system.md`
 
 These documents provide domain standards. They do not expand the approved task scope or authorize file changes.
+
+For a new Travel Guide or an approved Travel Guide design revision, read both `docs/design-system.md` and `docs/design-travel-guide.md`. Reuse an approved Travel Guide component when an equivalent component already exists. If the Family Design Standard does not cover the required UI, stop, report the reason, and obtain explicit user approval before creating a different design.
 
 ---
 

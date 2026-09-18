@@ -15,10 +15,87 @@
   <script src="event-status.js" defer></script>
   <style>
     body.hongdae-myeongdong-page,
-    .hongdae-myeongdong-page main,
-    .hongdae-myeongdong-page main > .hm-hero,
-    .hongdae-myeongdong-page main > .hm-section {
+    .hongdae-myeongdong-page main {
       background-color: #ffffff;
+    }
+
+    .hongdae-myeongdong-page main {
+      --hongdae-h1-size: 56px;
+      --hongdae-h1-line-height: 1.05;
+      --hongdae-h2-size: 42px;
+      --hongdae-h3-size: 28px;
+      --hongdae-h3-line-height: 1.2;
+      --hongdae-body-size: 18px;
+      --hongdae-body-line-height: 1.68;
+      --hongdae-section-space: 72px;
+      --hongdae-first-section-space: 88px;
+      --hongdae-h2-gap: 24px;
+      --hongdae-h3-top: 44px;
+      --hongdae-h3-bottom: 16px;
+      --hongdae-image-top: 32px;
+      --hongdae-image-bottom: 36px;
+      --hongdae-breadcrumb-gap: 20px;
+      --hongdae-lead-gap: 24px;
+    }
+
+    body.hongdae-myeongdong-page main .hongdae-guide-hero {
+      --detail-hero-breadcrumb-gap: var(--hongdae-breadcrumb-gap);
+      --detail-hero-title-gap: var(--hongdae-lead-gap);
+    }
+
+    body.stay-cluster.hongdae-myeongdong-page main .hongdae-guide-hero h1 {
+      font-size: var(--hongdae-h1-size);
+      font-weight: 600;
+      line-height: var(--hongdae-h1-line-height);
+      letter-spacing: -0.025em;
+    }
+
+    body.stay-cluster.hongdae-myeongdong-page main .hm-section__header h2 {
+      font-size: var(--hongdae-h2-size);
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+    }
+
+    body.stay-cluster.hongdae-myeongdong-page main .hm-prose h3 {
+      margin-top: var(--hongdae-h3-top);
+      margin-bottom: var(--hongdae-h3-bottom);
+      font-size: var(--hongdae-h3-size);
+      font-weight: 600;
+      line-height: var(--hongdae-h3-line-height);
+      letter-spacing: -0.015em;
+    }
+
+    body.stay-cluster.hongdae-myeongdong-page main :is(
+      .hm-prose p,
+      .hm-prose li,
+      .hm-hero__answer p,
+      .hongdae-contextual-cta p,
+      .hongdae-stay-bridge__body
+    ) {
+      font-size: var(--hongdae-body-size);
+      font-weight: 400;
+      line-height: var(--hongdae-body-line-height);
+    }
+
+    .hongdae-myeongdong-page main .hm-prose,
+    .hongdae-myeongdong-page main .hm-prose--wide {
+      max-width: 900px;
+      max-inline-size: 900px;
+      margin-inline: 0;
+    }
+
+    .hongdae-myeongdong-page main .hm-section {
+      padding: var(--hongdae-section-space) 0;
+      background: #ffffff;
+    }
+
+    .hongdae-myeongdong-page main .hm-section__header {
+      margin-bottom: var(--hongdae-h2-gap);
+    }
+
+    .hongdae-myeongdong-page main #hongdae-travel-guide {
+      padding-top: var(--hongdae-first-section-space);
     }
 
     .hongdae-myeongdong-page main .hongdae-stay-bridge {
@@ -76,9 +153,11 @@
     .hongdae-myeongdong-page main .hongdae-stay-bridge__link--cta,
     .hongdae-myeongdong-page main .hongdae-stay-bridge__link--cta:visited {
       padding: 10px 18px;
-      border-radius: var(--radius-sm);
+      border-radius: 8px;
       background: var(--blue-accent);
       color: var(--white);
+      font-size: 16px;
+      line-height: 1.5;
       text-decoration: none;
       transition: background-color 180ms ease;
     }
@@ -108,11 +187,25 @@
     }
 
     #hongdae-final-routes .hongdae-timeline {
+      width: 100%;
+      max-width: 900px;
       margin: 24px 0 32px;
     }
 
+    #hongdae-final-routes .hongdae-itinerary-list {
+      padding: 0;
+      margin: 34px 0;
+      border-top: 1px solid var(--gray-200);
+      list-style: none;
+    }
+
+    #hongdae-final-routes .hongdae-itinerary-list li {
+      padding: 22px 0;
+      border-bottom: 1px solid var(--gray-200);
+    }
+
     .hongdae-myeongdong-page main .hm-editorial-image {
-      margin: 28px auto 34px;
+      margin: var(--hongdae-image-top) auto var(--hongdae-image-bottom);
     }
 
     .hongdae-myeongdong-page main .hongdae-guide-intro .hm-editorial-image {
@@ -154,7 +247,7 @@
       margin: 24px 0 0;
       padding: 20px;
       border: 1px solid var(--gray-200);
-      border-radius: var(--radius-md);
+      border-radius: 12px;
       background: var(--gray-50);
     }
 
@@ -217,6 +310,7 @@
     }
 
     body.hongdae-myeongdong-page main .hongdae-guide-hero {
+      padding-bottom: 0;
       background: transparent;
       border-bottom: 0;
     }
@@ -226,8 +320,11 @@
     }
 
     body.hongdae-myeongdong-page main .hongdae-guide-hero__media {
+      width: 100%;
+      max-width: 1080px;
       min-width: 0;
       margin: 0;
+      aspect-ratio: 16 / 9;
     }
 
     body.hongdae-myeongdong-page main .hongdae-guide-hero__media picture,
@@ -235,6 +332,58 @@
       display: block;
       width: 100%;
       height: auto;
+      border-radius: 0;
+    }
+
+    .hongdae-myeongdong-page main .internal-link-block-v1--comparison {
+      padding: var(--hongdae-section-space) 0;
+      background: #ffffff;
+    }
+
+    .hongdae-myeongdong-page main .internal-link-block-v1--comparison .hm-prose {
+      padding-top: 24px;
+      border-top: 1px solid var(--gray-200);
+    }
+
+    .hongdae-myeongdong-page main .internal-link-block-v1--comparison .hm-prose p:last-child {
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 1023px) {
+      .hongdae-myeongdong-page main {
+        --hongdae-h1-size: 44px;
+        --hongdae-h2-size: 36px;
+        --hongdae-h3-size: 25px;
+        --hongdae-body-line-height: 1.65;
+        --hongdae-section-space: 64px;
+        --hongdae-first-section-space: 72px;
+        --hongdae-h2-gap: 22px;
+        --hongdae-h3-top: 40px;
+        --hongdae-image-top: 28px;
+        --hongdae-image-bottom: 32px;
+        --hongdae-breadcrumb-gap: 18px;
+        --hongdae-lead-gap: 22px;
+      }
+    }
+
+    @media (max-width: 719px) {
+      .hongdae-myeongdong-page main {
+        --hongdae-h1-size: 36px;
+        --hongdae-h1-line-height: 1.08;
+        --hongdae-h2-size: 32px;
+        --hongdae-h3-size: 22px;
+        --hongdae-h3-line-height: 1.22;
+        --hongdae-body-size: 17px;
+        --hongdae-section-space: 52px;
+        --hongdae-first-section-space: 56px;
+        --hongdae-h2-gap: 20px;
+        --hongdae-h3-top: 36px;
+        --hongdae-h3-bottom: 14px;
+        --hongdae-image-top: 24px;
+        --hongdae-image-bottom: 28px;
+        --hongdae-breadcrumb-gap: 14px;
+        --hongdae-lead-gap: 22px;
+      }
     }
 
   </style>
@@ -312,6 +461,7 @@
             <p>Hongdae works best when you plan it as a neighborhood, not a checklist. Start with Yeonnam or the busier Hongdae core, then build the day around shopping, food, performances and the kind of evening you actually want.</p>
           </div>
         </div>
+        <!-- Hero image provenance: Original filename: 20260829 마포구 홍대로드4.jpg | Source: Wikimedia Commons | Author: Striker9498 | Source type: Own work | Original dimensions: 4000 x 2250 | License: Creative Commons CC0 1.0 Universal Public Domain Dedication | Original URL: https://commons.wikimedia.org/wiki/File:20260829_마포구_홍대로드4.jpg | Usage: Hongdae Travel Guide hero; derived WebP files at 1200px, 1600px, and 2160px -->
         <figure class="hongdae-guide-hero__media">
           <picture>
             <img src="images/hongdae/hongdae-travel-guide-hero-1600-v20260916.webp" srcset="images/hongdae/hongdae-travel-guide-hero-1200-v20260916.webp 1200w, images/hongdae/hongdae-travel-guide-hero-1600-v20260916.webp 1600w, images/hongdae/hongdae-travel-guide-hero-2160-v20260916.webp 2160w" sizes="(max-width: 1120px) calc(100vw - 40px), 1080px" alt="Busy Hongdae street with shops, signs and pedestrians in Seoul." width="1600" height="900" loading="eager" decoding="async" fetchpriority="high">
@@ -342,7 +492,7 @@
       </div>
     </section>
 
-    <aside class="hongdae-stay-bridge" id="hongdae-stay-bridge-1" aria-labelledby="hongdae-stay-bridge-1-title">
+    <aside class="hongdae-stay-bridge internal-link-block-v1" id="hongdae-stay-bridge-1" aria-labelledby="hongdae-stay-bridge-1-title">
       <div class="container">
         <div class="hongdae-stay-bridge__content">
           <p class="hongdae-stay-bridge__kicker">STAY IN HONGDAE</p>
@@ -374,7 +524,7 @@
           <!-- Source file: 연남동_경의선숲길_1_공공1유형_한국관광공사 이범수_ONxkAa.webp | Photo: Korea Tourism Organization / Lee Beom-su | License: KOGL Type 1 (공공1유형) -->
           <figure class="hm-editorial-image">
             <img src="images/hongdae/yeonnam-gyeongui-forest-01-1400.webp" srcset="images/hongdae/yeonnam-gyeongui-forest-01-768.webp 768w, images/hongdae/yeonnam-gyeongui-forest-01-1400.webp 1400w" sizes="(max-width: 768px) 100vw, 740px" width="1400" height="933" alt="Gyeongui Line Forest Park in Yeonnam-dong, Seoul" loading="lazy" decoding="async">
-            <figcaption>Gyeongui Line Forest Park, Yeonnam-dong<br>Photo: Korea Tourism Organization / Lee Beom-su · KOGL Type 1</figcaption>
+            <figcaption>Gyeongui Line Forest Park, Yeonnam-dong<br>Photo: Korea Tourism Organization / Lee Beom-su</figcaption>
           </figure>
           <h3>Start at Exit 9 if the busy part is the reason you came</h3>
           <p>If your priority is Red Road, shopping, character goods, K-pop merchandise or the central street scene, Exit 9 is the more direct start.</p>
@@ -404,7 +554,7 @@
           <!-- Source file: 연남동_경의선숲길_1_공공1유형_한국관광공사 이범수_ONxkDa.webp | Photo: Korea Tourism Organization / Lee Beom-su | License: KOGL Type 1 (공공1유형) -->
           <figure class="hm-editorial-image">
             <img src="images/hongdae/yeonnam-gyeongui-forest-02-1400.webp" srcset="images/hongdae/yeonnam-gyeongui-forest-02-768.webp 768w, images/hongdae/yeonnam-gyeongui-forest-02-1400.webp 1400w" sizes="(max-width: 768px) 100vw, 740px" width="1400" height="933" alt="Tree-lined walking path in Gyeongui Line Forest Park, Yeonnam-dong" loading="lazy" decoding="async">
-            <figcaption>The Yeonnam section of Gyeongui Line Forest Park<br>Photo: Korea Tourism Organization / Lee Beom-su · KOGL Type 1</figcaption>
+            <figcaption>The Yeonnam section of Gyeongui Line Forest Park<br>Photo: Korea Tourism Organization / Lee Beom-su</figcaption>
           </figure>
           <h3>Do not turn the forest park into a long walk</h3>
           <p>The park works best as the beginning of the afternoon, not the main attraction.</p>
@@ -424,7 +574,7 @@
           <!-- Source file: 연남동_경의선숲길_1_공공1유형_한국관광공사 이범수_ONxkPa.webp | Photo: Korea Tourism Organization / Lee Beom-su | License: KOGL Type 1 (공공1유형) -->
           <figure class="hm-editorial-image">
             <img src="images/hongdae/yeonnam-street-forest-1400.webp" srcset="images/hongdae/yeonnam-street-forest-768.webp 768w, images/hongdae/yeonnam-street-forest-1400.webp 1400w" sizes="(max-width: 768px) 100vw, 740px" width="1400" height="933" alt="Shops and walking area beside Gyeongui Line Forest Park in Yeonnam-dong" loading="lazy" decoding="async">
-            <figcaption>Yeonnam-dong beside Gyeongui Line Forest Park<br>Photo: Korea Tourism Organization / Lee Beom-su · KOGL Type 1</figcaption>
+            <figcaption>Yeonnam-dong beside Gyeongui Line Forest Park<br>Photo: Korea Tourism Organization / Lee Beom-su</figcaption>
           </figure>
           <h3>Give Yeonnam roughly two to two and a half hours</h3>
           <p>For a general first visit, a useful working range is:</p>
@@ -525,7 +675,7 @@
       </div>
     </section>
 
-    <aside class="hongdae-stay-bridge" id="hongdae-stay-bridge-2" aria-labelledby="hongdae-stay-bridge-2-title">
+    <aside class="hongdae-stay-bridge internal-link-block-v1" id="hongdae-stay-bridge-2" aria-labelledby="hongdae-stay-bridge-2-title">
       <div class="container">
         <div class="hongdae-stay-bridge__content">
           <p class="hongdae-stay-bridge__kicker">HOTEL LOCATION</p>
@@ -648,7 +798,7 @@
           <p><strong>Yeonnam or lunch → dance class → short break → central Hongdae shopping → dinner → evening</strong></p>
           <p>If the class is later, reverse the shopping and class blocks.</p>
           <p>The fixed reservation should control the flexible part of the day, not the other way around.</p>
-          <aside class="hongdae-contextual-cta" aria-labelledby="hongdae-kpop-dance-cta-title">
+          <aside class="hongdae-contextual-cta affiliate-cta-v1" aria-labelledby="hongdae-kpop-dance-cta-title">
             <p id="hongdae-kpop-dance-cta-title"><strong>Want to try K-pop instead of just shopping for it?</strong></p>
             <p>Learn a K-pop choreography in a Hongdae studio with an English-friendly class, then build the rest of the afternoon around the reservation.</p>
             <p><a class="hongdae-stay-bridge__link hongdae-stay-bridge__link--cta" href="https://creatrip.com/en/spot/12956?utm_source=AFF-bootb2v&amp;aff_id=AFF-bootb2v" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="creatrip" data-page-category="travel-guides" data-content-topic="k-pop-dance" data-placement="hongdae-guide-kpop-dance" data-link-stage="contextual">Try a K-pop dance class in Hongdae →</a></p>
@@ -671,7 +821,7 @@
           <p>The reason to book it is not that perfume making is a “must-do Korean experience.”</p>
           <p>It is that you want to spend part of the trip making something you will take home.</p>
           <p>If fragrance does not interest you, skip it.</p>
-          <aside class="hongdae-contextual-cta" aria-labelledby="hongdae-perfume-cta-title">
+          <aside class="hongdae-contextual-cta affiliate-cta-v1" aria-labelledby="hongdae-perfume-cta-title">
             <p id="hongdae-perfume-cta-title"><strong>Want to bring home something you made yourself?</strong></p>
             <p>Create a personal fragrance in Hongdae instead of buying another standard souvenir.</p>
             <p><a class="hongdae-stay-bridge__link hongdae-stay-bridge__link--cta" href="https://affiliate.klook.com/sl/16W8X2Z" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="klook" data-page-category="travel-guides" data-content-topic="perfume-making" data-placement="hongdae-guide-perfume-making" data-link-stage="contextual">Make your own perfume in Hongdae →</a></p>
@@ -786,7 +936,7 @@
           <p><strong>dinner → karaoke → late food → hotel</strong></p>
           <p>A family with teenagers, a couple that does not drink or a solo traveler who does not want a club can still use the part of Hongdae that becomes most interesting after dinner.</p>
           <p>The neighborhood does not require you to participate in every version of it.</p>
-          <aside class="hongdae-contextual-cta" aria-labelledby="hongdae-nanta-cta-title">
+          <aside class="hongdae-contextual-cta affiliate-cta-v1" aria-labelledby="hongdae-nanta-cta-title">
             <p id="hongdae-nanta-cta-title"><strong>Want an evening show without the club scene?</strong></p>
             <p>NANTA mixes comedy, rhythm and acrobatics in a non-verbal performance at the Hongdae theatre.</p>
             <p><a class="hongdae-stay-bridge__link hongdae-stay-bridge__link--cta" href="https://affiliate.klook.com/sl/1TFSetx" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="klook" data-page-category="travel-guides" data-content-topic="hongdae-nanta" data-placement="hongdae-guide-nanta" data-link-stage="contextual">Check Hongdae NANTA tickets →</a></p>
@@ -801,7 +951,7 @@
           <p>travelers who dislike organized group nightlife,</p>
           <p>families,</p>
           <p>or anyone whose ideal evening ends with music, food or a café.</p>
-          <aside class="hongdae-contextual-cta hongdae-contextual-cta--image" aria-labelledby="hongdae-pub-crawl-cta-title">
+          <aside class="hongdae-contextual-cta hongdae-contextual-cta--image image-affiliate-cta" aria-labelledby="hongdae-pub-crawl-cta-title">
             <figure>
               <img src="images/hongdae/hongdae-pub-crawl-ai.webp" width="1536" height="1024" alt="AI-generated illustration of friends enjoying nightlife in Hongdae, Seoul" loading="lazy" decoding="async">
               <figcaption>AI-generated image for reference</figcaption>
@@ -841,7 +991,7 @@
       </div>
     </section>
 
-    <aside class="hongdae-stay-bridge" id="hongdae-stay-bridge-3" aria-labelledby="hongdae-stay-bridge-3-title">
+    <aside class="hongdae-stay-bridge editorial-nav-cta-v1" id="hongdae-stay-bridge-3" aria-labelledby="hongdae-stay-bridge-3-title">
       <div class="container">
         <div class="hongdae-stay-bridge__content">
           <p class="hongdae-stay-bridge__kicker">AFTER DINNER</p>
@@ -873,7 +1023,7 @@
           <h3>Start at Mangwon Market when lunch is part of the experience</h3>
           <p>Mangwon Market works best when you arrive hungry enough to use it.</p>
           <p>The market has been operating for more than four decades and remains known for affordable food and casual eating. Dakgangjeong, croquettes and other market foods are still commonly found here.</p>
-          <aside class="hongdae-contextual-cta" aria-labelledby="hongdae-mangwon-cooking-cta-title">
+          <aside class="hongdae-contextual-cta affiliate-cta-v1" aria-labelledby="hongdae-mangwon-cooking-cta-title">
             <p id="hongdae-mangwon-cooking-cta-title"><strong>Want to turn the Mangwon stop into a hands-on food experience?</strong></p>
             <p>Shop for ingredients at Mangwon Market, cook a Korean meal, and build the rest of your west-Seoul day around the neighborhood.</p>
             <p><a class="hongdae-stay-bridge__link hongdae-stay-bridge__link--cta" href="https://affiliate.klook.com/sl/1JDBzq6" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="klook" data-page-category="travel-guides" data-content-topic="mangwon-cooking" data-placement="hongdae-guide-mangwon-cooking" data-link-stage="contextual">Check the Mangwon cooking experience →</a></p>
@@ -990,7 +1140,7 @@
           <p>Give Hongdae room to change as the day gets later.</p>
           <div class="hongdae-timeline">
             <h4>Suggested timing — about 5 to 6 hours</h4>
-            <ol class="hm-numbered-list" role="list">
+            <ol class="hongdae-itinerary-list" role="list">
               <li>
                 <p><strong>2:00 PM — Hongik University Station, Exit 3</strong></p>
                 <p>Start on the Yeonnam side rather than walking straight into central Hongdae.</p>
@@ -1035,7 +1185,7 @@
           <p>Start there rather than squeezing it into the middle of Hongdae.</p>
           <div class="hongdae-timeline">
             <h4>Suggested timing — about 10 hours</h4>
-            <ol class="hm-numbered-list" role="list">
+            <ol class="hongdae-itinerary-list" role="list">
               <li>
                 <p><strong>11:00 AM–12:30 PM — Mangwon Market</strong></p>
                 <p>Start hungry and use the market as lunch rather than treating it as a sightseeing stop before another meal.</p>
@@ -1320,7 +1470,7 @@
       </div>
     </section>
 
-    <section class="hm-section hm-section--cream" id="stay-comparison">
+    <section class="hm-section internal-link-block-v1 internal-link-block-v1--comparison" id="stay-comparison">
       <div class="container">
         <header class="hm-section__header">
           <h2>Thinking about staying in Hongdae?</h2>
