@@ -4,6 +4,8 @@
 
 Layer : L3
 Status : Active
+Version : Travel Guide Family Design Standard V1
+Golden Sample : hongdae-travel-guide.html
 Authority Type : Family Design Standard
 Primary Responsibility : Travel Guide family visual system, spacing, responsive behavior, and family component usage
 Source of Truth For : Travel Guide family canvas, content widths, typography, spacing, image presentation, internal-link blocks, editorial navigation CTAs, affiliate CTA design, numbering, and date/time presentation
@@ -57,7 +59,7 @@ Separate backgrounds are allowed when they serve a functional role, including:
 - event status
 - other decision-support components
 
-Do not turn every section into a tinted card or box. The visual goal is the Korea Inside Travel Guide UI, not a generic travel-magazine layout.
+Do not turn every section into a tinted card or box. The visual goal is the Korea Inside Travel Guide UI itself.
 
 ## 3. Width Standard
 
@@ -65,10 +67,11 @@ Do not turn every section into a tinted card or box. The visual goal is the Kore
 |---|---:|
 | Global container max-width | `1120px` |
 | Global horizontal padding | `20px` per side |
-| Maximum usable container content | `1080px` |
-| General prose and itinerary max-width | `900px` |
+| Maximum usable width | `1080px` |
 | Hero or lead image max-width | `1080px` |
-| Editorial body image max-width | `740px` |
+| General prose max-width | `900px` |
+| Itinerary or timeline max-width | `900px` |
+| Editorial body image max-width | `740px`, centered |
 
 Keep general prose left-aligned within the page container. Center editorial body images within their prose or content area.
 
@@ -110,13 +113,15 @@ Keep `16px` between consecutive general paragraphs.
 | Relationship | Desktop | Tablet | Mobile |
 |---|---:|---:|---:|
 | Breadcrumb to H1 | `20px` | `18px` | `14px` |
+| H1 to lead text | `24px` | `22px` | `22px` |
 | Hero image to first H2 | `88px` | `72px` | `56px` |
 | H2 to first paragraph | `24px` | `22px` | `20px` |
+| Paragraph to paragraph | `16px` | `16px` | `16px` |
 | H3 top spacing | `44px` | `40px` | `36px` |
 | H3 to first paragraph | `16px` | `16px` | `14px` |
+| Editorial image margin, top / bottom | `32px / 36px` | `28px / 32px` | `24px / 28px` |
+| Image to caption | `10px` | `10px` | `10px` |
 | General section rhythm | `72px` | `64px` | `52px` |
-
-Keep the H1-to-lead-text spacing in the `22-24px` range by default. Prefer the verified Golden Sample value when implementing the shared component.
 
 Do not stack multiple margins and paddings to recreate one target gap. Give each relationship one clear source.
 
@@ -134,6 +139,7 @@ Special sections may use their own component spacing when needed. Do not mechani
 - Border radius: not used by default
 - Desktop: may use the full container content width
 - Mobile: use `width: 100%` inside the `20px` horizontal page padding
+- Verified source and provenance: preserve the internal record
 
 Change the photograph for each page. Image file, alt text, and any caption or credit must match that page's verified facts and approved direction.
 
@@ -150,6 +156,7 @@ Use `EDITORIAL_IMAGE_V1` for ordinary body photography.
 - Alignment: centered within the prose or content area
 - Aspect ratio: preserve the source image ratio
 - Forced crop: prohibited unless separately approved
+- Maps and infographics: may use a separately approved width when information density requires it
 
 | Viewport | Margin top | Margin bottom |
 |---|---:|---:|
@@ -261,7 +268,7 @@ Use the `no extra cost` statement only when the program cost structure has been 
 
 Do not impose a mechanical affiliate-count limit. Use this relevance chain:
 
-Relevant section -> matching action -> matching affiliate
+Relevant section → matching action → matching affiliate
 
 Only use an affiliate CTA when the context and user decision match.
 
@@ -287,7 +294,7 @@ Do not select this variant automatically in place of `AFFILIATE_CTA_V1`.
 
 ## 12. Numbering Rule
 
-Use `1`, `2`, and `3` only when the sequence itself is necessary information. Do not use numbering as decoration.
+Decorative numbering such as `01`, `02`, and `03` is prohibited. Use `1`, `2`, and `3` only when the sequence itself is necessary information. Do not use numbering as decoration.
 
 Appropriate uses:
 
@@ -297,7 +304,7 @@ Appropriate uses:
 
 Do not use numbering for:
 
-- timetables, where the time already communicates sequence
+- timetables, where the time already communicates sequence and separate numbering is unnecessary
 - cards
 - advantages or simple attraction lists
 - parallel choices
@@ -312,8 +319,8 @@ Use Korea local time and the 12-hour clock with `AM` or `PM` for travel itinerar
 Examples:
 
 - `2:00 PM`
-- `2:10-2:40 PM`
-- `5:30-7:00 PM`
+- `2:10–2:40 PM`
+- `5:30–7:00 PM`
 
 Prefer `2:00 PM` over `2 PM`. Do not repeat `KST` on every line. State the time zone only when ambiguity or travel planning makes it useful.
 
@@ -322,8 +329,8 @@ Prefer `2:00 PM` over `2 PM`. Do not repeat `KST` on every line. State the time 
 Use these presentation patterns:
 
 - Full date: `September 18, 2026`
-- Date range: `October 16-18, 2026`
-- Event heading: `October 16-18: Seoul Wow Book Festival comes to Red Road`
+- Date range: `October 16–18, 2026`
+- Event heading: `October 16–18: Seoul Wow Book Festival comes to Red Road`
 - Monthly program: `KT&G Sangsangmadang - September 2026 programs`
 - Checked date: `Checked: September 10, 2026`
 
@@ -349,7 +356,7 @@ When the next decision is clear, use one of the two preferred internal-link trea
 1. `INTERNAL_LINK_BLOCK_V1`
 2. `EDITORIAL_NAV_CTA_V1`
 
-A normal inline text link remains appropriate when it fits naturally inside the body sentence.
+A normal inline text link or image link remains appropriate when it fits the context or the user explicitly requests it. Do not use repeated standalone text links as the default treatment.
 
 ## 16. Responsive Principle
 
@@ -368,6 +375,8 @@ Do not merely shrink a desktop component proportionally on mobile. Stack or refl
 ## 17. Page Structure Freedom
 
 This standard does not force every Travel Guide to use the same table of contents.
+
+Keep width, typography, spacing, image, CTA, affiliate, internal-link, and responsive rules consistent across the family.
 
 The following may vary by page:
 

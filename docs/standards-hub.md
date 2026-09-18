@@ -96,7 +96,7 @@ Historical records are consulted selectively for context; current repository sta
 | Document | Role |
 |---|---|
 | `design-system.md` | Site-wide visual language, color roles, typography, spacing, images, infographics, responsive design, and design QA |
-| `design-travel-guide.md` | Travel Guide family-specific typography, spacing, image, CTA, internal-link, affiliate, and responsive standards |
+| `design-travel-guide.md` | Travel Guide family-specific source of truth for typography, widths, spacing, images, internal navigation CTA, affiliate CTA, numbering, date/time presentation, and responsive behavior |
 | `component-library.md` | Reusable component structures and variants |
 | `golden-page-template.md` | Detailed page structure and decision flow |
 | `page-template-standard.md` | Minimum page skeleton checklist |

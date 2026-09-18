@@ -295,7 +295,15 @@ Keep detailed professional rules in their source-of-truth documents instead of d
 
 These documents provide domain standards. They do not expand the approved task scope or authorize file changes.
 
-For a new Travel Guide or an approved Travel Guide design revision, read both `docs/design-system.md` and `docs/design-travel-guide.md`. Reuse an approved Travel Guide component when an equivalent component already exists. If the Family Design Standard does not cover the required UI, stop, report the reason, and obtain explicit user approval before creating a different design.
+Before creating a public page or revising an existing page layout, Codex must:
+
+1. Identify the page's parent navigation category and page family.
+2. Read `docs/design-system.md`.
+3. Read the Active Family Design Standard for that page family.
+4. Reuse an approved same-role family component when one exists.
+5. If the Family Design Standard does not cover the required UI, stop, report the reason, and obtain explicit user approval before creating a different design.
+
+If the parent navigation category or page family has no Active Family Design Standard, Codex must stop, report `New Page Family Design Standard required`, ask the user for approval, and not invent a design before approval.
 
 ---
 
