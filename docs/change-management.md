@@ -11,7 +11,7 @@ Change Management는 변경 판단과 기록 필요성 검토 기준이다.
 
 실제 작업 권한은 현재 사용자 명시 지시, 승인된 작업 범위, root `AGENTS.md`, Conflict Resolution Standard를 우선한다.
 
-변경 기록, 관련 MD, Change Log, Project Memory, Decision Log 업데이트는 사용자가 명시 요청하거나 승인한 범위 안에서만 수행한다.
+변경 기록과 관련 MD 업데이트는 사용자가 명시 요청하거나 승인한 범위 안에서만 수행한다.
 
 기록이 필요해 보이면 먼저 대상 문서, 이유, 영향 범위, 대안, 권장안을 보고하고 승인 대기한다.
 

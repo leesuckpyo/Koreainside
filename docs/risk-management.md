@@ -100,12 +100,6 @@ AI 잘못된 수정
 
 Review Checklist
 
-Project Memory 누락
-
-↓
-
-Decision Log 확인
-
 실물 사진 부족
 
 ↓

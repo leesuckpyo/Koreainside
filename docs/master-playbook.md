@@ -10,18 +10,18 @@ Korea Inside의 실제 작업을 시나리오별로 표준화한다.
 
 실제 작업 권한은 현재 사용자 명시 지시, 승인된 작업 범위, root `AGENTS.md`, Conflict Resolution Standard를 우선한다.
 
-관련 MD, Change Log, Project Memory, Decision Log 업데이트는 사용자가 명시 요청하거나 승인한 범위 안에서만 수행한다.
+관련 MD 업데이트는 사용자가 명시 요청하거나 승인한 범위 안에서만 수행한다.
 
 변경이 필요해 보이면 먼저 문제점, 영향 범위, 대상 파일, 대안, 권장안을 보고하고 승인 대기한다.
 
 ## 공통 원칙
 
 - Project Charter를 우선 확인한다.
-- Product Vision과 Project Memory를 확인한다.
+- Product Vision과 현재 저장소 상태를 확인한다.
 - 구조 변경 전에는 diff를 제시하고 승인받는다.
 - 기존 기능, SEO, FAQ, HTML Text를 보존한다.
 - 코드 변경 시 관련 문서 보정이 필요해 보이면 대상 문서와 이유를 보고하고 승인 대기한다.
-- 작업 완료 후 Review Checklist와 AI Evaluation Standard로 점검한다.
+- 작업 완료 후 Review Checklist로 점검한다.
 
 ---
 
@@ -76,7 +76,6 @@ Korea Inside의 실제 작업을 시나리오별로 표준화한다.
 
 ### 참조 Handbook
 
-- Project Memory
 - Change Management
 - Page Template Standard
 - Design System
@@ -233,7 +232,6 @@ Korea Inside의 실제 작업을 시나리오별로 표준화한다.
 ### 참조 Handbook
 
 - Product Vision
-- AI Decision Framework
 - Definition of Ready
 - Project Architecture
 - Code Review Standard
@@ -425,8 +423,6 @@ AI가 수행한 작업이 프로젝트 원칙과 품질 기준을 충족하는�
 
 ### 참조 Handbook
 
-- AI Self Audit Standard
-- AI Evaluation Standard
 - Code Review Standard
 - Review Checklist
 - Conflict Resolution Standard
@@ -466,8 +462,6 @@ AI가 수행한 작업이 프로젝트 원칙과 품질 기준을 충족하는�
 - Knowledge Management
 - Change Management
 - Standards Hub
-- Decision Log
-- Project Memory
 
 ### 작업 순서
 

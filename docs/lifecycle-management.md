@@ -64,8 +64,6 @@ Playbooks
 
 Official Sources
 
-Decision Log
-
 Knowledge
 
 ================================================

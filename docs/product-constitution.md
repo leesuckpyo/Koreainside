@@ -18,7 +18,7 @@ Review Trigger : Product mission, target user, product philosophy, non-goal, or 
 
 Korea Inside Product Constitution defines the highest product principles for the project.
 
-This document is used above all Handbooks and Codex Guidelines.
+This document is used above all Handbooks.
 
 ## 1. Mission
 

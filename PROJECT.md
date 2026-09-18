@@ -52,11 +52,6 @@ Use the project documents below for operational details:
 - Documentation map: `docs/standards-hub.md`
 - Long-term stages and direction: `docs/project/ROADMAP.md`
 - Reviewable backlog candidates: `docs/project/TODO.md`
-- Change history: `docs/project/CHANGELOG.md`
-- Historical milestones: `docs/project/HISTORY.md`
-- Official decisions: `docs/decision-log.md`
-- Decision summaries: `docs/project/DECISIONS.md`
-- Codex execution guidance: `docs/codex-guidelines.md`
 
 ## Maintenance Rule
 

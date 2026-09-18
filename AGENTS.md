@@ -247,7 +247,7 @@ Use this order to determine what is currently true:
 1. Current state re-verified in the actual repository or operating interface
 2. The latest handoff explicitly designated by the user
 3. Current research, official sources, and measurement data
-4. Historical handoffs, Decision Log, Project Memory, and historical records
+4. Historical handoffs and historical records
 
 The latest handoff is the primary handoff reference for current state, completed work, and next-task context. It does not let Codex automatically start a new task without the user's execution approval.
 
@@ -296,7 +296,6 @@ Keep detailed professional rules in their source-of-truth documents instead of d
 - Product principles: `docs/product-constitution.md`
 - Business principles: `docs/business-operating-system.md`
 - Documentation roles and reference order: `docs/standards-hub.md`
-- Codex execution judgment: `docs/codex-guidelines.md`
 - Content writing and editorial QA: `docs/content-writing-standard.md`
 - Visual design and component rules: `docs/design-system.md`
 - SEO: `docs/seo-standard.md`

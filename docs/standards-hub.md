@@ -41,7 +41,7 @@ Use this order to determine what is currently true:
 1. Current state re-verified in the actual repository or operating interface
 2. The latest handoff explicitly designated by the user
 3. Current research, official sources, and measurement data
-4. Historical handoffs, Decision Log, Project Memory, and historical records
+4. Historical handoffs and historical records
 
 If no latest handoff is explicitly designated, do not infer one from a dated report or historical record.
 
@@ -76,7 +76,7 @@ If a latest and historical handoff conflict, use the latest. Never re-run a hist
 
 ### Historical Records
 
-Decision logs, project memory, changelogs, reports, and history documents are consulted selectively for context and preserved as records.
+Historical records are consulted selectively for context; current repository state and Active Standards take priority.
 
 ## 5. Core Documents
 
@@ -90,17 +90,6 @@ Decision logs, project memory, changelogs, reports, and history documents are co
 | `implementation-contract-standard.md` | Required format and boundaries for approved implementation work |
 
 ## 6. Professional Standards
-
-### Codex and AI
-
-| Document | Role |
-|---|---|
-| `codex-guidelines.md` | Supplementary execution judgment; does not repeat or override `AGENTS.md` |
-| `ai-development-constitution.md` | Durable AI development principles |
-| `ai-decision-framework.md` | Decision sequence and trade-off framework |
-| `ai-collaboration-protocol.md` | Human–AI collaboration responsibilities |
-| `ai-self-audit.md` | AI self-audit criteria |
-| `ai-evaluation-standard.md` | AI output evaluation criteria |
 
 ### Design and UX
 
@@ -161,9 +150,6 @@ Decision logs, project memory, changelogs, reports, and history documents are co
 | `founder-principles.md` | Founder principles |
 | `competitive-moat-strategy.md` | Competitive moat strategy |
 | `master-playbook.md` | Workflow playbooks by task type |
-| `successor-guide.md` | Stable onboarding and context-recovery guide |
-| `project-memory.md` | Historical approved decision context |
-| `decision-log.md` | Official decision records |
 
 These documents guide decisions but do not authorize repository changes by themselves.
 
@@ -199,16 +185,12 @@ A page specification is reference material, not permission to start or change th
 | `project/IDEAS.md` | Unapproved ideas |
 | `project/BUGS.md` | Known bug candidates |
 | `project/BUSINESS.md` | Business notes |
-| `project/DECISIONS.md` | Project decision summaries |
-| `project/CHANGELOG.md` | Change record |
-| `project/HISTORY.md` | Historical milestones |
 
 Logs and records do not expand the current approved task.
 
 ## 10. Role Boundaries
 
 - `AGENTS.md` governs Codex behavior, approval, scope, Git, protected actions, and QA.
-- `codex-guidelines.md` supports practical execution judgment.
 - `design-system.md` governs visual language and design QA.
 - `content-writing-standard.md` governs editorial voice and content QA.
 - `seo-standard.md` governs search architecture and page-level SEO.
