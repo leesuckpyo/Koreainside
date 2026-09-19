@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preload" as="image" type="image/webp" href="images/gongdeok-mapo/gongdeok-jokbal-alley-1800-kto-kogl1-ARP002xp1.webp" imagesrcset="images/gongdeok-mapo/gongdeok-jokbal-alley-1200-kto-kogl1-ARP002xp1.webp 1200w, images/gongdeok-mapo/gongdeok-jokbal-alley-1800-kto-kogl1-ARP002xp1.webp 1800w" imagesizes="(max-width: 1120px) calc(100vw - 40px), 1080px" fetchpriority="high">
   <meta name="description" content="Discover Gongdeok and Mapo through local food, Gongdeok Market, pork galbi, hands-on experiences and relaxed Seoul evenings, with practical tips on where to eat, what to book and whether to stay.">
   <link rel="canonical" href="https://www.getkoreainside.com/gongdeok-mapo-seoul-guide.html">
   <title>Gongdeok &amp; Mapo Seoul Guide 2026 | Food, Markets &amp; Local Experiences</title>
@@ -31,6 +32,9 @@
       --guide-h3-bottom: 16px;
       --guide-breadcrumb-gap: 20px;
       --guide-lead-gap: 24px;
+      --guide-image-top: 32px;
+      --guide-image-bottom: 36px;
+      --guide-hero-to-first-heading: 88px;
     }
 
     body.gongdeok-mapo-page main .gongdeok-guide-hero {
@@ -101,6 +105,46 @@
       margin-top: 16px;
     }
 
+    .gongdeok-mapo-page main .gongdeok-guide-hero__media {
+      width: 100%;
+      max-width: 1080px;
+      min-width: 0;
+      margin: var(--guide-lead-gap) 0 var(--guide-image-bottom);
+    }
+
+    .gongdeok-mapo-page main .gongdeok-guide-hero__media picture {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+    }
+
+    .gongdeok-mapo-page main .gongdeok-guide-hero__media img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 0;
+    }
+
+    .gongdeok-mapo-page main .hm-editorial-image {
+      max-width: 740px;
+      margin: var(--guide-image-top) auto var(--guide-image-bottom);
+    }
+
+    .gongdeok-mapo-page main .hm-editorial-image img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .gongdeok-mapo-page main :is(.gongdeok-guide-hero__media, .hm-editorial-image) figcaption {
+      margin-top: 10px;
+      color: #686158;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
     .gongdeok-mapo-page main .hm-section {
       padding: var(--guide-section-space) 0;
       background: #fff;
@@ -111,7 +155,7 @@
     }
 
     .gongdeok-mapo-page main #why-gongdeok-mapo {
-      padding-top: var(--guide-first-section-space);
+      padding-top: var(--guide-hero-to-first-heading);
     }
 
     .gongdeok-mapo-page main .gongdeok-contextual-cta {
@@ -133,16 +177,30 @@
       line-height: 1.3;
     }
 
-    .gongdeok-mapo-page main .gongdeok-contextual-cta__action {
+    .gongdeok-mapo-page main .gongdeok-contextual-cta__action,
+    .gongdeok-mapo-page main .gongdeok-contextual-cta__action:visited {
       display: inline-flex;
       max-width: 100%;
       padding: 10px 18px;
-      border: 1px solid var(--blue-accent);
       border-radius: 8px;
-      color: var(--blue-accent);
+      background: var(--blue-accent);
+      color: var(--white);
       font-size: 16px;
       font-weight: 600;
       line-height: 1.5;
+      text-decoration: none;
+      transition: background-color 180ms ease;
+    }
+
+    .gongdeok-mapo-page main .gongdeok-contextual-cta__action:hover,
+    .gongdeok-mapo-page main .gongdeok-contextual-cta__action:focus-visible {
+      background: var(--blue-deep);
+      color: var(--white);
+    }
+
+    .gongdeok-mapo-page main .gongdeok-contextual-cta__action:focus-visible {
+      outline: 2px solid var(--blue-deep);
+      outline-offset: 4px;
     }
 
     .gongdeok-mapo-page main .gongdeok-contextual-cta small {
@@ -150,6 +208,56 @@
       color: var(--gray-600);
       font-size: 14px;
       line-height: 1.5;
+    }
+
+    .gongdeok-mapo-page main .gongdeok-internal-link-block {
+      margin: var(--guide-image-top) 0 var(--guide-image-bottom);
+      padding: 22px 0;
+      border-block: 1px solid var(--gray-200);
+      background: #fff;
+    }
+
+    .gongdeok-mapo-page main .gongdeok-internal-link-block__kicker {
+      margin: 0 0 8px;
+      color: var(--blue-accent);
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1.4;
+      letter-spacing: 0.08em;
+    }
+
+    body.stay-cluster.gongdeok-mapo-page main .gongdeok-internal-link-block__title {
+      margin: 0 0 12px;
+      font-size: clamp(22px, 2.4vw, 28px);
+      line-height: 1.35;
+    }
+
+    .gongdeok-mapo-page main .gongdeok-internal-link-block__body {
+      max-width: 76ch;
+      margin: 0 0 16px;
+    }
+
+    .gongdeok-mapo-page main .gongdeok-internal-link-block__link,
+    .gongdeok-mapo-page main .gongdeok-internal-link-block__link:visited {
+      display: inline-flex;
+      align-items: center;
+      max-width: 100%;
+      color: var(--blue-accent);
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1.5;
+      text-decoration: underline;
+      text-underline-offset: 0.2em;
+    }
+
+    .gongdeok-mapo-page main .gongdeok-internal-link-block__link:hover,
+    .gongdeok-mapo-page main .gongdeok-internal-link-block__link:focus-visible {
+      color: var(--blue-deep);
+    }
+
+    .gongdeok-mapo-page main .gongdeok-internal-link-block__link:focus-visible {
+      outline: 2px solid var(--blue-deep);
+      outline-offset: 4px;
     }
 
     .gongdeok-mapo-page main .gongdeok-route-flow {
@@ -232,6 +340,9 @@
         --guide-h3-top: 40px;
         --guide-breadcrumb-gap: 18px;
         --guide-lead-gap: 22px;
+        --guide-image-top: 28px;
+        --guide-image-bottom: 32px;
+        --guide-hero-to-first-heading: 72px;
       }
     }
 
@@ -249,9 +360,16 @@
         --guide-h3-top: 36px;
         --guide-h3-bottom: 14px;
         --guide-breadcrumb-gap: 14px;
+        --guide-image-top: 24px;
+        --guide-image-bottom: 28px;
+        --guide-hero-to-first-heading: 56px;
       }
 
       .gongdeok-mapo-page main .gongdeok-contextual-cta small {
+        font-size: 13px;
+      }
+
+      .gongdeok-mapo-page main :is(.gongdeok-guide-hero__media, .hm-editorial-image) figcaption {
         font-size: 13px;
       }
     }
@@ -268,7 +386,7 @@
       <nav class="site-nav" id="site-primary-navigation" aria-label="Primary navigation">
         <ul class="site-nav__list">
           <li class="site-nav__item" data-nav-section="discover"><button class="site-nav__trigger" id="site-nav-trigger-discover" type="button" aria-expanded="false" aria-controls="site-nav-panel-discover" aria-haspopup="true">DISCOVER</button><div class="site-nav__panel" id="site-nav-panel-discover" aria-labelledby="site-nav-trigger-discover" hidden><div class="site-nav__group"><a class="site-nav__link" href="taste-korea.html">Taste Korea</a><a class="site-nav__link" href="k-beauty.html">K-Beauty</a></div></div></li>
-          <li class="site-nav__item site-nav__item--active" data-nav-section="travel"><button class="site-nav__trigger site-nav__trigger--current" id="site-nav-trigger-travel" type="button" aria-expanded="false" aria-controls="site-nav-panel-travel" aria-haspopup="true" aria-current="true">Travel</button><div class="site-nav__panel" id="site-nav-panel-travel" aria-labelledby="site-nav-trigger-travel" hidden><div class="site-nav__group" aria-labelledby="site-nav-travel-guides-label"><p class="site-nav__group-label" id="site-nav-travel-guides-label">Travel Guides</p><a class="site-nav__link" href="hongdae-travel-guide.html">Hongdae Guide</a><a class="site-nav__link" href="myeongdong-travel-guide.html">Myeongdong Guide</a><a class="site-nav__link" href="seongsu-travel-guide.html">Seongsu Guide</a><a class="site-nav__link" href="insadong-travel-guide.html">Insadong Guide</a><a class="site-nav__link" href="gangnam-travel-guide.html">Gangnam Guide</a><a class="site-nav__link" href="jamsil-travel-guide.html">Jamsil Guide</a><a class="site-nav__link" href="/lotte-world-seoul.html">Lotte World Guide</a><a class="site-nav__link" href="seoul-sky-guide.html">Seoul Sky Guide</a></div></div></li>
+          <li class="site-nav__item site-nav__item--active" data-nav-section="travel"><button class="site-nav__trigger site-nav__trigger--current" id="site-nav-trigger-travel" type="button" aria-expanded="false" aria-controls="site-nav-panel-travel" aria-haspopup="true" aria-current="true">Travel</button><div class="site-nav__panel" id="site-nav-panel-travel" aria-labelledby="site-nav-trigger-travel" hidden><div class="site-nav__group" aria-labelledby="site-nav-travel-guides-label"><p class="site-nav__group-label" id="site-nav-travel-guides-label">Travel Guides</p><a class="site-nav__link" href="hongdae-travel-guide.html">Hongdae Guide</a><a class="site-nav__link" href="myeongdong-travel-guide.html">Myeongdong Guide</a><a class="site-nav__link" href="seongsu-travel-guide.html">Seongsu Guide</a><a class="site-nav__link" href="insadong-travel-guide.html">Insadong Guide</a><a class="site-nav__link" href="gangnam-travel-guide.html">Gangnam Guide</a><a class="site-nav__link" href="jamsil-travel-guide.html">Jamsil Guide</a><a class="site-nav__link" href="/lotte-world-seoul.html">Lotte World Guide</a><a class="site-nav__link" href="seoul-sky-guide.html">Seoul Sky Guide</a><a class="site-nav__link" href="gongdeok-mapo-seoul-guide.html">Gongdeok &amp; Mapo Guide</a></div></div></li>
           <li class="site-nav__item" data-nav-section="stay"><button class="site-nav__trigger" id="site-nav-trigger-stay" type="button" aria-expanded="false" aria-controls="site-nav-panel-stay" aria-haspopup="true">Stay</button><div class="site-nav__panel" id="site-nav-panel-stay" aria-labelledby="site-nav-trigger-stay" hidden><div class="site-nav__group"><p class="site-nav__group-label">Stay Guide</p><a class="site-nav__link" href="accommodation.html">Stay Guide</a><a class="site-nav__link" href="hongdae-vs-myeongdong.html">Hongdae vs Myeongdong</a><a class="site-nav__link" href="best-area-for-first-time-visitors-seoul.html">First-Time Visitors</a><a class="site-nav__link" href="best-area-for-families-seoul.html">Families</a><a class="site-nav__link" href="best-area-for-solo-travelers-seoul.html">Solo Travelers</a><a class="site-nav__link" href="best-area-for-couples-seoul.html">Couples</a><a class="site-nav__link" href="best-area-for-budget-travelers-seoul.html">Budget Travelers</a><a class="site-nav__link" href="best-area-for-shopping-seoul.html">Shopping</a><a class="site-nav__link" href="best-area-for-nightlife-seoul.html">Nightlife</a><a class="site-nav__link" href="best-area-for-luxury-hotels-seoul.html">Luxury Hotels</a></div></div></li>
           <li class="site-nav__item" data-nav-section="esim"><button class="site-nav__trigger" id="site-nav-trigger-esim" type="button" aria-expanded="false" aria-controls="site-nav-panel-esim" aria-haspopup="true">eSIM</button><div class="site-nav__panel" id="site-nav-panel-esim" aria-labelledby="site-nav-trigger-esim" hidden><div class="site-nav__group"><a class="site-nav__link" href="esim.html">eSIM Guide</a><a class="site-nav__link" href="best-esim-for-korea.html">Best eSIM for Korea</a><a class="site-nav__link" href="korea-esim-with-phone-number.html">Korea eSIM with a Phone Number</a></div></div></li>
           <li class="site-nav__item" data-nav-section="airport"><button class="site-nav__trigger" id="site-nav-trigger-airport" type="button" aria-expanded="false" aria-controls="site-nav-panel-airport" aria-haspopup="true">Airport</button><div class="site-nav__panel" id="site-nav-panel-airport" aria-labelledby="site-nav-trigger-airport" hidden><div class="site-nav__group"><a class="site-nav__link" href="airport.html">Airport Guide</a><a class="site-nav__link" href="arrival.html">Arrival Guide</a><a class="site-nav__link" href="airport-transfer.html">Airport Transfer</a><a class="site-nav__link" href="arex.html">AREX Guide</a><a class="site-nav__link" href="airport-bus.html">Airport Bus Guide</a></div></div></li>
@@ -287,8 +405,15 @@
     <section class="hm-hero gongdeok-guide-hero">
       <div class="container hm-hero__grid">
         <div class="hm-hero__copy">
-          <p class="hm-breadcrumb"><a href="/">Home</a> / Gongdeok &amp; Mapo Seoul Guide 2026</p>
-          <h1>Gongdeok &amp; Mapo Seoul Guide 2026: Food, Markets &amp; Local Evenings</h1>
+          <p class="hm-breadcrumb"><a href="/">Home</a> / Gongdeok &amp; Mapo Seoul Guide <span data-guide-year="current">2026</span></p>
+          <h1>Gongdeok &amp; Mapo Seoul Guide <span data-guide-year="current">2026</span>: Food, Markets &amp; Local Evenings</h1>
+          <!-- Source file: gongdeok-jokbal-alley-1800-kto-kogl1-ARP002xp1.webp | Source: Korea Tourism Organization | License: KOGL Type 1 | Original identifier: ARP002xp1 -->
+          <figure class="gongdeok-guide-hero__media">
+            <picture>
+              <img src="images/gongdeok-mapo/gongdeok-jokbal-alley-1800-kto-kogl1-ARP002xp1.webp" srcset="images/gongdeok-mapo/gongdeok-jokbal-alley-1200-kto-kogl1-ARP002xp1.webp 1200w, images/gongdeok-mapo/gongdeok-jokbal-alley-1800-kto-kogl1-ARP002xp1.webp 1800w" sizes="(max-width: 1120px) calc(100vw - 40px), 1080px" width="1800" height="1200" alt="Food street in the Gongdeok and Mapo area of Seoul." loading="eager" decoding="async" fetchpriority="high">
+            </picture>
+            <figcaption>Photo: Korea Tourism Organization</figcaption>
+          </figure>
           <div class="hm-hero__answer">
             <p><strong>Come for a local meal or a hands-on experience, then stay for an evening that feels very different from Seoul’s major tourist districts.</strong></p>
           </div>
@@ -299,7 +424,6 @@
             <p>But if food is part of the trip, you have already booked an experience nearby, or you want to see a less tourist-oriented side of Seoul, Gongdeok and Mapo become much more interesting.</p>
             <p><strong>The point is not to see more sights. It is to connect a good local meal, something worth doing, and a relaxed Seoul evening without crossing the city between each one.</strong></p>
           </div>
-          <!-- Gongdeok & Mapo hero image intentionally deferred pending approved photo rights -->
         </div>
       </div>
     </section>
@@ -337,15 +461,6 @@
           <p>You are not paying because the market is inaccessible without a guide. You are paying for <strong>context, communication and a more organized experience</strong>.</p>
           <p>There are currently bookable experiences built around Gongdeok’s jeon alley and traditional Korean drinks. If that sounds more valuable to you than navigating the market alone, it can fit naturally at the beginning of the evening.</p>
 
-          <aside class="gongdeok-contextual-cta affiliate-cta-v1" aria-labelledby="gongdeok-market-cta-title">
-            <h3 id="gongdeok-market-cta-title">Book a Gongdeok Market Food Experience</h3>
-            <p>Want more than just dinner?</p>
-            <p>A guided Gongdeok market experience can add explanations, ordering help and traditional drinks to the jeon alley visit.</p>
-            <!-- Affiliate URL pending user approval -->
-            <p><span class="gongdeok-contextual-cta__action">Check the current Gongdeok market food experience</span></p>
-            <p><small>Affiliate link — Korea Inside may earn a commission if you book through this link.</small></p>
-            <p>Before booking, check the current meeting point, language, duration, cancellation terms and exactly what food and drinks are included.</p>
-          </aside>
         </div>
       </div>
     </section>
@@ -359,11 +474,33 @@
           <p>The mistake would be trying to eat everything in one evening.</p>
           <p>Pick the kind of meal you actually want, then build the rest of the evening around it.</p>
 
+          <!-- Source file: mapo-pork-galbi-street-1800-kto-lee-beomsu-kogl1-rCBtxa.webp | Source: Korea Tourism Organization | Creator: Lee Beom-su | License: KOGL Type 1 | Original identifier: rCBtxa -->
+          <figure class="hm-editorial-image">
+            <picture>
+              <img src="images/gongdeok-mapo/mapo-pork-galbi-street-1800-kto-lee-beomsu-kogl1-rCBtxa.webp" srcset="images/gongdeok-mapo/mapo-pork-galbi-street-1200-kto-lee-beomsu-kogl1-rCBtxa.webp 1200w, images/gongdeok-mapo/mapo-pork-galbi-street-1800-kto-lee-beomsu-kogl1-rCBtxa.webp 1800w" sizes="(max-width: 780px) calc(100vw - 40px), 740px" width="1800" height="1200" alt="Pork galbi restaurants along a food street in Mapo, Seoul." loading="lazy" decoding="async">
+            </picture>
+            <figcaption>Photo: Korea Tourism Organization / Lee Beom-su</figcaption>
+          </figure>
+
           <h3>If Pork Galbi Is the Reason You Came</h3>
           <p><strong>Original Jobak House</strong> is a useful anchor for understanding Mapo’s pork-galbi identity. It has been operating since 1979 and is known for marinated pork ribs; its house drink, Chopaju, also connects the meal to the area’s makgeolli culture. It is near Mapo Station rather than inside Gongdeok Market.</p>
           <p>Come here when you want the grilled-meat dinner itself to be the main experience.</p>
           <p>If you have already eaten a full plate of jokbal or several rounds of jeon at Gongdeok Market, there is little reason to force another large meal just to say you tried Mapo galbi too.</p>
           <p>A better plan is to choose <strong>market food or pork galbi as the main dinner</strong>, not both.</p>
+
+          <aside class="gongdeok-contextual-cta affiliate-cta-v1" aria-labelledby="gongdeok-wolhwa-bbq-cta-title">
+            <h3 id="gongdeok-wolhwa-bbq-cta-title">Book Korean BBQ in Mapo</h3>
+            <p><a class="gongdeok-contextual-cta__action" href="https://creatrip.com/en/spot/13939?utm_source=AFF-bootb2v" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="creatrip" data-page-category="travel-guides" data-content-topic="mapo-korean-bbq" data-placement="gongdeok-guide-wolhwa-bbq" data-link-stage="contextual">Check Wolhwa Sikdang on Creatrip</a></p>
+            <p><small>Affiliate link — Korea Inside may earn a commission if you book through this link.</small></p>
+          </aside>
+
+          <!-- Source file: mapo-choedaepo-galbi-1200-kto-frame-studio-kogl1-klLO5a.webp | Source: Korea Tourism Organization | Creator: Frame Studio | License: KOGL Type 1 | Original identifier: klLO5a -->
+          <figure class="hm-editorial-image">
+            <picture>
+              <img src="images/gongdeok-mapo/mapo-choedaepo-galbi-1200-kto-frame-studio-kogl1-klLO5a.webp" srcset="images/gongdeok-mapo/mapo-choedaepo-galbi-900-kto-frame-studio-kogl1-klLO5a.webp 900w, images/gongdeok-mapo/mapo-choedaepo-galbi-1200-kto-frame-studio-kogl1-klLO5a.webp 1200w" sizes="(max-width: 780px) calc(100vw - 40px), 740px" width="1200" height="1800" alt="Pork galbi grilling at a restaurant in Mapo, Seoul." loading="lazy" decoding="async">
+            </picture>
+            <figcaption>Photo: Korea Tourism Organization / Frame Studio</figcaption>
+          </figure>
 
           <h3>If You Want an Older Seoul Meal Without Barbecue</h3>
           <p><strong>Mapo-ok</strong> gives the area a different kind of history. The restaurant has been associated with Mapo since 1949 and is known for seolleongtang, the milky ox-bone soup that is very different from a Korean barbecue dinner.</p>
@@ -413,11 +550,14 @@
           <p><strong>dessert class → walk → one proper local dinner</strong></p>
           <p>rather than treating the class as another item on a food checklist.</p>
 
-          <aside class="gongdeok-contextual-cta affiliate-cta-v1" aria-labelledby="gongdeok-dessert-cta-title">
-            <h3 id="gongdeok-dessert-cta-title">Book a Korean Dessert Experience in Gongdeok</h3>
-            <p>If you want a hands-on activity before dinner, check the current class language, duration, meeting point and cancellation conditions before booking.</p>
-            <!-- Affiliate URL pending user approval -->
-            <p><span class="gongdeok-contextual-cta__action">Check current Korean dessert classes near Gongdeok</span></p>
+          <h3>Taste Makgeolli Where It Is Brewed</h3>
+          <p>If Korean traditional alcohol interests you, there is another experience that fits the Gongdeok–Mapo route without turning the evening into another full meal.</p>
+          <p>Chowol is an urban makgeolli brewery between Mapo Station and Gongdeok Station. You can stop in for a tasting, and reserved tasting experiences are also available.</p>
+          <p>This works better as a short stop before or after dinner than as another activity that takes over the whole evening.</p>
+          <p>Skip it if alcohol is not part of your trip. Check the current tasting options before building the rest of the evening around it.</p>
+          <aside class="gongdeok-contextual-cta affiliate-cta-v1" aria-labelledby="gongdeok-chowol-cta-title">
+            <h3 id="gongdeok-chowol-cta-title">Makgeolli Tasting in Mapo</h3>
+            <p><a class="gongdeok-contextual-cta__action" href="https://creatrip.com/en/spot/15099?utm_source=AFF-bootb2v" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="creatrip" data-page-category="travel-guides" data-content-topic="mapo-makgeolli" data-placement="gongdeok-guide-chowol-makgeolli" data-link-stage="contextual">Check Chowol tasting options on Creatrip</a></p>
             <p><small>Affiliate link — Korea Inside may earn a commission if you book through this link.</small></p>
           </aside>
 
@@ -432,6 +572,16 @@
           <p>This kind of activity is also useful for couples, friends or families who want to do something together without committing the entire afternoon to a major attraction.</p>
           <p>Do not book one simply because it appears nearby. The experience should earn the time it takes away from the food and walking you came here for.</p>
 
+          <h3>Choose a Head Spa if You Want a K-Beauty Appointment</h3>
+          <p>A head spa works differently from adding another food stop or a full-body massage. It makes more sense when K-beauty is already part of your Seoul plans and you want to use the Gongdeok stop for an appointment as well as dinner.</p>
+          <p>JUNO HAIR Mapo Harrington is close to Gongdeok Station, so it can fit before an evening meal without sending you across Seoul first.</p>
+          <p>Do not add it just to fill time. Hair and scalp treatments take a fixed appointment slot, so check the current program and duration before booking.</p>
+          <aside class="gongdeok-contextual-cta affiliate-cta-v1" aria-labelledby="gongdeok-juno-head-spa-cta-title">
+            <h3 id="gongdeok-juno-head-spa-cta-title">Head Spa near Gongdeok Station</h3>
+            <p><a class="gongdeok-contextual-cta__action" href="https://creatrip.com/en/spot/15374?utm_source=AFF-bootb2v" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="creatrip" data-page-category="travel-guides" data-content-topic="mapo-head-spa" data-placement="gongdeok-guide-juno-head-spa" data-link-stage="contextual">Check JUNO Mapo head spa on Creatrip</a></p>
+            <p><small>Affiliate link — Korea Inside may earn a commission if you book through this link.</small></p>
+          </aside>
+
           <h3>Use a Spa as the End of the Evening, Not the Main Attraction</h3>
           <p>Gongdeok and Mapo also have bookable massage and wellness options.</p>
           <p>These can fit especially well at the end of a travel-heavy day because Gongdeok is easy to reach from several parts of Seoul and works naturally as a place to stop before returning to a hotel.</p>
@@ -440,6 +590,12 @@
           <p>A better sequence is usually:</p>
           <p><strong>local dinner → short walk → spa or massage → return to hotel</strong></p>
           <p>rather than using the treatment as the centerpiece of the visit.</p>
+
+          <aside class="gongdeok-contextual-cta affiliate-cta-v1" aria-labelledby="gongdeok-spa-the-zen-cta-title">
+            <h3 id="gongdeok-spa-the-zen-cta-title">Premium Spa in Mapo</h3>
+            <p><a class="gongdeok-contextual-cta__action" href="https://affiliate.klook.com/sl/1r4qTxE" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="klook" data-page-category="travel-guides" data-content-topic="mapo-premium-spa" data-placement="gongdeok-guide-spa-the-zen" data-link-stage="contextual">Check SPA THE ZEN on Klook</a></p>
+            <p><small>Affiliate link — Korea Inside may earn a commission if you book through this link.</small></p>
+          </aside>
 
           <h3>When a Spa Booking Makes Sense</h3>
           <p>Consider it when:</p>
@@ -456,11 +612,13 @@
             <li>your priority is the market, food alleys or local nightlife</li>
           </ul>
 
-          <aside class="gongdeok-contextual-cta affiliate-cta-v1" aria-labelledby="gongdeok-wellness-cta-title">
-            <h3 id="gongdeok-wellness-cta-title">Check a Gongdeok or Mapo Wellness Experience</h3>
-            <p>If the timing fits your evening, compare the current treatment length, exact location, language support and cancellation rules before booking.</p>
-            <!-- Affiliate URL pending user approval -->
-            <p><span class="gongdeok-contextual-cta__action">See current Gongdeok and Mapo wellness experiences</span></p>
+          <h3>Choose a Simple Massage if Recovery Is the Priority</h3>
+          <p>If you mainly want tired feet and legs dealt with after walking Seoul all day, you do not necessarily need the more elaborate spa option.</p>
+          <p>The HANOI Foot &amp; Body SPA is close to Gongdeok Station and works better as a straightforward recovery stop when massage matters more than a premium spa setting.</p>
+          <p>Check the current treatment length before booking so it does not push dinner or the last train later than you intended.</p>
+          <aside class="gongdeok-contextual-cta affiliate-cta-v1" aria-labelledby="gongdeok-hanoi-massage-cta-title">
+            <h3 id="gongdeok-hanoi-massage-cta-title">Foot &amp; Body Massage in Gongdeok</h3>
+            <p><a class="gongdeok-contextual-cta__action" href="https://affiliate.klook.com/sl/2qkVI9U" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="klook" data-page-category="travel-guides" data-content-topic="gongdeok-foot-body-massage" data-placement="gongdeok-guide-hanoi-massage" data-link-stage="contextual">Check HANOI Gongdeok on Klook</a></p>
             <p><small>Affiliate link — Korea Inside may earn a commission if you book through this link.</small></p>
           </aside>
         </div>
@@ -490,6 +648,13 @@
           <p>This is also where Gongdeok feels different from Hongdae.</p>
           <p>Hongdae’s evening energy is built around shopping streets, busking, bars and crowds. Gongdeok is quieter and more functional. Office workers are finishing dinner, neighborhood cafés are still open, and the streets feel more like a place people actually use after work than a nightlife district designed around visitors.</p>
           <p>That quieter rhythm is part of the reason to come here.</p>
+
+          <!-- Source: Wikimedia Commons | Creator: Striker9498 | License: CC0 1.0 | Source file: gongdeok-gyeongui-forest-1800-wikimedia-striker9498-cc0.webp -->
+          <figure class="hm-editorial-image">
+            <picture>
+              <img src="images/gongdeok-mapo/gongdeok-gyeongui-forest-1800-wikimedia-striker9498-cc0.webp" srcset="images/gongdeok-mapo/gongdeok-gyeongui-forest-1200-wikimedia-striker9498-cc0.webp 1200w, images/gongdeok-mapo/gongdeok-gyeongui-forest-1800-wikimedia-striker9498-cc0.webp 1800w" sizes="(max-width: 780px) calc(100vw - 40px), 740px" width="1800" height="2400" alt="Gyeongui Line Forest Park walkway in Mapo, Seoul." loading="lazy" decoding="async">
+            </picture>
+          </figure>
 
           <h3>Do Not Expect a Major Nightlife District</h3>
           <p>Gongdeok is not a substitute for Hongdae, Itaewon or Euljiro if bars and late-night nightlife are the main purpose of your evening.</p>
@@ -581,6 +746,13 @@
           <p>In those cases, Hongdae, Myeongdong or another district may fit the trip better.</p>
           <p>Gongdeok works best when <strong>transport, food and a calmer base</strong> are advantages you will actually use.</p>
 
+          <aside class="gongdeok-internal-link-block internal-link-block-v1" aria-labelledby="gongdeok-first-trip-link-title">
+            <p class="gongdeok-internal-link-block__kicker">FIRST TRIP TO SEOUL</p>
+            <h3 class="gongdeok-internal-link-block__title" id="gongdeok-first-trip-link-title">Still deciding which neighborhood should be your base?</h3>
+            <p class="gongdeok-internal-link-block__body">If Gongdeok sounds practical but you are not sure it is the right first-trip base, compare it with Seoul's stronger first-time areas before choosing a hotel.</p>
+            <a class="gongdeok-internal-link-block__link" href="best-area-for-first-time-visitors-seoul.html">Compare Seoul areas for first-time visitors</a>
+          </aside>
+
           <h3>What Matters When Choosing a Gongdeok Hotel</h3>
           <p>Do not stop at “near Gongdeok Station.”</p>
           <p>For a hotel here, check:</p>
@@ -641,6 +813,13 @@
           <p>The main limitation is food.</p>
           <p>Some dishes, especially large shared plates such as jokbal or Korean barbecue, are easier with two or more people.</p>
           <p>If you are traveling alone, choose the restaurant carefully or use a class, market tasting or smaller meal to avoid ordering far more food than you need.</p>
+
+          <aside class="gongdeok-internal-link-block internal-link-block-v1" aria-labelledby="gongdeok-solo-link-title">
+            <p class="gongdeok-internal-link-block__kicker">TRAVELING SOLO</p>
+            <h3 class="gongdeok-internal-link-block__title" id="gongdeok-solo-link-title">Choose the area before the hotel</h3>
+            <p class="gongdeok-internal-link-block__body">Gongdeok can work well alone, but food portions and evening style matter. Compare it with other Seoul bases built around solo travel before you book.</p>
+            <a class="gongdeok-internal-link-block__link" href="best-area-for-solo-travelers-seoul.html">Compare Seoul areas for solo travelers</a>
+          </aside>
 
           <h3>Good for Couples and Friends</h3>
           <p>This may be the easiest group for Gongdeok and Mapo.</p>
@@ -977,6 +1156,7 @@
     </div>
   </footer>
 
+  <script src="guide-year.js" defer></script>
   <script src="common.js"></script>
   <script>
     window.va = window.va || function () {

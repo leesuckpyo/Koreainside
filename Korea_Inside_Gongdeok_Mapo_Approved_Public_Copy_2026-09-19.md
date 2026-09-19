@@ -83,18 +83,6 @@ You are not paying because the market is inaccessible without a guide. You are p
 
 There are currently bookable experiences built around Gongdeok’s jeon alley and traditional Korean drinks. If that sounds more valuable to you than navigating the market alone, it can fit naturally at the beginning of the evening.
 
-### Book a Gongdeok Market Food Experience
-
-Want more than just dinner?
-
-A guided Gongdeok market experience can add explanations, ordering help and traditional drinks to the jeon alley visit.
-
-**Check the current Gongdeok market food experience**
-
-*Affiliate link — Korea Inside may earn a commission if you book through this link.*
-
-Before booking, check the current meeting point, language, duration, cancellation terms and exactly what food and drinks are included.
-
 ---
 
 ## Eat Your Way Through Old-School Mapo
@@ -116,6 +104,12 @@ Come here when you want the grilled-meat dinner itself to be the main experience
 If you have already eaten a full plate of jokbal or several rounds of jeon at Gongdeok Market, there is little reason to force another large meal just to say you tried Mapo galbi too.
 
 A better plan is to choose **market food or pork galbi as the main dinner**, not both.
+
+### Book Korean BBQ in Mapo
+
+**Check Wolhwa Sikdang on Creatrip**
+
+*Affiliate link — Korea Inside may earn a commission if you book through this link.*
 
 ### If You Want an Older Seoul Meal Without Barbecue
 
@@ -189,11 +183,19 @@ The cleaner combination is:
 
 rather than treating the class as another item on a food checklist.
 
-### Book a Korean Dessert Experience in Gongdeok
+### Taste Makgeolli Where It Is Brewed
 
-If you want a hands-on activity before dinner, check the current class language, duration, meeting point and cancellation conditions before booking.
+If Korean traditional alcohol interests you, there is another experience that fits the Gongdeok–Mapo route without turning the evening into another full meal.
 
-**Check current Korean dessert classes near Gongdeok**
+Chowol is an urban makgeolli brewery between Mapo Station and Gongdeok Station. You can stop in for a tasting, and reserved tasting experiences are also available.
+
+This works better as a short stop before or after dinner than as another activity that takes over the whole evening.
+
+Skip it if alcohol is not part of your trip. Check the current tasting options before building the rest of the evening around it.
+
+### Makgeolli Tasting in Mapo
+
+**Check Chowol tasting options on Creatrip**
 
 *Affiliate link — Korea Inside may earn a commission if you book through this link.*
 
@@ -217,6 +219,20 @@ This kind of activity is also useful for couples, friends or families who want t
 
 Do not book one simply because it appears nearby. The experience should earn the time it takes away from the food and walking you came here for.
 
+### Choose a Head Spa if You Want a K-Beauty Appointment
+
+A head spa works differently from adding another food stop or a full-body massage. It makes more sense when K-beauty is already part of your Seoul plans and you want to use the Gongdeok stop for an appointment as well as dinner.
+
+JUNO HAIR Mapo Harrington is close to Gongdeok Station, so it can fit before an evening meal without sending you across Seoul first.
+
+Do not add it just to fill time. Hair and scalp treatments take a fixed appointment slot, so check the current program and duration before booking.
+
+### Head Spa near Gongdeok Station
+
+**Check JUNO Mapo head spa on Creatrip**
+
+*Affiliate link — Korea Inside may earn a commission if you book through this link.*
+
 ### Use a Spa as the End of the Evening, Not the Main Attraction
 
 Gongdeok and Mapo also have bookable massage and wellness options.
@@ -233,6 +249,12 @@ A better sequence is usually:
 
 rather than using the treatment as the centerpiece of the visit.
 
+### Premium Spa in Mapo
+
+**Check SPA THE ZEN on Klook**
+
+*Affiliate link — Korea Inside may earn a commission if you book through this link.*
+
 ### When a Spa Booking Makes Sense
 
 Consider it when:
@@ -248,11 +270,17 @@ Skip it when:
 - you are already short on time
 - your priority is the market, food alleys or local nightlife
 
-### Check a Gongdeok or Mapo Wellness Experience
+### Choose a Simple Massage if Recovery Is the Priority
 
-If the timing fits your evening, compare the current treatment length, exact location, language support and cancellation rules before booking.
+If you mainly want tired feet and legs dealt with after walking Seoul all day, you do not necessarily need the more elaborate spa option.
 
-**See current Gongdeok and Mapo wellness experiences**
+The HANOI Foot & Body SPA is close to Gongdeok Station and works better as a straightforward recovery stop when massage matters more than a premium spa setting.
+
+Check the current treatment length before booking so it does not push dinner or the last train later than you intended.
+
+### Foot & Body Massage in Gongdeok
+
+**Check HANOI Gongdeok on Klook**
 
 *Affiliate link — Korea Inside may earn a commission if you book through this link.*
 
@@ -890,6 +918,14 @@ If you enjoy the area, you will leave with a better reason to return than if you
 - Use `hongdae-travel-guide.html` as the visual/component Golden Sample, not as a content template.
 - Preserve the Gongdeok & Mapo page’s own section order and editorial role.
 - Do not modify common header, navigation, footer, `common.js`, mobile hamburger, or shared files without separate approval.
-- Affiliate placement follows: Relevant section → matching action → matching affiliate.
 - Keep the page’s core distinction: local food and bookable experiences are connected within a realistic evening flow.
 - The page is a Discovery Experiment, not evidence that Gongdeok has high direct English search demand.
+- Affiliate products approved: 5
+  1. Creatrip Wolhwa Sikdang
+  2. Creatrip Chowol
+  3. Creatrip JUNO Mapo
+  4. Klook SPA THE ZEN
+  5. Klook HANOI Gongdeok
+- Affiliate placement rule: Relevant section → matching action → matching affiliate
+- Body Stay navigation: 3 contextual internal paths approved.
+- Hero order: Breadcrumb → H1 → Hero → lead/intro → first H2

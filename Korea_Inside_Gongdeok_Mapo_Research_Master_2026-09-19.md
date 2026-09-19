@@ -303,6 +303,55 @@ Visit Seoul currently lists Nursebalm near Mapo Station with a soap-making class
 
 **Editorial role:** a non-food experience that can sit near an old-school-food route without forcing the page to become only restaurants.
 
+## 6.6 Approved experience expansion research
+
+**Research date:** 2026-09-19
+
+### Gongdeok BBQ / Market / Pub
+
+**Current product:** Seoul Small-Group Korean BBQ, Pub Tasting Tour
+
+**Current verified characteristics:**
+
+- Gongdeok Station Gate 7 meeting point
+- local pork barbecue including galmaegisal / pork belly
+- jeon / Korean fried foods
+- Korean alcohol including makgeolli / soju / dongdongju
+- current product includes pork and alcohol
+- current booking conditions must be rechecked before Production
+
+**Research source:**
+https://www.viator.com/tours/Seoul/Korean-BBQ-Pub-and-Market-Tour-in-Seoul/d973-9897P2
+
+### Chowol
+
+**Current verified facts:**
+
+- urban makgeolli brewery between Mapo Station and Gongdeok Station
+- walk-in tasting available
+- private tasting session offered
+- simple snack pairing
+- official English website available
+- current reservation details must be rechecked before Production
+
+**Official source:**
+https://www.chowolhada.com/en/about-3-1
+
+**Official tourism reference:**
+https://english.visitseoul.net/area/chowol/ENPcfl4le
+
+### Nursebalm
+
+**Current verified facts:**
+
+- natural soap / zero-waste specialty shop
+- soap-making classes available
+- near Mapo Station Exit 2
+- class conditions / prices / booking procedure are current facts and must be refreshed before Production
+
+**Official tourism source:**
+https://english.visitseoul.net/shopping/Nursebalm/ENPksh9w1
+
 ---
 
 # 7. City-level route validation
@@ -1126,4 +1175,3 @@ The Korea Inside opportunity is to connect those pieces into one traveler decisi
 > **Come for a specific food or experience, understand why this neighborhood works, eat around it, spend the evening locally, and decide whether Gongdeok is only a stop or a useful Seoul base.**
 
 That is the reason to build this page.
-
