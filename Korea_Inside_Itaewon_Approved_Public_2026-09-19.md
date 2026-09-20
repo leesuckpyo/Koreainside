@@ -264,7 +264,7 @@ They are not.
 
 Gyeongnidan is the better extension when you want to keep the evening going without committing to Itaewon's main club scene.
 
-Visit Seoul places Gyeongnidan-gil about 788 meters from Noksapyeong Station Exit 2 and describes the area separately from central Itaewon, with a notable concentration of cafes, bars and varied food.
+Gyeongnidan-gil is about 788 meters from Noksapyeong Station Exit 2, with cafes, bars and varied food creating a quieter evening atmosphere than central Itaewon.
 
 That makes it a useful middle ground.
 
@@ -285,7 +285,7 @@ If your goal is dancing until late, central Itaewon is the more direct choice.
 
 Haebangchon is close enough to look easy on a map and steep enough to prove otherwise.
 
-Visit Seoul lists access from Noksapyeong Station Exit 2 at roughly 1.2 kilometers and explicitly describes the upper neighborhood as difficult to reach because of the slope.
+Haebangchon is about 1.2 km from Noksapyeong Station Exit 2, and the steep climb makes the upper part of the neighborhood harder to reach.
 
 That is the part a restaurant list does not tell you.
 
