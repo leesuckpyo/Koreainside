@@ -2,9 +2,9 @@
 
 **File:** `Korea_Inside_Public_Content_Master_Standard.md`  
 **Status:** ACTIVE / MASTER STANDARD  
-**Version:** 1.2  
-**Effective date:** 2026-09-13  
-**Supersedes:** Version 1.1  
+**Version:** 1.3
+**Effective date:** 2026-09-20
+**Supersedes:** Version 1.2
 
 > 이 문서는 Korea Inside의 모든 공개 콘텐츠 페이지에 적용하는 최상위 표준이다.
 >
@@ -884,6 +884,34 @@ Transport
 더 많은 정보가 필요한 사용자는 Detail로 보내고,
 선택을 이미 끝낸 사용자는 자연스럽게 예약·구매까지 연결한다.
 
+## 11.1 Travel Guide 내부링크는 숙소에 한정하지 않는다
+
+Travel Guide는 숙소로 보내는 입구가 아니라 **Korea Inside 전체 여행 문제를 연결하는 허브**가 될 수 있다.
+
+문맥이 자연스럽다면 다음과 같은 내부 페이지로 연결한다.
+
+- Area / Attraction Detail
+- 인접 지역 Travel Guide
+- Stay / Hotel
+- Airport / Airport Transport
+- T-money / 교통카드
+- WOWPASS
+- Foreign Credit Cards / Card Declined
+- eSIM
+- Taxi / Transport
+- Food / Events / Itinerary
+- 기타 현재 문단에서 발생하는 실제 다음 질문
+
+고정 원칙:
+
+> **현재 문단에서 생기는 다음 질문 → 그 답을 가진 Korea Inside 페이지**
+
+페이지 하단의 Related Links만으로 내부링크를 처리하지 않는다. 필요하면 본문 판단 직후에 문맥형 링크를 둔다.
+
+또한 Area Guide가 다른 페이지에 링크만 보내는 일방향 구조로 끝나지 않도록, 관련 Detail / Transport / Service / Stay 페이지에서도 대표 Area Guide로 자연스럽게 되돌아오는 **양방향 주제 클러스터**를 만든다.
+
+단, 내부링크 수를 늘리는 것 자체가 목적은 아니다. 검색 의도와 여행자의 다음 행동에 관계없는 링크는 넣지 않는다.
+
 **예외조항:** 내부링크 숫자를 채우려고 관련성이 약한 페이지를 붙이지 않는다. 다음 질문이 자연스러울 때만 연결한다.
 
 ---
@@ -1141,6 +1169,25 @@ Korea Inside는 OTA의 재고·결제 기능을 흉내 내지 않는다.
 
 # 16. SEO 표준
 
+## 16.1 공격적 SEO 목표 — 핵심 검색어 1위를 목표로 한다
+
+Korea Inside는 경쟁이 약한 변방 키워드만 골라 Top 10 진입에 만족하지 않는다.
+
+검색 수요가 크고 사이트 전략과 맞는 핵심 검색어라면, 강한 경쟁자가 있어도 **1위 도전**을 기본 목표로 페이지와 클러스터를 설계한다.
+
+고정 원칙:
+
+> **Top 10은 통과 지점이지 최종 목표가 아니다. 핵심 검색어의 최종 목표는 1위다.**
+
+이를 다음처럼 적용한다.
+
+- Head Keyword 수요가 크면 경쟁이 강하다는 이유만으로 피하지 않는다.
+- 공식기관, 대형 미디어, 오래된 경쟁사가 상위에 있어도 검색자가 필요로 하는 판단을 더 잘 해결할 수 있으면 정면으로 경쟁한다.
+- Long-tail Keyword는 변방에 머무르기 위한 목적이 아니라, 초기 노출·주제 권위·내부링크를 확보해 Head Keyword 순위를 끌어올리는 **진입로**로 사용한다.
+- 하나의 대표 URL이 여러 의도를 억지로 먹도록 하지 않는다. 독립 검색 의도가 충분하면 Hub / Detail을 분리하고 서로 내부링크로 강화한다.
+- 콘텐츠 길이만 늘려 경쟁하지 않는다. 검색의도 일치, 최신성, 사실 정확성, Humanization, 이동 마찰, 실제 선택 판단, 내부링크와 주제 클러스터의 완성도로 경쟁한다.
+- 순위 1위를 보장한다고 쓰지 않는다. 실제 성과는 Google Search Console의 impressions, clicks, CTR, average position과 실제 SERP로 검증한다.
+
 신규 공개 페이지 또는 검색 의도가 크게 바뀌는 경우:
 
 - 미국 기준 검색어 확인
@@ -1310,9 +1357,27 @@ Korea Inside는 OTA의 재고·결제 기능을 흉내 내지 않는다.
 
 직접 경쟁사는 해당 검색 의도에 맞게 선택한다.
 
+## 23.1 핵심 SEO 벤치마크
+
+Korea Inside의 주요 서울 여행 콘텐츠 벤치마크로 **The Soul of Seoul**과 **KoreaToDo**를 적극 추적한다.
+
+목표는 두 사이트를 복제하는 것이 아니라, 주요 검색어에서 **더 높은 검색 노출과 더 나은 사용자 문제 해결**을 달성하는 것이다.
+
+비교 기준:
+
+- The Soul of Seoul보다 Humanization / 현지 맥락 / 실제 경험 해석이 부족하지 않은가
+- KoreaToDo보다 장소·출구·시간·교통·시설·엔티티 정보가 부족하지 않은가
+- 두 사이트 모두 충분히 해결하지 못한 여행자 판단을 Korea Inside가 명확히 해결하는가
+- 핵심 검색어에서 현재 Top 10 결과보다 실제로 더 유용한 페이지를 만들었는가
+
+강한 경쟁사가 있다는 것은 회피 사유가 아니라 **검증된 수요 신호**가 될 수 있다.
+
+경쟁사 트래픽과 키워드는 공격 목표를 정하는 벤치마크로 사용하되, 시점에 따라 변하는 트래픽 수치나 순위를 이 Master Standard에 고정값으로 하드코딩하지 않는다.
+
 기본 참고:
 
 - The Soul of Seoul
+- KoreaToDo
 - In My Korea
 - Korea Visit Guide
 
@@ -1368,6 +1433,9 @@ Korea Inside가 더 잘해야 할 것:
 
 - 대표 질문에 첫 화면에서 답하는가?
 - 다른 URL과 역할이 겹치지 않는가?
+- 핵심 Head Keyword를 경쟁이 강하다는 이유만으로 피하지 않았는가?
+- 현재 Top 10 경쟁 페이지보다 더 구체적인 판단·최신성·실행정보를 제공하는가?
+- Long-tail만 노리고 대표 검색어 공격을 포기한 구조는 아닌가?
 
 ### Humanization
 
@@ -1431,6 +1499,16 @@ Korea Inside가 더 잘해야 할 것:
 > **제휴 개수에 기계적 상한을 두지 않는다. 문맥과 맞는 제휴는 필요한 만큼 둘 수 있고, 문맥과 맞지 않는 제휴는 1개라도 넣지 않는다.**
 >
 > **여행 판단이 충분히 끝난 지점에서는 대표 호텔·서비스와 예약 CTA가 살아 있어야 한다.**
+
+SEO 경쟁 목표:
+
+> **수요가 큰 핵심 검색어를 피하지 않는다. Top 10을 최종 목표로 삼지 않고 1위를 목표로 페이지와 클러스터를 설계한다.**
+>
+> **Long-tail은 변방 전략이 아니라 Head Keyword 1위로 올라가기 위한 진입로다.**
+
+내부링크:
+
+> **Travel Guide는 숙소만 연결하는 페이지가 아니다. 현재 여행 질문에서 다음 질문으로 이어지는 Korea Inside 전체 콘텐츠 허브다.**
 
 그리고 모든 페이지 구조 판단의 핵심:
 
@@ -1499,4 +1577,5 @@ DONE LOCKED 페이지:
 - 특정 지역의 세부 조사자료는 별도 Research MD로 관리할 수 있다.
 - 이 표준을 변경할 때는 사용자의 명시적 승인 후 변경한다.
 - `주=여행가이드 / 부=수익화`를 이유로 숙박 판단 레이어를 삭제하거나 수익화를 약화하는 해석은 Version 1.1에서 명시적으로 폐기한다.
-- Version 1.2에서는 `Relevant section → matching action → matching affiliate`를 제휴 배치의 고정 기준으로 추가한다. 제휴 CTA 수에는 기계적 상한을 두지 않으며, 각 CTA는 해당 섹션이 만든 실제 여행 판단의 다음 행동이어야 한다.
+- Version 1.2에서는 `Relevant section → matching action → matching affiliate`를 제휴 배치의 고정 기준으로 추가했다. 제휴 CTA 수에는 기계적 상한을 두지 않으며, 각 CTA는 해당 섹션이 만든 실제 여행 판단의 다음 행동이어야 한다.
+- Version 1.3에서는 **핵심 검색어 1위 도전**을 SEO 기본 목표로 명시한다. 경쟁이 강하다는 이유만으로 Head Keyword를 회피하지 않으며, Long-tail은 Head Keyword와 주제 권위를 강화하는 진입로로 사용한다. 또한 Travel Guide 내부링크를 숙소에 한정하지 않고 교통·결제·공항·eSIM·Attraction·인접 지역·Stay 등 실제 다음 질문 전체로 확장하며, The Soul of Seoul과 KoreaToDo를 주요 SEO 벤치마크로 적극 추적한다.
