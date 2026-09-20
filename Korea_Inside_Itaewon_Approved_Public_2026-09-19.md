@@ -1,20 +1,20 @@
-# Korea Inside — Itaewon Approved Public Copy Draft
+# Korea Inside — Itaewon Approved Public Copy
 
-**File:** `Korea_Inside_Itaewon_Approved_Public_Copy_2026-09-19.md`  
-**Status:** DRAFT PUBLIC COPY — USER REVIEW REQUIRED  
+**File:** `Korea_Inside_Itaewon_Approved_Public_2026-09-19.md`  
+**Status:** APPROVED PUBLIC COPY — CONTENT LOCKED  
 **Draft date:** 2026-09-19  
 **Target file:** `itaewon-travel-guide.html`  
 **Target page family:** Travel Guide  
 **Target page role:** Area Travel Guide / Hub  
 **Research source of truth:** `Korea_Inside_Itaewon_Research_Master_2026-09-19.md`  
 **Existing protected related page:** `where-to-stay-in-itaewon.html`  
-**Humanization status:** IN PROGRESS  
+**Humanization status:** DONE  
 
-> This file contains the proposed public-facing English copy for the Itaewon Travel Guide.
+> This file contains the user-approved public-facing English copy for the Itaewon Travel Guide.
 >
-> It is **not yet content-locked**. User approval is required before Codex implementation.
+> It is **CONTENT LOCKED**. Codex must implement the approved wording exactly and must not rewrite it.
 >
-> Existing protected Korea Inside pages are not to be rewritten from this draft.
+> Existing protected Korea Inside pages are not to be rewritten from this file.
 
 ---
 
@@ -55,13 +55,13 @@ Itaewon is often reduced to nightlife, but that is only one part of the area.
 
 The eastern side around Hannam and Hangangjin is better suited to an afternoon of art, design and shopping. Central Itaewon is where international restaurants, Muslim-friendly services and the main nightlife are concentrated. West toward Noksapyeong, Gyeongnidan and Haebangchon, the streets become more about smaller bars, cafes, neighborhood restaurants and a slower evening.
 
-That range is the reason to come.
+That contrast is what makes the area worth planning around.
 
 If you only want to see a famous shopping street, Itaewon may feel thin. If you build the visit around a specific afternoon and evening, it becomes much easier to understand.
 
 ### The simple decision
 
-Choose Itaewon when at least one of these matters to you:
+Itaewon earns a place in your itinerary when at least one of these matters to you:
 
 - Leeum Museum of Art or Hannam
 - international or halal food
@@ -69,7 +69,7 @@ Choose Itaewon when at least one of these matters to you:
 - a neighborhood evening around Gyeongnidan or Haebangchon
 - seeing a side of Seoul that feels less centered on palaces and traditional sightseeing
 
-Skip it on a very short first trip if none of those are priorities.
+On a very short first trip, it can wait if none of those are priorities.
 
 ---
 
@@ -117,7 +117,7 @@ This ordering matters because Hannam is easier to use during the day, while cent
 
 You do not need to collect every showroom or cafe. Pick one reason to be here, then keep the day moving.
 
-### If Hannam shopping is the reason you came
+### If Hannam shopping is your main interest
 
 Hannam is better approached as a neighborhood to browse selectively than as a checklist.
 
@@ -131,7 +131,7 @@ A booked hair, makeup or head-spa appointment can fit naturally into a Hannam af
 
 The compromise is time. Once you book an appointment, the rest of the afternoon has to work around it.
 
-Do not add a beauty booking simply because it is available nearby.
+Being nearby is not enough reason to add a beauty booking.
 
 #### Book a Hannam beauty appointment
 
@@ -147,7 +147,7 @@ If a salon or head-spa appointment is already part of your Seoul plans, Commenan
 
 Go to Leeum if art, architecture or design is genuinely part of your trip.
 
-Skip it without guilt if it is not.
+If it is not, leave it out without guilt.
 
 That sounds obvious, but Leeum is the kind of place that often gets added simply because it is close to Hannam. A museum visit can easily take over the strongest part of the afternoon, so it should earn that time.
 
@@ -166,7 +166,7 @@ From Hangangjin Station Exit 1, the museum's official directions include an uphi
 
 That last detail matters if you are already tired or carrying more than a day bag.
 
-### Do not plan Leeum on autopilot
+### Plan Leeum deliberately
 
 A Monday visit fails before the day starts.
 
@@ -194,15 +194,15 @@ The useful question is not “What are the best restaurants in Itaewon?”
 
 It is “What can I eat here that improves this particular day?”
 
-### Choose international food when variety is the point
+### International food when variety is the point
 
 Itaewon has a concentration of international restaurants that is harder to reproduce in many other Seoul neighborhoods.
 
 That can matter after several days of Korean food, for a mixed group with different preferences, or simply because a specific cuisine is part of the plan.
 
-Do not cross Seoul for a generic meal just because a list calls it famous. Choose a cuisine or restaurant first.
+Crossing Seoul for a generic meal just because a list calls it famous is rarely worth it. Pick the cuisine or restaurant first.
 
-### Choose the halal area when Muslim-friendly infrastructure matters
+### The halal area when Muslim-friendly infrastructure matters
 
 The streets around Seoul Central Mosque are not just another restaurant cluster.
 
@@ -210,7 +210,7 @@ For Muslim travelers, the area has practical value because prayer facilities and
 
 That makes central Itaewon more than a sightseeing stop. It can make the rest of the day easier to plan.
 
-### Choose Korean fried chicken if that is the meal you actually want
+### Korean fried chicken when that is the meal you actually want
 
 International food is part of Itaewon's identity, but that does not mean every visitor has to eat international food.
 
@@ -236,7 +236,7 @@ For Muslim travelers, the mosque and surrounding businesses can be an important 
 
 Modest clothing is the safe default. Avoid treating prayer spaces or worshippers as part of a sightseeing backdrop.
 
-### Do not assume every nearby restaurant has the same halal status
+### Check halal status restaurant by restaurant
 
 A restaurant being close to the mosque does not automatically tell you how its ingredients, kitchen or certification should be classified.
 
@@ -262,7 +262,7 @@ They are not.
 
 ## Gyeongnidan for a Quieter Evening
 
-Choose Gyeongnidan when you want to keep the evening going without committing to Itaewon's main club scene.
+Gyeongnidan is the better extension when you want to keep the evening going without committing to Itaewon's main club scene.
 
 Visit Seoul places Gyeongnidan-gil about 788 meters from Noksapyeong Station Exit 2 and describes the area separately from central Itaewon, with a notable concentration of cafes, bars and varied food.
 
@@ -289,9 +289,9 @@ Visit Seoul lists access from Noksapyeong Station Exit 2 at roughly 1.2 kilomete
 
 That is the part a restaurant list does not tell you.
 
-### Go when the neighborhood itself is the point
+### When Haebangchon itself is the destination
 
-Haebangchon makes sense when you want:
+Haebangchon earns the climb when you want:
 
 - a hillside neighborhood rather than a major attraction
 - smaller restaurants and bars
@@ -300,9 +300,9 @@ Haebangchon makes sense when you want:
 
 It is especially reasonable for repeat visitors who are no longer trying to fit five headline attractions into one day.
 
-### Skip the climb when it is not worth the trade
+### The hill is not always worth adding
 
-Do not force Haebangchon into the end of a day when:
+Leave Haebangchon for another day when:
 
 - you have already walked heavily
 - someone in the group has knee or mobility issues
@@ -320,15 +320,15 @@ That is an option, not a rule. Weather, traffic, group mobility and the exact ve
 
 ---
 
-## Choose Your Itaewon Night
+## Pick the Itaewon Night You Actually Want
 
 There is no single correct way to finish Itaewon.
 
-Choose the version of the night before you start adding venues.
+Decide on the kind of night before you start adding venues.
 
 ### Option 1 — Dinner and leave
 
-This is enough if food was the reason you came.
+If food brought you here, dinner can be the whole visit.
 
 Have dinner, walk a little, and go back to your hotel or move to another part of Seoul.
 
@@ -336,19 +336,19 @@ You do not need to stay late to justify visiting Itaewon.
 
 ### Option 2 — Gyeongnidan
 
-Choose this for cafes, drinks and a calmer evening.
+This is the fit for cafes, drinks and a calmer evening.
 
 It suits people who want atmosphere without a full nightlife commitment.
 
 ### Option 3 — Haebangchon
 
-Choose this when the hillside neighborhood itself is part of the experience.
+Head here when the hillside neighborhood itself is part of the experience.
 
 Allow more time and energy than the map suggests.
 
 ### Option 4 — Bars, pub crawl or clubs
 
-Choose central Itaewon when meeting people, visiting several bars or going to a club is the purpose of the night.
+Central Itaewon is the direct fit when meeting people, visiting several bars or going to a club is the purpose of the night.
 
 A guided pub crawl can remove some of the friction for solo travelers or first-time nightlife visitors because the venues and group are organized in advance.
 
@@ -382,14 +382,14 @@ For most travelers, a half-day plus evening is more natural than trying to make 
 
 ### 1:00 PM–3:00 PM — Hannam / Hangangjin
 
-Choose one anchor:
+Pick one anchor:
 
 - Leeum Museum of Art
 - Hannam shopping and showrooms
 - a booked beauty appointment
 - cafes and browsing
 
-Do not try to combine all four.
+Trying to combine all four usually turns the afternoon into a checklist.
 
 ### 3:00 PM–5:00 PM — Move toward central Itaewon
 
@@ -399,7 +399,7 @@ This is the transition rather than another checklist.
 
 ### 5:00 PM–7:00 PM — Eat
 
-Choose one food reason:
+Pick one food reason:
 
 - international cuisine
 - halal / Muslim-friendly area
@@ -407,7 +407,7 @@ Choose one food reason:
 
 Give dinner enough time rather than stacking activities around it.
 
-### After 7:00 PM — Choose the evening
+### After 7:00 PM — Decide how the night ends
 
 **Quiet:** Gyeongnidan  
 **Neighborhood:** Haebangchon  
@@ -420,7 +420,7 @@ This one decision prevents the night from becoming a random chain of places.
 
 ## If You Have a Full Day
 
-A full day makes sense only when several parts of the district genuinely interest you.
+A full day is worth it only when several parts of the district genuinely interest you.
 
 Use the extra time for:
 
@@ -431,13 +431,13 @@ Use the extra time for:
 - a slower move through Itaewon
 - a deliberate evening choice
 
-Do not make the route longer just because you have time.
+Extra time is not a reason to lengthen the route.
 
 If the morning is free but your real interest begins with dinner, use the morning elsewhere in Seoul and arrive in Hannam after lunch.
 
 ---
 
-## Who Itaewon Works For — and Who Can Skip It
+## Who Itaewon Works For — and Who Can Leave It Out
 
 ### Strong fit — food-focused travelers
 
@@ -493,7 +493,7 @@ Build the day around what the family actually wants rather than the district's a
 
 ## Should You Stay in Itaewon or Just Visit?
 
-Do not move your hotel to Itaewon simply because you want one dinner or one night out here.
+One dinner or one night out is not enough reason to move your hotel to Itaewon.
 
 Staying makes more sense when the neighborhood will shape several evenings, when late returns matter, or when Hannam / Itaewon is repeatedly part of the trip.
 
@@ -537,7 +537,7 @@ That means a route that looks short on a transit map can still be the tiring par
 
 A short taxi can make sense when the alternative is an uphill walk at the end of a long day.
 
-Do not assume it will always be faster during busy evening traffic, and do not use it to avoid every walk. The point is to remove the piece of friction that would otherwise make the route unpleasant.
+A taxi is not always faster during busy evening traffic, and it does not need to replace every walk. Use it for the piece of friction that would otherwise make the route unpleasant.
 
 ### Airport access belongs to the accommodation decision
 
@@ -587,7 +587,7 @@ Verify the individual restaurant if halal requirements matter.
 
 Museum reservations, beauty appointments, dinner reservations and nightlife meeting times can turn one neighborhood into a timetable.
 
-Choose one or two fixed commitments and leave room to walk.
+Keep fixed commitments to one or two and leave room to walk.
 
 ### Moving hotels for one night out
 
@@ -628,7 +628,7 @@ Nightlife is one branch of the evening, not the whole district.
 
 Start around Hangangjin / Hannam.
 
-Choose Leeum if art interests you, browse Hannam if shopping and design matter more, or use the afternoon for a booked beauty appointment.
+Leeum suits an art-focused afternoon; Hannam browsing suits shopping and design; a booked beauty appointment works when you want the stop to have a fixed purpose.
 
 Move toward central Itaewon later for food.
 
@@ -644,7 +644,7 @@ Treat Hannam as the daytime side and central Itaewon as the food-and-evening sid
 
 Yes if a hillside neighborhood, cafes, restaurants and bars sound better than another major attraction.
 
-Skip it when the hill, weather or fatigue makes the trade poor.
+When the hill, weather or fatigue makes the trade poor, leave it out.
 
 It is not a mandatory extension of every Itaewon visit.
 
@@ -666,7 +666,7 @@ Visit when this is one afternoon or evening.
 
 Consider staying when you expect to use the area repeatedly, especially at night.
 
-Do not choose a hotel until you have checked the actual hill, station, noise and final walk.
+Before booking, check the actual hill, station, noise and final walk.
 
 ### Is Itaewon or Hongdae better for nightlife?
 
@@ -674,7 +674,7 @@ They produce different nights.
 
 Hongdae has a younger, denser university-area energy with a large street, bar and club scene. Itaewon is more internationally mixed and easier to combine with Hannam, international dining and different bar styles.
 
-Choose based on the evening you want rather than assuming one district is universally better.
+Base the choice on the evening you want rather than assuming one district is universally better.
 
 ---
 
@@ -684,7 +684,7 @@ Start in Hannam after lunch.
 
 Use Leeum only if art deserves the time. Move toward central Itaewon for the meal that actually matters to you. Then choose one evening: Gyeongnidan, Haebangchon, active nightlife, or simply go home.
 
-Do not try to “finish” Itaewon.
+There is no prize for “finishing” Itaewon.
 
 The area works better when each part has a different job.
 
@@ -786,25 +786,20 @@ The public Travel Guide intentionally avoids loading the page with current airpo
 
 ---
 
-## 4. Humanization checks required before lock
+## 4. Humanization audit — completed
 
-Check full page for mechanical repetition of:
+Final copy audit completed before content lock.
 
-- `Choose ... when`
-- `Skip ... when`
-- `makes sense`
-- `the point`
-- `the reason`
-- repeated `Do not ...` headings
+Mechanical `Choose / Skip / Do not` repetition was reduced without changing the approved facts, route logic, traveler judgments or affiliate placement.
 
-Do not remove useful direct judgment merely to make phrase counts zero.
-
-Audit whether each zone has a genuinely different reason to exist:
+Each zone retains a different editorial role:
 
 - Hannam = art / design / shopping / appointment
 - Central Itaewon = international / halal food + main nightlife
 - Gyeongnidan = calmer bars / cafes
 - Haebangchon = hillside neighborhood evening
+
+Humanization status for the approved copy: `DONE`.
 
 ---
 
@@ -836,16 +831,10 @@ SEO title year remains manually controlled unless the project standard changes.
 
 ## 7. Status after user review
 
-If the user approves the copy without edits:
+User approval received.
 
-Change status to:
+Status:
 
 `APPROVED PUBLIC COPY — CONTENT LOCKED`
 
-Then Codex implementation must use exact replacement/insertion only.
-
-If the user requests edits, keep:
-
-`DRAFT PUBLIC COPY — USER REVIEW REQUIRED`
-
-until those edits are explicitly approved.
+Codex implementation must use exact replacement/insertion only. Public wording must not be rewritten without a new user-approved change.
