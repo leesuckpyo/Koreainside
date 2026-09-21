@@ -765,12 +765,12 @@
   </footer>
 
   <script src="guide-year.js" defer></script>
+  <script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=r63yif5zan&amp;submodules=geocoder&amp;language=en"></script>
   <script>
   (function(){
     "use strict";
     var root=document.getElementById("dongdaemun-map"),status=document.getElementById("dd-map-status"),details=document.getElementById("dd-map-details");
     if(!root||!status||!details)return;
-    var sdk="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=r63yif5zan&submodules=geocoder&language=en";
     var colors={ddp:"#2364aa",retail:"#337a5b","late-retail":"#b54879",specialty:"#b56824",wholesale:"#6d4a8d",food:"#a83d35",station:"#3f4448"};
     var places=[
       {id:"dhcp",name:"Dongdaemun History & Culture Park Station",cat:"station",q:"서울특별시 중구 을지로 279",what:"Lines 2, 4 and 5 gateway for DDP, easy retail and night fashion.",when:"Useful across the day; match the exit to your first stop.",buy:"Not applicable",first:"Yes",times:["day","evening","after-10","after-midnight"]},
@@ -786,7 +786,6 @@
       {id:"fish",name:"Grilled Fish Alley",cat:"food",q:"서울특별시 종로구 종로40가길 5",what:"A sit-down grilled-fish meal near the daytime market route.",when:"Especially useful around lunch; shop hours vary.",buy:"Not applicable",first:"Yes, with the market route",times:["day","evening"]}
     ];
     var routes={a:["dhcp","ddp","doota","dak","nyunyu"],b:["station","complex","fish","ddp"],c:["ddp","dak","nyunyu","fashion","apm"]},markers={},lines={},time="day",cats=new Set(["ddp","retail","specialty","food","station"]),activeRoutes=new Set(),map;
-    function load(){if(window.naver&&naver.maps&&naver.maps.Service)return Promise.resolve();return new Promise(function(ok,no){var s=document.createElement("script");s.src=sdk;s.async=true;s.onload=function(){window.naver&&naver.maps&&naver.maps.Service?ok():no()};s.onerror=no;document.head.appendChild(s)})}
     function geo(p){return new Promise(function(ok){naver.maps.Service.geocode({query:p.q},function(s,r){if(s!==naver.maps.Service.Status.OK||!r.v2.addresses.length)return ok(null);var a=r.v2.addresses[0];ok(Object.assign({},p,{lat:+a.y,lng:+a.x}))})})}
     function icon(p){return{content:'<button type="button" class="dd-marker" style="--marker:'+colors[p.cat]+'" aria-label="'+p.name.replace(/"/g,"&quot;")+'"><span></span></button>',anchor:new naver.maps.Point(15,15)}}
     function show(p){details.innerHTML='<p class="dd-map-eyebrow">'+p.name+'</p><h3>'+p.name+'</h3><dl><div><dt>What</dt><dd>'+p.what+'</dd></div><div><dt>When</dt><dd>'+p.when+'</dd></div><div><dt>Buy one item?</dt><dd>'+p.buy+'</dd></div><div><dt>Good for first visit?</dt><dd>'+p.first+'</dd></div></dl>'}
@@ -796,7 +795,8 @@
     document.querySelectorAll("[data-time-filters] button").forEach(function(b){b.onclick=function(){time=b.dataset.time;document.querySelectorAll("[data-time-filters] button").forEach(function(x){var on=x===b;x.classList.toggle("is-active",on);x.setAttribute("aria-pressed",on)});var d={day:["ddp","retail","specialty","food"],evening:["ddp","retail","late-retail","food","wholesale"],"after-10":["late-retail","wholesale","food","ddp"],"after-midnight":["late-retail","wholesale"]};cats=new Set(d[time]);document.querySelectorAll("[data-category-filters] button").forEach(function(x){var on=cats.has(x.dataset.category);x.classList.toggle("is-active",on);x.setAttribute("aria-pressed",on)});refresh()}})
     document.querySelectorAll("[data-category-filters] button").forEach(function(b){b.onclick=function(){var c=b.dataset.category;cats.has(c)?cats.delete(c):cats.add(c);var on=cats.has(c);b.classList.toggle("is-active",on);b.setAttribute("aria-pressed",on);refresh()}})
     document.querySelectorAll("[data-route-filters] button").forEach(function(b){b.onclick=function(){var r=b.dataset.route;activeRoutes.has(r)?activeRoutes.delete(r):activeRoutes.add(r);var on=activeRoutes.has(r);b.classList.toggle("is-active",on);b.setAttribute("aria-pressed",on);refresh()}})
-    load().then(function(){return Promise.all(places.map(geo))}).then(function(all){var found=all.filter(Boolean);if(!found.length)throw Error();build(found);if(found.length!==places.length)status.textContent=found.length+" of "+places.length+" locations loaded. Some official address lookups need confirmation."}).catch(function(){root.classList.add("is-unavailable");root.innerHTML='<p class="dd-map-loading">The official dynamic map is temporarily unavailable. Use the full station, market, retail, wholesale and food guidance below.</p>';status.textContent="NAVER Dynamic Map connection unavailable."})
+    if(!window.naver||!naver.maps||!naver.maps.Service){root.classList.add("is-unavailable");root.innerHTML='<p class="dd-map-loading">The official dynamic map is temporarily unavailable. Use the full station, market, retail, wholesale and food guidance below.</p>';status.textContent="NAVER Dynamic Map connection unavailable.";return}
+    Promise.all(places.map(geo)).then(function(all){var found=all.filter(Boolean);if(!found.length)throw Error();build(found);if(found.length!==places.length)status.textContent=found.length+" of "+places.length+" locations loaded. Some official address lookups need confirmation."}).catch(function(){root.classList.add("is-unavailable");root.innerHTML='<p class="dd-map-loading">The official dynamic map is temporarily unavailable. Use the full station, market, retail, wholesale and food guidance below.</p>';status.textContent="NAVER Dynamic Map connection unavailable."})
   })();
   </script>
   <script src="common.js"></script>
