@@ -151,9 +151,35 @@
   updateHeaderState();
   };
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initializeCommonNavigation, { once: true });
-  } else {
+  const initializeLanguageSwitchers = () => {
+    const language = document.documentElement.lang.toLowerCase().split('-')[0];
+    if (language !== 'en' && language !== 'es') return;
+
+    const targetLanguage = language === 'es' ? 'en' : 'es';
+    const alternate = document.querySelector(`link[rel~="alternate"][hreflang="${targetLanguage}"]`);
+    if (!alternate || !alternate.href) return;
+
+    document.querySelectorAll('.language-switcher').forEach((switcher) => {
+      const button = switcher.querySelector('.language-switcher__button');
+      if (!button) return;
+
+      button.disabled = false;
+      button.removeAttribute('aria-disabled');
+      button.setAttribute('aria-label', language === 'es' ? 'Ver esta página en inglés' : 'View this page in Spanish');
+      button.addEventListener('click', () => {
+        window.location.assign(alternate.href);
+      });
+    });
+  };
+
+  const initializeCommonHeader = () => {
     initializeCommonNavigation();
+    initializeLanguageSwitchers();
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeCommonHeader, { once: true });
+  } else {
+    initializeCommonHeader();
   }
 }());
