@@ -340,6 +340,7 @@ ul, ol {
 .language-switcher {
   display: block;
   order: 3;
+  position: relative;
   margin-left: auto;
   flex-shrink: 0;
 }
@@ -358,6 +359,24 @@ ul, ol {
   cursor: default;
 }
 
+.language-switcher__button:not(:disabled) {
+  cursor: pointer;
+}
+
+.language-switcher__button[aria-haspopup="menu"]::after {
+  content: "";
+  width: 5px;
+  height: 5px;
+  margin-left: 2px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+}
+
+.language-switcher__button[aria-expanded="true"]::after {
+  transform: translateY(1px) rotate(225deg);
+}
+
 .language-switcher__button:disabled {
   opacity: 1;
 }
@@ -373,6 +392,66 @@ ul, ol {
   font-size: 0.8125rem;
   font-weight: 600;
   color: var(--blue-muted);
+}
+
+.language-switcher__menu[hidden] {
+  display: none !important;
+}
+
+.language-switcher__menu {
+  position: absolute;
+  z-index: 140;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 176px;
+  padding: 8px;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-sm);
+  background: var(--white);
+  box-shadow: 0 14px 28px rgba(10, 37, 64, 0.14);
+}
+
+.language-switcher__option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  min-height: 42px;
+  padding: 9px 10px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--gray-900);
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.4;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.language-switcher__option:hover,
+.language-switcher__option:focus-visible {
+  background: var(--blue-light);
+  color: var(--blue-accent);
+}
+
+.language-switcher__option:focus-visible {
+  outline: 3px solid rgba(26, 86, 219, 0.35);
+  outline-offset: 1px;
+}
+
+.language-switcher__option--current {
+  color: var(--blue-deep);
+  font-weight: 800;
+}
+
+.language-switcher__option-indicator {
+  flex: 0 0 auto;
+  color: var(--blue-muted);
+  font-weight: 800;
 }
 
 @media (min-width: 960px) {
@@ -418,6 +497,8 @@ ul, ol {
   }
 
   .language-switcher__button {
+    justify-content: center;
+    width: 124px;
     padding: 7px 12px;
   }
 

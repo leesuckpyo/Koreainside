@@ -155,20 +155,129 @@
     const language = document.documentElement.lang.toLowerCase().split('-')[0];
     if (language !== 'en' && language !== 'es') return;
 
-    const targetLanguage = language === 'es' ? 'en' : 'es';
-    const alternate = document.querySelector(`link[rel~="alternate"][hreflang="${targetLanguage}"]`);
-    if (!alternate || !alternate.href) return;
+    const languages = {
+      en: { label: 'English' },
+      es: { label: 'Español' }
+    };
+    const alternates = Array.from(document.querySelectorAll('link[rel~="alternate"][hreflang]')).reduce((items, link) => {
+      const alternateLanguage = link.getAttribute('hreflang').toLowerCase().split('-')[0];
+      if (languages[alternateLanguage] && alternateLanguage !== language && link.href) {
+        items.set(alternateLanguage, link.href);
+      }
+      return items;
+    }, new Map());
 
-    document.querySelectorAll('.language-switcher').forEach((switcher) => {
+    document.querySelectorAll('.language-switcher').forEach((switcher, switcherIndex) => {
       const button = switcher.querySelector('.language-switcher__button');
       if (!button) return;
 
+      const options = Object.keys(languages).filter((optionLanguage) => (
+        optionLanguage === language || alternates.has(optionLanguage)
+      ));
+      if (options.length < 2) return;
+
+      const menuId = `language-switcher-menu-${switcherIndex + 1}`;
+      const menu = document.createElement('div');
+      menu.className = 'language-switcher__menu';
+      menu.id = menuId;
+      menu.setAttribute('role', 'menu');
+      menu.setAttribute('aria-label', switcher.getAttribute('aria-label') || 'Language selector');
+      menu.hidden = true;
+
+      options.forEach((optionLanguage) => {
+        const isCurrent = optionLanguage === language;
+        const option = document.createElement(isCurrent ? 'button' : 'a');
+        option.className = `language-switcher__option${isCurrent ? ' language-switcher__option--current' : ''}`;
+        option.setAttribute('role', 'menuitem');
+
+        if (isCurrent) {
+          option.type = 'button';
+          option.setAttribute('aria-current', 'page');
+        } else {
+          option.href = alternates.get(optionLanguage);
+          option.hreflang = optionLanguage;
+        }
+
+        const label = document.createElement('span');
+        label.textContent = languages[optionLanguage].label;
+        option.appendChild(label);
+
+        const indicator = document.createElement('span');
+        indicator.className = 'language-switcher__option-indicator';
+        indicator.setAttribute('aria-hidden', 'true');
+        indicator.textContent = isCurrent ? '✓' : '→';
+        option.appendChild(indicator);
+
+        menu.appendChild(option);
+      });
+
+      switcher.appendChild(menu);
+
+      const menuItems = Array.from(menu.querySelectorAll('[role="menuitem"]'));
+      const closeMenu = (returnFocus) => {
+        menu.hidden = true;
+        button.setAttribute('aria-expanded', 'false');
+        switcher.classList.remove('is-open');
+        if (returnFocus) button.focus();
+      };
+      const openMenu = (focusPosition) => {
+        menu.hidden = false;
+        button.setAttribute('aria-expanded', 'true');
+        switcher.classList.add('is-open');
+        if (focusPosition === 'first') menuItems[0].focus();
+        if (focusPosition === 'last') menuItems[menuItems.length - 1].focus();
+      };
+
       button.disabled = false;
       button.removeAttribute('aria-disabled');
-      button.setAttribute('aria-label', language === 'es' ? 'Ver esta página en inglés' : 'View this page in Spanish');
+      button.setAttribute('aria-haspopup', 'menu');
+      button.setAttribute('aria-expanded', 'false');
+      button.setAttribute('aria-controls', menuId);
+      button.setAttribute('aria-label', switcher.getAttribute('aria-label') || 'Language selector');
       button.addEventListener('click', () => {
-        window.location.assign(alternate.href);
+        if (menu.hidden) openMenu(false);
+        else closeMenu(false);
       });
+      button.addEventListener('keydown', (event) => {
+        if (event.key !== 'ArrowDown' && event.key !== 'ArrowUp') return;
+        event.preventDefault();
+        openMenu(event.key === 'ArrowDown' ? 'first' : 'last');
+      });
+
+      menu.addEventListener('click', (event) => {
+        if (event.target.closest('.language-switcher__option--current')) closeMenu(true);
+      });
+      menu.addEventListener('keydown', (event) => {
+        const currentIndex = menuItems.indexOf(document.activeElement);
+        let nextIndex = null;
+
+        if (event.key === 'Escape') {
+          event.preventDefault();
+          closeMenu(true);
+          return;
+        }
+        if (event.key === 'Tab') {
+          closeMenu(false);
+          return;
+        }
+        if (event.key === 'ArrowDown') nextIndex = currentIndex < 0 ? 0 : (currentIndex + 1) % menuItems.length;
+        if (event.key === 'ArrowUp') nextIndex = currentIndex < 0 ? menuItems.length - 1 : (currentIndex - 1 + menuItems.length) % menuItems.length;
+        if (event.key === 'Home') nextIndex = 0;
+        if (event.key === 'End') nextIndex = menuItems.length - 1;
+
+        if (nextIndex !== null) {
+          event.preventDefault();
+          menuItems[nextIndex].focus();
+        }
+      });
+
+      document.addEventListener('click', (event) => {
+        if (!switcher.contains(event.target)) closeMenu(false);
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && !menu.hidden) closeMenu(true);
+      });
+      window.addEventListener('pageshow', () => closeMenu(false));
     });
   };
 
