@@ -7,6 +7,11 @@
     'HAPPENING NOW': 'ki-event-status--happening',
     ENDED: 'ki-event-status--ended'
   };
+  const SPANISH_STATUS_LABELS = {
+    UPCOMING: 'PRÓXIMAMENTE',
+    'HAPPENING NOW': 'EN CURSO',
+    ENDED: 'FINALIZADO'
+  };
 
   function isDate(value) {
     if (typeof value !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
@@ -79,7 +84,9 @@
           const status = getEventStatus(event, today);
           badge.classList.remove(...Object.values(STATUS_CLASSES));
           badge.classList.add(STATUS_CLASSES[status]);
-          badge.textContent = status;
+          badge.textContent = document.documentElement.lang === 'es'
+            ? SPANISH_STATUS_LABELS[status]
+            : status;
         }
         // Keep an open page current at the next KST date boundary (UTC+09:00).
         const midnight = Date.parse(`${today}T00:00:00+09:00`) + 86400000;
