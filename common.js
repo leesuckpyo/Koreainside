@@ -245,7 +245,23 @@
       });
 
       menu.addEventListener('click', (event) => {
-        if (event.target.closest('.language-switcher__option--current')) closeMenu(true);
+        const selectedOption = event.target.closest('.language-switcher__option');
+        if (!selectedOption || !menu.contains(selectedOption)) return;
+
+        if (selectedOption.classList.contains('language-switcher__option--current')) {
+          closeMenu(true);
+          return;
+        }
+
+        const isPrimaryUnmodifiedClick = event.button === 0
+          && !event.altKey
+          && !event.ctrlKey
+          && !event.metaKey
+          && !event.shiftKey;
+        if (selectedOption.matches('a[href]') && isPrimaryUnmodifiedClick) {
+          event.preventDefault();
+          window.location.assign(selectedOption.href);
+        }
       });
       menu.addEventListener('keydown', (event) => {
         const currentIndex = menuItems.indexOf(document.activeElement);
