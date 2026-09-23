@@ -5,7 +5,7 @@
 - Date: 2026-09-22
 - Repository: `C:\Projects\Koreainside`
 - Production: `https://www.getkoreainside.com/`
-- Production commit verified: `70422bc850df115a4518ab26480e872b1e39bfb1`
+- Production commit verified: `49403e1e98ac05d33143d39c3b7c9c90e8167972`
 - Scope: Current English public detail HTML pages and their same-filename Spanish siblings
 - Status values: `COMPLETE`, `MISSING`, `EXCLUDE`
 
@@ -21,16 +21,16 @@ Audit results:
 
 - Repository root English HTML files: 61
 - English Production sitemap URLs: 60
-- Spanish Production sitemap URLs: 43
+- Spanish Production sitemap URLs: 45
 - English sitemap HTTP 200: 60/60
 - English localization-target detail pages: 57
 - Target pages linked from Production Global Navigation: 41
 - Target pages linked from Production Navigation or other internal anchors: 57/57
 - Local sitemap versus Production sitemap difference: 0
-- Spanish siblings meeting COMPLETE criteria: 43
+- Spanish siblings meeting COMPLETE criteria: 45
 - COMPLETE criteria verified: file exists, Production HTTP 200, Spanish self canonical, reciprocal `en` / `es` / `x-default`
 
-The COMPLETE total is the 13-page cohort deployed from commit `b94220a`, the two earlier Dongdaemun Travel/Stay pilots, the five Stay Area/Hotel pages deployed from commit `31a0c25`, the six-page Stay 5 plus Hongdae Travel batch deployed from commit `43b6db5`, the six-page Stay 6 batch deployed from commit `7d92e37`, the six-page Airport 6 batch deployed from commit `f3af0ac`, and the five-page Discover + eSIM batch deployed from commit `70422bc` on 2026-09-23. The already deployed Spanish pages are inventory records only. This audit does not reopen or modify them.
+The COMPLETE total is the 13-page cohort deployed from commit `b94220a`, the two earlier Dongdaemun Travel/Stay pilots, the five Stay Area/Hotel pages deployed from commit `31a0c25`, the six-page Stay 5 plus Hongdae Travel batch deployed from commit `43b6db5`, the six-page Stay 6 batch deployed from commit `7d92e37`, the six-page Airport 6 batch deployed from commit `f3af0ac`, the five-page Discover + eSIM batch deployed from commit `70422bc`, and the two-page Maps + Apps batch deployed from commit `49403e1` on 2026-09-23. The already deployed Spanish pages are inventory records only. This audit does not reopen or modify them.
 
 ## Master Inventory
 
@@ -84,14 +84,14 @@ Notes use these source markers:
 | Airport | `airport-transfer.html` | `https://www.getkoreainside.com/airport-transfer.html` | `es/airport-transfer.html` | `https://www.getkoreainside.com/es/airport-transfer.html` | COMPLETE | Nav; Production HTTP 200 and canonical/hreflang PASS. |
 | Airport | `arex.html` | `https://www.getkoreainside.com/arex.html` | `es/arex.html` | `https://www.getkoreainside.com/es/arex.html` | COMPLETE | Nav; Production HTTP 200 and canonical/hreflang PASS. |
 | Airport | `airport-bus.html` | `https://www.getkoreainside.com/airport-bus.html` | `es/airport-bus.html` | `https://www.getkoreainside.com/es/airport-bus.html` | COMPLETE | Nav; Production HTTP 200 and canonical/hreflang PASS. |
-| Maps | `maps.html` | `https://www.getkoreainside.com/maps.html` | `es/maps.html` | `https://www.getkoreainside.com/es/maps.html` | MISSING | Nav; Spanish sibling absent. |
+| Maps | `maps.html` | `https://www.getkoreainside.com/maps.html` | `es/maps.html` | `https://www.getkoreainside.com/es/maps.html` | COMPLETE | Nav; Production HTTP 200 and canonical/hreflang PASS. |
 | Transport | `tmoney.html` | `https://www.getkoreainside.com/tmoney.html` | `es/tmoney.html` | `https://www.getkoreainside.com/es/tmoney.html` | MISSING | Nav; Spanish sibling absent. |
 | Transport | `wowpass.html` | `https://www.getkoreainside.com/wowpass.html` | `es/wowpass.html` | `https://www.getkoreainside.com/es/wowpass.html` | MISSING | Nav; Spanish sibling absent. |
 | Transport | `tmoney-vs-wowpass.html` | `https://www.getkoreainside.com/tmoney-vs-wowpass.html` | `es/tmoney-vs-wowpass.html` | `https://www.getkoreainside.com/es/tmoney-vs-wowpass.html` | MISSING | Nav; comparison page; Spanish sibling absent. |
 | Transport | `taxi.html` | `https://www.getkoreainside.com/taxi.html` | `es/taxi.html` | `https://www.getkoreainside.com/es/taxi.html` | MISSING | Nav; Spanish sibling absent. |
 | Transport | `incheon-airport-private-transfer.html` | `https://www.getkoreainside.com/incheon-airport-private-transfer.html` | `es/incheon-airport-private-transfer.html` | `https://www.getkoreainside.com/es/incheon-airport-private-transfer.html` | COMPLETE | Nav; service/affiliate transport page; Production HTTP 200 and canonical/hreflang PASS. |
 | Transport | `rental-car.html` | `https://www.getkoreainside.com/rental-car.html` | `es/rental-car.html` | `https://www.getkoreainside.com/es/rental-car.html` | MISSING | Nav; Spanish sibling absent. |
-| Apps | `apps.html` | `https://www.getkoreainside.com/apps.html` | `es/apps.html` | `https://www.getkoreainside.com/es/apps.html` | MISSING | Nav; Spanish sibling absent. |
+| Apps | `apps.html` | `https://www.getkoreainside.com/apps.html` | `es/apps.html` | `https://www.getkoreainside.com/es/apps.html` | COMPLETE | Nav; Production HTTP 200 and canonical/hreflang PASS. |
 | Travel Tips | `checklist.html` | `https://www.getkoreainside.com/checklist.html` | `es/checklist.html` | `https://www.getkoreainside.com/es/checklist.html` | MISSING | Nav; Spanish sibling absent. |
 | Travel Tips | `payments.html` | `https://www.getkoreainside.com/payments.html` | `es/payments.html` | `https://www.getkoreainside.com/es/payments.html` | MISSING | Nav; payment hub; Spanish sibling absent. |
 | Travel Tips | `foreign-credit-cards-korea.html` | `https://www.getkoreainside.com/foreign-credit-cards-korea.html` | `es/foreign-credit-cards-korea.html` | `https://www.getkoreainside.com/es/foreign-credit-cards-korea.html` | MISSING | Internal; Spanish sibling absent. |
@@ -125,8 +125,8 @@ Reasons:
 | Measure | Count |
 |---|---:|
 | English public localization-target detail pages | 57 |
-| Spanish COMPLETE | 43 |
-| Spanish MISSING | 14 |
+| Spanish COMPLETE | 45 |
+| Spanish MISSING | 12 |
 | Public/root EXCLUDE | 4 |
 
 ### By Category
@@ -138,11 +138,11 @@ Reasons:
 | Stay | 21 | 21 | 0 |
 | eSIM | 3 | 3 | 0 |
 | Airport | 5 | 5 | 0 |
-| Maps | 1 | 0 | 1 |
+| Maps | 1 | 1 | 0 |
 | Transport | 6 | 1 | 5 |
-| Apps | 1 | 0 | 1 |
+| Apps | 1 | 1 | 0 |
 | Travel Tips | 7 | 0 | 7 |
-| **Total** | **57** | **43** | **14** |
+| **Total** | **57** | **45** | **12** |
 
 ### Stay Detail
 
@@ -177,14 +177,13 @@ All 11 Travel pages are COMPLETE. This result is based on the actual repository 
 
 ## Recommended Batch Plan
 
-The remaining plan covers all 14 MISSING pages exactly once. It follows HTML-first localization and uses focused batches where practical.
+The remaining plan covers all 12 MISSING pages exactly once. It follows HTML-first localization and uses focused batches where practical.
 
 | Order | Batch | Pages | Count | Reason |
 |---:|---|---|---:|---|
-| 1 | Maps + Apps | `maps.html`, `apps.html` | 2 | Completes two high-utility Navigation groups. |
-| 2 | Transport remainder | `tmoney.html`, `wowpass.html`, `tmoney-vs-wowpass.html`, `taxi.html`, `rental-car.html` | 5 | Keeps transport facts and comparisons in one focused QA batch. |
-| 3 | Travel Tips / Payments | `checklist.html`, `payments.html`, `foreign-credit-cards-korea.html`, `card-declined-korea.html`, `korean-online-payments-foreigners.html`, `korea-atm-foreign-cards.html`, `apple-pay-korea.html` | 7 | Completes the payment/troubleshooting cluster and its internal-link network. |
-|  | **Total** |  | **14** | All remaining MISSING detail pages covered. |
+| 1 | Transport remainder | `tmoney.html`, `wowpass.html`, `tmoney-vs-wowpass.html`, `taxi.html`, `rental-car.html` | 5 | Keeps transport facts and comparisons in one focused QA batch. |
+| 2 | Travel Tips / Payments | `checklist.html`, `payments.html`, `foreign-credit-cards-korea.html`, `card-declined-korea.html`, `korean-online-payments-foreigners.html`, `korea-atm-foreign-cards.html`, `apple-pay-korea.html` | 7 | Completes the payment/troubleshooting cluster and its internal-link network. |
+|  | **Total** |  | **12** | All remaining MISSING detail pages covered. |
 
 ## Batch Implementation Contract Principles
 
@@ -197,13 +196,13 @@ The future batches should use these fixed rules:
 - Do not create future Spanish 404 links.
 - Do not use repeated large Review MD generation as the default production workflow.
 - Treat page omission prevention and batch-level inventory reconciliation as release blockers.
-- Keep the existing 43 COMPLETE Spanish pages unchanged unless a separately approved correction is required.
+- Keep the existing 45 COMPLETE Spanish pages unchanged unless a separately approved correction is required.
 
 ## Reconciliation Check
 
 - Target total: `57`
-- COMPLETE + MISSING: `43 + 14 = 57`
+- COMPLETE + MISSING: `45 + 12 = 57`
 - Category target totals: `2 + 11 + 21 + 3 + 5 + 1 + 6 + 1 + 7 = 57`
-- Batch page totals: `2 + 5 + 7 = 14`
+- Batch page totals: `5 + 7 = 12`
 - Stay total: `21 = 21 COMPLETE + 0 MISSING`
 - Travel total: `11 = 11 COMPLETE + 0 MISSING`
