@@ -5,7 +5,7 @@
 - Date: 2026-09-22
 - Repository: `C:\Projects\Koreainside`
 - Production: `https://www.getkoreainside.com/`
-- Production commit verified: `43b6db5ce5b78bcf5bc1b59d6857664a3dbfcb34`
+- Production commit verified: `70422bc850df115a4518ab26480e872b1e39bfb1`
 - Scope: Current English public detail HTML pages and their same-filename Spanish siblings
 - Status values: `COMPLETE`, `MISSING`, `EXCLUDE`
 
@@ -21,16 +21,16 @@ Audit results:
 
 - Repository root English HTML files: 61
 - English Production sitemap URLs: 60
-- Spanish Production sitemap URLs: 38
+- Spanish Production sitemap URLs: 43
 - English sitemap HTTP 200: 60/60
 - English localization-target detail pages: 57
 - Target pages linked from Production Global Navigation: 41
 - Target pages linked from Production Navigation or other internal anchors: 57/57
 - Local sitemap versus Production sitemap difference: 0
-- Spanish siblings meeting COMPLETE criteria: 38
+- Spanish siblings meeting COMPLETE criteria: 43
 - COMPLETE criteria verified: file exists, Production HTTP 200, Spanish self canonical, reciprocal `en` / `es` / `x-default`
 
-The COMPLETE total is the 13-page cohort deployed from commit `b94220a`, the two earlier Dongdaemun Travel/Stay pilots, the five Stay Area/Hotel pages deployed from commit `31a0c25`, the six-page Stay 5 plus Hongdae Travel batch deployed from commit `43b6db5`, the six-page Stay 6 batch deployed from commit `7d92e37`, and the six-page Airport 6 batch deployed from commit `f3af0ac` on 2026-09-23. The already deployed Spanish pages are inventory records only. This audit does not reopen or modify them.
+The COMPLETE total is the 13-page cohort deployed from commit `b94220a`, the two earlier Dongdaemun Travel/Stay pilots, the five Stay Area/Hotel pages deployed from commit `31a0c25`, the six-page Stay 5 plus Hongdae Travel batch deployed from commit `43b6db5`, the six-page Stay 6 batch deployed from commit `7d92e37`, the six-page Airport 6 batch deployed from commit `f3af0ac`, and the five-page Discover + eSIM batch deployed from commit `70422bc` on 2026-09-23. The already deployed Spanish pages are inventory records only. This audit does not reopen or modify them.
 
 ## Master Inventory
 
@@ -42,8 +42,8 @@ Notes use these source markers:
 
 | Category | English filename | English Production URL | Spanish filename | Spanish Production URL | Status: COMPLETE / MISSING / EXCLUDE | Notes |
 |---|---|---|---|---|---|---|
-| Discover | `taste-korea.html` | `https://www.getkoreainside.com/taste-korea.html` | `es/taste-korea.html` | `https://www.getkoreainside.com/es/taste-korea.html` | MISSING | Nav; Spanish sibling absent. |
-| Discover | `k-beauty.html` | `https://www.getkoreainside.com/k-beauty.html` | `es/k-beauty.html` | `https://www.getkoreainside.com/es/k-beauty.html` | MISSING | Nav; Spanish sibling absent. |
+| Discover | `taste-korea.html` | `https://www.getkoreainside.com/taste-korea.html` | `es/taste-korea.html` | `https://www.getkoreainside.com/es/taste-korea.html` | COMPLETE | Nav; Production HTTP 200 and canonical/hreflang PASS. |
+| Discover | `k-beauty.html` | `https://www.getkoreainside.com/k-beauty.html` | `es/k-beauty.html` | `https://www.getkoreainside.com/es/k-beauty.html` | COMPLETE | Nav; Production HTTP 200 and canonical/hreflang PASS. |
 | Travel — Area | `hongdae-travel-guide.html` | `https://www.getkoreainside.com/hongdae-travel-guide.html` | `es/hongdae-travel-guide.html` | `https://www.getkoreainside.com/es/hongdae-travel-guide.html` | COMPLETE | Nav; Production HTTP 200 and canonical/hreflang PASS. |
 | Travel — Area | `myeongdong-travel-guide.html` | `https://www.getkoreainside.com/myeongdong-travel-guide.html` | `es/myeongdong-travel-guide.html` | `https://www.getkoreainside.com/es/myeongdong-travel-guide.html` | COMPLETE | Nav; Production HTTP 200 and canonical/hreflang PASS. |
 | Travel — Area | `seongsu-travel-guide.html` | `https://www.getkoreainside.com/seongsu-travel-guide.html` | `es/seongsu-travel-guide.html` | `https://www.getkoreainside.com/es/seongsu-travel-guide.html` | COMPLETE | Nav; Production HTTP 200 and canonical/hreflang PASS. |
@@ -76,9 +76,9 @@ Notes use these source markers:
 | Stay — Area / Hotel Detail | `where-to-stay-in-dongdaemun.html` | `https://www.getkoreainside.com/where-to-stay-in-dongdaemun.html` | `es/where-to-stay-in-dongdaemun.html` | `https://www.getkoreainside.com/es/where-to-stay-in-dongdaemun.html` | COMPLETE | Internal; Spanish Stay Golden Sample; Production HTTP 200 and canonical/hreflang PASS. |
 | Stay — Area / Hotel Detail | `where-to-stay-in-seongsu.html` | `https://www.getkoreainside.com/where-to-stay-in-seongsu.html` | `es/where-to-stay-in-seongsu.html` | `https://www.getkoreainside.com/es/where-to-stay-in-seongsu.html` | COMPLETE | Internal; Production HTTP 200 and canonical/hreflang PASS. |
 | Stay — Area / Hotel Detail | `where-to-stay-in-itaewon.html` | `https://www.getkoreainside.com/where-to-stay-in-itaewon.html` | `es/where-to-stay-in-itaewon.html` | `https://www.getkoreainside.com/es/where-to-stay-in-itaewon.html` | COMPLETE | Internal; Production HTTP 200 and canonical/hreflang PASS. |
-| eSIM | `esim.html` | `https://www.getkoreainside.com/esim.html` | `es/esim.html` | `https://www.getkoreainside.com/es/esim.html` | MISSING | Nav; Spanish sibling absent. |
-| eSIM | `best-esim-for-korea.html` | `https://www.getkoreainside.com/best-esim-for-korea.html` | `es/best-esim-for-korea.html` | `https://www.getkoreainside.com/es/best-esim-for-korea.html` | MISSING | Nav; Spanish sibling absent. |
-| eSIM | `korea-esim-with-phone-number.html` | `https://www.getkoreainside.com/korea-esim-with-phone-number.html` | `es/korea-esim-with-phone-number.html` | `https://www.getkoreainside.com/es/korea-esim-with-phone-number.html` | MISSING | Nav; Spanish sibling absent. |
+| eSIM | `esim.html` | `https://www.getkoreainside.com/esim.html` | `es/esim.html` | `https://www.getkoreainside.com/es/esim.html` | COMPLETE | Nav; Production HTTP 200 and canonical/hreflang PASS. |
+| eSIM | `best-esim-for-korea.html` | `https://www.getkoreainside.com/best-esim-for-korea.html` | `es/best-esim-for-korea.html` | `https://www.getkoreainside.com/es/best-esim-for-korea.html` | COMPLETE | Nav; Production HTTP 200 and canonical/hreflang PASS. |
+| eSIM | `korea-esim-with-phone-number.html` | `https://www.getkoreainside.com/korea-esim-with-phone-number.html` | `es/korea-esim-with-phone-number.html` | `https://www.getkoreainside.com/es/korea-esim-with-phone-number.html` | COMPLETE | Nav; Production HTTP 200 and canonical/hreflang PASS. |
 | Airport | `airport.html` | `https://www.getkoreainside.com/airport.html` | `es/airport.html` | `https://www.getkoreainside.com/es/airport.html` | COMPLETE | Nav; Production HTTP 200 and canonical/hreflang PASS. |
 | Airport | `arrival.html` | `https://www.getkoreainside.com/arrival.html` | `es/arrival.html` | `https://www.getkoreainside.com/es/arrival.html` | COMPLETE | Nav; Production HTTP 200 and canonical/hreflang PASS. |
 | Airport | `airport-transfer.html` | `https://www.getkoreainside.com/airport-transfer.html` | `es/airport-transfer.html` | `https://www.getkoreainside.com/es/airport-transfer.html` | COMPLETE | Nav; Production HTTP 200 and canonical/hreflang PASS. |
@@ -125,24 +125,24 @@ Reasons:
 | Measure | Count |
 |---|---:|
 | English public localization-target detail pages | 57 |
-| Spanish COMPLETE | 38 |
-| Spanish MISSING | 19 |
+| Spanish COMPLETE | 43 |
+| Spanish MISSING | 14 |
 | Public/root EXCLUDE | 4 |
 
 ### By Category
 
 | Category | Total target pages | COMPLETE | MISSING |
 |---|---:|---:|---:|
-| Discover | 2 | 0 | 2 |
+| Discover | 2 | 2 | 0 |
 | Travel | 11 | 11 | 0 |
 | Stay | 21 | 21 | 0 |
-| eSIM | 3 | 0 | 3 |
+| eSIM | 3 | 3 | 0 |
 | Airport | 5 | 5 | 0 |
 | Maps | 1 | 0 | 1 |
 | Transport | 6 | 1 | 5 |
 | Apps | 1 | 0 | 1 |
 | Travel Tips | 7 | 0 | 7 |
-| **Total** | **57** | **38** | **19** |
+| **Total** | **57** | **43** | **14** |
 
 ### Stay Detail
 
@@ -177,15 +177,14 @@ All 11 Travel pages are COMPLETE. This result is based on the actual repository 
 
 ## Recommended Batch Plan
 
-The remaining plan covers all 19 MISSING pages exactly once. It follows HTML-first localization and uses focused batches where practical.
+The remaining plan covers all 14 MISSING pages exactly once. It follows HTML-first localization and uses focused batches where practical.
 
 | Order | Batch | Pages | Count | Reason |
 |---:|---|---|---:|---|
-| 1 | Discover + eSIM | `taste-korea.html`, `k-beauty.html`, `esim.html`, `best-esim-for-korea.html`, `korea-esim-with-phone-number.html` | 5 | Completes two compact Navigation groups with related service localization patterns. |
-| 2 | Maps + Apps | `maps.html`, `apps.html` | 2 | Completes two high-utility Navigation groups. |
-| 3 | Transport remainder | `tmoney.html`, `wowpass.html`, `tmoney-vs-wowpass.html`, `taxi.html`, `rental-car.html` | 5 | Keeps transport facts and comparisons in one focused QA batch. |
-| 4 | Travel Tips / Payments | `checklist.html`, `payments.html`, `foreign-credit-cards-korea.html`, `card-declined-korea.html`, `korean-online-payments-foreigners.html`, `korea-atm-foreign-cards.html`, `apple-pay-korea.html` | 7 | Completes the payment/troubleshooting cluster and its internal-link network. |
-|  | **Total** |  | **19** | All remaining MISSING detail pages covered. |
+| 1 | Maps + Apps | `maps.html`, `apps.html` | 2 | Completes two high-utility Navigation groups. |
+| 2 | Transport remainder | `tmoney.html`, `wowpass.html`, `tmoney-vs-wowpass.html`, `taxi.html`, `rental-car.html` | 5 | Keeps transport facts and comparisons in one focused QA batch. |
+| 3 | Travel Tips / Payments | `checklist.html`, `payments.html`, `foreign-credit-cards-korea.html`, `card-declined-korea.html`, `korean-online-payments-foreigners.html`, `korea-atm-foreign-cards.html`, `apple-pay-korea.html` | 7 | Completes the payment/troubleshooting cluster and its internal-link network. |
+|  | **Total** |  | **14** | All remaining MISSING detail pages covered. |
 
 ## Batch Implementation Contract Principles
 
@@ -198,13 +197,13 @@ The future batches should use these fixed rules:
 - Do not create future Spanish 404 links.
 - Do not use repeated large Review MD generation as the default production workflow.
 - Treat page omission prevention and batch-level inventory reconciliation as release blockers.
-- Keep the existing 38 COMPLETE Spanish pages unchanged unless a separately approved correction is required.
+- Keep the existing 43 COMPLETE Spanish pages unchanged unless a separately approved correction is required.
 
 ## Reconciliation Check
 
 - Target total: `57`
-- COMPLETE + MISSING: `38 + 19 = 57`
+- COMPLETE + MISSING: `43 + 14 = 57`
 - Category target totals: `2 + 11 + 21 + 3 + 5 + 1 + 6 + 1 + 7 = 57`
-- Batch page totals: `5 + 2 + 5 + 7 = 19`
+- Batch page totals: `2 + 5 + 7 = 14`
 - Stay total: `21 = 21 COMPLETE + 0 MISSING`
 - Travel total: `11 = 11 COMPLETE + 0 MISSING`
