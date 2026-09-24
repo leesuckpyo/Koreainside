@@ -297,9 +297,172 @@
     });
   };
 
+  const initializeWebAppInstall = () => {
+    const language = document.documentElement.lang.toLowerCase().split('-')[0];
+    const isSpanish = language === 'es';
+    const manifestHref = isSpanish ? '/es/manifest.webmanifest' : '/manifest.webmanifest';
+    const existingManifest = document.querySelector('link[rel~="manifest"]');
+
+    if (!existingManifest) {
+      const manifest = document.createElement('link');
+      manifest.rel = 'manifest';
+      manifest.href = manifestHref;
+      document.head.appendChild(manifest);
+    }
+
+    if (document.documentElement.dataset.webAppInstallInitialized === 'true') return;
+    document.documentElement.dataset.webAppInstallInitialized = 'true';
+
+    const standaloneQuery = window.matchMedia('(display-mode: standalone)');
+    const isStandalone = () => standaloneQuery.matches || window.navigator.standalone === true;
+    const isIos = /iPad|iPhone|iPod/i.test(window.navigator.userAgent)
+      || (window.navigator.platform === 'MacIntel' && window.navigator.maxTouchPoints > 1);
+    const nav = document.querySelector('[data-common-header] .site-nav');
+    if (!nav || isStandalone()) return;
+
+    const copy = isSpanish ? {
+      button: 'Instalar Korea Inside',
+      close: 'Cerrar',
+      iosTitle: 'Añade Korea Inside a tu pantalla de inicio',
+      iosSteps: ['Toca Compartir', 'Toca Añadir a pantalla de inicio'],
+      fallback: 'Abre el menú del navegador y elige “Instalar aplicación” o “Añadir a pantalla de inicio”.'
+    } : {
+      button: 'Install Korea Inside',
+      close: 'Close',
+      iosTitle: 'Add Korea Inside to your Home Screen',
+      iosSteps: ['Tap Share', 'Tap Add to Home Screen'],
+      fallback: 'Open your browser menu and choose “Install app” or “Add to Home screen.”'
+    };
+
+    const utility = document.createElement('div');
+    utility.className = 'site-nav-install';
+
+    const installButton = document.createElement('button');
+    installButton.className = 'site-nav-install__button';
+    installButton.type = 'button';
+    installButton.textContent = copy.button;
+    utility.appendChild(installButton);
+    nav.appendChild(utility);
+
+    const dialog = document.createElement('div');
+    dialog.className = 'web-app-install-dialog';
+    dialog.setAttribute('role', 'dialog');
+    dialog.setAttribute('aria-modal', 'true');
+    dialog.setAttribute('aria-labelledby', 'web-app-install-dialog-title');
+    dialog.hidden = true;
+
+    const dialogPanel = document.createElement('div');
+    dialogPanel.className = 'web-app-install-dialog__panel';
+
+    const closeButton = document.createElement('button');
+    closeButton.className = 'web-app-install-dialog__close';
+    closeButton.type = 'button';
+    closeButton.setAttribute('aria-label', copy.close);
+    closeButton.textContent = '×';
+
+    const dialogTitle = document.createElement('h2');
+    dialogTitle.className = 'web-app-install-dialog__title';
+    dialogTitle.id = 'web-app-install-dialog-title';
+
+    const dialogContent = document.createElement('div');
+    dialogContent.className = 'web-app-install-dialog__content';
+
+    dialogPanel.append(closeButton, dialogTitle, dialogContent);
+    dialog.appendChild(dialogPanel);
+    document.body.appendChild(dialog);
+
+    let deferredInstallPrompt = null;
+
+    const closeDialog = (returnFocus) => {
+      dialog.hidden = true;
+      if (returnFocus && document.body.contains(installButton)) installButton.focus();
+    };
+
+    const openInstructions = (showIosSteps) => {
+      dialogTitle.textContent = showIosSteps ? copy.iosTitle : copy.button;
+      dialogContent.replaceChildren();
+
+      if (showIosSteps) {
+        const steps = document.createElement('ol');
+        steps.className = 'web-app-install-dialog__steps';
+        copy.iosSteps.forEach((step) => {
+          const item = document.createElement('li');
+          item.textContent = step;
+          steps.appendChild(item);
+        });
+        dialogContent.appendChild(steps);
+      } else {
+        const message = document.createElement('p');
+        message.textContent = copy.fallback;
+        dialogContent.appendChild(message);
+      }
+
+      dialog.hidden = false;
+      closeButton.focus();
+    };
+
+    const hideInstallUtility = () => {
+      deferredInstallPrompt = null;
+      closeDialog(false);
+      utility.remove();
+    };
+
+    window.addEventListener('beforeinstallprompt', (event) => {
+      event.preventDefault();
+      deferredInstallPrompt = event;
+    });
+
+    window.addEventListener('appinstalled', hideInstallUtility);
+
+    const handleDisplayModeChange = () => {
+      if (isStandalone()) hideInstallUtility();
+    };
+    if (standaloneQuery.addEventListener) {
+      standaloneQuery.addEventListener('change', handleDisplayModeChange);
+    } else {
+      standaloneQuery.addListener(handleDisplayModeChange);
+    }
+
+    installButton.addEventListener('click', async () => {
+      if (isIos) {
+        openInstructions(true);
+        return;
+      }
+
+      if (!deferredInstallPrompt) {
+        openInstructions(false);
+        return;
+      }
+
+      const promptEvent = deferredInstallPrompt;
+      deferredInstallPrompt = null;
+      installButton.disabled = true;
+      try {
+        await promptEvent.prompt();
+        const choice = await promptEvent.userChoice;
+        if (choice.outcome !== 'accepted') installButton.disabled = false;
+      } catch (error) {
+        installButton.disabled = false;
+        openInstructions(false);
+      }
+    });
+
+    closeButton.addEventListener('click', () => closeDialog(true));
+    dialog.addEventListener('click', (event) => {
+      if (event.target === dialog) closeDialog(true);
+    });
+    dialog.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        closeDialog(true);
+      }
+    });
+  };
+
   const initializeCommonHeader = () => {
     initializeCommonNavigation();
     initializeLanguageSwitchers();
+    initializeWebAppInstall();
   };
 
   if (document.readyState === 'loading') {
