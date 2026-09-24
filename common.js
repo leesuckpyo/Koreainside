@@ -3,6 +3,11 @@
   const headers = document.querySelectorAll('[data-common-header]');
   if (!headers.length) return;
 
+  const language = document.documentElement.lang.toLowerCase().split('-')[0];
+  const menuCopy = language === 'ja'
+    ? { open: 'メニューを開く', close: 'メニューを閉じる' }
+    : { open: 'Open menu', close: 'Close menu' };
+
   if (document.documentElement.dataset.commonNavigationInitialized === 'true') return;
   document.documentElement.dataset.commonNavigationInitialized = 'true';
 
@@ -49,7 +54,7 @@
 
     const setMenuOpen = (isOpen, returnFocus) => {
       toggle.setAttribute('aria-expanded', String(isOpen));
-      toggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+      toggle.setAttribute('aria-label', isOpen ? menuCopy.close : menuCopy.open);
       nav.classList.toggle('is-open', isOpen);
       header.classList.toggle('site-header--menu-open', isOpen);
       if (!isOpen) {
@@ -153,11 +158,12 @@
 
   const initializeLanguageSwitchers = () => {
     const language = document.documentElement.lang.toLowerCase().split('-')[0];
-    if (language !== 'en' && language !== 'es') return;
+    if (language !== 'en' && language !== 'es' && language !== 'ja') return;
 
     const languages = {
       en: { label: 'English' },
-      es: { label: 'Español' }
+      es: { label: 'Español' },
+      ja: { label: '日本語' }
     };
     const alternates = Array.from(document.querySelectorAll('link[rel~="alternate"][hreflang]')).reduce((items, link) => {
       const alternateLanguage = link.getAttribute('hreflang').toLowerCase().split('-')[0];
@@ -300,7 +306,12 @@
   const initializeWebAppInstall = () => {
     const language = document.documentElement.lang.toLowerCase().split('-')[0];
     const isSpanish = language === 'es';
-    const manifestHref = isSpanish ? '/es/manifest.webmanifest' : '/manifest.webmanifest';
+    const isJapanese = language === 'ja';
+    const manifestHref = isJapanese
+      ? '/ja/manifest.webmanifest'
+      : isSpanish
+        ? '/es/manifest.webmanifest'
+        : '/manifest.webmanifest';
     const existingManifest = document.querySelector('link[rel~="manifest"]');
 
     if (!existingManifest) {
@@ -320,7 +331,13 @@
     const nav = document.querySelector('[data-common-header] .site-nav');
     if (!nav || isStandalone()) return;
 
-    const copy = isSpanish ? {
+    const copy = isJapanese ? {
+      button: 'Korea Insideをインストール',
+      close: '閉じる',
+      iosTitle: 'Korea Insideをホーム画面に追加',
+      iosSteps: ['「共有」をタップ', '「ホーム画面に追加」をタップ'],
+      fallback: 'ブラウザのメニューを開き、「アプリをインストール」または「ホーム画面に追加」を選んでください。'
+    } : isSpanish ? {
       button: 'Instalar Korea Inside',
       close: 'Cerrar',
       iosTitle: 'Añade Korea Inside a tu pantalla de inicio',
