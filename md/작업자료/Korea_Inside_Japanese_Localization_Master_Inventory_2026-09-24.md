@@ -2,22 +2,23 @@
 
 ## Document Metadata
 
-- Date: 2026-09-24
+- Date: 2026-09-25
 - Purpose: Track the Japanese localization status of the current public English page set.
 - Scope: 58 localization-target pages plus 3 explicitly excluded public/root HTML files.
 - Japanese folder: `/ja/`
 - Japanese hreflang code: `ja`
-- Current status: Production inventory; 12 Japanese pages are COMPLETE and 46 remain MISSING.
+- Current status: Production inventory; 17 Japanese pages are COMPLETE and 41 remain MISSING.
 - Completion condition: Japanese `MISSING = 0`.
 
 ## Audit Basis
 
 - The English root contains 61 public/root HTML files: 58 Japanese localization targets and 3 exclusions.
-- All 58 target filenames exist under `/ja/`: 12 released Japanese pages and 46 unreleased local working copies.
-- The remaining 46 `/ja/` working copies are byte-identical English copies. English-to-`ja` SHA-256 matches are 46/46 as of this update.
+- All 58 target filenames exist under `/ja/`: 17 released Japanese pages and 41 unreleased local working copies.
+- The remaining 41 `/ja/` working copies are byte-identical English copies. English-to-`ja` SHA-256 matches are 41/41 as of this update.
 - A working copy is not a completed localization. Each remaining target stays `MISSING` until approved Japanese public copy is implemented, fully QA-verified, and released through the approved Production workflow.
 - `ja/index.html`, `ja/dongdaemun-travel-guide.html`, `ja/where-to-stay-in-dongdaemun.html`, `ja/airport.html`, `ja/arrival.html`, `ja/airport-transfer.html`, `ja/arex.html`, `ja/airport-bus.html`, `ja/maps.html`, `ja/tmoney.html`, `ja/wowpass.html`, and `ja/tmoney-vs-wowpass.html` completed the approved Production workflow on 2026-09-24.
-- The remaining 46 `/ja/` working copies are not Production pages and are not linked as Japanese siblings.
+- `ja/taxi.html`, `ja/incheon-airport-private-transfer.html`, `ja/rental-car.html`, `ja/payments.html`, and `ja/korea-atm-foreign-cards.html` completed the approved Japanese Batch 4 Production workflow on 2026-09-25.
+- The remaining 41 `/ja/` working copies are not Production pages and are not linked as Japanese siblings.
 
 ## Status Definitions
 
@@ -32,7 +33,7 @@
 - Japanese homepage URL: `https://www.getkoreainside.com/ja/`
 - Japanese detail URL pattern: `https://www.getkoreainside.com/ja/FILENAME`
 - Future multilingual SEO is applied per released Batch: self canonical and reciprocal `en`, `es`, `ja`, and `x-default` hreflang using only siblings that actually exist in Production.
-- Japanese hreflang and sitemap entries exist only for the 12 released Japanese pages.
+- Japanese hreflang and sitemap entries exist only for the 17 released Japanese pages.
 
 ## Master Inventory
 
@@ -87,16 +88,16 @@ All `MISSING` rows below share this state: Japanese working copy exists; English
 | Transport | `tmoney.html` | `https://www.getkoreainside.com/tmoney.html` | `ja/tmoney.html` | `https://www.getkoreainside.com/ja/tmoney.html` | COMPLETE | Japanese Batch 3 released to Production on 2026-09-24. |
 | Transport | `wowpass.html` | `https://www.getkoreainside.com/wowpass.html` | `ja/wowpass.html` | `https://www.getkoreainside.com/ja/wowpass.html` | COMPLETE | Japanese Batch 3 released to Production on 2026-09-24. |
 | Transport | `tmoney-vs-wowpass.html` | `https://www.getkoreainside.com/tmoney-vs-wowpass.html` | `ja/tmoney-vs-wowpass.html` | `https://www.getkoreainside.com/ja/tmoney-vs-wowpass.html` | COMPLETE | Japanese Batch 3 released to Production on 2026-09-24. |
-| Transport | `taxi.html` | `https://www.getkoreainside.com/taxi.html` | `ja/taxi.html` | `https://www.getkoreainside.com/ja/taxi.html` | MISSING | Common working-copy state applies. |
-| Transport | `incheon-airport-private-transfer.html` | `https://www.getkoreainside.com/incheon-airport-private-transfer.html` | `ja/incheon-airport-private-transfer.html` | `https://www.getkoreainside.com/ja/incheon-airport-private-transfer.html` | MISSING | Common working-copy state applies. |
-| Transport | `rental-car.html` | `https://www.getkoreainside.com/rental-car.html` | `ja/rental-car.html` | `https://www.getkoreainside.com/ja/rental-car.html` | MISSING | Common working-copy state applies. |
+| Transport | `taxi.html` | `https://www.getkoreainside.com/taxi.html` | `ja/taxi.html` | `https://www.getkoreainside.com/ja/taxi.html` | COMPLETE | Japanese Batch 4 released to Production on 2026-09-25. |
+| Transport | `incheon-airport-private-transfer.html` | `https://www.getkoreainside.com/incheon-airport-private-transfer.html` | `ja/incheon-airport-private-transfer.html` | `https://www.getkoreainside.com/ja/incheon-airport-private-transfer.html` | COMPLETE | Japanese Batch 4 released to Production on 2026-09-25. |
+| Transport | `rental-car.html` | `https://www.getkoreainside.com/rental-car.html` | `ja/rental-car.html` | `https://www.getkoreainside.com/ja/rental-car.html` | COMPLETE | Japanese Batch 4 released to Production on 2026-09-25. |
 | Apps | `apps.html` | `https://www.getkoreainside.com/apps.html` | `ja/apps.html` | `https://www.getkoreainside.com/ja/apps.html` | MISSING | Common working-copy state applies. |
 | Travel Tips | `checklist.html` | `https://www.getkoreainside.com/checklist.html` | `ja/checklist.html` | `https://www.getkoreainside.com/ja/checklist.html` | MISSING | Common working-copy state applies. |
-| Travel Tips | `payments.html` | `https://www.getkoreainside.com/payments.html` | `ja/payments.html` | `https://www.getkoreainside.com/ja/payments.html` | MISSING | Common working-copy state applies. |
+| Travel Tips | `payments.html` | `https://www.getkoreainside.com/payments.html` | `ja/payments.html` | `https://www.getkoreainside.com/ja/payments.html` | COMPLETE | Japanese Batch 4 released to Production on 2026-09-25. |
 | Travel Tips | `foreign-credit-cards-korea.html` | `https://www.getkoreainside.com/foreign-credit-cards-korea.html` | `ja/foreign-credit-cards-korea.html` | `https://www.getkoreainside.com/ja/foreign-credit-cards-korea.html` | MISSING | Common working-copy state applies. |
 | Travel Tips | `card-declined-korea.html` | `https://www.getkoreainside.com/card-declined-korea.html` | `ja/card-declined-korea.html` | `https://www.getkoreainside.com/ja/card-declined-korea.html` | MISSING | Common working-copy state applies. |
 | Travel Tips | `korean-online-payments-foreigners.html` | `https://www.getkoreainside.com/korean-online-payments-foreigners.html` | `ja/korean-online-payments-foreigners.html` | `https://www.getkoreainside.com/ja/korean-online-payments-foreigners.html` | MISSING | Common working-copy state applies. |
-| Travel Tips | `korea-atm-foreign-cards.html` | `https://www.getkoreainside.com/korea-atm-foreign-cards.html` | `ja/korea-atm-foreign-cards.html` | `https://www.getkoreainside.com/ja/korea-atm-foreign-cards.html` | MISSING | Common working-copy state applies. |
+| Travel Tips | `korea-atm-foreign-cards.html` | `https://www.getkoreainside.com/korea-atm-foreign-cards.html` | `ja/korea-atm-foreign-cards.html` | `https://www.getkoreainside.com/ja/korea-atm-foreign-cards.html` | COMPLETE | Japanese Batch 4 released to Production on 2026-09-25. |
 | Travel Tips | `apple-pay-korea.html` | `https://www.getkoreainside.com/apple-pay-korea.html` | `ja/apple-pay-korea.html` | `https://www.getkoreainside.com/ja/apple-pay-korea.html` | MISSING | Common working-copy state applies. |
 | Legal | `affiliate-disclosure.html` | `https://www.getkoreainside.com/affiliate-disclosure.html` | — | — | EXCLUDE | Legal / disclosure page. |
 | Legal | `privacy.html` | `https://www.getkoreainside.com/privacy.html` | — | — | EXCLUDE | Legal / privacy page. |
@@ -109,8 +110,8 @@ All `MISSING` rows below share this state: Japanese working copy exists; English
 | Measure | Count |
 |---|---:|
 | Japanese localization target pages | 58 |
-| Japanese COMPLETE | 12 |
-| Japanese MISSING | 46 |
+| Japanese COMPLETE | 17 |
+| Japanese MISSING | 41 |
 | Public EXCLUDE | 3 |
 
 ### By Category
@@ -126,10 +127,10 @@ All `MISSING` rows below share this state: Japanese working copy exists; English
 | eSIM | 3 | 0 | 3 |
 | Airport | 5 | 5 | 0 |
 | Maps | 1 | 1 | 0 |
-| Transport | 6 | 3 | 3 |
+| Transport | 6 | 6 | 0 |
 | Apps | 1 | 0 | 1 |
-| Travel Tips | 7 | 0 | 7 |
-| **Total** | **58** | **12** | **46** |
+| Travel Tips | 7 | 2 | 5 |
+| **Total** | **58** | **17** | **41** |
 
 ## Reconciliation Check
 
@@ -137,4 +138,4 @@ All `MISSING` rows below share this state: Japanese working copy exists; English
 - Japanese localization targets: 58
 - Public exclusions: 3
 - Reconciliation: `58 + 3 = 61`
-- Current completion condition is not met: `MISSING = 46`.
+- Current completion condition is not met: `MISSING = 41`.
