@@ -7,19 +7,20 @@
 - Scope: 58 localization-target pages plus 3 explicitly excluded public/root HTML files.
 - Japanese folder: `/ja/`
 - Japanese hreflang code: `ja`
-- Current status: Production inventory; 22 Japanese pages are COMPLETE and 36 remain MISSING.
+- Current status: Production inventory; 26 Japanese pages are COMPLETE and 32 remain MISSING.
 - Completion condition: Japanese `MISSING = 0`.
 
 ## Audit Basis
 
 - The English root contains 61 public/root HTML files: 58 Japanese localization targets and 3 exclusions.
-- All 58 target filenames exist under `/ja/`: 22 released Japanese pages and 36 unreleased local working copies.
-- The remaining 36 `/ja/` working copies are byte-identical English copies. English-to-`ja` SHA-256 matches are 36/36 as of this update.
+- All 58 target filenames exist under `/ja/`: 26 released Japanese pages and 32 unreleased local working copies.
+- The remaining 32 `/ja/` working copies are byte-identical English copies. English-to-`ja` SHA-256 matches are 32/32 as of this update.
 - A working copy is not a completed localization. Each remaining target stays `MISSING` until approved Japanese public copy is implemented, fully QA-verified, and released through the approved Production workflow.
 - `ja/index.html`, `ja/dongdaemun-travel-guide.html`, `ja/where-to-stay-in-dongdaemun.html`, `ja/airport.html`, `ja/arrival.html`, `ja/airport-transfer.html`, `ja/arex.html`, `ja/airport-bus.html`, `ja/maps.html`, `ja/tmoney.html`, `ja/wowpass.html`, and `ja/tmoney-vs-wowpass.html` completed the approved Production workflow on 2026-09-24.
 - `ja/taxi.html`, `ja/incheon-airport-private-transfer.html`, `ja/rental-car.html`, `ja/payments.html`, and `ja/korea-atm-foreign-cards.html` completed the approved Japanese Batch 4 Production workflow on 2026-09-25.
 - `ja/foreign-credit-cards-korea.html`, `ja/card-declined-korea.html`, `ja/korean-online-payments-foreigners.html`, `ja/apple-pay-korea.html`, and `ja/checklist.html` completed the approved Japanese Batch 5 Production workflow on 2026-09-25.
-- The remaining 36 `/ja/` working copies are not Production pages and are not linked as Japanese siblings.
+- `ja/esim.html`, `ja/best-esim-for-korea.html`, `ja/korea-esim-with-phone-number.html`, and `ja/apps.html` completed the approved Japanese Batch 6 Production workflow on 2026-09-25.
+- The remaining 32 `/ja/` working copies are not Production pages and are not linked as Japanese siblings.
 
 ## Status Definitions
 
@@ -34,7 +35,7 @@
 - Japanese homepage URL: `https://www.getkoreainside.com/ja/`
 - Japanese detail URL pattern: `https://www.getkoreainside.com/ja/FILENAME`
 - Future multilingual SEO is applied per released Batch: self canonical and reciprocal `en`, `es`, `ja`, and `x-default` hreflang using only siblings that actually exist in Production.
-- Japanese hreflang and sitemap entries exist only for the 22 released Japanese pages.
+- Japanese hreflang and sitemap entries exist only for the 26 released Japanese pages.
 
 ## Master Inventory
 
@@ -77,9 +78,9 @@ All `MISSING` rows below share this state: Japanese working copy exists; English
 | Stay — Area / Hotel Detail | `where-to-stay-in-dongdaemun.html` | `https://www.getkoreainside.com/where-to-stay-in-dongdaemun.html` | `ja/where-to-stay-in-dongdaemun.html` | `https://www.getkoreainside.com/ja/where-to-stay-in-dongdaemun.html` | COMPLETE | Golden Sample Batch 1 released to Production on 2026-09-24. |
 | Stay — Area / Hotel Detail | `where-to-stay-in-seongsu.html` | `https://www.getkoreainside.com/where-to-stay-in-seongsu.html` | `ja/where-to-stay-in-seongsu.html` | `https://www.getkoreainside.com/ja/where-to-stay-in-seongsu.html` | MISSING | Common working-copy state applies. |
 | Stay — Area / Hotel Detail | `where-to-stay-in-itaewon.html` | `https://www.getkoreainside.com/where-to-stay-in-itaewon.html` | `ja/where-to-stay-in-itaewon.html` | `https://www.getkoreainside.com/ja/where-to-stay-in-itaewon.html` | MISSING | Common working-copy state applies. |
-| eSIM | `esim.html` | `https://www.getkoreainside.com/esim.html` | `ja/esim.html` | `https://www.getkoreainside.com/ja/esim.html` | MISSING | Common working-copy state applies. |
-| eSIM | `best-esim-for-korea.html` | `https://www.getkoreainside.com/best-esim-for-korea.html` | `ja/best-esim-for-korea.html` | `https://www.getkoreainside.com/ja/best-esim-for-korea.html` | MISSING | Common working-copy state applies. |
-| eSIM | `korea-esim-with-phone-number.html` | `https://www.getkoreainside.com/korea-esim-with-phone-number.html` | `ja/korea-esim-with-phone-number.html` | `https://www.getkoreainside.com/ja/korea-esim-with-phone-number.html` | MISSING | Common working-copy state applies. |
+| eSIM | `esim.html` | `https://www.getkoreainside.com/esim.html` | `ja/esim.html` | `https://www.getkoreainside.com/ja/esim.html` | COMPLETE | Japanese Batch 6 released to Production on 2026-09-25. |
+| eSIM | `best-esim-for-korea.html` | `https://www.getkoreainside.com/best-esim-for-korea.html` | `ja/best-esim-for-korea.html` | `https://www.getkoreainside.com/ja/best-esim-for-korea.html` | COMPLETE | Japanese Batch 6 released to Production on 2026-09-25. |
+| eSIM | `korea-esim-with-phone-number.html` | `https://www.getkoreainside.com/korea-esim-with-phone-number.html` | `ja/korea-esim-with-phone-number.html` | `https://www.getkoreainside.com/ja/korea-esim-with-phone-number.html` | COMPLETE | Japanese Batch 6 released to Production on 2026-09-25. |
 | Airport | `airport.html` | `https://www.getkoreainside.com/airport.html` | `ja/airport.html` | `https://www.getkoreainside.com/ja/airport.html` | COMPLETE | Japanese Airport Batch 2 released to Production on 2026-09-24. |
 | Airport | `arrival.html` | `https://www.getkoreainside.com/arrival.html` | `ja/arrival.html` | `https://www.getkoreainside.com/ja/arrival.html` | COMPLETE | Japanese Arrival Batch 2 released to Production on 2026-09-24. |
 | Airport | `airport-transfer.html` | `https://www.getkoreainside.com/airport-transfer.html` | `ja/airport-transfer.html` | `https://www.getkoreainside.com/ja/airport-transfer.html` | COMPLETE | Japanese Airport Transfer Batch 2 released to Production on 2026-09-24. |
@@ -92,7 +93,7 @@ All `MISSING` rows below share this state: Japanese working copy exists; English
 | Transport | `taxi.html` | `https://www.getkoreainside.com/taxi.html` | `ja/taxi.html` | `https://www.getkoreainside.com/ja/taxi.html` | COMPLETE | Japanese Batch 4 released to Production on 2026-09-25. |
 | Transport | `incheon-airport-private-transfer.html` | `https://www.getkoreainside.com/incheon-airport-private-transfer.html` | `ja/incheon-airport-private-transfer.html` | `https://www.getkoreainside.com/ja/incheon-airport-private-transfer.html` | COMPLETE | Japanese Batch 4 released to Production on 2026-09-25. |
 | Transport | `rental-car.html` | `https://www.getkoreainside.com/rental-car.html` | `ja/rental-car.html` | `https://www.getkoreainside.com/ja/rental-car.html` | COMPLETE | Japanese Batch 4 released to Production on 2026-09-25. |
-| Apps | `apps.html` | `https://www.getkoreainside.com/apps.html` | `ja/apps.html` | `https://www.getkoreainside.com/ja/apps.html` | MISSING | Common working-copy state applies. |
+| Apps | `apps.html` | `https://www.getkoreainside.com/apps.html` | `ja/apps.html` | `https://www.getkoreainside.com/ja/apps.html` | COMPLETE | Japanese Batch 6 released to Production on 2026-09-25. |
 | Travel Tips | `checklist.html` | `https://www.getkoreainside.com/checklist.html` | `ja/checklist.html` | `https://www.getkoreainside.com/ja/checklist.html` | COMPLETE | Japanese Batch 5 released to Production on 2026-09-25. |
 | Travel Tips | `payments.html` | `https://www.getkoreainside.com/payments.html` | `ja/payments.html` | `https://www.getkoreainside.com/ja/payments.html` | COMPLETE | Japanese Batch 4 released to Production on 2026-09-25. |
 | Travel Tips | `foreign-credit-cards-korea.html` | `https://www.getkoreainside.com/foreign-credit-cards-korea.html` | `ja/foreign-credit-cards-korea.html` | `https://www.getkoreainside.com/ja/foreign-credit-cards-korea.html` | COMPLETE | Japanese Batch 5 released to Production on 2026-09-25. |
@@ -111,8 +112,8 @@ All `MISSING` rows below share this state: Japanese working copy exists; English
 | Measure | Count |
 |---|---:|
 | Japanese localization target pages | 58 |
-| Japanese COMPLETE | 22 |
-| Japanese MISSING | 36 |
+| Japanese COMPLETE | 26 |
+| Japanese MISSING | 32 |
 | Public EXCLUDE | 3 |
 
 ### By Category
@@ -125,13 +126,13 @@ All `MISSING` rows below share this state: Japanese working copy exists; English
 | Travel — Attraction | 2 | 0 | 2 |
 | Stay — Hub / Decision / Comparison | 11 | 0 | 11 |
 | Stay — Area / Hotel Detail | 10 | 1 | 9 |
-| eSIM | 3 | 0 | 3 |
+| eSIM | 3 | 3 | 0 |
 | Airport | 5 | 5 | 0 |
 | Maps | 1 | 1 | 0 |
 | Transport | 6 | 6 | 0 |
-| Apps | 1 | 0 | 1 |
+| Apps | 1 | 1 | 0 |
 | Travel Tips | 7 | 7 | 0 |
-| **Total** | **58** | **22** | **36** |
+| **Total** | **58** | **26** | **32** |
 
 ## Reconciliation Check
 
@@ -139,4 +140,4 @@ All `MISSING` rows below share this state: Japanese working copy exists; English
 - Japanese localization targets: 58
 - Public exclusions: 3
 - Reconciliation: `58 + 3 = 61`
-- Current completion condition is not met: `MISSING = 36`.
+- Current completion condition is not met: `MISSING = 32`.
