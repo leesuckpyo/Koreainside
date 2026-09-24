@@ -440,7 +440,8 @@
       try {
         await promptEvent.prompt();
         const choice = await promptEvent.userChoice;
-        if (choice.outcome !== 'accepted') installButton.disabled = false;
+        if (choice.outcome === 'accepted') hideInstallUtility();
+        else installButton.disabled = false;
       } catch (error) {
         installButton.disabled = false;
         openInstructions(false);
