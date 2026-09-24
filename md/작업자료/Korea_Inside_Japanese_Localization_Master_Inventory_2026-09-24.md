@@ -7,17 +7,17 @@
 - Scope: 58 localization-target pages plus 3 explicitly excluded public/root HTML files.
 - Japanese folder: `/ja/`
 - Japanese hreflang code: `ja`
-- Current status: Production inventory; 3 Japanese pages are COMPLETE and 55 remain MISSING.
+- Current status: Production inventory; 4 Japanese pages are COMPLETE and 54 remain MISSING.
 - Completion condition: Japanese `MISSING = 0`.
 
 ## Audit Basis
 
 - The English root contains 61 public/root HTML files: 58 Japanese localization targets and 3 exclusions.
-- All 58 target filenames exist under `/ja/`: 3 released Japanese pages and 55 unreleased local working copies.
-- The remaining 55 `/ja/` working copies are byte-identical English copies. English-to-`ja` SHA-256 matches are 55/55 as of this update.
+- All 58 target filenames exist under `/ja/`: 4 released Japanese pages and 54 unreleased local working copies.
+- The remaining 54 `/ja/` working copies are byte-identical English copies. English-to-`ja` SHA-256 matches are 54/54 as of this update.
 - A working copy is not a completed localization. Each remaining target stays `MISSING` until approved Japanese public copy is implemented, fully QA-verified, and released through the approved Production workflow.
-- `ja/index.html`, `ja/dongdaemun-travel-guide.html`, and `ja/where-to-stay-in-dongdaemun.html` completed the approved Production workflow on 2026-09-24.
-- The remaining 55 `/ja/` working copies are not Production pages and are not linked as Japanese siblings.
+- `ja/index.html`, `ja/dongdaemun-travel-guide.html`, `ja/where-to-stay-in-dongdaemun.html`, and `ja/airport.html` completed the approved Production workflow on 2026-09-24.
+- The remaining 54 `/ja/` working copies are not Production pages and are not linked as Japanese siblings.
 
 ## Status Definitions
 
@@ -32,7 +32,7 @@
 - Japanese homepage URL: `https://www.getkoreainside.com/ja/`
 - Japanese detail URL pattern: `https://www.getkoreainside.com/ja/FILENAME`
 - Future multilingual SEO is applied per released Batch: self canonical and reciprocal `en`, `es`, `ja`, and `x-default` hreflang using only siblings that actually exist in Production.
-- Japanese hreflang and sitemap entries exist only for the 3 released Japanese pages.
+- Japanese hreflang and sitemap entries exist only for the 4 released Japanese pages.
 
 ## Master Inventory
 
@@ -78,7 +78,7 @@ All `MISSING` rows below share this state: Japanese working copy exists; English
 | eSIM | `esim.html` | `https://www.getkoreainside.com/esim.html` | `ja/esim.html` | `https://www.getkoreainside.com/ja/esim.html` | MISSING | Common working-copy state applies. |
 | eSIM | `best-esim-for-korea.html` | `https://www.getkoreainside.com/best-esim-for-korea.html` | `ja/best-esim-for-korea.html` | `https://www.getkoreainside.com/ja/best-esim-for-korea.html` | MISSING | Common working-copy state applies. |
 | eSIM | `korea-esim-with-phone-number.html` | `https://www.getkoreainside.com/korea-esim-with-phone-number.html` | `ja/korea-esim-with-phone-number.html` | `https://www.getkoreainside.com/ja/korea-esim-with-phone-number.html` | MISSING | Common working-copy state applies. |
-| Airport | `airport.html` | `https://www.getkoreainside.com/airport.html` | `ja/airport.html` | `https://www.getkoreainside.com/ja/airport.html` | MISSING | Common working-copy state applies. |
+| Airport | `airport.html` | `https://www.getkoreainside.com/airport.html` | `ja/airport.html` | `https://www.getkoreainside.com/ja/airport.html` | COMPLETE | Japanese Airport Batch 2 released to Production on 2026-09-24. |
 | Airport | `arrival.html` | `https://www.getkoreainside.com/arrival.html` | `ja/arrival.html` | `https://www.getkoreainside.com/ja/arrival.html` | MISSING | Common working-copy state applies. |
 | Airport | `airport-transfer.html` | `https://www.getkoreainside.com/airport-transfer.html` | `ja/airport-transfer.html` | `https://www.getkoreainside.com/ja/airport-transfer.html` | MISSING | Common working-copy state applies. |
 | Airport | `arex.html` | `https://www.getkoreainside.com/arex.html` | `ja/arex.html` | `https://www.getkoreainside.com/ja/arex.html` | MISSING | Common working-copy state applies. |
@@ -109,8 +109,8 @@ All `MISSING` rows below share this state: Japanese working copy exists; English
 | Measure | Count |
 |---|---:|
 | Japanese localization target pages | 58 |
-| Japanese COMPLETE | 3 |
-| Japanese MISSING | 55 |
+| Japanese COMPLETE | 4 |
+| Japanese MISSING | 54 |
 | Public EXCLUDE | 3 |
 
 ### By Category
@@ -124,12 +124,12 @@ All `MISSING` rows below share this state: Japanese working copy exists; English
 | Stay — Hub / Decision / Comparison | 11 | 0 | 11 |
 | Stay — Area / Hotel Detail | 10 | 1 | 9 |
 | eSIM | 3 | 0 | 3 |
-| Airport | 5 | 0 | 5 |
+| Airport | 5 | 1 | 4 |
 | Maps | 1 | 0 | 1 |
 | Transport | 6 | 0 | 6 |
 | Apps | 1 | 0 | 1 |
 | Travel Tips | 7 | 0 | 7 |
-| **Total** | **58** | **3** | **55** |
+| **Total** | **58** | **4** | **54** |
 
 ## Reconciliation Check
 
@@ -137,4 +137,4 @@ All `MISSING` rows below share this state: Japanese working copy exists; English
 - Japanese localization targets: 58
 - Public exclusions: 3
 - Reconciliation: `58 + 3 = 61`
-- Current completion condition is not met: `MISSING = 55`.
+- Current completion condition is not met: `MISSING = 54`.
