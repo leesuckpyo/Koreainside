@@ -7,7 +7,7 @@
 - Scope: 58 localization-target pages plus 3 explicitly excluded public/root HTML files.
 - Japanese folder: `/ja/`
 - Japanese hreflang code: `ja`
-- Current status: Production inventory; 26 Japanese pages are COMPLETE and 32 remain MISSING.
+- Current status: Production inventory; 31 Japanese pages are COMPLETE and 27 remain MISSING.
 - Completion condition: Japanese `MISSING = 0`.
 
 ## Audit Basis
@@ -47,11 +47,11 @@ All `MISSING` rows below share this state: Japanese working copy exists; English
 | Discover | `taste-korea.html` | `https://www.getkoreainside.com/taste-korea.html` | `ja/taste-korea.html` | `https://www.getkoreainside.com/ja/taste-korea.html` | MISSING | Common working-copy state applies. |
 | Discover | `k-beauty.html` | `https://www.getkoreainside.com/k-beauty.html` | `ja/k-beauty.html` | `https://www.getkoreainside.com/ja/k-beauty.html` | MISSING | Common working-copy state applies. |
 | Travel — Area | `hongdae-travel-guide.html` | `https://www.getkoreainside.com/hongdae-travel-guide.html` | `ja/hongdae-travel-guide.html` | `https://www.getkoreainside.com/ja/hongdae-travel-guide.html` | MISSING | Common working-copy state applies. |
-| Travel — Area | `myeongdong-travel-guide.html` | `https://www.getkoreainside.com/myeongdong-travel-guide.html` | `ja/myeongdong-travel-guide.html` | `https://www.getkoreainside.com/ja/myeongdong-travel-guide.html` | MISSING | Common working-copy state applies. |
-| Travel — Area | `seongsu-travel-guide.html` | `https://www.getkoreainside.com/seongsu-travel-guide.html` | `ja/seongsu-travel-guide.html` | `https://www.getkoreainside.com/ja/seongsu-travel-guide.html` | MISSING | Common working-copy state applies. |
-| Travel — Area | `insadong-travel-guide.html` | `https://www.getkoreainside.com/insadong-travel-guide.html` | `ja/insadong-travel-guide.html` | `https://www.getkoreainside.com/ja/insadong-travel-guide.html` | MISSING | Common working-copy state applies. |
-| Travel — Area | `gangnam-travel-guide.html` | `https://www.getkoreainside.com/gangnam-travel-guide.html` | `ja/gangnam-travel-guide.html` | `https://www.getkoreainside.com/ja/gangnam-travel-guide.html` | MISSING | Common working-copy state applies. |
-| Travel — Area | `jamsil-travel-guide.html` | `https://www.getkoreainside.com/jamsil-travel-guide.html` | `ja/jamsil-travel-guide.html` | `https://www.getkoreainside.com/ja/jamsil-travel-guide.html` | MISSING | Common working-copy state applies. |
+| Travel — Area | `myeongdong-travel-guide.html` | `https://www.getkoreainside.com/myeongdong-travel-guide.html` | `ja/myeongdong-travel-guide.html` | `https://www.getkoreainside.com/ja/myeongdong-travel-guide.html` | COMPLETE | Japanese Batch 7 released to Production on 2026-09-25. |
+| Travel — Area | `seongsu-travel-guide.html` | `https://www.getkoreainside.com/seongsu-travel-guide.html` | `ja/seongsu-travel-guide.html` | `https://www.getkoreainside.com/ja/seongsu-travel-guide.html` | COMPLETE | Japanese Batch 7 released to Production on 2026-09-25. |
+| Travel — Area | `insadong-travel-guide.html` | `https://www.getkoreainside.com/insadong-travel-guide.html` | `ja/insadong-travel-guide.html` | `https://www.getkoreainside.com/ja/insadong-travel-guide.html` | COMPLETE | Japanese Batch 7 released to Production on 2026-09-25. |
+| Travel — Area | `gangnam-travel-guide.html` | `https://www.getkoreainside.com/gangnam-travel-guide.html` | `ja/gangnam-travel-guide.html` | `https://www.getkoreainside.com/ja/gangnam-travel-guide.html` | COMPLETE | Japanese Batch 7 released to Production on 2026-09-25. |
+| Travel — Area | `jamsil-travel-guide.html` | `https://www.getkoreainside.com/jamsil-travel-guide.html` | `ja/jamsil-travel-guide.html` | `https://www.getkoreainside.com/ja/jamsil-travel-guide.html` | COMPLETE | Japanese Batch 7 released to Production on 2026-09-25. |
 | Travel — Area | `gongdeok-mapo-seoul-guide.html` | `https://www.getkoreainside.com/gongdeok-mapo-seoul-guide.html` | `ja/gongdeok-mapo-seoul-guide.html` | `https://www.getkoreainside.com/ja/gongdeok-mapo-seoul-guide.html` | MISSING | Common working-copy state applies. |
 | Travel — Area | `itaewon-travel-guide.html` | `https://www.getkoreainside.com/itaewon-travel-guide.html` | `ja/itaewon-travel-guide.html` | `https://www.getkoreainside.com/ja/itaewon-travel-guide.html` | MISSING | Common working-copy state applies. |
 | Travel — Area | `dongdaemun-travel-guide.html` | `https://www.getkoreainside.com/dongdaemun-travel-guide.html` | `ja/dongdaemun-travel-guide.html` | `https://www.getkoreainside.com/ja/dongdaemun-travel-guide.html` | COMPLETE | Golden Sample Batch 1 released to Production on 2026-09-24. |
@@ -112,8 +112,8 @@ All `MISSING` rows below share this state: Japanese working copy exists; English
 | Measure | Count |
 |---|---:|
 | Japanese localization target pages | 58 |
-| Japanese COMPLETE | 26 |
-| Japanese MISSING | 32 |
+| Japanese COMPLETE | 31 |
+| Japanese MISSING | 27 |
 | Public EXCLUDE | 3 |
 
 ### By Category
@@ -122,7 +122,7 @@ All `MISSING` rows below share this state: Japanese working copy exists; English
 |---|---:|---:|---:|
 | Home | 1 | 1 | 0 |
 | Discover | 2 | 0 | 2 |
-| Travel — Area | 9 | 1 | 8 |
+| Travel — Area | 9 | 6 | 3 |
 | Travel — Attraction | 2 | 0 | 2 |
 | Stay — Hub / Decision / Comparison | 11 | 0 | 11 |
 | Stay — Area / Hotel Detail | 10 | 1 | 9 |
@@ -132,7 +132,7 @@ All `MISSING` rows below share this state: Japanese working copy exists; English
 | Transport | 6 | 6 | 0 |
 | Apps | 1 | 1 | 0 |
 | Travel Tips | 7 | 7 | 0 |
-| **Total** | **58** | **26** | **32** |
+| **Total** | **58** | **31** | **27** |
 
 ## Reconciliation Check
 
@@ -140,4 +140,4 @@ All `MISSING` rows below share this state: Japanese working copy exists; English
 - Japanese localization targets: 58
 - Public exclusions: 3
 - Reconciliation: `58 + 3 = 61`
-- Current completion condition is not met: `MISSING = 32`.
+- Current completion condition is not met: `MISSING = 27`.
