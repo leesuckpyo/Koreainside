@@ -7,14 +7,14 @@
 - Scope: 58 localization-target pages plus 3 explicitly excluded public/root HTML files.
 - Japanese folder: `/ja/`
 - Japanese hreflang code: `ja`
-- Current status: Production inventory; 51 Japanese pages are COMPLETE and 7 remain MISSING.
+- Current status: Production inventory; 54 Japanese pages are COMPLETE and 4 remain MISSING.
 - Completion condition: Japanese `MISSING = 0`.
 
 ## Audit Basis
 
 - The English root contains 61 public/root HTML files: 58 Japanese localization targets and 3 exclusions.
-- All 58 target filenames exist under `/ja/`: 51 released Japanese pages and 7 unreleased local working copies.
-- The remaining 7 `/ja/` working copies are byte-identical English copies. English-to-`ja` SHA-256 matches are 7/7 as of this update.
+- All 58 target filenames exist under `/ja/`: 54 released Japanese pages and 4 unreleased local working copies.
+- The remaining 4 `/ja/` working copies are byte-identical English copies. English-to-`ja` SHA-256 matches are 4/4 as of this update.
 - A working copy is not a completed localization. Each remaining target stays `MISSING` until approved Japanese public copy is implemented, fully QA-verified, and released through the approved Production workflow.
 - `ja/index.html`, `ja/dongdaemun-travel-guide.html`, `ja/where-to-stay-in-dongdaemun.html`, `ja/airport.html`, `ja/arrival.html`, `ja/airport-transfer.html`, `ja/arex.html`, `ja/airport-bus.html`, `ja/maps.html`, `ja/tmoney.html`, `ja/wowpass.html`, and `ja/tmoney-vs-wowpass.html` completed the approved Production workflow on 2026-09-24.
 - `ja/taxi.html`, `ja/incheon-airport-private-transfer.html`, `ja/rental-car.html`, `ja/payments.html`, and `ja/korea-atm-foreign-cards.html` completed the approved Japanese Batch 4 Production workflow on 2026-09-25.
@@ -23,7 +23,8 @@
 - `ja/accommodation.html`, `ja/hongdae-vs-myeongdong.html`, `ja/best-area-for-first-time-visitors-seoul.html`, `ja/best-area-for-families-seoul.html`, and `ja/best-area-for-solo-travelers-seoul.html` completed the approved Japanese Batch 9 Production workflow on 2026-09-26.
 - `ja/best-area-for-couples-seoul.html`, `ja/best-area-for-budget-travelers-seoul.html`, `ja/best-area-for-shopping-seoul.html`, `ja/best-area-for-nightlife-seoul.html`, `ja/best-area-for-luxury-hotels-seoul.html`, `ja/best-area-for-airport-access-seoul.html` completed the approved Japanese Batch 10 Production workflow on 2026-09-26.
 - `ja/where-to-stay-in-myeongdong.html`, `ja/where-to-stay-in-hongdae.html`, `ja/hotels-near-seoul-station.html`, `ja/hotels-near-gongdeok-station.html`, `ja/where-to-stay-in-insadong.html` completed the approved Japanese Batch 11 Production workflow on 2026-09-26.
-- The remaining 7 `/ja/` working copies are not Production pages and are not linked as Japanese siblings.
+- `ja/taste-korea.html`, `ja/k-beauty.html` and `ja/hongdae-travel-guide.html` completed the approved Japanese Batch 12 Production workflow on 2026-09-26.
+- The remaining 4 `/ja/` working copies are not Production pages and are not linked as Japanese siblings.
 
 ## Status Definitions
 
@@ -47,9 +48,9 @@ All `MISSING` rows below share this state: Japanese working copy exists; English
 | Category | English filename | English Production URL | Japanese filename | Japanese future URL | Status | Notes |
 |---|---|---|---|---|---|---|
 | Home | `index.html` | `https://www.getkoreainside.com/` | `ja/index.html` | `https://www.getkoreainside.com/ja/` | COMPLETE | Approved Japanese homepage released to Production on 2026-09-24. |
-| Discover | `taste-korea.html` | `https://www.getkoreainside.com/taste-korea.html` | `ja/taste-korea.html` | `https://www.getkoreainside.com/ja/taste-korea.html` | MISSING | Common working-copy state applies. |
-| Discover | `k-beauty.html` | `https://www.getkoreainside.com/k-beauty.html` | `ja/k-beauty.html` | `https://www.getkoreainside.com/ja/k-beauty.html` | MISSING | Common working-copy state applies. |
-| Travel — Area | `hongdae-travel-guide.html` | `https://www.getkoreainside.com/hongdae-travel-guide.html` | `ja/hongdae-travel-guide.html` | `https://www.getkoreainside.com/ja/hongdae-travel-guide.html` | MISSING | Common working-copy state applies. |
+| Discover | `taste-korea.html` | `https://www.getkoreainside.com/taste-korea.html` | `ja/taste-korea.html` | `https://www.getkoreainside.com/ja/taste-korea.html` | COMPLETE | Japanese Batch 12 released to Production on 2026-09-26. |
+| Discover | `k-beauty.html` | `https://www.getkoreainside.com/k-beauty.html` | `ja/k-beauty.html` | `https://www.getkoreainside.com/ja/k-beauty.html` | COMPLETE | Japanese Batch 12 released to Production on 2026-09-26. |
+| Travel — Area | `hongdae-travel-guide.html` | `https://www.getkoreainside.com/hongdae-travel-guide.html` | `ja/hongdae-travel-guide.html` | `https://www.getkoreainside.com/ja/hongdae-travel-guide.html` | COMPLETE | Japanese Batch 12 released to Production on 2026-09-26. |
 | Travel — Area | `myeongdong-travel-guide.html` | `https://www.getkoreainside.com/myeongdong-travel-guide.html` | `ja/myeongdong-travel-guide.html` | `https://www.getkoreainside.com/ja/myeongdong-travel-guide.html` | COMPLETE | Japanese Batch 7 released to Production on 2026-09-25. |
 | Travel — Area | `seongsu-travel-guide.html` | `https://www.getkoreainside.com/seongsu-travel-guide.html` | `ja/seongsu-travel-guide.html` | `https://www.getkoreainside.com/ja/seongsu-travel-guide.html` | COMPLETE | Japanese Batch 7 released to Production on 2026-09-25. |
 | Travel — Area | `insadong-travel-guide.html` | `https://www.getkoreainside.com/insadong-travel-guide.html` | `ja/insadong-travel-guide.html` | `https://www.getkoreainside.com/ja/insadong-travel-guide.html` | COMPLETE | Japanese Batch 7 released to Production on 2026-09-25. |
@@ -115,8 +116,8 @@ All `MISSING` rows below share this state: Japanese working copy exists; English
 | Measure | Count |
 |---|---:|
 | Japanese localization target pages | 58 |
-| Japanese COMPLETE | 51 |
-| Japanese MISSING | 7 |
+| Japanese COMPLETE | 54 |
+| Japanese MISSING | 4 |
 | Public EXCLUDE | 3 |
 
 ### By Category
@@ -124,8 +125,8 @@ All `MISSING` rows below share this state: Japanese working copy exists; English
 | Category | Target pages | COMPLETE | MISSING |
 |---|---:|---:|---:|
 | Home | 1 | 1 | 0 |
-| Discover | 2 | 0 | 2 |
-| Travel — Area | 9 | 8 | 1 |
+| Discover | 2 | 2 | 0 |
+| Travel — Area | 9 | 9 | 0 |
 | Travel — Attraction | 2 | 2 | 0 |
 | Stay — Hub / Decision / Comparison | 11 | 11 | 0 |
 | Stay — Area / Hotel Detail | 10 | 6 | 4 |
@@ -135,7 +136,7 @@ All `MISSING` rows below share this state: Japanese working copy exists; English
 | Transport | 6 | 6 | 0 |
 | Apps | 1 | 1 | 0 |
 | Travel Tips | 7 | 7 | 0 |
-| **Total** | **58** | **51** | **7** |
+| **Total** | **58** | **54** | **4** |
 
 ## Reconciliation Check
 
@@ -143,4 +144,4 @@ All `MISSING` rows below share this state: Japanese working copy exists; English
 - Japanese localization targets: 58
 - Public exclusions: 3
 - Reconciliation: `58 + 3 = 61`
-- Current completion condition is not met: `MISSING = 7`.
+- Current completion condition is not met: `MISSING = 4`.
