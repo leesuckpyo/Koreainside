@@ -2,19 +2,19 @@
 
 ## Document Metadata
 
-- Date: 2026-09-26
+- Date: 2026-09-27
 - Purpose: Track the Japanese localization status of the current public English page set.
 - Scope: 58 localization-target pages plus 3 explicitly excluded public/root HTML files.
 - Japanese folder: `/ja/`
 - Japanese hreflang code: `ja`
-- Current status: Production inventory; 54 Japanese pages are COMPLETE and 4 remain MISSING.
+- Current status: Production inventory; 58 Japanese pages are COMPLETE and 0 remain MISSING.
 - Completion condition: Japanese `MISSING = 0`.
 
 ## Audit Basis
 
 - The English root contains 61 public/root HTML files: 58 Japanese localization targets and 3 exclusions.
-- All 58 target filenames exist under `/ja/`: 54 released Japanese pages and 4 unreleased local working copies.
-- The remaining 4 `/ja/` working copies are byte-identical English copies. English-to-`ja` SHA-256 matches are 4/4 as of this update.
+- All 58 target filenames exist under `/ja/`: 58 released Japanese pages and 0 unreleased local working copies.
+- No unreleased Japanese working copies remain in the localization inventory.
 - A working copy is not a completed localization. Each remaining target stays `MISSING` until approved Japanese public copy is implemented, fully QA-verified, and released through the approved Production workflow.
 - `ja/index.html`, `ja/dongdaemun-travel-guide.html`, `ja/where-to-stay-in-dongdaemun.html`, `ja/airport.html`, `ja/arrival.html`, `ja/airport-transfer.html`, `ja/arex.html`, `ja/airport-bus.html`, `ja/maps.html`, `ja/tmoney.html`, `ja/wowpass.html`, and `ja/tmoney-vs-wowpass.html` completed the approved Production workflow on 2026-09-24.
 - `ja/taxi.html`, `ja/incheon-airport-private-transfer.html`, `ja/rental-car.html`, `ja/payments.html`, and `ja/korea-atm-foreign-cards.html` completed the approved Japanese Batch 4 Production workflow on 2026-09-25.
@@ -24,7 +24,8 @@
 - `ja/best-area-for-couples-seoul.html`, `ja/best-area-for-budget-travelers-seoul.html`, `ja/best-area-for-shopping-seoul.html`, `ja/best-area-for-nightlife-seoul.html`, `ja/best-area-for-luxury-hotels-seoul.html`, `ja/best-area-for-airport-access-seoul.html` completed the approved Japanese Batch 10 Production workflow on 2026-09-26.
 - `ja/where-to-stay-in-myeongdong.html`, `ja/where-to-stay-in-hongdae.html`, `ja/hotels-near-seoul-station.html`, `ja/hotels-near-gongdeok-station.html`, `ja/where-to-stay-in-insadong.html` completed the approved Japanese Batch 11 Production workflow on 2026-09-26.
 - `ja/taste-korea.html`, `ja/k-beauty.html` and `ja/hongdae-travel-guide.html` completed the approved Japanese Batch 12 Production workflow on 2026-09-26.
-- The remaining 4 `/ja/` working copies are not Production pages and are not linked as Japanese siblings.
+- `ja/where-to-stay-in-jamsil.html`, `ja/where-to-stay-in-gangnam.html`, `ja/where-to-stay-in-seongsu.html` and `ja/where-to-stay-in-itaewon.html` completed the approved Japanese Batch 13 Production workflow on 2026-09-27.
+- All 58 Japanese localization targets have completed the approved Production workflow.
 
 ## Status Definitions
 
@@ -43,7 +44,7 @@
 
 ## Master Inventory
 
-All `MISSING` rows below share this state: Japanese working copy exists; English exact copy; not localized; not Production.
+There are no `MISSING` rows. All 58 localization targets below are `COMPLETE`.
 
 | Category | English filename | English Production URL | Japanese filename | Japanese future URL | Status | Notes |
 |---|---|---|---|---|---|---|
@@ -77,11 +78,11 @@ All `MISSING` rows below share this state: Japanese working copy exists; English
 | Stay — Area / Hotel Detail | `hotels-near-seoul-station.html` | `https://www.getkoreainside.com/hotels-near-seoul-station.html` | `ja/hotels-near-seoul-station.html` | `https://www.getkoreainside.com/ja/hotels-near-seoul-station.html` | COMPLETE | Japanese Batch 11 released to Production on 2026-09-26. |
 | Stay — Area / Hotel Detail | `hotels-near-gongdeok-station.html` | `https://www.getkoreainside.com/hotels-near-gongdeok-station.html` | `ja/hotels-near-gongdeok-station.html` | `https://www.getkoreainside.com/ja/hotels-near-gongdeok-station.html` | COMPLETE | Japanese Batch 11 released to Production on 2026-09-26. |
 | Stay — Area / Hotel Detail | `where-to-stay-in-insadong.html` | `https://www.getkoreainside.com/where-to-stay-in-insadong.html` | `ja/where-to-stay-in-insadong.html` | `https://www.getkoreainside.com/ja/where-to-stay-in-insadong.html` | COMPLETE | Japanese Batch 11 released to Production on 2026-09-26. |
-| Stay — Area / Hotel Detail | `where-to-stay-in-jamsil.html` | `https://www.getkoreainside.com/where-to-stay-in-jamsil.html` | `ja/where-to-stay-in-jamsil.html` | `https://www.getkoreainside.com/ja/where-to-stay-in-jamsil.html` | MISSING | Common working-copy state applies. |
-| Stay — Area / Hotel Detail | `where-to-stay-in-gangnam.html` | `https://www.getkoreainside.com/where-to-stay-in-gangnam.html` | `ja/where-to-stay-in-gangnam.html` | `https://www.getkoreainside.com/ja/where-to-stay-in-gangnam.html` | MISSING | Common working-copy state applies. |
+| Stay — Area / Hotel Detail | `where-to-stay-in-jamsil.html` | `https://www.getkoreainside.com/where-to-stay-in-jamsil.html` | `ja/where-to-stay-in-jamsil.html` | `https://www.getkoreainside.com/ja/where-to-stay-in-jamsil.html` | COMPLETE | Japanese Batch 13 released to Production on 2026-09-27. |
+| Stay — Area / Hotel Detail | `where-to-stay-in-gangnam.html` | `https://www.getkoreainside.com/where-to-stay-in-gangnam.html` | `ja/where-to-stay-in-gangnam.html` | `https://www.getkoreainside.com/ja/where-to-stay-in-gangnam.html` | COMPLETE | Japanese Batch 13 released to Production on 2026-09-27. |
 | Stay — Area / Hotel Detail | `where-to-stay-in-dongdaemun.html` | `https://www.getkoreainside.com/where-to-stay-in-dongdaemun.html` | `ja/where-to-stay-in-dongdaemun.html` | `https://www.getkoreainside.com/ja/where-to-stay-in-dongdaemun.html` | COMPLETE | Golden Sample Batch 1 released to Production on 2026-09-24. |
-| Stay — Area / Hotel Detail | `where-to-stay-in-seongsu.html` | `https://www.getkoreainside.com/where-to-stay-in-seongsu.html` | `ja/where-to-stay-in-seongsu.html` | `https://www.getkoreainside.com/ja/where-to-stay-in-seongsu.html` | MISSING | Common working-copy state applies. |
-| Stay — Area / Hotel Detail | `where-to-stay-in-itaewon.html` | `https://www.getkoreainside.com/where-to-stay-in-itaewon.html` | `ja/where-to-stay-in-itaewon.html` | `https://www.getkoreainside.com/ja/where-to-stay-in-itaewon.html` | MISSING | Common working-copy state applies. |
+| Stay — Area / Hotel Detail | `where-to-stay-in-seongsu.html` | `https://www.getkoreainside.com/where-to-stay-in-seongsu.html` | `ja/where-to-stay-in-seongsu.html` | `https://www.getkoreainside.com/ja/where-to-stay-in-seongsu.html` | COMPLETE | Japanese Batch 13 released to Production on 2026-09-27. |
+| Stay — Area / Hotel Detail | `where-to-stay-in-itaewon.html` | `https://www.getkoreainside.com/where-to-stay-in-itaewon.html` | `ja/where-to-stay-in-itaewon.html` | `https://www.getkoreainside.com/ja/where-to-stay-in-itaewon.html` | COMPLETE | Japanese Batch 13 released to Production on 2026-09-27. |
 | eSIM | `esim.html` | `https://www.getkoreainside.com/esim.html` | `ja/esim.html` | `https://www.getkoreainside.com/ja/esim.html` | COMPLETE | Japanese Batch 6 released to Production on 2026-09-25. |
 | eSIM | `best-esim-for-korea.html` | `https://www.getkoreainside.com/best-esim-for-korea.html` | `ja/best-esim-for-korea.html` | `https://www.getkoreainside.com/ja/best-esim-for-korea.html` | COMPLETE | Japanese Batch 6 released to Production on 2026-09-25. |
 | eSIM | `korea-esim-with-phone-number.html` | `https://www.getkoreainside.com/korea-esim-with-phone-number.html` | `ja/korea-esim-with-phone-number.html` | `https://www.getkoreainside.com/ja/korea-esim-with-phone-number.html` | COMPLETE | Japanese Batch 6 released to Production on 2026-09-25. |
@@ -116,8 +117,8 @@ All `MISSING` rows below share this state: Japanese working copy exists; English
 | Measure | Count |
 |---|---:|
 | Japanese localization target pages | 58 |
-| Japanese COMPLETE | 54 |
-| Japanese MISSING | 4 |
+| Japanese COMPLETE | 58 |
+| Japanese MISSING | 0 |
 | Public EXCLUDE | 3 |
 
 ### By Category
@@ -129,14 +130,14 @@ All `MISSING` rows below share this state: Japanese working copy exists; English
 | Travel — Area | 9 | 9 | 0 |
 | Travel — Attraction | 2 | 2 | 0 |
 | Stay — Hub / Decision / Comparison | 11 | 11 | 0 |
-| Stay — Area / Hotel Detail | 10 | 6 | 4 |
+| Stay — Area / Hotel Detail | 10 | 10 | 0 |
 | eSIM | 3 | 3 | 0 |
 | Airport | 5 | 5 | 0 |
 | Maps | 1 | 1 | 0 |
 | Transport | 6 | 6 | 0 |
 | Apps | 1 | 1 | 0 |
 | Travel Tips | 7 | 7 | 0 |
-| **Total** | **58** | **54** | **4** |
+| **Total** | **58** | **58** | **0** |
 
 ## Reconciliation Check
 
@@ -144,4 +145,4 @@ All `MISSING` rows below share this state: Japanese working copy exists; English
 - Japanese localization targets: 58
 - Public exclusions: 3
 - Reconciliation: `58 + 3 = 61`
-- Current completion condition is not met: `MISSING = 4`.
+- Current completion condition is met: `MISSING = 0`.
