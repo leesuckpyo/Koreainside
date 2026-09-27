@@ -157,3 +157,22 @@ No COMPLETE inventory status is granted by this draft or by static QA.
 | best-area-for-first-time-visitors-seoul.html | 324 | 241 | 83 | 74.38% | DRAFT / REVIEW_REQUIRED |
 | best-area-for-families-seoul.html | 295 | 212 | 83 | 71.86% | DRAFT / REVIEW_REQUIRED |
 | best-area-for-solo-travelers-seoul.html | 290 | 207 | 83 | 71.38% | DRAFT / REVIEW_REQUIRED |
+
+- Batch 7 commit `f994c350fa9f3c48c54230b3cb63a046a6e1655b` pushed successfully to origin/fr-draft.
+
+### Batch 8 — 6 first-pass drafts
+
+- All six French pages reread. Couple-trip atmosphere, total stay cost, retail versus wholesale, temporary pop-ups, late returns, room-category inclusions and the complete airport-to-hotel route preserve the English decisions. No first-hand claim added. Inline-fragment joins on the airport-access page also checked.
+- Editable coverage 100%; unexpected English outside protected UI / deliberate names and French homographs: 0 found. Nightlife FAQ 30s becomes trentaine in two locations; equivalent age meaning preserved. Other five pages have no numeric-token differences. Fact/date/time/price and recommendation mismatch: 0 found.
+- Structure, class/id/data, affiliate/tracking, assets/links, canonical/lang, JSON/JS PASS. The five pages with FAQ schema have 46 matching question/answer pairs. Airport-access has seven visible FAQ entries and no FAQ schema; none invented. No user-facing inline-JS strings in this batch.
+- REVIEW_REQUIRED source wording: nightlife FAQ answers about travelers in their 30s, Gangnam cost and visitor safety are indirect and do not fully answer their questions. The French retains the source meaning without inventing age, price or safety claims; source-owner editorial review remains necessary.
+- Final French approval, common UI and applicable image text remain REVIEW_REQUIRED. Browser QA DEFERRED.
+
+| Source / French filename | Source locations | Localized or retained | Protected UI | Whole-page coverage | Result |
+|---|---:|---:|---:|---:|---|
+| best-area-for-couples-seoul.html | 285 | 202 | 83 | 70.88% | DRAFT / REVIEW_REQUIRED |
+| best-area-for-budget-travelers-seoul.html | 336 | 253 | 83 | 75.30% | DRAFT / REVIEW_REQUIRED |
+| best-area-for-shopping-seoul.html | 342 | 259 | 83 | 75.73% | DRAFT / REVIEW_REQUIRED |
+| best-area-for-nightlife-seoul.html | 267 | 184 | 83 | 68.91% | DRAFT / REVIEW_REQUIRED |
+| best-area-for-luxury-hotels-seoul.html | 298 | 215 | 83 | 72.15% | DRAFT / REVIEW_REQUIRED |
+| best-area-for-airport-access-seoul.html | 261 | 178 | 83 | 68.20% | DRAFT / REVIEW_REQUIRED |
