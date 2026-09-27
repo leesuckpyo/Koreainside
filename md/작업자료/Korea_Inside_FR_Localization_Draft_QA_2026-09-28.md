@@ -3,7 +3,7 @@
 - Date: 2026-09-28
 - BASE_SHA: 5ade0564153b78aa329d7e3aea8530e9b9ce815d
 - Branch: fr-draft
-- Status: IN PROGRESS — FIRST-PASS DRAFT, not Approved / CONTENT LOCKED / Production Ready.
+- Status: FIRST-PASS DRAFT PASS FINISHED — 58/58 processed; protected common UI and final editorial approval remain REVIEW_REQUIRED. Not Approved / CONTENT LOCKED / Production Ready.
 - Source: current root English HTML only.
 - Inventory remains 0 COMPLETE / 58 MISSING / 3 EXCLUDE.
 - Approved scope: 58 French HTML files and the four named French Markdown records; batch commits/pushes to fr-draft only.
@@ -210,3 +210,68 @@ No COMPLETE inventory status is granted by this draft or by static QA.
 | taste-korea.html | 272 | 189 | 83 | 69.49% | DRAFT / REVIEW_REQUIRED |
 | k-beauty.html | 196 | 113 | 83 | 57.65% | DRAFT / REVIEW_REQUIRED |
 | hongdae-travel-guide.html | 947 | 864 | 83 | 91.24% | DRAFT / REVIEW_REQUIRED |
+
+- Batch 10 commit `f9726a3b4d121b6c36f36ab65d26fe448656ffaf` pushed successfully to origin/fr-draft.
+
+### Batch 11 — 4 first-pass drafts
+
+- All four French pages reread, including inline-fragment grammar. Room areas, beds versus occupancy, paid lockers, stairs, airport-bus final walks, first check-in versus late re-entry, pool access and noise preserve the English conditions. No first-hand claim added.
+- Editable coverage 100%; unexpected English outside protected UI / deliberate names: 0 found. Seongsu has one and Itaewon two equivalent AM/PM-to-24-hour numeric differences; Jamsil and Gangnam values match after decimal normalization. Fact/date/time/price and recommendation mismatch: 0 found.
+- Structure, class/id/data, affiliate/tracking, local assets/links, canonical/lang, JSON/JS PASS. These sources have 27 visible FAQ entries and no FAQ schema; none invented. No user-facing inline-JS strings.
+- Imperial Palace Boutique Hotel has conflicting source age/child information; Delight, Ocloud and Stay BUT have source occupancy uncertainties. Preserved as cautions, not resolved by invented facts.
+- Final French approval, protected common UI and applicable image text remain REVIEW_REQUIRED. Browser QA DEFERRED.
+
+| Source / French filename | Source locations | Localized or retained | Protected UI | Whole-page coverage | Result |
+|---|---:|---:|---:|---:|---|
+| where-to-stay-in-jamsil.html | 290 | 207 | 83 | 71.38% | DRAFT / REVIEW_REQUIRED |
+| where-to-stay-in-gangnam.html | 348 | 265 | 83 | 76.15% | DRAFT / REVIEW_REQUIRED |
+| where-to-stay-in-seongsu.html | 234 | 151 | 83 | 64.53% | DRAFT / REVIEW_REQUIRED |
+| where-to-stay-in-itaewon.html | 298 | 215 | 83 | 72.15% | DRAFT / REVIEW_REQUIRED |
+
+- Batch 11 commit identity: the Git commit containing this section, titled `Draft French localization batch 11`. Its resulting SHA and push verification are provided in the final execution report; a commit cannot contain its own resulting SHA without changing that SHA.
+
+## Final static QA — all 58 pages
+
+| Check | Result |
+|---|---|
+| Target / exclusions | 58 / 3 |
+| French HTML / draft pass processed | 58 / 58 |
+| Missing / extra / excluded files copied | 0 / 0 / 0 |
+| French lang / correct self canonical / exactly one H1 | 58 / 58 / 58 |
+| Total inventoried source locations | 20,663 = 20,534 HTML + 129 inline-JS |
+| Localized or deliberately retained locations | 15,849 |
+| Changed language locations | 14,842 |
+| Deliberately identical locations | 1,007 = 992 HTML + 15 inline-JS; names, physical UI/sign text, French homographs and units |
+| Editable coverage | 15,849 / 15,849 = 100% |
+| Whole-page localization coverage | 15,849 / 20,663 = 76.70% |
+| Protected common navigation/footer locations | 4,814 = 83 per page; unchanged, REVIEW_REQUIRED |
+| Unexpected English prose outside protected UI / deliberate names | 0 found on reread and residue scan |
+| Element / class / id / protected data-attribute mismatches | 0 |
+| Fact / numeric / date / time / price / recommendation mismatches | 0 found against English, after reviewed equivalent formatting |
+| External / affiliate / tracking mismatches | 0 |
+| Inline-JS logic changes outside approved literal localization | 0 |
+| Broken local assets / CSS assets / local links / same-site absolute links | 0 / 0 / 0 / 0 |
+| Wrong target fallback to root English | 0 found |
+| FAQ visible/schema | 327 matching pairs; 416 visible FAQ entries in total; no invented schema |
+| Raw Markdown / added first-hand fabrication | 0 found / 0 found |
+| English source and protected untracked fingerprints | All unchanged |
+| Image-localization candidates | 57 page/asset rows; visual confirmation pending, images unchanged |
+| Browser QA | DEFERRED — no rendered browser or responsive verification completed |
+| Inventory | 0 COMPLETE / 58 MISSING / 3 EXCLUDE |
+
+### Remaining review requirements
+
+1. All 58 pages require ChatGPT editorial audit and user approval of final public French wording, metadata and proper-name treatment. This pass is not approval.
+2. Protected navigation/footer wording and shared runtime common.js UI prevent full French public-page coverage. The 100% editable figure must not be presented as 100% whole-page localization. Shared runtime-generated UI and embedded image text are outside the counted HTML/inline-JS locations and remain unmeasured pending review.
+3. All 57 infographic/image candidates need visual confirmation and any separately approved image localization. A candidate row is not a confirmed English infographic.
+4. Browser QA and Production QA remain deferred; long French headings, labels and mobile layouts have not been rendered.
+5. English-source issues remain: Jamsil versus Lotte World Adventure exit discrepancy; indirect nightlife FAQ answers; Gangnam restaurant-maintenance sentence; time-sensitive Hongdae event listings; published hotel age/occupancy contradictions. No English source was silently corrected.
+
+### Scope and Git safeguards
+
+- Approval: explicit unattended localization, the named four French records, 11 batch commits and pushes to fr-draft only.
+- Changed scope: 58 fr HTML plus four authorized French Markdown files. No other tracked files changed from BASE_SHA. Existing EN/ES/JA/zh-TW, shared files, images, sitemap and main remain unchanged.
+- Eight pre-existing untracked files retain their original SHA-256 fingerprints and remain untracked.
+- Full unabridged batch diffs and static-QA data are kept outside the repository in the local run evidence directory.
+- Minimum verification: task-specific static localization QA plus actual French reread; no browser or Production claim.
+- Final Git fetch, remote equality, ahead/behind, clean tracked/staged state, exact 11 commits and elapsed time are verified after the final push and reported in the execution response.
