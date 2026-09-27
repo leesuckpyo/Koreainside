@@ -140,3 +140,20 @@ No COMPLETE inventory status is granted by this draft or by static QA.
 | itaewon-travel-guide.html | 443 | 360 | 83 | 81.26% | DRAFT / REVIEW_REQUIRED |
 | lotte-world-seoul.html | 917 | 834 | 83 | 90.95% | DRAFT / REVIEW_REQUIRED |
 | seoul-sky-guide.html | 345 | 262 | 83 | 75.94% | DRAFT / REVIEW_REQUIRED |
+
+- Batch 6 commit `890c73867faee1fed138303bfe28624c0702af4b` pushed successfully to origin/fr-draft.
+
+### Batch 7 — 5 first-pass drafts
+
+- All five French pages reread. First-visit convenience, noise versus sleep, actual station exits, luggage, bed count versus occupancy, connecting-room availability and solo late-night return retain the English conditions. Hotel facts and booking links are preserved. No first-hand claim added.
+- Editable coverage 100%; unexpected English outside protected UI / deliberate names: 0 found. Numeric differences in the Hongdae–Myeongdong comparison are equivalent 24-hour wording and 4 PM to 16 h; the other four pages have no numeric-token differences. Fact/date/time/price and recommendation mismatch: 0 found.
+- Structure, class/id/data, affiliate/tracking, assets/links, canonical/lang, JSON/JS PASS. All 53 FAQ pairs match visible text and schema. Inline scripts contain tracking only; no user-facing inline-JS strings.
+- Final French approval, common UI and applicable image text remain REVIEW_REQUIRED. Browser QA DEFERRED.
+
+| Source / French filename | Source locations | Localized or retained | Protected UI | Whole-page coverage | Result |
+|---|---:|---:|---:|---:|---|
+| accommodation.html | 331 | 248 | 83 | 74.92% | DRAFT / REVIEW_REQUIRED |
+| hongdae-vs-myeongdong.html | 428 | 345 | 83 | 80.61% | DRAFT / REVIEW_REQUIRED |
+| best-area-for-first-time-visitors-seoul.html | 324 | 241 | 83 | 74.38% | DRAFT / REVIEW_REQUIRED |
+| best-area-for-families-seoul.html | 295 | 212 | 83 | 71.86% | DRAFT / REVIEW_REQUIRED |
+| best-area-for-solo-travelers-seoul.html | 290 | 207 | 83 | 71.38% | DRAFT / REVIEW_REQUIRED |
