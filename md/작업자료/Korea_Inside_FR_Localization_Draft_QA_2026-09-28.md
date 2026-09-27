@@ -85,3 +85,21 @@ No COMPLETE inventory status is granted by this draft or by static QA.
 | korean-online-payments-foreigners.html | 184 | 101 | 83 | 54.89% | DRAFT / REVIEW_REQUIRED |
 | apple-pay-korea.html | 195 | 112 | 83 | 57.44% | DRAFT / REVIEW_REQUIRED |
 | checklist.html | 272 | 189 | 83 | 69.49% | DRAFT / REVIEW_REQUIRED |
+
+- Batch 3 commit `bfa1da836ef1cb620ba23760519f7e33a1aa0dd9` pushed successfully to origin/fr-draft.
+
+### Batch 4 — 4 first-pass drafts
+
+- French copy reread. Installation versus activation, high-speed versus total data, receiving versus sending calls/SMS, and tourist-number versus resident identity checks remain distinct. Official product names are deliberately retained.
+- No numeric/date/fact or recommendation mismatch found; no first-hand claim added. Editable coverage 100%; unexpected English outside protected UI / names: 0 found.
+- Structure, class/id/data, external/affiliate/tracking, assets/links, canonical/lang, JSON/JS PASS. All 34 FAQ pairs match visible text and schema. Inline scripts contain unchanged tracking only.
+- Final French approval, common UI and applicable image text: REVIEW_REQUIRED. Browser QA DEFERRED.
+
+| Source / French filename | Source locations | Localized or retained | Protected UI | Whole-page coverage | Result |
+|---|---:|---:|---:|---:|---|
+| esim.html | 312 | 229 | 83 | 73.40% | DRAFT / REVIEW_REQUIRED |
+| best-esim-for-korea.html | 347 | 264 | 83 | 76.08% | DRAFT / REVIEW_REQUIRED |
+| korea-esim-with-phone-number.html | 327 | 244 | 83 | 74.62% | DRAFT / REVIEW_REQUIRED |
+| apps.html | 346 | 263 | 83 | 76.01% | DRAFT / REVIEW_REQUIRED |
+
+- Recovered tooling error: the read-only diff export first passed a Git argument array without spreading it. Corrected and retried once; no repository changes resulted from the failed command.
