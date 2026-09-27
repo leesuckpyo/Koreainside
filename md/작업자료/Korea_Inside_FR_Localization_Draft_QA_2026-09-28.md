@@ -103,3 +103,22 @@ No COMPLETE inventory status is granted by this draft or by static QA.
 | apps.html | 346 | 263 | 83 | 76.01% | DRAFT / REVIEW_REQUIRED |
 
 - Recovered tooling error: the read-only diff export first passed a Git argument array without spreading it. Corrected and retried once; no repository changes resulted from the failed command.
+
+- Batch 4 commit `c01b7e67b9bcb3a677e5582b5a28d101a2db0c98` pushed successfully to origin/fr-draft.
+
+### Batch 5 — 5 first-pass drafts
+
+- All five French pages reread. Distinct neighborhood sectors, temporary pop-ups versus permanent places, tired-family choices, queues and separate event journeys retain the English conditions and trade-offs. No first-hand claim added.
+- Editable coverage 100%; unexpected English outside protected UI / deliberate names: 0 found. Numeric differences reviewed: equivalent AM/PM to 24-hour display, whole-hour formatting, spelled-out twenty, and 24-hour wording. Fact/date/price/time and recommendation mismatch: 0 found.
+- Structure, class/id/data, affiliate/tracking, assets/links, canonical/lang, JSON/JS PASS. Gangnam 6 and Jamsil 8 FAQ pairs match; the other three source pages have no FAQ schema. Inline scripts contain unchanged tracking only.
+- Recovered QA issue: six Gangnam FAQ differences were whitespace-only paragraph breaks. The temporary checker now normalizes schema whitespace just as it normalizes visible text; all six match without altering HTML for this issue.
+- Gangnam retains an English-source editorial maintenance sentence about rechecking restaurants near publication, translated faithfully. Final editorial review should decide its public suitability; REVIEW_REQUIRED.
+- Final French approval, protected common UI and applicable image text remain REVIEW_REQUIRED. Browser QA DEFERRED.
+
+| Source / French filename | Source locations | Localized or retained | Protected UI | Whole-page coverage | Result |
+|---|---:|---:|---:|---:|---|
+| myeongdong-travel-guide.html | 706 | 623 | 83 | 88.24% | DRAFT / REVIEW_REQUIRED |
+| seongsu-travel-guide.html | 747 | 664 | 83 | 88.89% | DRAFT / REVIEW_REQUIRED |
+| insadong-travel-guide.html | 796 | 713 | 83 | 89.57% | DRAFT / REVIEW_REQUIRED |
+| gangnam-travel-guide.html | 412 | 329 | 83 | 79.85% | DRAFT / REVIEW_REQUIRED |
+| jamsil-travel-guide.html | 534 | 451 | 83 | 84.46% | DRAFT / REVIEW_REQUIRED |
