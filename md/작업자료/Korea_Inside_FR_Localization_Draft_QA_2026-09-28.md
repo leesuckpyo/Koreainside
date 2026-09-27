@@ -122,3 +122,21 @@ No COMPLETE inventory status is granted by this draft or by static QA.
 | insadong-travel-guide.html | 796 | 713 | 83 | 89.57% | DRAFT / REVIEW_REQUIRED |
 | gangnam-travel-guide.html | 412 | 329 | 83 | 79.85% | DRAFT / REVIEW_REQUIRED |
 | jamsil-travel-guide.html | 534 | 451 | 83 | 84.46% | DRAFT / REVIEW_REQUIRED |
+
+- Batch 5 commit `a12c3655ab44ac0a3e3bdb91d2e7b74b9eb78935` pushed successfully to origin/fr-draft.
+
+### Batch 6 — 4 first-pass drafts
+
+- French copy reread on all four pages. Optional paid experiences, neighborhood hills, ride priorities, Magic Pass eligibility and cost, ordinary admission versus Fast Pass, QR redemption and weather-dependent views retain the English conditions. No first-hand claim added.
+- Editable coverage 100%; unexpected English outside protected UI / deliberate venue, ride, product and physical-sign names: 0 found. The French service term head spa is deliberately retained.
+- Numeric differences reviewed: equivalent AM/PM to 24-hour notation; Korean first/second-floor references use niveau 1/2. Price, date, age, height and recommendation mismatches against each source: 0 found.
+- Structure, class/id/data, affiliate/tracking, assets/links, canonical/lang, JSON/JS PASS. All 16 Lotte World / Seoul Sky FAQ pairs match. Gongdeok and Itaewon each have nine visible FAQ entries but no source FAQ schema; no schema was invented. No user-facing inline-JS strings in this batch.
+- REVIEW_REQUIRED source discrepancy: the Jamsil guide directs Adventure visitors toward Exit 4; the Lotte World detail source says Exit 3 / Lotte World. Each French page preserves its own English source. The discrepancy needs source-owner review and was not silently reconciled.
+- Final French approval, common UI and applicable image text remain REVIEW_REQUIRED. Browser QA DEFERRED.
+
+| Source / French filename | Source locations | Localized or retained | Protected UI | Whole-page coverage | Result |
+|---|---:|---:|---:|---:|---|
+| gongdeok-mapo-seoul-guide.html | 610 | 527 | 83 | 86.39% | DRAFT / REVIEW_REQUIRED |
+| itaewon-travel-guide.html | 443 | 360 | 83 | 81.26% | DRAFT / REVIEW_REQUIRED |
+| lotte-world-seoul.html | 917 | 834 | 83 | 90.95% | DRAFT / REVIEW_REQUIRED |
+| seoul-sky-guide.html | 345 | 262 | 83 | 75.94% | DRAFT / REVIEW_REQUIRED |
