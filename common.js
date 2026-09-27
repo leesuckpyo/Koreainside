@@ -1,12 +1,18 @@
 (function () {
+  const normalizeLanguage = (value) => {
+    const language = value.toLowerCase();
+    return language === 'zh-tw' ? 'zh-TW' : language.split('-')[0];
+  };
   const initializeCommonNavigation = () => {
   const headers = document.querySelectorAll('[data-common-header]');
   if (!headers.length) return;
 
-  const language = document.documentElement.lang.toLowerCase().split('-')[0];
+  const language = normalizeLanguage(document.documentElement.lang);
   const menuCopy = language === 'ja'
     ? { open: 'メニューを開く', close: 'メニューを閉じる' }
-    : { open: 'Open menu', close: 'Close menu' };
+    : language === 'zh-TW'
+      ? { open: '開啟選單', close: '關閉選單' }
+      : { open: 'Open menu', close: 'Close menu' };
 
   if (document.documentElement.dataset.commonNavigationInitialized === 'true') return;
   document.documentElement.dataset.commonNavigationInitialized = 'true';
@@ -157,16 +163,17 @@
   };
 
   const initializeLanguageSwitchers = () => {
-    const language = document.documentElement.lang.toLowerCase().split('-')[0];
-    if (language !== 'en' && language !== 'es' && language !== 'ja') return;
+    const language = normalizeLanguage(document.documentElement.lang);
+    if (language !== 'en' && language !== 'es' && language !== 'ja' && language !== 'zh-TW') return;
 
     const languages = {
       en: { label: 'English' },
       es: { label: 'Español' },
-      ja: { label: '日本語' }
+      ja: { label: '日本語' },
+      'zh-TW': { label: '繁中' }
     };
     const alternates = Array.from(document.querySelectorAll('link[rel~="alternate"][hreflang]')).reduce((items, link) => {
-      const alternateLanguage = link.getAttribute('hreflang').toLowerCase().split('-')[0];
+      const alternateLanguage = normalizeLanguage(link.getAttribute('hreflang'));
       if (languages[alternateLanguage] && alternateLanguage !== language && link.href) {
         items.set(alternateLanguage, link.href);
       }
