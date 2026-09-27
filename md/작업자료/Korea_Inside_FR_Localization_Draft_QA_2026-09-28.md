@@ -67,3 +67,21 @@ No COMPLETE inventory status is granted by this draft or by static QA.
 | rental-car.html | 373 | 290 | 83 | 77.75% | DRAFT / REVIEW_REQUIRED |
 | payments.html | 196 | 113 | 83 | 57.65% | DRAFT / REVIEW_REQUIRED |
 | korea-atm-foreign-cards.html | 182 | 99 | 83 | 54.40% | DRAFT / REVIEW_REQUIRED |
+
+- Batch 2 commit `c7cd01bade612853b4a4215a15e0aad049fd6051` pushed successfully to origin/fr-draft.
+
+### Batch 3 — 5 first-pass drafts
+
+- French copy reread. Merchant acceptance, issuer authorization, local identity checks, international checkout and Wallet versus MobileTmoney top-up remain separate decisions. No stronger card-acceptance guarantee or first-hand claim introduced.
+- Fact/number/date and recommendation mismatch: 0 found. Editable coverage 100%; unexpected English outside protected UI / deliberate names: 0 found.
+- Structure, class/id/data, external/affiliate/tracking, assets/links, canonical/lang, JSON/JS PASS. All 40 FAQ pairs match their visible text and schema. Inline scripts contain only unchanged tracking logic.
+- The checklist’s `&darr;` is a decorative arrow, not an English string; the extraction entity decoder was corrected before drafting, and the original arrow markup is preserved. This removes one false source-text count.
+- Final French approval, common UI and applicable image text: REVIEW_REQUIRED. Browser QA DEFERRED.
+
+| Source / French filename | Source locations | Localized or retained | Protected UI | Whole-page coverage | Result |
+|---|---:|---:|---:|---:|---|
+| foreign-credit-cards-korea.html | 217 | 134 | 83 | 61.75% | DRAFT / REVIEW_REQUIRED |
+| card-declined-korea.html | 190 | 107 | 83 | 56.32% | DRAFT / REVIEW_REQUIRED |
+| korean-online-payments-foreigners.html | 184 | 101 | 83 | 54.89% | DRAFT / REVIEW_REQUIRED |
+| apple-pay-korea.html | 195 | 112 | 83 | 57.44% | DRAFT / REVIEW_REQUIRED |
+| checklist.html | 272 | 189 | 83 | 69.49% | DRAFT / REVIEW_REQUIRED |
