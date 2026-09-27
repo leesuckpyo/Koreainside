@@ -176,3 +176,21 @@ No COMPLETE inventory status is granted by this draft or by static QA.
 | best-area-for-nightlife-seoul.html | 267 | 184 | 83 | 68.91% | DRAFT / REVIEW_REQUIRED |
 | best-area-for-luxury-hotels-seoul.html | 298 | 215 | 83 | 72.15% | DRAFT / REVIEW_REQUIRED |
 | best-area-for-airport-access-seoul.html | 261 | 178 | 83 | 68.20% | DRAFT / REVIEW_REQUIRED |
+
+- Batch 8 commit `b3474e8c94683ef3d2a463ac5dd4b9e0446c3465` pushed successfully to origin/fr-draft.
+
+### Batch 9 — 5 first-pass drafts
+
+- All five French pages reread. Exact beds, occupancy, room areas, floor bedding, fourth-person charges, stairs/elevators, station exits, luggage walks and late-arrival conditions preserve the English decisions. No first-hand experience invented.
+- Editable coverage 100%; unexpected English outside protected UI / deliberate names: 0 found. Numeric differences are equivalent decimal, 24-hour wording and AM/PM-to-24-hour formats. Fact/date/time/price and recommendation mismatch: 0 found.
+- Structure, class/id/data, affiliate/tracking, assets/links, canonical/lang, JSON/JS PASS. All 21 FAQ schema/visible pairs match; Insadong has four visible FAQ entries without source FAQ schema. No user-facing inline-JS strings.
+- Recovered tooling error: the first Seoul Station translation-input command had an unclosed template string and failed before any mutation. A safe split retry succeeded.
+- Final French approval, protected common UI and applicable image text remain REVIEW_REQUIRED. Browser QA DEFERRED.
+
+| Source / French filename | Source locations | Localized or retained | Protected UI | Whole-page coverage | Result |
+|---|---:|---:|---:|---:|---|
+| where-to-stay-in-myeongdong.html | 459 | 376 | 83 | 81.92% | DRAFT / REVIEW_REQUIRED |
+| where-to-stay-in-hongdae.html | 363 | 280 | 83 | 77.13% | DRAFT / REVIEW_REQUIRED |
+| hotels-near-seoul-station.html | 328 | 245 | 83 | 74.70% | DRAFT / REVIEW_REQUIRED |
+| hotels-near-gongdeok-station.html | 332 | 249 | 83 | 75.00% | DRAFT / REVIEW_REQUIRED |
+| where-to-stay-in-insadong.html | 268 | 185 | 83 | 69.03% | DRAFT / REVIEW_REQUIRED |
