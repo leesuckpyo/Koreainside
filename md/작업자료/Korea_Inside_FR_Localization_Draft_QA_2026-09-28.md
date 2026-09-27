@@ -49,3 +49,21 @@ Each nonempty text node containing letters, relevant language attribute, JSON-LD
 
 No COMPLETE inventory status is granted by this draft or by static QA.
 
+- Batch 1 preserved in `1940b4c8fff1b66b56f55333596df7318573df18`; push to origin/fr-draft succeeded.
+- Nonblocking QA warning: staged diff-check reported an extra blank line at EOF in this QA record. Normalized during the next record update; no HTML content was affected.
+
+### Batch 2 — 5 first-pass drafts
+
+- Main French copy reread against the English decisions; card acceptance, luggage capacity, waiting rules and rental conditions remain conditional. No first-hand experience added. Final public wording remains REVIEW_REQUIRED.
+- Numeric differences are equivalent 24-hour time and “around the clock” / “24-hour” wording. Fact/value and judgment mismatch: 0 found.
+- Editable source coverage: 100%; unexpected English outside protected UI and deliberate names/physical signs: 0 found.
+- Static structure, class/id/data, affiliate/tracking, assets/links, canonical/lang, JSON and JS syntax PASS. FAQ visible/schema: 44 matched question/answer pairs, mismatch 0. No user-facing inline-JS copy in these five pages.
+- Browser QA DEFERRED. All five retain REVIEW_REQUIRED for final French approval, protected navigation/footer and shared runtime UI.
+
+| Source / French filename | Source locations | Localized or retained | Protected UI | Whole-page coverage | Result |
+|---|---:|---:|---:|---:|---|
+| taxi.html | 335 | 252 | 83 | 75.22% | DRAFT / REVIEW_REQUIRED |
+| incheon-airport-private-transfer.html | 231 | 148 | 83 | 64.07% | DRAFT / REVIEW_REQUIRED |
+| rental-car.html | 373 | 290 | 83 | 77.75% | DRAFT / REVIEW_REQUIRED |
+| payments.html | 196 | 113 | 83 | 57.65% | DRAFT / REVIEW_REQUIRED |
+| korea-atm-foreign-cards.html | 182 | 99 | 83 | 54.40% | DRAFT / REVIEW_REQUIRED |
