@@ -194,3 +194,19 @@ No COMPLETE inventory status is granted by this draft or by static QA.
 | hotels-near-seoul-station.html | 328 | 245 | 83 | 74.70% | DRAFT / REVIEW_REQUIRED |
 | hotels-near-gongdeok-station.html | 332 | 249 | 83 | 75.00% | DRAFT / REVIEW_REQUIRED |
 | where-to-stay-in-insadong.html | 268 | 185 | 83 | 69.03% | DRAFT / REVIEW_REQUIRED |
+
+- Batch 9 commit `eebf59ac17425e6ebb225b8a92061ac4da6cbd37` pushed successfully to origin/fr-draft.
+
+### Batch 10 — 3 first-pass drafts
+
+- All three French pages reread. Food-route trade-offs, appointment versus retail planning, US versus Global delivery, medical consultation limits, Hongdae meal/order rules, optional experiences, weather and evening choices preserve the English judgments. No first-hand claim added.
+- Editable coverage 100%; unexpected English outside protected UI / deliberate names: 0 found. Hongdae has 34 equivalent AM/PM-to-24-hour numeric-token differences; the other two pages have none. Fact/date/time/price and recommendation mismatch: 0 found. Source September 10 checked date and event dates retained without fresh factual research; time-sensitive events remain REVIEW_REQUIRED before publication.
+- The Taste Korea and K-Beauty source headers omit GLOBAL_NAV comment markers. The temporary extractor was safely extended to recognize data-common-header before applying translations, preserving the same 83 protected common-UI locations per page. No shared code changed.
+- Structure, class/id/data, affiliate/tracking, assets/links, canonical/lang, JSON/JS PASS. Taste Korea and K-Beauty each have eight visible FAQ entries without FAQ schema; Hongdae has neither. No user-facing inline-JS strings in this batch.
+- Final French approval, protected common UI and applicable image text remain REVIEW_REQUIRED. Browser QA DEFERRED.
+
+| Source / French filename | Source locations | Localized or retained | Protected UI | Whole-page coverage | Result |
+|---|---:|---:|---:|---:|---|
+| taste-korea.html | 272 | 189 | 83 | 69.49% | DRAFT / REVIEW_REQUIRED |
+| k-beauty.html | 196 | 113 | 83 | 57.65% | DRAFT / REVIEW_REQUIRED |
+| hongdae-travel-guide.html | 947 | 864 | 83 | 91.24% | DRAFT / REVIEW_REQUIRED |
