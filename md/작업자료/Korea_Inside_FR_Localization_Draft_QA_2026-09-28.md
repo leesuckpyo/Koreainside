@@ -3,11 +3,11 @@
 - Date: 2026-09-28
 - BASE_SHA: 5ade0564153b78aa329d7e3aea8530e9b9ce815d
 - Branch: fr-draft
-- Status: FIRST-PASS DRAFT PASS FINISHED — 58/58 processed; protected common UI and final editorial approval remain REVIEW_REQUIRED. Not Approved / CONTENT LOCKED / Production Ready.
+- Status: FULL EDITORIAL LOCALIZATION AUDIT FINISHED — 58/58 audited; protected common UI and owner approval remain REVIEW_REQUIRED. Not Approved / CONTENT LOCKED / Production Ready.
 - Source: current root English HTML only.
 - Inventory remains 0 COMPLETE / 58 MISSING / 3 EXCLUDE.
 - Approved scope: 58 French HTML files and the four named French Markdown records; batch commits/pushes to fr-draft only.
-- Browser QA: DEFERRED; no browser verification has been completed.
+- Browser QA: KNOWN QA LIMITATION; one representative local-browser connection was attempted, but no browser was available in the session. No rendered or responsive verification was completed.
 
 ## Scope interpretation and limitations
 
@@ -256,15 +256,15 @@ No COMPLETE inventory status is granted by this draft or by static QA.
 | Raw Markdown / added first-hand fabrication | 0 found / 0 found |
 | English source and protected untracked fingerprints | All unchanged |
 | Image-localization candidates | 57 page/asset rows; visual confirmation pending, images unchanged |
-| Browser QA | DEFERRED — no rendered browser or responsive verification completed |
+| Browser QA | KNOWN QA LIMITATION — one connection attempt found no available browser; no rendered or responsive verification completed |
 | Inventory | 0 COMPLETE / 58 MISSING / 3 EXCLUDE |
 
 ### Remaining review requirements
 
-1. All 58 pages require ChatGPT editorial audit and user approval of final public French wording, metadata and proper-name treatment. This pass is not approval.
+1. The ChatGPT full editorial audit is complete. All 58 pages still require owner approval of final public French wording, metadata and proper-name treatment; this audit is not publication approval.
 2. Protected navigation/footer wording and shared runtime common.js UI prevent full French public-page coverage. The 100% editable figure must not be presented as 100% whole-page localization. Shared runtime-generated UI and embedded image text are outside the counted HTML/inline-JS locations and remain unmeasured pending review.
 3. All 57 infographic/image candidates need visual confirmation and any separately approved image localization. A candidate row is not a confirmed English infographic.
-4. Browser QA and Production QA remain deferred; long French headings, labels and mobile layouts have not been rendered.
+4. Browser QA remains incomplete as a known limitation, and Production QA remains deferred; long French headings, labels and mobile layouts have not been rendered.
 5. English-source issues remain: Jamsil versus Lotte World Adventure exit discrepancy; indirect nightlife FAQ answers; Gangnam restaurant-maintenance sentence; time-sensitive Hongdae event listings; published hotel age/occupancy contradictions. No English source was silently corrected.
 
 ### Scope and Git safeguards
@@ -275,3 +275,66 @@ No COMPLETE inventory status is granted by this draft or by static QA.
 - Full unabridged batch diffs and static-QA data are kept outside the repository in the local run evidence directory.
 - Minimum verification: task-specific static localization QA plus actual French reread; no browser or Production claim.
 - Final Git fetch, remote equality, ahead/behind, clean tracked/staged state, exact 11 commits and elapsed time are verified after the final push and reported in the execution response.
+
+## Full editorial localization audit — 2026-09-28
+
+### Outcome and authority
+
+- Audit scope: the 58 inventoried French HTML drafts, compared with their current root English source pages.
+- Result: 58/58 editorially audited and technically rechecked.
+- Status remains `DRAFT / REVIEW_REQUIRED`, `NOT CONTENT LOCKED`, and `NOT PRODUCTION RELEASED`.
+- The current instruction explicitly authorized the French editorial audit, named-page edits, batch commits, and pushes to `fr-draft`. Work stopped after the approved French scope and this QA record.
+- Inventory remains unchanged at `0 COMPLETE / 58 MISSING / 3 EXCLUDE`. This audit does not grant publication approval.
+
+### Editorial and SEO changes
+
+- Humanization focused on literal or repetitive constructions such as `sous prétexte que`, `a du sens`, `mérite d’être envisagé`, awkward sentence fragments, and literal “door to door” phrasing. Conditions, cautions, recommendation strength, and source facts were preserved.
+- French typography was normalized where required: lowercase month names in running text and Korean won after the amount with French digit grouping, for example `67 000 ₩`. The final scan found no remaining won-prefix form.
+- Nine HTML titles were shortened or clarified for French search presentation. Lotte World and Seoul Sky received the two missing French meta descriptions, based only on information already present in their source pages. Every audited page now has exactly one nonempty title and one meta description.
+- Every audited page now has exactly one French self-referencing alternate link matching its French canonical URL. Existing English, Spanish, Japanese, Traditional Chinese, and x-default alternates were preserved.
+- No English-source fact, number, date, time, price, recommendation conclusion, affiliate destination, or tracking attribute was intentionally changed.
+
+### Final static QA evidence
+
+| Check | Result |
+|---|---|
+| Audited / modified French HTML | 58 / 58 |
+| `html lang="fr"` / canonical / French self-hreflang / single H1 | 58 / 58 / 58 / 58 |
+| Title / meta description present | 58 / 58 |
+| Protected class, id, data attribute, asset sequence, external link and affiliate/tracking mismatches from audit start | 0 |
+| Broken repository-local references, excluding the Vercel virtual analytics route | 0 |
+| Broken same-site absolute links | 0 |
+| JSON-LD parse errors | 0 |
+| FAQ schema Question entries, French / English source | 327 / 327 |
+| Known literalism scan (`sous prétexte`, `a du sens`, literal “door to door”, repeated `mérite d’être envisagé`) | 0 remaining |
+| Won-prefix scan | 0 remaining |
+| Unexpected editable English prose | 0 found; protected common UI and deliberate proper names remain separately classified |
+| Browser rendering | KNOWN QA LIMITATION — no browser was available after one connection attempt |
+
+The 327 FAQ schema entries retain the source count. The prior first-pass visible/schema comparison remains 327 matching pairs; edits made during this audit that touched FAQ copy were synchronized between visible text and schema. No new FAQ schema was invented.
+
+### Protected and deferred items
+
+- Shared header, navigation, footer, hamburger behavior, `common.js`, shared `style.css`, sitemap, images, other-language pages, and root English pages were not changed.
+- Protected common navigation/footer remains 4,814 source locations, or 83 per page, and requires a separate approved common-UI localization decision. Shared runtime English remains REVIEW_REQUIRED.
+- The 57 previously inventoried page/asset image-localization candidates remain unchanged. Candidate status is not confirmation that every image contains English text; visual review and any image production require separate approval.
+- Time-sensitive event schedules, fares, hotel age/occupancy cautions, and the documented Jamsil/Lotte World exit discrepancy remain REVIEW_REQUIRED before publication. The French pages preserve their current English source rather than silently resolving those issues.
+- Browser and responsive QA remain incomplete because no browser was available. No screenshots were requested or generated.
+
+### Editorial audit batch commits
+
+| Batch | Pages | Commit |
+|---|---:|---|
+| 1 | 12 | `1edd6b6ad114f1c4f995466a01e158c5b75212fb` |
+| 2 | 5 | `9b3281c0f18779bcaa4d4a831fa88b471ba6414d` |
+| 3 | 5 | `8c95347ec196850026acd15e5b6b627de4952379` |
+| 4 | 4 | `7689a755305cf3c7b8cb5f27f6fb3dfabb45a608` |
+| 5 | 5 | `5bf66c50ce0958f45307ff8f590758c74cb70417` |
+| 6 | 4 | `116c35673252cba946ba461c8b50a19b563e3130` |
+| 7 | 5 | `3f70743e2a32c2f9ea388ce4d130871cd536a2eb` |
+| 8 | 6 | `a3100d611e3a59d5cbfc62225044813b98f7ced8` |
+| 9 | 5 | `ec6e254d8a8365bad0c5995abb24d33d2471a596` |
+| 10 | 3 | `aa1dfe473fa02d8114274eb0e30661419e52eb17` |
+| 11 | 4 | `164bdec565a84c737b751b9f6fe409af06944148` |
+
+All 11 batch commits were pushed to `origin/fr-draft` and individually verified at remote equality. The final QA-record commit and its remote equality are reported in the execution response because a commit cannot contain its own resulting SHA.
