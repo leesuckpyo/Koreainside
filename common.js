@@ -12,7 +12,9 @@
     ? { open: 'メニューを開く', close: 'メニューを閉じる' }
     : language === 'zh-TW'
       ? { open: '開啟選單', close: '關閉選單' }
-      : { open: 'Open menu', close: 'Close menu' };
+      : language === 'fr'
+        ? { open: 'Ouvrir le menu', close: 'Fermer le menu' }
+        : { open: 'Open menu', close: 'Close menu' };
 
   if (document.documentElement.dataset.commonNavigationInitialized === 'true') return;
   document.documentElement.dataset.commonNavigationInitialized = 'true';
@@ -164,14 +166,75 @@
 
   const initializeLanguageSwitchers = () => {
     const language = normalizeLanguage(document.documentElement.lang);
-    if (language !== 'en' && language !== 'es' && language !== 'ja' && language !== 'zh-TW') return;
+    if (language !== 'en' && language !== 'es' && language !== 'ja' && language !== 'zh-TW' && language !== 'fr') return;
 
     const languages = {
       en: { label: 'English' },
+      fr: { label: 'Français' },
       es: { label: 'Español' },
       ja: { label: '日本語' },
       'zh-TW': { label: '繁中' }
     };
+    const frenchSiblingFilenames = new Set([
+      'accommodation.html',
+      'airport.html',
+      'airport-bus.html',
+      'airport-transfer.html',
+      'apple-pay-korea.html',
+      'apps.html',
+      'arex.html',
+      'arrival.html',
+      'best-area-for-airport-access-seoul.html',
+      'best-area-for-budget-travelers-seoul.html',
+      'best-area-for-couples-seoul.html',
+      'best-area-for-families-seoul.html',
+      'best-area-for-first-time-visitors-seoul.html',
+      'best-area-for-luxury-hotels-seoul.html',
+      'best-area-for-nightlife-seoul.html',
+      'best-area-for-shopping-seoul.html',
+      'best-area-for-solo-travelers-seoul.html',
+      'best-esim-for-korea.html',
+      'card-declined-korea.html',
+      'checklist.html',
+      'dongdaemun-travel-guide.html',
+      'esim.html',
+      'foreign-credit-cards-korea.html',
+      'gangnam-travel-guide.html',
+      'gongdeok-mapo-seoul-guide.html',
+      'hongdae-travel-guide.html',
+      'hongdae-vs-myeongdong.html',
+      'hotels-near-gongdeok-station.html',
+      'hotels-near-seoul-station.html',
+      'incheon-airport-private-transfer.html',
+      'index.html',
+      'insadong-travel-guide.html',
+      'itaewon-travel-guide.html',
+      'jamsil-travel-guide.html',
+      'k-beauty.html',
+      'korea-atm-foreign-cards.html',
+      'korea-esim-with-phone-number.html',
+      'korean-online-payments-foreigners.html',
+      'lotte-world-seoul.html',
+      'maps.html',
+      'myeongdong-travel-guide.html',
+      'payments.html',
+      'rental-car.html',
+      'seongsu-travel-guide.html',
+      'seoul-sky-guide.html',
+      'taste-korea.html',
+      'taxi.html',
+      'tmoney.html',
+      'tmoney-vs-wowpass.html',
+      'where-to-stay-in-dongdaemun.html',
+      'where-to-stay-in-gangnam.html',
+      'where-to-stay-in-hongdae.html',
+      'where-to-stay-in-insadong.html',
+      'where-to-stay-in-itaewon.html',
+      'where-to-stay-in-jamsil.html',
+      'where-to-stay-in-myeongdong.html',
+      'where-to-stay-in-seongsu.html',
+      'wowpass.html'
+    ]);
     const alternates = Array.from(document.querySelectorAll('link[rel~="alternate"][hreflang]')).reduce((items, link) => {
       const alternateLanguage = normalizeLanguage(link.getAttribute('hreflang'));
       if (languages[alternateLanguage] && alternateLanguage !== language && link.href) {
@@ -179,10 +242,24 @@
       }
       return items;
     }, new Map());
+    const currentFilename = window.location.pathname.endsWith('/')
+      ? 'index.html'
+      : window.location.pathname.split('/').filter(Boolean).pop() || 'index.html';
+    if (language !== 'fr' && frenchSiblingFilenames.has(currentFilename)) {
+      const frenchPath = currentFilename === 'index.html' ? '/fr/' : `/fr/${currentFilename}`;
+      alternates.set('fr', new URL(frenchPath, window.location.origin).href);
+    }
 
     document.querySelectorAll('.language-switcher').forEach((switcher, switcherIndex) => {
       const button = switcher.querySelector('.language-switcher__button');
       if (!button) return;
+
+      if (language === 'fr') {
+        const currentCode = button.querySelector('.language-switcher__current');
+        const currentLabel = button.querySelector('.language-switcher__label');
+        if (currentCode) currentCode.textContent = 'FR';
+        if (currentLabel) currentLabel.textContent = languages.fr.label;
+      }
 
       const options = Object.keys(languages).filter((optionLanguage) => (
         optionLanguage === language || alternates.has(optionLanguage)
@@ -314,6 +391,7 @@
     const language = document.documentElement.lang.toLowerCase().split('-')[0];
     const isSpanish = language === 'es';
     const isJapanese = language === 'ja';
+    const isFrench = language === 'fr';
     const manifestHref = isJapanese
       ? '/ja/manifest.webmanifest'
       : isSpanish
@@ -350,6 +428,12 @@
       iosTitle: 'Añade Korea Inside a tu pantalla de inicio',
       iosSteps: ['Toca Compartir', 'Toca Añadir a pantalla de inicio'],
       fallback: 'Abre el menú del navegador y elige “Instalar aplicación” o “Añadir a pantalla de inicio”.'
+    } : isFrench ? {
+      button: 'Installer Korea Inside',
+      close: 'Fermer',
+      iosTitle: 'Ajouter Korea Inside à l’écran d’accueil',
+      iosSteps: ['Touchez Partager', 'Touchez Ajouter à l’écran d’accueil'],
+      fallback: 'Ouvrez le menu du navigateur et choisissez « Installer l’application » ou « Ajouter à l’écran d’accueil ».'
     } : {
       button: 'Install Korea Inside',
       close: 'Close',
