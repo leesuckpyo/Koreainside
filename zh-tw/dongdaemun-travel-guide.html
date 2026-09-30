@@ -186,7 +186,7 @@
               <p>使用類別圖層，只顯示你想逛的購物類型、市場或用餐地點。</p>
               <p>想直接採用排好的順序，可以選路線 A、B 或 C。</p>
               <p>點選任一標記，即可查看該地點的實用建議。</p>
-              <p class="dd-map-status">路線連線表示行程順序，並非逐向導航。</p>
+              <p class="dd-map-status">地圖上的路線線條只表示行程規劃順序，不是逐步導航。</p>
             </aside>
           </div>
           <p class="dd-map-status" id="dd-map-status" role="status">正在準備官方地圖位置…</p>
@@ -512,7 +512,7 @@
           <p>比起只是從 DDP 走到零售商場，這些需求更值得付費請導覽。</p>
           <h3 id="dongdaemun-guided-tour-cta-title">東大門導覽選項</h3>
           <aside class="dd-affiliate affiliate-cta-v1" aria-labelledby="dongdaemun-guided-tour-cta-title">
-            <p>目前合作平台提供東大門步行與市場導覽商品。</p>
+            <p>目前合作平台上有東大門步行與市場導覽行程可預訂。</p>
             <p><a class="dd-cta-button" href="https://affiliate.klook.com/sl/1LXrAST" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="klook" data-page-category="travel-guides" data-content-topic="dongdaemun-guided-tour" data-placement="dongdaemun-guide-guided-tour" data-link-stage="contextual">查看目前的東大門導覽行程</a></p>
             <p><small>聯盟連結 — 如果透過此連結預訂，Korea Inside 可能獲得佣金。</small></p>
           </aside>
@@ -531,7 +531,7 @@
           <p>不必只因為就在附近，就額外排進行程。</p>
           <h3 id="dongdaemun-jjimjilbang-cta-title">深夜休息選項</h3>
           <aside class="dd-affiliate affiliate-cta-v1" aria-labelledby="dongdaemun-jjimjilbang-cta-title">
-            <p>目前合作平台有東大門汗蒸幕商品，可選白天或夜間入場。</p>
+            <p>目前合作平台上有東大門汗蒸幕方案可預訂，可選白天或夜間入場。</p>
             <p><a class="dd-cta-button" href="https://affiliate.klook.com/sl/2tFkRp6" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="klook" data-page-category="travel-guides" data-content-topic="dongdaemun-jjimjilbang" data-placement="dongdaemun-guide-sparex-jjimjilbang" data-link-stage="contextual">查看目前可預訂的東大門汗蒸幕</a></p>
             <p><small>聯盟連結 — 如果透過此連結預訂，Korea Inside 可能獲得佣金。</small></p>
           </aside>
@@ -804,7 +804,7 @@
     function showRoute(k){var g=routeGuides[k];panelMode="route";panelRoute=k;details.innerHTML='<p class="dd-map-eyebrow">'+g.eyebrow+'</p><h3>'+g.name+'</h3><p>'+g.body+'</p><dl><div><dt>順序</dt><dd>'+g.sequence.join('<br>&rarr; ')+'</dd></div><div><dt>注意事項</dt><dd>'+g.warning+'</dd></div></dl>'}
     function visible(p){return p.times.includes(time)&&(p.cat==="station"||cats.has(p.cat))}
     function refresh(){places.forEach(function(p){if(markers[p.id])markers[p.id].setVisible(visible(p)||Object.keys(routes).some(function(k){return activeRoutes.has(k)&&routes[k].includes(p.id)}))});Object.keys(lines).forEach(function(k){lines[k].setVisible(activeRoutes.has(k))})}
-    function build(found){map=new naver.maps.Map(root,{center:new naver.maps.LatLng(37.5683,127.0095),zoom:16,minZoom:14,zoomControl:true,zoomControlOptions:{position:naver.maps.Position.TOP_RIGHT}});var loading=root.querySelector(".dd-map-loading");if(loading)loading.remove();var by={};found.forEach(function(p){by[p.id]=p;var m=new naver.maps.Marker({map:map,position:new naver.maps.LatLng(p.lat,p.lng),icon:icon(p),title:p.name});naver.maps.Event.addListener(m,"click",function(){show(p);map.panTo(m.getPosition())});markers[p.id]=m});var rc={a:"#2364aa",b:"#b56824",c:"#6d4a8d"};Object.keys(routes).forEach(function(k){lines[k]=new naver.maps.Polyline({map:map,path:routes[k].map(function(id){return by[id]?new naver.maps.LatLng(by[id].lat,by[id].lng):null}).filter(Boolean),strokeColor:rc[k],strokeWeight:5,strokeOpacity:.82,strokeStyle:"shortdash",visible:false})});refresh();status.textContent=found.length+" 個經確認地址的地點已透過 NAVER Maps 載入。路線連線表示行程順序，並非逐向導航。"}
+    function build(found){map=new naver.maps.Map(root,{center:new naver.maps.LatLng(37.5683,127.0095),zoom:16,minZoom:14,zoomControl:true,zoomControlOptions:{position:naver.maps.Position.TOP_RIGHT}});var loading=root.querySelector(".dd-map-loading");if(loading)loading.remove();var by={};found.forEach(function(p){by[p.id]=p;var m=new naver.maps.Marker({map:map,position:new naver.maps.LatLng(p.lat,p.lng),icon:icon(p),title:p.name});naver.maps.Event.addListener(m,"click",function(){show(p);map.panTo(m.getPosition())});markers[p.id]=m});var rc={a:"#2364aa",b:"#b56824",c:"#6d4a8d"};Object.keys(routes).forEach(function(k){lines[k]=new naver.maps.Polyline({map:map,path:routes[k].map(function(id){return by[id]?new naver.maps.LatLng(by[id].lat,by[id].lng):null}).filter(Boolean),strokeColor:rc[k],strokeWeight:5,strokeOpacity:.82,strokeStyle:"shortdash",visible:false})});refresh();status.textContent=found.length+" 個經確認地址的地點已透過 NAVER Maps 載入。地圖上的路線線條只表示行程規劃順序，不是逐步導航。"}
     document.querySelectorAll("[data-time-filters] button").forEach(function(b){b.onclick=function(){time=b.dataset.time;document.querySelectorAll("[data-time-filters] button").forEach(function(x){var on=x===b;x.classList.toggle("is-active",on);x.setAttribute("aria-pressed",on)});var d={day:["ddp","retail","specialty","food"],evening:["ddp","retail","late-retail","food","wholesale"],"after-10":["late-retail","wholesale","food","ddp"],"after-midnight":["late-retail","wholesale"]};cats=new Set(d[time]);document.querySelectorAll("[data-category-filters] button").forEach(function(x){var on=cats.has(x.dataset.category);x.classList.toggle("is-active",on);x.setAttribute("aria-pressed",on)});refresh()}})
     document.querySelectorAll("[data-category-filters] button").forEach(function(b){b.onclick=function(){var c=b.dataset.category;cats.has(c)?cats.delete(c):cats.add(c);var on=cats.has(c);b.classList.toggle("is-active",on);b.setAttribute("aria-pressed",on);refresh()}})
     document.querySelectorAll("[data-route-filters] button").forEach(function(b){b.onclick=function(){var r=b.dataset.route,on;if(activeRoutes.has(r)){activeRoutes.delete(r);activeRouteOrder=activeRouteOrder.filter(function(k){return k!==r});on=false;if(panelMode==="route"&&panelRoute===r){var last=activeRouteOrder[activeRouteOrder.length-1];last?showRoute(last):selectedPlace?show(selectedPlace):showIntro()}}else{activeRoutes.add(r);activeRouteOrder.push(r);on=true;showRoute(r)}b.classList.toggle("is-active",on);b.setAttribute("aria-pressed",on);refresh()}})
