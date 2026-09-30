@@ -14,7 +14,9 @@
       ? { open: '開啟選單', close: '關閉選單' }
       : language === 'fr'
         ? { open: 'Ouvrir le menu', close: 'Fermer le menu' }
-        : { open: 'Open menu', close: 'Close menu' };
+        : language === 'de'
+          ? { open: 'Menü öffnen', close: 'Menü schließen' }
+          : { open: 'Open menu', close: 'Close menu' };
 
   if (document.documentElement.dataset.commonNavigationInitialized === 'true') return;
   document.documentElement.dataset.commonNavigationInitialized = 'true';
@@ -166,14 +168,15 @@
 
   const initializeLanguageSwitchers = () => {
     const language = normalizeLanguage(document.documentElement.lang);
-    if (language !== 'en' && language !== 'es' && language !== 'ja' && language !== 'zh-TW' && language !== 'fr') return;
+    if (language !== 'en' && language !== 'es' && language !== 'ja' && language !== 'zh-TW' && language !== 'fr' && language !== 'de') return;
 
     const languages = {
       en: { label: 'English' },
       fr: { label: 'Français' },
       es: { label: 'Español' },
       ja: { label: '日本語' },
-      'zh-TW': { label: '繁中' }
+      'zh-TW': { label: '繁中' },
+      de: { label: 'Deutsch' }
     };
     const frenchSiblingFilenames = new Set([
       'accommodation.html',
@@ -259,6 +262,12 @@
         const currentLabel = button.querySelector('.language-switcher__label');
         if (currentCode) currentCode.textContent = 'FR';
         if (currentLabel) currentLabel.textContent = languages.fr.label;
+      }
+      if (language === 'de') {
+        const currentCode = button.querySelector('.language-switcher__current');
+        const currentLabel = button.querySelector('.language-switcher__label');
+        if (currentCode) currentCode.textContent = 'DE';
+        if (currentLabel) currentLabel.textContent = languages.de.label;
       }
 
       const options = Object.keys(languages).filter((optionLanguage) => (
@@ -392,6 +401,7 @@
     const isSpanish = language === 'es';
     const isJapanese = language === 'ja';
     const isFrench = language === 'fr';
+    const isGerman = language === 'de';
     const manifestHref = isJapanese
       ? '/ja/manifest.webmanifest'
       : isSpanish
@@ -434,6 +444,12 @@
       iosTitle: 'Ajouter Korea Inside à l’écran d’accueil',
       iosSteps: ['Touchez Partager', 'Touchez Ajouter à l’écran d’accueil'],
       fallback: 'Ouvrez le menu du navigateur et choisissez « Installer l’application » ou « Ajouter à l’écran d’accueil ».'
+    } : isGerman ? {
+      button: 'Korea Inside installieren',
+      close: 'Schließen',
+      iosTitle: 'Korea Inside zum Home-Bildschirm hinzufügen',
+      iosSteps: ['Auf „Teilen“ tippen', 'Auf „Zum Home-Bildschirm“ tippen'],
+      fallback: 'Öffne das Browsermenü und wähle „App installieren“ oder „Zum Home-Bildschirm hinzufügen“.'
     } : {
       button: 'Install Korea Inside',
       close: 'Close',
