@@ -2,12 +2,13 @@
 
 ## Document Metadata
 
-- Date: 2026-09-27
+- Date: 2026-10-01
+- Previous inventory update: 2026-09-27; original Batch release dates are preserved below.
 - Purpose: Track the Japanese localization status of the current public English page set.
 - Scope: 58 localization-target pages plus 3 explicitly excluded public/root HTML files.
 - Japanese folder: `/ja/`
 - Japanese hreflang code: `ja`
-- Current status: Production inventory; 58 Japanese pages are COMPLETE and 0 remain MISSING.
+- Current status: 58/58 PRODUCTION COMPLETE; 58 COMPLETE / 0 MISSING / 3 EXCLUDE. Current technical release and public QA verified on 2026-10-01.
 - Completion condition: Japanese `MISSING = 0`.
 
 ## Audit Basis
@@ -27,26 +28,44 @@
 - `ja/where-to-stay-in-jamsil.html`, `ja/where-to-stay-in-gangnam.html`, `ja/where-to-stay-in-seongsu.html` and `ja/where-to-stay-in-itaewon.html` completed the approved Japanese Batch 13 Production workflow on 2026-09-27.
 - All 58 Japanese localization targets have completed the approved Production workflow.
 
+## Technical Release Verification — 2026-10-01
+
+- Release commit: `ab8640e14338fc89056ceab0dde623bef7966acc` — `Fix Japanese and Taiwan release integration gaps`.
+- Git-triggered Vercel Production deployment: `dpl_5oBqsrWcR5a8VcCb3JVtnxy9yqxL`, READY; deployed SHA matches the release commit.
+- Public QA completed: 2026-10-01 21:32:45 KST (2026-10-01T12:32:45Z).
+- Japanese public HTTP: 58/58 HTTP 200; unexpected redirects, 404 and 5xx: 0.
+- Japanese lang, self canonical and exactly one H1: 58/58; noindex: 0.
+- Japanese meta descriptions: 58/58, with no empty or duplicate tags. The two new Lotte World / Seoul Sky descriptions received final user approval on 2026-10-01 and match the approved copy exactly.
+- Current six-language reciprocal hreflang: 2,436/2,436 entries across 348 corresponding pages, including `en`, `es`, `ja`, `zh-TW`, `fr`, `de` and `x-default`; duplicate, missing and wrong-page targets: 0. The five ES-to-JA omissions are resolved.
+- Japanese sitemap: 58/58 canonical URLs; five previously omitted entries added; `/ja/` exactly once, `/ja/index.html` absent, missing/duplicate entries: 0. Existing lastmod values were preserved; the five added entries record the 2026-10-01 technical update, not initial publication.
+- Japanese preload fix: 15 imagesrcset candidates across five pages resolve to existing root image files and return HTTP 200. Candidate order, width descriptors, imagesizes and ordinary img/srcset values are preserved.
+- FAQ / JSON-LD: 49 JSON-LD blocks parse successfully; 38 FAQPage pages, question parity 327/327 and answer parity 327/327. The 89 visible FAQs on pages without FAQPage remain without newly added schema.
+- Internal links: same-language English fallback residue 0; all 123 distinct internal public targets checked across JA and zh-TW return HTTP 200.
+- Body copy, visible FAQ, JSON-LD copy, headings, internal hrefs, affiliate URLs, tracking and provider order are unchanged by the technical release.
+- Production source matches the release commit for all 348 HTML pages and sitemap.xml. Staged scope was exactly 233 approved files; staged diff fingerprint and whitespace checks passed.
+- Known QA limitation: Browser interaction QA NOT RUN because no connected browser was available. Static HTML and HTTP verification do not establish visual rendering, menu interaction or measured performance.
+- This is a technical integration closeout. It does not replace or change the historical initial Batch publication dates recorded in this inventory.
+
 ## Status Definitions
 
 - `COMPLETE`: Approved Japanese public copy has been exactly implemented and the page has completed the required QA and Production workflow.
 - `MISSING`: Japanese localization is not complete. A local English working copy may exist.
 - `EXCLUDE`: The file is outside the Japanese localization target set for the stated reason.
 
-## Future URL and SEO Structure
+## Current Production URL and SEO Structure
 
 - English pages remain at the root English URL.
 - Released Japanese pages use `/ja/` after their approved Batch Production release.
 - Japanese homepage URL: `https://www.getkoreainside.com/ja/`
 - Japanese detail URL pattern: `https://www.getkoreainside.com/ja/FILENAME`
-- Future multilingual SEO is applied per released Batch: self canonical and reciprocal `en`, `es`, `ja`, and `x-default` hreflang using only siblings that actually exist in Production.
+- All 58 released pages use self canonical and reciprocal `en`, `es`, `ja`, `zh-TW`, `fr`, `de`, and `x-default` hreflang with same-page siblings verified in Production.
 - Japanese hreflang and sitemap entries are managed only for released Japanese pages.
 
 ## Master Inventory
 
 There are no `MISSING` rows. All 58 localization targets below are `COMPLETE`.
 
-| Category | English filename | English Production URL | Japanese filename | Japanese future URL | Status | Notes |
+| Category | English filename | English Production URL | Japanese filename | Japanese Production URL | Status | Notes |
 |---|---|---|---|---|---|---|
 | Home | `index.html` | `https://www.getkoreainside.com/` | `ja/index.html` | `https://www.getkoreainside.com/ja/` | COMPLETE | Approved Japanese homepage released to Production on 2026-09-24. |
 | Discover | `taste-korea.html` | `https://www.getkoreainside.com/taste-korea.html` | `ja/taste-korea.html` | `https://www.getkoreainside.com/ja/taste-korea.html` | COMPLETE | Japanese Batch 12 released to Production on 2026-09-26. |
