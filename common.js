@@ -173,11 +173,13 @@
     const languages = {
       en: { label: 'English' },
       fr: { label: 'Français' },
+      de: { label: 'Deutsch' },
       es: { label: 'Español' },
       ja: { label: '日本語' },
-      'zh-TW': { label: '繁中' },
-      de: { label: 'Deutsch' }
+      'zh-TW': { label: '繁中' }
     };
+    const isLocalDev = ['localhost', '127.0.0.1', '[::1]']
+      .includes(window.location.hostname);
     const frenchSiblingFilenames = new Set([
       'accommodation.html',
       'airport.html',
@@ -241,7 +243,14 @@
     const alternates = Array.from(document.querySelectorAll('link[rel~="alternate"][hreflang]')).reduce((items, link) => {
       const alternateLanguage = normalizeLanguage(link.getAttribute('hreflang'));
       if (languages[alternateLanguage] && alternateLanguage !== language && link.href) {
-        items.set(alternateLanguage, link.href);
+        const targetUrl = new URL(link.href);
+        const optionHref = isLocalDev
+          ? new URL(
+              `${targetUrl.pathname}${targetUrl.search}${targetUrl.hash}`,
+              window.location.origin
+            ).href
+          : targetUrl.href;
+        items.set(alternateLanguage, optionHref);
       }
       return items;
     }, new Map());
