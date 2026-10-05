@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="บัตรต่างประเทศใช้ในร้านได้แต่ใช้บนเว็บไซต์เกาหลีไม่ได้? ดูว่าการยืนยันตัวตน ระบบสำหรับนักท่องเที่ยว และ card authentication มีผลต่อการจ่ายออนไลน์อย่างไร">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.getkoreainside.com/th/korean-online-payments-foreigners.html">
+  <link rel="alternate" hreflang="en" href="https://www.getkoreainside.com/korean-online-payments-foreigners.html">
+  <link rel="alternate" hreflang="es" href="https://www.getkoreainside.com/es/korean-online-payments-foreigners.html">
+  <link rel="alternate" hreflang="ja" href="https://www.getkoreainside.com/ja/korean-online-payments-foreigners.html">
+  <link rel="alternate" hreflang="zh-TW" href="https://www.getkoreainside.com/zh-tw/korean-online-payments-foreigners.html">
+  <link rel="alternate" hreflang="fr" href="https://www.getkoreainside.com/fr/korean-online-payments-foreigners.html">
+  <link rel="alternate" hreflang="de" href="https://www.getkoreainside.com/de/korean-online-payments-foreigners.html">
+  <link rel="alternate" hreflang="th" href="https://www.getkoreainside.com/th/korean-online-payments-foreigners.html">
+  <link rel="alternate" hreflang="x-default" href="https://www.getkoreainside.com/korean-online-payments-foreigners.html">
+  <title>จ่ายเงินออนไลน์ในเกาหลีสำหรับชาวต่างชาติ: ทำไม Checkout ถึงล้มเหลว | Korea Inside</title>
+  <link rel="stylesheet" href="../style.css">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "หน้าแรก",
+      "item": "https://www.getkoreainside.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "การชำระเงิน",
+      "item": "https://www.getkoreainside.com/payments.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "การจ่ายออนไลน์",
+      "item": "https://www.getkoreainside.com/th/korean-online-payments-foreigners.html"
+    }
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "ทำไมบัตรต่างประเทศใช้ในร้านเกาหลีได้ แต่ใช้ออนไลน์ไม่ได้?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Terminal หน้าร้านกับ online checkout อาจใช้ระบบจ่ายและ identity verification ต่างกัน บริการออนไลน์อาจต้อง visitor-compatible checkout, local verification หรือ issuer authentication เพิ่ม แม้บัตรเดียวกันจะใช้ในร้านได้ปกติ"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "เว็บไซต์เกาหลีทุกแห่งต้องมีเบอร์โทรเกาหลีไหม?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ไม่ใช่ บางบริการยังใช้ local phone หรือ identity verification แต่มี visitor-facing alternative เพิ่มขึ้น NAVER ปัจจุบันมี passport verification สำหรับนักท่องเที่ยวต่างชาติที่ไม่มีเบอร์มือถือเกาหลี และ CATCHTABLE Global สมัครได้โดยไม่ต้องมีเบอร์เกาหลี"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "ชาวต่างชาติใช้ NAVER booking และ payment โดยไม่มีเบอร์เกาหลีได้ไหม?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "NAVER ระบุว่าผู้ใช้ต่างชาติที่มีหนังสือเดินทางออกนอกเกาหลีสามารถใช้ passport-verification โดยไม่ต้องมีเบอร์มือถือเกาหลี เพื่อเข้าถึงฟังก์ชันการจอง การสั่ง และการชำระเงินที่เกี่ยวข้องกับการเดินทางผ่าน NAVER Map"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "นักท่องเที่ยวใช้ CATCHTABLE โดยไม่มีเบอร์เกาหลีได้ไหม?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ได้ ผ่าน CATCHTABLE Global VISITKOREA ระบุว่าผู้ใช้ต่างชาติสมัครด้วย Google, Apple หรือ email โดยไม่ต้องมีเบอร์เกาหลี และจ่าย deposit การจองด้วยบัตรต่างประเทศได้"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "3-D Secure คืออะไร?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "เป็นกระบวนการ authentication เพิ่มสำหรับการจ่ายบัตรออนไลน์บางรายการ Issuer อาจแสดงหน้าจอยืนยันตัวตนของตัวเองก่อนการจ่ายเสร็จ Toss Payments ระบุการรองรับ 3-D Secure สำหรับธุรกรรมบัตรต่างประเทศ Visa, Mastercard และ JCB"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "เห็นตัวเลือกบัตรต่างประเทศแล้ว แปลว่าบัตรต้องใช้ได้แน่นอนไหม?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ไม่ ตัวเลือกนี้หมายถึง checkout มี overseas-card payment route แต่ธุรกรรมยังขึ้นอยู่กับเครือข่ายบัตร issuer authentication และ authorization ขั้นสุดท้าย"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "ถ้าเว็บไซต์ขอ local verification ควรลองบัตรต่างประเทศใบอื่นต่อไหม?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "โดยทั่วไปไม่ได้แก้ปัญหาหลัก ถ้า checkout หยุดก่อนขั้นจ่ายบัตรเพราะข้อกำหนดบัญชีหรือ identity ท้องถิ่น ให้มองหา visitor/global route ก่อน แทนการเปลี่ยนบัตรซ้ำ"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Online payment failure เหมือนบัตรถูก decline ที่ร้านไหม?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ไม่เหมือนทั้งหมด แม้มีบางส่วนเกี่ยวกัน Online checkout เพิ่ม account verification และ cardholder authentication ที่ไม่มีในธุรกรรมหน้าร้านปกติ ถ้าบัตรยังล้มเหลวที่ร้านมีพนักงานด้วย ให้แยกเป็นปัญหา card decline อีกเรื่อง"
+      }
+    }
+  ]
+}
+  </script>
+<script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
+  (function () {
+      var script = document.createElement("script");
+      script.async = 1;
+      script.setAttribute("data-cmp-ab","2");
+      script.src = 'https://emrldco.com/NTY2MzE1.js?t=566315';
+      document.head.appendChild(script);
+  })();
+</script>
+</head>
+<body class="foreign-card-page card-declined-page" data-section="travel-tips">
+<!-- GLOBAL_NAV_START -->
+  <header class="header site-header" data-common-header>
+    <div class="container header__inner site-header__inner">
+      <a href="/" class="logo site-header__logo" aria-label="หน้าแรก Korea Inside">
+        <img class="site-brand__logo" src="../images/korea-inside-logo.webp" alt="Korea Inside" width="2172" height="724">
+      </a>
+      <button class="site-nav-toggle" id="site-nav-toggle" type="button" aria-label="เปิดเมนู" aria-expanded="false" aria-controls="site-primary-navigation"><span class="site-nav-toggle__bar"></span><span class="site-nav-toggle__bar"></span><span class="site-nav-toggle__bar"></span></button>
+      <nav class="site-nav" id="site-primary-navigation" aria-label="เมนูหลัก">
+        <ul class="site-nav__list">
+          <li class="site-nav__item" data-nav-section="discover">
+            <button class="site-nav__trigger" id="site-nav-trigger-discover" type="button" aria-expanded="false" aria-controls="site-nav-panel-discover" aria-haspopup="true">สำรวจ</button>
+            <div class="site-nav__panel" id="site-nav-panel-discover" aria-labelledby="site-nav-trigger-discover" hidden><div class="site-nav__group"><a class="site-nav__link" href="../taste-korea.html">อาหารเกาหลี</a><a class="site-nav__link" href="../k-beauty.html">K-Beauty</a></div></div>
+          </li>
+          <li class="site-nav__item" data-nav-section="travel">
+            <button class="site-nav__trigger" id="site-nav-trigger-travel" type="button" aria-expanded="false" aria-controls="site-nav-panel-travel" aria-haspopup="true">เที่ยว</button>
+            <div class="site-nav__panel site-nav__panel--travel-guides" id="site-nav-panel-travel" aria-labelledby="site-nav-trigger-travel" hidden><p class="site-nav__group-label site-nav__group-label--travel-panel" id="site-nav-travel-guides-label">คู่มือเที่ยว</p><div class="site-nav__group site-nav__group--travel-areas"><p class="site-nav__group-label">ย่านในโซล</p><div class="site-nav__travel-grid"><a class="site-nav__link" href="../hongdae-travel-guide.html">ฮงแด</a><a class="site-nav__link" href="../myeongdong-travel-guide.html">เมียงดง</a><a class="site-nav__link" href="../seongsu-travel-guide.html">ซองซู</a><a class="site-nav__link" href="../insadong-travel-guide.html">อินซาดง</a><a class="site-nav__link" href="../gangnam-travel-guide.html">กังนัม</a><a class="site-nav__link" href="../jamsil-travel-guide.html">จัมชิล</a><a class="site-nav__link" href="../gongdeok-mapo-seoul-guide.html">กงด็อก &amp; มาโพ</a><a class="site-nav__link" href="../itaewon-travel-guide.html">อิแทวอน</a><a class="site-nav__link" href="../dongdaemun-travel-guide.html">ทงแดมุน</a></div></div><div class="site-nav__group site-nav__group--travel-attractions"><p class="site-nav__group-label">สถานที่เที่ยว</p><div class="site-nav__travel-attraction-grid"><a class="site-nav__link" href="/lotte-world-seoul.html">Lotte World</a><a class="site-nav__link" href="../seoul-sky-guide.html">Seoul Sky</a></div></div></div>
+          </li>
+          <li class="site-nav__item" data-nav-section="stay">
+            <button class="site-nav__trigger" id="site-nav-trigger-stay" type="button" aria-expanded="false" aria-controls="site-nav-panel-stay" aria-haspopup="true">ที่พัก</button>
+            <div class="site-nav__panel" id="site-nav-panel-stay" aria-labelledby="site-nav-trigger-stay" hidden><div class="site-nav__group"><p class="site-nav__group-label">คู่มือที่พัก</p><a class="site-nav__link" href="../accommodation.html">คู่มือที่พัก</a><a class="site-nav__link" href="../hongdae-vs-myeongdong.html">ฮงแด vs เมียงดง</a><a class="site-nav__link" href="../best-area-for-first-time-visitors-seoul.html">เที่ยวครั้งแรก</a><a class="site-nav__link" href="../best-area-for-families-seoul.html">ครอบครัว</a><a class="site-nav__link" href="../best-area-for-solo-travelers-seoul.html">เที่ยวคนเดียว</a><a class="site-nav__link" href="../best-area-for-couples-seoul.html">คู่รัก</a><a class="site-nav__link" href="../best-area-for-budget-travelers-seoul.html">ประหยัดงบ</a><a class="site-nav__link" href="../best-area-for-shopping-seoul.html">ช้อปปิ้ง</a><a class="site-nav__link" href="../best-area-for-nightlife-seoul.html">เที่ยวกลางคืน</a><a class="site-nav__link" href="../best-area-for-luxury-hotels-seoul.html">โรงแรมหรู</a></div></div>
+          </li>
+          <li class="site-nav__item" data-nav-section="esim">
+            <button class="site-nav__trigger" id="site-nav-trigger-esim" type="button" aria-expanded="false" aria-controls="site-nav-panel-esim" aria-haspopup="true">eSIM</button>
+            <div class="site-nav__panel" id="site-nav-panel-esim" aria-labelledby="site-nav-trigger-esim" hidden><div class="site-nav__group"><a class="site-nav__link" href="../esim.html">คู่มือ eSIM</a><a class="site-nav__link" href="../best-esim-for-korea.html">eSIM ที่เหมาะกับเที่ยวเกาหลี</a><a class="site-nav__link" href="../korea-esim-with-phone-number.html">eSIM เกาหลีพร้อมเบอร์โทร</a></div></div>
+          </li>
+          <li class="site-nav__item" data-nav-section="airport">
+            <button class="site-nav__trigger" id="site-nav-trigger-airport" type="button" aria-expanded="false" aria-controls="site-nav-panel-airport" aria-haspopup="true">สนามบิน</button>
+            <div class="site-nav__panel" id="site-nav-panel-airport" aria-labelledby="site-nav-trigger-airport" hidden><div class="site-nav__group"><a class="site-nav__link" href="../airport.html">คู่มือสนามบิน</a><a class="site-nav__link" href="../arrival.html">คู่มือวันเดินทางถึง</a><a class="site-nav__link" href="../airport-transfer.html">เดินทางจากสนามบิน</a><a class="site-nav__link" href="../arex.html">คู่มือ AREX</a><a class="site-nav__link" href="../airport-bus.html">คู่มือรถบัสสนามบิน</a></div></div>
+          </li>
+          <li class="site-nav__item" data-nav-section="maps">
+            <button class="site-nav__trigger" id="site-nav-trigger-maps" type="button" aria-expanded="false" aria-controls="site-nav-panel-maps" aria-haspopup="true">แผนที่</button>
+            <div class="site-nav__panel" id="site-nav-panel-maps" aria-labelledby="site-nav-trigger-maps" hidden><div class="site-nav__group"><a class="site-nav__link" href="../maps.html">คู่มือแผนที่</a></div></div>
+          </li>
+          <li class="site-nav__item" data-nav-section="transport">
+            <button class="site-nav__trigger" id="site-nav-trigger-transport" type="button" aria-expanded="false" aria-controls="site-nav-panel-transport" aria-haspopup="true">การเดินทาง</button>
+            <div class="site-nav__panel site-nav__panel--end" id="site-nav-panel-transport" aria-labelledby="site-nav-trigger-transport" hidden><div class="site-nav__group"><p class="site-nav__group-label">บัตรเดินทาง</p><a class="site-nav__link" href="../tmoney.html">คู่มือ T-money</a><a class="site-nav__link" href="../wowpass.html">คู่มือ WOWPASS</a><a class="site-nav__link" href="../tmoney-vs-wowpass.html">T-money vs WOWPASS</a></div><div class="site-nav__group"><p class="site-nav__group-label">การเดินทางอื่นๆ</p><a class="site-nav__link" href="../taxi.html">คู่มือแท็กซี่</a><a class="site-nav__link" href="../incheon-airport-private-transfer.html">รถตู้ / รถรับส่งส่วนตัว</a><a class="site-nav__link" href="../rental-car.html">รถเช่า</a></div></div>
+          </li>
+          <li class="site-nav__item" data-nav-section="apps">
+            <button class="site-nav__trigger" id="site-nav-trigger-apps" type="button" aria-expanded="false" aria-controls="site-nav-panel-apps" aria-haspopup="true">แอป</button>
+            <div class="site-nav__panel site-nav__panel--end" id="site-nav-panel-apps" aria-labelledby="site-nav-trigger-apps" hidden><div class="site-nav__group"><a class="site-nav__link" href="../apps.html">แอปจำเป็น</a></div></div>
+          </li>
+          <li class="site-nav__item site-nav__item--active" data-nav-section="travel-tips">
+            <button class="site-nav__trigger site-nav__trigger--current" id="site-nav-trigger-travel-tips" type="button" aria-expanded="false" aria-controls="site-nav-panel-travel-tips" aria-haspopup="true" aria-current="true">ทิปเที่ยวเกาหลี</button>
+            <div class="site-nav__panel site-nav__panel--end" id="site-nav-panel-travel-tips" aria-labelledby="site-nav-trigger-travel-tips" hidden><div class="site-nav__group"><a class="site-nav__link" href="../checklist.html">เช็กลิสต์เที่ยวเกาหลี</a><a class="site-nav__link" href="../payments.html">การชำระเงินในเกาหลี</a></div></div>
+          </li>
+        </ul>
+      </nav>
+      <div class="language-switcher" aria-label="เลือกภาษา" data-supported-languages="EN JP KR TW VN"><button class="language-switcher__button" type="button" aria-disabled="true" disabled><span class="language-switcher__current">TH</span><span class="language-switcher__label">ภาษา</span></button></div>
+    </div>
+  </header>
+  <!-- GLOBAL_NAV_END -->
+
+  <main>
+    <div class="page-hero payments-hero">
+      <div class="container">
+        <p class="page-hero__breadcrumb"><a href="/">หน้าแรก</a> / <a href="../payments.html">การชำระเงิน</a> / การจ่ายออนไลน์</p>
+        <h1 class="page-hero__title">การจ่ายเงินออนไลน์ในเกาหลีสำหรับชาวต่างชาติ</h1>
+        <p class="page-hero__desc">บัตรต่างประเทศอาจใช้ได้ดีที่คาเฟ่ในโซล แล้วอีก 10 นาทีต่อมากลับใช้ไม่ได้บนเว็บไซต์เกาหลี ตัวบัตรอาจไม่ใช่ปัญหา</p>
+        <p class="page-hero__desc">Online checkout ในเกาหลีอาจเพิ่มขั้นตอนยืนยันตัวตน ยืนยันเบอร์โทร หรือ payment flow ที่ไม่มีใน terminal หน้าร้าน บางบริการมีเส้นทางแยกสำหรับนักท่องเที่ยวต่างชาติแล้ว ดังนั้นคำถามที่มีประโยชน์มักเป็นว่าคุณกำลังใช้ checkout แบบไหน ไม่ใช่แค่ “เกาหลีรับบัตรต่างประเทศไหม” ระบบจ่ายออนไลน์เกาหลียังสามารถแยก authentication ของวิธีจ่ายออกจากขั้นตอน authorization ภายหลัง</p>
+      </div>
+    </div>
+
+    <article class="guide-content payments-guide">
+      <div class="container">
+        <section id="checkout-stage" aria-labelledby="checkout-stage-title">
+          <h2 id="checkout-stage-title">เริ่มจากดู Checkout ไม่ใช่ตัวบัตร</h2>
+          <p>เมื่อบัตรใช้หน้าร้านได้แต่ล้มเหลวเฉพาะเว็บหรือแอป การมองว่าเป็น card decline ปกติอาจทำให้วิเคราะห์ผิดทาง</p>
+          <p>บริการต้องมี payment route ที่รองรับผู้ใช้ต่างประเทศก่อน หลังจากนั้นยังอาจมีเงื่อนไขบัญชีหรือการยืนยันตัวตนของบริการ และ issuer ของบัตรอาจขอ authentication เพิ่มก่อนอนุมัติธุรกรรม ทั้งหมดเป็นคนละขั้น แม้นักท่องเที่ยวจะเห็นเพียงหน้า checkout ที่ล้มเหลว</p>
+          <p>นี่คือเหตุผลที่เปลี่ยนบัตรไม่ได้แก้ทุกปัญหา ถ้าบริการคาดหวัง verification แบบเกาหลี บัตรต่างประเทศ 3 ใบก็อาจชนทางตันเดียวกัน</p>
+        </section>
+
+        <section id="phone-verification" aria-labelledby="phone-verification-title">
+          <h2 id="phone-verification-title">เบอร์โทรเกาหลีบางครั้งเป็นอุปสรรค แต่ไม่ใช่เสมอ</h2>
+          <p>คำแนะนำเก่าเกี่ยวกับเว็บไซต์เกาหลีมักสรุปปัญหาเป็นกฎเดียวว่า “ต้องมีเบอร์โทรเกาหลี”</p>
+          <p>ตอนนี้กว้างเกินไปแล้ว</p>
+          <p>บางบริการในประเทศยังใช้ local identity หรือ phone verification ขณะที่บริการอื่นสร้างเส้นทางแยกสำหรับนักท่องเที่ยวระยะสั้น ความต่างอาจอยู่ที่เวอร์ชันบริการ วิธีสร้างบัญชี หรือวิธียืนยันตัวตนที่บริษัทรองรับ</p>
+          <p>เรื่องนี้สำคัญเพราะบัตรต่างประเทศอาจใช้ได้ปกติ นักท่องเที่ยวอาจถูกบล็อกก่อนถึงขั้นที่ระบบถามหาบัตรด้วยซ้ำ</p>
+        </section>
+
+        <section id="naver-verification" aria-labelledby="naver-verification-title">
+          <h2 id="naver-verification-title">NAVER เป็นตัวอย่างที่ดีว่าระบบเปลี่ยนเร็วแค่ไหน</h2>
+          <p>NAVER เปิดใช้การยืนยันตัวตนด้วยหนังสือเดินทางสำหรับนักท่องเที่ยวต่างชาติในเดือนมิถุนายน 2026 ผู้ถือหนังสือเดินทางที่ออกนอกเกาหลีสามารถทำ verification บนสมาร์ตโฟนโดยไม่ต้องมีเบอร์มือถือเกาหลี และ NAVER ระบุว่าวิธีนี้ใช้กับการจอง การสั่ง และการชำระเงินที่เกี่ยวข้องกับการท่องเที่ยวผ่าน NAVER Map ได้</p>
+          <p>นี่ไม่ได้หมายความว่าทุกบริการ NAVER หรือทุกเว็บไซต์เกาหลีทำงานเหมือนกันแล้ว แต่หมายความว่าคำพูดกว้างๆ แบบ “นักท่องเที่ยวต่างชาติใช้ NAVER payment ไม่ได้หากไม่มีเบอร์เกาหลี” ไม่ถูกต้องอีกต่อไป</p>
+          <p>สำหรับนักท่องเที่ยว บทเรียนที่ใช้งานจริงง่ายกว่านั้น: มองหา visitor route ก่อนสรุปว่าบริการใช้ไม่ได้</p>
+        </section>
+
+        <section id="global-checkout" aria-labelledby="global-checkout-title">
+          <h2 id="global-checkout-title">บางครั้ง Global Version คือคำตอบจริง</h2>
+          <p>CATCHTABLE แสดงแนวคิดเดียวกันจากอีกมุม</p>
+          <p>CATCHTABLE Global ถูกออกแบบสำหรับผู้ใช้ต่างชาติ ตามข้อมูล VISITKOREA นักท่องเที่ยวสามารถสร้างบัญชีด้วย Google, Apple หรือ email โดยไม่ต้องมีเบอร์เกาหลี และสามารถจ่าย deposit การจองด้วยบัตรที่ออกต่างประเทศ</p>
+          <p>ดังนั้นคนที่หลงเข้า domestic booking flow อาจเจอประสบการณ์ยากกว่าคนที่ใช้ global version ของบริการเดียวกันมาก</p>
+          <p>บริการเกาหลีหนึ่งบริการอาจใช้ domestic checkout ยาก แต่มีเส้นทางที่ง่ายกว่าสำหรับนักท่องเที่ยวอยู่แล้ว บางครั้งเส้นทางนั้นมีอยู่ เพียงแค่ไม่ใช่เวอร์ชันในประเทศ</p>
+        </section>
+
+        <section id="issuer-authentication" aria-labelledby="issuer-authentication-title">
+          <h2 id="issuer-authentication-title">แม้ Checkout จะรับบัตรต่างประเทศ ก็ยังอาจมี Authentication เพิ่ม</h2>
+          <p>การไปถึงหน้าจ่ายด้วยบัตรต่างประเทศไม่ได้รับประกันว่าธุรกรรมจะจบในทันที</p>
+          <p>สำหรับบัตรต่างประเทศที่รองรับ ธนาคารผู้ออกบัตรอาจขอ authentication เพิ่ม Toss Payments อธิบาย flow 3-D Secure สำหรับ Visa, Mastercard และ JCB ขณะที่ UnionPay ใช้ระบบ authentication ของตัวเอง หน้าจอ authentication เป็นของ issuer ไม่ใช่ร้านค้าเกาหลี</p>
+          <p>นี่อธิบายสถานการณ์ที่คุ้นเคยได้: เว็บไซต์เกาหลีดูเหมือนรับบัตร แต่การจ่ายหยุดตอน issuer authentication ไม่สำเร็จ</p>
+          <p>กรณีนี้ต่างจากเว็บไซต์ที่ไม่เคยมี overseas-card checkout ตั้งแต่แรก</p>
+        </section>
+
+        <section id="checkout-troubleshooting" aria-labelledby="checkout-troubleshooting-title">
+          <h2 id="checkout-troubleshooting-title">เมื่อ Checkout หยุด ให้ดูว่าคุณไปถึงขั้นไหนแล้ว</h2>
+          <p>ไม่จำเป็นต้องวิเคราะห์ระบบจ่ายออนไลน์เกาหลีทั้งระบบทุกครั้งที่การจองล้มเหลว การสังเกตไม่กี่อย่างมักทำให้ปัญหาแคบลง</p>
+          <ol class="foreign-card-prep-list">
+            <li><strong>มองหา global หรือ visitor version ของบริการ</strong> Domestic checkout กับ international checkout อาจใช้ข้อกำหนดบัญชีและการจ่ายไม่เหมือนกัน</li>
+            <li><strong>สังเกตว่าปัญหาเกิดก่อนหน้าจอบัตรหรือไม่</strong> ถ้าบริการหยุดที่เบอร์เกาหลีหรือ identity verification การเปลี่ยนบัตรไม่น่าจะแก้ขั้นนั้น</li>
+            <li><strong>ถ้าหน้าจอบัตรปรากฏ ให้ดูว่า issuer ขอ authentication หรือไม่</strong> การอนุมัติในแอปธนาคาร รหัสผ่าน หรือ issuer step อื่นหมายถึงธุรกรรมไปไกลกว่าปัญหา local account verification</li>
+            <li><strong>อย่าเปลี่ยนหลายอย่างพร้อมกันโดยไม่รู้ว่าอะไรล้มเหลว</strong> บัตรอีกใบอาจช่วยปัญหา issuer-side แต่ไม่สามารถสร้าง international checkout ที่ร้านไม่มี</li>
+            <li><strong>ใช้เส้นทางจองอื่นเมื่อมี</strong> Global version หรือแพลตฟอร์มที่รองรับนักท่องเที่ยวอาจมีประโยชน์กว่าพยายามบังคับ domestic checkout ซ้ำๆ</li>
+          </ol>
+          <p>ถ้าบัตรเดียวกันยังถูกปฏิเสธตามร้านและร้านอาหารปกติ นั่นเป็นอีกปัญหา ให้ใช้คู่มือ <a href="../card-declined-korea.html">Card Declined in Korea</a> แยก merchant-terminal issue ออกจาก issuer-side decline</p>
+        </section>
+
+        <section id="guide-scope" aria-labelledby="guide-scope-title">
+          <h2 id="guide-scope-title">ปัญหาการจ่ายบางแบบเริ่มจากที่อื่น</h2>
+          <p>คำแนะนำในหน้านี้ใช้กับปัญหาที่เริ่มบน online checkout หรือหน้าจอ verification</p>
+          <p>นี่ไม่ใช่คู่มือ ATM ไม่ใช่คู่มือเติม T-money และไม่ใช่รายชื่อแอปเกาหลีทุกตัวที่รับบัตรต่างประเทศ ระบบเหล่านั้นใช้กฎต่างกัน</p>
+          <p>และไม่ได้หมายความว่าทุกบริการที่มี global login จะรับบัตรต่างประเทศทุกใบ Account access, identity verification และ payment acceptance เป็นคำถามคนละเรื่อง</p>
+          <p>สำหรับคำถามกว้างเรื่องการใช้บัตรต่างประเทศตามร้านและร้านอาหาร ให้ดูคู่มือ <a href="../foreign-credit-cards-korea.html">Using Foreign Credit Cards in Korea</a> ส่วนการวางแผนวิธีจ่ายโดยรวม ให้กลับไป <a href="../payments.html">How to Pay in Korea</a></p>
+        </section>
+
+        <section aria-labelledby="faq-title">
+          <h2 id="faq-title">คำถามที่พบบ่อย</h2>
+          <div class="payments-faq">
+            <details><summary>ทำไมบัตรต่างประเทศใช้ในร้านเกาหลีได้ แต่ใช้ออนไลน์ไม่ได้?</summary><p>Terminal หน้าร้านกับ online checkout อาจใช้ระบบจ่ายและ identity verification ต่างกัน บริการออนไลน์อาจต้อง visitor-compatible checkout, local verification หรือ issuer authentication เพิ่ม แม้บัตรเดียวกันจะใช้ในร้านได้ปกติ</p></details>
+            <details><summary>เว็บไซต์เกาหลีทุกแห่งต้องมีเบอร์โทรเกาหลีไหม?</summary><p>ไม่ใช่ บางบริการยังใช้ local phone หรือ identity verification แต่มี visitor-facing alternative เพิ่มขึ้น NAVER ปัจจุบันมี passport verification สำหรับนักท่องเที่ยวต่างชาติที่ไม่มีเบอร์มือถือเกาหลี และ CATCHTABLE Global สมัครได้โดยไม่ต้องมีเบอร์เกาหลี</p></details>
+            <details><summary>ชาวต่างชาติใช้ NAVER booking และ payment โดยไม่มีเบอร์เกาหลีได้ไหม?</summary><p>NAVER ระบุว่าผู้ใช้ต่างชาติที่มีหนังสือเดินทางออกนอกเกาหลีสามารถใช้ passport-verification โดยไม่ต้องมีเบอร์มือถือเกาหลี เพื่อเข้าถึงฟังก์ชันการจอง การสั่ง และการชำระเงินที่เกี่ยวข้องกับการเดินทางผ่าน NAVER Map</p></details>
+            <details><summary>นักท่องเที่ยวใช้ CATCHTABLE โดยไม่มีเบอร์เกาหลีได้ไหม?</summary><p>ได้ ผ่าน CATCHTABLE Global VISITKOREA ระบุว่าผู้ใช้ต่างชาติสมัครด้วย Google, Apple หรือ email โดยไม่ต้องมีเบอร์เกาหลี และจ่าย deposit การจองด้วยบัตรต่างประเทศได้</p></details>
+            <details><summary>3-D Secure คืออะไร?</summary><p>เป็นกระบวนการ authentication เพิ่มสำหรับการจ่ายบัตรออนไลน์บางรายการ Issuer อาจแสดงหน้าจอยืนยันตัวตนของตัวเองก่อนการจ่ายเสร็จ Toss Payments ระบุการรองรับ 3-D Secure สำหรับธุรกรรมบัตรต่างประเทศ Visa, Mastercard และ JCB</p></details>
+            <details><summary>เห็นตัวเลือกบัตรต่างประเทศแล้ว แปลว่าบัตรต้องใช้ได้แน่นอนไหม?</summary><p>ไม่ ตัวเลือกนี้หมายถึง checkout มี overseas-card payment route แต่ธุรกรรมยังขึ้นอยู่กับเครือข่ายบัตร issuer authentication และ authorization ขั้นสุดท้าย</p></details>
+            <details><summary>ถ้าเว็บไซต์ขอ local verification ควรลองบัตรต่างประเทศใบอื่นต่อไหม?</summary><p>โดยทั่วไปไม่ได้แก้ปัญหาหลัก ถ้า checkout หยุดก่อนขั้นจ่ายบัตรเพราะข้อกำหนดบัญชีหรือ identity ท้องถิ่น ให้มองหา visitor/global route ก่อน แทนการเปลี่ยนบัตรซ้ำ</p></details>
+            <details><summary>Online payment failure เหมือนบัตรถูก decline ที่ร้านไหม?</summary><p>ไม่เหมือนทั้งหมด แม้มีบางส่วนเกี่ยวกัน Online checkout เพิ่ม account verification และ cardholder authentication ที่ไม่มีในธุรกรรมหน้าร้านปกติ ถ้าบัตรยังล้มเหลวที่ร้านมีพนักงานด้วย ให้แยกเป็นปัญหา card decline อีกเรื่อง</p></details>
+          </div>
+        </section>
+
+        <section aria-labelledby="sources-title">
+          <h2 id="sources-title">แหล่งข้อมูลทางการ</h2>
+          <p><a href="https://www.navercorp.com/en/media/pressReleasesDetail?seq=10034413" target="_blank" rel="noopener noreferrer">NAVER — Passport Verification for Foreign Visitors</a></p>
+          <p><a href="https://navercorp.com/en/media/pressReleasesDetail?seq=10034414" target="_blank" rel="noopener noreferrer">NAVER Map — อัปเดต booking และ payment สำหรับผู้ใช้ต่างชาติ</a></p>
+          <p><a href="https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=1590988" target="_blank" rel="noopener noreferrer">VISITKOREA — CATCHTABLE Global</a></p>
+          <p><a href="https://docs.tosspayments.com/en/overview" target="_blank" rel="noopener noreferrer">Toss Payments — ขั้นตอนการจ่ายออนไลน์ในเกาหลี</a></p>
+          <p><a href="https://docs.tosspayments.com/resources/glossary/international-payment" target="_blank" rel="noopener noreferrer">Toss Payments — international payments และ authentication</a></p>
+        </section>
+
+        <div class="related-links">
+          <p class="related-links__title">คู่มือที่เกี่ยวข้อง</p>
+          <a href="../payments.html" class="chip">วิธีจ่ายเงินในเกาหลี</a>
+          <a href="../foreign-credit-cards-korea.html" class="chip">ใช้บัตรเครดิตต่างประเทศในเกาหลี</a>
+          <a href="../card-declined-korea.html" class="chip">บัตรถูกปฏิเสธในเกาหลี</a>
+          <a href="../apps.html" class="chip">แอปจำเป็นสำหรับเกาหลี</a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="footer footer--korea-editorial">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand-block">
+          <p class="footer__brand">Korea Inside</p>
+          <p class="footer__eyebrow">จัดทำในเกาหลี</p>
+          <p class="footer__statement">คู่มือเที่ยวเกาหลีที่ใช้งานได้จริง เขียนและตรวจทานในเกาหลีโดยบรรณาธิการชาวเกาหลี</p>
+          <p class="footer__description">อ้างอิงข้อมูลจากแหล่งทางการ บริบทในพื้นที่ และการตัดสินใจเชิงบรรณาธิการอย่างอิสระ</p>
+        </div>
+        <nav class="footer__nav" aria-label="เมนูส่วนท้าย">
+          <div class="footer__group">
+            <p class="footer__heading">วางแผนทริป</p>
+            <ul class="footer__links">
+              <li><a href="../airport.html">สนามบิน</a></li>
+              <li><a href="../esim.html">eSIM</a></li>
+              <li><a href="../checklist.html">เช็กลิสต์</a></li>
+            </ul>
+          </div>
+          <div class="footer__group">
+            <p class="footer__heading">สิ่งที่ต้องใช้ในเกาหลี</p>
+            <ul class="footer__links">
+              <li><a href="../tmoney.html">T-money</a></li>
+              <li><a href="../payments.html">การชำระเงิน</a></li>
+              <li><a href="../maps.html">แผนที่</a></li>
+              <li><a href="../apps.html">แอป</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <div class="footer__bottom">
+        <p>© 2026 Korea Inside · สาธารณรัฐเกาหลี</p>
+        <p class="footer__business">เลขทะเบียนธุรกิจ 462-39-01721 <span aria-hidden="true">·</span> ติดต่อ: <a href="mailto:getkoreainside@gmail.com">getkoreainside@gmail.com</a> <span aria-hidden="true">·</span> <a class="footer__legal-link" href="/affiliate-disclosure.html">การเปิดเผยข้อมูลพันธมิตร</a> <span aria-hidden="true">·</span> <a class="footer__legal-link" href="/privacy.html">นโยบายความเป็นส่วนตัว</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../common.js"></script>
+  <script>
+    window.va = window.va || function () {
+      (window.vaq = window.vaq || []).push(arguments);
+    };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>
