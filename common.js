@@ -16,7 +16,9 @@
         ? { open: 'Ouvrir le menu', close: 'Fermer le menu' }
         : language === 'de'
           ? { open: 'Menü öffnen', close: 'Menü schließen' }
-          : { open: 'Open menu', close: 'Close menu' };
+          : language === 'th'
+            ? { open: 'เปิดเมนู', close: 'ปิดเมนู' }
+            : { open: 'Open menu', close: 'Close menu' };
 
   if (document.documentElement.dataset.commonNavigationInitialized === 'true') return;
   document.documentElement.dataset.commonNavigationInitialized = 'true';
@@ -168,7 +170,7 @@
 
   const initializeLanguageSwitchers = () => {
     const language = normalizeLanguage(document.documentElement.lang);
-    if (language !== 'en' && language !== 'es' && language !== 'ja' && language !== 'zh-TW' && language !== 'fr' && language !== 'de') return;
+    if (language !== 'en' && language !== 'es' && language !== 'ja' && language !== 'zh-TW' && language !== 'fr' && language !== 'de' && language !== 'th') return;
 
     const languages = {
       en: { label: 'English' },
@@ -176,7 +178,8 @@
       de: { label: 'Deutsch' },
       es: { label: 'Español' },
       ja: { label: '日本語' },
-      'zh-TW': { label: '繁中' }
+      'zh-TW': { label: '繁中' },
+      th: { label: 'ไทย' }
     };
     const isLocalDev = ['localhost', '127.0.0.1', '[::1]']
       .includes(window.location.hostname);
@@ -277,6 +280,13 @@
         const currentLabel = button.querySelector('.language-switcher__label');
         if (currentCode) currentCode.textContent = 'DE';
         if (currentLabel) currentLabel.textContent = languages.de.label;
+      }
+
+      if (language === 'th') {
+        const currentCode = button.querySelector('.language-switcher__current');
+        const currentLabel = button.querySelector('.language-switcher__label');
+        if (currentCode) currentCode.textContent = 'TH';
+        if (currentLabel) currentLabel.textContent = languages.th.label;
       }
 
       const options = Object.keys(languages).filter((optionLanguage) => (
