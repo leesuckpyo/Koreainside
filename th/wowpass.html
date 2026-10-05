@@ -15,6 +15,18 @@
   <link rel="alternate" hreflang="x-default" href="https://www.getkoreainside.com/wowpass.html">
   <title>WOWPASS คืออะไร? วิธีใช้ เติมเงิน แลกเงิน และ T-money ในเกาหลี | Korea Inside</title>
   <link rel="stylesheet" href="../style.css">
+  <style id="wowpass-airport-kiosk-layout">
+    .wowpass-page .wowpass-airport-kiosks__grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+    @media (max-width: 900px) {
+      .wowpass-page .wowpass-airport-kiosks__grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -89,7 +101,7 @@
       "name": "รับ WOWPASS ที่สนามบินอินชอนได้ไหม?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": ""
+        "text": "ได้ หน้าจองทางการปัจจุบันแสดง Airport CU Convenience Stores สำหรับ Terminal 1 และ Terminal 2 และตัวค้นหาเครื่องทางการแสดงเครื่อง WOWPASS ที่จุดร้านสะดวกซื้อในสนามบิน เช่น CU และ GS25 นอกจากนี้ยังมีตัวเลือก Airport SKT Roaming Center สำหรับ WOWPASS + Tmoney + SIM Package แยกต่างหาก ให้เช็กการจองและตัวค้นหาเครื่องปัจจุบันเพื่อยืนยันตำแหน่ง วิธีรับ และฟังก์ชันที่ใช้ได้"
       }
     },
     {
@@ -97,7 +109,7 @@
       "name": "บัตร WOWPASS ราคาเท่าไร?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": ""
+        "text": "ณ การตรวจวันที่ 5 ตุลาคม 2026 หน้าจองทางการแสดง ₩6,000 เป็นราคาบัตรปกติ และ ₩5,500 สำหรับตัวเลือกจองเฉพาะบัตรแบบมีส่วนลดที่ระบุ ราคาและโปรโมชันอาจเปลี่ยน"
       }
     },
     {
@@ -253,13 +265,17 @@
 
         <section class="wowpass-editorial-section" aria-labelledby="wowpass-card-title">
           <h2 id="wowpass-card-title">รับบัตร WOWPASS อย่างไร</h2>
-          <p>WOWPASS สามารถรับได้ผ่านช่องทางจองและออกบัตรปัจจุบัน แต่ควรมอง “จุดรับที่สนามบิน” กับ “การออกบัตรจากเครื่อง WOWPASS” เป็นคนละเรื่อง แทนการคิดว่าจุดรับทุกแห่งในสนามบินเป็นเครื่อง self-service</p>
-          <p>ณ สิงหาคม 2026 หน้าจองทางการแสดงจุดรับที่ Incheon Airport Terminal 1 และ Terminal 2 รวมถึงจุดรับที่ร้าน CU ในสนามบิน และยังมีการรับบัตรจากเครื่องแบบจองล่วงหน้าที่สถานีรถไฟใต้ดิน โรงแรม ร้านสะดวกซื้อ และจุดอื่น ราคาปกติที่แสดงคือ ₩6,000 และราคาจองล่วงหน้าที่แสดงคือ ₩5,500 ราคาและรูปแบบการรับอาจเปลี่ยนได้ จึงควรยึดหน้าจองปัจจุบันมากกว่าภาพหน้าจอหรือบล็อกเก่า</p>
-          <p>สิ่งที่ควรทำหลังได้รับบัตรไม่ใช่รีบเติมเงินจำนวนมากทันที ลงทะเบียนบัตรในแอป WOWPASS ก่อน ทำความเข้าใจว่ากำลังเติมยอดไหน แล้วค่อยเติมเท่าที่คาดว่าจะใช้</p>
-          <p>การลงทะเบียนในแอปจะสำคัญมากขึ้นทันทีถ้าบัตรหายภายหลัง</p>
-          <figure class="wowpass-editorial-figure">
-            <img src="../images/wowpass/wowpass-machine.png" alt="เครื่อง WOWPASS สำหรับออกและเติมบัตรในเกาหลี">
-            <figcaption>WOWPASS รับได้ผ่านช่องทางจองและออกบัตรหลายแบบ แต่จุดรับที่สนามบินกับการออกบัตรผ่านเครื่องไม่ใช่สิ่งเดียวกัน</figcaption>
+          <p>ที่สนามบินอินชอน สิ่งสำคัญคือไปตามจุดที่ระบุไว้ในการจองจริง จุดร้านสะดวกซื้อบางแห่งในสนามบินมีเครื่อง self-service ของ WOWPASS ดังนั้นคำว่า “รับที่สนามบิน” ไม่ได้หมายความว่าจะมีพนักงานยื่นบัตรให้ที่เคาน์เตอร์เสมอไป</p>
+          <p>ณ วันที่ 5 ตุลาคม 2026 หน้าจองทางการของ WOWPASS แสดง Airport CU Convenience Stores สำหรับ Incheon Airport Terminal 1 และ Terminal 2 ส่วนตัวค้นหาเครื่องทางการก็แสดงเครื่อง WOWPASS ที่จุดร้านสะดวกซื้อในสนามบิน รวมถึง CU และ GS25 ฟังก์ชันของเครื่องต่างกันตามจุด โดย 3 จุดด้านล่างเติม WOWPASS ได้ แต่ไม่รองรับการแลกเงินตราต่างประเทศหรือถอนยอดเงิน</p>
+          <p>ในขั้นตอนจองยังแยกตัวเลือก Airport SKT Roaming Center สำหรับ WOWPASS + Tmoney + SIM Package และ Machine (Pre-booked) ที่สถานีรถไฟใต้ดิน โรงแรม ร้านสะดวกซื้อ และจุดอื่นไว้ต่างหาก ปัจจุบันหน้าทางการแสดงราคาบัตรปกติ ₩6,000 และราคา ₩5,500 สำหรับตัวเลือกจองเฉพาะบัตรแบบมีส่วนลดที่ระบุ ราคา โปรโมชัน วิธีรับบัตร และฟังก์ชันของเครื่องอาจเปลี่ยนได้ จึงควรเช็กรายละเอียดการจองปัจจุบันและตัวค้นหาเครื่องทางการก่อนเดินทาง</p>
+          <p>หลังได้รับบัตร ให้ลงทะเบียนในแอป WOWPASS ก่อนเติมเงินจำนวนมาก เช็กก่อนว่ากำลังเติมยอดไหน แล้วค่อยเติมเท่าที่คาดว่าจะใช้ การลงทะเบียนในแอปยังสำคัญหากบัตรหายในภายหลัง</p>
+          <figure class="wowpass-editorial-figure wowpass-airport-kiosks">
+            <div class="wowpass-airport-kiosks__grid">
+              <img src="../images/wowpass/wowpass-incheon-airport-cu-t1-no1.png" alt="เครื่อง WOWPASS ที่ Incheon Airport CU T1 No. 1" width="1374" height="1145" loading="lazy" decoding="async">
+              <img src="../images/wowpass/wowpass-incheon-airport-gs25-t2-arrivals.png" alt="เครื่อง WOWPASS ที่ Incheon Airport GS25 T2 Arrivals" width="1374" height="1145" loading="lazy" decoding="async">
+              <img src="../images/wowpass/wowpass-incheon-airport-cu-t2-no3.png" alt="เครื่อง WOWPASS ที่ Incheon Airport CU T2 No. 3" width="1374" height="1145" loading="lazy" decoding="async">
+            </div>
+            <figcaption>นี่คือตัวอย่างจุดเครื่อง WOWPASS ที่สนามบินอินชอน ฟังก์ชันต่างกันตามสถานที่ โดยทั้ง 3 จุดที่แสดงเติม WOWPASS ได้ แต่ไม่รองรับการแลกเงินตราต่างประเทศหรือถอนยอดเงิน ให้ตรวจตำแหน่งปัจจุบันและบริการที่ใช้ได้จากตัวค้นหาเครื่องทางการ</figcaption>
           </figure>
         </section>
 
@@ -341,8 +357,8 @@
               <p>สาเหตุที่เป็นไปได้มากที่สุดคือคุณเติม WOWPASS payment balance ไม่ใช่ T-money balance ที่ฝังอยู่ ทั้งสองแยกกัน ดูยอดขนส่งในแอปแล้วเติมฝั่งนั้นถ้าจำเป็น</p>
             </article>
             <article class="wowpass-problem-row">
-              <h3>“คิดว่าจะมีเครื่อง WOWPASS ที่สนามบิน แต่หาไม่เจอ”</h3>
-              <p>การรับที่สนามบินกับการออกบัตรจากเครื่อง self-service ไม่จำเป็นต้องเป็นขั้นตอนเดียวกัน หน้าจองทางการปัจจุบันแสดงจุดรับสนามบินเฉพาะและการรับจากเครื่องแบบจองล่วงหน้าแยกกัน ใช้สถานที่ที่ผูกกับการจองจริง แทนการตามภาพ kiosk เก่า</p>
+              <h3>“ในการจองขึ้นเป็นร้านสะดวกซื้อในสนามบิน ต้องรับบัตรจากเคาน์เตอร์ร้านไหม?”</h3>
+              <p>อย่าคิดว่าจะมีพนักงานยื่นบัตรให้ที่เคาน์เตอร์เสมอไป จุดร้านสะดวกซื้อบางแห่งในสนามบินอินชอนมีเครื่อง self-service ของ WOWPASS ให้ทำตามคำแนะนำที่ผูกกับการจองของคุณ และเช็กตำแหน่งล่าสุดจากตัวค้นหาเครื่องทางการ เพราะรูปแบบการติดตั้งและฟังก์ชันที่ใช้ได้อาจต่างกันตามจุด</p>
             </article>
             <article class="wowpass-problem-row">
               <h3>“คิดว่าเติมเงินสดต่างประเทศกับเติมในแอปเป็นเรื่องเดียวกัน”</h3>
@@ -395,8 +411,8 @@
             <details><summary>ใช้ WOWPASS ซื้อของออนไลน์ได้ไหม?</summary><p>อย่าคิดว่าการจ่าย WOWPASS ออฟไลน์ได้หมายความว่า checkout ออนไลน์เกาหลีจะรับด้วย คู่มือทางการชัดเจนเรื่องการจ่ายร้านค้าออฟไลน์ สำหรับปัญหาการจ่ายออนไลน์เกาหลี ให้ดูคู่มือ <a href="/th/korean-online-payments-foreigners.html">Online Payments </a>แยก</p></details>
             <details><summary>แลกเงินสดต่างประเทศด้วย WOWPASS ได้ไหม?</summary><p>WOWPASS ปัจจุบันรองรับ cash top-up 16 สกุลผ่านบริการของตน ภายใต้กฎเครื่องและสกุลเงินปัจจุบัน เช็กจำนวนแลกที่แสดงก่อนยืนยัน</p></details>
             <details><summary>เติม WOWPASS ด้วยบัตรต่างประเทศได้ไหม?</summary><p>WOWPASS ปัจจุบันโฆษณา mobile top-up ด้วยบัตรและ e-wallet ต่างประเทศ โดยเว็บไซต์ทางการแสดง Mastercard, JCB และ Visa ผ่าน PayPal ควรเช็กความพร้อมใช้และค่าธรรมเนียมปัจจุบันในแอปก่อนเติมจำนวนมาก</p></details>
-            <details><summary>รับ WOWPASS ที่สนามบินอินชอนได้ไหม?</summary><p>หน้าจองทางการปัจจุบันแสดงจุดรับ WOWPASS ทั้ง Incheon Airport Terminal 1 และ Terminal 2 ใช้จุดรับที่ผูกกับการจองปัจจุบัน แทนการคิดว่ามีเครื่อง self-service ข้าง gate ขาเข้า</p></details>
-            <details><summary>บัตร WOWPASS ราคาเท่าไร?</summary><p>ณ การตรวจเดือนสิงหาคม 2026 หน้าจองสนามบินอินชอนทางการแสดง ₩6,000 เป็นราคาบัตรปกติ และ ₩5,500 สำหรับตัวเลือกจองล่วงหน้าที่ระบุ ราคาและโปรโมชันอาจเปลี่ยน</p></details>
+            <details><summary>รับ WOWPASS ที่สนามบินอินชอนได้ไหม?</summary><p>ได้ หน้าจองทางการปัจจุบันแสดง Airport CU Convenience Stores สำหรับ Terminal 1 และ Terminal 2 และตัวค้นหาเครื่องทางการแสดงเครื่อง WOWPASS ที่จุดร้านสะดวกซื้อในสนามบิน เช่น CU และ GS25 นอกจากนี้ยังมีตัวเลือก Airport SKT Roaming Center สำหรับ WOWPASS + Tmoney + SIM Package แยกต่างหาก ให้เช็กการจองและตัวค้นหาเครื่องปัจจุบันเพื่อยืนยันตำแหน่ง วิธีรับ และฟังก์ชันที่ใช้ได้</p></details>
+            <details><summary>บัตร WOWPASS ราคาเท่าไร?</summary><p>ณ การตรวจวันที่ 5 ตุลาคม 2026 หน้าจองทางการแสดง ₩6,000 เป็นราคาบัตรปกติ และ ₩5,500 สำหรับตัวเลือกจองเฉพาะบัตรแบบมีส่วนลดที่ระบุ ราคาและโปรโมชันอาจเปลี่ยน</p></details>
             <details><summary>ถอนเงินสดเกาหลีจาก WOWPASS ได้ไหม?</summary><p>ได้ เว็บไซต์ทางการปัจจุบันระบุว่าเครื่อง WOWPASS ถอน KRW จากยอดบัตรได้สูงสุด ₩100,000 ต่อครั้ง โดยมีค่าธรรมเนียม ₩1,000 ต่อครั้ง ควรเช็กกฎปัจจุบันก่อนเดินทางเพราะเงื่อนไขอาจเปลี่ยน</p></details>
             <details><summary>ถ้าบัตรหายต้องทำอย่างไร?</summary><p>ถ้าลงทะเบียนบัตรในแอป WOWPASS ปัจจุบันให้ pause บัตรเพื่อปกป้อง WOWPASS balance และมีขั้นตอนออกบัตรทดแทน ควรเช็กการจัดการ T-money balance แยกกับคำแนะนำ support ปัจจุบัน</p></details>
             <details><summary>WOWPASS คุ้มสำหรับทริปสั้นไหม?</summary><p>อาจคุ้ม แต่ความยาวทริปสำคัญน้อยกว่าวิธีที่คุณตั้งใจจ่ายเงิน ถ้าต้องการฟังก์ชันจ่ายเงิน ขนส่ง และแลกเงินรวมกัน WOWPASS อาจมีประโยชน์แม้ทริปสั้น ถ้าต้องการแค่รถบัสและรถไฟใต้ดิน T-money ปกติง่ายกว่า</p></details>
@@ -411,7 +427,7 @@
             <li><a href="https://wowpass.io/en/product?location=ICN_T1">WOWPASS — จองรับบัตร Incheon Airport Terminal 1</a></li>
             <li><a href="https://wowpass.io/en/product?location=ICN_T2">WOWPASS — จองรับบัตร Incheon Airport Terminal 2</a></li>
           </ul>
-          <p class="wowpass-reviewed">ตรวจสอบล่าสุด: สิงหาคม 2026</p>
+          <p class="wowpass-reviewed">ตรวจสอบล่าสุด: 5 ตุลาคม 2026</p>
           <p>อัตรา ค่าธรรมเนียม จุดรับ วิธีเติมที่รองรับ และกฎบริการอาจเปลี่ยนได้ สำหรับเรื่องเงินหรือเครื่องเฉพาะจุด ให้ใช้แอป WOWPASS หรือเว็บไซต์ทางการปัจจุบันเป็นหลักเหนือภาพหน้าจอหรือโพสต์ท่องเที่ยวเก่า</p>
         </section>
 

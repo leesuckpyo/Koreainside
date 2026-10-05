@@ -15,6 +15,18 @@
   <link rel="alternate" hreflang="th" href="https://www.getkoreainside.com/th/wowpass.html">
   <title>韓國 WOWPASS 使用方法 | 韓國旅行卡指南</title>
   <link rel="stylesheet" href="../style.css">
+  <style id="wowpass-airport-kiosk-layout">
+    .wowpass-page .wowpass-airport-kiosks__grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+    @media (max-width: 900px) {
+      .wowpass-page .wowpass-airport-kiosks__grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -28,8 +40,8 @@
       {"@type":"Question","name":"WOWPASS 可以用來網購嗎？","acceptedAnswer":{"@type":"Answer","text":"不要因為 WOWPASS 實體店付款成功，就認定韓國網路結帳也一定接受。官方使用指南明確說明的是實體商家付款。韓國網路付款問題，請另看 Korea Inside 網路付款指南。"}},
       {"@type":"Question","name":"可以用 WOWPASS 兌換外幣現鈔嗎？","acceptedAnswer":{"@type":"Answer","text":"WOWPASS 目前支援 16 種貨幣現金儲值，須依現行機器與貨幣規則。確認交易前，先看顯示的兌換金額。"}},
       {"@type":"Question","name":"可以用海外卡儲值 WOWPASS 嗎？","acceptedAnswer":{"@type":"Answer","text":"WOWPASS 目前宣傳可透過國際卡與電子錢包行動儲值，官方網站列出 Mastercard、JCB，以及經 PayPal 使用的 Visa。大額儲值前，請在 App 確認目前可用方式與費用。"}},
-      {"@type":"Question","name":"仁川機場可以取得 WOWPASS 嗎？","acceptedAnswer":{"@type":"Answer","text":"目前官方預訂頁面列出仁川機場第 1 航廈與第 2 航廈的 WOWPASS 領取選項。請依當次預訂附帶的取卡位置，不要認定抵達出口旁就有自助機器。"}},
-      {"@type":"Question","name":"WOWPASS 卡要多少錢？","acceptedAnswer":{"@type":"Answer","text":"本次 2026 年八月查核時，仁川機場官方預訂頁面顯示標準卡價 ₩6,000，列出的預訂選項為 ₩5,500。價格與優惠可能變動。"}},
+      {"@type":"Question","name":"仁川機場可以取得 WOWPASS 嗎？","acceptedAnswer":{"@type":"Answer","text":"可以。目前官方預訂頁面列有第 1 航廈與第 2 航廈的 Airport CU Convenience Stores，官方機器搜尋也顯示 CU、GS25 等機場便利商店據點設有 WOWPASS 自助機。另外還有獨立的 Airport SKT Roaming Center WOWPASS + Tmoney + SIM Package 選項。請依自己的預訂與最新機器搜尋確認實際地點、取卡方式與可用功能。"}},
+      {"@type":"Question","name":"WOWPASS 卡要多少錢？","acceptedAnswer":{"@type":"Answer","text":"截至本次 2026 年 10 月 5 日查核，官方預訂頁面顯示標準卡價為 ₩6,000，所列卡片單獨預訂優惠價為 ₩5,500。價格與優惠可能變動。"}},
       {"@type":"Question","name":"可以從 WOWPASS 提領韓元現金嗎？","acceptedAnswer":{"@type":"Answer","text":"可以。現行官方網站說明，WOWPASS 機器可從卡片餘額提領 KRW，目前每次最多 ₩100,000，每次手續費 ₩1,000。服務條件可能變動，出發前請再確認。"}},
       {"@type":"Question","name":"卡片遺失怎麼辦？","acceptedAnswer":{"@type":"Answer","text":"若卡片已登錄 App，WOWPASS 目前可暫停卡片以保護 WOWPASS 餘額，並提供補卡流程。獨立的 T-money 餘額如何處理，請查現行客服指示。"}},
       {"@type":"Question","name":"短途旅行值得用 WOWPASS 嗎？","acceptedAnswer":{"@type":"Answer","text":"可能值得，但怎麼付款比旅行天數更重要。若想同時使用付款、交通與換匯功能，短途也可能實用。如果只需要公車與地鐵，一般 T-money 卡更簡單。"}}
@@ -162,13 +174,17 @@
 
         <section class="wowpass-editorial-section" aria-labelledby="wowpass-card-title">
           <h2 id="wowpass-card-title">取得 WOWPASS 卡</h2>
-          <p>可透過現行預訂與發卡選項取得 WOWPASS，但機場取卡與 WOWPASS 機器發卡應視為不同方式，不要認定每個機場取卡點都是自助機器。</p>
-          <p>截至 2026 年八月，官方預訂頁面列出仁川機場第 1 航廈與第 2 航廈取卡選項，包括機場 CU 便利商店取卡；也列出地鐵站、飯店、便利商店等地的預訂機器取卡。頁面目前顯示一般卡價 ₩6,000，所列預訂選項為 ₩5,500。價格與取卡安排可能變動，應以現行預訂頁面為準，不要依賴舊截圖或部落格。</p>
-          <p>拿到卡後，先別急著儲大筆金額。先在 WOWPASS App 登錄，弄清楚正在儲值哪一種餘額，再放入預計會用到的金額。</p>
-          <p>如果之後卡片不見，事先登錄 App 就更重要。</p>
-          <figure class="wowpass-editorial-figure">
-            <img src="../images/wowpass/wowpass-machine.png" alt="韓國用於發卡與儲值的 WOWPASS 機器">
-            <figcaption>可透過現行預訂與發卡選項取得 WOWPASS，但機場取卡與 WOWPASS 機器發卡應視為不同方式，不要認定每個機場取卡點都是自助機器。</figcaption>
+          <p>在仁川機場，最重要的是依照預訂內容中顯示的實際地點前往。機場內部分便利商店據點設有 WOWPASS 自助機，因此「機場取卡」不一定代表由店員在櫃檯直接交卡。</p>
+          <p>截至 2026 年 10 月 5 日，WOWPASS 官方預訂頁面列有仁川機場第 1 航廈與第 2 航廈的 Airport CU Convenience Stores。官方機器搜尋也可看到設於機場 CU、GS25 等便利商店據點的 WOWPASS 自助機。不同地點提供的功能可能不同；下方 3 個據點可為 WOWPASS 儲值，但不提供外幣兌換或餘額提領。</p>
+          <p>預訂流程另列有 Airport SKT Roaming Center 的 WOWPASS + Tmoney + SIM Package，以及可在地鐵站、飯店、便利商店等地點領取的 Machine (Pre-booked)。目前官方頁面顯示標準卡價為 ₩6,000，所列卡片單獨預訂優惠價為 ₩5,500。價格、優惠、取卡方式與機器功能都可能變動，出發前請確認自己的最新預訂內容與官方機器搜尋。</p>
+          <p>拿到卡後，不要立刻儲入大筆金額。先在 WOWPASS App 登錄，確認正在儲值哪一種餘額，再加入預計會使用的金額。如果之後遺失卡片，事先完成 App 登錄也會很重要。</p>
+          <figure class="wowpass-editorial-figure wowpass-airport-kiosks">
+            <div class="wowpass-airport-kiosks__grid">
+              <img src="../images/wowpass/wowpass-incheon-airport-cu-t1-no1.png" alt="仁川機場 CU T1 1號店的 WOWPASS 自助機" width="1374" height="1145" loading="lazy" decoding="async">
+              <img src="../images/wowpass/wowpass-incheon-airport-gs25-t2-arrivals.png" alt="仁川機場 GS25 T2 入境店的 WOWPASS 自助機" width="1374" height="1145" loading="lazy" decoding="async">
+              <img src="../images/wowpass/wowpass-incheon-airport-cu-t2-no3.png" alt="仁川機場 CU T2 3號店的 WOWPASS 自助機" width="1374" height="1145" loading="lazy" decoding="async">
+            </div>
+            <figcaption>這些是仁川機場 WOWPASS 自助機的實際據點範例。不同地點提供的功能可能不同；圖中的 3 個據點可為 WOWPASS 儲值，但不提供外幣兌換或餘額提領。請使用官方機器搜尋確認目前的位置與可用服務。</figcaption>
           </figure>
         </section>
 
@@ -250,8 +266,8 @@
               <p>最可能的原因，是你儲了 WOWPASS 付款餘額，沒有儲到內建 T-money 餘額。兩者分開，請在 App 查看交通餘額，必要時儲值這一邊。</p>
             </article>
             <article class="wowpass-problem-row">
-              <h3>「以為機場有 WOWPASS 機器，卻找不到。」</h3>
-              <p>機場取卡與自助機器發卡，不一定是同一流程。現行官方預訂頁面列出特定機場取卡方式，也另有預訂機器取卡。請依實際預訂附帶的位置，不要跟著舊機器照片找。</p>
+              <h3>「預訂顯示的是機場便利商店，我要到櫃檯向店員拿卡嗎？」</h3>
+              <p>不要預設一定由店員在櫃檯交卡。仁川機場部分便利商店據點設有 WOWPASS 自助機。請依照自己預訂所附的實際指示，並在最新官方機器搜尋確認位置；不同地點的設置方式與可用功能可能不同。</p>
             </article>
             <article class="wowpass-problem-row">
               <h3>「以為存入外幣現鈔，和 App 儲值是一樣的事。」</h3>
@@ -304,8 +320,8 @@
             <details><summary>WOWPASS 可以用來網購嗎？</summary><p>不要因為 WOWPASS 實體店付款成功，就認定韓國網路結帳也一定接受。官方使用指南明確說明的是實體商家付款。韓國網路付款問題，請另看 <a href="/zh-tw/korean-online-payments-foreigners.html">Korea Inside 網路付款指南</a>。</p></details>
             <details><summary>可以用 WOWPASS 兌換外幣現鈔嗎？</summary><p>WOWPASS 目前支援 16 種貨幣現金儲值，須依現行機器與貨幣規則。確認交易前，先看顯示的兌換金額。</p></details>
             <details><summary>可以用海外卡儲值 WOWPASS 嗎？</summary><p>WOWPASS 目前宣傳可透過國際卡與電子錢包行動儲值，官方網站列出 Mastercard、JCB，以及經 PayPal 使用的 Visa。大額儲值前，請在 App 確認目前可用方式與費用。</p></details>
-            <details><summary>仁川機場可以取得 WOWPASS 嗎？</summary><p>目前官方預訂頁面列出仁川機場第 1 航廈與第 2 航廈的 WOWPASS 領取選項。請依當次預訂附帶的取卡位置，不要認定抵達出口旁就有自助機器。</p></details>
-            <details><summary>WOWPASS 卡要多少錢？</summary><p>本次 2026 年八月查核時，仁川機場官方預訂頁面顯示標準卡價 ₩6,000，列出的預訂選項為 ₩5,500。價格與優惠可能變動。</p></details>
+            <details><summary>仁川機場可以取得 WOWPASS 嗎？</summary><p>可以。目前官方預訂頁面列有第 1 航廈與第 2 航廈的 Airport CU Convenience Stores，官方機器搜尋也顯示 CU、GS25 等機場便利商店據點設有 WOWPASS 自助機。另外還有獨立的 Airport SKT Roaming Center WOWPASS + Tmoney + SIM Package 選項。請依自己的預訂與最新機器搜尋確認實際地點、取卡方式與可用功能。</p></details>
+            <details><summary>WOWPASS 卡要多少錢？</summary><p>截至本次 2026 年 10 月 5 日查核，官方預訂頁面顯示標準卡價為 ₩6,000，所列卡片單獨預訂優惠價為 ₩5,500。價格與優惠可能變動。</p></details>
             <details><summary>可以從 WOWPASS 提領韓元現金嗎？</summary><p>可以。現行官方網站說明，WOWPASS 機器可從卡片餘額提領 KRW，目前每次最多 ₩100,000，每次手續費 ₩1,000。服務條件可能變動，出發前請再確認。</p></details>
             <details><summary>卡片遺失怎麼辦？</summary><p>若卡片已登錄 App，WOWPASS 目前可暫停卡片以保護 WOWPASS 餘額，並提供補卡流程。獨立的 T-money 餘額如何處理，請查現行客服指示。</p></details>
             <details><summary>短途旅行值得用 WOWPASS 嗎？</summary><p>可能值得，但怎麼付款比旅行天數更重要。若想同時使用付款、交通與換匯功能，短途也可能實用。如果只需要公車與地鐵，一般 T-money 卡更簡單。</p></details>
@@ -320,7 +336,7 @@
             <li><a href="https://wowpass.io/en/product?location=ICN_T1">WOWPASS — 仁川機場第 1 航廈預訂</a></li>
             <li><a href="https://wowpass.io/en/product?location=ICN_T2">WOWPASS — 仁川機場第 2 航廈預訂</a></li>
           </ul>
-          <p class="wowpass-reviewed">最近查核：2026 年八月</p>
+          <p class="wowpass-reviewed">最近查核：2026 年 10 月 5 日</p>
           <p>匯率、費用、取卡地點、支援的入金方式與服務規則可能變動。涉及金錢或特定機器時，現行 WOWPASS App 或官方網站，應優先於舊截圖或旅遊文章。</p>
         </section>
 
