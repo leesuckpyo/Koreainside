@@ -1,0 +1,213 @@
+{
+  "schemaVersion": 2,
+  "date": "2026-10-02",
+  "scope": "THAI ONLY",
+  "status": "PARTIAL — NEEDS THAI INFOGRAPHIC COPY",
+  "baseline": {
+    "head": "d0ae52ad267f56926a6a55e413c3aaf7b704c0b6",
+    "fileCount": 1075,
+    "fingerprint": "0c341d8d459e3448f7322433cd1505d46ee323892f4d4dc35ff2f6363fbca893"
+  },
+  "policy": {
+    "sourceOfTruth": [
+      "md/승인본/태국어/Korea_Inside_TH_First_Time_Stay_Localized_Review_2026-10-02.md",
+      "md/승인본/태국어/Korea_Inside_TH_Hongdae_vs_Myeongdong_Localized_Review_2026-10-02.md"
+    ],
+    "copy": "Exact approved Thai strings only. English text is inventory/reference, never an output fallback.",
+    "background": "Original flattened visual masters contain baked editorial text. A visually verified text-free master preserving the same artwork/photos/crop is required for final rendering.",
+    "layout": "Native pixel boxes are approximate. Font settings, sign orientation, line breaks and shaping need visual proof. No abbreviation, clipping or auto-translation.",
+    "export": "Candidate SVG only; final PNG/WebP and Thai src changes require full approved copy plus asset QA PASS.",
+    "protected": "All pre-existing files and user work remain unchanged. This preparation changes only its three new Thai source artifacts."
+  },
+  "families": [
+    {
+      "id": "first-time",
+      "source": "images/Accommodation/first-time-seoul-area-guide.png",
+      "sha256": "2e958e12213927ce0a4a15588c525875ec14323eaf04486ae4e468784d988421",
+      "width": 1536,
+      "height": 1024,
+      "stem": "first-time-seoul-area-guide",
+      "extension": "png",
+      "quickMatchOrder": [
+        "Myeongdong",
+        "Hongdae",
+        "Seoul Station",
+        "Mapo / Gongdeok",
+        "Insadong",
+        "Jamsil"
+      ],
+      "topPickOrder": [
+        "Myeongdong",
+        "Hongdae",
+        "Seoul Station"
+      ],
+      "textFreeMaster": null,
+      "output": "images/Accommodation/first-time-seoul-area-guide-th.png"
+    },
+    {
+      "id": "hongdae-vs-myeongdong",
+      "source": "images/Accommodation/hongdae-vs-myeongdong.webp",
+      "sha256": "a1bdbff1f785e12489fc30bd3009f8c46648d5f3aba48e5dc314c4b7b6707537",
+      "width": 1672,
+      "height": 941,
+      "stem": "hongdae-vs-myeongdong",
+      "extension": "webp",
+      "comparisonOrder": [
+        "Hongdae",
+        "Myeongdong"
+      ],
+      "textFreeMaster": null,
+      "output": "images/Accommodation/hongdae-vs-myeongdong-th.webp"
+    }
+  ],
+  "targets": [
+    {"id":"INFO-01","family":"first-time","english":"Where Should First-Time Visitors Stay in Seoul?","location":"main title","role":"title","classification":"EDITORIAL TEXT","priority":"P1","box":[78,26,1430,93],"sourceLines":1,"thai":{"status":"APPROVED EXACT COPY","value":"เที่ยวโซลครั้งแรก พักย่านไหนดี?","source":"md/승인본/태국어/Korea_Inside_TH_First_Time_Stay_Localized_Review_2026-10-02.md","line":34,"copyId":"MAIN-003","matchNote":"Same first-visit Seoul stay-area question; exact approved Thai H1 without year marker."}},
+    {"id":"INFO-02","family":"first-time","english":"A quick area guide for your first trip","location":"subtitle","role":"subtitle","classification":"EDITORIAL TEXT","priority":"P1","box":[458,119,675,47],"sourceLines":1,"thai":{"status":"NEEDS THAI INFOGRAPHIC COPY","value":null}},
+    {"id":"INFO-03","family":"first-time","english":"QUICK MATCH","location":"quick-match section label","role":"section","classification":"EDITORIAL TEXT","priority":"P1","box":[70,170,310,54],"sourceLines":1,"thai":{"status":"NEEDS THAI INFOGRAPHIC COPY","value":null}},
+    {"id":"INFO-04","family":"first-time","english":"Central sightseeing and easy planning","location":"quick-match row 1 description","role":"description","classification":"EDITORIAL TEXT","priority":"P1_DECISION","box":[190,244,456,45],"sourceLines":1,"thai":{"status":"NEEDS THAI INFOGRAPHIC COPY","value":null}},
+    {"id":"INFO-05","family":"first-time","english":"Myeongdong","location":"quick-match row 1 area","role":"area","classification":"EDITORIAL TEXT","priority":"P1","box":[795,245,215,45],"sourceLines":1,"thai":{"status":"APPROVED EXACT COPY","value":"เมียงดง","source":"md/승인본/태국어/Korea_Inside_TH_First_Time_Stay_Localized_Review_2026-10-02.md","line":110,"copyId":"MAIN-079","matchNote":"Exact approved place-name spelling; identity unchanged."}},
+    {"id":"INFO-06","family":"first-time","english":"Cafés, nightlife and direct AREX","location":"quick-match row 2 description","role":"description","classification":"EDITORIAL TEXT","priority":"P1_DECISION","box":[190,315,456,45],"sourceLines":1,"thai":{"status":"NEEDS THAI INFOGRAPHIC COPY","value":null}},
+    {"id":"INFO-07","family":"first-time","english":"Hongdae","location":"quick-match row 2 area","role":"area","classification":"EDITORIAL TEXT","priority":"P1","box":[795,315,215,45],"sourceLines":1,"thai":{"status":"APPROVED EXACT COPY","value":"ฮงแด","source":"md/승인본/태국어/Korea_Inside_TH_First_Time_Stay_Localized_Review_2026-10-02.md","line":116,"copyId":"MAIN-085","matchNote":"Exact approved place-name spelling; identity unchanged."}},
+    {"id":"INFO-08","family":"first-time","english":"Airport rail, KTX and large luggage","location":"quick-match row 3 description","role":"description","classification":"EDITORIAL TEXT","priority":"P1_DECISION","box":[190,385,456,45],"sourceLines":1,"thai":{"status":"NEEDS THAI INFOGRAPHIC COPY","value":null}},
+    {"id":"INFO-09","family":"first-time","english":"Seoul Station","location":"quick-match row 3 area","role":"area","classification":"EDITORIAL TEXT","priority":"P1","box":[795,385,220,45],"sourceLines":1,"thai":{"status":"APPROVED EXACT COPY","value":"สถานีโซล","source":"md/승인본/태국어/Korea_Inside_TH_First_Time_Stay_Localized_Review_2026-10-02.md","line":121,"copyId":"MAIN-090","matchNote":"Exact approved place-name spelling; identity unchanged."}},
+    {"id":"INFO-10","family":"first-time","english":"Airport access and quieter nights","location":"quick-match row 4 description","role":"description","classification":"EDITORIAL TEXT","priority":"P1_DECISION","box":[190,452,456,45],"sourceLines":1,"thai":{"status":"APPROVED EXACT COPY","value":"สนามบินสะดวกและพักเงียบกว่า","source":"md/승인본/태국어/Korea_Inside_TH_First_Time_Stay_Localized_Review_2026-10-02.md","line":80,"copyId":"MAIN-049","matchNote":"Same airport-access/quieter-stay decision; exact approved short table description, no rewriting."}},
+    {"id":"INFO-11","family":"first-time","english":"Mapo / Gongdeok","location":"quick-match row 4 area","role":"area","classification":"EDITORIAL TEXT","priority":"P1","box":[795,452,225,45],"sourceLines":1,"thai":{"status":"APPROVED EXACT COPY","value":"มาโพ / กงด็อก","source":"md/승인본/태국어/Korea_Inside_TH_First_Time_Stay_Localized_Review_2026-10-02.md","line":126,"copyId":"MAIN-095","matchNote":"Exact approved place-name spelling; identity unchanged."}},
+    {"id":"INFO-12","family":"first-time","english":"Palaces and traditional streets","location":"quick-match row 5 description","role":"description","classification":"EDITORIAL TEXT","priority":"P1_DECISION","box":[190,520,456,45],"sourceLines":1,"thai":{"status":"NEEDS THAI INFOGRAPHIC COPY","value":null}},
+    {"id":"INFO-13","family":"first-time","english":"Insadong","location":"quick-match row 5 area","role":"area","classification":"EDITORIAL TEXT","priority":"P1","box":[795,520,215,45],"sourceLines":1,"thai":{"status":"APPROVED EXACT COPY","value":"อินซาดง","source":"md/승인본/태국어/Korea_Inside_TH_First_Time_Stay_Localized_Review_2026-10-02.md","line":131,"copyId":"MAIN-100","matchNote":"Exact approved place-name spelling; identity unchanged."}},
+    {"id":"INFO-14","family":"first-time","english":"Lotte World and southern Seoul","location":"quick-match row 6 description","role":"description","classification":"EDITORIAL TEXT","priority":"P1_DECISION","box":[190,586,456,45],"sourceLines":1,"thai":{"status":"NEEDS THAI INFOGRAPHIC COPY","value":null}},
+    {"id":"INFO-15","family":"first-time","english":"Jamsil","location":"quick-match row 6 area","role":"area","classification":"EDITORIAL TEXT","priority":"P1","box":[795,586,215,45],"sourceLines":1,"thai":{"status":"APPROVED EXACT COPY","value":"จัมชิล","source":"md/승인본/태국어/Korea_Inside_TH_First_Time_Stay_Localized_Review_2026-10-02.md","line":136,"copyId":"MAIN-105","matchNote":"Exact approved place-name spelling; identity unchanged."}},
+    {"id":"INFO-16","family":"first-time","english":"TOP PICKS","location":"top-picks section label","role":"section","classification":"EDITORIAL TEXT","priority":"P1","box":[626,657,284,46],"sourceLines":1,"thai":{"status":"NEEDS THAI INFOGRAPHIC COPY","value":null}},
+    {"id":"INFO-17","family":"first-time","english":"Myeongdong","location":"top pick 1 area","role":"card-title","classification":"EDITORIAL TEXT","priority":"P1","box":[277,725,235,60],"sourceLines":1,"thai":{"status":"APPROVED EXACT COPY","value":"เมียงดง","source":"md/승인본/태국어/Korea_Inside_TH_First_Time_Stay_Localized_Review_2026-10-02.md","line":110,"copyId":"MAIN-079","matchNote":"Exact approved place-name spelling; identity unchanged."}},
+    {"id":"INFO-18","family":"first-time","english":"Best all-round first base","location":"top pick 1 recommendation","role":"card-description","classification":"EDITORIAL TEXT","priority":"P1_DECISION","box":[278,803,235,66],"sourceLines":1,"thai":{"status":"NEEDS THAI INFOGRAPHIC COPY","value":null}},
+    {"id":"INFO-19","family":"first-time","english":"Watch out: Busy streets and some smaller rooms","location":"top pick 1 warning","role":"warning","classification":"EDITORIAL TEXT","priority":"P1_DECISION","box":[322,885,186,68],"sourceLines":2,"thai":{"status":"NEEDS THAI INFOGRAPHIC COPY","value":null}},
+    {"id":"INFO-20","family":"first-time","english":"Hongdae","location":"top pick 2 area","role":"card-title","classification":"EDITORIAL TEXT","priority":"P1","box":[794,720,182,62],"sourceLines":1,"thai":{"status":"APPROVED EXACT COPY","value":"ฮงแด","source":"md/승인본/태국어/Korea_Inside_TH_First_Time_Stay_Localized_Review_2026-10-02.md","line":116,"copyId":"MAIN-085","matchNote":"Exact approved place-name spelling; identity unchanged."}},
+    {"id":"INFO-21","family":"first-time","english":"Best for cafés and nightlife","location":"top pick 2 recommendation","role":"card-description","classification":"EDITORIAL TEXT","priority":"P1_DECISION","box":[794,802,176,65],"sourceLines":2,"thai":{"status":"NEEDS THAI INFOGRAPHIC COPY","value":null}},
+    {"id":"INFO-22","family":"first-time","english":"Watch out: Check distance from the busiest streets","location":"top pick 2 warning","role":"warning","classification":"EDITORIAL TEXT","priority":"P1_DECISION","box":[837,892,137,80],"sourceLines":3,"thai":{"status":"NEEDS THAI INFOGRAPHIC COPY","value":null}},
+    {"id":"INFO-23","family":"first-time","english":"Seoul Station","location":"top pick 3 area","role":"card-title","classification":"EDITORIAL TEXT","priority":"P1","box":[1243,725,243,60],"sourceLines":1,"thai":{"status":"APPROVED EXACT COPY","value":"สถานีโซล","source":"md/승인본/태국어/Korea_Inside_TH_First_Time_Stay_Localized_Review_2026-10-02.md","line":121,"copyId":"MAIN-090","matchNote":"Exact approved place-name spelling; identity unchanged."}},
+    {"id":"INFO-24","family":"first-time","english":"Best for airport rail and luggage","location":"top pick 3 recommendation","role":"card-description","classification":"EDITORIAL TEXT","priority":"P1_DECISION","box":[1243,810,230,78],"sourceLines":2,"thai":{"status":"NEEDS THAI INFOGRAPHIC COPY","value":null}},
+    {"id":"INFO-25","family":"first-time","english":"Watch out: Verify the exact exit and walking route","location":"top pick 3 warning","role":"warning","classification":"EDITORIAL TEXT","priority":"P1_DECISION","box":[1280,891,226,86],"sourceLines":3,"thai":{"status":"NEEDS THAI INFOGRAPHIC COPY","value":null}},
+    {"id":"INFO-26","family":"first-time","english":"SHOP","location":"top pick 1 illustrated shop sign","role":"illustrated-sign","classification":"EDITORIAL TEXT","priority":"P1","box":[208,724,20,63],"sourceLines":4,"thai":{"status":"NEEDS THAI INFOGRAPHIC COPY","value":null}},
+    {"id":"INFO-27","family":"first-time","english":"COFFEE","location":"top pick 2 illustrated café sign","role":"illustrated-sign","classification":"EDITORIAL TEXT","priority":"P1","box":[552,840,61,25],"sourceLines":1,"thai":{"status":"NEEDS THAI INFOGRAPHIC COPY","value":null}},
+    {"id":"INFO-28","family":"first-time","english":"SEOUL STATION","location":"top pick 3 illustrated station sign","role":"illustrated-sign","classification":"EDITORIAL TEXT","priority":"P1","box":[1084,870,79,26],"sourceLines":1,"thai":{"status":"APPROVED EXACT COPY","value":"สถานีโซล","source":"md/승인본/태국어/Korea_Inside_TH_First_Time_Stay_Localized_Review_2026-10-02.md","line":121,"copyId":"MAIN-090","matchNote":"Exact approved place-name spelling; identity unchanged."}},
+    {"id":"INFO-29","family":"hongdae-vs-myeongdong","english":"Hongdae","location":"comparison left area","role":"comparison-title","classification":"EDITORIAL TEXT","priority":"P1","box":[358,760,343,86],"sourceLines":1,"thai":{"status":"APPROVED EXACT COPY","value":"ฮงแด","source":"md/승인본/태국어/Korea_Inside_TH_Hongdae_vs_Myeongdong_Localized_Review_2026-10-02.md","line":48,"copyId":"MAIN-017","matchNote":"Exact approved Hongdae table heading."}},
+    {"id":"INFO-30","family":"hongdae-vs-myeongdong","english":"vs","location":"comparison separator","role":"comparison-separator","classification":"EDITORIAL TEXT","priority":"P1","box":[790,785,80,66],"sourceLines":1,"thai":{"status":"NEEDS THAI INFOGRAPHIC COPY","value":null}},
+    {"id":"INFO-31","family":"hongdae-vs-myeongdong","english":"Myeongdong","location":"comparison right area","role":"comparison-title","classification":"EDITORIAL TEXT","priority":"P1","box":[914,756,386,87],"sourceLines":1,"thai":{"status":"APPROVED EXACT COPY","value":"เมียงดง","source":"md/승인본/태국어/Korea_Inside_TH_Hongdae_vs_Myeongdong_Localized_Review_2026-10-02.md","line":49,"copyId":"MAIN-018","matchNote":"Exact approved Myeongdong table heading."}},
+    {"id":"INFO-32","family":"hongdae-vs-myeongdong","english":"Cafés • Creative Culture • Youthful Energy","location":"comparison left description","role":"comparison-description","classification":"EDITORIAL TEXT","priority":"P1_DECISION","box":[311,855,436,38],"sourceLines":1,"thai":{"status":"NEEDS THAI INFOGRAPHIC COPY","value":null}},
+    {"id":"INFO-33","family":"hongdae-vs-myeongdong","english":"Shopping • Central Location • Easy Access","location":"comparison right description","role":"comparison-description","classification":"EDITORIAL TEXT","priority":"P1_DECISION","box":[915,855,441,38],"sourceLines":1,"thai":{"status":"NEEDS THAI INFOGRAPHIC COPY","value":null}}
+  ],
+  "statistics": [
+    {
+      "family": "first-time",
+      "total": 28,
+      "mapped": 12,
+      "missing": [
+        "INFO-02",
+        "INFO-03",
+        "INFO-04",
+        "INFO-06",
+        "INFO-08",
+        "INFO-12",
+        "INFO-14",
+        "INFO-16",
+        "INFO-18",
+        "INFO-19",
+        "INFO-21",
+        "INFO-22",
+        "INFO-24",
+        "INFO-25",
+        "INFO-26",
+        "INFO-27"
+      ]
+    },
+    {
+      "family": "hongdae-vs-myeongdong",
+      "total": 5,
+      "mapped": 2,
+      "missing": [
+        "INFO-30",
+        "INFO-32",
+        "INFO-33"
+      ]
+    }
+  ],
+  "missingThaiCopy": [
+    {
+      "id": "INFO-02",
+      "english": "A quick area guide for your first trip"
+    },
+    {
+      "id": "INFO-03",
+      "english": "QUICK MATCH"
+    },
+    {
+      "id": "INFO-04",
+      "english": "Central sightseeing and easy planning"
+    },
+    {
+      "id": "INFO-06",
+      "english": "Cafés, nightlife and direct AREX"
+    },
+    {
+      "id": "INFO-08",
+      "english": "Airport rail, KTX and large luggage"
+    },
+    {
+      "id": "INFO-12",
+      "english": "Palaces and traditional streets"
+    },
+    {
+      "id": "INFO-14",
+      "english": "Lotte World and southern Seoul"
+    },
+    {
+      "id": "INFO-16",
+      "english": "TOP PICKS"
+    },
+    {
+      "id": "INFO-18",
+      "english": "Best all-round first base"
+    },
+    {
+      "id": "INFO-19",
+      "english": "Watch out: Busy streets and some smaller rooms"
+    },
+    {
+      "id": "INFO-21",
+      "english": "Best for cafés and nightlife"
+    },
+    {
+      "id": "INFO-22",
+      "english": "Watch out: Check distance from the busiest streets"
+    },
+    {
+      "id": "INFO-24",
+      "english": "Best for airport rail and luggage"
+    },
+    {
+      "id": "INFO-25",
+      "english": "Watch out: Verify the exact exit and walking route"
+    },
+    {
+      "id": "INFO-26",
+      "english": "SHOP"
+    },
+    {
+      "id": "INFO-27",
+      "english": "COFFEE"
+    },
+    {
+      "id": "INFO-30",
+      "english": "vs"
+    },
+    {
+      "id": "INFO-32",
+      "english": "Cafés • Creative Culture • Youthful Energy"
+    },
+    {
+      "id": "INFO-33",
+      "english": "Shopping • Central Location • Easy Access"
+    }
+  ],
+  "finalAssetExports": [],
+  "htmlChanges": []
+}

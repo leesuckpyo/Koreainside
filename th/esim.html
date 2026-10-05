@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="เปรียบเทียบ eSIM แบบ data, eSIM เบอร์เกาหลี, SIM จริง และ roaming ก่อนถึงเกาหลี พร้อมเช็กความเข้ากันได้ของมือถือ ข้อจำกัดการยืนยันตัวตน ปัญหาที่พบบ่อย และวิธีเลือกแพ็กเกจ">
+  <title>วิธีใช้ eSIM ในเกาหลี: Data, เบอร์เกาหลี, SIM หรือ Roaming | Korea Inside</title>
+  <link rel="canonical" href="https://www.getkoreainside.com/th/esim.html">
+  <link rel="alternate" hreflang="en" href="https://www.getkoreainside.com/esim.html">
+  <link rel="alternate" hreflang="es" href="https://www.getkoreainside.com/es/esim.html">
+  <link rel="alternate" hreflang="ja" href="https://www.getkoreainside.com/ja/esim.html">
+  <link rel="alternate" hreflang="zh-TW" href="https://www.getkoreainside.com/zh-tw/esim.html">
+  <link rel="alternate" hreflang="fr" href="https://www.getkoreainside.com/fr/esim.html">
+  <link rel="alternate" hreflang="de" href="https://www.getkoreainside.com/de/esim.html">
+  <link rel="alternate" hreflang="th" href="https://www.getkoreainside.com/th/esim.html">
+  <link rel="alternate" hreflang="x-default" href="https://www.getkoreainside.com/esim.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Roboto+Flex:wght@400..600&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "หน้าแรก",
+      "item": "https://www.getkoreainside.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "การเชื่อมต่อ",
+      "item": "https://www.getkoreainside.com/th/esim.html"
+    }
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "ใช้ eSIM ได้ทันทีหลังลงเครื่องที่เกาหลีไหม?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ได้ในหลายกรณี แต่ timing ขึ้นอยู่กับแพ็ก โทรศัพท์ต้องรองรับ eSIM, profile ต้องติดตั้งแล้ว และ provider ต้องอนุญาต activation หลังมาถึง บางแพ็กยังต้องเปิด data roaming สำหรับ travel line"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "ต้องทำ Passport Verification ไหม?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ขึ้นอยู่กับผลิตภัณฑ์ SIM หรือ eSIM ของเกาหลีบางแพ็กขอ passport verification โดยเฉพาะเมื่อมีเบอร์เกาหลี voice call หรือ SMS เช็กก่อนซื้อเพื่อไม่ให้ activation ล่าช้า"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "eSIM มีเบอร์เกาหลีได้ไหม?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ได้ Korean eSIM บางแพ็กรวมเบอร์ แต่ international travel eSIM จำนวนมากเป็น data-only ถ้าต้องการ local calls หรือ SMS พร้อมเบอร์ ให้เช็กว่ารวมครบทั้งสามก่อนซื้อ"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "เบอร์เกาหลีใช้ Verification แอปเกาหลีได้ทุกแอปไหม?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ไม่ได้ เบอร์เกาหลีช่วยการติดต่อ แต่ไม่ได้ unlock identity-verification service ทุกระบบด้วยตัวเอง กฎแอปและวิธีที่ mobile line ถูกลงทะเบียนยังจำกัดสิ่งที่ short-term visitor ยืนยันได้"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Google Maps อย่างเดียวพอในเกาหลีไหม?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Google Maps ยังมีประโยชน์ แต่ local map app มักให้ข้อมูลเดิน ขนส่ง ร้าน และที่อยู่ดีกว่าในเกาหลี การมี Naver Map หรือ KakaoMap พร้อมเป็นทางเลือกเมื่อ Google Maps ให้ detail ไม่พอ"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "ควรซื้อก่อนเดินทางหรือที่สนามบิน?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ซื้อก่อนเดินทางประหยัดเวลาเมื่อโทรศัพท์เข้ากันได้และคุณติดตั้งเองได้ Airport pickup มีประโยชน์กว่าเมื่ออยากให้ staff ช่วย ต้องใช้ physical SIM หรือเลือกแพ็กเบอร์เกาหลี"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "เก็บเบอร์ WhatsApp หรือ LINE เดิมได้ไหม?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ได้ WhatsApp และ LINE ปกติเก็บ account number ที่ลงทะเบียนไว้ การเปลี่ยน mobile-data line จึงไม่เปลี่ยน account โดยทั่วไป เก็บแอปไว้และให้โทรศัพท์มี data หรือ Wi-Fi"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "ถ้าลบ eSIM จะเกิดอะไรขึ้น?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "การลบอาจถาวรสำหรับ eSIM บางตัว เพราะ QR เดิมอาจใช้ครั้งที่สองไม่ได้ ติดต่อ provider ก่อนและยืนยันว่า profile reissue/reinstall ได้หรือไม่ก่อนลบ"
+      }
+    }
+  ]
+}
+  </script>
+<script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
+  (function () {
+      var script = document.createElement("script");
+      script.async = 1;
+      script.setAttribute("data-cmp-ab","2");
+      script.src = 'https://emrldco.com/NTY2MzE1.js?t=566315';
+      document.head.appendChild(script);
+  })();
+</script>
+</head>
+<body class="page-esim" data-section="esim">
+<!-- GLOBAL_NAV_START -->
+  <header class="header site-header" data-common-header>
+    <div class="container header__inner site-header__inner">
+      <a href="/th/" class="logo site-header__logo" aria-label="หน้าแรก Korea Inside">
+        <img class="site-brand__logo" src="../images/korea-inside-logo.webp" alt="Korea Inside" width="2172" height="724">
+      </a>
+      <button class="site-nav-toggle" id="site-nav-toggle" type="button" aria-label="เปิดเมนู" aria-expanded="false" aria-controls="site-primary-navigation"><span class="site-nav-toggle__bar"></span><span class="site-nav-toggle__bar"></span><span class="site-nav-toggle__bar"></span></button>
+      <nav class="site-nav" id="site-primary-navigation" aria-label="เมนูหลัก">
+        <ul class="site-nav__list">
+          <li class="site-nav__item" data-nav-section="discover">
+            <button class="site-nav__trigger" id="site-nav-trigger-discover" type="button" aria-expanded="false" aria-controls="site-nav-panel-discover" aria-haspopup="true">สำรวจ</button>
+            <div class="site-nav__panel" id="site-nav-panel-discover" aria-labelledby="site-nav-trigger-discover" hidden><div class="site-nav__group"><a class="site-nav__link" href="/th/taste-korea.html">อาหารเกาหลี</a><a class="site-nav__link" href="/th/k-beauty.html">K-Beauty</a></div></div>
+          </li>
+          <li class="site-nav__item" data-nav-section="travel">
+            <button class="site-nav__trigger" id="site-nav-trigger-travel" type="button" aria-expanded="false" aria-controls="site-nav-panel-travel" aria-haspopup="true">เที่ยว</button>
+            <div class="site-nav__panel site-nav__panel--travel-guides" id="site-nav-panel-travel" aria-labelledby="site-nav-trigger-travel" hidden><p class="site-nav__group-label site-nav__group-label--travel-panel" id="site-nav-travel-guides-label">คู่มือเที่ยว</p><div class="site-nav__group site-nav__group--travel-areas"><p class="site-nav__group-label">ย่านในโซล</p><div class="site-nav__travel-grid"><a class="site-nav__link" href="/th/hongdae-travel-guide.html">ฮงแด</a><a class="site-nav__link" href="/th/myeongdong-travel-guide.html">เมียงดง</a><a class="site-nav__link" href="/th/seongsu-travel-guide.html">ซองซู</a><a class="site-nav__link" href="/th/insadong-travel-guide.html">อินซาดง</a><a class="site-nav__link" href="/th/gangnam-travel-guide.html">กังนัม</a><a class="site-nav__link" href="/th/jamsil-travel-guide.html">จัมชิล</a><a class="site-nav__link" href="/th/gongdeok-mapo-seoul-guide.html">กงด็อก &amp; มาโพ</a><a class="site-nav__link" href="/th/itaewon-travel-guide.html">อิแทวอน</a><a class="site-nav__link" href="/th/dongdaemun-travel-guide.html">ทงแดมุน</a></div></div><div class="site-nav__group site-nav__group--travel-attractions"><p class="site-nav__group-label">สถานที่เที่ยว</p><div class="site-nav__travel-attraction-grid"><a class="site-nav__link" href="/th/lotte-world-seoul.html">Lotte World</a><a class="site-nav__link" href="/th/seoul-sky-guide.html">Seoul Sky</a></div></div></div>
+          </li>
+          <li class="site-nav__item" data-nav-section="stay">
+            <button class="site-nav__trigger" id="site-nav-trigger-stay" type="button" aria-expanded="false" aria-controls="site-nav-panel-stay" aria-haspopup="true">ที่พัก</button>
+            <div class="site-nav__panel" id="site-nav-panel-stay" aria-labelledby="site-nav-trigger-stay" hidden><div class="site-nav__group"><p class="site-nav__group-label">คู่มือที่พัก</p><a class="site-nav__link" href="/th/accommodation.html">คู่มือที่พัก</a><a class="site-nav__link" href="/th/hongdae-vs-myeongdong.html">ฮงแด vs เมียงดง</a><a class="site-nav__link" href="/th/best-area-for-first-time-visitors-seoul.html">เที่ยวครั้งแรก</a><a class="site-nav__link" href="/th/best-area-for-families-seoul.html">ครอบครัว</a><a class="site-nav__link" href="/th/best-area-for-solo-travelers-seoul.html">เที่ยวคนเดียว</a><a class="site-nav__link" href="/th/best-area-for-couples-seoul.html">คู่รัก</a><a class="site-nav__link" href="/th/best-area-for-budget-travelers-seoul.html">ประหยัดงบ</a><a class="site-nav__link" href="/th/best-area-for-shopping-seoul.html">ช้อปปิ้ง</a><a class="site-nav__link" href="/th/best-area-for-nightlife-seoul.html">เที่ยวกลางคืน</a><a class="site-nav__link" href="/th/best-area-for-luxury-hotels-seoul.html">โรงแรมหรู</a></div></div>
+          </li>
+          <li class="site-nav__item site-nav__item--active" data-nav-section="esim">
+            <button class="site-nav__trigger site-nav__trigger--current" id="site-nav-trigger-esim" type="button" aria-expanded="false" aria-controls="site-nav-panel-esim" aria-haspopup="true" aria-current="true">eSIM</button>
+            <div class="site-nav__panel" id="site-nav-panel-esim" aria-labelledby="site-nav-trigger-esim" hidden><div class="site-nav__group"><a class="site-nav__link" href="/th/esim.html">คู่มือ eSIM</a><a class="site-nav__link" href="/th/best-esim-for-korea.html">eSIM ที่เหมาะกับเที่ยวเกาหลี</a><a class="site-nav__link" href="/th/korea-esim-with-phone-number.html">eSIM เกาหลีพร้อมเบอร์โทร</a></div></div>
+          </li>
+          <li class="site-nav__item" data-nav-section="airport">
+            <button class="site-nav__trigger" id="site-nav-trigger-airport" type="button" aria-expanded="false" aria-controls="site-nav-panel-airport" aria-haspopup="true">สนามบิน</button>
+            <div class="site-nav__panel" id="site-nav-panel-airport" aria-labelledby="site-nav-trigger-airport" hidden><div class="site-nav__group"><a class="site-nav__link" href="/th/airport.html">คู่มือสนามบิน</a><a class="site-nav__link" href="/th/arrival.html">คู่มือวันเดินทางถึง</a><a class="site-nav__link" href="/th/airport-transfer.html">เดินทางจากสนามบิน</a><a class="site-nav__link" href="/th/arex.html">คู่มือ AREX</a><a class="site-nav__link" href="/th/airport-bus.html">คู่มือรถบัสสนามบิน</a></div></div>
+          </li>
+          <li class="site-nav__item" data-nav-section="maps">
+            <button class="site-nav__trigger" id="site-nav-trigger-maps" type="button" aria-expanded="false" aria-controls="site-nav-panel-maps" aria-haspopup="true">แผนที่</button>
+            <div class="site-nav__panel" id="site-nav-panel-maps" aria-labelledby="site-nav-trigger-maps" hidden><div class="site-nav__group"><a class="site-nav__link" href="/th/maps.html">คู่มือแผนที่</a></div></div>
+          </li>
+          <li class="site-nav__item" data-nav-section="transport">
+            <button class="site-nav__trigger" id="site-nav-trigger-transport" type="button" aria-expanded="false" aria-controls="site-nav-panel-transport" aria-haspopup="true">การเดินทาง</button>
+            <div class="site-nav__panel site-nav__panel--end" id="site-nav-panel-transport" aria-labelledby="site-nav-trigger-transport" hidden><div class="site-nav__group"><p class="site-nav__group-label">บัตรเดินทาง</p><a class="site-nav__link" href="/th/tmoney.html">คู่มือ T-money</a><a class="site-nav__link" href="/th/wowpass.html">คู่มือ WOWPASS</a><a class="site-nav__link" href="/th/tmoney-vs-wowpass.html">T-money vs WOWPASS</a></div><div class="site-nav__group"><p class="site-nav__group-label">การเดินทางอื่นๆ</p><a class="site-nav__link" href="/th/taxi.html">คู่มือแท็กซี่</a><a class="site-nav__link" href="/th/incheon-airport-private-transfer.html">รถตู้ / รถรับส่งส่วนตัว</a><a class="site-nav__link" href="/th/rental-car.html">รถเช่า</a></div></div>
+          </li>
+          <li class="site-nav__item" data-nav-section="apps">
+            <button class="site-nav__trigger" id="site-nav-trigger-apps" type="button" aria-expanded="false" aria-controls="site-nav-panel-apps" aria-haspopup="true">แอป</button>
+            <div class="site-nav__panel site-nav__panel--end" id="site-nav-panel-apps" aria-labelledby="site-nav-trigger-apps" hidden><div class="site-nav__group"><a class="site-nav__link" href="/th/apps.html">แอปจำเป็น</a></div></div>
+          </li>
+          <li class="site-nav__item" data-nav-section="travel-tips">
+            <button class="site-nav__trigger" id="site-nav-trigger-travel-tips" type="button" aria-expanded="false" aria-controls="site-nav-panel-travel-tips" aria-haspopup="true">ทิปเที่ยวเกาหลี</button>
+            <div class="site-nav__panel site-nav__panel--end" id="site-nav-panel-travel-tips" aria-labelledby="site-nav-trigger-travel-tips" hidden><div class="site-nav__group"><a class="site-nav__link" href="/th/checklist.html">เช็กลิสต์เที่ยวเกาหลี</a><a class="site-nav__link" href="/th/payments.html">การชำระเงินในเกาหลี</a></div></div>
+          </li>
+        </ul>
+      </nav>
+      <div class="language-switcher" aria-label="เลือกภาษา" data-supported-languages="EN JP KR TW VN"><button class="language-switcher__button" type="button" aria-disabled="true" disabled><span class="language-switcher__current">TH</span><span class="language-switcher__label">ภาษา</span></button></div>
+    </div>
+  </header>
+  <!-- GLOBAL_NAV_END -->
+
+  <main class="esim-page">
+    <section class="esim-hero" aria-labelledby="esim-hero-title">
+      <nav class="container esim-breadcrumb" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/th/">หน้าแรก</a></li>
+          <li aria-current="page">การเชื่อมต่อ</li>
+        </ol>
+      </nav>
+      <div class="container esim-hero__grid">
+        <div class="esim-hero__content">
+          <h1 id="esim-hero-title">วิธีใช้ eSIM ในเกาหลี</h1>
+          <p class="esim-hero__subtitle">เปรียบเทียบ eSIM แบบ data, eSIM ที่มีเบอร์เกาหลี, SIM จริง และ roaming ก่อนเดินทางถึงเกาหลี</p>
+          <div class="esim-hero__actions">
+            <a class="btn btn--primary" href="#phone-compatibility">เช็กว่ามือถือรองรับหรือไม่</a>
+            <a class="btn btn--ghost" href="#compare-options">เปรียบเทียบตัวเลือก</a>
+          </div>
+        </div>
+        <figure class="esim-hero-visual">
+          <img
+            src="../images/esim/esim-hero-connected-seoul.webp"
+            alt="นักท่องเที่ยวใช้โทรศัพท์ โทรออก ค้นหาข้อมูล และแผนที่ขณะเชื่อมต่อในโซล"
+            width="1800"
+            height="600"
+            decoding="async"
+            fetchpriority="high">
+        </figure>
+        <aside class="esim-hero__panel" aria-label="จุดเริ่มที่เหมาะที่สุด">
+          <ul class="esim-check-list">
+            <li>มือถือรองรับ eSIM</li>
+            <li>มือถือไม่ได้ล็อกเครือข่าย</li>
+            <li>แพ็กเกจมีบริการที่คุณต้องใช้</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="esim-section esim-section--quick" aria-labelledby="quick-answer-title">
+      <div class="container">
+        <div class="esim-section__header">
+          <h2 id="quick-answer-title">Setup eSIM แบบง่ายที่สุดสำหรับทริปเกาหลีส่วนใหญ่</h2>
+        </div>
+        <div class="esim-answer-list">
+          <p>สำหรับทริปสั้นส่วนใหญ่ในเกาหลี โทรศัพท์ที่ปลดล็อกและรองรับ eSIM พร้อมแพ็ก data มักเพียงพอ แผนที่ messaging แปลภาษา และค้นเว็บทั่วไปทำงานได้โดยไม่ต้องมีเบอร์เกาหลี และการเตรียม connection ก่อนเดินทางช่วยประหยัดเวลาที่สนามบิน</p>
+          <p>เบอร์เกาหลีเริ่มมีประโยชน์เมื่อคุณคาดว่าจะใช้สายโทรเข้า-ออก SMS หรือบริการที่ต้องมี domestic contact number จริง ควรแยกเรื่องนี้ออกจาก identity verification เพราะการมีเบอร์เกาหลีไม่ได้ทำให้ short-term visitor ผ่าน verification ของทุกระบบเกาหลีโดยอัตโนมัติ</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="esim-section" aria-labelledby="decision-flow-title">
+      <div class="container">
+        <div class="esim-section__header">
+          <h2 id="decision-flow-title">เลือกวิธีเชื่อมต่อให้ตรงกับสิ่งที่คุณต้องใช้</h2>
+          <p>เริ่มจากบริการที่ต้องใช้จริงระหว่างทริป แล้วค่อยเปรียบเทียบ setup, support และข้อจำกัด</p>
+        </div>
+        <div class="esim-choice-grid">
+          <article class="esim-choice-card">
+            <div class="esim-choice-card__body">
+              <p class="esim-choice-card__label">DATA ONLY</p>
+              <h3>International travel eSIM</h3>
+              <p class="esim-choice-card__summary">Data eSIM มักเป็นคำตอบที่ง่ายที่สุดเมื่อมือถือใช้หลักๆ กับแผนที่ messaging แปลภาษา browsing และแอประหว่างทริป ซื้อและติดตั้งก่อนเดินทางได้บ่อย จึงไม่ต้องไปรับ SIM จริงหลังลงเครื่อง</p>
+              <p class="esim-choice-card__summary">ข้อแลกเปลี่ยนคือ travel eSIM ต่างประเทศจำนวนมากไม่มีเบอร์เกาหลี voice call หรือ SMS ถ้าไม่ต้องใช้สิ่งเหล่านี้ก็อาจไม่มีปัญหาเลย แต่ถ้าต้องใช้ ให้ดูตัวเลือกถัดไป</p>
+            </div>
+            <div class="esim-choice-card__cta">
+              <a class="esim-choice-card__cta-link" href="/th/best-esim-for-korea.html">
+                <span class="esim-choice-card__cta-text">เปรียบเทียบ Ubigi, Saily และ Airalo</span>
+                <span class="esim-choice-card__cta-arrow" aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+          <article class="esim-choice-card esim-choice-card--number">
+            <div class="esim-choice-card__body">
+              <p class="esim-choice-card__label">KOREAN NUMBER</p>
+              <h3>eSIM ที่มีเบอร์เกาหลี</h3>
+              <p class="esim-choice-card__summary">eSIM ที่มีเบอร์เกาหลีมีเหตุผลมากขึ้นเมื่อ local call, SMS หรือ domestic contact number มีประโยชน์จริง เช่น คนขับ การจอง โรงแรม หรือบริการอื่นที่ต้องติดต่อคุณในเกาหลีโดยตรง</p>
+              <p class="esim-choice-card__summary">แพ็กเหล่านี้อาจมี setup มากกว่า data-only travel eSIM เช่น passport หรือ activation requirement เบอร์เกาหลีช่วยเรื่องการติดต่อ แต่ยังไม่รับประกันการผ่าน identity verification ของทุกบริการเกาหลี</p>
+            </div>
+            <div class="esim-choice-card__cta">
+              <a class="esim-choice-card__cta-link" href="/th/korea-esim-with-phone-number.html">
+                <span class="esim-choice-card__cta-text">เปรียบเทียบ SK Telecom, KT และ LG U+</span>
+                <span class="esim-choice-card__cta-arrow" aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+        </div>
+        <div class="esim-editorial-list">
+          <article class="esim-editorial-row">
+            <h3>Physical SIM</h3>
+            <div class="esim-editorial-row__body">
+              <p>SIM จริงยังเหมาะเมื่อโทรศัพท์ไม่รองรับ eSIM หรือคุณอยากให้พนักงานช่วย setup แบบเห็นผลตรงหน้า การไปรับที่สนามบินหรือร้านอาจช้ากว่า eSIM ออนไลน์ แต่ support จากพนักงานอาจคุ้มเมื่อต้องการเช็กว่า connection ใช้งานได้ก่อนออกจากร้าน</p>
+              <p>ยังมีประโยชน์สำหรับคนที่กำลังดูแพ็กเบอร์เกาหลี ข้อเสียคือจำเป็นต้อง pickup หรือ delivery และโทรศัพท์ที่มีช่อง physical SIM เดียวอาจต้องถอด SIM บ้าน</p>
+            </div>
+          </article>
+          <article class="esim-editorial-row">
+            <h3>International roaming</h3>
+            <div class="esim-editorial-row__body">
+              <p>Roaming เป็นตัวเลือกที่ซับซ้อนน้อยที่สุดเมื่อการเก็บเบอร์เดิมและไม่ต้อง setup SIM ใหม่สำคัญกว่าราคา โทรศัพท์ใช้เครือข่ายบ้านต่อ จึงสะดวกสำหรับทริปสั้นมากหรือคนที่ไม่อยากจัดการอีก line</p>
+              <p>ข้อแลกเปลี่ยนคือราคาและ limit ของแพ็ก International roaming อาจแพงกว่ามากตาม carrier บ้าน จึงควรเช็ก daily/trip charge จริงก่อนคิดว่าความสะดวกคือทางที่ถูกกว่า</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="esim-section esim-section--muted" aria-labelledby="phone-compatibility">
+      <div class="container">
+        <div class="esim-section__header">
+          <h2 id="phone-compatibility">เช็กว่ามือถือใช้ได้หรือไม่</h2>
+          <p>โทรศัพท์ที่ปลดล็อกและรองรับ eSIM คือเงื่อนไขหลักสำหรับใช้ eSIM ในเกาหลี ทำ checks เหล่านี้ก่อนเทียบแพ็ก</p>
+        </div>
+        <ol class="esim-numbered-list">
+          <li>
+            <span class="esim-step-label">Step 1</span>
+            <div><strong class="esim-step-title">ยืนยันว่าเครื่องรองรับ eSIM</strong><p>เช็กว่า model สามารถเพิ่ม eSIM ได้ บน iPhone เส้นทางพื้นฐานคือ Settings → Cellular หรือ Mobile Data → Add eSIM บน Android ปกติคือ Settings → Connections หรือ Network → SIM manager → Add eSIM ชื่อเมนูต่างกันตาม device และ OS</p></div>
+          </li>
+          <li>
+            <span class="esim-step-label">Step 2</span>
+            <div><strong class="esim-step-title">ยืนยันว่าเครื่องไม่ล็อก carrier</strong><p>เช็กว่า carrier บ้านอนุญาตให้เพิ่ม mobile plan อื่น</p></div>
+          </li>
+          <li>
+            <span class="esim-step-label">Step 3</span>
+            <div><strong class="esim-step-title">เช็กเงื่อนไขแพ็ก</strong><p>ยืนยันบริการที่รวมและ activation timing ว่าตรงกับวันมาถึงและความต้องการ</p></div>
+          </li>
+          <li>
+            <span class="esim-step-label">Step 4</span>
+            <div><strong class="esim-step-title">บันทึกรายละเอียดติดตั้ง</strong><p>เก็บ QR code, manual activation detail และคำแนะนำผู้ให้บริการให้พร้อมก่อนเดินทาง</p></div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="esim-section" aria-labelledby="home-number-title">
+      <div class="container">
+        <div class="esim-section__header">
+          <h2 id="home-number-title">เก็บเบอร์บ้านไว้พร้อมใช้ Korea eSIM ได้ไหม?</h2>
+          <p>ได้ในหลายกรณี บนโทรศัพท์ที่รองรับ 2 active lines travel eSIM ใช้ mobile data ขณะที่ SIM เดิมยังเก็บเบอร์ที่ใช้ที่บ้านไว้ได้ มีประโยชน์เมื่อธนาคาร สายการบิน หรือบริการอื่นส่ง security code มาที่เบอร์เดิมระหว่างทริป</p>
+          <p>จุดสำคัญคือแยก “เก็บ line ให้พร้อม” ออกจาก “ใช้ line นั้นสำหรับ mobile data” Carrier บ้านอาจคิด roaming fee ตามกฎและวิธีใช้ line ต่างประเทศ ก่อนเดินทางควรรู้ว่าคิดค่า calls, texts และ data อย่างไร แทนการเปิดทุก setting แล้วหวังว่าจะไม่เสียเพิ่ม</p>
+          <p>สำหรับนักท่องเที่ยวจำนวนมาก setup ที่ง่ายคือใช้ Korea eSIM สำหรับ data และเก็บ home line ไว้เฉพาะบริการที่ต้องใช้เบอร์เดิมจริง Dual-SIM option ขึ้นอยู่กับ model และ carrier</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="esim-section" id="compare-options" aria-labelledby="compare-options-title">
+      <div class="container">
+        <div class="esim-section__header">
+          <h2 id="compare-options-title">เปรียบเทียบวิธีเชื่อมต่อในเกาหลี</h2>
+        </div>
+        <div class="esim-table-wrap">
+          <table class="esim-table">
+            <caption>เปรียบเทียบตัวเลือกมือถือในเกาหลีตามประเภทนักเดินทาง ประโยชน์ และข้อจำกัด</caption>
+            <thead>
+              <tr>
+                <th scope="col">ตัวเลือก</th>
+                <th scope="col">เหมาะเมื่อ</th>
+                <th scope="col">อะไรง่ายขึ้น</th>
+                <th scope="col">ข้อแลกเปลี่ยน</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Data-only eSIM</th>
+                <td>ทริปต้องการแผนที่ messaging แปลภาษา browsing และแอปเป็นหลัก</td>
+                <td>ซื้อและ setup ออนไลน์ก่อนเดินทาง ไม่ต้อง pickup สนามบิน</td>
+                <td>มักไม่มีเบอร์เกาหลี calls และ SMS</td>
+              </tr>
+              <tr>
+                <th scope="row">Korean-number eSIM</th>
+                <td>local calls, SMS หรือ domestic contact number มีประโยชน์จริง</td>
+                <td>โรงแรม คนขับ และบริการบางอย่างติดต่อคุณได้ตรง</td>
+                <td>อาจต้อง passport verification หรือ activation เพิ่ม และไม่รับประกันทุก identity check</td>
+              </tr>
+              <tr>
+                <th scope="row">Physical SIM</th>
+                <td>เครื่องไม่รองรับ eSIM หรืออยากได้พนักงานช่วย setup</td>
+                <td>มีคนช่วยติดตั้ง และแพ็กเบอร์เกาหลีอาจจัดการง่ายกว่า</td>
+                <td>ต้อง pickup/delivery และเครื่อง 1 SIM slot อาจต้องถอด SIM บ้าน</td>
+              </tr>
+              <tr>
+                <th scope="row">International roaming</th>
+                <td>เก็บเบอร์บ้านโดย setup น้อยสำคัญกว่าราคา</td>
+                <td>ไม่ต้องติดตั้ง SIM ใหม่ เบอร์เดิมยัง active</td>
+                <td>ราคาและ limit ขึ้นกับ carrier บ้านและอาจสูงกว่ามาก</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <figure class="esim-infographic">
+          <img src="../images/esim/esim-korea-quick-decision.webp" width="1536" height="600" alt="คู่มือตัดสินใจ eSIM เกาหลี เปรียบเทียบมือถือรองรับ eSIM, data-only, ความต้องการเบอร์เกาหลี, physical SIM และ roaming">
+          <figcaption>ใช้ flow นี้เป็นจุดเริ่ม แล้วเช็กบริการที่รวมและกฎ activation ของแพ็กก่อนซื้อ</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="esim-section esim-section--muted" aria-labelledby="data-use-title">
+      <div class="container">
+        <div class="esim-section__header">
+          <h2 id="data-use-title">คุณจะใช้ Data เท่าไรจริง?</h2>
+          <p>คำถามที่มีประโยชน์ไม่ใช่แพ็ก “ใหญ่” หรือ “เล็ก” แต่คือมือถือจะทำอะไรในวันปกติที่เกาหลี</p>
+        </div>
+        <div class="esim-editorial-list">
+          <article class="esim-editorial-row">
+            <h3>Maps, messaging และ translation</h3>
+            <div class="esim-editorial-row__body">
+              <p>Navigation ข้อความ web search และ translation ใช้ data เบากว่าการดู video ต่อเนื่องมาก หากนี่คือเหตุผลหลักที่ต้องมี mobile data แพ็กใหญ่มากอาจสำคัญน้อยกว่าการ activate ได้จริงและ validity ครอบคลุมทั้งทริป</p>
+            </div>
+          </article>
+          <article class="esim-editorial-row">
+            <h3>Social media, video call และ upload บ่อย</h3>
+            <div class="esim-editorial-row__body">
+              <p>Short video, photo upload และ video call ใช้ data เร็วกว่า คนที่โพสต์ตลอดวันควรดู high-speed data ที่รวม มากกว่าดูคำว่า “unlimited” อย่างเดียว</p>
+            </div>
+          </article>
+          <article class="esim-editorial-row">
+            <h3>Hotspot, streaming หรือ laptop</h3>
+            <div class="esim-editorial-row__body">
+              <p>การ tether laptop, stream video หรือแชร์ connection กับอีกคนเปลี่ยน data use ได้มาก เช็กว่า hotspot อนุญาตไหม และแพ็กลด speed หลังใช้ high-speed data เท่าไร</p>
+            </div>
+          </article>
+        </div>
+        <p class="esim-section-note">คำว่า “unlimited” ไม่ได้หมายถึง full-speed ไม่จำกัดเสมอ ก่อนซื้อให้เทียบ high-speed allowance, reduced-speed policy, hotspot rule และ validity</p>
+      </div>
+    </section>
+
+    <section class="esim-section" aria-labelledby="group-esim-title">
+      <div class="container">
+        <div class="esim-section__header">
+          <h2 id="group-esim-title">ทุกคนในกลุ่มต้องมี eSIM ไหม?</h2>
+          <p>ไม่เสมอ ถ้าสองคนอยู่ด้วยกันทั้งวันและแพ็กอนุญาต hotspot โทรศัพท์หนึ่งเครื่องอาจแชร์ connection ให้อีกเครื่องได้ ซึ่งอาจพอสำหรับทริปสั้นที่แทบไม่แยกกัน</p>
+          <p>ปัญหาเกิดเมื่อคนที่ถือเครื่อง connected เดินออกไป อีกคนอาจเสีย maps, translation, ride info และ messaging ในจังหวะที่ต้องใช้พอดี Hotspot ยังเพิ่ม battery drain และขึ้นกับแพ็กว่ารองรับ tethering หรือไม่</p>
+          <p>ถ้าคาดว่าจะแยกกัน ใช้แท็กซี่คนละเที่ยว หรืออยากมี navigation ของตัวเองตลอด การมี data connection แยกมักสบายกว่า นี่เป็นการตัดสินใจเรื่อง convenience ไม่ใช่กฎว่าทุกคนต้องซื้อแพ็กคนละอันเสมอ</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="esim-section esim-section--muted" aria-labelledby="recommended-esim-title">
+      <div class="container">
+        <div class="esim-section__header">
+          <h2 id="recommended-esim-title">พร้อมเปรียบเทียบแพ็ก eSIM จริงหรือยัง?</h2>
+          <p>ถ้า data eSIM เหมาะกับทริป ขั้นต่อไปคือเลือกแพ็ก ไม่ใช่เทคโนโลยี เทียบ high-speed data, validity, hotspot, activation timing และว่าจะเกิดอะไรเมื่อ installation ล้มเหลว</p>
+          <p>Korea Inside แยกเปรียบเทียบ travel eSIM หลักไว้ต่างหากเพื่อให้หน้านี้โฟกัส setup และการใช้งานจริง ใช้ <a href="/th/best-esim-for-korea.html">comparison guide</a> เมื่อพร้อมเทียบ Ubigi, Saily และ Airalo แบบ side by side</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="esim-section" aria-labelledby="korean-number-title">
+      <div class="container">
+        <div class="esim-section__header">
+          <h2 id="korean-number-title">คุณต้องมีเบอร์เกาหลีจริงไหม?</h2>
+          <p>สำหรับทริปสั้นจำนวนมาก อาจไม่ต้องมีเลย Maps, translation, messaging, web search และงานเดินทางทั่วไปจำนวนมากใช้แค่ mobile data จึงทำให้ data-only eSIM เพียงพอสำหรับนักท่องเที่ยวจำนวนมาก</p>
+          <p>เบอร์เกาหลีมีประโยชน์ขึ้นเมื่อคนในเกาหลีต้องติดต่อคุณโดยตรง เช่น โรงแรม คนขับ หรือ local service หรือเมื่อ reservation/service ต้องการ domestic contact number หรือ SMS จริง นี่เป็นคนละความต้องการกับการมีอินเทอร์เน็ต</p>
+          <p>มีข้อจำกัดสำคัญ: การมีเบอร์เกาหลีไม่ได้ทำให้ short-term visitor มี identity-verification access เหมือน resident โดยอัตโนมัติ เบอร์ local ช่วยเรื่องการติดต่อได้โดยไม่ unlock verification ทุกระบบ</p>
+        </div>
+        <div class="esim-editorial-list">
+          <article class="esim-editorial-row">
+            <h3>Korean eSIM และ SIM plans</h3>
+            <div class="esim-editorial-row__body">
+              <p>ใช้ตัวเลือกนี้เมื่อ local mobile service สำคัญกว่าการ setup ออนไลน์ที่เร็วที่สุด หากต้องการเบอร์เกาหลี calls หรือ SMS ให้<a href="/th/korea-esim-with-phone-number.html">เทียบ carrier eSIM ของ SK Telecom, KT และ LG U+</a> ในเรื่อง activation, calling, messaging และข้อจำกัด verification</p>
+              <ul class="esim-check-list">
+                <li>เช็ก passport verification และ activation timing</li>
+                <li>ยืนยัน calls, SMS และ Korean-number availability</li>
+                <li>เปรียบเทียบ airport pickup, store pickup และ online setup</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+        <p class="esim-section-note">ผลิตภัณฑ์ SIM/eSIM ของ telecom เกาหลีบางแบบอาจต้อง passport verification โดยเฉพาะเมื่อรวมเบอร์เกาหลี voice call หรือ SMS ก่อนซื้อให้เช็ก activation method, pickup method, passport requirement และ included services</p>
+      </div>
+    </section>
+
+    <section class="esim-section esim-section--muted" aria-labelledby="install-title">
+      <div class="container">
+        <div class="esim-section__header">
+          <h2 id="install-title">ติดตั้งและ Activate eSIM</h2>
+          <p>ใช้วิธีติดตั้งและ activation timing ของ provider เก็บข้อมูล setup ไว้จนกว่า connection จะทำงาน</p>
+        </div>
+        <div class="esim-editorial-list">
+          <article class="esim-editorial-row">
+            <h3>ติดตั้งกับเริ่มแพ็กไม่จำเป็นต้องเป็นเหตุการณ์เดียวกัน</h3>
+            <div class="esim-editorial-row__body">
+              <p>การเพิ่ม eSIM เข้าโทรศัพท์กับการเริ่มนับ validity ที่ชำระเงินแล้วไม่จำเป็นต้องเกิดพร้อมกัน Travel eSIM จำนวนมากติดตั้งก่อนเดินทางได้ ซึ่งดีเพราะยังมี Wi-Fi, QR code และคำแนะนำอยู่ตรงหน้า</p>
+              <p>รายละเอียดสำคัญคือแพ็กนั้นเริ่มนับ validity เมื่อไร บางแพ็กเริ่มเมื่อเชื่อม network ที่รองรับครั้งแรก ขณะที่บางแพ็กใช้กฎอื่น อ่าน activation instruction ก่อนติดตั้ง แทนการคิดว่า “installed” เท่ากับ “started”</p>
+              <p>เป้าหมายคือมาถึงเกาหลีโดย profile พร้อมในเครื่อง โดยไม่เผลอเริ่มแพ็กอายุสั้นก่อนเวลา</p>
+            </div>
+          </article>
+        </div>
+        <ol class="esim-numbered-list">
+          <li>
+            <span class="esim-step-label">Step 1</span>
+            <div><strong class="esim-step-title">เก็บข้อมูลติดตั้งให้พร้อม</strong><p>บันทึก QR code, manual activation detail และ provider instruction บาง eSIM ติดตั้งซ้ำด้วย QR เดิมไม่ได้หลังลบ</p></div>
+          </li>
+          <li>
+            <span class="esim-step-label">Step 2</span>
+            <div><strong class="esim-step-title">ทำตามวิธี Setup ของ Provider</strong><p>ติดตั้งผ่าน QR, app, counter หรือ staff setup ตามแพ็ก และทำ passport verification ถ้าผลิตภัณฑ์กำหนด</p></div>
+          </li>
+          <li>
+            <span class="esim-step-label">Step 3</span>
+            <div><strong class="esim-step-title">Activate ให้ถูกเวลา</strong><p>ทำตามกฎว่า activation เริ่มเมื่อไร หลัง activate ให้เลือก eSIM เป็น mobile-data line และเปิด data roaming ถ้า provider กำหนด</p></div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="esim-section esim-section--muted" aria-labelledby="landing-check-title">
+      <div class="container">
+        <div class="esim-section__header">
+          <h2 id="landing-check-title">5 นาทีแรกหลังลงเครื่อง</h2>
+          <p>ทำตอนยังมี airport Wi-Fi แก้ setup ก่อนออก terminal ง่ายกว่าถึงชานชาลารถไฟใต้ดินแล้วไม่มี data</p>
+        </div>
+        <ol class="esim-numbered-list">
+          <li>
+            <span class="esim-step-label">Step 1</span>
+            <div><strong class="esim-step-title">เช็กว่า eSIM line เปิดอยู่</strong><p>Profile อาจติดตั้งแล้วแต่ยังไม่ได้เปิดเป็น line ใช้งาน</p></div>
+          </li>
+          <li>
+            <span class="esim-step-label">Step 2</span>
+            <div><strong class="esim-step-title">ตั้ง Korea eSIM เป็น mobile-data line</strong><p>การติดตั้งไม่ได้รับประกันว่าโทรศัพท์กำลังใช้มันสำหรับ data</p></div>
+          </li>
+          <li>
+            <span class="esim-step-label">Step 3</span>
+            <div><strong class="esim-step-title">เปิด data roaming สำหรับ travel eSIM ถ้า provider กำหนด</strong><p>เป็น setting ที่พบบ่อยกับ international eSIM แต่ให้ทำตาม provider</p></div>
+          </li>
+          <li>
+            <span class="esim-step-label">Step 4</span>
+            <div><strong class="esim-step-title">เช็กว่า activation period เริ่มแล้ว</strong><p>Profile ถูกต้องอาจยังไม่มี service หากแพ็กยังไม่ active</p></div>
+          </li>
+          <li>
+            <span class="esim-step-label">Step 5</span>
+            <div><strong class="esim-step-title">เปิดหน้าเว็บหรือ map จริง</strong><p>อย่าเชื่อแค่ LTE หรือ 5G ใน status bar</p></div>
+          </li>
+          <li>
+            <span class="esim-step-label">Step 6</span>
+            <div><strong class="esim-step-title">เก็บ airport Wi-Fi ไว้จนพิสูจน์ว่า connection ใช้ได้</strong><p>ถ้ามีปัญหายังอ่าน instruction หรือติดต่อ support ได้</p></div>
+          </li>
+        </ol>
+        <p class="esim-section-note">ถ้าต้องรับข้อความจากบ้าน ให้ยืนยัน primary SIM ยังพร้อม ถ้าคาดหวัง calls หรือ SMS จาก travel plan ให้ยืนยันว่ารวมอยู่</p>
+      </div>
+    </section>
+
+    <section class="esim-section" aria-labelledby="troubleshooting-title">
+      <div class="container">
+        <div class="esim-section__header">
+          <h2 id="troubleshooting-title">eSIM ติดตั้งแล้ว แต่ยังไม่มี Data</h2>
+          <p>อย่าเริ่มด้วยการลบ eSIM การไม่มี data มักเป็น settings หรือ activation issue และ profile บางแบบติดตั้งซ้ำด้วย QR เดิมไม่ได้</p>
+        </div>
+        <ol class="esim-numbered-list">
+          <li><span class="esim-step-label">Step 1</span><div><strong class="esim-step-title"> เช็กว่า eSIM line เปิดอยู่</strong></div></li>
+          <li><span class="esim-step-label">Step 2</span><div><strong class="esim-step-title"> เช็กว่า mobile data กำลังใช้ eSIM ไม่ใช่ home line</strong></div></li>
+          <li><span class="esim-step-label">Step 3</span><div><strong class="esim-step-title"> เช็ก data roaming ถ้า provider กำหนด</strong></div></li>
+          <li><span class="esim-step-label">Step 4</span><div><strong class="esim-step-title"> เช็กว่าแพ็กถึง activation time/network แล้วหรือยัง</strong></div></li>
+          <li><span class="esim-step-label">Step 5</span><div><strong class="esim-step-title"> เปิด Airplane Mode ชั่วครู่แล้ว reconnect</strong></div></li>
+          <li><span class="esim-step-label">Step 6</span><div><strong class="esim-step-title"> Restart โทรศัพท์ถ้ายังไม่เจอ connection</strong></div></li>
+          <li><span class="esim-step-label">Step 7</span><div><strong class="esim-step-title"> ใช้ APN หรือ manual network instruction เฉพาะเมื่อ provider ระบุ</strong></div></li>
+          <li><span class="esim-step-label">Step 8</span><div><strong class="esim-step-title"> ติดต่อ provider ก่อนลบ eSIM profile</strong></div></li>
+        </ol>
+        <p class="esim-section-note">การลบ profile ควรเป็นขั้นสุดท้าย ไม่ใช่ troubleshooting แรก ถ้า provider ยืนยันว่า reissue หรือ reinstall ได้ จึงทำตาม instruction</p>
+      </div>
+    </section>
+
+    <section class="esim-section" aria-labelledby="problems-title">
+      <div class="container">
+        <div class="esim-section__header">
+          <h2 id="problems-title">ข้อผิดพลาด eSIM ที่พบบ่อย</h2>
+        </div>
+        <div class="esim-editorial-list">
+          <article class="esim-editorial-row">
+            <h3>สแกน QR ที่หมดอายุหรือใช้ไปแล้ว</h3>
+            <div class="esim-editorial-row__body"><p>QR อาจถูกใช้ หมดอายุ หรือ scan ไม่ผ่าน ก่อนลบ profile ที่มีอยู่ ให้หา manual activation detail หรือติดต่อ provider เพื่อไม่ให้ปัญหาเล็กกลายเป็น eSIM ที่ติดตั้งไม่ได้อีก</p></div>
+          </article>
+          <article class="esim-editorial-row">
+            <h3>เลือก Data Line ผิด</h3>
+            <div class="esim-editorial-row__body"><p>eSIM อาจติดตั้งสมบูรณ์แต่โทรศัพท์ยังพยายามใช้ line อื่นสำหรับ mobile data เช็ก line ที่เลือก travel eSIM เปิดอยู่หรือไม่ และ provider ต้องใช้ roaming หรือไม่ ก่อนสรุปว่า eSIM เสีย</p></div>
+          </article>
+          <article class="esim-editorial-row">
+            <h3>คาดหวัง calls หรือ SMS จาก Data-only Plan</h3>
+            <div class="esim-editorial-row__body"><p>Data-only eSIM ให้ internet ดีได้โดยไม่มีเบอร์เกาหลี voice call หรือ SMS ถ้าบริการเหล่านี้สำคัญ ให้เช็กก่อนซื้อ</p></div>
+          </article>
+          <article class="esim-editorial-row">
+            <h3>ซื้อทั้งที่โทรศัพท์ Carrier-locked</h3>
+            <div class="esim-editorial-row__body"><p>โทรศัพท์รองรับ eSIM ก็ยังปฏิเสธ mobile plan อื่นได้ถ้าล็อก carrier บ้าน เช็กก่อนซื้อ เพราะเปลี่ยน provider หลังลงเครื่องไม่แก้ carrier lock</p></div>
+          </article>
+          <article class="esim-editorial-row">
+            <h3>ลบ eSIM เพราะต่อไม่ได้</h3>
+            <div class="esim-editorial-row__body"><p>Connection problem เป็นเหตุผลที่แย่ในการลบ profile เป็นอย่างแรก เช็ก active line, roaming, activation timing และ provider instruction ก่อน เพราะ eSIM บางตัวติดตั้งซ้ำด้วย QR เดิมไม่ได้</p></div>
+          </article>
+        </div>
+        <p class="esim-warning"><strong>สำคัญ:</strong> มีเบอร์เกาหลีไม่ได้หมายความว่าจะทำ identity verification ของแอปเกาหลีได้เสมอ</p>
+      </div>
+    </section>
+
+    <section class="esim-section esim-section--muted" aria-labelledby="trip-over-title">
+      <div class="container">
+        <div class="esim-section__header">
+          <h2 id="trip-over-title">เมื่อทริปจบ</h2>
+          <p>เมื่อกลับบ้านและบริการมือถือเดิมใช้งานได้อีก ให้สลับ mobile data กลับ line ปกติและคืน settings ที่ใช้กับ home carrier</p>
+          <p>อย่ารีบลบ travel eSIM ขณะยัง transit หรือยังมีโอกาสต้องใช้ validity ที่เหลือ account info หรือ support history เมื่อทริปจบชัดเจนแล้ว ให้ทำตาม provider instruction เพื่อลบแพ็กที่ไม่ใช้</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="esim-section esim-section--muted" aria-labelledby="recommendation-title">
+      <div class="container">
+        <div class="esim-section__header">
+          <h2 id="recommendation-title">ควรเลือก Mobile Setup แบบไหนในเกาหลี?</h2>
+          <p>สำหรับ short-term visitor ส่วนใหญ่ที่มีโทรศัพท์ปลดล็อกและรองรับ eSIM เรื่องนี้ไม่ต้องซับซ้อน Data eSIM มักพอสำหรับ maps, messaging, translation และ browsing ส่วนแพ็กเบอร์เกาหลีคุ้มกับ setup เพิ่มเมื่อ local calls, SMS หรือ domestic contact number มีประโยชน์จริง</p>
+          <p>ไม่ว่าจะซื้ออะไร setup สำคัญพอๆ กับแพ็ก รู้ว่า validity เริ่มเมื่อไร ควบคุม home line ให้ดี ทดสอบ connection ก่อนออกสนามบิน และอย่าลบ eSIM เป็น troubleshooting แรก การเตรียมก่อนขึ้นเครื่องง่ายกว่าการแก้ mobile-data problem พร้อมกระเป๋าใน arrival hall</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="esim-section" aria-labelledby="faq-title">
+      <div class="container">
+        <div class="esim-section__header">
+          <h2 id="faq-title">คำถามที่พบบ่อย</h2>
+        </div>
+        <div class="esim-faq">
+          <details>
+            <summary>ใช้ eSIM ได้ทันทีหลังลงเครื่องที่เกาหลีไหม?</summary>
+            <p>ได้ในหลายกรณี แต่ timing ขึ้นอยู่กับแพ็ก โทรศัพท์ต้องรองรับ eSIM, profile ต้องติดตั้งแล้ว และ provider ต้องอนุญาต activation หลังมาถึง บางแพ็กยังต้องเปิด data roaming สำหรับ travel line</p>
+          </details>
+          <details>
+            <summary>ต้องทำ Passport Verification ไหม?</summary>
+            <p>ขึ้นอยู่กับผลิตภัณฑ์ SIM หรือ eSIM ของเกาหลีบางแพ็กขอ passport verification โดยเฉพาะเมื่อมีเบอร์เกาหลี voice call หรือ SMS เช็กก่อนซื้อเพื่อไม่ให้ activation ล่าช้า</p>
+          </details>
+          <details>
+            <summary>eSIM มีเบอร์เกาหลีได้ไหม?</summary>
+            <p>ได้ Korean eSIM บางแพ็กรวมเบอร์ แต่ international travel eSIM จำนวนมากเป็น data-only ถ้าต้องการ local calls หรือ SMS พร้อมเบอร์ ให้เช็กว่ารวมครบทั้งสามก่อนซื้อ</p>
+          </details>
+          <details>
+            <summary>เบอร์เกาหลีใช้ Verification แอปเกาหลีได้ทุกแอปไหม?</summary>
+            <p>ไม่ได้ เบอร์เกาหลีช่วยการติดต่อ แต่ไม่ได้ unlock identity-verification service ทุกระบบด้วยตัวเอง กฎแอปและวิธีที่ mobile line ถูกลงทะเบียนยังจำกัดสิ่งที่ short-term visitor ยืนยันได้</p>
+          </details>
+          <details>
+            <summary>Google Maps อย่างเดียวพอในเกาหลีไหม?</summary>
+            <p>Google Maps ยังมีประโยชน์ แต่ local map app มักให้ข้อมูลเดิน ขนส่ง ร้าน และที่อยู่ดีกว่าในเกาหลี การมี Naver Map หรือ KakaoMap พร้อมเป็นทางเลือกเมื่อ Google Maps ให้ detail ไม่พอ</p>
+          </details>
+          <details>
+            <summary>ควรซื้อก่อนเดินทางหรือที่สนามบิน?</summary>
+            <p>ซื้อก่อนเดินทางประหยัดเวลาเมื่อโทรศัพท์เข้ากันได้และคุณติดตั้งเองได้ Airport pickup มีประโยชน์กว่าเมื่ออยากให้ staff ช่วย ต้องใช้ physical SIM หรือเลือกแพ็กเบอร์เกาหลี</p>
+          </details>
+          <details>
+            <summary>เก็บเบอร์ WhatsApp หรือ LINE เดิมได้ไหม?</summary>
+            <p>ได้ WhatsApp และ LINE ปกติเก็บ account number ที่ลงทะเบียนไว้ การเปลี่ยน mobile-data line จึงไม่เปลี่ยน account โดยทั่วไป เก็บแอปไว้และให้โทรศัพท์มี data หรือ Wi-Fi</p>
+          </details>
+          <details>
+            <summary>ถ้าลบ eSIM จะเกิดอะไรขึ้น?</summary>
+            <p>การลบอาจถาวรสำหรับ eSIM บางตัว เพราะ QR เดิมอาจใช้ครั้งที่สองไม่ได้ ติดต่อ provider ก่อนและยืนยันว่า profile reissue/reinstall ได้หรือไม่ก่อนลบ</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="esim-section esim-section--muted" aria-labelledby="next-guides-title">
+      <div class="container">
+        <div class="esim-section__header">
+          <h2 id="next-guides-title">คู่มือเที่ยวเกาหลีที่เกี่ยวข้อง</h2>
+        </div>
+        <ul class="esim-related-links">
+          <li><a href="/th/best-esim-for-korea.html">Best eSIM for Korea</a><span>: เปรียบเทียบ Ubigi, Saily และ Airalo ก่อนเลือก data plan</span></li>
+          <li><a href="/th/korea-esim-with-phone-number.html">Korea eSIM with a phone number</a><span>: เปรียบเทียบ SK Telecom, KT และ LG U+ สำหรับเบอร์เกาหลี calls, SMS และ activation</span></li>
+          <li><a href="/th/airport.html">Korea Airport Arrival Guide</a><span>: ดูขั้นตอนหลังลงเครื่องและการ setup แรก</span></li>
+          <li><a href="/th/tmoney.html">How to Use T-money in Korea</a><span>: ทำความเข้าใจบัตรขนส่งสำหรับรถไฟใต้ดินและรถบัส</span></li>
+          <li><a href="/th/wowpass.html">How WOWPASS Works in Korea</a><span>: เปรียบเทียบบัตร payment และฟังก์ชันขนส่ง</span></li>
+          <li><a href="/th/maps.html">Best Map Apps for Korea Travel</a><span>: เลือกแอปแผนที่ที่ใช้งานได้ดีในเกาหลี</span></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+<footer class="footer footer--korea-editorial">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand-block">
+          <p class="footer__brand">Korea Inside</p>
+          <p class="footer__eyebrow">จัดทำในเกาหลี</p>
+          <p class="footer__statement">คู่มือเที่ยวเกาหลีที่ใช้งานได้จริง เขียนและตรวจทานในเกาหลีโดยบรรณาธิการชาวเกาหลี</p>
+          <p class="footer__description">อ้างอิงข้อมูลจากแหล่งทางการ บริบทในพื้นที่ และการตัดสินใจเชิงบรรณาธิการอย่างอิสระ</p>
+        </div>
+        <nav class="footer__nav" aria-label="เมนูส่วนท้าย">
+          <div class="footer__group">
+            <p class="footer__heading">วางแผนทริป</p>
+            <ul class="footer__links">
+              <li><a href="/th/airport.html">สนามบิน</a></li>
+              <li><a href="/th/esim.html">eSIM</a></li>
+              <li><a href="/th/checklist.html">เช็กลิสต์</a></li>
+            </ul>
+          </div>
+          <div class="footer__group">
+            <p class="footer__heading">สิ่งที่ต้องใช้ในเกาหลี</p>
+            <ul class="footer__links">
+              <li><a href="/th/tmoney.html">T-money</a></li>
+              <li><a href="/th/payments.html">การชำระเงิน</a></li>
+              <li><a href="/th/maps.html">แผนที่</a></li>
+              <li><a href="/th/apps.html">แอป</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <div class="footer__bottom">
+        <p>© 2026 Korea Inside · สาธารณรัฐเกาหลี</p>
+        <p class="footer__business">เลขทะเบียนธุรกิจ 462-39-01721 <span aria-hidden="true">·</span> ติดต่อ: <a href="mailto:getkoreainside@gmail.com">getkoreainside@gmail.com</a> <span aria-hidden="true">·</span> <a class="footer__legal-link" href="/affiliate-disclosure.html">การเปิดเผยข้อมูลพันธมิตร</a> <span aria-hidden="true">·</span> <a class="footer__legal-link" href="/privacy.html">นโยบายความเป็นส่วนตัว</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../common.js"></script>
+<script>
+  window.va = window.va || function () {
+    (window.vaq = window.vaq || []).push(arguments);
+  };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>
