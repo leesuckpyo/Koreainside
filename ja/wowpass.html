@@ -15,6 +15,18 @@
   <link rel="alternate" hreflang="th" href="https://www.getkoreainside.com/th/wowpass.html">
   <title>韓国でのWOWPASSの使い方 | 韓国旅行カードガイド</title>
   <link rel="stylesheet" href="../style.css">
+  <style id="wowpass-airport-kiosk-layout">
+    .wowpass-page .wowpass-airport-kiosks__grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+    @media (max-width: 900px) {
+      .wowpass-page .wowpass-airport-kiosks__grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -89,7 +101,7 @@
       "name": "仁川空港でWOWPASSを受け取れる？",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "現在の公式予約ページには、仁川空港第1ターミナル・第2ターミナルの両方でWOWPASSを受け取る方法が掲載されています。到着ゲートの横にセルフ機械があると思い込まず、現在の予約に記載された受取場所を利用してください。"
+        "text": "はい。現在の公式予約ページには第1・第2ターミナルのAirport CU Convenience Storesが掲載され、公式の機械検索にはCUやGS25など空港内コンビニに設置されたWOWPASS機も表示されています。Airport SKT Roaming CenterのWOWPASS + Tmoney + SIM Packageも別の選択肢です。正確な場所、受取方法、利用できる機能は、自分の予約内容と最新の機械検索で確認してください。"
       }
     },
     {
@@ -97,7 +109,7 @@
       "name": "WOWPASSカードはいくら？",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "2026年8月のこの確認時点で、仁川空港の公式予約ページには通常カード価格₩6,000、掲載されている事前予約価格₩5,500が表示されています。価格やキャンペーンは変更される可能性があります。"
+        "text": "2026年10月5日の確認時点で、公式予約ページには通常カード価格₩6,000、掲載されているカード単体の割引予約価格₩5,500が表示されています。価格やキャンペーンは変更される可能性があります。"
       }
     },
     {
@@ -253,13 +265,17 @@
 
         <section class="wowpass-editorial-section" aria-labelledby="wowpass-card-title">
           <h2 id="wowpass-card-title">WOWPASSカードを受け取る</h2>
-          <p>WOWPASSカードには現在、予約・発行の複数の方法があります。ただし、空港受け取りとWOWPASS機械での発行は別の仕組みとして考えたほうが分かりやすく、空港の受取場所すべてがセルフ発行機だと思わないでください。</p>
-          <p>2026年8月時点で、公式予約ページには仁川空港第1ターミナル・第2ターミナルでの受け取り方法が掲載されており、空港CUコンビニでの受け取りも含まれています。また、地下鉄駅、ホテル、コンビニなどの機械で、事前予約したカードを受け取る方法も案内されています。現在表示されている通常カード価格は₩6,000、掲載されている事前予約価格は₩5,500です。価格や受取方法は変更される可能性があるため、古いスクリーンショットやブログより最新の公式予約ページを優先してください。</p>
-          <p>カードを受け取った後、すぐ大きな金額を入れる必要はありません。まずWOWPASSアプリに登録し、どちらの残高へ入金するのか理解してから、使う予定の金額を追加してください。</p>
-          <p>カードを後で紛失した場合、このアプリ登録がさらに重要になります。</p>
-          <figure class="wowpass-editorial-figure">
-            <img src="../images/wowpass/wowpass-machine.png" alt="韓国でWOWPASSカードを発行・チャージするWOWPASS機械">
-            <figcaption>WOWPASSカードは現在の予約・発行方法で入手できますが、空港受け取りとWOWPASS機械での発行は別のものとして考え、すべての空港受取場所がセルフ発行機だと思わないほうが安全です。</figcaption>
+          <p>仁川空港では、予約に表示された実際の場所を確認することが重要です。空港内の一部コンビニにはWOWPASSのセルフサービス機が設置されているため、「空港受け取り」が必ずしも店員からカウンターでカードを受け取る方式とは限りません。</p>
+          <p>2026年10月5日時点で、WOWPASS公式予約ページには仁川空港第1・第2ターミナルのAirport CU Convenience Storesが掲載されています。公式の機械検索にも、CUやGS25など空港内のコンビニに設置されたWOWPASS機が表示されています。利用できる機能は場所によって異なり、下の3か所ではWOWPASSへのチャージはできますが、外貨両替と残高の現金引き出しには対応していません。</p>
+          <p>予約画面には、WOWPASS + Tmoney + SIM Packageを受け取るAirport SKT Roaming Centerと、地下鉄駅・ホテル・コンビニなどで受け取るMachine (Pre-booked)も別の選択肢として掲載されています。現在の公式ページでは通常カード価格が₩6,000、掲載されているカード単体の割引予約価格が₩5,500です。価格、キャンペーン、受取方法、機械の対応機能は変更される可能性があるため、出発前に自分の予約内容と最新の公式機械検索を確認してください。</p>
+          <p>カードを受け取ったら、大きな金額を入れる前にWOWPASSアプリへ登録してください。どちらの残高へ入金するのか確認してから、使う予定の金額を追加します。カードを紛失した場合にも、事前のアプリ登録が重要になります。</p>
+          <figure class="wowpass-editorial-figure wowpass-airport-kiosks">
+            <div class="wowpass-airport-kiosks__grid">
+              <img src="../images/wowpass/wowpass-incheon-airport-cu-t1-no1.png" alt="仁川空港 CU T1 1号店のWOWPASS機" width="1374" height="1145" loading="lazy" decoding="async">
+              <img src="../images/wowpass/wowpass-incheon-airport-gs25-t2-arrivals.png" alt="仁川空港 GS25 T2到着ロビーのWOWPASS機" width="1374" height="1145" loading="lazy" decoding="async">
+              <img src="../images/wowpass/wowpass-incheon-airport-cu-t2-no3.png" alt="仁川空港 CU T2 3号店のWOWPASS機" width="1374" height="1145" loading="lazy" decoding="async">
+            </div>
+            <figcaption>仁川空港にあるWOWPASS機の例です。利用できる機能は場所によって異なり、ここに示す3か所ではWOWPASSへのチャージはできますが、外貨両替と残高の現金引き出しには対応していません。現在の場所と利用可能な機能は公式の機械検索で確認してください。</figcaption>
           </figure>
         </section>
 
@@ -341,8 +357,8 @@
               <p>最も可能性が高いのは、内蔵T-moneyではなくWOWPASSの決済残高へ入金したケースです。2つは別です。アプリで交通残高を確認し、必要ならそちらへ追加してください。</p>
             </article>
             <article class="wowpass-problem-row">
-              <h3>「空港にWOWPASS機械があると思ったのに見つからない」</h3>
-              <p>空港受け取りとセルフ発行機での受け取りは、必ずしも同じ手続きではありません。現在の公式予約ページには特定の空港受取方法と、別の事前予約機械受け取りが掲載されています。古い機械の写真ではなく、自分の予約に記載された場所を使ってください。</p>
+              <h3>「予約には空港のコンビニが表示されている。店のカウンターでカードを受け取るの？」</h3>
+              <p>店員からカウンターで受け取る方式だと決めつけないでください。仁川空港内の一部コンビニにはWOWPASSのセルフサービス機があります。予約に付いている案内を確認し、最新の公式機械検索でも場所を確認してください。設置方法や利用できる機能は場所によって異なります。</p>
             </article>
             <article class="wowpass-problem-row">
               <h3>「外貨現金のチャージとアプリのチャージは同じだと思っていた」</h3>
@@ -395,8 +411,8 @@
             <details><summary>WOWPASSはオンラインショッピングでも使える？</summary><p>店頭でWOWPASSが使えたからといって、韓国のオンライン決済でも使えるとは考えないでください。公式利用案内で明確なのは店頭加盟店での決済です。韓国のオンライン決済で困った場合は、<a href="/ja/korean-online-payments-foreigners.html">Korea Insideのオンライン決済ガイド</a>を確認してください。</p></details>
             <details><summary>WOWPASSで外貨現金を両替できる？</summary><p>WOWPASSは現在、サービス上で16通貨の現金チャージに対応しています。対応する機械・通貨の現在のルールに従います。確定前に表示される両替後の金額を確認してください。</p></details>
             <details><summary>海外発行カードでWOWPASSをチャージできる？</summary><p>WOWPASSは現在、海外カードや電子ウォレットを使ったモバイルチャージを案内しており、公式サイトにはMastercard、JCB、PayPal経由のVisaなどが表示されています。大きな金額を入れる前に、アプリで現在の対応状況と手数料を確認してください。</p></details>
-            <details><summary>仁川空港でWOWPASSを受け取れる？</summary><p>現在の公式予約ページには、仁川空港第1ターミナル・第2ターミナルの両方でWOWPASSを受け取る方法が掲載されています。到着ゲートの横にセルフ機械があると思い込まず、現在の予約に記載された受取場所を利用してください。</p></details>
-            <details><summary>WOWPASSカードはいくら？</summary><p>2026年8月のこの確認時点で、仁川空港の公式予約ページには通常カード価格₩6,000、掲載されている事前予約価格₩5,500が表示されています。価格やキャンペーンは変更される可能性があります。</p></details>
+            <details><summary>仁川空港でWOWPASSを受け取れる？</summary><p>はい。現在の公式予約ページには第1・第2ターミナルのAirport CU Convenience Storesが掲載され、公式の機械検索にはCUやGS25など空港内コンビニに設置されたWOWPASS機も表示されています。Airport SKT Roaming CenterのWOWPASS + Tmoney + SIM Packageも別の選択肢です。正確な場所、受取方法、利用できる機能は、自分の予約内容と最新の機械検索で確認してください。</p></details>
+            <details><summary>WOWPASSカードはいくら？</summary><p>2026年10月5日の確認時点で、公式予約ページには通常カード価格₩6,000、掲載されているカード単体の割引予約価格₩5,500が表示されています。価格やキャンペーンは変更される可能性があります。</p></details>
             <details><summary>WOWPASSから韓国ウォンを引き出せる？</summary><p>はい。現在の公式サイトでは、WOWPASS機械からカード残高を韓国ウォンで引き出せ、1回あたり最大₩100,000、引き出し手数料₩1,000と案内しています。サービス条件は変わる可能性があるため、旅行前に現在のルールを再確認してください。</p></details>
             <details><summary>カードをなくしたらどうする？</summary><p>アプリに登録してある場合、WOWPASSは現在、カードを一時停止してWOWPASS残高を保護し、再発行する手続きを提供しています。別のT-money残高がどう扱われるかは、現在のサポート案内で確認してください。</p></details>
             <details><summary>短い旅行でもWOWPASSを使う価値はある？</summary><p>場合によりますが、旅行日数より支払い方のほうが重要です。決済、交通、両替機能をまとめて使いたいなら短期旅行でも役立つことがあります。バスと地下鉄だけ必要なら、通常のT-moneyカードのほうがシンプルです。</p></details>
@@ -411,7 +427,7 @@
             <li><a href="https://wowpass.io/en/product?location=ICN_T1">WOWPASS — 仁川空港第1ターミナル予約</a></li>
             <li><a href="https://wowpass.io/en/product?location=ICN_T2">WOWPASS — 仁川空港第2ターミナル予約</a></li>
           </ul>
-          <p class="wowpass-reviewed">最終確認：2026年8月</p>
+          <p class="wowpass-reviewed">最終確認：2026年10月5日</p>
           <p>レート、手数料、受取場所、対応する入金方法、サービスルールは変更されることがあります。お金や特定の機械に関わる事項では、古いスクリーンショットや旅行投稿より、現在のWOWPASSアプリまたは公式サイトを優先してください。</p>
         </section>
 

@@ -15,6 +15,18 @@
   <link rel="alternate" hreflang="th" href="https://www.getkoreainside.com/th/wowpass.html">
   <title>How to Use WOWPASS in Korea | Korea Travel Card Guide</title>
   <link rel="stylesheet" href="style.css">
+  <style id="wowpass-airport-kiosk-layout">
+    .wowpass-page .wowpass-airport-kiosks__grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+    @media (max-width: 900px) {
+      .wowpass-page .wowpass-airport-kiosks__grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -28,8 +40,8 @@
       {"@type":"Question","name":"Can I use WOWPASS for online shopping?","acceptedAnswer":{"@type":"Answer","text":"Do not assume that an offline WOWPASS payment automatically means a Korean online checkout will accept it. The official usage guidance is specifically clear about offline merchant payments. For Korean online-payment problems, see the separate Korea Inside online payments guide."}},
       {"@type":"Question","name":"Can I exchange foreign cash with WOWPASS?","acceptedAnswer":{"@type":"Answer","text":"WOWPASS currently supports cash top-up in 16 currencies through its service, subject to the current machine and currency rules. Check the exchange amount shown before confirming the transaction."}},
       {"@type":"Question","name":"Can I top up WOWPASS with an overseas card?","acceptedAnswer":{"@type":"Answer","text":"WOWPASS currently advertises mobile top-up using international cards and e-wallets, with Mastercard, JCB and Visa through PayPal shown on its official site. Current availability and fees should be checked in the app before loading a large amount."}},
-      {"@type":"Question","name":"Can I get WOWPASS at Incheon Airport?","acceptedAnswer":{"@type":"Answer","text":"Current official reservation pages show WOWPASS pickup options for both Incheon Airport Terminal 1 and Terminal 2. Use the pickup location attached to the current reservation rather than assuming there is a self-service machine beside your arrival gate."}},
-      {"@type":"Question","name":"How much does the WOWPASS card cost?","acceptedAnswer":{"@type":"Answer","text":"At the time of this August 2026 review, the official Incheon Airport reservation pages display ₩6,000 as the standard card price and ₩5,500 for the listed pre-booked option. Prices and promotions can change."}},
+      {"@type":"Question","name":"Can I get WOWPASS at Incheon Airport?","acceptedAnswer":{"@type":"Answer","text":"Yes. The current official reservation pages list Airport CU Convenience Stores at Incheon Airport Terminal 1 and Terminal 2, plus a separate Airport SKT Roaming Center option for a WOWPASS + Tmoney + SIM package. The reservation flow separately lists pre-booked machine collection at subway stations, hotels, convenience stores and other locations. Follow the collection method and terminal shown in your reservation."}},
+      {"@type":"Question","name":"How much does the WOWPASS card cost?","acceptedAnswer":{"@type":"Answer","text":"At the time of this October 5, 2026 review, the official reservation pages display ₩6,000 as the standard card price and ₩5,500 for the listed discounted reservation option. Prices and promotions can change."}},
       {"@type":"Question","name":"Can I withdraw Korean cash from WOWPASS?","acceptedAnswer":{"@type":"Answer","text":"Yes. The current official site says WOWPASS machines support KRW withdrawals from the card balance, currently up to ₩100,000 per withdrawal with a ₩1,000 withdrawal fee. Recheck the current rule before travel because service conditions can change."}},
       {"@type":"Question","name":"What should I do if I lose the card?","acceptedAnswer":{"@type":"Answer","text":"If the card is registered in the app, WOWPASS currently allows it to be paused to protect the WOWPASS balance and provides a replacement-card process. Check the separate T-money balance treatment with the current support instructions."}},
       {"@type":"Question","name":"Is WOWPASS worth it for a short trip?","acceptedAnswer":{"@type":"Answer","text":"It can be, but trip length is less important than how you plan to pay. If you want payment, transportation and exchange features together, it may be useful even on a short trip. If you only need buses and subways, a normal T-money card is simpler."}}
@@ -162,13 +174,19 @@
 
         <section class="wowpass-editorial-section" aria-labelledby="wowpass-card-title">
           <h2 id="wowpass-card-title">Getting a WOWPASS Card</h2>
-          <p>WOWPASS cards can be obtained through current reservation and issue options, but it is better to think of airport pickup and WOWPASS machine issuance as different things rather than assuming that every airport pickup point is a self-service machine.</p>
-          <p>As of August 2026, the official reservation pages show pickup options at both Incheon Airport Terminal 1 and Terminal 2, including airport CU convenience-store pickup. They also show pre-booked machine collection at subway stations, hotels, convenience stores and other locations. The official pages currently display a regular card price of ₩6,000 and a ₩5,500 pre-booked price for the listed options. These prices and pickup arrangements can change, so the current reservation page should take priority over an old screenshot or blog post.</p>
-          <p>The useful thing to do after receiving the card is not to load a large amount immediately. Register it in the WOWPASS app first, understand which balance you are funding, and then add what you expect to use.</p>
-          <p>That app registration becomes much more important if the card later disappears.</p>
-          <figure class="wowpass-editorial-figure">
-            <img src="images/wowpass/wowpass-machine.png" alt="WOWPASS machine for issuing and charging cards in Korea">
-            <figcaption>WOWPASS cards can be obtained through current reservation and issue options, but it is better to think of airport pickup and WOWPASS machine issuance as different things rather than assuming that every airport pickup point is a self-service machine.</figcaption>
+          <p>The important distinction is how you receive the card. Airport pickup and WOWPASS machine issuance are separate collection routes in the current official reservation flow.</p>
+          <p>Airport CU convenience-store pickup. At Incheon Airport Terminal 1 and Terminal 2, the current official reservation pages list Airport CU Convenience Stores as a card pickup option. Use the exact terminal and pickup point shown in your reservation.</p>
+          <p>Airport SKT Roaming Center package. The airport SKT Roaming Center option is listed separately as a WOWPASS + Tmoney + SIM Package. Treat this as a bundled SIM option, not as the standard card-only pickup route.</p>
+          <p>WOWPASS Machine (Pre-booked). The official reservation flow separately lists pre-booked machine collection at subway stations, hotels, convenience stores and other locations. Do not assume that choosing airport pickup means you should look for a WOWPASS self-service machine beside your arrival gate.</p>
+          <p>As of October 5, 2026, the official reservation pages show ₩6,000 as the standard card price and ₩5,500 for the listed discounted reservation option for the card-only CU pickup and machine routes. Prices, promotions and collection arrangements can change, so the current reservation page should take priority over an old screenshot or travel post.</p>
+          <p>After receiving the card, register it in the WOWPASS app before loading a large amount. Check which balance you are funding, then add what you expect to use. App registration also becomes important if the card is later lost.</p>
+          <figure class="wowpass-editorial-figure wowpass-airport-kiosks">
+            <div class="wowpass-airport-kiosks__grid">
+              <img src="images/wowpass/wowpass-incheon-airport-cu-t1-no1.png" alt="WOWPASS kiosk at Incheon Airport CU T1 No. 1" width="1374" height="1145" loading="lazy" decoding="async">
+              <img src="images/wowpass/wowpass-incheon-airport-gs25-t2-arrivals.png" alt="WOWPASS kiosk at Incheon Airport GS25 T2 Arrivals" width="1374" height="1145" loading="lazy" decoding="async">
+              <img src="images/wowpass/wowpass-incheon-airport-cu-t2-no3.png" alt="WOWPASS kiosk at Incheon Airport CU T2 No. 3" width="1374" height="1145" loading="lazy" decoding="async">
+            </div>
+            <figcaption>These are examples of WOWPASS kiosks at Incheon Airport. Kiosk functions vary by location; the three locations shown here support WOWPASS top-up but do not provide currency exchange or balance withdrawal. Check the official kiosk finder for the current location and available services.</figcaption>
           </figure>
         </section>
 
@@ -250,8 +268,8 @@
               <p>The most likely explanation is that you funded the WOWPASS payment balance, not the embedded T-money balance. They are separate. Look at the transportation balance in the app and add value to that side if necessary.</p>
             </article>
             <article class="wowpass-problem-row">
-              <h3>“I expected a WOWPASS machine at the airport but cannot find one.”</h3>
-              <p>Airport collection and self-service machine issuance are not always the same process. The current official reservation pages show specific airport pickup options as well as separate pre-booked machine collection. Use the location attached to your actual reservation instead of following an old kiosk photo.</p>
+              <h3>“I reserved airport pickup but expected a WOWPASS machine.”</h3>
+              <p>Airport pickup and machine issuance are separate collection routes. At Incheon Airport, the current reservation pages list CU convenience-store pickup and a separate SKT Roaming Center WOWPASS + Tmoney + SIM package, while pre-booked machine collection is listed separately for subway stations, hotels, convenience stores and other locations. Follow the collection method and terminal shown in your reservation.</p>
             </article>
             <article class="wowpass-problem-row">
               <h3>“I thought loading foreign cash and topping up in the app were the same thing.”</h3>
@@ -304,8 +322,8 @@
             <details><summary>Can I use WOWPASS for online shopping?</summary><p>Do not assume that an offline WOWPASS payment automatically means a Korean online checkout will accept it. The official usage guidance is specifically clear about offline merchant payments. For Korean online-payment problems, see the separate <a href="korean-online-payments-foreigners.html">Korea Inside online payments guide</a>.</p></details>
             <details><summary>Can I exchange foreign cash with WOWPASS?</summary><p>WOWPASS currently supports cash top-up in 16 currencies through its service, subject to the current machine and currency rules. Check the exchange amount shown before confirming the transaction.</p></details>
             <details><summary>Can I top up WOWPASS with an overseas card?</summary><p>WOWPASS currently advertises mobile top-up using international cards and e-wallets, with Mastercard, JCB and Visa through PayPal shown on its official site. Current availability and fees should be checked in the app before loading a large amount.</p></details>
-            <details><summary>Can I get WOWPASS at Incheon Airport?</summary><p>Current official reservation pages show WOWPASS pickup options for both Incheon Airport Terminal 1 and Terminal 2. Use the pickup location attached to the current reservation rather than assuming there is a self-service machine beside your arrival gate.</p></details>
-            <details><summary>How much does the WOWPASS card cost?</summary><p>At the time of this August 2026 review, the official Incheon Airport reservation pages display ₩6,000 as the standard card price and ₩5,500 for the listed pre-booked option. Prices and promotions can change.</p></details>
+            <details><summary>Can I get WOWPASS at Incheon Airport?</summary><p>Yes. The current official reservation pages list Airport CU Convenience Stores at Incheon Airport Terminal 1 and Terminal 2, plus a separate Airport SKT Roaming Center option for a WOWPASS + Tmoney + SIM package. The reservation flow separately lists pre-booked machine collection at subway stations, hotels, convenience stores and other locations. Follow the collection method and terminal shown in your reservation.</p></details>
+            <details><summary>How much does the WOWPASS card cost?</summary><p>At the time of this October 5, 2026 review, the official reservation pages display ₩6,000 as the standard card price and ₩5,500 for the listed discounted reservation option. Prices and promotions can change.</p></details>
             <details><summary>Can I withdraw Korean cash from WOWPASS?</summary><p>Yes. The current official site says WOWPASS machines support KRW withdrawals from the card balance, currently up to ₩100,000 per withdrawal with a ₩1,000 withdrawal fee. Recheck the current rule before travel because service conditions can change.</p></details>
             <details><summary>What should I do if I lose the card?</summary><p>If the card is registered in the app, WOWPASS currently allows it to be paused to protect the WOWPASS balance and provides a replacement-card process. Check the separate T-money balance treatment with the current support instructions.</p></details>
             <details><summary>Is WOWPASS worth it for a short trip?</summary><p>It can be, but trip length is less important than how you plan to pay. If you want payment, transportation and exchange features together, it may be useful even on a short trip. If you only need buses and subways, a normal T-money card is simpler.</p></details>
@@ -320,7 +338,7 @@
             <li><a href="https://wowpass.io/en/product?location=ICN_T1">WOWPASS — Incheon Airport Terminal 1 reservation</a></li>
             <li><a href="https://wowpass.io/en/product?location=ICN_T2">WOWPASS — Incheon Airport Terminal 2 reservation</a></li>
           </ul>
-          <p class="wowpass-reviewed">Last reviewed: August 2026</p>
+          <p class="wowpass-reviewed">Last reviewed: October 5, 2026</p>
           <p>Rates, fees, pickup locations, supported funding methods and service rules can change. For anything involving money or a specific machine, the current WOWPASS app or official site should take priority over an older screenshot or travel post.</p>
         </section>
 
