@@ -18,7 +18,9 @@
           ? { open: 'Menü öffnen', close: 'Menü schließen' }
           : language === 'th'
             ? { open: 'เปิดเมนู', close: 'ปิดเมนู' }
-            : { open: 'Open menu', close: 'Close menu' };
+            : language === 'id'
+              ? { open: 'Buka menu', close: 'Tutup menu' }
+              : { open: 'Open menu', close: 'Close menu' };
 
   if (document.documentElement.dataset.commonNavigationInitialized === 'true') return;
   document.documentElement.dataset.commonNavigationInitialized = 'true';
@@ -170,7 +172,7 @@
 
   const initializeLanguageSwitchers = () => {
     const language = normalizeLanguage(document.documentElement.lang);
-    if (language !== 'en' && language !== 'es' && language !== 'ja' && language !== 'zh-TW' && language !== 'fr' && language !== 'de' && language !== 'th') return;
+    if (language !== 'en' && language !== 'es' && language !== 'ja' && language !== 'zh-TW' && language !== 'fr' && language !== 'de' && language !== 'th' && language !== 'id') return;
 
     const languages = {
       en: { label: 'English' },
@@ -179,7 +181,8 @@
       es: { label: 'Español' },
       ja: { label: '日本語' },
       'zh-TW': { label: '繁中' },
-      th: { label: 'ไทย' }
+      th: { label: 'ไทย' },
+      id: { label: 'Bahasa Indonesia' }
     };
     const isLocalDev = ['localhost', '127.0.0.1', '[::1]']
       .includes(window.location.hostname);
@@ -287,6 +290,13 @@
         const currentLabel = button.querySelector('.language-switcher__label');
         if (currentCode) currentCode.textContent = 'TH';
         if (currentLabel) currentLabel.textContent = languages.th.label;
+      }
+
+      if (language === 'id') {
+        const currentCode = button.querySelector('.language-switcher__current');
+        const currentLabel = button.querySelector('.language-switcher__label');
+        if (currentCode) currentCode.textContent = 'ID';
+        if (currentLabel) currentLabel.textContent = languages.id.label;
       }
 
       const options = Object.keys(languages).filter((optionLanguage) => (
