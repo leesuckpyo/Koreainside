@@ -25830,3 +25830,131 @@ body.stay-cluster.stay-decision-page main .stay-decision-section > .container > 
     text-align: left;
   }
 }
+
+/* ── Global white content surfaces ── */
+
+body,
+body main,
+body[class],
+body[class] main,
+body[class] main[class],
+body[data-section] main {
+  background: #FFFFFF;
+}
+
+/* Keep photo heroes, maps, infographics, state messaging, and branded action areas intact. */
+body main > :is(section, div)[class]:not(.hero-banner):not(.accommodation-hero):not(.kb-reorder):not([class*="cta"]):not([class*="affiliate"]):not([class*="booking"]):not([class*="map"]):not([class*="infographic"]):not([class*="image"]):not([class*="media"]):not([class*="photo"]):not([class*="visual"]):not([class*="active"]):not([class*="selected"]):not([class*="status"]):not([class*="warning"]):not([class*="safety"]) {
+  background: #FFFFFF;
+}
+
+body main :is(article, aside, div, li)[class*="card"]:not(.exp-card):not([class*="cta"]):not([class*="affiliate"]):not([class*="ota"]):not([class*="booking"]):not([class*="store-card"]):not([class*="card--guide"]):not([class*="active"]):not([class*="selected"]):not([class*="status"]):not([class*="warning"]):not([class*="error"]):not([class*="success"]):not([class*="media"]):not([class*="image"]):not([class*="map"]):not([class*="infographic"]):not([class*="icon"]):not([class*="badge"]),
+body main :is(article, aside, div, section)[class*="panel"]:not(.stay-panel):not([class*="cta"]):not([class*="affiliate"]):not([class*="status"]):not([class*="warning"]):not([class*="error"]):not([class*="success"]):not([class*="media"]):not([class*="map"]):not([class*="infographic"]),
+body main :is(article, aside, div, section, ul)[class*="answer"]:not([class*="cta"]):not([class*="status"]):not([class*="warning"]),
+body main :is(article, aside, div, section)[class*="guide"]:not([class*="button"]):not([class*="link"]):not([class*="cta"]):not([class*="media"]):not([class*="image"]),
+body main :is(article, aside, div, section)[class*="summary"]:not([class*="status"]):not([class*="warning"]):not([class*="error"]):not([class*="success"]),
+body main :is(div, section)[class*="table-wrap"]:not([class*="status"]):not([class*="warning"]):not([class*="error"]):not([class*="success"]),
+body main :is(div, section)[class*="comparison"]:not([class*="status"]):not([class*="warning"]):not([class*="error"]):not([class*="success"]):not([class*="map"]):not([class*="image"]):not([class*="visual"]),
+body main :is(aside, div, p, section)[class*="source-note"]:not([class*="warning"]):not([class*="error"]),
+body main :is([class*="section--cream"], [class*="section--gray"], [class*="section--soft"], [class*="section--muted"], [class*="section--quick"], [class*="chapter--cream"], [class*="chapter--light"]) {
+  background: #FFFFFF;
+}
+
+body main [class*="faq"]:not([class*="status"]):not([class*="warning"]):not([class*="error"]):not([class*="success"]) details,
+body main [class*="faq"]:not([class*="status"]):not([class*="warning"]):not([class*="error"]):not([class*="success"]) details[open],
+body main [class*="faq"]:not([class*="status"]):not([class*="warning"]):not([class*="error"]):not([class*="success"]) summary,
+body main [class*="faq"]:not([class*="status"]):not([class*="warning"]):not([class*="error"]):not([class*="success"])[class*="list"] {
+  background: #FFFFFF;
+}
+
+body main table:not([class*="status"]):not([class*="warning"]):not([class*="error"]):not([class*="success"]),
+body main table:not([class*="status"]):not([class*="warning"]):not([class*="error"]):not([class*="success"]) :is(caption, thead, tbody, tr, th, td) {
+  background: #FFFFFF;
+}
+
+body main table:not([class*="status"]):not([class*="warning"]):not([class*="error"]):not([class*="success"]) :is(caption, th, td) {
+  color: inherit;
+}
+
+/* Established content patterns that are not expressed as generic cards. */
+.home-discover .home-taste-feature,
+.home-features,
+.home-prep-section,
+.arrival-page main .arrival-checklist li,
+.airport-transfer-page main .transfer-decision-flow li,
+.airport-transfer-page main .transfer-burden-flow article,
+.airport-transfer-page main .transfer-night-ladder li,
+.arex-page main .transfer-fast-choice > div,
+.budget-stay-page main .budget-place-list li,
+.taste-korea-page .taste-content,
+.taste-korea-page .taste-content header,
+.taste-korea-page .taste-content .detail-compare > div,
+.taste-korea-page .taste-content .decision-grid section,
+.taste-korea-page .taste-content .detail-line,
+.taste-korea-page .taste-content .city-base-table > div,
+.taste-korea-page .taste-content .quick-choice > div,
+.arrival-page main .arrival-service-notice,
+body.k-beauty-page main .kb-detail dl div,
+body.k-beauty-page main .kb-area__body dl div,
+body.k-beauty-page main .kb-store-choice,
+body.k-beauty-page main .kb-areas,
+body.k-beauty-page main .kb-decisions,
+body.k-beauty-page main .kb-stay__panel {
+  background: #FFFFFF;
+}
+
+/* These families load page-level or separate CSS after style.css. */
+html body.airport-access-stay-page main,
+html body.airport-access-stay-page main .airport-page-hero,
+html body.airport-access-stay-page main .airport-section--cream,
+html body.airport-access-stay-page main table :is(th, td),
+html body.airport-access-stay-page main table tbody tr:nth-child(even) > *,
+body.arrival-page main .arrival-hero,
+body.arrival-page main .arrival-section--soft,
+body.arrival-page main .arrival-section--terminal,
+body.k-beauty-page main .kb-hero,
+body.k-beauty-page main .kb-detail--text,
+body.k-beauty-page main .kb-decision,
+body.k-beauty-page main .kb-table-wrap,
+body.k-beauty-page main .kb-table-wrap thead th {
+  background: #FFFFFF;
+}
+
+html body.airport-access-stay-page main table thead th,
+body.k-beauty-page main .kb-table-wrap thead th {
+  color: inherit;
+}
+
+/* Preserve readable text where dark Quick Answer surfaces become white. */
+.arex-page main .transfer-hero-answer {
+  color: #1D2B27;
+}
+
+.arex-page main .transfer-hero-answer p {
+  color: #514C43;
+}
+
+.arex-page main .transfer-hero-answer a,
+.arex-page main .transfer-hero-answer a:visited {
+  color: #3F5D52;
+}
+
+.checklist-answer {
+  color: var(--checklist-copy);
+}
+
+.checklist-answer__label {
+  color: var(--checklist-muted);
+}
+
+.checklist-answer h2 {
+  color: var(--checklist-ink);
+}
+
+.checklist-answer > p:not(.checklist-answer__label),
+.checklist-answer li {
+  color: var(--checklist-copy);
+}
+
+.checklist-answer li::before {
+  color: var(--checklist-accent);
+}
