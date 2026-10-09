@@ -35,3 +35,6 @@ $RECYCLE.BIN/
 .stylelintcache
 *.swp
 *.swo
+
+# Private documentation workspace
+/md/
