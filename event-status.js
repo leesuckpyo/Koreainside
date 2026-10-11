@@ -17,6 +17,11 @@
     'HAPPENING NOW': 'กำลังจัดอยู่',
     ENDED: 'สิ้นสุดแล้ว'
   };
+  const FRENCH_STATUS_LABELS = {
+    UPCOMING: 'À VENIR',
+    'HAPPENING NOW': 'EN COURS',
+    ENDED: 'TERMINÉ'
+  };
 
   function isDate(value) {
     if (typeof value !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
@@ -93,7 +98,9 @@
             ? SPANISH_STATUS_LABELS[status]
             : document.documentElement.lang === 'th'
               ? THAI_STATUS_LABELS[status]
-              : status;
+              : document.documentElement.lang === 'fr'
+                ? FRENCH_STATUS_LABELS[status]
+                : status;
         }
         // Keep an open page current at the next KST date boundary (UTC+09:00).
         const midnight = Date.parse(`${today}T00:00:00+09:00`) + 86400000;
