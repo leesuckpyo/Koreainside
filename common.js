@@ -1,7 +1,9 @@
 (function () {
   const normalizeLanguage = (value) => {
     const language = value.toLowerCase();
-    return language === 'zh-tw' ? 'zh-TW' : language.split('-')[0];
+    if (language === 'zh-tw') return 'zh-TW';
+    if (language === 'es-mx') return 'es-MX';
+    return language.split('-')[0];
   };
   const initializeCommonNavigation = () => {
   const headers = document.querySelectorAll('[data-common-header]');
@@ -172,13 +174,14 @@
 
   const initializeLanguageSwitchers = () => {
     const language = normalizeLanguage(document.documentElement.lang);
-    if (language !== 'en' && language !== 'es' && language !== 'ja' && language !== 'zh-TW' && language !== 'fr' && language !== 'de' && language !== 'th' && language !== 'id') return;
+    if (language !== 'en' && language !== 'es' && language !== 'es-MX' && language !== 'ja' && language !== 'zh-TW' && language !== 'fr' && language !== 'de' && language !== 'th' && language !== 'id') return;
 
     const languages = {
       en: { label: 'English' },
       fr: { label: 'Français' },
       de: { label: 'Deutsch' },
       es: { label: 'Español' },
+      'es-MX': { label: 'Español (México)' },
       ja: { label: '日本語' },
       'zh-TW': { label: '繁中' },
       th: { label: 'ไทย' },
@@ -283,6 +286,11 @@
         const currentLabel = button.querySelector('.language-switcher__label');
         if (currentCode) currentCode.textContent = 'DE';
         if (currentLabel) currentLabel.textContent = languages.de.label;
+      }
+
+      if (language === 'es-MX') {
+        const currentLabel = button.querySelector('.language-switcher__label');
+        if (currentLabel) currentLabel.textContent = languages['es-MX'].label;
       }
 
       if (language === 'th') {
@@ -426,16 +434,19 @@
   };
 
   const initializeWebAppInstall = () => {
-    const language = document.documentElement.lang.toLowerCase().split('-')[0];
-    const isSpanish = language === 'es';
+    const language = normalizeLanguage(document.documentElement.lang);
+    const isMexicanSpanish = language === 'es-MX';
+    const isSpanish = language === 'es' || isMexicanSpanish;
     const isJapanese = language === 'ja';
     const isFrench = language === 'fr';
     const isGerman = language === 'de';
-    const manifestHref = isJapanese
-      ? '/ja/manifest.webmanifest'
-      : isSpanish
-        ? '/es/manifest.webmanifest'
-        : '/manifest.webmanifest';
+    const manifestHref = isMexicanSpanish
+      ? '/es-mx/manifest.webmanifest'
+      : isJapanese
+        ? '/ja/manifest.webmanifest'
+        : isSpanish
+          ? '/es/manifest.webmanifest'
+          : '/manifest.webmanifest';
     const existingManifest = document.querySelector('link[rel~="manifest"]');
 
     if (!existingManifest) {
