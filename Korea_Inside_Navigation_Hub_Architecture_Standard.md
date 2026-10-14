@@ -2,9 +2,10 @@
 
 **File:** `Korea_Inside_Navigation_Hub_Architecture_Standard.md`  
 **Status:** ACTIVE / APPROVED STRUCTURE  
-**Version:** 1.0  
-**Effective date:** 2026-09-21  
-**Higher standard:** `Korea_Inside_Public_Content_Master_Standard.md` Version 1.3  
+**Version:** 1.1  
+**Effective date:** 2026-09-26  
+**Supersedes:** Version 1.0  
+**Higher standard:** latest ACTIVE `Korea_Inside_Public_Content_Master_Standard.md`  
 
 > 이 문서는 Korea Inside의 글로벌 메뉴와 지역별 Hub 구조를 장기적으로 확장하기 위한 정보구조 표준이다.
 >
@@ -479,8 +480,16 @@ Stay
 # 16. 문서 관리 원칙
 
 - 이 문서는 글로벌 Navigation / Regional Hub 정보구조의 Source of Truth다.
-- 상위 기준은 `Korea_Inside_Public_Content_Master_Standard.md` Version 1.3이다.
+- 상위 기준은 최신 ACTIVE `Korea_Inside_Public_Content_Master_Standard.md`다. 특정 Master Version을 이 문서에 고정하지 않는다.
 - 두 문서가 충돌하면 Master Standard를 우선한다.
 - 실제 지역별 페이지 완료 상태는 이 문서에 하드코딩하지 않는다.
 - 신규 지역이 추가되어도 기본 원칙은 바꾸지 않고 Regional Hub 항목만 확장한다.
 - 메뉴 구조를 변경할 때는 사용자 승인 후 이 문서의 Version을 갱신한다.
+
+---
+
+# 17. Version 1.1 변경기록
+
+- 상위 Public Content Master 참조를 특정 Version 1.3 고정값에서 **latest ACTIVE Master** 기준으로 변경했다.
+- Master Standard가 상향될 때 Navigation Standard가 과거 Master Version을 계속 가리키는 drift를 방지한다.
+- 정보구조 원칙 자체는 Version 1.0에서 변경하지 않았다.
