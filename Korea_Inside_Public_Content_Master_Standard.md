@@ -2,9 +2,9 @@
 
 **File:** `Korea_Inside_Public_Content_Master_Standard.md`  
 **Status:** ACTIVE / MASTER STANDARD  
-**Version:** 1.3
-**Effective date:** 2026-09-20
-**Supersedes:** Version 1.2
+**Version:** 1.5  
+**Effective date:** 2026-10-14  
+**Supersedes:** Version 1.4  
 
 > 이 문서는 Korea Inside의 모든 공개 콘텐츠 페이지에 적용하는 최상위 표준이다.
 >
@@ -41,6 +41,24 @@
 > **표준 = 동일한 목차가 아니다.**
 >
 > **표준 = 같은 판단 원칙으로 각 페이지에 맞는 구조를 선택하는 것이다.**
+
+## 0.1 기준문서 체계와 Codex 사전 확인 의무 — Version 1.5 추가
+
+Korea Inside의 Codex 작업은 **최신 승인 기준을 실제로 확인하고, 사용자 승인 범위만 정확히 구현하는 것**을 출발점으로 한다. 문서 확인은 변경 권한을 통제하기 위한 절차이지, 버전이나 파일을 찾는 일 자체가 작업 목적은 아니다.
+
+작업 전 우선 확인 대상:
+
+1. **이 Public Content Master** — 공개 콘텐츠 정책, Humanization, 잠금, 수정 권한과 보호 범위의 최상위 기준.
+2. **`Korea_Inside_Navigation_Hub_Architecture_Standard.md`** — 글로벌 내비게이션·Hub·내부링크 구조 보호 기준.
+3. **실제 해당 작업에 적용되는 Production Playbook / Specialized Standard / Active Family Design Standard** — 제작·QA·디자인 세부 기준. Travel Guide 작업에는 `Korea_Inside_Travel_Guide_Production_Playbook.md` 적용.
+4. **영문 SEO·SERP 작업에는 승인된 `docs/seo-standard.md`** — 58개 영문 페이지의 검색의도, 경쟁 분석, 기술 SEO와 성과 측정 전문 기준.
+5. **최신 유효 Handover 및 해당 페이지의 승인본·현재 Source / Production** — 현재 상태와 승인된 변경 위치 확인.
+
+Codex는 문서명만 나열하지 않고 적용 문서의 **실제 본문, Status, Version 및 우선순위**를 확인한다. 저장소의 구버전을 최신 승인본으로 가장하거나, 현재 작업방의 첨부파일이 Codex의 로컬 PC에도 자동 저장되어 있다고 가정하지 않는다. 기준문서의 최신 승인 원본이 Codex 작업환경에 없으면 필요한 **정확한 문서**만 요청하고, 승인 없이 구버전으로 대체하거나 저장소의 정책문서를 갱신하지 않는다.
+
+동일 작업방·실행환경에서 이미 확인한 기준문서가 변경되지 않았다면 불필요하게 반복해서 읽지 않는다. 새 방·버전 변경·문서 충돌·새 Specialized Standard 적용 시에는 해당 기준을 다시 확인한다. 관계없는 다른 Family의 문서를 예방적으로 모두 읽도록 강제하지 않는다.
+
+**기준문서 확인은 사용자 승인 또는 파일 수정·배포 권한을 자동으로 부여하지 않는다.** 실제 수정 가능 범위는 현재 사용자 지시와 승인된 Public Copy·기술 변경 명세에 한정한다.
 
 ---
 
@@ -1165,9 +1183,34 @@ Korea Inside는 OTA의 재고·결제 기능을 흉내 내지 않는다.
 
 **예외조항:** 실제 비교 가치가 큰 페이지에서는 표를 사용한다. 단지 예쁘게 보이기 위해 표를 만들지 않는다.
 
+## 15.1 승인된 디자인 보호 및 Codex 변경 권한 — Version 1.5 추가
+
+Codex는 사용자에게 승인받지 않은 디자인 변경을 하지 않는다. 기존 디자인이 낡아 보이거나 새로운 배치가 더 좋아 보인다는 이유도 변경 근거가 아니다.
+
+- HTML 구조, 이미지 순서·위치·크기·정렬·Crop, Grid/Flex, 반응형 Breakpoint, 여백, 글꼴, 색상, 버튼·카드·컴포넌트는 **해당 변경을 사용자가 구체적으로 승인한 경우에만** 수정한다.
+- 현재 승인된 **숙소 허브의 지역별 사진 좌·우 교차 배치**는 유지한다. 승인 없이 원래 배치로 되돌리거나 추가로 재설계하지 않는다.
+- `style.css`, `common.js`, 공통 Header / Navigation / Footer 및 모바일 햄버거는 **별도 명시 승인 없는 수정 금지**를 유지한다.
+- SEO·링크·문구 작업에서 승인 범위 밖의 CSS·DOM 구조·이미지 배치가 달라지면 구현을 중지하고 차이를 보고한다.
+- 정적 QA의 Diff 확인과 실제 Desktop/Mobile 시각 QA는 서로 다르다. 브라우저 검증을 하지 못하면 `VISUAL QA NOT VERIFIED`로 보고하며 수행하지 않은 QA를 PASS로 표시하지 않는다.
+
+이 조항은 디자인 개선 자체를 금지하는 것이 아니라, **승인되지 않은 임의 개선을 금지**한다.
+
 ---
 
 # 16. SEO 표준
+
+## 16.0 영문 58페이지 SEO + SERP 전문 기준 — Version 1.5 추가
+
+사용자가 정식 적용을 승인한 **`seo-standard.md` Version 1.0 (2026-10-13)**을 Korea Inside 영문 58페이지의 SEO + SERP **전문 기준**으로 적용한다. 정식 저장소 경로는 `docs/seo-standard.md`이며, 저장소에 남아 있는 무버전 구본과 사용자가 승인한 Version 1.0을 혼동하지 않는다. 최신 원본이 아직 저장소에 반영되지 않았다면 적용 여부와 파일 접근 상태를 구분 보고하고, 승인 없는 문서 교체를 하지 않는다.
+
+- 미국 Google 영어권 SERP를 기준으로 검색의도, 실제 경쟁 콘텐츠, 기술 SEO와 내부링크를 페이지별로 분석한다. 검증하지 않은 Google 순위를 추정하지 않는다 (`SERP RANK NOT VERIFIED`).
+- 기본 벤치마크는 KoreaToDo, Travel Lemming, The Invisible Tourist, The Soul of Seoul이며 **실제 SERP의 관련 경쟁 페이지를 별도로 확인**한다.
+- 동일한 **조사·판단·승인·QA·측정 절차**를 58페이지에 적용하되, 같은 목차·문구·분량·호텔 수·이미지 수를 강제하지 않는다.
+- 기존 Humanization, Accommodation Decision Layer, DONE LOCKED / CONTENT LOCKED, 사용자의 승인문구·제휴 Tracking·디자인을 보호한다. 필요한 개선만 제안하고 기계적인 재작성이나 경쟁사 모방을 금지한다.
+- 성과는 Google Search Console의 노출수, 클릭수, CTR, 평균 게재순위 등 **실측값**으로 검증하며 SEO 개선만으로 즉시 순위 상승을 확정하지 않는다.
+- **ChatGPT**는 SERP·사실 조사와 공개문구·추천 판단, **사용자**는 최종 승인, **Codex**는 승인된 내용의 기술 구현·QA·Git·Production만 담당한다.
+
+세부 SEO 규칙·증거 수준·예외는 최신 승인 `docs/seo-standard.md`를 적용한다. 본 Master가 최상위 정책이라는 지위는 변경되지 않는다.
 
 ## 16.1 공격적 SEO 목표 — 핵심 검색어 1위를 목표로 한다
 
@@ -1265,6 +1308,10 @@ Korea Inside는 경쟁이 약한 변방 키워드만 골라 Top 10 진입에 만
 - 사용자의 명시적 승인 없이 공통 header/navigation/footer/common.js/mobile hamburger를 변경하지 않는다.
 - DONE LOCKED를 임의로 해제하지 않는다.
 - 공개 문구를 Codex가 자체적으로 새로 쓰지 않는다.
+- Codex가 승인 범위 외 파일·문구·SEO 판단·디자인·컴포넌트를 임의로 변경하지 않는다.
+- 승인된 숙소 허브 사진 좌·우 교차 배치를 임의로 변경하거나 복원하지 않는다.
+- 사용자 기존 Working Tree·미커밋 파일·다른 Worktree·Approved Copy·Affiliate URL/Tracking을 범위 밖에서 변경·정리·삭제하지 않는다.
+- `git add .`, `git add -A`, `git restore`, `git reset`, `git clean`, `git stash`, Force Push를 사용자 보호조치의 대체 수단으로 사용하지 않는다.
 
 ---
 
@@ -1285,6 +1332,19 @@ Korea Inside는 경쟁이 약한 변방 키워드만 골라 Top 10 진입에 만
 13. 화면 QA
 14. 사용자 승인
 15. commit / push / Production
+
+## 20.1 이미 승인된 부분 변경·SEO Release의 실행 절차 — Version 1.5 추가
+
+제20장의 신규 지역 개발 절차와 별개로, **이미 승인된 기존 페이지의 한정된 수정**에는 다음 원칙을 적용한다.
+
+1. Codex는 현재 작업에 직접 적용되는 Master / Navigation / Specialized·SEO Standard 및 최신 상태를 확인한다.
+2. 승인된 변경 파일·정확한 문구·삽입 위치·금지 파일·기존 디자인과 Working Tree 보호 범위를 확인한다.
+3. 최신 Source와 승인지점의 차이(Source Drift)를 확인하고, 승인 범위의 **Exact Implementation**만 수행한다.
+4. 정적 QA와 Staged Diff QA에서 승인 범위 밖 변경이 0건임을 확인한다. 시각 QA 미실시는 명시한다.
+5. 사용자가 **동일 작업의 Commit·Push·Production까지 명시 승인한 경우**, 중복 승인 질문 없이 해당 승인 범위에서 Git과 Production QA까지 진행한다. 배포 승인이 없거나 금지한 경우에는 그 범위를 넘지 않는다.
+6. Production에서는 Commit SHA, 공개 HTTP, 실제 HTML과 승인변경의 일치를 검증한다. Source Drift·보호파일 충돌·승인 외 Diff가 있으면 STOP하고 독자 수정하지 않는다.
+
+Codex는 승인된 페이지 다음 차수의 조사·수정·배포를 임의 시작하지 않는다. SEO Standard나 Handover의 존재만으로 작업·배포 승인이 발생하지 않는다.
 
 ---
 
@@ -1523,49 +1583,64 @@ SEO 경쟁 목표:
 ```md
 # Korea Inside 작업 인계
 
-적용 표준:
-Korea_Inside_Public_Content_Master_Standard.md
+작성일:
+상태: ACTIVE PROJECT HANDOVER
 
-Humanization status:
+## 적용 기준
+- Public Content Master Standard / Version:
+- Navigation & Hub Architecture Standard / Version:
+- 적용 Specialized Standard / Version:
+- 적용 Language Standard / Version:
+- 적용 Active Family Design Standard / Version:
 
-DONE LOCKED 페이지:
+## 현재 작업 상태
+- Humanization status:
+- DONE LOCKED / CONTENT LOCKED:
+- 현재 Batch:
+- 언어별 Inventory:
+- 완료 섹션:
+- 미완료 섹션:
 
-완료 섹션:
+## 현재 구현 / 배포 상태
+- 마지막 승인 수정:
+- Git HEAD:
+- origin/main:
+- ahead / behind:
+- staged 상태:
+- Vercel Production 상태:
+- Production SHA:
+- 현재 미배포 변경:
 
-미완료 섹션:
+## 보호 대상
+- 보호해야 할 사용자 working-tree 변경:
+- 수정 금지 공통 파일:
+- 보호해야 할 Approved Public Copy / asset:
 
-마지막 수정:
+## 현재 페이지 / 판단
+- 현재 작업 중인 대표 URL:
+- 현재 검색 의도:
+- 현재 페이지 역할:
+- 현재 지역 성격 분류:
+- 이번 페이지에 적용한 표준 모듈:
+- 이번 페이지에서 적용하지 않은 모듈과 이유:
+- 현재 핵심 판단:
+- 현재 조사 완료 자료:
+- source fingerprint / drift 상태:
 
-현재 미배포 변경:
+## 승인 / 보류
+- 현재 사용자 승인 사항:
+- 현재 보류 사항:
+- 다음 방에서 다시 논의하지 말아야 할 확정 사항:
 
-다음 작업:
-
-보호해야 할 사용자 파일 변경:
-
-현재 작업 중인 대표 URL:
-
-현재 검색 의도:
-
-현재 페이지 역할:
-
-현재 지역 성격 분류:
-
-이번 페이지에 적용한 표준 모듈:
-
-이번 페이지에서 적용하지 않은 모듈과 이유:
-
-현재 핵심 판단:
-
-현재 조사 완료 자료:
-
-현재 사용자 승인 사항:
-
-현재 보류 사항:
-
-다음 방에서 절대 다시 논의하지 말아야 할 확정 사항:
-
-다음 방 첫 작업:
+## 다음 작업
+- 다음 방 첫 작업:
 ```
+
+Handover는 **현재 상태를 승계하는 문서**다. 정책·콘텐츠 원칙·Family 디자인의 Source of Truth를 대신하지 않는다.
+
+과거 Handover에 기록된 디자인·운영 규칙이 최신 Standard 또는 Active Family Design Standard와 충돌하면 최신 상위 기준을 따른다.
+
+새 방에서는 날짜와 상태가 가장 최신인 유효 Handover 1개를 기본 상태 승계 문서로 사용한다. 과거 Handover는 역사적 사실을 확인할 필요가 있을 때만 참고한다.
 
 ---
 
@@ -1579,3 +1654,5 @@ DONE LOCKED 페이지:
 - `주=여행가이드 / 부=수익화`를 이유로 숙박 판단 레이어를 삭제하거나 수익화를 약화하는 해석은 Version 1.1에서 명시적으로 폐기한다.
 - Version 1.2에서는 `Relevant section → matching action → matching affiliate`를 제휴 배치의 고정 기준으로 추가했다. 제휴 CTA 수에는 기계적 상한을 두지 않으며, 각 CTA는 해당 섹션이 만든 실제 여행 판단의 다음 행동이어야 한다.
 - Version 1.3에서는 **핵심 검색어 1위 도전**을 SEO 기본 목표로 명시한다. 경쟁이 강하다는 이유만으로 Head Keyword를 회피하지 않으며, Long-tail은 Head Keyword와 주제 권위를 강화하는 진입로로 사용한다. 또한 Travel Guide 내부링크를 숙소에 한정하지 않고 교통·결제·공항·eSIM·Attraction·인접 지역·Stay 등 실제 다음 질문 전체로 확장하며, The Soul of Seoul과 KoreaToDo를 주요 SEO 벤치마크로 적극 추적한다.
+- Version 1.4에서는 Handover 템플릿을 현재 다층 Standard 체계에 맞게 확장하고, **Handover = 현재 상태 / Standard = 정책 / Active Family Design Standard = 구체 디자인 기준**으로 역할을 명확히 분리했다. 최신 유효 Handover 1개만 기본 상태 승계에 사용하고, 과거 Handover가 최신 Standard를 덮어쓰지 못하도록 규칙을 추가했다.
+- Version 1.5에서는 **영문 58페이지 SEO Standard v1.0을 정식 Specialized Standard로 연결**하고, Codex의 Master·Navigation·적용 Specialized 기준 확인을 **승인 범위 보호 절차**로 구체화했다. 숙소 허브의 승인된 사진 좌·우 교차 배치를 포함한 임의 디자인 변경·범위 외 파일 변경 금지, 승인된 부분 Release의 Exact Implementation → Diff QA → 승인된 Git/Production 검증 순서를 명시한다. 기존 v1.4 본문의 콘텐츠·추천·수익화 판단은 변경하지 않는다.
