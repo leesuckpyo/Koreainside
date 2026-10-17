@@ -97,6 +97,76 @@
   .tmoney-page .tmoney-editorial-section > h2[id] {
     scroll-margin-top: 96px;
   }
+  .tmoney-page .tmoney-esim-cta {
+    max-width: 900px;
+    margin-top: 32px;
+    padding-top: 28px;
+    border-top: 1px solid #d8d0c2;
+  }
+  .tmoney-page .tmoney-esim-cta__title {
+    margin: 0;
+    color: #14130f;
+    font-size: 1.38rem;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+  .tmoney-page .tmoney-esim-cta__body {
+    margin: 12px 0 0;
+    color: #514c43;
+    font-size: 1.125rem;
+    line-height: 1.72;
+    overflow-wrap: break-word;
+  }
+  .tmoney-page .tmoney-esim-cta__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 18px;
+    align-items: center;
+    margin-top: 20px;
+  }
+  .tmoney-page .tmoney-editorial-guide .tmoney-esim-cta__primary,
+  .tmoney-page .tmoney-editorial-guide .tmoney-esim-cta__primary:visited {
+    min-height: 44px;
+    padding: 12px 20px;
+    border: 1px solid #1d2b27;
+    background: #1d2b27;
+    color: #fffdf8;
+    box-shadow: none;
+    font-weight: 700;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+  }
+  .tmoney-page .tmoney-editorial-guide .tmoney-esim-cta__primary:hover,
+  .tmoney-page .tmoney-editorial-guide .tmoney-esim-cta__primary:focus-visible {
+    border-color: #2d3b36;
+    background: #2d3b36;
+    color: #fffdf8;
+    text-decoration: none;
+  }
+  .tmoney-page .tmoney-editorial-guide .tmoney-esim-cta__secondary,
+  .tmoney-page .tmoney-editorial-guide .tmoney-esim-cta__secondary:visited {
+    min-height: 44px;
+    color: var(--blue-accent);
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    overflow-wrap: anywhere;
+  }
+  .tmoney-page .tmoney-editorial-guide .tmoney-esim-cta__secondary:hover,
+  .tmoney-page .tmoney-editorial-guide .tmoney-esim-cta__secondary:focus-visible {
+    color: var(--blue-deep);
+  }
+  .tmoney-page .tmoney-esim-cta__primary:focus-visible,
+  .tmoney-page .tmoney-esim-cta__secondary:focus-visible {
+    outline: 3px solid rgba(26, 86, 219, .28);
+    outline-offset: 3px;
+  }
+  .tmoney-page .tmoney-esim-cta__disclosure {
+    margin: 14px 0 0;
+    color: #6b665d;
+    font-size: .875rem;
+    line-height: 1.55;
+  }
   @media (max-width: 600px) {
     .tmoney-page .tmoney-anchor-nav--primary { padding: 18px 0 8px; }
     .tmoney-page .tmoney-anchor-nav__panel { padding: 16px; }
@@ -104,6 +174,12 @@
     .tmoney-page .tmoney-anchor-nav__links { grid-template-columns: minmax(0, 1fr); }
     .tmoney-page .tmoney-anchor-nav__title { font-size: 1.05rem; }
     .tmoney-page .tmoney-anchor-nav__related { gap: 2px 16px; }
+    .tmoney-page .tmoney-esim-cta { margin-top: 28px; padding-top: 24px; }
+    .tmoney-page .tmoney-esim-cta__title { font-size: 1.25rem; }
+    .tmoney-page .tmoney-esim-cta__body { font-size: 1.0625rem; line-height: 1.68; }
+    .tmoney-page .tmoney-esim-cta__actions { flex-direction: column; align-items: stretch; }
+    .tmoney-page .tmoney-esim-cta__primary,
+    .tmoney-page .tmoney-esim-cta__secondary { width: 100%; justify-content: center; text-align: center; }
   }
 </style>
   <script type="application/ld+json">
@@ -353,6 +429,15 @@
             </table>
           </div>
           <p>短期旅行でカード型を選んでも、時代遅れということではありません。外国人旅行者にとって、確認事項が最も少ないのがカード型というケースは今も多くあります。</p>
+          <div class="tmoney-esim-cta">
+            <p class="tmoney-esim-cta__title">韓国旅行のモバイル通信も準備</p>
+            <p class="tmoney-esim-cta__body">T-moneyは地下鉄やバスの運賃を支払うためのものです。旅行用eSIMなら、地図や経路案内、メッセージのためのモバイルデータ通信を利用できますが、T-moneyの代わりになったり、交通カードの残高を増やしたりすることはできません。購入前に端末のeSIM対応状況とプラン条件を確認してください。</p>
+            <div class="tmoney-esim-cta__actions">
+              <a class="btn btn--primary tmoney-esim-cta__primary" href="https://go.saily.site/SH13a" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-track="true" data-affiliate-brand="saily" data-page-category="transport" data-content-topic="tmoney_esim" data-placement="tmoney-choice-esim-cta" data-link-stage="affiliate">Sailyの韓国向けeSIMプランを確認 →</a>
+              <a class="btn btn--text tmoney-esim-cta__secondary" href="best-esim-for-korea.html">韓国向けeSIMを比較する →</a>
+            </div>
+            <p class="tmoney-esim-cta__disclosure">アフィリエイトリンクです。購入によりKorea Insideが紹介料を受け取る場合がありますが、追加料金はかかりません。</p>
+          </div>
         </section>
 
         <section class="tmoney-editorial-section tmoney-section--cream" aria-labelledby="tmoney-buying-title">
@@ -746,6 +831,7 @@
     (window.vaq = window.vaq || []).push(arguments);
   };
 </script>
+<script src="../affiliate-tracking.js"></script>
 <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
