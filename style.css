@@ -25856,6 +25856,8 @@ body main :is(div, section)[class*="table-wrap"]:not([class*="status"]):not([cla
 body main :is(div, section)[class*="comparison"]:not([class*="status"]):not([class*="warning"]):not([class*="error"]):not([class*="success"]):not([class*="map"]):not([class*="image"]):not([class*="visual"]),
 body main :is(aside, div, p, section)[class*="source-note"]:not([class*="warning"]):not([class*="error"]),
 body main :is([class*="section--cream"], [class*="section--gray"], [class*="section--soft"], [class*="section--muted"], [class*="section--quick"], [class*="chapter--cream"], [class*="chapter--light"]),
+.arex-page main .transfer-chapter--cream,
+.arex-page main .transfer-chapter--light,
 .accommodation-page main #quick-decision,
 .family-stay-page main #quick-decision,
 .first-time-stay-page main #quick-decision,
