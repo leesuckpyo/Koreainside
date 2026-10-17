@@ -25855,8 +25855,29 @@ body main :is(article, aside, div, section)[class*="summary"]:not([class*="statu
 body main :is(div, section)[class*="table-wrap"]:not([class*="status"]):not([class*="warning"]):not([class*="error"]):not([class*="success"]),
 body main :is(div, section)[class*="comparison"]:not([class*="status"]):not([class*="warning"]):not([class*="error"]):not([class*="success"]):not([class*="map"]):not([class*="image"]):not([class*="visual"]),
 body main :is(aside, div, p, section)[class*="source-note"]:not([class*="warning"]):not([class*="error"]),
-body main :is([class*="section--cream"], [class*="section--gray"], [class*="section--soft"], [class*="section--muted"], [class*="section--quick"], [class*="chapter--cream"], [class*="chapter--light"]) {
+body main :is([class*="section--cream"], [class*="section--gray"], [class*="section--soft"], [class*="section--muted"], [class*="section--quick"], [class*="chapter--cream"], [class*="chapter--light"]),
+.accommodation-page main #quick-decision,
+.family-stay-page main #quick-decision,
+.first-time-stay-page main #quick-decision,
+.family-stay-page main #final-recommendation,
+.first-time-stay-page main .first-time-infographic-section,
+.luxury-stay-page main .luxury-infographic-section,
+body.airport-page main #first-steps,
+.maps-page main .maps-page-hero,
+.tmoney-page .tmoney-section--cream,
+.tmoney-page .tmoney-visual-band,
+.wowpass-page .wowpass-lead-visual,
+.wowpass-page .wowpass-section--cream,
+body.rental-car-page main .rental-car-section--soft,
+body[data-section="apps"] main .apps-section--soft {
   background: #FFFFFF;
+}
+
+.tmoney-page .tmoney-section--cream,
+.tmoney-page .tmoney-visual-band,
+.wowpass-page .wowpass-lead-visual,
+.wowpass-page .wowpass-section--cream {
+  box-shadow: 0 0 0 100vmax #FFFFFF;
 }
 
 body main [class*="faq"]:not([class*="status"]):not([class*="warning"]):not([class*="error"]):not([class*="success"]) details,
@@ -25924,7 +25945,52 @@ body.k-beauty-page main .kb-table-wrap thead th {
   color: inherit;
 }
 
-/* Preserve readable text where dark Quick Answer surfaces become white. */
+/* Preserve readable text where dark content surfaces become white. */
+body.airport-page main #first-steps .eyebrow {
+  color: #3F5D52;
+}
+
+body.airport-page main #first-steps .section__title {
+  color: #14130F;
+}
+
+body.airport-page main #first-steps .section__subtitle,
+body.airport-page main #first-steps .airport-first-step-list p {
+  color: #514C43;
+}
+
+body.airport-page main #first-steps .airport-first-step-list {
+  border-top-color: #D8D0C2;
+}
+
+body.airport-page main #first-steps .airport-first-step-list li {
+  border-bottom-color: #D8D0C2;
+}
+
+body.airport-page main #first-steps .airport-first-step-list h3 {
+  color: #1D2B27;
+}
+
+body.airport-page main #first-steps .airport-text-link,
+body.airport-page main #first-steps .airport-text-link:visited {
+  color: #3F5D52;
+  text-decoration-color: rgba(63, 93, 82, 0.45);
+}
+
+body.airport-page main #first-steps .airport-text-link:hover,
+body.airport-page main #first-steps .airport-text-link:focus-visible {
+  color: #1D2B27;
+}
+
+.tmoney-page .tmoney-visual-band .tmoney-editorial-figure img,
+.wowpass-page .wowpass-lead-visual .wowpass-editorial-figure img {
+  border-color: #D8D0C2;
+}
+
+.wowpass-page .wowpass-lead-visual .wowpass-editorial-figure figcaption {
+  color: #746C60;
+}
+
 .arex-page main .transfer-hero-answer {
   color: #1D2B27;
 }

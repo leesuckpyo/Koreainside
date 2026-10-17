@@ -120,9 +120,9 @@
 .k-beauty-page .kb-table-wrap thead th { background: var(--kb-ink); color: var(--kb-white); font-size: .68rem; letter-spacing: .05em; text-transform: uppercase; }
 .k-beauty-page .kb-table-wrap tbody th { color: var(--kb-sage-dark); }
 
-.k-beauty-page .kb-reorder { background: var(--kb-ink); color: var(--kb-white); }
-.k-beauty-page .kb-reorder .kb-eyebrow { color: #a9c6bc; }
-.k-beauty-page .kb-reorder .kb-section-lead { color: #bcc8c4; }
+.k-beauty-page .kb-reorder { background: var(--kb-white); color: var(--kb-ink); }
+.k-beauty-page .kb-reorder .kb-eyebrow { color: var(--kb-sage-dark); }
+.k-beauty-page .kb-reorder .kb-section-lead { color: var(--kb-muted); }
 .k-beauty-page .kb-option-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
 .k-beauty-page .kb-option-grid article { padding: 22px; border: 1px solid rgba(255,255,255,.16); border-radius: 18px; background: rgba(255,255,255,.055); }
 .k-beauty-page .kb-option-grid article > span { color: #a9c6bc; font-size: .72rem; font-weight: 900; letter-spacing: .09em; text-transform: uppercase; }

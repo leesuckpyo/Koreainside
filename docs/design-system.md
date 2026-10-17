@@ -11,7 +11,8 @@ Not Responsible For : Page-specific content, current work queues, migration list
 Higher Priority Documents : Current User Instruction, AGENTS.md, PROJECT.md, docs/product-constitution.md
 Related Documents : docs/component-library.md, docs/golden-page-template.md, docs/page-template-standard.md, docs/anti-pattern-standard.md, docs/content-writing-standard.md
 Change Policy : Owner approval required before change
-Last Reviewed : 2026-07-25
+Revision : 2026-10-17 — approved white editorial canvas alignment
+Last Reviewed : 2026-10-17
 Review Trigger : Major visual direction change, recurring design inconsistency, new page family, image policy change, or component-system change
 
 ## 1. Design Position
@@ -30,15 +31,16 @@ Every core screen should make its purpose understandable within about three seco
 
 ## 2. Color Roles
 
-The default direction is a warm ivory and cream foundation.
+The default broad editorial canvas is white (`#fff`), consistent with the Active Travel Guide Family Design Standard. Warm ivory and cream remain available for approved, purpose-specific component surfaces.
 
-- Prefer warm ivory or cream for broad page backgrounds and long-reading areas.
+- Use white for the main page canvas and broad general editorial/long-reading sections.
+- Retain approved non-white treatments for functional cards, guidance/notice boxes, affiliate CTAs, maps, infographic artwork, event/status/warning states, and other deliberately emphasized decision-support components.
 - Prefer dark brown-black or charcoal for headings.
 - Prefer warm gray-brown for body text.
 - Use low-saturation borders and dividers.
 - Use charcoal green as the main functional color for stability, guidance, diagrams, and infographic structure.
 - Use reddish brown or ochre only for an already approved editorial emphasis.
-- Minimize large areas of pure white, pure black, or severe black-white contrast.
+- Avoid broad pure-black surfaces or harsh contrast; the approved white editorial canvas is not a prohibited pure-white surface.
 
 Blue is not a primary theme color for:
 
@@ -54,11 +56,13 @@ Reuse an approved value from the existing CSS or an approved standard when an ex
 
 Color must never be the only way to communicate state, warning, selection, or meaning.
 
+White-canvas alignment is not a blanket recoloring order: preserve approved component colors and assess actual visual function rather than relying on class names such as `--cream` or `--gray` alone. Do not use an indiscriminate `!important` override.
+
 ## 3. Application and Transition Scope
 
 ### New Pages or Fully Redesigned Pages
 
-- Use the warm ivory and cream foundation.
+- Use a white main canvas and white general editorial sections; use existing approved warm tones only for purposeful components.
 - Use charcoal or warm gray-brown for body copy.
 - Use charcoal green for guidance and infographic structure.
 - Do not use blue as the overall dominant page color.
@@ -66,14 +70,14 @@ Color must never be the only way to communicate state, warning, selection, or me
 ### Minor Changes to Existing Production Pages
 
 - Preserve the current page structure and approved component family first.
-- Do not convert the entire page to the ivory system without separate user approval.
+- Do not recolor the entire page as part of an unrelated minor correction; limit separately approved white-canvas alignment to the intended broad editorial surfaces.
 - Do not force a new design system onto an existing page because of a small correction.
 
 ### Full Redesign of an Existing Production Page
 
 - Apply the new design engine only after explicit user approval.
 - Proceed one page at a time and review the rendered page before expanding the change.
-- Do not recolor the entire site as one batch.
+- Do not recolor the entire site indiscriminately. An explicitly approved white-canvas alignment must preserve functional exceptions and pass representative Desktop/Mobile checks followed by scoped regression QA.
 
 "Reuse approved existing CSS" does not mean every new page must inherit a blue component or blue-led theme.
 
@@ -85,7 +89,7 @@ Do not change the common header, navigation, footer, or `common.js` without sepa
 
 - Reuse the approved site typefaces and existing typographic tokens.
 - Use a clear heading hierarchy with strong but not harsh contrast.
-- Keep body copy comfortable for long reading on warm backgrounds.
+- Keep body copy comfortable for long reading on the white editorial canvas and on approved warm-tinted component surfaces.
 - Avoid excessive font-weight changes, all-caps blocks, decorative display type, and unexplained font-family additions.
 - Keep labels, captions, and helper text legible on mobile.
 - Let line length and spacing support browser translation and text expansion.
@@ -409,7 +413,7 @@ Essential labels, instructions, warnings, comparisons, and values must also appe
 
 ## 10. Infographics
 
-- Prefer a warm ivory background.
+- Prefer a warm ivory background for the infographic artwork itself, even when the surrounding editorial section uses the approved white canvas.
 - Prefer charcoal-green icons, arrows, numbers, lines, and structural elements.
 - Maintain enough lightness and contrast to separate background and internal elements.
 - Avoid unnecessary multicolor palettes within one infographic.
@@ -447,7 +451,7 @@ Check:
 
 - Is the page purpose clear within about three seconds?
 - Does the visual hierarchy support a decision?
-- Are broad backgrounds warm and readable?
+- Are broad editorial backgrounds white, with only purposeful approved non-white exceptions, and are all surfaces readable?
 - Are text and background contrast sufficient without becoming harsh?
 - Is blue limited to an established functional role?
 - Are typography, width, spacing, cards, buttons, tables, and boxes consistent with approved patterns?
@@ -459,7 +463,7 @@ Check:
 
 ## 14. Prohibited Design Patterns
 
-- broad pure-white or pure-black surfaces without an approved need
+- unapproved broad tinted editorial backgrounds or broad pure-black surfaces without an approved need; the white editorial canvas is the established default
 - blue-led page themes, content cards, headings, or large guidance panels
 - arbitrary new HEX values
 - decorative images with no information role
@@ -469,4 +473,4 @@ Check:
 - image-only essential information
 - repeated commercial CTAs throughout body content
 - a one-off component when an approved equivalent exists
-- whole-site recoloring or migration without page-specific approval
+- unreviewed whole-site recoloring or migration outside the explicitly approved scope, including unauthorized changes to functional component colors
