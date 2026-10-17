@@ -18,6 +18,94 @@
   <link rel="alternate" hreflang="id" href="https://www.getkoreainside.com/id/tmoney.html">
   <title>Cómo usar T-money en Korea | Guía de tarjeta de transporte para turistas</title>
   <link rel="stylesheet" href="../style.css">
+<style>
+  /* T-money-only on-page navigation; does not affect global navigation. */
+  .tmoney-page .tmoney-anchor-nav { color: inherit; }
+  .tmoney-page .tmoney-anchor-nav--primary { padding: 28px 0 12px; }
+  .tmoney-page .tmoney-anchor-nav--compact { margin: 28px 0; }
+  .tmoney-page .tmoney-anchor-nav__panel {
+    border: 1px solid #e1e7ee;
+    border-radius: 16px;
+    padding: 22px;
+    background: #f8fafc;
+  }
+  .tmoney-page .tmoney-anchor-nav--compact .tmoney-anchor-nav__panel {
+    border-radius: 12px;
+    padding: 18px 20px;
+    background: #fff;
+  }
+  .tmoney-page .tmoney-anchor-nav__title {
+    margin: 0 0 8px;
+    color: #20334b;
+    font-size: 1.16rem;
+    font-weight: 700;
+    line-height: 1.35;
+  }
+  .tmoney-page .tmoney-anchor-nav__description {
+    margin: 0 0 16px;
+    color: #526277;
+    font-size: .93rem;
+    line-height: 1.5;
+  }
+  .tmoney-page .tmoney-anchor-nav__links {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .tmoney-page .tmoney-anchor-nav__link {
+    display: flex;
+    align-items: center;
+    min-height: 46px;
+    padding: 11px 14px;
+    border: 1px solid #dce4ed;
+    border-radius: 9px;
+    background: #fff;
+    color: #253b56;
+    font-size: .94rem;
+    font-weight: 600;
+    line-height: 1.4;
+    text-decoration: underline;
+    text-decoration-color: #a5b5c7;
+    text-underline-offset: 3px;
+    overflow-wrap: anywhere;
+  }
+  .tmoney-page .tmoney-anchor-nav__link:hover {
+    border-color: #98acc2;
+    background: #f3f7fb;
+  }
+  .tmoney-page .tmoney-anchor-nav__related {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+    margin-top: 14px;
+  }
+  .tmoney-page .tmoney-anchor-nav__related a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: #2b4b6e;
+    font-size: .89rem;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .tmoney-page .tmoney-anchor-nav a:focus-visible {
+    outline: 3px solid #2766a6;
+    outline-offset: 3px;
+  }
+  .tmoney-page .tmoney-anchor-nav[id],
+  .tmoney-page .tmoney-editorial-section > h2[id] {
+    scroll-margin-top: 96px;
+  }
+  @media (max-width: 600px) {
+    .tmoney-page .tmoney-anchor-nav--primary { padding: 18px 0 8px; }
+    .tmoney-page .tmoney-anchor-nav__panel { padding: 16px; }
+    .tmoney-page .tmoney-anchor-nav--compact .tmoney-anchor-nav__panel { padding: 16px; }
+    .tmoney-page .tmoney-anchor-nav__links { grid-template-columns: minmax(0, 1fr); }
+    .tmoney-page .tmoney-anchor-nav__title { font-size: 1.05rem; }
+    .tmoney-page .tmoney-anchor-nav__related { gap: 2px 16px; }
+  }
+</style>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -202,6 +290,25 @@
       </div>
     </section>
 
+    <nav id="tmoney-contents" class="tmoney-anchor-nav tmoney-anchor-nav--primary" aria-label="Índice de la guía de T-money">
+      <div class="container">
+        <div class="tmoney-anchor-nav__panel">
+          <p class="tmoney-anchor-nav__title">Encuentra la respuesta que necesitas sobre T-money</p>
+          <p class="tmoney-anchor-nav__description">Ve directamente al apartado que necesitas.</p>
+          <div class="tmoney-anchor-nav__links">
+            <a class="tmoney-anchor-nav__link" href="#tmoney-choice-title">¿Qué tipo de T-money me conviene?</a>
+            <a class="tmoney-anchor-nav__link" href="#tmoney-buying-title">Comprar y recargar</a>
+            <a class="tmoney-anchor-nav__link" href="#tmoney-transit-title">Metro, autobuses y transbordos</a>
+            <a class="tmoney-anchor-nav__link" href="#tmoney-apple-title">T-money en mi teléfono</a>
+            <a class="tmoney-anchor-nav__link" href="#tmoney-youth-title">¿Viajas con niños?</a>
+            <a class="tmoney-anchor-nav__link" href="#tmoney-problems-title">Mi tarjeta no funciona</a>
+            <a class="tmoney-anchor-nav__link" href="#tmoney-refund-title">Recuperar el saldo</a>
+            <a class="tmoney-anchor-nav__link" href="#tmoney-wowpass-title">¿T-money o WOWPASS?</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
     <div class="tmoney-editorial-guide">
       <div class="container">
         <section class="tmoney-editorial-section" aria-labelledby="tmoney-choice-title">
@@ -253,6 +360,16 @@
           <p>La información actual de VisitKorea indica que se pueden comprar tarjetas T-money en tiendas de conveniencia como GS25, CU y 7-ELEVEN en todo el país, así como en centros de información de estaciones del metro de Seoul en las líneas 1 a 8. Los precios generales de las tarjetas se sitúan actualmente en unos ₩3,000 a ₩5,000, aunque pueden variar según el diseño y el vendedor.</p>
           <p>Para la mayoría de los visitantes, hay pocas razones para convertir esto en una compra previa al viaje. Comprarla después de llegar suele ser sencillo. Busca el logotipo de T-money en una tienda de conveniencia o estación en lugar de buscar una versión turística especial de la tarjeta.</p>
           <p>El precio de la tarjeta y el dinero cargado en ella son cosas separadas. Si compras la tarjeta y vas directamente a un torno del metro sin añadir saldo, la tarjeta por sí sola no te permite viajar.</p>
+          <!-- KI_TMONEY_PROBLEM_SOLVING_V1_20261016 -->
+          <div class="tmoney-practical-addition" id="tmoney-family-and-old-cards">
+            <h3>¿Puede mi familia compartir una sola tarjeta T-money?</h3>
+            <p>Para pasar por los tornos del metro, calcula una tarjeta por cada viajero que tenga que pagar billete. No se puede pasar la misma tarjeta varias veces para que entre toda la familia por tornos distintos. Cada menor que deba pagar necesita su propia tarjeta, con la categoría de edad correspondiente registrada.</p>
+            <p>En algunos autobuses de Seúl, el conductor puede cobrar a varias personas con una sola tarjeta si le indicas cuántas viajan antes de pasarla. Es un procedimiento específico del autobús, no una alternativa a las tarjetas individuales si el trayecto también incluye el metro. Los descuentos por transbordo para varios pasajeros tienen más restricciones, sobre todo al cambiar después a un tren. Para la mayoría de las familias, una tarjeta por persona que paga evita complicaciones.</p>
+            <h3>¿Puedo reutilizar una tarjeta T-money de un viaje anterior a Corea?</h3>
+            <p>Antes de comprar otra tarjeta, comprueba el saldo de la que conservas. Una T-money normal que siga funcionando quizá te sirva en otra visita, pero no des por hecho que una tarjeta antigua o promocional se aceptará en todas partes. Si una máquina no la reconoce, consulta al personal de una estación de metro o de un punto T-money participante antes de cargar más dinero.</p>
+            <h3>¿Qué hago si llego tarde por la noche al aeropuerto de Incheon?</h3>
+            <p>Busca una tienda de conveniencia que venda T-money en tu terminal de llegada o cerca de la estación del tren del aeropuerto. Confirma que tenga tarjetas disponibles y que pueda recargarlas: estar abierta hasta tarde no garantiza todos los modelos ni servicios. Si no consigues comprarla fácilmente, un billete independiente para el AREX Express u otro traslado de aeropuerto confirmado te permite llegar a Seúl y comprar T-money para los días siguientes.</p>
+          </div>
         </section>
 
         <section class="tmoney-editorial-section tmoney-section--cream" aria-labelledby="tmoney-load-title">
@@ -268,6 +385,21 @@
           <p>No confundas esto con las nuevas máquinas de billetes de Seoul que aceptan tarjetas internacionales. En 2026, Seoul amplió los pagos con tarjetas de crédito y débito extranjeras en nuevos quioscos del metro para productos como los pases de corta duración de Climate Card y los billetes de un solo trayecto. Eso no significa que todas las máquinas normales de recarga de T-money acepten ahora tarjetas extranjeras.</p>
           <p>Si una máquina rechaza tu tarjeta, no tiene sentido seguir intentando con el mismo método de pago. Usa wones coreanos o lleva la tarjeta T-money a una tienda de conveniencia participante.</p>
           <p>El saldo que aparece en un torno del metro o en una máquina de recarga es suficiente para la mayoría de los visitantes. Añade dinero cuando empiece a bajar en lugar de intentar calcular por adelantado todo el viaje.</p>
+          <div class="tmoney-practical-addition" id="tmoney-top-up-troubleshooting">
+            <h3>¿Por qué la máquina acepta mi tarjeta extranjera para un billete, pero no para recargar T-money?</h3>
+            <p>Lo importante es qué producto estás comprando en la pantalla. Desde marzo de 2026, algunas máquinas nuevas del metro de Seúl aceptan tarjetas emitidas en el extranjero para productos concretos, como billetes de un solo trayecto y abonos de corta duración de Climate Card. Eso no significa que se pueda recargar con una tarjeta extranjera cualquier T-money física de prepago. Las indicaciones municipales de septiembre de 2026 siguen distinguiendo esas compras con tarjeta de las recargas de tarjetas prepago habituales.</p>
+            <p>Si hoy necesitas recargar una T-money de plástico normal, lleva wones en efectivo y elige la función de recarga de tarjeta física, o pide que añadan saldo en una tienda de conveniencia participante. Haber comprado un billete de un trayecto con una Visa o Mastercard extranjera no demuestra que esa misma máquina pueda recargar T-money. <strong>Comprar una tarjeta, comprar un billete y cargar saldo de transporte son tres operaciones distintas.</strong></p>
+            <h3>He pagado una recarga, pero el saldo no ha cambiado. ¿Qué hago?</h3>
+            <ol>
+              <li>Antes de pagar otra vez, comprueba el saldo realmente guardado en la tarjeta en una máquina de la estación, un mostrador participante u otro medio fiable.</li>
+              <li>Conserva el recibo o justificante y anota la tienda o máquina, la hora, el importe y la tarjeta utilizada. Si has recargado dos tarjetas, comprueba cada una por separado.</li>
+              <li>Si aún estás en la tienda, pide al personal de caja que confirme que la recarga se hizo en la tarjeta correcta. En una estación, solicita al personal que compruebe tanto la tarjeta como la máquina.</li>
+              <li>Si el pago y el saldo no coinciden, presenta los justificantes al establecimiento donde pagaste o al servicio de atención de T-money. No des por hecho que se trata de un fraude ni pagues repetidamente antes de verificar la primera operación.</li>
+            </ol>
+            <p>No es lo mismo que ver menos saldo tras terminar un viaje: en ese caso, puede haberse cobrado correctamente una tarifa o un ajuste por distancia. Averigua primero si falta <em>una recarga</em> o si se ha descontado <em>un importe de viaje</em>.</p>
+            <h3>¿Puedo pasar mi tarjeta bancaria extranjera directamente por el lector del metro o del autobús en Seúl?</h3>
+            <p>En octubre de 2026 no cuentes con pasar directamente tu tarjeta bancaria extranjera como método habitual para acceder al transporte. T-money ha anunciado un despliegue por fases de ese sistema a partir de 2027. Es distinto de pagar hoy con una tarjeta extranjera en determinadas máquinas de billetes. Para viajar ahora, utiliza una tarjeta de transporte válida, una T-money móvil configurada correctamente o un billete admitido por el servicio.</p>
+          </div>
         </section>
 
         <section class="tmoney-visual-band" aria-label="Imágenes sobre compra y recarga de T-money">
@@ -281,12 +413,38 @@
           </div>
         </section>
 
+        <nav id="tmoney-nav-use" class="tmoney-anchor-nav tmoney-anchor-nav--compact" aria-label="Temas de uso de T-money en el transporte">
+          <div class="tmoney-anchor-nav__panel">
+            <p class="tmoney-anchor-nav__title">¿Todo listo para viajar?</p>
+            <div class="tmoney-anchor-nav__links">
+              <a class="tmoney-anchor-nav__link" href="#tmoney-transit-title">¿Cómo se pasa la tarjeta al viajar y hacer transbordo?</a>
+              <a class="tmoney-anchor-nav__link" href="#tmoney-coverage-title">¿Dónde se puede usar T-money?</a>
+              <a class="tmoney-anchor-nav__link" href="#tmoney-youth-title">¿Tarifas para niños y adolescentes?</a>
+              <a class="tmoney-anchor-nav__link" href="#tmoney-problems-title">¿Algo no ha funcionado?</a>
+            </div>
+            <div class="tmoney-anchor-nav__related">
+              <a href="#tmoney-contents">Volver a todos los temas ↑</a>
+              <a href="#tmoney-nav-help">Siguiente: ¿Necesitas ayuda ahora? →</a>
+            </div>
+          </div>
+        </nav>
+
         <section class="tmoney-editorial-section" aria-labelledby="tmoney-transit-title">
           <h2 id="tmoney-transit-title">Cómo usar T-money en el metro y el autobús</h2>
           <p>La rutina del metro es sencilla después del primer viaje: pasa la tarjeta una vez al entrar y otra al salir. El toque de salida cierra ese trayecto y permite al sistema calcular la tarifa.</p>
           <p>En los autobuses conviene adoptar el mismo hábito. Pasa la tarjeta al subir y vuelve a pasarla antes de bajar.</p>
           <p>Ese segundo toque en el autobús es fácil de olvidar porque la puerta ya está abierta y todos se están moviendo. Es importante porque los descuentos por transbordo dependen de que el sistema sepa dónde terminó un trayecto y empezó el siguiente.</p>
           <p>Cuando haces correctamente un transbordo entre autobuses y metros compatibles, T-money puede aplicar automáticamente el descuento correspondiente. La ventana exacta de transbordo varía según el sistema y la hora, así que no hace falta convertir un hábito sencillo en un horario: pasa la tarjeta correctamente siempre.</p>
+          <div class="tmoney-practical-addition" id="tmoney-transfer-troubleshooting">
+            <h3>¿Por qué me han cobrado otra vez al hacer transbordo?</h3>
+            <p>En el sistema integrado de autobuses y metro de Seúl, normalmente debes iniciar el siguiente trayecto dentro de los 30 minutos posteriores al toque de salida; de las 21:00 a las 7:00 el plazo se amplía a 60 minutos. Se reconocen hasta cuatro transbordos en una secuencia de cinco viajes. Volver a tomar el mismo autobús o la misma ruta no cuenta como transbordo con descuento. No se trata de una tarifa ilimitada.</p>
+            <p>Antes de pensar que el sistema se ha equivocado, comprueba cuatro cosas: <strong>¿pasaste la tarjeta al salir?, ¿subiste al siguiente transporte dentro del plazo?, ¿era la misma ruta?, ¿utilizaste la misma tarjeta durante todo el trayecto?</strong> El descuento también depende de las empresas y rutas participantes; fuera de Seúl pueden aplicarse otras normas.</p>
+            <p>Que aparezca otro cobro durante un transbordo no significa necesariamente que haya fallado el descuento. Puede ser una diferencia de tarifa o un suplemento por distancia. Comprueba el conjunto del recorrido, no solo la cifra que muestra un lector. Si el importe sigue pareciendo incorrecto, anota el número de autobús, las estaciones, las horas de paso y los datos de la tarjeta para consultarlo con el operador o el personal de la estación.</p>
+            <h3>Olvidé pasar la tarjeta al bajar del autobús. ¿Puedo corregirlo en el siguiente trayecto?</h3>
+            <p>No esperes que el lector del siguiente autobús o metro corrija automáticamente un viaje anterior que quedó sin registrar al bajar. La falta de ese toque puede afectar a los siguientes cobros y descuentos. Si después ves un importe extraño, comprueba el saldo y explica la ruta anterior al personal. En el próximo autobús, acuérdate de pasar la tarjeta al prepararte para bajar, no cuando ya estés fuera.</p>
+            <h3>¿Reciben todos los miembros del grupo el mismo descuento por transbordo?</h3>
+            <p>No necesariamente. En Seúl, pagar a varias personas con una misma tarjeta de autobús solo da acceso a ciertas condiciones de transbordo cuando coinciden el número de pasajeros y los registros de subida y bajada; esa excepción no se extiende al cambio al metro. Por eso no conviene usar una única tarjeta para un grupo que combina autobús y tren. Con tarjetas individuales es más fácil seguir la tarifa y los transbordos de cada persona.</p>
+          </div>
         </section>
 
         <section class="tmoney-editorial-section" aria-labelledby="tmoney-coverage-title">
@@ -296,6 +454,12 @@
           <p>El pago en taxi no es totalmente uniforme. La propia T-money advierte de que puede haber restricciones en algunas zonas, por lo que comprobar si hay un lector de tarjetas o la marca T-money es más útil que asumir que todos los taxis aceptarán el saldo.</p>
           <p>T-money también puede usarse en establecimientos comerciales participantes y otros socios que muestren la marca de aceptación correspondiente. Puede ser útil para alguna compra ocasional en una tienda de conveniencia, pero es mejor pensar en T-money como una tarjeta de transporte con algunos usos de pago adicionales, no como sustituto de una tarjeta de débito o crédito normal.</p>
           <p>Algunos autobuses exprés, transportes interurbanos, taquillas ferroviarias y determinadas situaciones en autopistas de peaje también admiten productos o tipos de tarjeta T-money específicos, pero las reglas son más concretas. Para la planificación normal de un viaje, los autobuses y el metro son la base más fiable.</p>
+          <div class="tmoney-practical-addition" id="tmoney-airport-rail-choice">
+            <h3>¿Sirve T-money para los dos tipos de tren del aeropuerto de Incheon?</h3>
+            <p><strong>Tren AREX con paradas: sí, con una tarjeta T-money de transporte operativa.</strong> Usa los tornos habituales y se detiene en estaciones intermedias como Hongik University y Gongdeok. Puede servir como primer desplazamiento si ya has cargado la tarjeta física o dispones de una tarjeta móvil compatible.</p>
+            <p><strong>Tren AREX Express: necesitas comprar un billete Express aparte.</strong> El servicio directo sin paradas tiene su propio sistema de billetes y acceso. No vayas al acceso del Express esperando que el saldo normal de T-money sustituya un billete reservado. Comprueba qué tren vas a tomar antes de comprar o pasar la tarjeta.</p>
+            <p>Que T-money funcione en muchas zonas del país no significa que sirva como billete universal de tren de larga distancia. Los trenes con reserva, ciertos autobuses interurbanos o exprés y algunos servicios especiales del aeropuerto pueden exigir un billete independiente u otra forma de pago. Cuando no se trate de un metro o autobús local ordinario, sigue las instrucciones del operador.</p>
+          </div>
         </section>
 
         <section class="tmoney-editorial-section" aria-labelledby="tmoney-apple-title">
@@ -307,6 +471,16 @@
           <p>Para viajeros de otros países existe la opción MobileTmoney. Según la ficha oficial de la aplicación en App Store, sus funciones básicas pueden utilizarse sin registrarse y permite recargar con Apple Pay mediante tarjetas compatibles de Mastercard, American Express, UnionPay y JCB. Visa no aparece entre las redes admitidas para esta vía.</p>
           <p>Por tanto, tener un iPhone no garantiza que puedas recargar T-money con tu tarjeta. Si la red de tu tarjeta en Apple Pay no está admitida por MobileTmoney, conviene llevar una tarjeta T-money física o contar con otra forma de recarga confirmada.</p>
           <p>Una tarjeta T-money puede utilizarse en un solo dispositivo Apple a la vez. Si quieres tarjetas de transporte separadas en un iPhone y un Apple Watch, Apple indica que cada dispositivo necesita su propia tarjeta.</p>
+          <div class="tmoney-practical-addition" id="tmoney-iphone-foreign-card-steps">
+            <h3>Tengo un iPhone y una tarjeta bancaria extranjera. ¿Cómo puedo recargar T-money?</h3>
+            <ol>
+              <li>Primero comprueba que tu iPhone o Apple Watch y su sistema operativo admiten T-money. Añadir la tarjeta de transporte a Wallet y pagar para cargar saldo son pasos diferentes.</li>
+              <li>Si tienes una tarjeta de pago emitida en Corea del Sur que sea compatible, quizá puedas recargar directamente desde Apple Wallet. No supongas que una tarjeta bancaria extranjera funcionará con ese método.</li>
+              <li>Si no tienes una tarjeta de pago coreana, consulta la opción para viajeros extranjeros de la app oficial <strong>MobileTmoney</strong>. Su ficha actual en App Store indica que las funciones básicas no requieren registro y permite recargar mediante Apple Pay con Mastercard, American Express, UnionPay y JCB. Visa no aparece en esa lista.</li>
+              <li>Antes de depender exclusivamente del teléfono para pagar el transporte, comprueba que la tarjeta se haya emitido, que el saldo se haya añadido realmente y que esté lista para pasar por el lector. Si falla la configuración o tu red de tarjeta, lleva una T-money física o algún otro método de pago del transporte que hayas confirmado.</li>
+            </ol>
+            <p>Las pantallas de la app, las redes de pago admitidas y las decisiones del emisor de la tarjeta pueden cambiar. Si no encuentras la opción para usuarios internacionales, consulta la ficha oficial más reciente en lugar de seguir capturas antiguas. Si tu tarjeta móvil tiene saldo pero no funciona, contacta con el soporte de T-money antes de borrarla o volver a emitirla: hacerlo sin comprobar cómo recuperar el saldo puede complicar el reembolso.</p>
+          </div>
         </section>
 
         <section class="tmoney-editorial-section" aria-labelledby="tmoney-android-title">
@@ -315,13 +489,40 @@
           <p>La ficha oficial actual de Google Play indica que la app puede usar NFC como T-money, mostrar el saldo y el historial de transacciones, y gestionar recargas o reembolsos con tarjetas internacionales compatibles, incluidas Mastercard, Visa, American Express, JCB y UnionPay.</p>
           <p>Seoul también ha señalado la app KOREA TOUR CARD como una vía de recarga con tarjetas extranjeras para viajeros con Android.</p>
           <p>La palabra compatible es importante. El hardware NFC, la configuración del teléfono y la compatibilidad de la app pueden variar, así que instala y comprueba la app antes de tratar tu teléfono como la única tarjeta de transporte que llevarás en Korea.</p>
+          <div class="tmoney-practical-addition" id="tmoney-android-quick-check">
+            <h3>¿Qué debo comprobar antes de salir del hotel si solo llevo T-money en Android?</h3>
+            <p>Comprueba que NFC esté activado y que tu teléfono pueda emitir y utilizar una tarjeta de transporte desde la app oficial KOREA TOUR CARD Tmoney. Tener NFC no garantiza por sí solo que la app funcione en ese modelo. Verifica que la recarga se haya completado, aprende dónde consultar el saldo y lleva otro medio de pago del transporte para el primer trayecto.</p>
+            <p>La ficha de la app anuncia compatibilidad con varias redes de tarjetas internacionales, incluida Visa, pero un pago concreto puede ser rechazado. Si falla, revisa los requisitos de la aplicación y de la tarjeta antes de volver a intentarlo una y otra vez. Una tarjeta física cargada con efectivo suele resolver antes el problema si necesitas subir al transporte ya.</p>
+          </div>
         </section>
+
+        <nav id="tmoney-nav-help" class="tmoney-anchor-nav tmoney-anchor-nav--compact" aria-label="Temas para resolver problemas con T-money">
+          <div class="tmoney-anchor-nav__panel">
+            <p class="tmoney-anchor-nav__title">¿Necesitas ayuda ahora?</p>
+            <div class="tmoney-anchor-nav__links">
+              <a class="tmoney-anchor-nav__link" href="#tmoney-low-balance-title">¿Saldo insuficiente?</a>
+              <a class="tmoney-anchor-nav__link" href="#tmoney-problems-title">¿No funciona la tarjeta o el teléfono?</a>
+              <a class="tmoney-anchor-nav__link" href="#tmoney-youth-title">¿Tarifas infantiles o familiares?</a>
+              <a class="tmoney-anchor-nav__link" href="#tmoney-refund-title">¿Necesitas un reembolso?</a>
+            </div>
+            <div class="tmoney-anchor-nav__related">
+              <a href="#tmoney-nav-use">Anterior: ¿Listo para viajar? ←</a>
+              <a href="#tmoney-nav-next">Siguiente: más respuestas →</a>
+              <a href="#tmoney-contents">Volver a todos los temas ↑</a>
+            </div>
+          </div>
+        </nav>
 
         <section class="tmoney-editorial-section" aria-labelledby="tmoney-youth-title">
           <h2 id="tmoney-youth-title">Niños y adolescentes</h2>
           <p>Un niño o adolescente no debería limitarse a usar una tarjeta T-money de adulto esperando que la tarifa reducida se aplique automáticamente.</p>
           <p>La información actual de VisitKorea indica que los viajeros menores de 18 deben registrar su fecha de nacimiento para recibir el descuento correspondiente en el transporte público. Una tienda de conveniencia que gestione T-money es un lugar práctico para preguntar por el registro al comprar la tarjeta.</p>
           <p>Si viajas en familia, hazlo al principio del viaje en lugar de descubrir después de varios trayectos que la tarjeta ha estado cobrando la tarifa de adulto.</p>
+          <div class="tmoney-practical-addition" id="tmoney-child-discount-check">
+            <h3>A mi hijo le cobran la tarifa de adulto. ¿Qué debo comprobar?</h3>
+            <p>Primero comprueba que la tarjeta tenga registrada la fecha de nacimiento correcta del menor para aplicar la tarifa por edad. VisitKorea indica que los viajeros menores de 18 años que reúnan los requisitos para tarifas infantiles o juveniles deben registrar su fecha de nacimiento. Puedes preguntar cómo hacerlo en una tienda de conveniencia participante. Comprar una tarjeta pequeña o con dibujos infantiles no activa automáticamente el descuento.</p>
+            <p>Comprueba la categoría tarifaria antes de utilizar las tarjetas durante varios días, sobre todo si tu familia lleva varias parecidas. La posibilidad de viajar gratis para niños muy pequeños depende del operador y de las circunstancias; confirma la norma vigente de la ruta en vez de guiarte por el diseño de la tarjeta.</p>
+          </div>
         </section>
 
         <section class="tmoney-editorial-section" aria-labelledby="tmoney-low-balance-title">
@@ -329,6 +530,11 @@
           <p>Quedarse con poco saldo suele ser una molestia, no un desastre.</p>
           <p>Las máquinas de recarga y muchos tornos del metro muestran el saldo restante. La información oficial del metro de Seoul también señala que las máquinas de ajuste de tarifa situadas cerca de los tornos pueden utilizarse cuando el saldo de T-money es insuficiente.</p>
           <p>Si ves que el saldo empieza a quedarse corto antes de un trayecto más largo, es más fácil recargar fuera del torno que resolverlo mientras hay gente esperando detrás.</p>
+          <div class="tmoney-practical-addition" id="tmoney-low-balance-steps">
+            <h3>El torno no me deja salir. ¿Debo seguir pasando la tarjeta?</h3>
+            <p>No. Si el problema es la falta de saldo, busca una máquina de ajuste de tarifa o recarga junto a los tornos, o pregunta al personal de la estación dónde pagar la diferencia. Conserva la tarjeta para que puedan comprobar el trayecto sin cerrar. Si el lector ni siquiera reconoce la tarjeta, no es lo mismo que tener poco saldo: el personal quizá deba revisar la tarjeta o el torno.</p>
+            <p>Antes de un trayecto largo al aeropuerto o entre ciudades, comprueba el saldo en lugar de suponer que lo que queda después de un viaje urbano corto será suficiente. No hace falta cargar una gran cantidad al final del viaje solo por evitar un posible aviso de saldo bajo.</p>
+          </div>
         </section>
 
         <section class="tmoney-editorial-section" aria-labelledby="tmoney-refund-title">
@@ -338,6 +544,12 @@
           <p>Por eso, Korea Inside no recomienda planificar un gran reembolso final basándose en una cifra antigua de un blog o una captura de pantalla. Si te queda un saldo considerable, consulta la información actual de T-money o VisitKorea.</p>
           <p>La estrategia más sencilla es dejar de añadir cantidades grandes cerca del final del viaje. Mantén suficiente saldo para los autobuses, metros y el trayecto al aeropuerto que te queden, y ve gastando el resto de forma natural.</p>
           <p>El reembolso del saldo y el precio original pagado por la tarjeta física no son lo mismo. No des por hecho que devolver la tarjeta significa recuperar cada won que gastaste al principio.</p>
+          <div class="tmoney-practical-addition" id="tmoney-last-day-balance">
+            <h3>¿Puedo recuperar todo el saldo en cualquier tienda de conveniencia?</h3>
+            <p>No. Un establecimiento que vende o recarga T-money no necesariamente gestiona todos los importes o tipos de reembolso. Según VisitKorea en agosto de 2026, los saldos de tarjetas físicas superiores a ₩50,000 se tramitan en Tmoney Town, cerca de la estación de Seúl. Para importes menores, pregunta en la tienda o estación si pueden devolver tu saldo; pueden variar los límites y las comisiones. El precio original de la tarjeta no es el mismo importe que el saldo de transporte reembolsable.</p>
+            <h3>¿Es mejor pedir el reembolso de T-money móvil o conservar mi tarjeta física antigua?</h3>
+            <p>El reembolso de una tarjeta física y el de una app móvil no siguen necesariamente el mismo procedimiento. Si usaste el teléfono, comprueba las opciones y el destino del dinero antes de eliminar la tarjeta. Si tu tarjeta física todavía funciona y piensas volver a Corea, quizá sea más fácil conservarla y consultar el saldo en el siguiente viaje que hacer una parada especial para reembolsarla el último día. No todas las opciones sirven para cualquier producto.</p>
+          </div>
         </section>
 
         <section class="tmoney-editorial-section tmoney-section--cream" aria-labelledby="tmoney-problems-title">
@@ -371,8 +583,50 @@
               <h3>“No sé si una tienda acepta T-money.”</h3>
               <p>Busca la marca de aceptación de T-money o pregunta antes de pagar. Poder usarla en comercios es un extra útil, pero no es motivo para depender de T-money como único método de pago.</p>
             </article>
+            <article class="tmoney-problem-row" id="tmoney-problem-family-card">
+              <h3>¿Puede mi familia pasar el metro con una misma tarjeta?</h3>
+              <p>No es el uso habitual en los tornos del metro. Cada viajero que paga necesita su propia tarjeta. Algunos autobuses permiten cobrar a un grupo si el conductor indica el número de pasajeros, pero esa excepción no sirve como norma para los transbordos de autobús a metro. Consulta el apartado de compra para elegir las tarjetas de la familia.</p>
+            </article>
+            <article class="tmoney-problem-row" id="tmoney-problem-charged-not-loaded">
+              <h3>Pagué al cajero, pero la tarjeta sigue mostrando el saldo anterior.</h3>
+              <p>Comprueba el saldo por otro medio, conserva el recibo o justificante de pago y pide a la tienda o a la estación que investiguen la operación. Si estabas recargando dos tarjetas, revísalas por separado. No presupongas mala fe ni pagues de nuevo sin aclarar primero la transacción inicial.</p>
+            </article>
+            <article class="tmoney-problem-row" id="tmoney-problem-extra-transfer-fare">
+              <h3>Me han cobrado al hacer transbordo. ¿Ha fallado el descuento?</h3>
+              <p>Revisa si pasaste la tarjeta al salir, cuánto tardaste en hacer transbordo, qué ruta tomaste y si la distancia o una tarifa base más alta explican el cobro. En Seúl, el plazo habitual es de 30 minutos (60 minutos entre las 21:00 y las 7:00); no incluye volver a tomar la misma línea de autobús. Que aparezca otro importe en el lector no demuestra por sí solo que haya un error.</p>
+            </article>
+            <article class="tmoney-problem-row" id="tmoney-problem-airport-express">
+              <h3>Mi tarjeta T-money no abre el torno del AREX Express.</h3>
+              <p>AREX All-Stop y AREX Express utilizan billetes distintos. El saldo normal de T-money sirve para el servicio con paradas; el Express sin paradas necesita su propio billete. Comprueba qué tren elegiste antes de probar otro acceso.</p>
+            </article>
+            <article class="tmoney-problem-row" id="tmoney-problem-reader-rejects-card">
+              <h3>El lector no reconoce mi tarjeta.</h3>
+              <p>Primero comprueba que la tarjeta sea un producto de transporte compatible y que la acerques al lector correcto. Si tampoco la reconoce la máquina de recarga, pide al personal de la estación o a un punto T-money participante que la revise. No es lo mismo que una tarjeta reconocida con saldo insuficiente.</p>
+            </article>
+            <article class="tmoney-problem-row" id="tmoney-problem-foreign-mobile-topup">
+              <h3>Añadí T-money al iPhone, pero no puedo recargar con mi Visa extranjera.</h3>
+              <p>Añadir T-money a Apple Wallet no garantiza que puedas recargarla con una tarjeta extranjera. La recarga directa desde Wallet requiere una tarjeta emitida en Corea del Sur. La opción internacional de MobileTmoney menciona Mastercard, American Express, UnionPay y JCB, pero no Visa. Comprueba la compatibilidad actual de la app antes de depender solo del teléfono.</p>
+            </article>
           </div>
         </section>
+
+        <nav id="tmoney-nav-next" class="tmoney-anchor-nav tmoney-anchor-nav--compact" aria-label="Respuestas relacionadas con T-money">
+          <div class="tmoney-anchor-nav__panel">
+            <p class="tmoney-anchor-nav__title">Más respuestas</p>
+            <div class="tmoney-anchor-nav__links">
+              <a class="tmoney-anchor-nav__link" href="#tmoney-recharge-title">Volver a recargar la tarjeta</a>
+              <a class="tmoney-anchor-nav__link" href="#tmoney-transit-title">Comprobar las normas al salir y hacer transbordo</a>
+              <a class="tmoney-anchor-nav__link" href="#tmoney-refund-title">Saldo sobrante y reembolsos</a>
+              <a class="tmoney-anchor-nav__link" href="#tmoney-wowpass-title">¿T-money o WOWPASS?</a>
+              <a class="tmoney-anchor-nav__link" href="#tmoney-faq-title">Preguntas frecuentes</a>
+            </div>
+            <div class="tmoney-anchor-nav__related">
+              <a href="#tmoney-nav-help">Anterior: ¿Necesitas ayuda ahora? ←</a>
+              <a href="#tmoney-nav-use">¿Listo para viajar? ↑</a>
+              <a href="#tmoney-contents">Volver a todos los temas ↑</a>
+            </div>
+          </div>
+        </nav>
 
         <section class="tmoney-editorial-section" aria-labelledby="tmoney-wowpass-title">
           <h2 id="tmoney-wowpass-title">¿T-money o WOWPASS?</h2>
@@ -381,6 +635,13 @@
           <p><a href="tmoney-vs-wowpass.html">Guía T-money vs WOWPASS</a></p>
           <p>Si ya sabes que quieres WOWPASS, la guía de WOWPASS explica cómo funcionan en la práctica sus dos saldos.</p>
           <p><a href="wowpass.html">Guía de WOWPASS</a></p>
+          <div class="tmoney-practical-addition" id="tmoney-climate-short-pass-choice">
+            <h3>¿Y si elijo un pase de corta duración de Climate Card en lugar de T-money?</h3>
+            <p>El abono de corta duración Climate Card de Seúl es distinto de una T-money normal de pago por trayecto. Puede compensar si vas a utilizar con frecuencia transportes incluidos en su cobertura durante varios días seguidos. Resulta menos interesante si casi todo lo haces a pie, tomas taxis, pasas días fuera de Seúl o necesitas trayectos excluidos del abono.</p>
+            <p>En octubre de 2026, los pases turísticos de corta duración en Seúl son de 1, 2, 3, 5 y 7 días. VisitKorea indica, respectivamente, precios de ₩5,000, ₩8,000, ₩10,000, ₩15,000 y ₩20,000, además del coste de la tarjeta física cuando sea necesario comprarla aparte. Comprueba cuándo empieza la validez y la ruta concreta de metro o autobús: un abono ilimitado para la zona de Seúl no es saldo T-money válido en todo el país ni sustituye un billete AREX Express.</p>
+            <p>En septiembre de 2026, Seúl introdujo un esquema Climate Pass separado y orientado a residentes, mientras continuaban los productos Climate Card de corta duración para turistas. No confundas la información antigua sobre la anterior opción prepago de 30 días con el abono turístico actual. Las nuevas máquinas del metro admiten tarjetas extranjeras para <em>la compra y recarga del producto Climate Card de corta duración</em>, pero eso no significa que permitan recargar cualquier T-money física normal con la misma tarjeta bancaria.</p>
+            <p><strong>Decisión práctica:</strong> usa T-money normal si buscas una sola tarjeta sencilla para moverte entre Seúl y otras ciudades, no sabes cuántas veces viajarás al día o prefieres un itinerario flexible. Antes de elegir Climate Card de corta duración, compara los días reales de uso, las líneas cubiertas, el precio adicional de la tarjeta física y el gasto previsto en transporte. WOWPASS es otra decisión si también quieres saldo prepago para compras.</p>
+          </div>
         </section>
 
         <section class="tmoney-editorial-section" aria-labelledby="tmoney-faq-title">
@@ -411,6 +672,13 @@
             <li><a href="https://apps.apple.com/us/app/mobiletmoney/id1470361790" target="_blank" rel="noopener noreferrer">MobileTmoney — App Store</a><p>Opción para viajeros internacionales y recarga con Apple Pay: Mastercard, American Express, UnionPay y JCB. Visa no figura actualmente entre las redes admitidas.</p></li>
             <li><a href="https://english.seoul.go.kr/climate-cards-and-single-journey-transit-tickets-now-accepting-international-credit-cards-no-cash-needed/" target="_blank" rel="noopener noreferrer">Seoul Metropolitan Government — Actualización sobre pagos de transporte con tarjetas internacionales</a><p>Alcance en 2026 de la aceptación de tarjetas internacionales en los nuevos quioscos del metro de Seoul.</p></li>
             <li><a href="https://play.google.com/store/apps/details?id=com.tmoney.mkoreatourcard" target="_blank" rel="noopener noreferrer">KOREA TOUR CARD Tmoney — Google Play</a><p>App oficial turística de T-money para Android, uso de NFC y compatibilidad actualmente indicada con tarjetas internacionales para cargar saldo.</p></li>
+          <li><a href="https://english.seoul.go.kr/policy/transportation/modes-of-transport/bus/" target="_blank" rel="noopener noreferrer">Gobierno Metropolitano de Seúl — Transbordos en autobús y pagos para varios pasajeros</a><p>Plazos de transbordo de 30/60 minutos, exclusión de la misma línea y restricciones cuando una tarjeta paga por varias personas.</p></li>
+          <li><a href="https://news.seoul.go.kr/traffic/archives/518133" target="_blank" rel="noopener noreferrer">Gobierno Metropolitano de Seúl — Preguntas frecuentes sobre pagos en máquinas (septiembre de 2026)</a><p>Qué billetes y abonos se pueden pagar con tarjeta y qué recargas prepago siguen requiriendo principalmente efectivo.</p></li>
+          <li><a href="https://english.seoul.go.kr/climate-cards-and-single-journey-transit-tickets-now-accepting-international-credit-cards-no-cash-needed/" target="_blank" rel="noopener noreferrer">Gobierno Metropolitano de Seúl — Implantación de pagos con tarjetas extranjeras (marzo de 2026)</a><p>Compra con tarjetas extranjeras de pases Climate Card de corta duración y billetes sencillos en determinadas máquinas nuevas.</p></li>
+          <li><a href="https://english.seoul.go.kr/policy/transportation/climate-card/" target="_blank" rel="noopener noreferrer">Gobierno Metropolitano de Seúl — Normas actuales de Climate Card</a><p>Abonos turísticos de corta duración, validez, líneas incluidas y cambios respecto al antiguo producto de 30 días.</p></li>
+          <li><a href="https://www.airportrailroad.com/train/express/guide" target="_blank" rel="noopener noreferrer">AREX — Guía oficial de billetes del tren Express</a><p>Reservas y billetes independientes para el servicio sin paradas del aeropuerto.</p></li>
+          <li><a href="https://english.seoul.go.kr/service/entry/getting-to-seoul-from-incheon-airport/" target="_blank" rel="noopener noreferrer">Gobierno Metropolitano de Seúl — Opciones del tren del aeropuerto</a><p>Diferencias entre el servicio con paradas y el Express sin paradas, incluidos sus billetes.</p></li>
+          <li><a href="https://www.tmoney.co.kr/aeb/cmnctn/news/readNewsView.dev%3B?bdSeqNo=4292" target="_blank" rel="noopener noreferrer">Tmoney — Plan de pagos directos con tarjetas extranjeras anunciado en septiembre de 2026</a><p>Anuncio de una implantación gradual futura para pasar la tarjeta bancaria extranjera directamente en el transporte; no es un sistema general disponible actualmente.</p></li>
           </ul>
           <p class="tmoney-reviewed">Revisión general de la página: agosto de 2026. Condiciones de MobileTmoney verificadas: 11 de octubre de 2026.</p>
           <p>Los métodos de pago de T-money, los puntos de reembolso, la compatibilidad de dispositivos y la aceptación en el transporte pueden cambiar. Si para tu viaje es importante una tarjeta de pago, un teléfono o un lugar concreto de reembolso, consulta la información actual de T-money, Apple o las fuentes oficiales de turismo en lugar de una captura antigua.</p>

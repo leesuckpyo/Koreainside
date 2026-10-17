@@ -18,6 +18,94 @@
   <link rel="alternate" hreflang="id" href="https://www.getkoreainside.com/id/tmoney.html">
   <title>韓国でのT-moneyの使い方 | 旅行者向け交通カードガイド</title>
   <link rel="stylesheet" href="../style.css">
+<style>
+  /* T-money-only on-page navigation; does not affect global navigation. */
+  .tmoney-page .tmoney-anchor-nav { color: inherit; }
+  .tmoney-page .tmoney-anchor-nav--primary { padding: 28px 0 12px; }
+  .tmoney-page .tmoney-anchor-nav--compact { margin: 28px 0; }
+  .tmoney-page .tmoney-anchor-nav__panel {
+    border: 1px solid #e1e7ee;
+    border-radius: 16px;
+    padding: 22px;
+    background: #f8fafc;
+  }
+  .tmoney-page .tmoney-anchor-nav--compact .tmoney-anchor-nav__panel {
+    border-radius: 12px;
+    padding: 18px 20px;
+    background: #fff;
+  }
+  .tmoney-page .tmoney-anchor-nav__title {
+    margin: 0 0 8px;
+    color: #20334b;
+    font-size: 1.16rem;
+    font-weight: 700;
+    line-height: 1.35;
+  }
+  .tmoney-page .tmoney-anchor-nav__description {
+    margin: 0 0 16px;
+    color: #526277;
+    font-size: .93rem;
+    line-height: 1.5;
+  }
+  .tmoney-page .tmoney-anchor-nav__links {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .tmoney-page .tmoney-anchor-nav__link {
+    display: flex;
+    align-items: center;
+    min-height: 46px;
+    padding: 11px 14px;
+    border: 1px solid #dce4ed;
+    border-radius: 9px;
+    background: #fff;
+    color: #253b56;
+    font-size: .94rem;
+    font-weight: 600;
+    line-height: 1.4;
+    text-decoration: underline;
+    text-decoration-color: #a5b5c7;
+    text-underline-offset: 3px;
+    overflow-wrap: anywhere;
+  }
+  .tmoney-page .tmoney-anchor-nav__link:hover {
+    border-color: #98acc2;
+    background: #f3f7fb;
+  }
+  .tmoney-page .tmoney-anchor-nav__related {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+    margin-top: 14px;
+  }
+  .tmoney-page .tmoney-anchor-nav__related a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: #2b4b6e;
+    font-size: .89rem;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .tmoney-page .tmoney-anchor-nav a:focus-visible {
+    outline: 3px solid #2766a6;
+    outline-offset: 3px;
+  }
+  .tmoney-page .tmoney-anchor-nav[id],
+  .tmoney-page .tmoney-editorial-section > h2[id] {
+    scroll-margin-top: 96px;
+  }
+  @media (max-width: 600px) {
+    .tmoney-page .tmoney-anchor-nav--primary { padding: 18px 0 8px; }
+    .tmoney-page .tmoney-anchor-nav__panel { padding: 16px; }
+    .tmoney-page .tmoney-anchor-nav--compact .tmoney-anchor-nav__panel { padding: 16px; }
+    .tmoney-page .tmoney-anchor-nav__links { grid-template-columns: minmax(0, 1fr); }
+    .tmoney-page .tmoney-anchor-nav__title { font-size: 1.05rem; }
+    .tmoney-page .tmoney-anchor-nav__related { gap: 2px 16px; }
+  }
+</style>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -202,6 +290,25 @@
       </div>
     </section>
 
+    <nav id="tmoney-contents" class="tmoney-anchor-nav tmoney-anchor-nav--primary" aria-label="T-moneyガイドの目次">
+      <div class="container">
+        <div class="tmoney-anchor-nav__panel">
+          <p class="tmoney-anchor-nav__title">知りたいT-moneyの項目へ</p>
+          <p class="tmoney-anchor-nav__description">必要な項目に直接移動できます。</p>
+          <div class="tmoney-anchor-nav__links">
+            <a class="tmoney-anchor-nav__link" href="#tmoney-choice-title">どのT-moneyを選ぶ？</a>
+            <a class="tmoney-anchor-nav__link" href="#tmoney-buying-title">購入・チャージ</a>
+            <a class="tmoney-anchor-nav__link" href="#tmoney-transit-title">地下鉄・バス・乗り換え</a>
+            <a class="tmoney-anchor-nav__link" href="#tmoney-apple-title">スマートフォンでT-money</a>
+            <a class="tmoney-anchor-nav__link" href="#tmoney-youth-title">子どもと一緒の旅行</a>
+            <a class="tmoney-anchor-nav__link" href="#tmoney-problems-title">カードが使えないとき</a>
+            <a class="tmoney-anchor-nav__link" href="#tmoney-refund-title">残高の払い戻し</a>
+            <a class="tmoney-anchor-nav__link" href="#tmoney-wowpass-title">T-moneyとWOWPASS、どちら？</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
     <div class="tmoney-editorial-guide">
       <div class="container">
         <section class="tmoney-editorial-section" aria-labelledby="tmoney-choice-title">
@@ -253,6 +360,16 @@
           <p>現在のVISITKOREA案内では、T-moneyは全国のGS25、CU、7-ELEVENなどのコンビニのほか、ソウル地下鉄1〜8号線の駅案内所でも購入できます。一般的なカード価格は現在おおむね₩3,000〜₩5,000と案内されていますが、デザインや販売店によって異なる場合があります。</p>
           <p>多くの旅行者にとって、出発前にわざわざ購入しておく必要はありません。到着後でも通常は簡単に買えます。特別な観光客向けカードを探すより、コンビニや駅でT-moneyロゴを探してください。</p>
           <p>カード本体の価格と、カードに入っている残高は別です。カードだけ買って残高を入れずに地下鉄改札へ行っても、そのカード本体だけで乗車できるわけではありません。</p>
+          <!-- KI_TMONEY_PROBLEM_SOLVING_V1_20261016 -->
+          <div class="tmoney-practical-addition" id="tmoney-family-and-old-cards">
+            <h3>家族でT-moneyカード1枚を共有できる？</h3>
+            <p>地下鉄では、運賃を払う人それぞれに交通カードを1枚用意してください。同じカードを何度もタッチして家族全員が別々に改札を通ることはできません。運賃が必要な子どもにも1人1枚持たせ、対象の年齢区分を登録しておきましょう。</p>
+            <p>ソウルの一部のバスでは、タッチする前に運転手へ人数を伝えると、1枚のカードで複数人分を支払えます。ただし、これはバスでの特別な支払い方法です。地下鉄も利用する家族旅行で、人数分のカードの代わりにはなりません。複数人払いの乗り換え割引には制限があり、特にその後に地下鉄へ乗り換える場合は注意が必要です。ソウルを家族で移動するなら、運賃が必要な人はそれぞれカードを持つほうが分かりやすいでしょう。</p>
+            <h3>前回の韓国旅行で使ったT-moneyカードはまた使える？</h3>
+            <p>新しいカードを買う前に、手元のカードの残高を確認してみてください。正常に使える通常のT-moneyカードなら、次の韓国旅行でも利用できる場合があります。ただし、古いカードやキャンペーン用カードがどこでも読み取れるとは限りません。機械で認識されない場合は、追加でチャージする前に駅係員やT-money取扱窓口へ確認しましょう。</p>
+            <h3>仁川空港に深夜到着する場合は？</h3>
+            <p>仁川空港の到着ターミナル内、または空港鉄道の駅周辺でT-moneyを扱うコンビニを探してください。カードの在庫があり、チャージにも対応しているか確認が必要です。深夜まで営業していても、すべてのカードやサービスを扱っているとは限りません。購入が難しければ、AREX直通列車の別売り乗車券や利用可能と確認できた空港移動手段でソウルへ向かい、翌日以降のために市内でT-moneyを買う方法もあります。</p>
+          </div>
         </section>
 
         <section class="tmoney-editorial-section tmoney-section--cream" aria-labelledby="tmoney-load-title">
@@ -268,6 +385,21 @@
           <p>これは、ソウルの新しい海外カード対応券売機とは別の話です。2026年、ソウルはClimate Cardの短期券や1回用乗車券などを海外発行のクレジットカード・デビットカードで購入できる新型地下鉄券売機を拡大しました。だからといって、通常のT-moneyチャージ機すべてが海外発行カードに対応したわけではありません。</p>
           <p>機械でカードが拒否されたら、同じ支払い方法を何度も試す必要はありません。韓国ウォンを使うか、対応コンビニでT-moneyをチャージしてください。</p>
           <p>地下鉄改札やチャージ機に表示される残高を確認すれば、多くの旅行者には十分です。旅行全体の金額を先に計算するより、残高が少なくなってきたら追加してください。</p>
+          <div class="tmoney-practical-addition" id="tmoney-top-up-troubleshooting">
+            <h3>海外発行カードで1回用乗車券は買えるのに、T-moneyをチャージできないのはなぜ？</h3>
+            <p>画面で何を購入するかによって、使える支払い方法が異なります。2026年3月以降、ソウルの一部の新型地下鉄券売機では、1回用乗車券や気候同行カードの短期券など、対象商品に海外発行カードで支払えるようになりました。ただし、通常のカード型T-moneyへ海外カードで自由にチャージできるようになったわけではありません。2026年9月のソウル市の案内でも、これらの商品購入と一般的なプリペイドカードへのチャージは区別されています。</p>
+            <p>通常のカード型T-moneyをチャージするなら、韓国ウォンの現金を用意し、カード型交通カードのチャージ機能を選ぶか、対応コンビニで現金によるチャージを頼んでください。海外発行のVisaやMastercardで1回用乗車券を購入できても、同じ機械でT-moneyをチャージできるとは限りません。<strong>カード本体の購入、乗車券の購入、交通カードへの残高追加は別の手続きです。</strong></p>
+            <h3>チャージ代金を払ったのに残高が増えないときは？</h3>
+            <ol>
+              <li>もう一度支払う前に、駅の機械や取扱窓口などで、カードに実際に記録されている残高を確認してください。</li>
+              <li>レシートや決済記録を残し、店舗・機械・時刻・金額・提示したカードを記録しましょう。2枚続けてチャージした場合は、それぞれの残高を確認します。</li>
+              <li>まだ店舗にいるなら、正しいカードへのチャージが完了したかレジで確認してもらってください。駅の場合は、係員にカードと機械の両方を確認してもらいます。</li>
+              <li>支払額と記録された残高が合わない場合は、記録を示して支払い先の店舗またはT-moneyのサポートへ相談してください。最初の取引を確認する前に、不正だと決めつけたり、同じ支払いを繰り返したりしないでください。</li>
+            </ol>
+            <p>これは乗車後に残高が減っているケースとは異なります。乗車後の減額は、正しい運賃や距離に応じた追加料金である可能性があります。まず、<em>チャージしたはずのお金</em>が入っていないのか、<em>乗車料金</em>が引かれたのかを区別しましょう。</p>
+            <h3>海外発行の銀行カードをソウルの地下鉄・バスで直接タッチして使える？</h3>
+            <p>2026年10月時点では、海外発行の銀行カードを地下鉄やバスの端末へ直接タッチする方法を、一般的な乗車手段として当てにしないでください。T-moneyは2027年から段階的に海外発行カードの直接タッチ決済を導入する計画を発表しています。これは、現在一部の券売機で海外カードを使って対象商品を購入できる仕組みとは別です。今の旅行では、利用可能と確認した交通カード、設定済みのモバイルT-money、または対象サービスで認められる乗車券を使いましょう。</p>
+          </div>
         </section>
 
         <section class="tmoney-visual-band" aria-label="T-moneyの購入・チャージ案内">
@@ -281,12 +413,38 @@
           </div>
         </section>
 
+        <nav id="tmoney-nav-use" class="tmoney-anchor-nav tmoney-anchor-nav--compact" aria-label="T-moneyの乗車案内">
+          <div class="tmoney-anchor-nav__panel">
+            <p class="tmoney-anchor-nav__title">乗車の準備はできましたか？</p>
+            <div class="tmoney-anchor-nav__links">
+              <a class="tmoney-anchor-nav__link" href="#tmoney-transit-title">タッチと乗り換えのルール</a>
+              <a class="tmoney-anchor-nav__link" href="#tmoney-coverage-title">T-moneyを使える場所</a>
+              <a class="tmoney-anchor-nav__link" href="#tmoney-youth-title">子ども・青少年運賃</a>
+              <a class="tmoney-anchor-nav__link" href="#tmoney-problems-title">うまく使えないとき</a>
+            </div>
+            <div class="tmoney-anchor-nav__related">
+              <a href="#tmoney-contents">目次に戻る ↑</a>
+              <a href="#tmoney-nav-help">次へ：困ったときの対処 →</a>
+            </div>
+          </div>
+        </nav>
+
         <section class="tmoney-editorial-section" aria-labelledby="tmoney-transit-title">
           <h2 id="tmoney-transit-title">地下鉄・バスでT-moneyを使う</h2>
           <p>地下鉄は一度使えば簡単です。入るときに1回タッチし、出るときにも1回タッチします。出場時のタッチでその乗車が完了し、運賃が計算されます。</p>
           <p>バスも同じ習慣です。乗るときにタッチし、降りる前にもタッチします。</p>
           <p>降車時の2回目のタッチは、ドアが開いて皆が動いているので忘れやすい部分です。ただし、乗継割引には、交通システムが前の乗車の終了地点と次の乗車の開始を把握できることが重要です。</p>
           <p>対象となるバス・地下鉄間で正しく乗り継ぐと、T-moneyが該当する乗継割引を自動で適用できます。細かな乗継可能時間は交通システムや時間帯によって異なるため、このガイドでは単純な習慣を複雑な時刻表に変えません。毎回きちんとタッチしてください。</p>
+          <div class="tmoney-practical-addition" id="tmoney-transfer-troubleshooting">
+            <h3>乗り換えたのに運賃が引かれたのはなぜ？</h3>
+            <p>ソウルのバス・地下鉄の統合運賃制度では、原則として前の交通機関で降車タッチしてから30分以内の乗り換えが対象です。21時から翌7時までは60分に延長されます。連続する5回の乗車で最大4回の乗り換えを認める仕組みです。同じバスや同じ路線へ戻る場合は割引対象にならず、無制限に無料で乗れる制度ではありません。</p>
+            <p>システムの誤りだと判断する前に、4つ確認してください。<strong>前の乗車で降車タッチをしたか、次の乗車が制限時間内だったか、同じ路線ではなかったか、全行程で同じカードを使ったか。</strong>割引には対象の運行会社・路線という条件もあり、ソウル以外では規則が異なる場合があります。</p>
+            <p>乗り換え時に追加で引き落とされても、必ずしも割引が失敗したわけではありません。基本運賃の差額や移動距離による追加料金が発生することもあります。端末に表示された1回の金額だけでなく、移動全体を確認してください。不自然な請求ならバス番号、駅名、タッチした時刻、カード情報を記録し、交通事業者や駅係員に計算方法を確認しましょう。</p>
+            <h3>バスの降車タッチを忘れたら、次の乗車で修正できる？</h3>
+            <p>前のバスで降車タッチを忘れた記録が、次のバスや地下鉄の端末で自動的に修正されるとは考えないでください。降車記録がないと、その後の運賃や乗り換え割引に影響する場合があります。気づいたら残高を確認し、次の運賃に疑問があれば前の経路を係員に伝えましょう。次回からは、降りてから思い出すのではなく、降車の準備と一緒にタッチする習慣をつけてください。</p>
+            <h3>グループ全員に同じ乗り換え割引が適用される？</h3>
+            <p>必ずしも同じ割引にはなりません。ソウルでバスの複数人分を1枚で払う特例には、乗車・降車記録や乗客数が一致するなどの条件があり、地下鉄への乗り換えには引き継がれません。そのため、バスと地下鉄を併用するグループに1枚払いはおすすめできません。カードを分けるほうが、それぞれの運賃と乗り換え履歴を確認しやすくなります。</p>
+          </div>
         </section>
 
         <section class="tmoney-editorial-section" aria-labelledby="tmoney-coverage-title">
@@ -296,6 +454,12 @@
           <p>ただしタクシーでの支払いは完全に統一されていません。T-money自身も地域によって利用制限がある場合があると案内しているため、すべてのタクシーで使えると決めつけるより、カードリーダーやT-moneyマークを確認するほうが確実です。</p>
           <p>T-moneyマークがある対応小売店や提携先でも利用できます。コンビニなどでたまに使うには便利ですが、通常のデビットカードやクレジットカードの代用品ではなく、「交通カード＋一部の支払い機能」と考えるほうが分かりやすいです。</p>
           <p>一部の高速バス、市外交通、鉄道窓口、有料道路などでも特定のT-money商品・カード種別が使える場合がありますが、条件はより個別的です。一般的な旅行計画では、バスと地下鉄を確実な中心用途として考えてください。</p>
+          <div class="tmoney-practical-addition" id="tmoney-airport-rail-choice">
+            <h3>仁川空港の一般列車と直通列車、どちらもT-moneyで乗れる？</h3>
+            <p><strong>AREX一般列車（各駅停車）：利用可能なT-money交通カードで乗れます。</strong>通常の交通改札を通り、弘大入口駅や孔徳駅などの途中駅にも停車します。カード型T-moneyに残高があるか、対応するモバイル交通カードを用意できていれば、空港から最初に利用する列車の候補になります。</p>
+            <p><strong>AREX直通列車：別途、直通列車の乗車券を購入してください。</strong>途中駅に停車しない空港鉄道のサービスには、独自の発券・乗車手続きがあります。通常のT-money残高だけで予約制の直通列車に乗れると思って、専用改札へ進まないようにしてください。購入やタッチの前に列車の種類を確認しましょう。</p>
+            <p>T-moneyが韓国の広い地域で使えても、すべての長距離鉄道に乗れる共通乗車券ではありません。指定席の列車、都市間・高速バスの発券、一部の特別な空港交通などでは別の乗車券や支払い手続きが必要な場合があります。通常の地下鉄・市内バス以外では、運行会社の案内に従ってください。</p>
+          </div>
         </section>
 
         <section class="tmoney-editorial-section" aria-labelledby="tmoney-apple-title">
@@ -308,6 +472,16 @@
           <p>海外旅行者向けには、MobileTmoneyアプリからApple Payでチャージする経路もあります。公式App Storeには、基本利用は会員登録不要で、対応するMastercard・American Express・UnionPay・JCBによるチャージが案内されています。Visaは現在の対応ブランド一覧に記載されていません。手持ちのカードで利用できるか、出発前に確認してください。</p>
           <p>iPhoneを持っているだけで、カード型T-moneyが不要になるわけではありません。Walletへの直接チャージ、MobileTmoneyのApple Payチャージ、Naver Pay経由のチャージでは、それぞれ利用条件が異なります。対応する方法を事前に確認できなければ、カード型T-moneyを用意しておくと安心です。</p>
           <p>1枚のT-moneyカードは、一度に1台のApple端末で利用できます。iPhoneとApple Watchに別々の交通カードを持ちたい場合、Appleは各端末にそれぞれカードが必要だと案内しています。</p>
+          <div class="tmoney-practical-addition" id="tmoney-iphone-foreign-card-steps">
+            <h3>iPhoneと海外発行カードがある場合、どの方法でチャージすればいい？</h3>
+            <ol>
+              <li>まず、iPhoneまたはApple WatchとOSのバージョンがT-moneyに対応しているか確認してください。Walletへの交通カード追加と残高のチャージは別の手続きです。</li>
+              <li>対応する韓国発行の決済カードがあれば、Apple Walletから直接チャージできる場合があります。海外発行の銀行カードも同じ方法で使えるとは考えないでください。</li>
+              <li>韓国発行の決済カードがない場合は、公式<strong>MobileTmoney</strong>アプリの旅行者・外国人向けの利用方法を確認してください。現在のApp Storeの案内では、基本利用は会員登録不要で、Mastercard・American Express・UnionPay・JCBのApple Payからチャージできます。この方法の対応ブランドにはVisaが記載されていません。</li>
+              <li>スマートフォンだけで乗車する前に、交通カードが発行され、実際に残高が追加され、改札の読み取り機で使える状態か確認してください。決済ブランドや設定の問題に備え、カード型T-moneyなど、確実に使える別の支払い手段も用意しておきましょう。</li>
+            </ol>
+            <p>アプリの画面、対応決済ブランド、カード発行会社の取扱いは変わることがあります。外国人向けの項目が見つからない場合は、古い画面画像ではなく最新の公式アプリ案内を確認してください。残高があるモバイルカードを使えないときは、削除・再発行する前にT-moneyのサポートへ相談しましょう。残高の引き継ぎ・回復条件を確認せずに操作すると、払い戻しが難しくなる場合があります。</p>
+          </div>
         </section>
 
         <section class="tmoney-editorial-section" aria-labelledby="tmoney-android-title">
@@ -316,13 +490,40 @@
           <p>現在のGoogle Play公式掲載では、NFCを使ってT-moneyとして利用し、残高や利用履歴を確認でき、Mastercard、Visa、American Express、JCB、UnionPayなど対応する海外カードでチャージや払い戻しができると案内しています。</p>
           <p>ソウル市も、Android旅行者が海外カードでチャージする手段としてKOREA TOUR CARDアプリを案内しています。</p>
           <p>重要なのは「対応する」端末であることです。NFCハードウェア、端末設定、アプリ対応状況は異なるため、スマートフォンだけを韓国での唯一の交通カードにする前に、アプリをインストールして確認してください。</p>
+          <div class="tmoney-practical-addition" id="tmoney-android-quick-check">
+            <h3>AndroidのT-moneyだけで出かける前に確認したいこと</h3>
+            <p>NFCを有効にし、公式KOREA TOUR CARD Tmoneyアプリで実際に交通カードを発行・利用できるか確認してください。NFC搭載端末でも、必ずその機種でアプリが動作するとは限りません。チャージ完了と残高の確認方法を確かめ、最初の移動には別の支払い手段も用意しましょう。</p>
+            <p>アプリの案内にはVisaなどの海外発行カードブランドへの対応が記載されていますが、個別の決済が承認されない場合もあります。失敗したときは何度も試す前にアプリとカードの利用条件を確認してください。すぐに乗車したい場合、現金でチャージしたカード型T-moneyのほうが早いこともあります。</p>
+          </div>
         </section>
+
+        <nav id="tmoney-nav-help" class="tmoney-anchor-nav tmoney-anchor-nav--compact" aria-label="T-moneyのトラブル対処案内">
+          <div class="tmoney-anchor-nav__panel">
+            <p class="tmoney-anchor-nav__title">今、困っていますか？</p>
+            <div class="tmoney-anchor-nav__links">
+              <a class="tmoney-anchor-nav__link" href="#tmoney-low-balance-title">残高が足りないとき</a>
+              <a class="tmoney-anchor-nav__link" href="#tmoney-problems-title">カードやスマホが使えないとき</a>
+              <a class="tmoney-anchor-nav__link" href="#tmoney-youth-title">子ども・家族の運賃</a>
+              <a class="tmoney-anchor-nav__link" href="#tmoney-refund-title">払い戻したいとき</a>
+            </div>
+            <div class="tmoney-anchor-nav__related">
+              <a href="#tmoney-nav-use">前へ：乗車前に確認 ←</a>
+              <a href="#tmoney-nav-next">次へ：ほかの質問と回答 →</a>
+              <a href="#tmoney-contents">目次に戻る ↑</a>
+            </div>
+          </div>
+        </nav>
 
         <section class="tmoney-editorial-section" aria-labelledby="tmoney-youth-title">
           <h2 id="tmoney-youth-title">子ども・青少年</h2>
           <p>子どもや青少年が大人用T-moneyをそのまま使っても、自動的に割引運賃になるとは限りません。</p>
           <p>現在のVISITKOREA案内では、18歳未満の旅行者が公共交通の該当割引を受けるには生年月日の登録が必要です。T-moneyを扱うコンビニでカードを買うときに、登録について確認するのが実用的です。</p>
           <p>家族旅行なら、数回乗った後に大人運賃で引かれていたと気づくより、旅行の最初に済ませておきましょう。</p>
+          <div class="tmoney-practical-addition" id="tmoney-child-discount-check">
+            <h3>子どものカードで大人運賃が引かれる場合は？</h3>
+            <p>まず、年齢に応じた運賃が適用されるよう、カードに子どもの正しい生年月日が登録されているか確認してください。VisitKoreaでは、子ども・青少年運賃の対象となる18歳未満の旅行者に生年月日登録を案内しています。対応するコンビニで手続きを相談できます。小さなカードや子ども向けのデザインを買っただけでは、割引区分が設定されるわけではありません。</p>
+            <p>数日間使い始める前に、運賃区分を確認しておきましょう。特に家族のカードが似たデザインだと取り違えやすくなります。幼児の無料乗車の対象条件は交通機関や状況によって異なるため、カードの見た目から判断せず、利用する路線の最新ルールを確認してください。</p>
+          </div>
         </section>
 
         <section class="tmoney-editorial-section" aria-labelledby="tmoney-low-balance-title">
@@ -330,6 +531,11 @@
           <p>残高不足は通常、不便ではあっても大きなトラブルではありません。</p>
           <p>チャージ機や多くの地下鉄改札では残高を確認できます。ソウルの公式地下鉄案内でも、T-money残高が不足した場合、改札付近の精算機を利用できると案内しています。</p>
           <p>長めの移動前に残高が少ないと分かったら、後ろに人が並んでいる状況で対応するより、改札に入る前にチャージするほうが簡単です。</p>
+          <div class="tmoney-practical-addition" id="tmoney-low-balance-steps">
+            <h3>改札から出られないときは、何度もタッチしていい？</h3>
+            <p>いいえ。残高不足なら、改札付近の精算機・チャージ機を探すか、駅係員に不足分の精算場所を尋ねてください。処理が終わっていない乗車履歴を調べられるよう、カードは手元に残しましょう。カード自体を読み取れない場合は残高不足とは別の問題なので、係員によるカードや改札機の確認が必要なことがあります。</p>
+            <p>空港への長距離移動や都市をまたぐ移動の前には、短い市内移動の残高で足りると決めつけず、乗車前に確認してください。残高不足の表示を一度も見たくないという理由だけで、旅行の終わりに多額をチャージする必要はありません。</p>
+          </div>
         </section>
 
         <section class="tmoney-editorial-section" aria-labelledby="tmoney-refund-title">
@@ -339,6 +545,12 @@
           <p>そのためKorea Insideでは、ブログや古いスクリーンショットの金額を基準に、大きな最終払い戻しを計画することはすすめません。かなりの残高が残っている場合は、最新のT-moneyまたはVISITKOREA案内を確認してください。</p>
           <p>もっと簡単なのは、旅行終盤に大きな金額を追加しないことです。残りのバス、地下鉄、空港移動に必要な分だけ残し、自然に使い切る方向で調整してください。</p>
           <p>残高の払い戻しと、カード本体を買った価格は別です。カードを返せば最初に支払った全額が戻るとは考えないでください。</p>
+          <div class="tmoney-practical-addition" id="tmoney-last-day-balance">
+            <h3>どのコンビニでも残高を全額払い戻せる？</h3>
+            <p>いいえ。T-moneyを販売・チャージできる店でも、すべての金額・種類の払い戻しに対応するとは限りません。VisitKoreaの2026年8月の案内では、カード型T-moneyの残高が₩50,000を超える場合はソウル駅近くのTmoney Townで手続きします。それ以下でも店や駅ごとに対応できるか確認してください。取扱い上限や手数料は異なる場合があります。カード本体の購入代金と払い戻し対象のチャージ残高は別です。</p>
+            <h3>モバイルT-moneyを払い戻す？ 古いカード型T-moneyを残す？</h3>
+            <p>カード型T-moneyとモバイルアプリの払い戻しは、必ずしも同じ手続きではありません。スマートフォンで利用した場合は、交通カードを削除する前に、アプリで使える払い戻し方法と返金先を確認してください。カード型がまだ使えて再訪の予定があるなら、旅行最終日に払い戻し場所を探すより、次の訪韓時に残高を確かめるほうが簡単な場合もあります。ただし、どのカード商品でも同じ対応ができるとは限りません。</p>
+          </div>
         </section>
 
         <section class="tmoney-editorial-section tmoney-section--cream" aria-labelledby="tmoney-problems-title">
@@ -372,8 +584,50 @@
               <h3>「この店でT-moneyが使えるか分からない」</h3>
               <p>支払う前にT-money対応マークを探すか、店員に確認してください。小売店で使えるのは便利な追加機能ですが、T-moneyを唯一の支払い方法として頼る理由にはなりません。</p>
             </article>
+            <article class="tmoney-problem-row" id="tmoney-problem-family-card">
+              <h3>家族で同じカードを地下鉄の改札に使える？</h3>
+              <p>地下鉄の改札では、通常はできません。運賃を支払う人それぞれにカードが必要です。一部のバスでは運転手に人数を指定してもらい、1枚で複数人分を支払えますが、バスから地下鉄への乗り換えではこの例外に頼れません。家族分のカードについては購入の項目を確認してください。</p>
+            </article>
+            <article class="tmoney-problem-row" id="tmoney-problem-charged-not-loaded">
+              <h3>レジでチャージ代金を払ったのに残高が変わらない</h3>
+              <p>別の方法でも残高を確認し、レシートや支払い記録を保管して、店や駅に取引の確認を依頼してください。2枚にチャージした場合は、それぞれを別々に確かめましょう。最初の取引が確認できるまで、不正と決めつけたり、同じ金額を再度支払ったりしないでください。</p>
+            </article>
+            <article class="tmoney-problem-row" id="tmoney-problem-extra-transfer-fare">
+              <h3>乗り換えで再度引き落とされた。割引は適用されていない？</h3>
+              <p>前回の降車タッチ、乗り換えまでの時間、路線、距離や基本運賃の差額を確認してください。ソウルの通常の乗り換え猶予は30分、21:00〜翌7:00は60分で、同じバス路線に戻る場合は対象外です。次の端末で追加の金額が表示されても、それだけで誤請求とは限りません。</p>
+            </article>
+            <article class="tmoney-problem-row" id="tmoney-problem-airport-express">
+              <h3>T-moneyカードでAREX直通列車の改札を通れない</h3>
+              <p>AREXの一般列車（各駅停車）と直通列車では乗車券が異なります。通常のT-money残高で乗れるのは一般列車で、ノンストップの直通列車には専用の乗車券が必要です。別の改札を試す前に、選んだ列車を確認してください。</p>
+            </article>
+            <article class="tmoney-problem-row" id="tmoney-problem-reader-rejects-card">
+              <h3>カードが読み取り機にまったく反応しない</h3>
+              <p>まず、対応する交通カードかどうか、正しい読み取り機にかざしているか確認してください。チャージ機でも認識されなければ、駅係員や対応窓口にカードの確認を依頼しましょう。カードは認識されるが残高が足りない場合とは別の問題です。</p>
+            </article>
+            <article class="tmoney-problem-row" id="tmoney-problem-foreign-mobile-topup">
+              <h3>iPhoneにT-moneyを追加したのに、海外発行のVisaでチャージできない</h3>
+              <p>Apple Walletにカードを追加できても、海外発行カードでチャージできるとは限りません。Walletからの直接チャージには韓国発行カードが必要です。MobileTmoneyの外国人向けチャージ案内にはMastercard・American Express・UnionPay・JCBが記載され、Visaは含まれていません。スマートフォンだけで出かける前に公式アプリの最新対応状況を確認してください。</p>
+            </article>
           </div>
         </section>
+
+        <nav id="tmoney-nav-next" class="tmoney-anchor-nav tmoney-anchor-nav--compact" aria-label="T-moneyに関する関連質問">
+          <div class="tmoney-anchor-nav__panel">
+            <p class="tmoney-anchor-nav__title">ほかの質問と回答</p>
+            <div class="tmoney-anchor-nav__links">
+              <a class="tmoney-anchor-nav__link" href="#tmoney-recharge-title">カードを再チャージする</a>
+              <a class="tmoney-anchor-nav__link" href="#tmoney-transit-title">降車タッチ・乗り換えのルール</a>
+              <a class="tmoney-anchor-nav__link" href="#tmoney-refund-title">余った残高と払い戻し</a>
+              <a class="tmoney-anchor-nav__link" href="#tmoney-wowpass-title">T-moneyとWOWPASS、どちら？</a>
+              <a class="tmoney-anchor-nav__link" href="#tmoney-faq-title">よくある質問</a>
+            </div>
+            <div class="tmoney-anchor-nav__related">
+              <a href="#tmoney-nav-help">前へ：困ったときの対処 ←</a>
+              <a href="#tmoney-nav-use">乗車前の案内へ ↑</a>
+              <a href="#tmoney-contents">目次に戻る ↑</a>
+            </div>
+          </div>
+        </nav>
 
         <section class="tmoney-editorial-section" aria-labelledby="tmoney-wowpass-title">
           <h2 id="tmoney-wowpass-title">T-moneyとWOWPASS、どちら？</h2>
@@ -382,6 +636,13 @@
           <p><a href="/ja/tmoney-vs-wowpass.html">T-money vs WOWPASSガイド</a></p>
           <p>WOWPASSを使うことがすでに決まっているなら、WOWPASSガイドで2つの残高が実際にどう動くかを確認できます。</p>
           <p><a href="/ja/wowpass.html">WOWPASSガイド</a></p>
+          <div class="tmoney-practical-addition" id="tmoney-climate-short-pass-choice">
+            <h3>T-moneyの代わりに気候同行カードの短期券を選ぶべき？</h3>
+            <p>ソウルの気候同行カード短期券は、乗るたびに運賃を払う通常のT-moneyとは別の商品です。対象エリア内の公共交通を連日何度も利用する予定なら、短期券が合う場合があります。一方、徒歩やタクシーが中心、ソウル市外へ出かける日が多い、対象外路線を利用する場合はお得になりにくくなります。</p>
+            <p>2026年10月時点で、ソウルの観光客向け短期券には1・2・3・5・7日券があります。VisitKoreaが案内する料金は順に₩5,000・₩8,000・₩10,000・₩15,000・₩20,000で、必要な場合はカード本体を別途購入します。利用開始日の扱いと対象となる地下鉄・バス路線を確認してください。ソウル圏の乗り放題券は全国共通のT-money残高ではなく、AREX直通列車の乗車券にも自動的にはなりません。</p>
+            <p>2026年9月、ソウルでは住民向けの別制度として気候同行パスが導入されましたが、観光客向けの気候同行カード短期券は引き続き提供されています。従来の30日プリペイド商品に関する古い案内と、現在の観光客向け短期券を混同しないでください。新型地下鉄券売機では、海外発行カードによる<em>短期券の購入・チャージ</em>が対象となりますが、同じ銀行カードで通常のカード型T-moneyも必ずチャージできるわけではありません。</p>
+            <p><strong>選び方の目安：</strong>ソウル市内と他都市を1枚で移動したい、1日に何回乗るか決まっていない、予定を柔軟に変えたい場合は通常のT-moneyが使いやすいでしょう。気候同行カード短期券を選ぶ前に、実際の利用日数、対象路線、カード本体代、見込み運賃を比べてください。買い物用のプリペイド残高も欲しいなら、WOWPASSは別に検討する選択肢です。</p>
+          </div>
         </section>
 
         <section class="tmoney-editorial-section" aria-labelledby="tmoney-faq-title">
@@ -418,6 +679,13 @@
             <li><a href="https://apps.apple.com/us/app/mobiletmoney/id1470361790" target="_blank" rel="noopener noreferrer">MobileTmoney — App Store</a><p>　海外旅行者向けのApple Payチャージ、対応カードブランド（Mastercard・American Express・UnionPay・JCB）とVisaの取扱いを確認できます。</p></li>
             <li><a href="https://english.seoul.go.kr/climate-cards-and-single-journey-transit-tickets-now-accepting-international-credit-cards-no-cash-needed/" target="_blank" rel="noopener noreferrer">ソウル特別市 — 海外カード交通決済アップデート</a><p>　2026年の新型ソウル地下鉄券売機における海外カード対応範囲。</p></li>
             <li><a href="https://play.google.com/store/apps/details?id=com.tmoney.mkoreatourcard" target="_blank" rel="noopener noreferrer">KOREA TOUR CARD Tmoney — Google Play</a><p>　T-money公式のAndroid旅行者向けアプリ、NFC利用、現在案内されている海外カード入金対応。</p></li>
+          <li><a href="https://english.seoul.go.kr/policy/transportation/modes-of-transport/bus/" target="_blank" rel="noopener noreferrer">ソウル特別市 — バスの乗り換え・複数人払いのルール</a><p>30分・60分の乗り換え猶予、同一路線の対象外条件、1枚で複数人分を支払う際の制限。</p></li>
+          <li><a href="https://news.seoul.go.kr/traffic/archives/518133" target="_blank" rel="noopener noreferrer">ソウル特別市 — 2026年9月の券売機決済Q&amp;A</a><p>カード払いに対応する乗車券・パスと、引き続き現金が基本となるプリペイドカードのチャージの区別。</p></li>
+          <li><a href="https://english.seoul.go.kr/climate-cards-and-single-journey-transit-tickets-now-accepting-international-credit-cards-no-cash-needed/" target="_blank" rel="noopener noreferrer">ソウル特別市 — 2026年3月の海外カード決済導入</a><p>一部の新型券売機で海外発行カードを利用して気候同行カード短期券や1回用乗車券を購入できる範囲。</p></li>
+          <li><a href="https://english.seoul.go.kr/policy/transportation/climate-card/" target="_blank" rel="noopener noreferrer">ソウル特別市 — 気候同行カードの現行ルール</a><p>観光客向け短期券、利用期間、対象路線、旧30日券からの変更点。</p></li>
+          <li><a href="https://www.airportrailroad.com/train/express/guide" target="_blank" rel="noopener noreferrer">AREX — 直通列車の公式乗車券案内</a><p>空港ノンストップ直通列車の予約方法と専用乗車券。</p></li>
+          <li><a href="https://english.seoul.go.kr/service/entry/getting-to-seoul-from-incheon-airport/" target="_blank" rel="noopener noreferrer">ソウル特別市 — 空港鉄道の乗車方法</a><p>一般列車（各駅停車）とノンストップ直通列車の違い、および乗車券の購入方法。</p></li>
+          <li><a href="https://www.tmoney.co.kr/aeb/cmnctn/news/readNewsView.dev%3B?bdSeqNo=4292" target="_blank" rel="noopener noreferrer">Tmoney — 2026年9月発表のオープンループ決済計画</a><p>海外発行の銀行カードを交通機関に直接タッチする方式の段階的な将来導入予定。現時点で全面対応しているという案内ではありません。</p></li>
           </ul>
           <p class="tmoney-reviewed">ページ全体の確認：2026年10月6日。MobileTmoneyの海外カード対応：2026年10月11日に確認。</p>
           <p>T-moneyの支払い方法、払い戻し場所、端末対応、交通利用範囲は変更されることがあります。特定の決済カード、スマートフォン、払い戻し場所が旅行計画で重要な場合は、古いスクリーンショットではなく、現在のT-money、Apple、公式観光案内を確認してください。</p>

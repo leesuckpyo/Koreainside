@@ -18,6 +18,94 @@
   <link rel="alternate" hreflang="id" href="https://www.getkoreainside.com/id/tmoney.html">
   <title>วิธีใช้ T-money ในเกาหลี: ซื้อ เติมเงิน iPhone และ Refund | Korea Inside</title>
   <link rel="stylesheet" href="../style.css">
+<style>
+  /* T-money-only on-page navigation; does not affect global navigation. */
+  .tmoney-page .tmoney-anchor-nav { color: inherit; }
+  .tmoney-page .tmoney-anchor-nav--primary { padding: 28px 0 12px; }
+  .tmoney-page .tmoney-anchor-nav--compact { margin: 28px 0; }
+  .tmoney-page .tmoney-anchor-nav__panel {
+    border: 1px solid #e1e7ee;
+    border-radius: 16px;
+    padding: 22px;
+    background: #f8fafc;
+  }
+  .tmoney-page .tmoney-anchor-nav--compact .tmoney-anchor-nav__panel {
+    border-radius: 12px;
+    padding: 18px 20px;
+    background: #fff;
+  }
+  .tmoney-page .tmoney-anchor-nav__title {
+    margin: 0 0 8px;
+    color: #20334b;
+    font-size: 1.16rem;
+    font-weight: 700;
+    line-height: 1.35;
+  }
+  .tmoney-page .tmoney-anchor-nav__description {
+    margin: 0 0 16px;
+    color: #526277;
+    font-size: .93rem;
+    line-height: 1.5;
+  }
+  .tmoney-page .tmoney-anchor-nav__links {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .tmoney-page .tmoney-anchor-nav__link {
+    display: flex;
+    align-items: center;
+    min-height: 46px;
+    padding: 11px 14px;
+    border: 1px solid #dce4ed;
+    border-radius: 9px;
+    background: #fff;
+    color: #253b56;
+    font-size: .94rem;
+    font-weight: 600;
+    line-height: 1.4;
+    text-decoration: underline;
+    text-decoration-color: #a5b5c7;
+    text-underline-offset: 3px;
+    overflow-wrap: anywhere;
+  }
+  .tmoney-page .tmoney-anchor-nav__link:hover {
+    border-color: #98acc2;
+    background: #f3f7fb;
+  }
+  .tmoney-page .tmoney-anchor-nav__related {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+    margin-top: 14px;
+  }
+  .tmoney-page .tmoney-anchor-nav__related a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: #2b4b6e;
+    font-size: .89rem;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .tmoney-page .tmoney-anchor-nav a:focus-visible {
+    outline: 3px solid #2766a6;
+    outline-offset: 3px;
+  }
+  .tmoney-page .tmoney-anchor-nav[id],
+  .tmoney-page .tmoney-editorial-section > h2[id] {
+    scroll-margin-top: 96px;
+  }
+  @media (max-width: 600px) {
+    .tmoney-page .tmoney-anchor-nav--primary { padding: 18px 0 8px; }
+    .tmoney-page .tmoney-anchor-nav__panel { padding: 16px; }
+    .tmoney-page .tmoney-anchor-nav--compact .tmoney-anchor-nav__panel { padding: 16px; }
+    .tmoney-page .tmoney-anchor-nav__links { grid-template-columns: minmax(0, 1fr); }
+    .tmoney-page .tmoney-anchor-nav__title { font-size: 1.05rem; }
+    .tmoney-page .tmoney-anchor-nav__related { gap: 2px 16px; }
+  }
+</style>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -202,6 +290,25 @@
       </div>
     </section>
 
+    <nav id="tmoney-contents" class="tmoney-anchor-nav tmoney-anchor-nav--primary" aria-label="สารบัญคู่มือ T-money">
+      <div class="container">
+        <div class="tmoney-anchor-nav__panel">
+          <p class="tmoney-anchor-nav__title">ค้นหาคำตอบเรื่อง T-money ที่ต้องการ</p>
+          <p class="tmoney-anchor-nav__description">ไปยังหัวข้อที่ต้องการได้ทันที</p>
+          <div class="tmoney-anchor-nav__links">
+            <a class="tmoney-anchor-nav__link" href="#tmoney-choice-title">ควรเลือก T-money แบบไหน</a>
+            <a class="tmoney-anchor-nav__link" href="#tmoney-buying-title">ซื้อบัตรและเติมเงิน</a>
+            <a class="tmoney-anchor-nav__link" href="#tmoney-transit-title">รถไฟใต้ดิน รถบัส และการเปลี่ยนสาย</a>
+            <a class="tmoney-anchor-nav__link" href="#tmoney-apple-title">ใช้ T-money บนโทรศัพท์</a>
+            <a class="tmoney-anchor-nav__link" href="#tmoney-youth-title">เดินทางกับเด็กหรือไม่</a>
+            <a class="tmoney-anchor-nav__link" href="#tmoney-problems-title">บัตรใช้งานไม่ได้</a>
+            <a class="tmoney-anchor-nav__link" href="#tmoney-refund-title">ขอคืนเงินคงเหลือ</a>
+            <a class="tmoney-anchor-nav__link" href="#tmoney-wowpass-title">T-money หรือ WOWPASS</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
     <div class="tmoney-editorial-guide">
       <div class="container">
         <section class="tmoney-editorial-section" aria-labelledby="tmoney-choice-title">
@@ -253,6 +360,16 @@
           <p>คำแนะนำ VisitKorea ปัจจุบันระบุว่าซื้อ T-money ได้ที่ร้านสะดวกซื้อ เช่น GS25, CU และ 7-ELEVEN ทั่วประเทศ รวมถึง information center ในสถานีรถไฟใต้ดินโซลสาย 1–8 ราคาบัตรทั่วไปปัจจุบันอยู่ราว ₩3,000–₩5,000 แม้ราคาอาจต่างตาม design และผู้ขาย</p>
           <p>สำหรับนักท่องเที่ยวส่วนใหญ่ ไม่จำเป็นต้องทำเรื่องนี้เป็น pre-trip purchase การซื้อหลังมาถึงมักตรงไปตรงมา มองหาโลโก้ T-money ที่ร้านสะดวกซื้อหรือสถานี แทนการไล่หาบัตรเวอร์ชันท่องเที่ยวพิเศษ</p>
           <p>ราคาตัวบัตรกับเงินที่เก็บในบัตรเป็นคนละส่วน ถ้าซื้อบัตรแล้วเดินตรงไป gate โดยไม่เติม value ตัวบัตรเองไม่ได้ให้เที่ยวเดินทาง</p>
+          <!-- KI_TMONEY_PROBLEM_SOLVING_V1_20261016 -->
+          <div class="tmoney-practical-addition" id="tmoney-family-and-old-cards">
+            <h3>คนในครอบครัวใช้บัตร T-money ใบเดียวร่วมกันได้ไหม</h3>
+            <p>เวลาผ่านประตูรถไฟใต้ดิน ผู้โดยสารแต่ละคนที่ต้องจ่ายค่าโดยสารควรมีบัตรของตัวเอง ไม่สามารถใช้บัตรใบเดียวแตะซ้ำเพื่อให้ทั้งครอบครัวผ่านประตูคนละช่องได้ เด็กที่ต้องจ่ายค่าโดยสารก็ควรมีบัตรแยก พร้อมลงทะเบียนประเภทอายุให้ถูกต้อง</p>
+            <p>รถบัสบางคันในโซลให้คนขับคิดค่าโดยสารหลายคนจากบัตรใบเดียวได้ หากแจ้งจำนวนผู้โดยสารก่อนแตะบัตร แต่นี่เป็นวิธีชำระเงินเฉพาะบนรถบัส ไม่ใช่ทางเลือกแทนบัตรแยกเมื่อทริปนั้นต้องใช้รถไฟใต้ดินด้วย การรับส่วนลดเปลี่ยนสายสำหรับผู้โดยสารหลายคนมีเงื่อนไขมากกว่า โดยเฉพาะเมื่อต่อรถไฟ สำหรับครอบครัวส่วนใหญ่ที่เดินทางในโซล การมีบัตรคนละใบสำหรับผู้ที่ต้องจ่ายค่าโดยสารจะช่วยลดความสับสน</p>
+            <h3>บัตร T-money จากทริปเกาหลีก่อนหน้ายังใช้ได้ไหม</h3>
+            <p>ก่อนซื้อบัตรใหม่ ลองตรวจสอบยอดคงเหลือของบัตรเดิมก่อน บัตร T-money แบบทั่วไปที่ยังใช้งานได้อาจนำกลับมาใช้ในการเที่ยวเกาหลีครั้งต่อไปได้ แต่อย่าคิดว่าบัตรเก่าหรือบัตรรุ่นพิเศษจะใช้ได้ทุกที่ หากเครื่องอ่านไม่พบข้อมูลบัตร ควรถามเจ้าหน้าที่สถานีรถไฟใต้ดินหรือจุดบริการ T-money ที่ร่วมรายการก่อนเติมเงินเพิ่ม</p>
+            <h3>ถ้ามาถึงสนามบินอินชอนตอนดึก ควรทำอย่างไร</h3>
+            <p>มองหาร้านสะดวกซื้อที่ขาย T-money ในอาคารผู้โดยสารขาเข้าหรือบริเวณสถานีรถไฟสนามบิน และสอบถามว่ามีบัตรเดินทางจริงอยู่ในสต็อกและเติมเงินให้ได้หรือไม่ แม้ร้านจะเปิดดึกก็ไม่ได้หมายความว่ามีบัตรทุกแบบหรือให้บริการทุกอย่าง หากซื้อบัตรตอนนั้นไม่สะดวก สามารถซื้อตั๋ว AREX Express แยกต่างหาก หรือใช้วิธีเดินทางจากสนามบินอื่นที่ตรวจสอบแล้วว่าให้บริการ เพื่อเข้าตัวเมืองโซลก่อน แล้วค่อยซื้อ T-money สำหรับวันถัดไป</p>
+          </div>
         </section>
 
         <section class="tmoney-editorial-section tmoney-section--cream" aria-labelledby="tmoney-load-title">
@@ -268,6 +385,21 @@
           <p>อย่าสับสนกับเครื่อง transit kiosk รุ่นใหม่ของโซลที่รับบัตรต่างประเทศ ในปี 2026 โซลขยายการจ่ายด้วยบัตรเครดิต/เดบิตต่างประเทศที่ kiosk ใหม่สำหรับผลิตภัณฑ์ เช่น Climate Card แบบระยะสั้นและตั๋วเที่ยวเดียว แต่นั่นไม่ได้หมายความว่าเครื่องเติม T-money ปกติทุกเครื่องรับบัตรต่างประเทศแล้ว</p>
           <p>ถ้าเครื่องปฏิเสธบัตร ไม่ต้องลองวิธีเดิมซ้ำ ใช้เงินวอนหรือเอาบัตรไปเติมที่ร้านสะดวกซื้อที่ร่วมรายการ</p>
           <p>ยอดที่แสดงบน gate หรือเครื่องเติมเพียงพอสำหรับนักท่องเที่ยวส่วนใหญ่ เติมเมื่อยอดเริ่มต่ำ แทนการคำนวณทั้งทริปล่วงหน้า</p>
+          <div class="tmoney-practical-addition" id="tmoney-top-up-troubleshooting">
+            <h3>ทำไมเครื่องรับบัตรต่างประเทศเพื่อซื้อตั๋วเที่ยวเดียว แต่เติมเงิน T-money ไม่ได้</h3>
+            <p>ต้องดูว่ากำลังซื้อสินค้าแบบใดบนหน้าจอ ตั้งแต่เดือนมีนาคม 2026 เครื่องจำหน่ายตั๋วรถไฟใต้ดินรุ่นใหม่บางเครื่องในโซลรับบัตรที่ออกในต่างประเทศสำหรับสินค้าบางประเภท เช่น ตั๋วเที่ยวเดียวและบัตร Climate Card แบบระยะสั้น แต่ไม่ได้หมายความว่าจะใช้บัตรต่างประเทศเติมเงินบัตร T-money แบบจริงทั่วไปได้ทุกเครื่อง คำแนะนำของกรุงโซลเมื่อเดือนกันยายน 2026 ยังแยกการซื้อสินค้าเหล่านี้ด้วยบัตรธนาคารออกจากการเติมยอดเงินในบัตรโดยสารแบบเติมเงินทั่วไป</p>
+            <p>หากต้องการเติมเงินบัตร T-money พลาสติกทั่วไปในตอนนี้ ควรเตรียมเงินวอนสดแล้วเลือกเมนูเติมเงินบัตรจริง หรือให้ร้านสะดวกซื้อที่ร่วมรายการเติมเงินสดให้ การใช้ Visa หรือ Mastercard ที่ออกต่างประเทศซื้อตั๋วเที่ยวเดียวสำเร็จ ไม่ได้ยืนยันว่าเครื่องเดียวกันจะเติมเงิน T-money ได้ <strong>การซื้อบัตร การซื้อตั๋ว และการเติมยอดเงินสำหรับเดินทางเป็นธุรกรรมคนละประเภท</strong></p>
+            <h3>จ่ายเงินเติมบัตรแล้ว แต่ยอดคงเหลือไม่เพิ่ม ต้องทำอย่างไร</h3>
+            <ol>
+              <li>ก่อนจ่ายเงินซ้ำ ให้ตรวจยอดเงินที่บันทึกอยู่ในบัตรจริงผ่านเครื่องในสถานี เคาน์เตอร์ที่ร่วมรายการ หรือช่องทางตรวจยอดที่เชื่อถือได้</li>
+              <li>เก็บใบเสร็จหรือหลักฐานการจ่ายเงิน พร้อมจดชื่อร้านหรือหมายเลขเครื่อง เวลา จำนวนเงิน และบัตรที่ยื่นให้ หากเติมเงินสองใบ ให้ตรวจยอดแต่ละใบแยกกัน</li>
+              <li>หากยังอยู่ในร้าน ให้พนักงานตรวจสอบว่าการเติมเงินสำเร็จลงในบัตรใบที่ถูกต้องหรือไม่ หากอยู่ในสถานี ให้เจ้าหน้าที่ช่วยตรวจทั้งบัตรและเครื่อง</li>
+              <li>หากจำนวนเงินที่จ่ายไม่ตรงกับยอดคงเหลือที่บันทึกไว้ ให้นำหลักฐานติดต่อร้านที่รับชำระหรือฝ่ายช่วยเหลือ T-money อย่าเพิ่งสรุปว่าเป็นการทุจริตหรือจ่ายเงินซ้ำหลายครั้งก่อนตรวจสอบธุรกรรมแรก</li>
+            </ol>
+            <p>กรณีนี้ต่างจากยอดเงินที่ลดลงหลังเดินทางเสร็จ เพราะอาจเป็นค่าโดยสารที่ถูกต้องหรือค่าโดยสารเพิ่มตามระยะทาง ก่อนอื่นให้แยกให้ออกว่า<em>เงินเติม</em>ไม่เข้าบัตร หรือเป็น<em>เงินที่ถูกหักจากการเดินทาง</em></p>
+            <h3>ใช้บัตรธนาคารต่างประเทศแตะขึ้นรถไฟใต้ดินหรือรถบัสในโซลได้เลยไหม</h3>
+            <p>ณ เดือนตุลาคม 2026 อย่าวางแผนใช้บัตรธนาคารที่ออกต่างประเทศแตะเครื่องอ่านบนรถบัสหรือประตูรถไฟใต้ดินโดยตรงเป็นวิธีจ่ายค่าโดยสารทั่วไป T-money ประกาศแผนทยอยเปิดใช้ระบบนี้ตั้งแต่ปี 2027 ซึ่งต่างจากการใช้บัตรต่างประเทศชำระค่าตั๋วบางประเภทผ่านตู้จำหน่ายตั๋วที่รองรับอยู่ในปัจจุบัน สำหรับการเดินทางตอนนี้ ให้ใช้บัตรโดยสารที่ยืนยันว่าใช้ได้ T-money บนมือถือที่ตั้งค่าเรียบร้อย หรือบัตรโดยสารที่ผู้ให้บริการเส้นทางนั้นรับ</p>
+          </div>
         </section>
 
         <section class="tmoney-visual-band" aria-label="ภาพการซื้อและเติม T-money">
@@ -281,12 +413,38 @@
           </div>
         </section>
 
+        <nav id="tmoney-nav-use" class="tmoney-anchor-nav tmoney-anchor-nav--compact" aria-label="หัวข้อการใช้ T-money เดินทาง">
+          <div class="tmoney-anchor-nav__panel">
+            <p class="tmoney-anchor-nav__title">พร้อมออกเดินทางแล้วหรือยัง</p>
+            <div class="tmoney-anchor-nav__links">
+              <a class="tmoney-anchor-nav__link" href="#tmoney-transit-title">แตะบัตรและเปลี่ยนรถอย่างไร</a>
+              <a class="tmoney-anchor-nav__link" href="#tmoney-coverage-title">T-money ใช้ได้ที่ไหนบ้าง</a>
+              <a class="tmoney-anchor-nav__link" href="#tmoney-youth-title">ค่าโดยสารเด็กและเยาวชน</a>
+              <a class="tmoney-anchor-nav__link" href="#tmoney-problems-title">ใช้งานแล้วมีปัญหาหรือไม่</a>
+            </div>
+            <div class="tmoney-anchor-nav__related">
+              <a href="#tmoney-contents">กลับไปสารบัญทั้งหมด ↑</a>
+              <a href="#tmoney-nav-help">ถัดไป: ต้องการความช่วยเหลือไหม →</a>
+            </div>
+          </div>
+        </nav>
+
         <section class="tmoney-editorial-section" aria-labelledby="tmoney-transit-title">
           <h2 id="tmoney-transit-title">ใช้ T-money บนรถไฟใต้ดินและรถบัส</h2>
           <p>หลังเที่ยวแรก ขั้นตอนรถไฟใต้ดินง่าย: แตะตอนเข้าและแตะอีกครั้งตอนออก การแตะออกปิดเที่ยวและให้ระบบคำนวณค่าโดยสาร</p>
           <p>รถบัสก็ใช้ habit เดียวกัน แตะตอนขึ้น และแตะอีกครั้งก่อนลง</p>
           <p>การแตะครั้งที่สองบนรถบัสลืมง่ายเพราะประตูเปิดและทุกคนกำลังลง แต่สำคัญเพราะส่วนลดการต่อรถต้องรู้ว่าการเดินทางหนึ่งจบตรงไหนแล้วอีกเที่ยวเริ่ม</p>
           <p>เมื่อ transfer ถูกต้องระหว่างรถบัสกับรถไฟใต้ดินที่เข้าเกณฑ์ T-money จะคำนวณส่วนลดอัตโนมัติ Window ละเอียดต่างตามระบบและเวลา คู่มือนี้ไม่จำเป็นต้องเปลี่ยน habit ง่ายๆ ให้เป็น timetable: แตะให้ถูกทุกครั้ง</p>
+          <div class="tmoney-practical-addition" id="tmoney-transfer-troubleshooting">
+            <h3>ทำไมเปลี่ยนสายแล้วจึงถูกหักค่าโดยสารอีก</h3>
+            <p>ระบบค่าโดยสารร่วมของรถบัสและรถไฟใต้ดินในโซลโดยทั่วไปกำหนดให้เปลี่ยนสายภายใน 30 นาทีหลังแตะบัตรออกจากเที่ยวก่อนหน้า และขยายเป็น 60 นาทีในช่วง 21:00–07:00 น. สามารถนับการเปลี่ยนสายได้สูงสุด 4 ครั้งในการขึ้นรถต่อเนื่อง 5 เที่ยว การย้อนกลับไปขึ้นรถบัสหรือเส้นทางเดิมไม่ถือเป็นการเปลี่ยนสายที่ได้ส่วนลด และเงื่อนไขนี้ไม่ใช่บัตรเดินทางฟรีไม่จำกัดเที่ยว</p>
+            <p>ก่อนคิดว่าระบบคิดเงินผิด ให้ตรวจ 4 เรื่อง ได้แก่ <strong>แตะบัตรตอนลงจากเที่ยวก่อนหน้าหรือไม่ ขึ้นเที่ยวต่อไปภายในเวลาที่กำหนดหรือไม่ เป็นเส้นทางเดิมหรือไม่ และใช้บัตรใบเดิมตลอดการเดินทางหรือไม่</strong> ส่วนลดยังขึ้นกับผู้ให้บริการและเส้นทางที่เข้าร่วมด้วย นอกโซลอาจใช้กติกาต่างกัน</p>
+            <p>การถูกหักเงินอีกครั้งตอนเปลี่ยนสายไม่ได้แปลว่าส่วนลดผิดพลาดเสมอไป ระบบอาจคิดส่วนต่างค่าโดยสารหรือเพิ่มเงินตามระยะทาง ให้ตรวจการเดินทางทั้งช่วง ไม่ใช่ดูเพียงตัวเลขบนเครื่องอ่านครั้งเดียว หากยอดดูผิดปกติ ให้จดหมายเลขรถบัส สถานี เวลาแตะบัตร และข้อมูลบัตร แล้วสอบถามผู้ให้บริการหรือเจ้าหน้าที่สถานีว่าคำนวณอย่างไร</p>
+            <h3>ลืมแตะบัตรตอนลงรถบัส แก้ไขตอนขึ้นรถครั้งต่อไปได้ไหม</h3>
+            <p>อย่าคาดหวังว่าเครื่องอ่านบนรถบัสหรือรถไฟใต้ดินเที่ยวถัดไปจะย้อนกลับไปแก้เที่ยวแรกที่ไม่ได้แตะออกโดยอัตโนมัติ การไม่มีบันทึกการลงรถอาจกระทบค่าโดยสารและสิทธิ์ส่วนลดเปลี่ยนสายในเที่ยวต่อไป เมื่อรู้ตัวให้ตรวจยอดคงเหลือ และหากค่าโดยสารเที่ยวหลังดูผิดปกติให้อธิบายเส้นทางก่อนหน้าแก่เจ้าหน้าที่ ครั้งหน้าควรแตะบัตรขณะเตรียมลงรถ ไม่ใช่เพิ่งนึกได้เมื่อออกมาแล้ว</p>
+            <h3>ผู้โดยสารทุกคนในกลุ่มจะได้ส่วนลดเปลี่ยนสายเหมือนกันไหม</h3>
+            <p>ไม่จำเป็นต้องได้ส่วนลดเท่ากันทุกคน กรณีพิเศษที่รถบัสในโซลให้ใช้บัตรใบเดียวจ่ายหลายคน มีเงื่อนไขให้จำนวนผู้โดยสารและข้อมูลการขึ้นลงตรงกัน และไม่ได้ใช้ต่อกับการเปลี่ยนไปขึ้นรถไฟใต้ดิน ดังนั้นกลุ่มที่ใช้ทั้งรถบัสและรถไฟไม่ควรใช้บัตรใบเดียวเป็นวิธีหลัก การแยกบัตรให้แต่ละคนช่วยตรวจค่าโดยสารและประวัติเปลี่ยนสายได้ง่ายกว่า</p>
+          </div>
         </section>
 
         <section class="tmoney-editorial-section" aria-labelledby="tmoney-coverage-title">
@@ -296,6 +454,12 @@
           <p>การจ่ายแท็กซี่ไม่ได้เหมือนกันทั้งหมด T-money เองเตือนว่าบางพื้นที่มีข้อจำกัด ดังนั้นดู card reader หรือเครื่องหมาย T-money มีประโยชน์กว่าคิดว่าแท็กซี่ทุกคันรับยอดนี้</p>
           <p>T-money ยังใช้กับร้านและ partner บางแห่งที่มีเครื่องหมายรับ T-money ได้ มีประโยชน์กับการซื้อในร้านสะดวกซื้อเป็นครั้งคราว แต่ควรมองเป็นบัตรขนส่งที่มี payment use เพิ่ม มากกว่าจะใช้แทน debit/credit card ปกติ</p>
           <p>Express bus, intercity transport, rail counter และ toll-road บางกรณีก็รองรับ T-money product/card บางประเภท แต่กฎเฉพาะกว่ามาก สำหรับการวางแผนทั่วไป รถบัสกับรถไฟใต้ดินคือ core ที่เชื่อถือได้</p>
+          <div class="tmoney-practical-addition" id="tmoney-airport-rail-choice">
+            <h3>T-money ใช้ขึ้นรถไฟสนามบินอินชอนทั้งสองประเภทได้ไหม</h3>
+            <p><strong>AREX รถไฟทั่วไปที่จอดทุกสถานี: ใช้ T-money ที่พร้อมใช้งานได้</strong> โดยผ่านประตูโดยสารปกติและจอดตามสถานีระหว่างทาง เช่น สถานี Hongik University และ Gongdeok จึงเป็นตัวเลือกเดินทางแรกจากสนามบินได้ หากเติมเงินบัตรจริงแล้วหรือมีบัตรเดินทางบนมือถือที่รองรับ</p>
+            <p><strong>AREX Express รถไฟด่วนไม่จอดระหว่างทาง: ต้องซื้อตั๋ว Express แยกต่างหาก</strong> บริการนี้มีขั้นตอนออกตั๋วและขึ้นรถของตัวเอง อย่าเดินไปประตู Express โดยคิดว่ายอดเงิน T-money ทั่วไปใช้แทนตั๋วเฉพาะขบวนได้ ตรวจประเภทของรถไฟก่อนซื้อหรือแตะบัตร</p>
+            <p>แม้ T-money ใช้ได้ในหลายพื้นที่ของเกาหลี ก็ไม่ได้หมายความว่าใช้แทนตั๋วรถไฟทางไกลได้ทุกขบวน รถไฟที่ต้องจองที่นั่ง การซื้อตั๋วรถบัสระหว่างเมืองหรือรถด่วน และบริการสนามบินพิเศษบางแบบอาจต้องใช้ตั๋วหรือวิธีชำระเงินอีกประเภท หากไม่ได้เดินทางด้วยรถไฟใต้ดินหรือรถบัสท้องถิ่นทั่วไป ให้ทำตามคำแนะนำของผู้ให้บริการ</p>
+          </div>
         </section>
 
         <section class="tmoney-editorial-section" aria-labelledby="tmoney-apple-title">
@@ -307,6 +471,16 @@
           <p>สำหรับผู้ใช้บัตรต่างประเทศ แอป MobileTmoney เป็นอีกช่องทางหนึ่ง ข้อมูลใน App Store ระบุว่าใช้งานพื้นฐานได้โดยไม่ต้องสมัครสมาชิก และเติมเงินผ่าน Apple Pay ด้วยบัตรเครือข่าย Mastercard, American Express, UnionPay หรือ JCB ที่รองรับได้ โดยปัจจุบันยังไม่ระบุ Visa เป็นเครือข่ายที่ใช้เติมเงินผ่านช่องทางนี้</p>
           <p>ดังนั้น การมี iPhone ไม่ได้หมายความว่าจะเติม T-money ได้ด้วยบัตรทุกใบ หากเครือข่ายบัตรที่ผูกกับ Apple Pay ของคุณไม่อยู่ในรายชื่อที่ MobileTmoney รองรับ ควรเตรียมบัตร T-money แบบใบจริงหรือวิธีเติมเงินสำรองที่ยืนยันว่าใช้ได้</p>
           <p>T-money หนึ่งใบใช้บน Apple device ได้ทีละเครื่อง หากอยากมี transit card แยกบน iPhone และ Apple Watch Apple ระบุว่าแต่ละ device ต้องมี card ของตัวเอง</p>
+          <div class="tmoney-practical-addition" id="tmoney-iphone-foreign-card-steps">
+            <h3>มี iPhone และบัตรธนาคารต่างประเทศ ควรเติมเงิน T-money ผ่านช่องทางไหน</h3>
+            <ol>
+              <li>ตรวจสอบก่อนว่า iPhone หรือ Apple Watch และระบบปฏิบัติการรุ่นที่ใช้อยู่รองรับ T-money หรือไม่ การเพิ่มบัตรเดินทางใน Wallet กับการจ่ายเงินเติมยอดเป็นคนละขั้นตอน</li>
+              <li>หากมีบัตรชำระเงินที่ออกในเกาหลีใต้และรองรับบริการ อาจเติมเงินตรงผ่าน Apple Wallet ได้ อย่าคิดว่าบัตรธนาคารที่ออกต่างประเทศจะใช้ในขั้นตอนเติมเงินตรงนี้ได้เหมือนกัน</li>
+              <li>หากไม่มีบัตรชำระเงินที่ออกในเกาหลี ให้ตรวจสอบช่องทางสำหรับนักท่องเที่ยวหรือชาวต่างชาติในแอป <strong>MobileTmoney</strong> อย่างเป็นทางการ ข้อมูล App Store ปัจจุบันระบุว่าใช้งานพื้นฐานได้โดยไม่ต้องสมัครสมาชิก และเติมเงินผ่าน Apple Pay ด้วย Mastercard, American Express, UnionPay และ JCB ได้ แต่ไม่ระบุ Visa สำหรับช่องทางนี้</li>
+              <li>ก่อนพึ่งโทรศัพท์เป็นวิธีจ่ายค่าโดยสารเพียงอย่างเดียว ให้ยืนยันว่าออกบัตรสำเร็จ มียอดเงินเพิ่มขึ้นจริง และบัตรพร้อมใช้งานกับเครื่องอ่าน ควรมีบัตรจริงหรือวิธีชำระค่าเดินทางอื่นที่ตรวจสอบแล้วเป็นสำรอง หากเครือข่ายบัตรหรือการตั้งค่าใช้ไม่ได้</li>
+            </ol>
+            <p>หน้าจอแอป เครือข่ายบัตรที่รองรับ และการอนุมัติของผู้ออกบัตรอาจเปลี่ยนไป หากไม่พบตัวเลือกสำหรับผู้ใช้ต่างชาติ ให้ตรวจสอบข้อมูลแอปอย่างเป็นทางการล่าสุดแทนการทำตามภาพหน้าจอเก่า หากบัตรบนมือถือมีเงินแต่ใช้งานไม่ได้ ควรติดต่อฝ่ายช่วยเหลือ T-money ก่อนลบบัตรหรือออกบัตรใหม่ เพราะการดำเนินการโดยไม่ตรวจสอบเงื่อนไขกู้คืนยอดเงินอาจทำให้คืนยอดได้ยากขึ้น</p>
+          </div>
         </section>
 
         <section class="tmoney-editorial-section" aria-labelledby="tmoney-android-title">
@@ -315,13 +489,40 @@
           <p>รายการ Google Play ทางการปัจจุบันระบุว่าแอปใช้ NFC เป็น T-money ดู balance และ transaction history และจัดการ top-up/refund ผ่านบัตรต่างประเทศที่รองรับ เช่น Mastercard, Visa, American Express, JCB และ UnionPay</p>
           <p>Seoul Metropolitan Government ยังอ้างถึง KOREA TOUR CARD app เป็นช่องทางเติมด้วย overseas card สำหรับนักท่องเที่ยว Android</p>
           <p>คำว่า compatible สำคัญ NFC hardware, phone configuration และ app support ต่างกันได้ ติดตั้งและเช็กแอปก่อนคิดว่าจะใช้โทรศัพท์เป็นบัตรขนส่งใบเดียวในเกาหลี</p>
+          <div class="tmoney-practical-addition" id="tmoney-android-quick-check">
+            <h3>ก่อนออกจากโรงแรมโดยใช้ T-money บน Android อย่างเดียว ต้องตรวจสอบอะไร</h3>
+            <p>เปิด NFC และตรวจสอบว่าโทรศัพท์สามารถออกและใช้บัตรเดินทางผ่านแอป KOREA TOUR CARD Tmoney อย่างเป็นทางการได้จริง การมี NFC ในเครื่องไม่ได้ยืนยันว่าแอปรองรับโทรศัพท์รุ่นนั้น ต้องตรวจสอบว่าเติมยอดสำเร็จ ดูยอดคงเหลือเป็น และมีวิธีจ่ายค่าโดยสารสำรองสำหรับเที่ยวแรก</p>
+            <p>ข้อมูลแอประบุว่ารองรับเครือข่ายบัตรต่างประเทศบางประเภท รวมถึง Visa แต่ธุรกรรมบางรายการยังอาจถูกปฏิเสธได้ หากจ่ายเงินไม่สำเร็จ ให้ตรวจสอบเงื่อนไขแอปและบัตรก่อนลองซ้ำหลายครั้ง ถ้าต้องขึ้นรถทันที บัตรจริงที่เติมเงินสดไว้อาจเป็นวิธีที่เร็วกว่า</p>
+          </div>
         </section>
+
+        <nav id="tmoney-nav-help" class="tmoney-anchor-nav tmoney-anchor-nav--compact" aria-label="หัวข้อแก้ปัญหาการใช้ T-money">
+          <div class="tmoney-anchor-nav__panel">
+            <p class="tmoney-anchor-nav__title">ต้องการความช่วยเหลือตอนนี้ไหม</p>
+            <div class="tmoney-anchor-nav__links">
+              <a class="tmoney-anchor-nav__link" href="#tmoney-low-balance-title">ยอดเงินในบัตรไม่พอ</a>
+              <a class="tmoney-anchor-nav__link" href="#tmoney-problems-title">บัตรหรือโทรศัพท์ใช้งานไม่ได้</a>
+              <a class="tmoney-anchor-nav__link" href="#tmoney-youth-title">ค่าโดยสารเด็กหรือครอบครัว</a>
+              <a class="tmoney-anchor-nav__link" href="#tmoney-refund-title">ต้องการขอเงินคืนหรือไม่</a>
+            </div>
+            <div class="tmoney-anchor-nav__related">
+              <a href="#tmoney-nav-use">ก่อนหน้า: พร้อมเดินทางแล้วหรือยัง ←</a>
+              <a href="#tmoney-nav-next">ถัดไป: คำตอบเพิ่มเติม →</a>
+              <a href="#tmoney-contents">กลับไปสารบัญทั้งหมด ↑</a>
+            </div>
+          </div>
+        </nav>
 
         <section class="tmoney-editorial-section" aria-labelledby="tmoney-youth-title">
           <h2 id="tmoney-youth-title">เด็กและวัยรุ่น</h2>
           <p>เด็กหรือวัยรุ่นไม่ควรใช้บัตร T-money ผู้ใหญ่แล้วคาดหวังว่าส่วนลดจะเกิดเอง</p>
           <p>คำแนะนำ VisitKorea ปัจจุบันระบุว่านักท่องเที่ยวอายุต่ำกว่า 18 ปีต้องลงทะเบียนวันเกิดเพื่อรับส่วนลดขนส่งสาธารณะที่เกี่ยวข้อง ร้านสะดวกซื้อที่จัดการ T-money เป็นจุดที่ใช้งานจริงสำหรับถามเรื่อง registration ตอนซื้อ</p>
           <p>ถ้าเดินทางเป็นครอบครัว ทำเรื่องนี้ช่วงต้นทริป แทนการมารู้หลังนั่งไปหลายเที่ยวว่าบัตรคิด adult fare</p>
+          <div class="tmoney-practical-addition" id="tmoney-child-discount-check">
+            <h3>บัตรของลูกถูกคิดค่าโดยสารผู้ใหญ่ ควรตรวจสอบอะไร</h3>
+            <p>ตรวจสอบก่อนว่าบัตรลงทะเบียนวันเกิดของเด็กถูกต้องเพื่อใช้ค่าโดยสารตามช่วงอายุ VisitKorea ระบุว่าผู้เดินทางอายุต่ำกว่า 18 ปีที่มีสิทธิใช้ค่าโดยสารเด็กหรือเยาวชนต้องลงทะเบียนวันเกิด สามารถสอบถามบริการนี้ที่ร้านสะดวกซื้อที่ร่วมรายการได้ เพียงซื้อบัตรลายเด็กหรือบัตรขนาดเล็กไม่ได้หมายความว่าเปิดใช้อัตราลดราคาแล้ว</p>
+            <p>ควรตรวจสอบประเภทค่าโดยสารก่อนใช้บัตรเดินทางหลายวัน โดยเฉพาะครอบครัวที่มีบัตรหน้าตาคล้ายกันหลายใบ สิทธิเดินทางฟรีของเด็กเล็กขึ้นอยู่กับผู้ให้บริการและเงื่อนไขของเส้นทาง จึงควรตรวจสอบกฎปัจจุบันแทนการตัดสินจากลายบัตร</p>
+          </div>
         </section>
 
         <section class="tmoney-editorial-section" aria-labelledby="tmoney-low-balance-title">
@@ -329,6 +530,11 @@
           <p>ยอดไม่พอมักเป็นความไม่สะดวก ไม่ใช่ disaster</p>
           <p>เครื่องเติมและ gate รถไฟใต้ดินจำนวนมากแสดงยอดที่เหลือ คำแนะนำทางการของ Seoul subway ยังระบุว่ามี fare-adjustment machine ใกล้ gate สำหรับกรณี T-money balance ไม่พอ</p>
           <p>ถ้าเห็นว่ายอดใกล้หมดก่อนเที่ยวไกล เติมนอก gate ง่ายกว่าจัดการตอนมีคนรออยู่ข้างหลัง</p>
+          <div class="tmoney-practical-addition" id="tmoney-low-balance-steps">
+            <h3>ประตูทางออกไม่เปิด ควรแตะบัตรซ้ำไปเรื่อย ๆ ไหม</h3>
+            <p>ไม่ควรแตะซ้ำไปเรื่อย ๆ หากปัญหาเกิดจากยอดไม่พอ ให้หาเครื่องปรับค่าโดยสารหรือเครื่องเติมเงินใกล้ประตู หรือสอบถามเจ้าหน้าที่สถานีว่าชำระส่วนที่ขาดได้ที่ไหน เก็บบัตรไว้ให้เจ้าหน้าที่ตรวจสอบเที่ยวเดินทางที่ยังไม่ปิดรายการ หากเครื่องอ่านไม่รู้จักบัตรเลย นั่นเป็นปัญหาต่างจากยอดไม่พอ และอาจต้องให้เจ้าหน้าที่ตรวจบัตรหรือประตู</p>
+            <p>ก่อนเดินทางไกลไปสนามบินหรือข้ามเมือง ให้ตรวจยอดคงเหลือก่อนเข้าใช้บริการ อย่าคิดว่ายอดที่เหลือจากการเดินทางสั้น ๆ ในเมืองจะพอแน่นอน แต่ก็ไม่จำเป็นต้องเติมเงินก้อนใหญ่ช่วงท้ายทริปเพียงเพื่อหลีกเลี่ยงข้อความยอดไม่พอ</p>
+          </div>
         </section>
 
         <section class="tmoney-editorial-section" aria-labelledby="tmoney-refund-title">
@@ -338,6 +544,12 @@
           <p>ด้วยเหตุนี้ Korea Inside ไม่แนะนำให้วางแผน refund ก้อนใหญ่จากตัวเลขเก่าในบล็อกหรือ screenshot เช็ก T-money หรือ VisitKorea ปัจจุบันถ้าเหลือยอดมาก</p>
           <p>กลยุทธ์ที่ง่ายกว่าคือหยุดเติมก้อนใหญ่ใกล้จบทริป เหลือพอสำหรับรถบัส รถไฟใต้ดิน และสนามบิน แล้วใช้ยอดลงตามธรรมชาติ</p>
           <p>Balance refund กับราคาตัวบัตรตอนซื้อเป็นคนละเรื่อง อย่าคิดว่าคืนบัตรแล้วจะได้เงินกลับทุกวอนที่จ่ายไป</p>
+          <div class="tmoney-practical-addition" id="tmoney-last-day-balance">
+            <h3>ขอเงินคงเหลือคืนทั้งหมดที่ร้านสะดวกซื้อแห่งไหนก็ได้ไหม</h3>
+            <p>ไม่ใช่ทุกร้านที่ขายหรือเติม T-money จะคืนเงินได้ทุกยอดหรือทุกประเภท ตามข้อมูล VisitKorea เดือนสิงหาคม 2026 ยอดคงเหลือของบัตรจริงที่เกิน ₩50,000 ต้องขอคืนที่ Tmoney Town ใกล้สถานีโซล สำหรับยอดที่น้อยกว่าให้สอบถามร้านหรือสถานีนั้นก่อน เพราะวงเงินและค่าธรรมเนียมอาจต่างกัน ราคาซื้อบัตรเดิมไม่ใช่ยอดค่าโดยสารที่ขอคืนได้</p>
+            <h3>ควรขอคืนเงินจาก T-money บนมือถือ หรือเก็บบัตรจริงใบเดิมไว้</h3>
+            <p>การคืนเงินจากบัตรจริงกับบัตรในแอปมือถืออาจใช้ขั้นตอนต่างกัน หากใช้โทรศัพท์ ให้ตรวจสอบวิธีคืนเงินที่แอปรองรับและช่องทางรับเงินก่อนลบบัตรเดินทาง หากบัตรจริงยังใช้ได้และมีแผนกลับมาเกาหลี การเก็บไว้ตรวจยอดในทริปหน้าอาจง่ายกว่าการเสียเวลาไปจุดคืนเงินในวันสุดท้าย แต่ไม่ควรคิดว่าทุกวิธีใช้ได้กับบัตรทุกผลิตภัณฑ์</p>
+          </div>
         </section>
 
         <section class="tmoney-editorial-section tmoney-section--cream" aria-labelledby="tmoney-problems-title">
@@ -371,8 +583,50 @@
               <h3>“ไม่แน่ใจว่าร้านรับ T-money ไหม”</h3>
               <p>มองหาเครื่องหมาย T-money หรือถามก่อนจ่าย Retail use เป็นฟังก์ชันเสริมที่ดี แต่ไม่ใช่เหตุผลให้พึ่ง T-money เป็นวิธีจ่ายเดียว</p>
             </article>
+            <article class="tmoney-problem-row" id="tmoney-problem-family-card">
+              <h3>คนในครอบครัวใช้บัตรใบเดียวผ่านประตูรถไฟใต้ดินทีละคนได้ไหม</h3>
+              <p>ไม่ใช่วิธีปกติที่ประตูรถไฟใต้ดิน ผู้โดยสารทุกคนที่ต้องจ่ายค่าโดยสารต้องมีบัตรแยก รถบัสบางคันให้คนขับตั้งจำนวนผู้โดยสารแล้วจ่ายรวมด้วยบัตรใบเดียวได้ แต่ข้อยกเว้นนี้ใช้เป็นวิธีหลักสำหรับเปลี่ยนจากรถบัสไปขึ้นรถไฟใต้ดินไม่ได้ ดูหัวข้อการซื้อบัตรเพื่อจัดบัตรให้ครอบครัว</p>
+            </article>
+            <article class="tmoney-problem-row" id="tmoney-problem-charged-not-loaded">
+              <h3>จ่ายเงินที่เคาน์เตอร์แล้ว แต่บัตรยังแสดงยอดเดิม</h3>
+              <p>ตรวจยอดคงเหลือผ่านอีกช่องทางหนึ่ง เก็บใบเสร็จหรือหลักฐานจ่ายเงิน แล้วขอให้ร้านหรือสถานีช่วยตรวจรายการ หากเติมบัตรสองใบให้ตรวจแยกทีละใบ อย่าด่วนสรุปว่าเกิดการทุจริตหรือจ่ายเงินซ้ำก่อนตรวจสอบธุรกรรมแรก</p>
+            </article>
+            <article class="tmoney-problem-row" id="tmoney-problem-extra-transfer-fare">
+              <h3>เปลี่ยนสายแล้วถูกหักเงินอีก ส่วนลดใช้ไม่ได้หรือเปล่า</h3>
+              <p>ตรวจการแตะออกครั้งก่อน ระยะเวลาเปลี่ยนรถ เส้นทาง และดูว่าค่าโดยสารที่เพิ่มเกิดจากระยะทางหรืออัตราพื้นฐานที่สูงกว่าหรือไม่ ในโซลเวลาต่อรถปกติคือ 30 นาที และเป็น 60 นาทีระหว่าง 21:00–07:00 น. การกลับขึ้นรถบัสสายเดิมไม่เข้าข้อยกเว้นนี้ การถูกหักเงินเพิ่มบนเครื่องอ่านครั้งต่อไปไม่ได้แปลว่าระบบผิดเสมอไป</p>
+            </article>
+            <article class="tmoney-problem-row" id="tmoney-problem-airport-express">
+              <h3>ทำไมบัตร T-money ผ่านประตูรถไฟ AREX Express ไม่ได้</h3>
+              <p>AREX แบบจอดทุกสถานีกับ AREX Express ใช้ตั๋วต่างกัน ยอด T-money ปกติใช้กับรถไฟที่จอดตามสถานี ส่วน Express แบบไม่จอดระหว่างทางต้องซื้อตั๋วแยก ตรวจสอบประเภทรถไฟก่อนลองผ่านประตูอื่น</p>
+            </article>
+            <article class="tmoney-problem-row" id="tmoney-problem-reader-rejects-card">
+              <h3>เครื่องอ่านไม่ตอบสนองต่อบัตรเลย</h3>
+              <p>ตรวจสอบก่อนว่าเป็นบัตรเดินทางประเภทที่รองรับและแตะตรงเครื่องอ่านที่ถูกต้อง หากเครื่องเติมเงินก็ไม่อ่านบัตรเช่นกัน ให้เจ้าหน้าที่สถานีหรือจุดบริการที่ร่วมรายการช่วยตรวจบัตร ปัญหานี้ต่างจากกรณีเครื่องอ่านบัตรได้แต่ยอดไม่พอ</p>
+            </article>
+            <article class="tmoney-problem-row" id="tmoney-problem-foreign-mobile-topup">
+              <h3>เพิ่ม T-money ใน iPhone แล้ว แต่เติมเงินด้วย Visa ที่ออกต่างประเทศไม่ได้</h3>
+              <p>การเพิ่มบัตร T-money ใน Apple Wallet สำเร็จไม่ได้รับประกันว่าจะเติมเงินด้วยบัตรธนาคารต่างประเทศได้ การเติมตรงผ่าน Wallet ต้องใช้บัตรชำระเงินที่ออกในเกาหลีใต้ ส่วนช่องทางสำหรับต่างชาติของ MobileTmoney ระบุ Mastercard, American Express, UnionPay และ JCB แต่ไม่ระบุ Visa ควรตรวจสอบข้อมูลแอปอย่างเป็นทางการล่าสุดก่อนใช้โทรศัพท์จ่ายค่าเดินทางเพียงอย่างเดียว</p>
+            </article>
           </div>
         </section>
+
+        <nav id="tmoney-nav-next" class="tmoney-anchor-nav tmoney-anchor-nav--compact" aria-label="คำตอบเพิ่มเติมเกี่ยวกับ T-money">
+          <div class="tmoney-anchor-nav__panel">
+            <p class="tmoney-anchor-nav__title">คำตอบเพิ่มเติม</p>
+            <div class="tmoney-anchor-nav__links">
+              <a class="tmoney-anchor-nav__link" href="#tmoney-recharge-title">เติมเงินบัตรอีกครั้ง</a>
+              <a class="tmoney-anchor-nav__link" href="#tmoney-transit-title">ตรวจสอบการแตะออกและกฎเปลี่ยนรถ</a>
+              <a class="tmoney-anchor-nav__link" href="#tmoney-refund-title">ยอดคงเหลือและการขอคืนเงิน</a>
+              <a class="tmoney-anchor-nav__link" href="#tmoney-wowpass-title">T-money หรือ WOWPASS</a>
+              <a class="tmoney-anchor-nav__link" href="#tmoney-faq-title">คำถามที่พบบ่อย</a>
+            </div>
+            <div class="tmoney-anchor-nav__related">
+              <a href="#tmoney-nav-help">ก่อนหน้า: ต้องการความช่วยเหลือไหม ←</a>
+              <a href="#tmoney-nav-use">พร้อมเดินทางแล้วหรือยัง ↑</a>
+              <a href="#tmoney-contents">กลับไปสารบัญทั้งหมด ↑</a>
+            </div>
+          </div>
+        </nav>
 
         <section class="tmoney-editorial-section" aria-labelledby="tmoney-wowpass-title">
           <h2 id="tmoney-wowpass-title">T-money หรือ WOWPASS?</h2>
@@ -381,6 +635,13 @@
           <p><a href="/th/tmoney-vs-wowpass.html">คู่มือ T-money vs WOWPASS</a></p>
           <p>ถ้ารู้แล้วว่าจะใช้ WOWPASS คู่มือ WOWPASS อธิบายสองยอดเงินในการใช้งานจริง</p>
           <p><a href="/th/wowpass.html">คู่มือ WOWPASS</a></p>
+          <div class="tmoney-practical-addition" id="tmoney-climate-short-pass-choice">
+            <h3>หากใช้ Climate Card แบบระยะสั้นแทน T-money จะเหมาะกว่าหรือไม่</h3>
+            <p>Climate Card แบบระยะสั้นของโซลเป็นคนละผลิตภัณฑ์กับ T-money ทั่วไปที่หักเงินตามเที่ยว อาจคุ้มเมื่อเดินทางบ่อยบนเส้นทางที่บัตรครอบคลุมหลายวันติดกัน แต่จะคุ้มน้อยลงถ้าเดินเป็นหลัก ใช้แท็กซี่ ไปเที่ยวนอกโซลหลายวัน หรือต้องใช้เส้นทางที่ไม่รวมในบัตร</p>
+            <p>ณ เดือนตุลาคม 2026 ตั๋วระยะสั้นสำหรับนักท่องเที่ยวในโซลมีแบบ 1, 2, 3, 5 และ 7 วัน VisitKorea ระบุราคา ₩5,000, ₩8,000, ₩10,000, ₩15,000 และ ₩20,000 ตามลำดับ โดยต้องซื้อบัตรจริงแยกเพิ่มหากจำเป็น ตรวจสอบวันเริ่มใช้งานและเส้นทางรถไฟใต้ดินหรือรถบัสที่ครอบคลุม เพราะตั๋วไม่จำกัดเที่ยวในเขตโซลไม่ใช่ยอดเงิน T-money ที่ใช้ทั่วประเทศ และไม่ใช่ตั๋ว AREX Express โดยอัตโนมัติ</p>
+            <p>เดือนกันยายน 2026 โซลเริ่มโครงการ Climate Pass แยกต่างหากสำหรับผู้พักอาศัย ขณะที่ Climate Card แบบระยะสั้นสำหรับนักท่องเที่ยวยังมีอยู่ อย่านำคำแนะนำเก่าเกี่ยวกับผลิตภัณฑ์เติมเงิน 30 วันเดิมมาใช้กับตั๋วท่องเที่ยวปัจจุบัน เครื่องจำหน่ายตั๋วรถไฟใต้ดินรุ่นใหม่รองรับบัตรต่างประเทศสำหรับ<em>ซื้อหรือเติมผลิตภัณฑ์ Climate Card ระยะสั้น</em> แต่ไม่ได้หมายความว่าใช้บัตรธนาคารใบเดียวกันเติม T-money พลาสติกปกติได้ทุกใบ</p>
+            <p><strong>แนวทางเลือกใช้งาน:</strong> เลือก T-money ปกติหากต้องการบัตรใบเดียวที่ใช้ง่ายสำหรับทั้งโซลและเมืองอื่น ยังไม่รู้ว่าจะขึ้นรถวันละกี่ครั้ง หรือมีแผนเที่ยวที่เปลี่ยนได้ ก่อนเลือก Climate Card แบบระยะสั้น ให้เทียบจำนวนวันที่จะใช้จริง เส้นทางที่ครอบคลุม ราคาบัตรจริงที่ต้องซื้อแยก และค่าเดินทางที่คาดไว้ ส่วน WOWPASS เป็นอีกเรื่องหนึ่งหากต้องการยอดเงินเติมล่วงหน้าสำหรับซื้อของด้วย</p>
+          </div>
         </section>
 
         <section class="tmoney-editorial-section" aria-labelledby="tmoney-faq-title">
@@ -411,6 +672,13 @@
             <li><a href="https://apps.apple.com/us/app/mobiletmoney/id1470361790" target="_blank" rel="noopener noreferrer">MobileTmoney — App Store</a><p>ข้อมูลแอปสำหรับผู้ใช้ต่างประเทศและการเติมเงินผ่าน Apple Pay ด้วยบัตร Mastercard, American Express, UnionPay และ JCB โดยปัจจุบันยังไม่ระบุ Visa ว่ารองรับ</p></li>
             <li><a href="https://english.seoul.go.kr/climate-cards-and-single-journey-transit-tickets-now-accepting-international-credit-cards-no-cash-needed/" target="_blank" rel="noopener noreferrer">Seoul Metropolitan Government — International Card Transit Payment Update</a><p>ขอบเขตปี 2026 ของ international-card acceptance ที่ subway kiosk ใหม่</p></li>
             <li><a href="https://play.google.com/store/apps/details?id=com.tmoney.mkoreatourcard" target="_blank" rel="noopener noreferrer">KOREA TOUR CARD Tmoney — Google Play</a><p>แอป Android สำหรับนักท่องเที่ยว NFC และ network บัตรต่างประเทศที่ระบุสำหรับ funding</p></li>
+          <li><a href="https://english.seoul.go.kr/policy/transportation/modes-of-transport/bus/" target="_blank" rel="noopener noreferrer">กรุงโซล — กฎการเปลี่ยนรถบัสและชำระค่าโดยสารหลายคน</a><p>ระยะเวลาเปลี่ยนรถ 30/60 นาที ข้อยกเว้นสำหรับเส้นทางเดิม และข้อจำกัดเมื่อใช้บัตรใบเดียวจ่ายหลายคน</p></li>
+          <li><a href="https://news.seoul.go.kr/traffic/archives/518133" target="_blank" rel="noopener noreferrer">กรุงโซล — คำถามพบบ่อยเรื่องการจ่ายเงินที่เครื่องจำหน่ายตั๋ว กันยายน 2026</a><p>ประเภทตั๋วและบัตรโดยสารที่จ่ายด้วยบัตรธนาคารได้ และการเติมบัตรเติมเงินที่ยังเน้นเงินสด</p></li>
+          <li><a href="https://english.seoul.go.kr/climate-cards-and-single-journey-transit-tickets-now-accepting-international-credit-cards-no-cash-needed/" target="_blank" rel="noopener noreferrer">กรุงโซล — เริ่มรับบัตรต่างประเทศ มีนาคม 2026</a><p>ซื้อ Climate Card แบบระยะสั้นและตั๋วเที่ยวเดียวด้วยบัตรต่างประเทศได้ที่เครื่องรุ่นใหม่บางจุด</p></li>
+          <li><a href="https://english.seoul.go.kr/policy/transportation/climate-card/" target="_blank" rel="noopener noreferrer">กรุงโซล — กฎปัจจุบันของ Climate Card</a><p>ตั๋วนักท่องเที่ยวระยะสั้น อายุใช้งาน เส้นทางที่ครอบคลุม และการเปลี่ยนจากผลิตภัณฑ์ 30 วันแบบเดิม</p></li>
+          <li><a href="https://www.airportrailroad.com/train/express/guide" target="_blank" rel="noopener noreferrer">AREX — คู่มือซื้อตั๋วรถไฟ Express อย่างเป็นทางการ</a><p>การจองและซื้อตั๋วแยกสำหรับรถไฟสนามบินแบบไม่จอดระหว่างทาง</p></li>
+          <li><a href="https://english.seoul.go.kr/service/entry/getting-to-seoul-from-incheon-airport/" target="_blank" rel="noopener noreferrer">กรุงโซล — ทางเลือกรถไฟสนามบิน</a><p>ความต่างระหว่างรถไฟที่จอดทุกสถานีกับ Express แบบไม่จอด และระบบตั๋วที่ต่างกัน</p></li>
+          <li><a href="https://www.tmoney.co.kr/aeb/cmnctn/news/readNewsView.dev%3B?bdSeqNo=4292" target="_blank" rel="noopener noreferrer">Tmoney — แผนรับบัตรธนาคารต่างประเทศโดยตรงในอนาคต กันยายน 2026</a><p>ประกาศแผนทยอยเปิดให้แตะบัตรธนาคารต่างประเทศเพื่อจ่ายค่าโดยสารในอนาคต ไม่ใช่บริการที่รองรับทั่วไปในปัจจุบัน</p></li>
           </ul>
           <p class="tmoney-reviewed">ตรวจสอบข้อมูลทั่วไปของหน้า: สิงหาคม 2026 · ตรวจสอบเงื่อนไข MobileTmoney สำหรับผู้ใช้ต่างประเทศ: 11 ตุลาคม 2026</p>
           <p>วิธีจ่าย refund outlet device support และ transit acceptance ของ T-money เปลี่ยนได้ เมื่อบัตร โทรศัพท์ หรือจุด refund เฉพาะมีผลกับทริป ให้ใช้คำแนะนำปัจจุบันของ T-money, Apple หรือหน่วยงานท่องเที่ยวทางการ แทน screenshot เก่า</p>
