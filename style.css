@@ -511,17 +511,29 @@ ul, ol {
 
 .site-header__logo {
   order: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
   flex: 0 0 auto;
-  width: 160px;
-  max-width: 160px;
+  width: auto;
+  max-width: none;
   white-space: nowrap;
 }
 
-.site-brand__logo {
+.site-brand__symbol {
   display: block;
-  width: 100%;
-  height: auto;
-  object-fit: contain;
+  flex: 0 0 auto;
+  width: 39px;
+  height: 39px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.site-brand__wordmark {
+  color: #111111;
+  font-size: 17px;
+  font-weight: 850;
+  line-height: 1;
 }
 
 .site-nav-toggle {
@@ -693,13 +705,17 @@ ul, ol {
   }
 
   .site-header__logo {
-    width: 125px;
-    max-width: 125px;
+    gap: 7px;
   }
 
-  .site-brand__logo {
-    width: 100%;
-    height: auto;
+  .site-brand__symbol {
+    width: 34px;
+    height: 34px;
+    border-radius: 5px;
+  }
+
+  .site-brand__wordmark {
+    font-size: 15px;
   }
 
   .site-header--menu-open {
