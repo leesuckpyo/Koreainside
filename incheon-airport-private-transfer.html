@@ -21,6 +21,89 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400..600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <style>
+    body.private-transfer-page main .private-transfer-affiliate-cta {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin: 24px 0;
+    }
+
+    body.private-transfer-page main .private-transfer-affiliate-cta__button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-width: 0;
+      min-height: 54px;
+      padding: 12px 16px;
+      border: 1px solid;
+      border-radius: 8px;
+      color: #FFFFFF;
+      font-size: 19px;
+      font-weight: 700;
+      line-height: 1.2;
+      text-align: center;
+      text-decoration: none;
+      box-sizing: border-box;
+    }
+
+    body.private-transfer-page main .private-transfer-affiliate-cta__button--viator,
+    body.private-transfer-page main .private-transfer-affiliate-cta__button--viator:visited {
+      background: #008768;
+      border-color: #006B53;
+      color: #FFFFFF;
+    }
+
+    body.private-transfer-page main .private-transfer-affiliate-cta__button--viator:hover {
+      background: #006B53;
+      color: #FFFFFF;
+      text-decoration: none;
+    }
+
+    body.private-transfer-page main .private-transfer-affiliate-cta__button--getyourguide,
+    body.private-transfer-page main .private-transfer-affiliate-cta__button--getyourguide:visited {
+      background: #ED647F;
+      border-color: #C64868;
+      color: #FFFFFF;
+    }
+
+    body.private-transfer-page main .private-transfer-affiliate-cta__button--getyourguide:hover {
+      background: #C64868;
+      color: #FFFFFF;
+      text-decoration: none;
+    }
+
+    body.private-transfer-page main .private-transfer-affiliate-cta__button--booking,
+    body.private-transfer-page main .private-transfer-affiliate-cta__button--booking:visited {
+      background: #003B95;
+      border-color: #002B70;
+      color: #FFFFFF;
+    }
+
+    body.private-transfer-page main .private-transfer-affiliate-cta__button--booking:hover {
+      background: #002B70;
+      color: #FFFFFF;
+      text-decoration: none;
+    }
+
+    body.private-transfer-page main .private-transfer-affiliate-cta__button:active {
+      background: #000000;
+      border-color: #000000;
+      color: #FFFFFF;
+    }
+
+    body.private-transfer-page main .private-transfer-affiliate-cta__button:focus-visible {
+      outline: 3px solid #14130F;
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 719px) {
+      body.private-transfer-page main .private-transfer-affiliate-cta {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+  </style>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -140,7 +223,7 @@
           </li>
           <li class="site-nav__item site-nav__item--active" data-nav-section="transport">
             <button class="site-nav__trigger site-nav__trigger--current" id="site-nav-trigger-transport" type="button" aria-expanded="false" aria-controls="site-nav-panel-transport" aria-haspopup="true" aria-current="true">Transport</button>
-            <div class="site-nav__panel site-nav__panel--end" id="site-nav-panel-transport" aria-labelledby="site-nav-trigger-transport" hidden><div class="site-nav__group"><p class="site-nav__group-label">Travel Cards</p><a class="site-nav__link" href="tmoney.html">T-money Guide</a><a class="site-nav__link" href="wowpass.html">WOWPASS Guide</a><a class="site-nav__link" href="tmoney-vs-wowpass.html">T-money vs WOWPASS</a></div><div class="site-nav__group"><p class="site-nav__group-label">Other Transport</p><a class="site-nav__link" href="taxi.html">Taxi Guide</a><a class="site-nav__link" href="incheon-airport-private-transfer.html">Call Van / Private Transfer</a><a class="site-nav__link" href="rental-car.html">Rental Car</a></div></div>
+            <div class="site-nav__panel site-nav__panel--end" id="site-nav-panel-transport" aria-labelledby="site-nav-trigger-transport" hidden><div class="site-nav__group"><p class="site-nav__group-label">Travel Cards</p><a class="site-nav__link" href="tmoney.html">T-money Guide</a><a class="site-nav__link" href="wowpass.html">WOWPASS Guide</a><a class="site-nav__link" href="tmoney-vs-wowpass.html">T-money vs WOWPASS</a></div><div class="site-nav__group"><p class="site-nav__group-label">Other Transport</p><a class="site-nav__link" href="taxi.html">Taxi Guide</a><a class="site-nav__link" href="incheon-airport-private-transfer.html">Private Transfer</a><a class="site-nav__link" href="rental-car.html">Rental Car</a></div></div>
           </li>
           <li class="site-nav__item" data-nav-section="apps">
             <button class="site-nav__trigger" id="site-nav-trigger-apps" type="button" aria-expanded="false" aria-controls="site-nav-panel-apps" aria-haspopup="true">Apps</button>
@@ -178,23 +261,61 @@
         <header class="transfer-chapter__header">
           <h2>Private Transfer, Jumbo Taxi, or Airport Call Van?</h2>
         </header>
-        <p>These options can look similar, and a jumbo taxi can also be booked in advance as a private ride. Compare the actual transport type, group size, luggage and pickup arrangements instead of relying on the booking label alone.</p>
+        <p>These three options may look similar at Incheon Airport, but they serve different purposes. A jumbo taxi is a licensed passenger taxi, an airport call van is a cargo transport service with specific eligibility requirements, and a pre-booked private transfer is a reservation arrangement rather than a separate vehicle category.</p>
+        <p>The right choice depends on how many people are traveling, how much luggage they have, whether the vehicle needs to be arranged before arrival, and where the hotel is located.</p>
 
         <h3>Pre-Booked Private Transfer</h3>
-        <p>One vehicle is reserved for your party before you arrive. The booking might use a standard car or a larger authorized vehicle. “Private” means the ride is not shared; it does not guarantee a jumbo taxi or a particular number of seats.</p>
-        <p>This can save trouble when you have children, several suitcases, a late arrival or a hotel far from a convenient station. Check the actual passenger and bag limits, meeting point, flight-delay waiting policy and cancellation terms before paying.</p>
-        <p><a href="#booking">Compare private-transfer booking options</a></p>
+        <p>A pre-booked private transfer allows you to arrange transportation from Incheon Airport before your flight arrives. One vehicle is reserved for your party, with pickup instructions and a destination agreed in advance.</p>
+        <p>The vehicle may be a standard passenger car, a larger authorized vehicle, or a licensed taxi, depending on the operator and the product selected. The word “private” means you are not sharing the ride with unrelated passengers. It does not guarantee a luxury vehicle, a jumbo taxi, or a particular seating capacity.</p>
+        <h4>When is it worth considering?</h4>
+        <p>For a family traveling with children, several large suitcases and a stroller, a pre-booked transfer can remove much of the uncertainty after landing. It can also be useful for travelers arriving late at night or staying at a hotel that requires another transfer or a long walk from the nearest railway station.</p>
+        <p>Booking in advance does not automatically mean the driver will meet you inside the arrivals hall. Some services offer a meet-and-greet arrangement, while others direct passengers to a designated pickup location.</p>
+        <h4>What should you check before booking?</h4>
+        <p>Confirm the exact passenger and luggage capacity, including the number and size of suitcases. If you need a child seat, check whether it is available and whether it must be requested separately.</p>
+        <p>Also verify where the driver will meet you, how to contact the operator, when the waiting allowance begins, what happens if your flight is delayed, and whether tolls, parking or late-night charges are included in the quoted price.</p>
+        <p>A vehicle advertised as a seven-seater should not automatically be assumed to accommodate seven travelers with seven large suitcases.</p>
+        <p class="transfer-affiliate-disclosure">
+          <strong>Ad · Affiliate links</strong>
+          <span>These booking links use affiliate tracking. Korea Inside may earn a commission on qualifying bookings.</span>
+        </p>
+        <div class="private-transfer-affiliate-cta">
+          <a class="private-transfer-affiliate-cta__button private-transfer-affiliate-cta__button--viator notranslate" translate="no" href="https://www.viator.com/tours/Seoul/Private-Transfer-Airport-Incheon-Airport-to-Seoul-up-to-7-pax/d973-88739P14?utm_source=chatgpt.com&amp;pid=P00326932&amp;mcid=42383&amp;medium=link&amp;campaign=PrivateAirportTransfer" target="_blank" rel="sponsored noopener noreferrer">Viator</a>
+          <a class="private-transfer-affiliate-cta__button private-transfer-affiliate-cta__button--getyourguide notranslate" translate="no" href="https://gyg.me/1mFjOmh8" target="_blank" rel="sponsored noopener noreferrer">GetYourGuide</a>
+          <a class="private-transfer-affiliate-cta__button private-transfer-affiliate-cta__button--booking notranslate" translate="no" href="https://www.anrdoezrs.net/click-101831333-17322565?sid=KI_EN_PRIVATE_TRANSFER_BOOKING&amp;url=https%3A%2F%2Fwww.booking.com%2Ftaxi%2Findex.en-gb.html" target="_blank" rel="sponsored noopener noreferrer">Booking.com</a>
+        </div>
 
         <h3>Jumbo Taxi / Large Taxi</h3>
-        <p>A jumbo taxi carries passengers and their luggage. You do not need qualifying cargo to ride one. Its usable passenger capacity may still decrease when everyone brings large suitcases.</p>
-        <p>If you specifically want a jumbo taxi, look for a booking that explicitly offers a Large or Jumbo Taxi rather than assuming any seven-seat van is a taxi. Confirm the seat-and-suitcase combination shown for that vehicle.</p>
-        <p><a href="https://www.airport.kr/ap_en/1515/subview.do" target="_blank" rel="noopener noreferrer">Check Incheon Airport's official taxi guide</a></p>
-
+        <p>A jumbo taxi is a passenger taxi designed to accommodate more travelers than a standard sedan. Unlike an airport call van, it does not require passengers to carry qualifying cargo.</p>
+        <p>Incheon Airport's official taxi guide identifies the Deluxe/Jumbo Taxi category as a nine-seater vehicle type. However, the vehicle's seating designation does not mean that nine travelers and their luggage can necessarily travel together. The driver occupies a seat, and luggage space may limit the number of passengers who can be accommodated comfortably.</p>
+        <h4>When should you consider a jumbo taxi?</h4>
+        <p>It can be suitable for families or groups who need more passenger and luggage space than a regular taxi provides but do not necessarily want to arrange transportation before arriving.</p>
+        <p>A jumbo taxi may also be booked in advance through an authorized service. However, a booking described simply as a “large van” or “seven-seat vehicle” is not necessarily a licensed jumbo taxi.</p>
+        <h4>Where do you board a jumbo taxi at Incheon Airport?</h4>
+        <p>The airport's published taxi guide lists these designated pickup locations:</p>
+        <ul>
+          <li><strong>Terminal 1:</strong> 1st floor, taxi stands 7C/8C.</li>
+          <li><strong>Terminal 2:</strong> 1st floor, taxi stand 7D.</li>
+        </ul>
+        <p>Check the airport's current signs and official information when traveling. Taxi fares depend on the applicable fare structure, destination and additional charges. Nighttime surcharges may apply, so the initial fare should not be confused with the total cost of traveling from Incheon Airport to a hotel in Seoul.</p>
+        <p>Use designated taxi stands rather than accepting unsolicited transportation offers inside the airport.</p>
         <h3>Airport Call Van</h3>
-        <p>An airport call van is intended for qualifying cargo with its owner traveling along. It is not another name for a large passenger taxi, even if the vehicles look similar.</p>
-        <p>Incheon Airport lists its Call Van counters on the first floor between Entrances 12–13 at Terminal 1 and near Entrance 7 at Terminal 2, with published hours of 08:00–21:00. Confirm cargo eligibility and current counter arrangements before relying on this option, especially for a late arrival.</p>
+        <p>An airport call van is different from a jumbo taxi. It is a cargo transport service intended for qualifying goods accompanied by their owner, rather than a general passenger service for anyone wanting a larger vehicle.</p>
+        <p>Although some call vans may resemble passenger vans or jumbo taxis, their operating purpose and eligibility requirements are different.</p>
+        <h4>Who can use an airport call van?</h4>
+        <p>Eligibility depends on the cargo being transported and the applicable operating conditions. Korean cargo transport regulations include qualifying criteria related to the weight, volume or type of cargo. Carrying ordinary travel luggage does not automatically establish that every passenger group qualifies.</p>
+        <p>Incheon Airport's published guidance also specifies a group limit of up to five travelers. Because its Korean and English guidance differ in how they describe the 20 kg cargo condition, travelers should confirm eligibility directly with the official service rather than treating 20 kg as a universal baggage allowance or maximum.</p>
+        <h4>Where are the official airport call van counters?</h4>
+        <p>Incheon Airport identifies separate information counters and pickup locations for the two terminals:</p>
+        <ul>
+          <li><strong>Terminal 1:</strong> Information counter on the 1st floor between Entrances 12 and 13; vehicle pickup at 1st-floor location 10C.</li>
+          <li><strong>Terminal 2:</strong> Information counter on the 1st floor near Entrance 7; vehicle pickup at 1st-floor location 8D.</li>
+        </ul>
+        <p>The airport publishes information-counter operating hours of <strong>08:00–21:00, year-round</strong>. The information counter and vehicle pickup location are not the same place. Confirm the boarding instructions before proceeding to the vehicle.</p>
+        <h4>What should you confirm before using a call van?</h4>
+        <p>Check whether your cargo qualifies, whether the service can accommodate your group, and what the total fare will be. Toll charges may be additional.</p>
+        <p>For a late-night arrival, do not assume the official call van counter will be available outside its published hours. If your travel arrangements do not meet the cargo requirements, consider an authorized passenger taxi or a pre-booked private transfer instead.</p>
+        <p>The airport advises travelers to avoid unauthorized transportation solicitors and use its designated service arrangements.</p>
         <p><a href="https://www.airport.kr/ap_en/1516/subview.do" target="_blank" rel="noopener noreferrer">Check official Airport Call Van information</a></p>
-
       </div>
     </section>
 
@@ -336,23 +457,34 @@
         </header>
         <p>Korea Inside does not rank one of these companies as the universal “best” choice. The useful comparison is the actual vehicle and booking conditions available for your date.</p>
         <p>The booking sites below offer advance-reservation products; they are not the same as Incheon Airport's official Call Van counter. Check the actual vehicle, luggage capacity, pickup point and waiting policy before paying.</p>
+        <p class="transfer-affiliate-disclosure">
+          <strong>Ad · Affiliate links</strong>
+          <span>These booking links use affiliate tracking. Korea Inside may earn a commission on qualifying bookings.</span>
+        </p>
         <div class="transfer-terminal-notes">
           <section class="transfer-terminal-note">
-            <h3>Klook</h3>
-            <p>Klook lists multiple Incheon Airport transfer options and vehicle sizes. Passenger limits, luggage capacity and waiting conditions can differ between individual listings, so the selected vehicle matters more than the marketplace name alone.</p>
-            <p><a href="https://www.klook.com/en-US/activity/3869-incheon-airport-transfer-seoul/" target="_blank" rel="noopener noreferrer">View Klook transfer options</a></p>
+            <h3><span class="notranslate" translate="no">Klook</span></h3>
+            <p><span class="notranslate" translate="no">Klook</span> lists multiple Incheon Airport transfer options and vehicle sizes. Passenger limits, luggage capacity and waiting conditions can differ between individual listings, so the selected vehicle matters more than the marketplace name alone.</p>
+            <p><a href="https://affiliate.klook.com/sl/1J00xMc" target="_blank" rel="sponsored noopener noreferrer">View <span class="notranslate" translate="no">Klook</span> transfer options</a></p>
           </section>
           <section class="transfer-terminal-note">
-            <h3>Trip.com</h3>
-            <p>Trip.com has a dedicated airport-transfer booking flow for Incheon Airport, with vehicle options tied to the flight and pickup details entered during booking. The exact passenger, luggage and cancellation conditions depend on the selected reservation.</p>
-            <p><a href="https://www.trip.com/m/airport-transfers/south-korea/" target="_blank" rel="noopener noreferrer">View Trip.com transfer options</a></p>
+            <h3><span class="notranslate" translate="no">Trip.com</span></h3>
+            <p><span class="notranslate" translate="no">Trip.com</span> has a dedicated airport-transfer booking flow for Incheon Airport, with vehicle options tied to the flight and pickup details entered during booking. The exact passenger, luggage and cancellation conditions depend on the selected reservation.</p>
+            <p><a href="https://www.trip.com/t/169nFFukqW2" target="_blank" rel="sponsored noopener noreferrer">View <span class="notranslate" translate="no">Trip.com</span> transfer options</a></p>
           </section>
           <section class="transfer-terminal-note">
-            <h3>Booking.com</h3>
-            <p>Booking.com offers airport taxi and private-transfer reservations alongside its wider travel booking services. Vehicle size, luggage capacity, meeting arrangements and cancellation terms vary by listing.</p>
-            <p><a href="https://www.booking.com/taxi/" target="_blank" rel="noopener noreferrer">View Booking.com transfer options</a></p>
+            <h3><span class="notranslate" translate="no">Creatrip</span></h3>
+            <p><span class="notranslate" translate="no">Creatrip</span> offers pre-booked airport pickup and drop-off services between Incheon Airport and Seoul, including larger vehicle options for groups traveling with luggage. Passenger capacity, suitcase limits, advance booking requirements and cancellation terms depend on the selected service.</p>
+            <p><a href="https://creatrip.com/en/spot/13094?utm_source=AFF-bootb2v" target="_blank" rel="sponsored noopener noreferrer">View <span class="notranslate" translate="no">Creatrip</span> airport transfer options</a></p>
+          </section>
+          <section class="transfer-terminal-note">
+            <h3><span class="notranslate" translate="no">KKday</span></h3>
+            <p><span class="notranslate" translate="no">KKday</span> provides an airport-transfer search page where travelers can enter their airport, destination and group size. Check the available vehicle options, passenger and luggage limits, pickup arrangements and booking terms for your route before paying.</p>
+            <p><a href="https://www.kkday.com/en-us/trans/airport_transfer?cid=26866&amp;ud1=AirportTransfer" target="_blank" rel="sponsored noopener noreferrer">Search <span class="notranslate" translate="no">KKday</span> airport transfer options</a></p>
           </section>
         </div>
+        <p>Planning to drive beyond Seoul? Check our <a href="rental-car.html">Rental Car Guide</a> before booking, including licence, insurance and pickup requirements.</p>
+        <p>Still deciding where to stay in Seoul? Compare neighborhoods, airport access and luggage convenience in our <a href="accommodation.html">Seoul Stay Guide</a>.</p>
       </div>
     </section>
 
