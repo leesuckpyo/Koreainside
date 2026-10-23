@@ -21,6 +21,223 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400..600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
+  <style>
+    body.private-transfer-page main .private-transfer-affiliate-cta {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin: 24px 0;
+    }
+
+    body.private-transfer-page main .private-transfer-affiliate-cta__button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-width: 0;
+      min-height: 54px;
+      padding: 12px 16px;
+      border: 1px solid;
+      border-radius: 8px;
+      color: #FFFFFF;
+      font-size: 19px;
+      font-weight: 700;
+      line-height: 1.2;
+      text-align: center;
+      text-decoration: none;
+      box-sizing: border-box;
+    }
+
+    body.private-transfer-page main .private-transfer-affiliate-cta__button--viator,
+    body.private-transfer-page main .private-transfer-affiliate-cta__button--viator:visited {
+      background: #008768;
+      border-color: #006B53;
+      color: #FFFFFF;
+    }
+
+    body.private-transfer-page main .private-transfer-affiliate-cta__button--viator:hover {
+      background: #006B53;
+      color: #FFFFFF;
+      text-decoration: none;
+    }
+
+    body.private-transfer-page main .private-transfer-affiliate-cta__button--getyourguide,
+    body.private-transfer-page main .private-transfer-affiliate-cta__button--getyourguide:visited {
+      background: #ED647F;
+      border-color: #C64868;
+      color: #FFFFFF;
+    }
+
+    body.private-transfer-page main .private-transfer-affiliate-cta__button--getyourguide:hover {
+      background: #C64868;
+      color: #FFFFFF;
+      text-decoration: none;
+    }
+
+    body.private-transfer-page main .private-transfer-affiliate-cta__button--booking,
+    body.private-transfer-page main .private-transfer-affiliate-cta__button--booking:visited {
+      background: #003B95;
+      border-color: #002B70;
+      color: #FFFFFF;
+    }
+
+    body.private-transfer-page main .private-transfer-affiliate-cta__button--booking:hover {
+      background: #002B70;
+      color: #FFFFFF;
+      text-decoration: none;
+    }
+
+    body.private-transfer-page main .private-transfer-affiliate-cta__button:active {
+      background: #000000;
+      border-color: #000000;
+      color: #FFFFFF;
+    }
+
+    body.private-transfer-page main .private-transfer-affiliate-cta__button:focus-visible {
+      outline: 3px solid #14130F;
+      outline-offset: 3px;
+    }
+
+    body.private-transfer-page main #booking .private-transfer-booking-cta {
+      margin: 18px 0 0;
+    }
+
+    body.private-transfer-page main #booking .private-transfer-booking-cta__button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 260px;
+      min-width: 0;
+      min-height: 54px;
+      padding: 12px 16px;
+      border: 1px solid;
+      border-radius: 8px;
+      font-size: 19px;
+      font-weight: 700;
+      line-height: 1.2;
+      text-align: center;
+      text-decoration: none;
+      box-sizing: border-box;
+    }
+
+    body.private-transfer-page main #booking .private-transfer-booking-cta__button--klook,
+    body.private-transfer-page main #booking .private-transfer-booking-cta__button--klook:visited {
+      background: #FF5B00;
+      border-color: #D94C00;
+      color: #FFFFFF;
+    }
+
+    body.private-transfer-page main #booking .private-transfer-booking-cta__button--klook:hover {
+      background: #D94C00;
+      color: #FFFFFF;
+      text-decoration: none;
+    }
+
+    body.private-transfer-page main #booking .private-transfer-booking-cta__button--trip,
+    body.private-transfer-page main #booking .private-transfer-booking-cta__button--trip:visited {
+      background: #287DFA;
+      border-color: #155CC4;
+      color: #FFFFFF;
+    }
+
+    body.private-transfer-page main #booking .private-transfer-booking-cta__button--trip:hover {
+      background: #155CC4;
+      color: #FFFFFF;
+      text-decoration: none;
+    }
+
+    body.private-transfer-page main #booking .private-transfer-booking-cta__button--creatrip,
+    body.private-transfer-page main #booking .private-transfer-booking-cta__button--creatrip:visited {
+      background: #008E83;
+      border-color: #006A62;
+      color: #FFFFFF;
+    }
+
+    body.private-transfer-page main #booking .private-transfer-booking-cta__button--creatrip:hover {
+      background: #006A62;
+      color: #FFFFFF;
+      text-decoration: none;
+    }
+
+    body.private-transfer-page main #booking .private-transfer-booking-cta__button--kkday,
+    body.private-transfer-page main #booking .private-transfer-booking-cta__button--kkday:visited {
+      background: #26BEC9;
+      border-color: #148D9A;
+      color: #122C33;
+    }
+
+    body.private-transfer-page main #booking .private-transfer-booking-cta__button--kkday:hover {
+      background: #14A7B4;
+      color: #122C33;
+      text-decoration: none;
+    }
+
+    body.private-transfer-page main #booking .private-transfer-booking-cta__button:active {
+      background: #000000;
+      border-color: #000000;
+      color: #FFFFFF;
+    }
+
+    body.private-transfer-page main #booking .private-transfer-booking-cta__button:focus-visible {
+      outline: 3px solid #14130F;
+      outline-offset: 3px;
+    }
+
+    body.private-transfer-page main #booking .private-transfer-stay-cta {
+      margin-top: 28px;
+      padding: 20px 24px;
+      background: #F5F7FB;
+      border: 1px solid #DCE3F0;
+      border-radius: 12px;
+    }
+
+    body.private-transfer-page main #booking .private-transfer-stay-cta__copy {
+      margin: 0;
+    }
+
+    body.private-transfer-page main #booking .private-transfer-stay-cta__button,
+    body.private-transfer-page main #booking .private-transfer-stay-cta__button:visited {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+      min-height: 54px;
+      margin-top: 16px;
+      padding: 12px 20px;
+      background: #1F365A;
+      border: 1px solid #1F365A;
+      border-radius: 8px;
+      color: #FFFFFF;
+      font-weight: 700;
+      line-height: 1.2;
+      text-align: center;
+      text-decoration: none;
+      box-sizing: border-box;
+    }
+
+    body.private-transfer-page main #booking .private-transfer-stay-cta__button:hover {
+      background: #122947;
+      border-color: #122947;
+      color: #FFFFFF;
+      text-decoration: none;
+    }
+
+    body.private-transfer-page main #booking .private-transfer-stay-cta__button:focus-visible {
+      outline: 3px solid #1F365A;
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 719px) {
+      body.private-transfer-page main .private-transfer-affiliate-cta {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      body.private-transfer-page main #booking .private-transfer-booking-cta__button,
+      body.private-transfer-page main #booking .private-transfer-stay-cta__button {
+        width: 100%;
+      }
+    }
+  </style>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -71,7 +288,7 @@
         "name": "Un transfert privé est-il la même chose qu’un Call Van en Corée ?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Non. « Transfert privé » est un terme de réservation international désignant un véhicule réservé à un seul groupe. « Call Van » est un terme coréen pour un service commercial de transport en van. Certains véhicules de transfert peuvent appartenir à cette catégorie, mais les expressions ne sont pas interchangeables."
+          "text": "Non. Un taxi Jumbo transporte des passagers et leurs bagages, tandis qu’un Call Van d’aéroport transporte des marchandises remplissant les conditions du service, accompagnées de leur propriétaire. Un transfert privé désigne un trajet réservé à l’avance pour un groupe, et non une catégorie distincte de véhicule. Avant de réserver, vérifiez le véhicule et les conditions du service."
         }
       },
       {
@@ -165,6 +382,7 @@
           <h1 class="airport-page-hero__title">Transfert privé de l’aéroport d’Incheon à Séoul</h1>
           <div class="transfer-hero-answer">
             <p>Un transfert privé devient intéressant lorsqu’un seul véhicule peut transporter tout votre groupe et tous vos bagages directement de l’aéroport à l’hôtel.</p>
+            <p>Ces trois solutions ne désignent pas le même service : un taxi Jumbo transporte des passagers et leurs bagages ; un Call Van d’aéroport transporte des marchandises répondant aux conditions du service, accompagnées de leur propriétaire ; un transfert privé est une course réservée à l’avance, pas une catégorie de véhicule à part.</p>
             <p>Pour une ou deux personnes qui voyagent léger, l’<a href="/fr/arex.html">AREX</a> ou le <a href="/fr/airport-bus.html">bus limousine d’aéroport</a> coûtera généralement moins cher. Le calcul change avec une famille ou un groupe, plusieurs grandes valises, une poussette, une personne âgée, une arrivée tardive ou un hôtel difficile à rejoindre à pied depuis la station la plus proche.</p>
             <p>La vraie question ne se limite pas au prix plus élevé d’une voiture privée. Il faut savoir si le supplément se justifie pour éviter les difficultés de bagages, de correspondances et de fin de trajet après un long vol.</p>
           </div>
@@ -172,7 +390,72 @@
       </div>
     </section>
 
-    <section id="quick-answer" class="airport-section transfer-chapter transfer-chapter--light">
+    <section class="airport-section transfer-chapter transfer-chapter--light">
+      <div class="container">
+        <header class="transfer-chapter__header">
+          <h2>Transfert privé, taxi Jumbo ou Call Van : quelle différence ?</h2>
+        </header>
+        <p>À l’aéroport d’Incheon, ces trois solutions peuvent sembler proches, mais elles ne répondent pas au même besoin. Le taxi Jumbo est un taxi de transport de passagers ; le Call Van est destiné au transport de marchandises sous certaines conditions ; le transfert privé désigne une réservation à l’avance, et non une catégorie distincte de véhicule.</p>
+        <p>Le choix dépend du nombre de voyageurs, des bagages, de l’intérêt de réserver avant l’arrivée et de l’emplacement de votre hôtel.</p>
+
+        <h3>Transfert privé réservé à l’avance</h3>
+        <p>Un transfert privé réservé à l’avance vous permet d’organiser votre trajet depuis l’aéroport d’Incheon avant l’atterrissage. Un véhicule est prévu pour votre groupe, avec un lieu de prise en charge et une destination définis au moment de la réservation.</p>
+        <p>Selon le prestataire et l’offre, il peut s’agir d’une voiture classique, d’un véhicule plus grand autorisé à transporter des passagers ou d’un taxi agréé. « Privé » signifie que vous ne partagez pas le trajet avec des voyageurs extérieurs à votre groupe. Cela ne garantit ni un véhicule haut de gamme, ni un taxi Jumbo, ni un nombre précis de places.</p>
+        <h4>Quand faut-il envisager cette solution ?</h4>
+        <p>Pour une famille avec des enfants, plusieurs grandes valises et une poussette, réserver un transfert peut éviter bien des incertitudes après le vol. C’est aussi utile en cas d’arrivée tardive ou si l’hôtel nécessite encore une correspondance ou une longue marche depuis la gare la plus proche.</p>
+        <p>Réserver à l’avance ne garantit pas que le chauffeur vous attendra dans le hall des arrivées. Certaines offres prévoient un accueil avec pancarte, d’autres vous dirigent vers un point de prise en charge précis.</p>
+        <h4>Que vérifier avant de réserver ?</h4>
+        <p>Vérifiez le nombre de passagers et la capacité réelle de bagages, en tenant compte du nombre de valises et de leur taille. Si vous avez besoin d’un siège enfant, demandez s’il est disponible et s’il faut le réserver séparément.</p>
+        <p>Vérifiez également le lieu de rendez-vous, le moyen de joindre le prestataire, le début du délai d’attente inclus, la prise en charge en cas de retard du vol et les éventuels frais de péage, de stationnement ou de nuit.</p>
+        <p>Un véhicule annoncé avec sept places n’est pas forcément capable de transporter sept voyageurs et sept grandes valises en même temps.</p>
+        <p class="transfer-affiliate-disclosure">
+          <strong>Publicité · Liens d’affiliation</strong>
+          <span>Ces liens de réservation comportent un suivi d’affiliation. Korea Inside peut percevoir une commission sur les réservations éligibles.</span>
+        </p>
+        <div class="private-transfer-affiliate-cta">
+          <a class="private-transfer-affiliate-cta__button private-transfer-affiliate-cta__button--getyourguide notranslate" translate="no" href="https://gyg.me/1mFjOmh8" target="_blank" rel="sponsored noopener noreferrer">GetYourGuide</a>
+          <a class="private-transfer-affiliate-cta__button private-transfer-affiliate-cta__button--viator notranslate" translate="no" href="https://www.viator.com/tours/Seoul/Private-Transfer-Airport-Incheon-Airport-to-Seoul-up-to-7-pax/d973-88739P14?utm_source=chatgpt.com&amp;pid=P00326932&amp;mcid=42383&amp;medium=link&amp;campaign=PrivateAirportTransfer" target="_blank" rel="sponsored noopener noreferrer">Viator</a>
+          <a class="private-transfer-affiliate-cta__button private-transfer-affiliate-cta__button--booking notranslate" translate="no" href="https://www.anrdoezrs.net/click-101831333-17322565?sid=KI_EN_PRIVATE_TRANSFER_BOOKING&amp;url=https%3A%2F%2Fwww.booking.com%2Ftaxi%2Findex.en-gb.html" target="_blank" rel="sponsored noopener noreferrer">Booking.com</a>
+        </div>
+
+        <h3>Taxi Jumbo / taxi de grande capacité</h3>
+        <p>Un taxi Jumbo est un taxi destiné au transport de passagers, avec davantage d’espace qu’une berline classique. Contrairement au Call Van d’aéroport, il n’exige pas de transporter des marchandises répondant à des conditions particulières.</p>
+        <p>Le guide officiel de l’aéroport d’Incheon classe les taxis Deluxe/Jumbo parmi les véhicules à neuf places. Cela ne veut pas dire qu’ils peuvent emmener neuf voyageurs avec toutes leurs valises : le chauffeur occupe une place et les bagages réduisent la capacité réellement utilisable.</p>
+        <h4>Quand envisager un taxi Jumbo ?</h4>
+        <p>Cette option peut convenir à une famille ou à un groupe qui a besoin de plus de place pour les personnes et les bagages qu’un taxi classique, sans nécessairement réserver son trajet avant l’arrivée.</p>
+        <p>Il est aussi possible de réserver un taxi Jumbo à l’avance auprès d’un service autorisé. Mais une offre décrite simplement comme « grand van » ou « véhicule sept places » ne désigne pas forcément un taxi Jumbo agréé.</p>
+        <h4>Où prendre un taxi Jumbo à l’aéroport d’Incheon ?</h4>
+        <p>Le guide officiel de l’aéroport indique les emplacements suivants :</p>
+        <ul>
+          <li><strong>Terminal 1 :</strong> au rez-de-chaussée (1F), stations de taxis 7C/8C.</li>
+          <li><strong>Terminal 2 :</strong> au rez-de-chaussée (1F), station de taxis 7D.</li>
+        </ul>
+        <p>Avant de voyager, vérifiez la signalisation et les informations officielles. Le tarif dépend de la grille applicable, de la destination et des éventuels suppléments. Des majorations de nuit peuvent s’appliquer : le tarif de départ n’est pas le coût total du trajet jusqu’à votre hôtel à Séoul.</p>
+        <p>Utilisez les stations de taxis officielles et refusez les propositions de transport non sollicitées dans l’aéroport.</p>
+
+        <h3>Call Van d’aéroport (transport de marchandises)</h3>
+        <p>Le Call Van d’aéroport n’est pas un taxi Jumbo. Il s’agit d’un service destiné au transport de marchandises admissibles accompagnées de leur propriétaire, et non d’un taxi pour tout voyageur qui souhaite simplement un véhicule plus grand.</p>
+        <p>Certains Call Vans ressemblent à des vans de transport de passagers, mais leur usage et les conditions d’accès au service sont différents.</p>
+        <h4>Qui peut utiliser un Call Van d’aéroport ?</h4>
+        <p>Le Call Van s’adresse aux voyageurs transportant une quantité importante de bagages ou de marchandises. Il n’est pas destiné à remplacer un taxi classique pour le transport ordinaire de passagers.</p>
+        <p>L’un des critères d’accès au service est de transporter au moins 20 kg de marchandises. <strong>Cela ne signifie pas que 20 kg est le poids maximal autorisé.</strong> Le volume et la nature des marchandises peuvent aussi être pris en compte. Un simple petit sac ne suffit pas à utiliser ce service comme s’il s’agissait d’un taxi.</p>
+        <p>Le service est prévu pour des groupes de cinq personnes au maximum. Si vous ne savez pas si vos bagages remplissent les conditions, vérifiez auprès du comptoir officiel de l’aéroport avant de l’utiliser.</p>
+        <h4>Où trouver les comptoirs officiels des Call Vans ?</h4>
+        <p>L’aéroport d’Incheon indique des comptoirs de renseignements et des points de prise en charge distincts selon le terminal :</p>
+        <ul>
+          <li><strong>Terminal 1 :</strong> comptoir au rez-de-chaussée (1F), entre les portes 12 et 13 ; prise en charge au point 10C du même niveau.</li>
+          <li><strong>Terminal 2 :</strong> comptoir au rez-de-chaussée (1F), près de la porte 7 ; prise en charge au point 8D du même niveau.</li>
+        </ul>
+        <p>Les comptoirs de renseignements sont annoncés ouverts <strong>de 08:00 à 21:00, toute l’année</strong>. Le comptoir et le point d’embarquement ne se trouvent pas au même endroit. Confirmez les indications de prise en charge avant de rejoindre le véhicule.</p>
+        <h4>Que vérifier avant de prendre un Call Van ?</h4>
+        <p>Vérifiez que votre chargement remplit les conditions du service, que votre groupe peut être accueilli et quel sera le montant total de la course. Les péages peuvent être facturés en supplément.</p>
+        <p>Pour une arrivée tardive, ne supposez pas que le comptoir officiel sera ouvert en dehors des horaires indiqués. Si vos bagages ne remplissent pas les conditions du Call Van, envisagez plutôt un taxi de transport de passagers autorisé ou un transfert privé réservé à l’avance.</p>
+        <p>L’aéroport recommande de ne pas accepter les propositions de transport de démarcheurs non autorisés et d’utiliser les services officiels prévus à cet effet.</p>
+        <p><a href="https://www.airport.kr/ap_en/1516/subview.do" target="_blank" rel="noopener noreferrer">Consulter les informations officielles sur les Call Vans</a></p>
+      </div>
+    </section>
+
+    <section id="quick-answer" class="airport-section transfer-chapter transfer-chapter--cream">
       <div class="container">
         <header class="transfer-chapter__header">
           <h2>À qui un transfert privé d’aéroport profite-t-il le plus ?</h2>
@@ -182,18 +465,6 @@
           <p>Vous voyagez seul ou à deux avec des bagages faciles à porter ? Les transports en commun seront généralement moins chers.</p>
           <p>Vous voyagez en famille ou en groupe avec plusieurs gros bagages, arrivez tard ou logez loin d’un arrêt pratique de bus d’aéroport ou de train ? L’écart de prix peut devenir bien plus faible qu’il n’y paraît.</p>
         </div>
-      </div>
-    </section>
-
-    <section class="airport-section transfer-chapter transfer-chapter--cream">
-      <div class="container">
-        <header class="transfer-chapter__header">
-          <h2>Ce que signifie « transfert privé » en Corée</h2>
-        </header>
-        <p>Sur les sites internationaux de réservation, un transfert privé est un véhicule réservé à l’avance pour votre groupe, sans partager le trajet avec d’autres passagers.</p>
-        <p>Le mot « privé » qualifie le trajet. Il ne signifie pas qu’une voiture particulière ordinaire peut légalement assurer un service d’aéroport payant.</p>
-        <p>En Corée, les transferts d’aéroport payants relèvent du transport commercial ou d’autres cadres d’activité autorisés par la loi. Vous rencontrerez aussi le terme local « Call Van ». Il désigne un service commercial de transport en van et ne doit pas être utilisé comme nom générique de tous les transferts privés vendus en ligne.</p>
-        <p>En pratique, réservez auprès d’un service établi et vérifiez le véhicule réel, le nombre maximal de passagers et la limite de bagages indiqués pour cette réservation.</p>
       </div>
     </section>
 
@@ -250,6 +521,13 @@
                 <td>Réserver à l’avance peut être utile</td>
               </tr>
               <tr>
+                <th scope="row">Call Van d’aéroport</th>
+                <td>Oui, pour le transport admissible de marchandises</td>
+                <td>Marchandises remplissant les conditions du service</td>
+                <td>Comptoir : 08:00–21:00</td>
+                <td>Comptoir officiel de l’aéroport / renseignements</td>
+              </tr>
+              <tr>
                 <th scope="row">Bus limousine d’aéroport</th>
                 <td>D’arrêt à arrêt</td>
                 <td>Bon rangement des bagages, mais dernière étape à votre charge</td>
@@ -304,7 +582,6 @@
         <p>Le suivi des vols est courant pour les transferts d’aéroport réservés, mais les règles d’attente varient selon le prestataire et l’offre.</p>
         <p>Certaines réservations décalent automatiquement la prise en charge si le vol est retardé. D’autres incluent une durée d’attente gratuite fixe après l’atterrissage ou l’heure convenue. Au-delà, l’attente supplémentaire peut être facturée.</p>
         <p>C’est l’une des conditions à lire sur la page de l’offre avant de payer, surtout pour une arrivée nocturne ou avec des bagages enregistrés.</p>
-        <p>N’appliquez pas une seule règle d’attente aux quatre plateformes de réservation.</p>
       </div>
     </section>
 
@@ -315,27 +592,37 @@
           <p class="transfer-chapter__answer">Le même trajet Incheon–Séoul figure sur plusieurs plateformes, parfois avec des tailles de véhicules, des limites de bagages, des règles d’attente et des conditions d’annulation différentes.</p>
         </header>
         <p>Korea Inside ne désigne aucune de ces entreprises comme le « meilleur » choix dans tous les cas. Comparez le véhicule réel et les conditions disponibles pour votre date.</p>
+        <p>Les plateformes ci-dessous proposent des transferts réservés à l’avance ; elles ne remplacent pas le comptoir officiel Call Van de l’aéroport d’Incheon. Avant de payer, vérifiez le véhicule, les bagages autorisés, le lieu de prise en charge et les conditions d’attente de l’offre choisie.</p>
+        <p class="transfer-affiliate-disclosure">
+          <strong>Publicité · Liens d’affiliation</strong>
+          <span>Ces liens de réservation comportent un suivi d’affiliation. Korea Inside peut percevoir une commission sur les réservations éligibles.</span>
+        </p>
         <div class="transfer-terminal-notes">
           <section class="transfer-terminal-note">
             <h3>Klook</h3>
             <p>Klook propose plusieurs offres de transfert à Incheon et plusieurs tailles de véhicules. Les limites de passagers, la capacité de bagages et l’attente peuvent varier d’une offre à l’autre. Le véhicule sélectionné compte donc davantage que le seul nom de la plateforme.</p>
-            <p><a href="https://www.klook.com/en-US/activity/3869-incheon-airport-transfer-seoul/" target="_blank" rel="noopener noreferrer">Voir les transferts sur Klook</a></p>
+            <p class="private-transfer-booking-cta"><a class="private-transfer-booking-cta__button private-transfer-booking-cta__button--klook notranslate" translate="no" href="https://affiliate.klook.com/sl/1J00xMc" target="_blank" rel="sponsored noopener noreferrer" aria-label="Voir les options de transfert sur Klook">Klook</a></p>
           </section>
           <section class="transfer-terminal-note">
             <h3>Trip.com</h3>
             <p>Trip.com dispose d’un parcours de réservation dédié aux transferts de l’aéroport d’Incheon. Les véhicules proposés dépendent du vol et des informations de prise en charge saisis. Les conditions exactes concernant les passagers, les bagages et l’annulation sont propres à la réservation choisie.</p>
-            <p><a href="https://www.trip.com/m/airport-transfers/south-korea/" target="_blank" rel="noopener noreferrer">Voir les transferts sur Trip.com</a></p>
+            <p class="private-transfer-booking-cta"><a class="private-transfer-booking-cta__button private-transfer-booking-cta__button--trip notranslate" translate="no" href="https://www.trip.com/t/169nFFukqW2" target="_blank" rel="sponsored noopener noreferrer" aria-label="Voir les options de transfert sur Trip.com">Trip.com</a></p>
           </section>
           <section class="transfer-terminal-note">
-            <h3>Trazy</h3>
-            <p>Trazy est spécialisée dans les voyages en Corée, et ses offres de transfert précisent souvent les limites de passagers et de bagages. Les suppléments de nuit, l’attente et les règles d’annulation peuvent varier selon l’offre. Appliquez-les à la réservation précise, sans les généraliser à toute la plateforme.</p>
-            <p><a href="https://www.trazy.com/experience/detail/incheon-gimpo-airport-taxi-transfer" target="_blank" rel="noopener noreferrer">Voir les transferts sur Trazy</a></p>
+            <h3><span class="notranslate" translate="no">Creatrip</span></h3>
+            <p><span class="notranslate" translate="no">Creatrip</span> propose des transferts réservés à l’avance entre l’aéroport d’Incheon et Séoul, notamment des véhicules de plus grande capacité pour les groupes avec bagages. Le nombre de passagers, les limites de valises, le délai de réservation et les conditions d’annulation dépendent de l’offre choisie.</p>
+            <p class="private-transfer-booking-cta"><a class="private-transfer-booking-cta__button private-transfer-booking-cta__button--creatrip notranslate" translate="no" href="https://creatrip.com/en/spot/13094?utm_source=AFF-bootb2v" target="_blank" rel="sponsored noopener noreferrer" aria-label="Voir les options de transfert aéroport sur Creatrip">Creatrip</a></p>
           </section>
           <section class="transfer-terminal-note">
-            <h3>Booking.com</h3>
-            <p>Booking.com propose des réservations de taxis d’aéroport et de transferts privés parmi ses services de voyage. La taille du véhicule, la capacité de bagages, le rendez-vous et les conditions d’annulation varient selon l’offre.</p>
-            <p><a href="https://www.booking.com/taxi/" target="_blank" rel="noopener noreferrer">Voir les transferts sur Booking.com</a></p>
+            <h3><span class="notranslate" translate="no">KKday</span></h3>
+            <p><span class="notranslate" translate="no">KKday</span> propose une recherche de transferts d’aéroport permettant de renseigner l’aéroport, la destination et la taille du groupe. Avant de payer, vérifiez les véhicules disponibles, les limites de passagers et de bagages, les modalités de rendez-vous et les conditions de réservation de votre trajet.</p>
+            <p class="private-transfer-booking-cta"><a class="private-transfer-booking-cta__button private-transfer-booking-cta__button--kkday notranslate" translate="no" href="https://www.kkday.com/en-us/trans/airport_transfer?cid=26866&amp;ud1=AirportTransfer" target="_blank" rel="sponsored noopener noreferrer" aria-label="Rechercher les transferts d’aéroport sur KKday">KKday</a></p>
           </section>
+        </div>
+        <p>Vous prévoyez de conduire en dehors de Séoul ? Avant de réserver, consultez notre <a href="rental-car.html">guide de location de voiture en Corée</a>, notamment pour les permis, l’assurance et la prise en charge du véhicule.</p>
+        <div class="private-transfer-stay-cta">
+          <p class="private-transfer-stay-cta__copy">Vous hésitez encore sur le quartier où loger à Séoul ? Comparez les quartiers, leur accès depuis l’aéroport et les déplacements avec bagages avant de choisir votre hôtel.</p>
+          <a class="private-transfer-stay-cta__button" href="accommodation.html">Comparer les quartiers où loger à Séoul</a>
         </div>
       </div>
     </section>
@@ -402,7 +689,7 @@
           </details>
           <details>
             <summary>Un transfert privé est-il la même chose qu’un Call Van en Corée ?</summary>
-            <p>Non. « Transfert privé » est un terme de réservation international désignant un véhicule réservé à un seul groupe. « Call Van » est un terme coréen pour un service commercial de transport en van. Certains véhicules de transfert peuvent appartenir à cette catégorie, mais les expressions ne sont pas interchangeables.</p>
+            <p>Non. Un taxi Jumbo transporte des passagers et leurs bagages, tandis qu’un Call Van d’aéroport transporte des marchandises remplissant les conditions du service, accompagnées de leur propriétaire. Un transfert privé désigne un trajet réservé à l’avance pour un groupe, et non une catégorie distincte de véhicule. Avant de réserver, vérifiez le véhicule et les conditions du service.</p>
           </details>
           <details>
             <summary>Faut-il réserver son transport depuis Incheon à l’avance ?</summary>
