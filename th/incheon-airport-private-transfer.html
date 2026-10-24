@@ -21,6 +21,223 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400..600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
+  <style>
+    body.private-transfer-page main .private-transfer-affiliate-cta {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin: 24px 0;
+    }
+
+    body.private-transfer-page main .private-transfer-affiliate-cta__button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-width: 0;
+      min-height: 54px;
+      padding: 12px 16px;
+      border: 1px solid;
+      border-radius: 8px;
+      color: #FFFFFF;
+      font-size: 19px;
+      font-weight: 700;
+      line-height: 1.2;
+      text-align: center;
+      text-decoration: none;
+      box-sizing: border-box;
+    }
+
+    body.private-transfer-page main .private-transfer-affiliate-cta__button--klook,
+    body.private-transfer-page main .private-transfer-affiliate-cta__button--klook:visited {
+      background: #FF5B00;
+      border-color: #D94C00;
+      color: #FFFFFF;
+    }
+
+    body.private-transfer-page main .private-transfer-affiliate-cta__button--klook:hover {
+      background: #D94C00;
+      color: #FFFFFF;
+      text-decoration: none;
+    }
+
+    body.private-transfer-page main .private-transfer-affiliate-cta__button--trip,
+    body.private-transfer-page main .private-transfer-affiliate-cta__button--trip:visited {
+      background: #287DFA;
+      border-color: #155CC4;
+      color: #FFFFFF;
+    }
+
+    body.private-transfer-page main .private-transfer-affiliate-cta__button--trip:hover {
+      background: #155CC4;
+      color: #FFFFFF;
+      text-decoration: none;
+    }
+
+    body.private-transfer-page main .private-transfer-affiliate-cta__button--kkday,
+    body.private-transfer-page main .private-transfer-affiliate-cta__button--kkday:visited {
+      background: #26BEC9;
+      border-color: #148D9A;
+      color: #122C33;
+    }
+
+    body.private-transfer-page main .private-transfer-affiliate-cta__button--kkday:hover {
+      background: #14A7B4;
+      color: #122C33;
+      text-decoration: none;
+    }
+
+    body.private-transfer-page main .private-transfer-affiliate-cta__button:active {
+      background: #000000;
+      border-color: #000000;
+      color: #FFFFFF;
+    }
+
+    body.private-transfer-page main .private-transfer-affiliate-cta__button:focus-visible {
+      outline: 3px solid #14130F;
+      outline-offset: 3px;
+    }
+
+    body.private-transfer-page main #booking .private-transfer-booking-cta {
+      margin: 18px 0 0;
+    }
+
+    body.private-transfer-page main #booking .private-transfer-booking-cta__button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 260px;
+      min-width: 0;
+      min-height: 54px;
+      padding: 12px 16px;
+      border: 1px solid;
+      border-radius: 8px;
+      font-size: 19px;
+      font-weight: 700;
+      line-height: 1.2;
+      text-align: center;
+      text-decoration: none;
+      box-sizing: border-box;
+    }
+
+    body.private-transfer-page main #booking .private-transfer-booking-cta__button--viator,
+    body.private-transfer-page main #booking .private-transfer-booking-cta__button--viator:visited {
+      background: #008768;
+      border-color: #006B53;
+      color: #FFFFFF;
+    }
+
+    body.private-transfer-page main #booking .private-transfer-booking-cta__button--viator:hover {
+      background: #006B53;
+      color: #FFFFFF;
+      text-decoration: none;
+    }
+
+    body.private-transfer-page main #booking .private-transfer-booking-cta__button--getyourguide,
+    body.private-transfer-page main #booking .private-transfer-booking-cta__button--getyourguide:visited {
+      background: #ED647F;
+      border-color: #C64868;
+      color: #FFFFFF;
+    }
+
+    body.private-transfer-page main #booking .private-transfer-booking-cta__button--getyourguide:hover {
+      background: #C64868;
+      color: #FFFFFF;
+      text-decoration: none;
+    }
+
+    body.private-transfer-page main #booking .private-transfer-booking-cta__button--booking,
+    body.private-transfer-page main #booking .private-transfer-booking-cta__button--booking:visited {
+      background: #003B95;
+      border-color: #002B70;
+      color: #FFFFFF;
+    }
+
+    body.private-transfer-page main #booking .private-transfer-booking-cta__button--booking:hover {
+      background: #002B70;
+      color: #FFFFFF;
+      text-decoration: none;
+    }
+
+    body.private-transfer-page main #booking .private-transfer-booking-cta__button--creatrip,
+    body.private-transfer-page main #booking .private-transfer-booking-cta__button--creatrip:visited {
+      background: #008E83;
+      border-color: #006A62;
+      color: #FFFFFF;
+    }
+
+    body.private-transfer-page main #booking .private-transfer-booking-cta__button--creatrip:hover {
+      background: #006A62;
+      color: #FFFFFF;
+      text-decoration: none;
+    }
+
+    body.private-transfer-page main #booking .private-transfer-booking-cta__button:active {
+      background: #000000;
+      border-color: #000000;
+      color: #FFFFFF;
+    }
+
+    body.private-transfer-page main #booking .private-transfer-booking-cta__button:focus-visible {
+      outline: 3px solid #14130F;
+      outline-offset: 3px;
+    }
+
+    body.private-transfer-page main #booking .private-transfer-stay-cta {
+      margin-top: 28px;
+      padding: 20px 24px;
+      background: #F5F7FB;
+      border: 1px solid #DCE3F0;
+      border-radius: 12px;
+    }
+
+    body.private-transfer-page main #booking .private-transfer-stay-cta__copy {
+      margin: 0;
+    }
+
+    body.private-transfer-page main #booking .private-transfer-stay-cta__button,
+    body.private-transfer-page main #booking .private-transfer-stay-cta__button:visited {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+      min-height: 54px;
+      margin-top: 16px;
+      padding: 12px 20px;
+      background: #1F365A;
+      border: 1px solid #1F365A;
+      border-radius: 8px;
+      color: #FFFFFF;
+      font-weight: 700;
+      line-height: 1.2;
+      text-align: center;
+      text-decoration: none;
+      box-sizing: border-box;
+    }
+
+    body.private-transfer-page main #booking .private-transfer-stay-cta__button:hover {
+      background: #122947;
+      border-color: #122947;
+      color: #FFFFFF;
+      text-decoration: none;
+    }
+
+    body.private-transfer-page main #booking .private-transfer-stay-cta__button:focus-visible {
+      outline: 3px solid #1F365A;
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 719px) {
+      body.private-transfer-page main .private-transfer-affiliate-cta {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      body.private-transfer-page main #booking .private-transfer-booking-cta__button,
+      body.private-transfer-page main #booking .private-transfer-stay-cta__button {
+        width: 100%;
+      }
+    }
+  </style>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -71,7 +288,7 @@
       "name": "Private transfer เหมือน call van ในเกาหลีไหม?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "ไม่เหมือน “private transfer” เป็นคำจองสากลสำหรับรถที่สงวนให้กลุ่มเดียว ส่วน “call van” เป็นคำของบริการรถตู้เชิงพาณิชย์ในเกาหลี รถ airport transfer บางคันอาจอยู่ในหมวดนั้น แต่สองคำนี้ใช้แทนกันไม่ได้"
+        "text": "ไม่เหมือนกัน Jumbo Taxi เป็นแท็กซี่สำหรับผู้โดยสารและสัมภาระ ส่วน Airport Call Van ใช้ขนส่งสินค้าที่เข้าเงื่อนไขโดยมีเจ้าของสินค้าเดินทางไปด้วย ขณะที่ private transfer หมายถึงการจองรถล่วงหน้าให้กลุ่มเดียว ไม่ใช่รถอีกประเภทตามกฎหมาย ก่อนจองให้ตรวจสอบรถจริงและเงื่อนไขของบริการ"
       }
     },
     {
@@ -165,6 +382,7 @@
           <h1 class="airport-page-hero__title">รถรับส่งส่วนตัวจากสนามบินอินชอนไปโซล</h1>
           <div class="transfer-hero-answer">
             <p>Private transfer เริ่มมีเหตุผลเมื่อรถคันเดียวพาทั้งกลุ่มและกระเป๋าทั้งหมดจากสนามบินไปถึงโรงแรมได้ตรง</p>
+            <p>บริการทั้งสามแบบนี้ไม่เหมือนกัน แท็กซี่ขนาดใหญ่ (Jumbo Taxi) รับผู้โดยสารพร้อมสัมภาระ ส่วน Airport Call Van ใช้ขนส่งสินค้าที่เข้าเงื่อนไขโดยมีเจ้าของสินค้าเดินทางไปด้วย ขณะที่รถรับส่งส่วนตัว (private transfer) หมายถึงการจองรถไว้ล่วงหน้า ไม่ใช่ประเภทรถอีกแบบหนึ่ง</p>
             <p>ถ้าเดินทางคนเดียวหรือสองคนและมีกระเป๋าไม่มาก <a href="/th/arex.html">AREX</a> หรือ<a href="/th/airport-bus.html">รถบัสลิมูซีนสนามบิน</a>มักถูกกว่า สมการเริ่มเปลี่ยนเมื่อเป็นครอบครัวหรือกลุ่ม มีกระเป๋าใบใหญ่หลายใบ รถเข็นเด็ก ผู้สูงอายุ มาถึงดึก หรือโรงแรมอยู่ห่างสถานีจนช่วงเดินสุดท้ายลำบาก</p>
             <p>คำถามจริงจึงไม่ใช่แค่ว่ารถส่วนตัวแพงกว่าไหม แต่คือเงินเพิ่มนั้นคุ้มกับการตัดปัญหากระเป๋า การต่อรถ และช่วงสุดท้ายหลังไฟลต์ยาวหรือไม่</p>
           </div>
@@ -172,7 +390,72 @@
       </div>
     </section>
 
-    <section id="quick-answer" class="airport-section transfer-chapter transfer-chapter--light">
+    <section class="airport-section transfer-chapter transfer-chapter--light">
+      <div class="container">
+        <header class="transfer-chapter__header">
+          <h2>รถรับส่งส่วนตัว แท็กซี่ขนาดใหญ่ และ Airport Call Van ต่างกันอย่างไร?</h2>
+        </header>
+        <p>ที่สนามบินอินชอน รถทั้งสามแบบอาจดูคล้ายกัน แต่มีหน้าที่ต่างกัน แท็กซี่ขนาดใหญ่เป็นรถแท็กซี่สำหรับผู้โดยสาร ส่วน Airport Call Van เป็นบริการขนส่งสินค้าที่มีเงื่อนไขการใช้บริการ ขณะที่รถรับส่งส่วนตัวคือบริการที่จองล่วงหน้า ไม่ใช่ประเภทรถตามกฎหมายอีกประเภทหนึ่ง</p>
+        <p>ควรเลือกจากจำนวนคนและสัมภาระที่นำมา ต้องการจัดรถไว้ก่อนเครื่องลงหรือไม่ และโรงแรมอยู่ตรงไหน ไม่ใช่ดูแค่ขนาดรถที่เห็นในรูป</p>
+
+        <h3>รถรับส่งส่วนตัวที่จองล่วงหน้า</h3>
+        <p>การจองรถรับส่งส่วนตัวไว้ก่อนเดินทางช่วยให้จัดรถจากสนามบินอินชอนได้ตั้งแต่ก่อนเครื่องลง รถหนึ่งคันจะรับเฉพาะกลุ่มของคุณ โดยตกลงจุดรับและปลายทางไว้ล่วงหน้า</p>
+        <p>รถที่ให้บริการอาจเป็นรถยนต์ทั่วไป รถขนาดใหญ่ที่ได้รับอนุญาต หรือแท็กซี่ที่มีใบอนุญาต ขึ้นอยู่กับผู้ให้บริการและแพ็กเกจที่จอง คำว่า “ส่วนตัว” หมายถึงไม่ต้องแชร์รถกับผู้โดยสารกลุ่มอื่น ไม่ได้การันตีว่าจะเป็นรถหรู Jumbo Taxi หรือรถที่นั่งได้ตามจำนวนที่คาดจากชื่อรุ่น</p>
+        <h4>เมื่อไรควรพิจารณาจองรถรับส่งส่วนตัว?</h4>
+        <p>ครอบครัวที่มีเด็ก กระเป๋าใบใหญ่หลายใบ และรถเข็นเด็ก อาจเดินทางหลังลงเครื่องได้ง่ายขึ้นมากหากมีรถรอรับตามที่จองไว้ เช่นเดียวกับคนที่มาถึงดึกหรือพักในโรงแรมที่ต้องต่อรถหรือเดินจากสถานีไกล</p>
+        <p>แต่การจองล่วงหน้าไม่ได้หมายความว่าคนขับจะเข้ามาถือป้ายรอในโถงผู้โดยสารขาเข้าทุกครั้ง บางแพ็กเกจมีบริการต้อนรับในอาคาร ส่วนบางแพ็กเกจให้ไปยังจุดนัดรับที่กำหนด</p>
+        <h4>ต้องตรวจสอบอะไรบ้างก่อนจอง?</h4>
+        <p>เช็กจำนวนผู้โดยสารและพื้นที่วางสัมภาระจริง รวมทั้งจำนวนและขนาดกระเป๋า หากต้องใช้คาร์ซีทสำหรับเด็ก ให้ตรวจสอบว่ามีให้บริการหรือไม่ และต้องขอเพิ่มตอนจองหรือเปล่า</p>
+        <p>ดูด้วยว่าต้องพบคนขับที่ไหน ติดต่อผู้ให้บริการอย่างไร เริ่มนับเวลารอที่รวมในราคาเมื่อไร หากเที่ยวบินล่าช้าจะจัดการอย่างไร และราคาที่แสดงรวมค่าทางด่วน ค่าจอดรถ หรือค่ารับส่งช่วงดึกแล้วหรือยัง</p>
+        <p>รถที่โฆษณาว่ามี 7 ที่นั่ง ไม่ได้หมายความว่าจะขนผู้โดยสาร 7 คนพร้อมกระเป๋าใบใหญ่ 7 ใบได้เสมอ</p>
+        <p class="transfer-affiliate-disclosure">
+          <strong>โฆษณา · ลิงก์พันธมิตร</strong>
+          <span>ลิงก์จองเหล่านี้มีระบบติดตามพันธมิตร Korea Inside อาจได้รับค่าคอมมิชชันจากการจองที่เข้าเงื่อนไข</span>
+        </p>
+        <div class="private-transfer-affiliate-cta">
+          <a class="private-transfer-affiliate-cta__button private-transfer-affiliate-cta__button--klook notranslate" translate="no" href="https://affiliate.klook.com/sl/1J00xMc" target="_blank" rel="sponsored noopener noreferrer">Klook</a>
+          <a class="private-transfer-affiliate-cta__button private-transfer-affiliate-cta__button--trip notranslate" translate="no" href="https://www.trip.com/t/169nFFukqW2" target="_blank" rel="sponsored noopener noreferrer">Trip.com</a>
+          <a class="private-transfer-affiliate-cta__button private-transfer-affiliate-cta__button--kkday notranslate" translate="no" href="https://www.kkday.com/en-us/trans/airport_transfer?cid=26866&amp;ud1=AirportTransfer" target="_blank" rel="sponsored noopener noreferrer">KKday</a>
+        </div>
+
+        <h3>แท็กซี่ขนาดใหญ่ (Jumbo Taxi)</h3>
+        <p>Jumbo Taxi คือแท็กซี่สำหรับรับส่งผู้โดยสารที่มีพื้นที่มากกว่ารถเก๋งแท็กซี่ทั่วไป ต่างจาก Airport Call Van ตรงที่ผู้โดยสารไม่จำเป็นต้องมีสินค้าตามเงื่อนไขการขนส่งติดตัว</p>
+        <p>คู่มือทางการของสนามบินอินชอนจัด Deluxe/Jumbo Taxi เป็นรถประเภท 9 ที่นั่ง แต่ไม่ได้หมายความว่าจะรับผู้โดยสาร 9 คนพร้อมกระเป๋าทั้งหมดได้ เพราะคนขับใช้หนึ่งที่นั่ง และสัมภาระอาจทำให้พื้นที่ที่เหลือสำหรับผู้โดยสารลดลง</p>
+        <h4>ใครควรพิจารณา Jumbo Taxi?</h4>
+        <p>ครอบครัวหรือกลุ่มที่ต้องการที่นั่งและพื้นที่กระเป๋ามากกว่าแท็กซี่ปกติ แต่ไม่จำเป็นต้องจัดรถล่วงหน้าตั้งแต่ก่อนเครื่องลง อาจพิจารณา Jumbo Taxi ได้</p>
+        <p>Jumbo Taxi สามารถจองล่วงหน้าผ่านผู้ให้บริการที่ได้รับอนุญาตได้เช่นกัน แต่คำโฆษณาว่า “รถตู้ขนาดใหญ่” หรือ “รถ 7 ที่นั่ง” ไม่ได้แปลว่าเป็น Jumbo Taxi ที่มีใบอนุญาตทุกคัน</p>
+        <h4>ขึ้น Jumbo Taxi ที่สนามบินอินชอนตรงไหน?</h4>
+        <p>สนามบินระบุจุดขึ้นแท็กซี่ขนาดใหญ่ไว้ดังนี้</p>
+        <ul>
+          <li><strong>Terminal 1:</strong> ชั้น 1 จุดจอดแท็กซี่ 7C/8C</li>
+          <li><strong>Terminal 2:</strong> ชั้น 1 จุดจอดแท็กซี่ 7D</li>
+        </ul>
+        <p>ก่อนเดินทางให้ตรวจสอบป้ายและข้อมูลปัจจุบันของสนามบิน ค่าโดยสารขึ้นอยู่กับโครงสร้างราคา จุดหมายปลายทาง และค่าบริการเพิ่มเติม อาจมีค่าบริการช่วงกลางคืน จึงไม่ควรนำค่าเริ่มต้นของมิเตอร์ไปเทียบกับค่าเดินทางทั้งหมดถึงโรงแรมในโซล</p>
+        <p>ใช้จุดจอดแท็กซี่ที่กำหนดอย่างเป็นทางการ และไม่รับข้อเสนอรถจากผู้ที่เข้ามาชักชวนในสนามบินโดยไม่ได้รับอนุญาต</p>
+
+        <h3>Airport Call Van (บริการขนส่งสินค้า)</h3>
+        <p>Airport Call Van ไม่ใช่ Jumbo Taxi แต่เป็นบริการขนส่งสินค้าที่เข้าเงื่อนไข โดยเจ้าของสินค้าต้องเดินทางไปด้วย ไม่ใช่บริการแท็กซี่สำหรับทุกคนที่ต้องการรถคันใหญ่ขึ้น</p>
+        <p>Call Van บางคันอาจมีหน้าตาคล้ายรถตู้รับส่งผู้โดยสาร แต่ประเภทการให้บริการและเงื่อนไขผู้ใช้ต่างกัน</p>
+        <h4>ใครใช้ Airport Call Van ได้บ้าง?</h4>
+        <p>Call Van ออกแบบมาสำหรับผู้เดินทางที่มีสัมภาระหรือสินค้าปริมาณมาก ไม่ใช่รถแท็กซี่โดยสารทั่วไป</p>
+        <p>หนึ่งในเงื่อนไขของบริการคือการมีสินค้าน้ำหนักอย่างน้อย 20 กิโลกรัม <strong>ไม่ได้หมายความว่าน้ำหนักสูงสุดที่อนุญาตคือ 20 กิโลกรัม</strong> ขนาดและประเภทของสินค้าก็อาจใช้พิจารณาได้ การถือถุงเล็กเพียงใบเดียวไม่ได้ทำให้ใช้ Call Van แทนแท็กซี่ปกติได้</p>
+        <p>สนามบินกำหนดกลุ่มผู้ใช้บริการไว้ไม่เกิน 5 คน หากไม่แน่ใจว่าสัมภาระของคุณตรงตามเงื่อนไขหรือไม่ ให้สอบถามเคาน์เตอร์ Call Van อย่างเป็นทางการก่อนใช้บริการ</p>
+        <h4>เคาน์เตอร์ Call Van อยู่ที่ไหน?</h4>
+        <p>เคาน์เตอร์สอบถามข้อมูลและจุดขึ้นรถอยู่คนละจุด โดยแยกตามอาคารผู้โดยสารดังนี้</p>
+        <ul>
+          <li><strong>Terminal 1:</strong> เคาน์เตอร์ชั้น 1 ระหว่างประตูทางเข้า 12 และ 13 ส่วนจุดขึ้นรถอยู่ที่ 10C ชั้นเดียวกัน</li>
+          <li><strong>Terminal 2:</strong> เคาน์เตอร์ชั้น 1 ใกล้ประตูทางเข้า 7 ส่วนจุดขึ้นรถอยู่ที่ 8D ชั้นเดียวกัน</li>
+        </ul>
+        <p>เคาน์เตอร์ข้อมูลเปิดให้บริการ <strong>08:00–21:00 ทุกวันตลอดปี</strong> แต่เคาน์เตอร์กับจุดขึ้นรถไม่ใช่ที่เดียวกัน ควรยืนยันจุดขึ้นรถก่อนเดินไปหาคนขับ</p>
+        <h4>ควรตรวจสอบอะไรอีกก่อนใช้ Call Van?</h4>
+        <p>ตรวจสอบว่าสินค้าของคุณเข้าเงื่อนไขหรือไม่ จำนวนผู้เดินทางรับได้หรือไม่ และค่าโดยสารรวมเท่าไร โดยค่าทางด่วนอาจคิดเพิ่ม</p>
+        <p>หากมาถึงตอนดึก อย่าคิดว่าเคาน์เตอร์ทางการจะเปิดนอกเวลาที่ประกาศไว้ หากสัมภาระไม่เข้าเงื่อนไข ให้เลือกแท็กซี่รับส่งผู้โดยสารที่ได้รับอนุญาต หรือรถรับส่งส่วนตัวที่จองไว้ล่วงหน้าแทน</p>
+        <p>สนามบินแนะนำให้หลีกเลี่ยงผู้ที่เข้ามาชักชวนให้ใช้รถอย่างไม่เป็นทางการ และใช้จุดบริการที่กำหนดเท่านั้น</p>
+        <p><a href="https://www.airport.kr/ap_en/1516/subview.do" target="_blank" rel="noopener noreferrer">ตรวจสอบข้อมูล Airport Call Van จากสนามบินอินชอน</a></p>
+      </div>
+    </section>
+
+    <section id="quick-answer" class="airport-section transfer-chapter transfer-chapter--cream">
       <div class="container">
         <header class="transfer-chapter__header">
           <h2>ใครได้ประโยชน์จาก Airport Private Transfer มากที่สุด?</h2>
@@ -182,18 +465,6 @@
           <p>เดินทางคนเดียวหรือเป็นคู่พร้อมกระเป๋าที่จัดการง่าย? ขนส่งสาธารณะมักเป็นคำตอบที่ถูกกว่า</p>
           <p>มากันเป็นครอบครัวหรือกลุ่ม มีกระเป๋าใหญ่หลายใบ มาถึงดึก หรือพักไกลจากป้ายรถบัสสนามบินหรือสถานีรถไฟที่สะดวก? ส่วนต่างราคาอาจแคบลงกว่าที่เห็นตอนแรก</p>
         </div>
-      </div>
-    </section>
-
-    <section class="airport-section transfer-chapter transfer-chapter--cream">
-      <div class="container">
-        <header class="transfer-chapter__header">
-          <h2>คำว่า “private transfer” ในเกาหลีหมายถึงอะไร</h2>
-        </header>
-        <p>บนเว็บไซต์จองระหว่างประเทศ private transfer หมายถึงรถที่จองล่วงหน้าและสงวนให้กลุ่มของคุณ ไม่ใช่ shared ride</p>
-        <p>คำว่า “private” อธิบายรูปแบบการเดินทาง ไม่ได้หมายความว่ารถส่วนบุคคลธรรมดาสามารถรับเงินวิ่งบริการสนามบินได้อย่างถูกกฎหมาย</p>
-        <p>ในเกาหลี บริการรับส่งสนามบินแบบมีค่าใช้จ่ายดำเนินการผ่านขนส่งเชิงพาณิชย์หรือโครงสร้างธุรกิจที่ได้รับอนุญาต คุณอาจเห็นคำท้องถิ่นว่า “call van” ด้วย Call van เกาหลีเป็นบริการรถตู้เชิงพาณิชย์ และไม่ควรใช้เป็นชื่ออังกฤษครอบจักรวาลแทน private transfer ทุกแบบที่ขายออนไลน์</p>
-        <p>สำหรับนักท่องเที่ยว จุดใช้งานจริงง่ายกว่า: จองผ่านบริการที่มีตัวตนชัดเจน แล้วดูรถจริง จำนวนผู้โดยสาร และขีดจำกัดกระเป๋าของ reservation นั้น</p>
       </div>
     </section>
 
@@ -250,6 +521,13 @@
                 <td>จองล่วงหน้าช่วยได้</td>
               </tr>
               <tr>
+                <th scope="row">Airport Call Van</th>
+                <td>ได้ สำหรับการขนส่งสินค้าที่เข้าเงื่อนไข</td>
+                <td>ต้องมีสินค้าที่เข้าเกณฑ์บริการ</td>
+                <td>เคาน์เตอร์ 08:00–21:00</td>
+                <td>สอบถามเคาน์เตอร์สนามบินอย่างเป็นทางการ</td>
+              </tr>
+              <tr>
                 <th scope="row">รถบัสลิมูซีนสนามบิน</th>
                 <td>ป้ายถึงป้าย</td>
                 <td>เก็บกระเป๋าได้ดี แต่คุณยังจัดการช่วงสุดท้ายเอง</td>
@@ -304,7 +582,6 @@
         <p>การ track เที่ยวบินพบได้บ่อยใน private transfer ที่จองล่วงหน้า แต่ waiting policy ไม่เหมือนกันทุก provider หรือทุก listing</p>
         <p>บาง booking ปรับ pickup time ตาม flight delay อัตโนมัติ บางรายการให้ free waiting period แบบตายตัวหลัง landing หรือหลังเวลารับที่ตกลงกัน และเวลารอเกินช่วงที่รวมไว้อาจคิดเงินเพิ่ม</p>
         <p>นี่เป็นหนึ่งในเงื่อนไขไม่กี่อย่างที่ควรอ่านจาก product page จริงก่อนจ่าย โดยเฉพาะไฟลต์ดึกหรือทริปที่มีกระเป๋าโหลด</p>
-        <p>อย่านำ waiting policy อันเดียวไปใช้กับบริษัทจองทั้งหมด</p>
       </div>
     </section>
 
@@ -315,27 +592,37 @@
           <p class="transfer-chapter__answer">เส้นทางสนามบินอินชอน–โซลเดียวกันมีขายบนหลายแพลตฟอร์ม บางครั้งมีขนาดรถ luggage limit waiting rule และ cancellation term ต่างกัน</p>
         </header>
         <p>Korea Inside ไม่จัดอันดับบริษัทใดเป็น “ดีที่สุด” สำหรับทุกคน สิ่งที่ควรเทียบคือรถและเงื่อนไขจองที่มีจริงในวันที่คุณเดินทาง</p>
+        <p>แพลตฟอร์มด้านล่างเป็นช่องทางจองรถรับส่งล่วงหน้า ไม่ใช่เคาน์เตอร์ Airport Call Van ของสนามบินอินชอน ก่อนชำระเงินให้ดูประเภทรถ ความจุสัมภาระ จุดรับ และเงื่อนไขการรอของบริการที่จะจองจริง</p>
+        <p class="transfer-affiliate-disclosure">
+          <strong>โฆษณา · ลิงก์พันธมิตร</strong>
+          <span>ลิงก์จองเหล่านี้มีระบบติดตามพันธมิตร Korea Inside อาจได้รับค่าคอมมิชชันจากการจองที่เข้าเงื่อนไข</span>
+        </p>
         <div class="transfer-terminal-notes">
           <section class="transfer-terminal-note">
-            <h3>Klook</h3>
-            <p>Klook มีตัวเลือก transfer สนามบินอินชอนหลายแบบและหลายขนาดรถ จำนวนผู้โดยสาร ความจุกระเป๋า และเงื่อนไขการรออาจต่างกันในแต่ละ listing ดังนั้นรถที่เลือกสำคัญกว่าชื่อ marketplace</p>
-            <p><a href="https://www.klook.com/en-US/activity/3869-incheon-airport-transfer-seoul/" target="_blank" rel="noopener noreferrer">ดูตัวเลือก Klook transfer</a></p>
+            <h3><span class="notranslate" translate="no">Viator</span></h3>
+            <p><span class="notranslate" translate="no">Viator</span> มีรายการรถรับส่งส่วนตัวจากสนามบินอินชอนไปโซลที่จองล่วงหน้าได้ รวมถึงตัวเลือกสำหรับกลุ่มที่ต้องการรถขนาดใหญ่ ก่อนจองให้ตรวจสอบจำนวนผู้โดยสาร กระเป๋าที่รับได้ จุดนัดพบ และกฎการรอหรือการยกเลิกของรายการที่เลือก</p>
+            <p class="private-transfer-booking-cta"><a class="private-transfer-booking-cta__button private-transfer-booking-cta__button--viator notranslate" translate="no" href="https://www.viator.com/tours/Seoul/Private-Transfer-Airport-Incheon-Airport-to-Seoul-up-to-7-pax/d973-88739P14?utm_source=chatgpt.com&amp;pid=P00326932&amp;mcid=42383&amp;medium=link&amp;campaign=PrivateAirportTransfer" target="_blank" rel="sponsored noopener noreferrer" aria-label="ดูตัวเลือกบริการรับส่งสนามบินใน Viator">Viator</a></p>
           </section>
           <section class="transfer-terminal-note">
-            <h3>Trip.com</h3>
-            <p>Trip.com มี flow จอง airport transfer สำหรับสนามบินอินชอนโดยเฉพาะ ตัวเลือกรถผูกกับข้อมูลเที่ยวบินและจุดรับที่กรอกตอนจอง ส่วน passenger, luggage และ cancellation condition ที่แน่นอนขึ้นอยู่กับ reservation ที่เลือก</p>
-            <p><a href="https://www.trip.com/m/airport-transfers/south-korea/" target="_blank" rel="noopener noreferrer">ดูตัวเลือก Trip.com transfer</a></p>
+            <h3><span class="notranslate" translate="no">GetYourGuide</span></h3>
+            <p><span class="notranslate" translate="no">GetYourGuide</span> ให้เลือกดูบริการรับส่งระหว่างสนามบินอินชอนกับโซลที่จองไว้ก่อนได้ ก่อนชำระเงินให้เช็กจำนวนคนและกระเป๋าที่รถรับได้ วิธีนัดพบคนขับ รวมถึงเงื่อนไขการรอและการยกเลิกของบริการที่เลือก</p>
+            <p class="private-transfer-booking-cta"><a class="private-transfer-booking-cta__button private-transfer-booking-cta__button--getyourguide notranslate" translate="no" href="https://gyg.me/1mFjOmh8" target="_blank" rel="sponsored noopener noreferrer" aria-label="ดูตัวเลือกบริการรับส่งสนามบินใน GetYourGuide">GetYourGuide</a></p>
           </section>
           <section class="transfer-terminal-note">
-            <h3>Trazy</h3>
-            <p>Trazy เน้นการท่องเที่ยวเกาหลี และ listing airport transfer มักระบุจำนวนผู้โดยสารกับกระเป๋าค่อนข้างละเอียด ค่าดึก waiting time และ cancellation rule อาจต่างกันตาม product จึงต้องผูกกับ reservation จริง ไม่ควรเหมารวมทั้งแพลตฟอร์ม</p>
-            <p><a href="https://www.trazy.com/experience/detail/incheon-gimpo-airport-taxi-transfer" target="_blank" rel="noopener noreferrer">ดูตัวเลือก Trazy transfer</a></p>
+            <h3><span class="notranslate" translate="no">Booking.com</span></h3>
+            <p><span class="notranslate" translate="no">Booking.com</span> มีบริการจองแท็กซี่สนามบินและรถรับส่งส่วนตัวควบคู่กับบริการท่องเที่ยวอื่น ขนาดรถ พื้นที่สัมภาระ วิธีนัดพบ และเงื่อนไขการยกเลิกขึ้นอยู่กับรายการที่เลือก</p>
+            <p class="private-transfer-booking-cta"><a class="private-transfer-booking-cta__button private-transfer-booking-cta__button--booking notranslate" translate="no" href="https://www.anrdoezrs.net/click-101831333-17322565?sid=KI_EN_PRIVATE_TRANSFER_BOOKING&amp;url=https%3A%2F%2Fwww.booking.com%2Ftaxi%2Findex.en-gb.html" target="_blank" rel="sponsored noopener noreferrer" aria-label="ดูตัวเลือกแท็กซี่สนามบินใน Booking.com">Booking.com</a></p>
           </section>
           <section class="transfer-terminal-note">
-            <h3>Booking.com</h3>
-            <p>Booking.com มี airport taxi และ private transfer ควบคู่กับบริการจองท่องเที่ยวอื่น ขนาดรถ ความจุกระเป๋า วิธีนัดพบ และ cancellation term ต่างกันตาม listing</p>
-            <p><a href="https://www.booking.com/taxi/" target="_blank" rel="noopener noreferrer">ดูตัวเลือก Booking.com transfer</a></p>
+            <h3><span class="notranslate" translate="no">Creatrip</span></h3>
+            <p><span class="notranslate" translate="no">Creatrip</span> มีบริการรับส่งสนามบินอินชอน–โซลที่จองล่วงหน้าได้ รวมถึงตัวเลือกรถขนาดใหญ่สำหรับกลุ่มที่มีสัมภาระมาก จำนวนผู้โดยสาร กระเป๋าที่รับได้ ระยะเวลาที่ต้องจองก่อน และเงื่อนไขยกเลิกขึ้นอยู่กับบริการที่เลือก</p>
+            <p class="private-transfer-booking-cta"><a class="private-transfer-booking-cta__button private-transfer-booking-cta__button--creatrip notranslate" translate="no" href="https://creatrip.com/en/spot/13094?utm_source=AFF-bootb2v" target="_blank" rel="sponsored noopener noreferrer" aria-label="ดูตัวเลือกบริการรับส่งสนามบินใน Creatrip">Creatrip</a></p>
           </section>
+        </div>
+        <p>ถ้าตั้งใจขับรถเที่ยวต่อออกนอกโซล ควรอ่าน<a href="rental-car.html">คู่มือเช่ารถในเกาหลี</a>ก่อนจอง โดยเฉพาะเรื่องใบขับขี่ ประกัน และเงื่อนไขการรับรถ</p>
+        <div class="private-transfer-stay-cta">
+          <p class="private-transfer-stay-cta__copy">ยังเลือกย่านที่พักในโซลไม่ได้? ลองเทียบแต่ละย่าน การเดินทางจากสนามบิน และความสะดวกเมื่อมีกระเป๋าก่อนตัดสินใจจองโรงแรม</p>
+          <a class="private-transfer-stay-cta__button" href="accommodation.html">ดูคู่มือเลือกย่านที่พักในโซล</a>
         </div>
       </div>
     </section>
@@ -402,7 +689,7 @@
           </details>
           <details>
             <summary>Private transfer เหมือน call van ในเกาหลีไหม?</summary>
-            <p>ไม่เหมือน “private transfer” เป็นคำจองสากลสำหรับรถที่สงวนให้กลุ่มเดียว ส่วน “call van” เป็นคำของบริการรถตู้เชิงพาณิชย์ในเกาหลี รถ airport transfer บางคันอาจอยู่ในหมวดนั้น แต่สองคำนี้ใช้แทนกันไม่ได้</p>
+            <p>ไม่เหมือนกัน Jumbo Taxi เป็นแท็กซี่สำหรับผู้โดยสารและสัมภาระ ส่วน Airport Call Van ใช้ขนส่งสินค้าที่เข้าเงื่อนไขโดยมีเจ้าของสินค้าเดินทางไปด้วย ขณะที่ private transfer หมายถึงการจองรถล่วงหน้าให้กลุ่มเดียว ไม่ใช่รถอีกประเภทตามกฎหมาย ก่อนจองให้ตรวจสอบรถจริงและเงื่อนไขของบริการ</p>
           </details>
           <details>
             <summary>ต้องจองรถจากสนามบินอินชอนล่วงหน้าไหม?</summary>
