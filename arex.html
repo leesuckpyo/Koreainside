@@ -21,6 +21,78 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400..600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <style id="arex-next-actions-layout">
+    .arex-page .arex-next-actions {
+      margin-top: 32px;
+      padding: 24px;
+      background: #f7f9fc;
+      border: 1px solid #dfe7f3;
+      border-radius: 12px;
+    }
+    .arex-page .arex-next-actions__group + .arex-next-actions__group {
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px solid #dfe7f3;
+    }
+    .arex-page .arex-next-actions__title {
+      margin: 0;
+      color: #1f2937;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+    .arex-page .arex-next-actions__description {
+      margin: 8px 0 16px;
+      color: #4b5563;
+      line-height: 1.55;
+    }
+    .arex-page .arex-next-actions__buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .arex-page .arex-next-actions__button {
+      box-sizing: border-box;
+      display: inline-flex;
+      flex: 1 1 220px;
+      min-width: 0;
+      min-height: 44px;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-weight: 700;
+      line-height: 1.25;
+      text-align: center;
+      overflow-wrap: anywhere;
+    }
+    .arex-page main a.arex-next-actions__button,
+    .arex-page main a.arex-next-actions__button:visited {
+      color: #1A56DB;
+      background: #FFFFFF;
+      border: 1px solid #BCD0EF;
+      text-decoration: none;
+    }
+    .arex-page main a.arex-next-actions__button:hover,
+    .arex-page main a.arex-next-actions__button:focus,
+    .arex-page main a.arex-next-actions__button:focus-visible {
+      color: #1A56DB;
+      background: #EFF6FF;
+      border-color: #1A56DB;
+      text-decoration: none;
+    }
+    .arex-page main a.arex-next-actions__button:focus-visible {
+      outline: 3px solid #1A56DB;
+      outline-offset: 2px;
+    }
+    @media (max-width: 700px) {
+      .arex-page .arex-next-actions {
+        padding: 20px;
+      }
+      .arex-page .arex-next-actions__button {
+        flex-basis: 100%;
+      }
+    }
+  </style>
 <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
   (function () {
       var script = document.createElement("script");
@@ -140,7 +212,14 @@
               <p>All-Stop serves every AREX station, including Gimpo Airport, Hongik University and Gongdeok. It works like commuter rail and accepts T-money, so it can take you closer to a hotel before Seoul Station and avoid an unnecessary trip back across the city.</p>
             </article>
           </div>
-          <p>“Seoul” is not a single destination. A train that saves time on the airport-to-Seoul Station segment can lose that advantage during a transfer, a long station walk or a trip back toward the west. When the rail route becomes awkward with luggage, <a href="airport-transfer.html">compare the other Incheon Airport transfer options</a>; an <a href="airport-bus.html">airport bus</a> or <a href="taxi.html">official taxi</a> may involve less handling.</p>
+          <p>“Seoul” is not a single destination. A train that saves time on the airport-to-Seoul Station segment can lose that advantage during a transfer, a long station walk or a trip back toward the west. When the rail route becomes awkward with luggage, compare the other Incheon Airport transfer options; an airport bus or official taxi may involve less handling.</p>
+          <aside class="arex-next-actions" aria-labelledby="arex-transfer-options-title">
+            <p class="arex-next-actions__title" id="arex-transfer-options-title">Is AREX the right choice for your journey?</p>
+            <p class="arex-next-actions__description">If your hotel is far from the station or you have heavy luggage, an airport bus or taxi may be easier.</p>
+            <div class="arex-next-actions__buttons">
+              <a class="arex-next-actions__button" href="airport-transfer.html">Compare Airport Transfer Options</a>
+            </div>
+          </aside>
         </div>
       </section>
 
@@ -267,7 +346,24 @@
           </div>
           <p>Use <a href="maps.html">Korean map apps to verify the hotel pin, station exit and final walk</a>. An area name alone is not enough to judge the transfer.</p>
           <p>AREX access alone should not decide where you stay. Hongdae and Gongdeok have direct All-Stop service, Seoul Station adds Express and national-rail connections, while some Myeongdong hotels can be easier to reach by airport bus.</p>
-          <p><a href="best-area-for-airport-access-seoul.html"><strong>Compare airport-friendly Seoul bases →</strong></a></p>
+          <aside class="arex-next-actions" aria-labelledby="arex-stay-options-title arex-neighborhood-guides-title">
+            <div class="arex-next-actions__group">
+              <p class="arex-next-actions__title" id="arex-stay-options-title">Still deciding where to stay in Seoul?</p>
+              <p class="arex-next-actions__description">Your AREX stop is only part of the journey. Korea Inside helps you choose a neighborhood based on airport access, hotel location and your travel plans.</p>
+              <div class="arex-next-actions__buttons">
+                <a class="arex-next-actions__button" href="best-area-for-airport-access-seoul.html">Airport-Friendly Stays</a>
+                <a class="arex-next-actions__button" href="accommodation.html">Explore Seoul Stay Guide</a>
+              </div>
+            </div>
+            <div class="arex-next-actions__group">
+              <p class="arex-next-actions__title" id="arex-neighborhood-guides-title">Heading to Hongdae or Myeongdong?</p>
+              <p class="arex-next-actions__description">Discover what each neighborhood offers before planning your time in Seoul.</p>
+              <div class="arex-next-actions__buttons">
+                <a class="arex-next-actions__button" href="hongdae-travel-guide.html">Explore Hongdae</a>
+                <a class="arex-next-actions__button" href="myeongdong-travel-guide.html">Explore Myeongdong</a>
+              </div>
+            </div>
+          </aside>
         </div>
       </section>
 
@@ -298,6 +394,13 @@
             <figcaption>How to reach the AREX station from Terminal 1 and Terminal 2</figcaption>
           </figure>
           <p>Airport circulation and temporary routes can change, so current signs are more dependable than a saved gate or exit number. The broader <a href="arrival.html">Incheon Airport arrival process</a> explains what happens before you reach the public hall.</p>
+          <aside class="arex-next-actions" aria-labelledby="arex-esim-options-title">
+            <p class="arex-next-actions__title" id="arex-esim-options-title">Need mobile data when you arrive?</p>
+            <p class="arex-next-actions__description">Make sure you can check maps, your hotel address and booking details as soon as you land.</p>
+            <div class="arex-next-actions__buttons">
+              <a class="arex-next-actions__button" href="esim.html">Explore Korea eSIM Options</a>
+            </div>
+          </aside>
         </div>
       </section>
 
@@ -376,7 +479,14 @@
             <li>Compare the result with the scheduled landing time and a realistic delay margin.</li>
             <li>Have a backup that still operates after the time you can actually reach the platform.</li>
           </ol>
-          <p>If the last train no longer works, look for an official night bus or another <a href="airport-bus.html">airport bus option</a>. If no suitable service remains, use an <a href="taxi.html">official airport taxi stand</a> or a verified pickup with clear meeting and delay terms.</p>
+          <p>If the last train no longer works, look for an official night bus or another airport bus option. If no suitable service remains, use an <a href="taxi.html">official airport taxi stand</a> or a verified pickup with clear meeting and delay terms.</p>
+          <aside class="arex-next-actions" aria-labelledby="arex-late-arrival-options-title">
+            <p class="arex-next-actions__title" id="arex-late-arrival-options-title">Arriving too late for AREX?</p>
+            <p class="arex-next-actions__description">Check airport bus options and late-night service information before deciding how to reach your hotel.</p>
+            <div class="arex-next-actions__buttons">
+              <a class="arex-next-actions__button" href="airport-bus.html">Check Airport Bus Options</a>
+            </div>
+          </aside>
         </div>
       </section>
 
