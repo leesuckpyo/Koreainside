@@ -93,6 +93,103 @@
       }
     }
   </style>
+  <style id="wowpass-next-steps-layout">
+    .wowpass-page .wowpass-next-steps {
+      margin-top: 32px;
+      padding: 24px;
+      background: #f7f9fc;
+      border: 1px solid #dfe7f3;
+      border-radius: 12px;
+    }
+    .wowpass-page .wowpass-next-steps__title {
+      margin: 0;
+      color: #1f2937;
+      font-size: 1.35rem;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+    .wowpass-page .wowpass-next-steps__intro {
+      margin: 8px 0 20px;
+      color: #374151;
+      line-height: 1.55;
+    }
+    .wowpass-page .wowpass-next-steps__grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .wowpass-page .wowpass-next-steps__item {
+      display: flex;
+      min-width: 0;
+      flex-direction: column;
+      padding: 18px;
+      background: #ffffff;
+      border: 1px solid #e3e8ef;
+      border-radius: 10px;
+    }
+    .wowpass-page .wowpass-next-steps__question {
+      margin: 0 0 8px;
+      color: #1f2937;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+    .wowpass-page .wowpass-next-steps__description {
+      margin: 0 0 16px;
+      color: #4b5563;
+      line-height: 1.55;
+    }
+    .wowpass-page .wowpass-next-steps__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: auto;
+    }
+    .wowpass-page .wowpass-next-steps__link {
+      box-sizing: border-box;
+      display: inline-flex;
+      flex: 1 1 160px;
+      min-width: 0;
+      min-height: 44px;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-weight: 700;
+      line-height: 1.25;
+      text-align: center;
+      overflow-wrap: anywhere;
+    }
+    .wowpass-page .wowpass-editorial-guide a.wowpass-next-steps__link,
+    .wowpass-page .wowpass-editorial-guide a.wowpass-next-steps__link:visited {
+      color: #1A56DB;
+      background: #FFFFFF;
+      border: 1px solid #BCD0EF;
+      text-decoration: none;
+    }
+    .wowpass-page .wowpass-editorial-guide a.wowpass-next-steps__link:hover,
+    .wowpass-page .wowpass-editorial-guide a.wowpass-next-steps__link:focus,
+    .wowpass-page .wowpass-editorial-guide a.wowpass-next-steps__link:focus-visible {
+      color: #1A56DB;
+      background: #EFF6FF;
+      border-color: #1A56DB;
+      text-decoration: none;
+    }
+    .wowpass-page .wowpass-next-steps__link:focus-visible {
+      outline: 3px solid #1A56DB;
+      outline-offset: 2px;
+    }
+    @media (max-width: 700px) {
+      .wowpass-page .wowpass-next-steps {
+        padding: 20px;
+      }
+      .wowpass-page .wowpass-next-steps__grid {
+        grid-template-columns: 1fr;
+      }
+      .wowpass-page .wowpass-next-steps__link {
+        flex-basis: 100%;
+      }
+    }
+  </style>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -520,6 +617,42 @@
             <a href="/ja/korea-atm-foreign-cards.html">海外発行カードで韓国ATMを使う方法</a>
           </nav>
         </section>
+
+        <aside class="wowpass-next-steps" aria-labelledby="wowpass-next-steps-title">
+          <p class="wowpass-next-steps__title" id="wowpass-next-steps-title">韓国旅行の準備は、まだ途中ですか？</p>
+          <p class="wowpass-next-steps__intro">WOWPASSの準備だけでなく、空港での移動や通信手段、宿泊先、ソウル観光もKorea Insideで確認できます。</p>
+          <div class="wowpass-next-steps__grid">
+            <div class="wowpass-next-steps__item">
+              <p class="wowpass-next-steps__question">仁川空港に到着する予定ですか？</p>
+              <p class="wowpass-next-steps__description">到着後にすることや、その後の移動を事前に確認しておきましょう。</p>
+              <div class="wowpass-next-steps__actions">
+                <a class="wowpass-next-steps__link" href="/ja/airport.html">仁川空港ガイドを見る</a>
+              </div>
+            </div>
+            <div class="wowpass-next-steps__item">
+              <p class="wowpass-next-steps__question">韓国で使うモバイル通信は決まりましたか？</p>
+              <p class="wowpass-next-steps__description">地図や予約情報を到着後すぐに使えるよう、韓国向けeSIMの選び方を確認できます。</p>
+              <div class="wowpass-next-steps__actions">
+                <a class="wowpass-next-steps__link" href="/ja/esim.html">韓国eSIMガイドを見る</a>
+              </div>
+            </div>
+            <div class="wowpass-next-steps__item">
+              <p class="wowpass-next-steps__question">ソウルの宿泊先はまだ決まっていませんか？</p>
+              <p class="wowpass-next-steps__description">旅の予定に合うエリアと宿泊先を、Korea Insideの宿泊ガイドで探せます。</p>
+              <div class="wowpass-next-steps__actions">
+                <a class="wowpass-next-steps__link" href="/ja/accommodation.html">ソウルの宿泊先を探す</a>
+              </div>
+            </div>
+            <div class="wowpass-next-steps__item">
+              <p class="wowpass-next-steps__question">ソウル観光はどこから始めますか？</p>
+              <p class="wowpass-next-steps__description">雰囲気の異なる弘大と明洞を比べながら、行きたいエリアを選びましょう。</p>
+              <div class="wowpass-next-steps__actions">
+                <a class="wowpass-next-steps__link" href="/ja/hongdae-travel-guide.html">弘大ガイドを見る</a>
+                <a class="wowpass-next-steps__link" href="/ja/myeongdong-travel-guide.html">明洞ガイドを見る</a>
+              </div>
+            </div>
+          </div>
+        </aside>
       </div>
     </div>
   </main>
