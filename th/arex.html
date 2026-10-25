@@ -21,6 +21,78 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400..600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
+  <style id="arex-next-actions-layout">
+    .arex-page .arex-next-actions {
+      margin-top: 32px;
+      padding: 24px;
+      background: #f7f9fc;
+      border: 1px solid #dfe7f3;
+      border-radius: 12px;
+    }
+    .arex-page .arex-next-actions__group + .arex-next-actions__group {
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px solid #dfe7f3;
+    }
+    .arex-page .arex-next-actions__title {
+      margin: 0;
+      color: #1f2937;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+    .arex-page .arex-next-actions__description {
+      margin: 8px 0 16px;
+      color: #4b5563;
+      line-height: 1.55;
+    }
+    .arex-page .arex-next-actions__buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .arex-page .arex-next-actions__button {
+      box-sizing: border-box;
+      display: inline-flex;
+      flex: 1 1 220px;
+      min-width: 0;
+      min-height: 44px;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-weight: 700;
+      line-height: 1.25;
+      text-align: center;
+      overflow-wrap: anywhere;
+    }
+    .arex-page main a.arex-next-actions__button,
+    .arex-page main a.arex-next-actions__button:visited {
+      color: #1A56DB;
+      background: #FFFFFF;
+      border: 1px solid #BCD0EF;
+      text-decoration: none;
+    }
+    .arex-page main a.arex-next-actions__button:hover,
+    .arex-page main a.arex-next-actions__button:focus,
+    .arex-page main a.arex-next-actions__button:focus-visible {
+      color: #1A56DB;
+      background: #EFF6FF;
+      border-color: #1A56DB;
+      text-decoration: none;
+    }
+    .arex-page main a.arex-next-actions__button:focus-visible {
+      outline: 3px solid #1A56DB;
+      outline-offset: 2px;
+    }
+    @media (max-width: 700px) {
+      .arex-page .arex-next-actions {
+        padding: 20px;
+      }
+      .arex-page .arex-next-actions__button {
+        flex-basis: 100%;
+      }
+    }
+  </style>
 <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
   (function () {
       var script = document.createElement("script");
@@ -140,7 +212,14 @@
               <p>All-Stop จอดทุกสถานี AREX รวมถึง Gimpo Airport, Hongik University และ Gongdeok ทำงานคล้ายรถไฟชานเมืองและใช้ T-money ได้ จึงช่วยพาคุณเข้าใกล้โรงแรมก่อนถึง Seoul Station และอาจหลีกเลี่ยงการย้อนกลับข้ามเมืองโดยไม่จำเป็น</p>
             </article>
           </div>
-          <p>“โซล” ไม่ใช่ปลายทางเดียวกันทั้งหมด รถไฟที่ประหยัดเวลาในช่วงสนามบินถึง Seoul Station อาจเสียข้อได้เปรียบตอนต่อรถ เดินในสถานียาว หรือย้อนกลับไปทางตะวันตก หากเส้นทางรถไฟเริ่มยุ่งยากเมื่อมีกระเป๋า ให้<a href="/th/airport-transfer.html">เปรียบเทียบวิธีเดินทางจากสนามบินแบบอื่น</a> <a href="/th/airport-bus.html">รถบัสสนามบิน</a>หรือ<a href="/th/taxi.html">แท็กซี่ทางการ</a>อาจต้องยกกระเป๋าน้อยกว่า</p>
+          <p>“โซล” ไม่ใช่ปลายทางเดียวกันทั้งหมด รถไฟที่ประหยัดเวลาในช่วงสนามบินถึง Seoul Station อาจเสียข้อได้เปรียบตอนต่อรถ เดินในสถานียาว หรือย้อนกลับไปทางตะวันตก หากเส้นทางรถไฟเริ่มยุ่งยากเมื่อมีกระเป๋า ให้เปรียบเทียบวิธีเดินทางจากสนามบินแบบอื่น รถบัสสนามบินหรือแท็กซี่ทางการอาจต้องยกกระเป๋าน้อยกว่า</p>
+          <aside class="arex-next-actions" aria-labelledby="arex-transfer-options-title">
+            <p class="arex-next-actions__title" id="arex-transfer-options-title">AREX เหมาะกับการเดินทางครั้งนี้หรือไม่?</p>
+            <p class="arex-next-actions__description">หากโรงแรมอยู่ไกลจากสถานีหรือมีกระเป๋าเดินทางมาก รถบัสสนามบินหรือแท็กซี่อาจช่วยให้เดินทางสะดวกกว่า</p>
+            <div class="arex-next-actions__buttons">
+              <a class="arex-next-actions__button" href="/th/airport-transfer.html">เปรียบเทียบวิธีเดินทางจากสนามบิน</a>
+            </div>
+          </aside>
         </div>
       </section>
 
@@ -267,7 +346,24 @@
           </div>
           <p>ใช้<a href="/th/maps.html">แอปแผนที่เกาหลีเพื่อตรวจตำแหน่งโรงแรม ทางออกสถานี และช่วงเดินสุดท้าย</a> ชื่อย่านอย่างเดียวไม่พอสำหรับตัดสินการต่อรถ</p>
           <p>การเข้าถึง AREX อย่างเดียวไม่ควรเป็นตัวตัดสินย่านพัก Hongdae และ Gongdeok มี All-Stop ตรง, Seoul Station เพิ่ม Express และรถไฟระหว่างเมือง ส่วนโรงแรม Myeongdong บางแห่งอาจง่ายกว่าด้วยรถบัสสนามบิน</p>
-          <p><a href="/th/best-area-for-airport-access-seoul.html"><strong>เปรียบเทียบย่านพักในโซลที่เดินทางสนามบินง่าย →</strong></a></p>
+          <aside class="arex-next-actions" aria-labelledby="arex-stay-options-title arex-neighborhood-guides-title">
+            <div class="arex-next-actions__group">
+              <p class="arex-next-actions__title" id="arex-stay-options-title">ยังไม่แน่ใจว่าจะพักย่านไหนในโซล?</p>
+              <p class="arex-next-actions__description">สถานีที่ลงจาก AREX เป็นเพียงส่วนหนึ่งของการเดินทาง Korea Inside ช่วยเลือกย่านพักโดยพิจารณาทั้งการเดินทางจากสนามบิน ที่ตั้งโรงแรม และแผนเที่ยวของคุณ</p>
+              <div class="arex-next-actions__buttons">
+                <a class="arex-next-actions__button" href="/th/best-area-for-airport-access-seoul.html">ดูย่านพักที่เดินทางจากสนามบินสะดวก</a>
+                <a class="arex-next-actions__button" href="/th/accommodation.html">ดูคู่มือที่พักในโซล</a>
+              </div>
+            </div>
+            <div class="arex-next-actions__group">
+              <p class="arex-next-actions__title" id="arex-neighborhood-guides-title">กำลังจะไปฮงแดหรือเมียงดง?</p>
+              <p class="arex-next-actions__description">ลองดูว่าทั้งสองย่านมีอะไรให้เที่ยวบ้าง ก่อนวางแผนใช้เวลาในโซล</p>
+              <div class="arex-next-actions__buttons">
+                <a class="arex-next-actions__button" href="/th/hongdae-travel-guide.html">เที่ยวฮงแด</a>
+                <a class="arex-next-actions__button" href="/th/myeongdong-travel-guide.html">เที่ยวเมียงดง</a>
+              </div>
+            </div>
+          </aside>
         </div>
       </section>
 
@@ -298,6 +394,13 @@
             <figcaption>วิธีไปสถานี AREX จาก Terminal 1 และ Terminal 2</figcaption>
           </figure>
           <p>เส้นทางภายในสนามบินและทางเดินชั่วคราวอาจเปลี่ยนได้ ป้ายปัจจุบันจึงเชื่อถือได้มากกว่าหมายเลข gate หรือ exit ที่บันทึกไว้ <a href="/th/arrival.html">คู่มือ Arrival</a> อธิบายขั้นตอนก่อนออกสู่โถงสาธารณะ</p>
+          <aside class="arex-next-actions" aria-labelledby="arex-esim-options-title">
+            <p class="arex-next-actions__title" id="arex-esim-options-title">ต้องใช้อินเทอร์เน็ตมือถือเมื่อเดินทางถึงไหม?</p>
+            <p class="arex-next-actions__description">เตรียมให้พร้อมใช้แผนที่ ตรวจที่อยู่โรงแรม และดูรายละเอียดการจองได้ทันทีเมื่อเครื่องลง</p>
+            <div class="arex-next-actions__buttons">
+              <a class="arex-next-actions__button" href="/th/esim.html">ดูตัวเลือก eSIM สำหรับเกาหลี</a>
+            </div>
+          </aside>
         </div>
       </section>
 
@@ -376,7 +479,14 @@
             <li>เทียบผลกับเวลาเครื่องลงตามตารางและเผื่อความล่าช้าที่สมจริง</li>
             <li>มีแผนสำรองที่ยังให้บริการหลังเวลาที่คุณคาดว่าจะถึงชานชาลาจริง</li>
           </ol>
-          <p>ถ้ารถไฟเที่ยวสุดท้ายไม่ทัน ให้เช็กรถบัสดึกทางการหรือ<a href="/th/airport-bus.html">รถบัสสนามบินอื่น</a> หากไม่มีบริการที่เหมาะ ให้ใช้<a href="/th/taxi.html">จุดขึ้นแท็กซี่สนามบินทางการ</a>หรือรถรับที่ยืนยันได้และมีเงื่อนไขจุดนัดพบ/ความล่าช้าชัดเจน</p>
+          <p>ถ้ารถไฟเที่ยวสุดท้ายไม่ทัน ให้เช็กรถบัสดึกทางการหรือรถบัสสนามบินอื่น หากไม่มีบริการที่เหมาะ ให้ใช้<a href="/th/taxi.html">จุดขึ้นแท็กซี่สนามบินทางการ</a>หรือรถรับที่ยืนยันได้และมีเงื่อนไขจุดนัดพบ/ความล่าช้าชัดเจน</p>
+          <aside class="arex-next-actions" aria-labelledby="arex-late-arrival-options-title">
+            <p class="arex-next-actions__title" id="arex-late-arrival-options-title">มาถึงดึกเกินกว่าจะขึ้น AREX ได้?</p>
+            <p class="arex-next-actions__description">ตรวจสอบตัวเลือกรถบัสสนามบินและข้อมูลบริการช่วงดึก ก่อนตัดสินใจว่าจะเดินทางไปโรงแรมอย่างไร</p>
+            <div class="arex-next-actions__buttons">
+              <a class="arex-next-actions__button" href="/th/airport-bus.html">ตรวจสอบตัวเลือกรถบัสสนามบิน</a>
+            </div>
+          </aside>
         </div>
       </section>
 
