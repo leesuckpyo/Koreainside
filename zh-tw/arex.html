@@ -21,6 +21,78 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400..600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
+  <style id="arex-next-actions-layout">
+    .arex-page .arex-next-actions {
+      margin-top: 32px;
+      padding: 24px;
+      background: #f7f9fc;
+      border: 1px solid #dfe7f3;
+      border-radius: 12px;
+    }
+    .arex-page .arex-next-actions__group + .arex-next-actions__group {
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px solid #dfe7f3;
+    }
+    .arex-page .arex-next-actions__title {
+      margin: 0;
+      color: #1f2937;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+    .arex-page .arex-next-actions__description {
+      margin: 8px 0 16px;
+      color: #4b5563;
+      line-height: 1.55;
+    }
+    .arex-page .arex-next-actions__buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .arex-page .arex-next-actions__button {
+      box-sizing: border-box;
+      display: inline-flex;
+      flex: 1 1 220px;
+      min-width: 0;
+      min-height: 44px;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-weight: 700;
+      line-height: 1.25;
+      text-align: center;
+      overflow-wrap: anywhere;
+    }
+    .arex-page main a.arex-next-actions__button,
+    .arex-page main a.arex-next-actions__button:visited {
+      color: #1A56DB;
+      background: #FFFFFF;
+      border: 1px solid #BCD0EF;
+      text-decoration: none;
+    }
+    .arex-page main a.arex-next-actions__button:hover,
+    .arex-page main a.arex-next-actions__button:focus,
+    .arex-page main a.arex-next-actions__button:focus-visible {
+      color: #1A56DB;
+      background: #EFF6FF;
+      border-color: #1A56DB;
+      text-decoration: none;
+    }
+    .arex-page main a.arex-next-actions__button:focus-visible {
+      outline: 3px solid #1A56DB;
+      outline-offset: 2px;
+    }
+    @media (max-width: 700px) {
+      .arex-page .arex-next-actions {
+        padding: 20px;
+      }
+      .arex-page .arex-next-actions__button {
+        flex-basis: 100%;
+      }
+    }
+  </style>
 <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
   (function () {
       var script = document.createElement("script");
@@ -140,7 +212,14 @@
               <p>普通列車停靠所有 AREX 車站，包括金浦機場、弘大入口與孔德。搭法類似通勤鐵路，可使用 T-money；有些飯店不必坐到首爾站，就能在更近的地方下車，省去不必要的折返。</p>
             </article>
           </div>
-          <p>「首爾」並不是單一目的地。機場到首爾站這一段省下的時間，可能花在轉乘、車站內的長距離步行，或往西折返上。如果帶著行李搭鐵路不順手，可以 <a href="/zh-tw/airport-transfer.html">比較其他仁川機場交通方式</a>；搭 <a href="/zh-tw/airport-bus.html">機場巴士</a> 或 <a href="/zh-tw/taxi.html">正式計程車</a>，可能少搬幾次行李。</p>
+          <p>「首爾」並不是單一目的地。機場到首爾站這一段省下的時間，可能花在轉乘、車站內的長距離步行，或往西折返上。如果帶著行李搭鐵路不順手，可以 比較其他仁川機場交通方式；搭 機場巴士 或 正式計程車，可能少搬幾次行李。</p>
+          <aside class="arex-next-actions" aria-labelledby="arex-transfer-options-title">
+            <p class="arex-next-actions__title" id="arex-transfer-options-title">這段路程適合搭 AREX 嗎？</p>
+            <p class="arex-next-actions__description">如果飯店離車站較遠，或行李較多，搭機場巴士或計程車可能更輕鬆。</p>
+            <div class="arex-next-actions__buttons">
+              <a class="arex-next-actions__button" href="/zh-tw/airport-transfer.html">比較仁川機場交通方式</a>
+            </div>
+          </aside>
         </div>
       </section>
 
@@ -267,7 +346,24 @@
           </div>
           <p>可用 <a href="/zh-tw/maps.html">韓國地圖 App 確認飯店定位點、車站出口與最後一段步行</a>。只看區域名稱，不足以判斷轉乘是否方便。</p>
           <p>選住宿不能只看 AREX。弘大與孔德有普通列車直達，首爾站另有直達列車與國鐵轉乘，而明洞有些飯店搭機場巴士可能更方便。</p>
-          <p><a href="/zh-tw/best-area-for-airport-access-seoul.html"><strong>比較首爾機場交通方便的住宿區域 →</strong></a></p>
+          <aside class="arex-next-actions" aria-labelledby="arex-stay-options-title arex-neighborhood-guides-title">
+            <div class="arex-next-actions__group">
+              <p class="arex-next-actions__title" id="arex-stay-options-title">還沒決定要住首爾哪一區？</p>
+              <p class="arex-next-actions__description">AREX 下車站只是整段移動的一環。Korea Inside 會根據機場交通、飯店位置和你的行程，協助你挑選住宿區域。</p>
+              <div class="arex-next-actions__buttons">
+                <a class="arex-next-actions__button" href="/zh-tw/best-area-for-airport-access-seoul.html">查看機場交通方便的住宿區域</a>
+                <a class="arex-next-actions__button" href="/zh-tw/accommodation.html">查看首爾住宿指南</a>
+              </div>
+            </div>
+            <div class="arex-next-actions__group">
+              <p class="arex-next-actions__title" id="arex-neighborhood-guides-title">接下來要去弘大或明洞嗎？</p>
+              <p class="arex-next-actions__description">先了解兩個區域各自的特色，再規劃你在首爾的行程。</p>
+              <div class="arex-next-actions__buttons">
+                <a class="arex-next-actions__button" href="/zh-tw/hongdae-travel-guide.html">探索弘大</a>
+                <a class="arex-next-actions__button" href="/zh-tw/myeongdong-travel-guide.html">探索明洞</a>
+              </div>
+            </div>
+          </aside>
         </div>
       </section>
 
@@ -298,6 +394,13 @@
             <figcaption>從第 1 航廈與第 2 航廈前往 AREX 車站</figcaption>
           </figure>
           <p>機場動線與臨時路線可能變動，現場指標比存下來的登機門或出口編號可靠。完整的 <a href="/zh-tw/arrival.html">仁川機場入境流程</a>，說明抵達入境大廳前要先完成哪些程序。</p>
+          <aside class="arex-next-actions" aria-labelledby="arex-esim-options-title">
+            <p class="arex-next-actions__title" id="arex-esim-options-title">抵達後需要行動網路嗎？</p>
+            <p class="arex-next-actions__description">先確認抵達後能立即查看地圖、飯店地址和訂房資訊。</p>
+            <div class="arex-next-actions__buttons">
+              <a class="arex-next-actions__button" href="/zh-tw/esim.html">查看韓國 eSIM 方案</a>
+            </div>
+          </aside>
         </div>
       </section>
 
@@ -376,7 +479,14 @@
             <li>將結果與表定落地時間比較，並預留適當的延誤緩衝時間。</li>
             <li>準備一個在實際可抵達月台時間之後，仍有營運的備案。</li>
           </ol>
-          <p>如果趕不上末班車，先查正式深夜巴士或其他 <a href="/zh-tw/airport-bus.html">機場巴士選擇</a>。若已沒有合適班次，就到 <a href="/zh-tw/taxi.html">機場正式計程車乘車處</a>，或使用已確認、會合方式與延誤條款清楚的接送服務。</p>
+          <p>如果趕不上末班車，先查正式深夜巴士或其他 機場巴士選擇。若已沒有合適班次，就到 <a href="/zh-tw/taxi.html">機場正式計程車乘車處</a>，或使用已確認、會合方式與延誤條款清楚的接送服務。</p>
+          <aside class="arex-next-actions" aria-labelledby="arex-late-arrival-options-title">
+            <p class="arex-next-actions__title" id="arex-late-arrival-options-title">抵達時間太晚，搭不上 AREX？</p>
+            <p class="arex-next-actions__description">先查機場巴士的選擇和深夜營運資訊，再決定怎麼前往飯店。</p>
+            <div class="arex-next-actions__buttons">
+              <a class="arex-next-actions__button" href="/zh-tw/airport-bus.html">查看機場巴士選項</a>
+            </div>
+          </aside>
         </div>
       </section>
 

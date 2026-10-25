@@ -21,6 +21,78 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400..600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
+  <style id="arex-next-actions-layout">
+    .arex-page .arex-next-actions {
+      margin-top: 32px;
+      padding: 24px;
+      background: #f7f9fc;
+      border: 1px solid #dfe7f3;
+      border-radius: 12px;
+    }
+    .arex-page .arex-next-actions__group + .arex-next-actions__group {
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px solid #dfe7f3;
+    }
+    .arex-page .arex-next-actions__title {
+      margin: 0;
+      color: #1f2937;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+    .arex-page .arex-next-actions__description {
+      margin: 8px 0 16px;
+      color: #4b5563;
+      line-height: 1.55;
+    }
+    .arex-page .arex-next-actions__buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .arex-page .arex-next-actions__button {
+      box-sizing: border-box;
+      display: inline-flex;
+      flex: 1 1 220px;
+      min-width: 0;
+      min-height: 44px;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-weight: 700;
+      line-height: 1.25;
+      text-align: center;
+      overflow-wrap: anywhere;
+    }
+    .arex-page main a.arex-next-actions__button,
+    .arex-page main a.arex-next-actions__button:visited {
+      color: #1A56DB;
+      background: #FFFFFF;
+      border: 1px solid #BCD0EF;
+      text-decoration: none;
+    }
+    .arex-page main a.arex-next-actions__button:hover,
+    .arex-page main a.arex-next-actions__button:focus,
+    .arex-page main a.arex-next-actions__button:focus-visible {
+      color: #1A56DB;
+      background: #EFF6FF;
+      border-color: #1A56DB;
+      text-decoration: none;
+    }
+    .arex-page main a.arex-next-actions__button:focus-visible {
+      outline: 3px solid #1A56DB;
+      outline-offset: 2px;
+    }
+    @media (max-width: 700px) {
+      .arex-page .arex-next-actions {
+        padding: 20px;
+      }
+      .arex-page .arex-next-actions__button {
+        flex-basis: 100%;
+      }
+    }
+  </style>
 <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
   (function () {
       var script = document.createElement("script");
@@ -140,7 +212,14 @@
               <p>各駅停車は金浦空港、弘大入口駅、孔徳を含むAREXの全駅に停車します。通勤電車に近い使い方でT-moneyも利用できるため、ソウル駅まで行かずにホテルの近くで降りられれば、市内を戻るような余計な移動を避けられます。</p>
             </article>
           </div>
-          <p>「ソウル」は1つの目的地ではありません。空港からソウル駅までの区間で時間を節約しても、乗り換え、長い駅構内の移動、西側へ戻る移動でその差がなくなることがあります。荷物を持って鉄道ルートが複雑になるなら、<a href="/ja/airport-transfer.html">仁川空港からのほかの移動手段を比較</a>してください。<a href="/ja/airport-bus.html">空港バス</a>や<a href="/ja/taxi.html">公式タクシー</a>のほうが、荷物を持ち替える回数を減らせる場合があります。</p>
+          <p>「ソウル」は1つの目的地ではありません。空港からソウル駅までの区間で時間を節約しても、乗り換え、長い駅構内の移動、西側へ戻る移動でその差がなくなることがあります。荷物を持って鉄道ルートが複雑になるなら、仁川空港からのほかの移動手段を比較してください。空港バスや公式タクシーのほうが、荷物を持ち替える回数を減らせる場合があります。</p>
+          <aside class="arex-next-actions" aria-labelledby="arex-transfer-options-title">
+            <p class="arex-next-actions__title" id="arex-transfer-options-title">今回の移動にAREXは合っていますか？</p>
+            <p class="arex-next-actions__description">ホテルが駅から遠い場合や荷物が多い場合は、空港バスやタクシーのほうが楽に移動できることがあります。</p>
+            <div class="arex-next-actions__buttons">
+              <a class="arex-next-actions__button" href="/ja/airport-transfer.html">仁川空港からの移動手段を比較</a>
+            </div>
+          </aside>
         </div>
       </section>
 
@@ -267,7 +346,24 @@
           </div>
           <p><a href="/ja/maps.html">韓国の地図アプリでホテル位置・駅出口・最後の徒歩を確認</a>してください。地区名だけでは乗り換えのしやすさは判断できません。</p>
           <p>AREXで行きやすいという理由だけで宿泊エリアを決める必要はありません。弘大と孔徳は各駅停車で直通、ソウル駅は直通列車と全国鉄道にもつながります。一方、明洞の一部ホテルは空港バスのほうが行きやすいことがあります。</p>
-          <p><a href="/ja/best-area-for-airport-access-seoul.html"><strong>空港アクセスに便利なソウルの宿泊エリアを比較 →</strong></a></p>
+          <aside class="arex-next-actions" aria-labelledby="arex-stay-options-title arex-neighborhood-guides-title">
+            <div class="arex-next-actions__group">
+              <p class="arex-next-actions__title" id="arex-stay-options-title">ソウルでどこに泊まるか迷っていますか？</p>
+              <p class="arex-next-actions__description">AREXを降りる駅だけで移動のしやすさは決まりません。Korea Insideでは、空港からのアクセス、ホテルの立地、旅行中の予定を踏まえて宿泊エリアを比較できます。</p>
+              <div class="arex-next-actions__buttons">
+                <a class="arex-next-actions__button" href="/ja/best-area-for-airport-access-seoul.html">空港アクセスに便利な宿泊エリアを比較</a>
+                <a class="arex-next-actions__button" href="/ja/accommodation.html">ソウルの宿泊ガイドを見る</a>
+              </div>
+            </div>
+            <div class="arex-next-actions__group">
+              <p class="arex-next-actions__title" id="arex-neighborhood-guides-title">弘大や明洞に行く予定ですか？</p>
+              <p class="arex-next-actions__description">それぞれのエリアでどんな過ごし方ができるかを知ってから、ソウルでの予定を立てられます。</p>
+              <div class="arex-next-actions__buttons">
+                <a class="arex-next-actions__button" href="/ja/hongdae-travel-guide.html">弘大ガイドを見る</a>
+                <a class="arex-next-actions__button" href="/ja/myeongdong-travel-guide.html">明洞ガイドを見る</a>
+              </div>
+            </div>
+          </aside>
         </div>
       </section>
 
@@ -298,6 +394,13 @@
             <figcaption>第1・第2ターミナルからAREX駅までの行き方</figcaption>
           </figure>
           <p>空港内の動線や一時的な通路は変わることがあるため、保存しておいた古いゲート番号や出口番号より、現地の最新表示のほうが確実です。一般到着ロビーへ出るまでの流れは、<a href="/ja/arrival.html">仁川空港到着ガイド</a>で確認できます。</p>
+          <aside class="arex-next-actions" aria-labelledby="arex-esim-options-title">
+            <p class="arex-next-actions__title" id="arex-esim-options-title">到着後すぐにネットを使いますか？</p>
+            <p class="arex-next-actions__description">到着したらすぐに地図、ホテルの住所、予約情報を確認できるよう準備しておきましょう。</p>
+            <div class="arex-next-actions__buttons">
+              <a class="arex-next-actions__button" href="/ja/esim.html">韓国で使えるeSIMを確認</a>
+            </div>
+          </aside>
         </div>
       </section>
 
@@ -376,7 +479,14 @@
             <li>その結果を予定着陸時刻と現実的な遅延余裕と比較します。</li>
             <li>実際にホームへ着ける時刻を過ぎても利用できる代替手段を用意します。</li>
           </ol>
-          <p>最終列車に間に合わない場合は、まず公式の深夜バスやほかの<a href="/ja/airport-bus.html">空港バスの選択肢</a>を確認してください。目的地と時間に合う便がなければ、<a href="/ja/taxi.html">空港の公式タクシー乗り場</a>か、待ち合わせ場所と遅延時の条件が明確な確認済み送迎を利用してください。</p>
+          <p>最終列車に間に合わない場合は、まず公式の深夜バスやほかの空港バスの選択肢を確認してください。目的地と時間に合う便がなければ、<a href="/ja/taxi.html">空港の公式タクシー乗り場</a>か、待ち合わせ場所と遅延時の条件が明確な確認済み送迎を利用してください。</p>
+          <aside class="arex-next-actions" aria-labelledby="arex-late-arrival-options-title">
+            <p class="arex-next-actions__title" id="arex-late-arrival-options-title">AREXの終電に間に合わない場合は？</p>
+            <p class="arex-next-actions__description">ホテルまでの移動方法を決める前に、空港バスの選択肢と深夜の運行情報を確認してください。</p>
+            <div class="arex-next-actions__buttons">
+              <a class="arex-next-actions__button" href="/ja/airport-bus.html">空港バスの選択肢を確認</a>
+            </div>
+          </aside>
         </div>
       </section>
 
