@@ -29,6 +29,70 @@
       }
     }
   </style>
+  <style id="wowpass-affiliate-cta-layout">
+    .wowpass-page .wowpass-affiliate-cta {
+      margin-top: 24px;
+      padding: 20px;
+      background: #f3f5f7;
+      border: 1px solid #dfe4e8;
+      border-radius: 12px;
+    }
+    .wowpass-page .wowpass-affiliate-cta__disclosure {
+      margin: 0 0 16px;
+      color: #374151;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    .wowpass-page .wowpass-affiliate-cta__links {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .wowpass-page .wowpass-affiliate-cta__link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 0;
+      min-height: 56px;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-weight: 700;
+      line-height: 1.2;
+      text-align: center;
+      overflow-wrap: anywhere;
+    }
+    .wowpass-page .wowpass-editorial-guide a.wowpass-affiliate-cta__link,
+    .wowpass-page .wowpass-editorial-guide a.wowpass-affiliate-cta__link:visited,
+    .wowpass-page .wowpass-editorial-guide a.wowpass-affiliate-cta__link:hover,
+    .wowpass-page .wowpass-editorial-guide a.wowpass-affiliate-cta__link:focus,
+    .wowpass-page .wowpass-editorial-guide a.wowpass-affiliate-cta__link:focus-visible {
+      color: #ffffff;
+      text-decoration: none;
+    }
+    .wowpass-page .wowpass-affiliate-cta__link:focus-visible {
+      outline: 3px solid #111827;
+      outline-offset: 3px;
+    }
+    .wowpass-page .wowpass-affiliate-cta__link--trip {
+      background: #174ea6;
+    }
+    .wowpass-page .wowpass-affiliate-cta__link--klook {
+      background: #c2410c;
+    }
+    .wowpass-page .wowpass-affiliate-cta__link--kkday {
+      background: #007f7a;
+    }
+    @media (max-width: 900px) {
+      .wowpass-page .wowpass-affiliate-cta__links {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+    @media (max-width: 520px) {
+      .wowpass-page .wowpass-affiliate-cta__links {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -190,6 +254,15 @@
             <figcaption>Estos son ejemplos de quioscos WOWPASS en el aeropuerto de Incheon. Las funciones varían según la ubicación; los tres puntos mostrados permiten recargar WOWPASS, pero no ofrecen cambio de divisas ni retirada de saldo. Consulta el buscador oficial de quioscos para confirmar la ubicación y los servicios disponibles.</figcaption>
           </figure>
         </section>
+
+        <aside class="wowpass-affiliate-cta">
+          <p class="wowpass-affiliate-cta__disclosure"><strong>Publicidad · Enlaces de afiliados</strong> Estos enlaces utilizan seguimiento de afiliación. Korea Inside puede recibir una comisión por las reservas que cumplan los requisitos.</p>
+          <div class="wowpass-affiliate-cta__links">
+            <a class="wowpass-affiliate-cta__link wowpass-affiliate-cta__link--trip" href="https://www.trip.com/t/aQtX9BFGtW2" target="_blank" rel="sponsored noopener">Trip.com</a>
+            <a class="wowpass-affiliate-cta__link wowpass-affiliate-cta__link--klook" href="https://affiliate.klook.com/sl/tycC8r7" target="_blank" rel="sponsored noopener">Klook</a>
+            <a class="wowpass-affiliate-cta__link wowpass-affiliate-cta__link--kkday" href="https://www.kkday.com/en/product/149562-wowpass-prepaid-card-korea-cashless-payment?utm_source=chatgpt.com&amp;cid=26866&amp;ud1=WOWPASS" target="_blank" rel="sponsored noopener">KKday</a>
+          </div>
+        </aside>
 
         <section class="wowpass-editorial-section" aria-labelledby="wowpass-loading-title">
           <h2 id="wowpass-loading-title">Cargar dinero y cambiar moneda extranjera</h2>
