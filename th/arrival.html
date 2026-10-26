@@ -22,6 +22,98 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400..600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
   <link rel="stylesheet" href="../arrival.css">
+  <style>
+    .arrival-page .arrival-steps-layout--stacked {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .arrival-page .arrival-steps-layout--stacked .arrival-steps-media,
+    .arrival-page .arrival-steps-layout--stacked .arrival-timeline {
+      width: 100%;
+      max-width: 900px;
+      margin-inline: auto;
+    }
+
+    .arrival-page .arrival-steps-layout--stacked .arrival-steps-media {
+      position: static;
+      top: auto;
+    }
+
+    .arrival-page .arrival-next-actions {
+      margin-top: 32px;
+      padding: 24px;
+      background: #f7f9fc;
+      border: 1px solid #dfe7f3;
+      border-radius: 12px;
+    }
+
+    .arrival-page .arrival-next-actions__title {
+      margin: 0;
+      color: #1f2937;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .arrival-page .arrival-next-actions__description {
+      margin: 8px 0 16px;
+      color: #4b5563;
+      line-height: 1.55;
+    }
+
+    .arrival-page .arrival-next-actions__buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .arrival-page .arrival-next-actions__button {
+      box-sizing: border-box;
+      display: inline-flex;
+      flex: 1 1 220px;
+      min-width: 0;
+      min-height: 44px;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-weight: 700;
+      line-height: 1.25;
+      text-align: center;
+      overflow-wrap: anywhere;
+    }
+
+    .arrival-page main a.arrival-next-actions__button,
+    .arrival-page main a.arrival-next-actions__button:visited {
+      color: #1A56DB;
+      background: #FFFFFF;
+      border: 1px solid #BCD0EF;
+      text-decoration: none;
+    }
+
+    .arrival-page main a.arrival-next-actions__button:hover,
+    .arrival-page main a.arrival-next-actions__button:focus,
+    .arrival-page main a.arrival-next-actions__button:focus-visible {
+      color: #1A56DB;
+      background: #EFF6FF;
+      border-color: #1A56DB;
+      text-decoration: none;
+    }
+
+    .arrival-page main a.arrival-next-actions__button:focus-visible {
+      outline: 3px solid #1A56DB;
+      outline-offset: 2px;
+    }
+
+    @media (max-width: 700px) {
+      .arrival-page .arrival-next-actions {
+        padding: 20px;
+      }
+
+      .arrival-page .arrival-next-actions__button {
+        flex-basis: 100%;
+      }
+    }
+  </style>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -198,7 +290,7 @@
           <h2 id="arrival-steps-title">จากเครื่องบินถึงโถงผู้โดยสารขาเข้า</h2>
           <p>สำหรับผู้โดยสารที่เข้าประเทศเกาหลี เส้นทางโดยรวมค่อนข้างตรง ระยะเดินอาจต่างกันตาม gate และ terminal แต่ลำดับขั้นตอนหลักเหมือนกัน</p>
         </div>
-        <div class="arrival-steps-layout">
+        <div class="arrival-steps-layout arrival-steps-layout--stacked">
           <figure class="arrival-steps-media">
             <img src="../images/arrival/incheon-airport-arrival-route.webp" alt="ผู้เดินทางเดินตามป้าย Immigration และ Baggage Claim ภายในสนามบินนานาชาติอินชอน" width="1448" height="1086" loading="lazy" decoding="async">
             <figcaption>เดินตามป้ายสนามบินตามลำดับ เส้นทางเดินจริงขึ้นอยู่กับ gate และ terminal</figcaption>
@@ -241,10 +333,58 @@
               <span class="arrival-step__number" aria-hidden="true">04</span>
               <div class="arrival-step__content">
                 <h3>ศุลกากร</h3>
-                <p>หลังรับกระเป๋า ให้ตามป้ายศุลกากรไปยังทางออก</p>
-                <p>ถ้ามีของที่อาจต้องสำแดง ให้ตรวจข้อมูลของ Korea Customs แทนการใช้กฎของประเทศอื่น สินค้าที่เกินวงเงินยกเว้นภาษีหรือสินค้าควบคุมอาจต้องสำแดง</p>
-                <p>ถ้าไม่มีสิ่งของต้องสำแดง ให้ใช้ช่องศุลกากรที่สนามบินกำหนด</p>
-                <p class="arrival-context-link"><a href="https://www.customs.go.kr/english/main.do" target="_blank" rel="noopener noreferrer" aria-label="ข้อมูลผู้เดินทางของ Korea Customs Service เว็บไซต์ภายนอก เปิดในแท็บใหม่">Korea Customs Service — ข้อมูลสำหรับผู้เดินทาง <span aria-hidden="true">↗</span></a></p>
+                <p>หลังรับกระเป๋า ให้ตามป้าย Customs ไปยังจุดตรวจศุลกากรก่อนออกสู่โถงผู้โดยสารขาเข้าส่วนสาธารณะ การต้องสำแดงสิ่งของขึ้นอยู่กับสิ่งที่นำเข้าเกาหลีใต้ ไม่ใช่เพียงสัญชาติของคุณ</p>
+                <p><strong>ต้องกรอกแบบสำแดงสิ่งของต่อศุลกากรไหม?</strong></p>
+                <p>หากไม่มีสิ่งของที่ต้องสำแดง ไม่จำเป็นต้องกรอกแบบสำแดงศุลกากร ให้ใช้<strong>ช่องไม่มีสิ่งของต้องสำแดง (Nothing to Declare)</strong>ตามป้ายของสนามบิน เจ้าหน้าที่ศุลกากรยังอาจตรวจสัมภาระได้</p>
+                <p>หากมีสิ่งของที่ต้องสำแดง ให้กรอกแบบสำแดงและใช้<strong>ช่องมีสิ่งของต้องสำแดง (Goods to Declare)</strong></p>
+                <p><strong>ควรตรวจสอบอะไรบ้างก่อนเดินทางถึง?</strong></p>
+                <ul class="arrival-editorial-list">
+                  <li class="arrival-editorial-block"><p><strong>ของที่ซื้อและของขวัญ:</strong> วงเงินยกเว้นภาษีทั่วไปสำหรับสิ่งของที่ผู้เดินทางนำเข้าซึ่งอยู่ในข่ายเสียภาษีคือ US$800 สิ่งของที่เกินวงเงินนี้อาจต้องสำแดง ส่วนสินค้าเพื่อการค้าและตัวอย่างสินค้ามีกฎแยกต่างหาก</p></li>
+                  <li class="arrival-editorial-block"><p><strong>เงินสดและตราสารการชำระเงิน:</strong> ยอดรวมที่มากกว่า US$10,000 หรือมูลค่าเทียบเท่า อาจต้องสำแดงต่อศุลกากร โดยรวมถึงเงินตราต่างประเทศ เงินวอนเกาหลี และเช็คที่อยู่ในเกณฑ์ต้องสำแดง</p></li>
+                  <li class="arrival-editorial-block"><p><strong>อาหารและผลิตผลทางการเกษตร:</strong> เนื้อสัตว์ เนื้อแห้ง ไส้กรอก ผลิตภัณฑ์นม ไข่ ผลไม้สด พืช และเมล็ดพันธุ์ อาจอยู่ภายใต้ข้อจำกัดด้านการกักกันโรค บรรจุภัณฑ์ที่ปิดผนึกไม่ได้หมายความว่าจะนำเข้าได้เสมอ</p></li>
+                  <li class="arrival-editorial-block"><p><strong>ยาและสิ่งของที่มีข้อจำกัด:</strong> ยาบางชนิด รวมถึงยาที่มีสารควบคุม ต้องตรวจข้อกำหนดเพิ่มเติมหรือขออนุญาตล่วงหน้า การสำแดงต่อศุลกากรไม่สามารถใช้แทนใบอนุญาตนำเข้าได้</p></li>
+                </ul>
+                <p><strong>แล้วเสื้อผ้า แล็ปท็อป หรือกล้องล่ะ?</strong></p>
+                <p>ของใช้ส่วนตัวทั่วไปไม่ได้ถูกจัดเป็นของที่ซื้อใหม่โดยอัตโนมัติ แต่การพิจารณาอุปกรณ์มูลค่าสูงหรือสิ่งของที่ซื้อจากต่างประเทศอาจขึ้นอยู่กับมูลค่า วัตถุประสงค์การใช้ และว่าคุณจะนำออกจากเกาหลีใต้อีกครั้งหรือไม่</p>
+                <p>หากแวะเที่ยวเกาหลีใต้ช่วงสั้น ๆ พร้อมสิ่งของมูลค่าสูงที่ซื้อจากประเทศอื่น ให้ตรวจข้อกำหนดการนำเข้าชั่วคราวกับศุลกากรเกาหลีใต้ก่อนเดินทาง อย่าคิดว่าการจะนำออกจากประเทศอีกครั้งทำให้ได้รับยกเว้นภาษีโดยอัตโนมัติ</p>
+                <p><strong>ต้องสำแดงสิ่งของอย่างไร?</strong></p>
+                <p>ใช้แบบสำแดงกระดาษหรือบริการสำแดงผ่านมือถืออย่างเป็นทางการของศุลกากรเกาหลีใต้ได้ เตรียมใบเสร็จ เอกสารประกอบ และใบอนุญาตที่จำเป็นให้พร้อมสำหรับการตรวจสอบ</p>
+                <p>หากไม่แน่ใจว่าสิ่งของต้องสำแดงหรือต้องผ่านการตรวจด้านการกักกันโรคหรือไม่ ให้สอบถามเจ้าหน้าที่ศุลกากรหรือเจ้าหน้าที่กักกันก่อนออกจากพื้นที่ศุลกากร</p>
+                <p><strong>e-Arrival Card</strong> ที่ใช้สำหรับการตรวจคนเข้าเมืองเป็นคนละส่วนกับการสำแดงศุลกากร การกรอกอย่างหนึ่งไม่สามารถใช้แทนอีกอย่างได้</p>
+                <p><strong>ข้อมูลจากหน่วยงานทางการ</strong></p>
+                <ul class="arrival-official-sources">
+                  <li><a href="https://www.customs.go.kr/english/cm/cntnts/cntntsView.do?cntntsId=2743&amp;mi=8069" target="_blank" rel="noopener noreferrer">ศุลกากรเกาหลีใต้ — คู่มือผ่านพิธีการศุลกากรสำหรับผู้เดินทาง</a></li>
+                  <li><a href="https://www.airport.kr/ap_en/1445/subview.do" target="_blank" rel="noopener noreferrer">สนามบินอินชอน — การสำแดงศุลกากร</a></li>
+                  <li><a href="https://m.customs.go.kr/tms/" target="_blank" rel="noopener noreferrer">บริการสำแดงศุลกากรออนไลน์อย่างเป็นทางการสำหรับผู้เดินทาง</a></li>
+                </ul>
+                <div class="arrival-entry-note">
+                  <p><strong>การนำยาตามใบสั่งแพทย์เข้าเกาหลีใต้</strong></p>
+                  <p>หากใช้ยาตามใบสั่งแพทย์เป็นประจำ ให้ตรวจข้อกำหนดการนำเข้ายาของเกาหลีใต้ก่อนบิน แม้ยาจะได้รับการสั่งใช้อย่างถูกกฎหมายในประเทศของคุณ ก็ไม่ได้หมายความว่าจะนำเข้าเกาหลีใต้ได้โดยอัตโนมัติ</p>
+                  <p><strong>นำยาประจำตัวตามใบสั่งแพทย์เข้าได้ไหม?</strong></p>
+                  <p>ศุลกากรเกาหลีใต้ระบุแนวทางการผ่านพิธีการศุลกากรสำหรับยาที่ใช้ส่วนตัวไว้ที่ 6 ขวด หรือปริมาณใช้ไม่เกิน 3 เดือนตามวิธีใช้ยา นี่เป็นเพียงเกณฑ์ทั่วไปด้านศุลกากร ไม่ใช่การอนุญาตให้นำยาทุกชนิดเข้าได้ ยังต้องพิจารณาส่วนประกอบ ปริมาณ และข้อจำกัดการนำเข้า</p>
+                  <p><strong>ถ้าต้องใช้ยามากกว่า 3 เดือนล่ะ?</strong></p>
+                  <p>หากจะพักในเกาหลีใต้หนึ่งภาคเรียน ทำงานในต่างประเทศ หรือรักษาโรคเรื้อรังต่อเนื่อง อย่าคิดว่ามีใบสั่งแพทย์แล้วจะนำยาสำหรับ 6 เดือนเข้าได้เสมอ</p>
+                  <p>ติดต่อศุลกากรเกาหลีใต้ก่อนออกเดินทาง แจ้งสารออกฤทธิ์ ความแรงของยา ขนาดยาที่ใช้ต่อวัน ปริมาณทั้งหมด และระยะเวลาที่จะพัก พร้อมสอบถามว่าต้องผ่านขั้นตอนนำเข้าหรือขอยกเว้นข้อกำหนดเพิ่มเติมหรือไม่</p>
+                  <p><strong>ยาตามใบสั่งแพทย์บางชนิดต้องขออนุญาตล่วงหน้าหรือไม่?</strong></p>
+                  <p>ต้อง ยาที่มีสารซึ่งกฎหมายเกาหลีใต้จัดเป็นยาเสพติดหรือวัตถุออกฤทธิ์ต่อจิตและประสาทต้องตรวจข้อกำหนดแยกต่างหาก ยารักษา ADHD ยานอนหลับ ยาคลายกังวล และยาแก้ปวดตามใบสั่งแพทย์บางชนิดอาจอยู่ในกลุ่มนี้</p>
+                  <p>ตรวจสารออกฤทธิ์ ไม่ใช่ดูเฉพาะชื่อการค้า หากยาของคุณอยู่ในกลุ่มควบคุมในเกาหลีใต้ ต้องได้รับอนุญาตจากกระทรวงความปลอดภัยอาหารและยาเกาหลีใต้ (MFDS) ก่อนเดินทาง</p>
+                  <p>ใบสั่งแพทย์หรือการสำแดงศุลกากรไม่สามารถใช้แทนใบอนุญาตจาก MFDS ได้</p>
+                  <p><strong>ควรเตรียมเอกสารอะไรบ้าง?</strong></p>
+                  <p>หากทำได้ ให้เก็บยาไว้ในบรรจุภัณฑ์เดิมที่มีฉลาก เตรียมใบสั่งแพทย์ฉบับปัจจุบันและหนังสือรับรองจากแพทย์ที่ระบุผู้ป่วย ชื่อสามัญของยา ขนาดยาที่สั่ง ปริมาณ และเหตุผลในการรักษา</p>
+                  <p>หากต้องใช้ใบอนุญาตจาก MFDS ให้นำใบอนุญาตที่ได้รับแล้วติดตัวไป และปฏิบัติตามปริมาณและเงื่อนไขที่ระบุไว้</p>
+                  <p>สำหรับยาฉีดหรือยาที่ต้องแช่เย็น ให้ตรวจข้อกำหนดการขนส่งของสายการบินและวิธีเก็บรักษายาก่อนบินด้วย</p>
+                  <p><strong>หากศุลกากรสอบถามเรื่องยาควรทำอย่างไร?</strong></p>
+                  <p>อธิบายว่าเป็นยาสำหรับรักษาตนเอง พร้อมแสดงใบสั่งแพทย์ เอกสารทางการแพทย์ และใบอนุญาตที่จำเป็น</p>
+                  <p>หากไม่แน่ใจว่ายาต้องสำแดงหรือได้รับอนุญาตให้นำเข้าหรือไม่ ให้สอบถามเจ้าหน้าที่ศุลกากรก่อนออกจากพื้นที่ศุลกากร การสำแดงยาไม่ได้ทำให้ยาที่มีข้อจำกัดนำเข้าได้อย่างถูกกฎหมายโดยอัตโนมัติ</p>
+                  <p>อย่ารอจนเดินทางถึงแล้วจึงค่อยตรวจว่าต้องขออนุญาตหรือไม่ หากกฎที่ใช้บังคับไม่อนุญาตให้นำยาของคุณเข้าเกาหลีใต้ ให้ปรึกษาบุคลากรทางการแพทย์ผู้สั่งยาก่อนเดินทาง เพื่อวางแผนการรักษาและการจัดหายาที่เหมาะสม</p>
+                  <p><strong>ตรวจข้อกำหนดจากหน่วยงานทางการ</strong></p>
+                  <ul class="arrival-official-sources">
+                    <li><a href="https://www.customs.go.kr/incheon_airport/cm/cntnts/cntntsView.do?cntntsId=6689&amp;mi=12546" target="_blank" rel="noopener noreferrer">ศุลกากรเกาหลีใต้ — ยาและผลิตภัณฑ์เสริมอาหารสำหรับใช้ส่วนตัว</a></li>
+                    <li><a href="https://nedrug.mfds.go.kr/CCAAI01/init" target="_blank" rel="noopener noreferrer">MFDS — ยื่นคำขออนุญาตนำยาเสพติดให้โทษติดตัวเข้าประเทศเพื่อรักษาตนเอง</a></li>
+                    <li><a href="https://www.customs.go.kr/english/ad/engcnsl/selectEngCnslList.do?mi=8049" target="_blank" rel="noopener noreferrer">ศุลกากรเกาหลีใต้ — คำถามและคำตอบภาษาอังกฤษ</a></li>
+                  </ul>
+                  <p>หากยาต้องใช้ใบอนุญาตจาก MFDS ให้ยื่นคำขอล่วงหน้าก่อนวันเดินทางโดยเผื่อเวลาเพียงพอ และตรวจว่าได้รับอนุญาตแล้ว บริการออนไลน์ทางการสามารถตรวจสถานะคำขอได้</p>
+                </div>
               </div>
             </li>
             <li class="arrival-step">
@@ -295,6 +435,13 @@
         <p>เมื่อออกสู่โถงผู้โดยสารขาเข้าส่วนสาธารณะ ขั้นตอนเข้าประเทศก็อยู่ข้างหลัง สิ่งที่ต้องทำต่อขึ้นอยู่กับทริป เช่น ต่ออินเทอร์เน็ต บันทึกที่อยู่ที่พักภาษาเกาหลี เตรียมวิธีจ่ายเงินสำรอง และเลือกเส้นทางที่ยังใช้งานได้จริงกับกระเป๋า</p>
         <p>สำหรับขั้นตอนใช้งานจริงช่วงแรก ให้ไปต่อที่<a href="/th/airport.html">คู่มือโถงผู้โดยสารขาเข้าสนามบินอินชอน</a></p>
         <p>ถ้าคำถามเดียวที่เหลือคือจะไปถึงที่พักอย่างไร <a href="/th/airport-transfer.html">คู่มือ Airport Transfer</a> จะเปรียบเทียบ AREX รถบัสสนามบิน แท็กซี่ และรถรับส่งที่จองไว้จากเส้นทางทั้งหมดแบบประตูถึงประตู</p>
+        <aside class="arrival-next-actions" aria-labelledby="arrival-stay-guide-cta-title">
+          <p class="arrival-next-actions__title" id="arrival-stay-guide-cta-title">ยังไม่ตัดสินใจว่าจะพักที่ไหนในโซล?</p>
+          <p class="arrival-next-actions__description">ที่ตั้งโรงแรมมีผลต่อการเดินทางจากสนามบิน ทั้งการต่อรถ การขนย้ายกระเป๋า และช่วงเดินสุดท้าย</p>
+          <div class="arrival-next-actions__buttons">
+            <a class="arrival-next-actions__button" href="/th/accommodation.html">ดูคู่มือที่พักในโซล</a>
+          </div>
+        </aside>
       </div>
     </section>
 

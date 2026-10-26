@@ -22,6 +22,98 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400..600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
   <link rel="stylesheet" href="../arrival.css">
+  <style>
+    .arrival-page .arrival-steps-layout--stacked {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .arrival-page .arrival-steps-layout--stacked .arrival-steps-media,
+    .arrival-page .arrival-steps-layout--stacked .arrival-timeline {
+      width: 100%;
+      max-width: 900px;
+      margin-inline: auto;
+    }
+
+    .arrival-page .arrival-steps-layout--stacked .arrival-steps-media {
+      position: static;
+      top: auto;
+    }
+
+    .arrival-page .arrival-next-actions {
+      margin-top: 32px;
+      padding: 24px;
+      background: #f7f9fc;
+      border: 1px solid #dfe7f3;
+      border-radius: 12px;
+    }
+
+    .arrival-page .arrival-next-actions__title {
+      margin: 0;
+      color: #1f2937;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .arrival-page .arrival-next-actions__description {
+      margin: 8px 0 16px;
+      color: #4b5563;
+      line-height: 1.55;
+    }
+
+    .arrival-page .arrival-next-actions__buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .arrival-page .arrival-next-actions__button {
+      box-sizing: border-box;
+      display: inline-flex;
+      flex: 1 1 220px;
+      min-width: 0;
+      min-height: 44px;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-weight: 700;
+      line-height: 1.25;
+      text-align: center;
+      overflow-wrap: anywhere;
+    }
+
+    .arrival-page main a.arrival-next-actions__button,
+    .arrival-page main a.arrival-next-actions__button:visited {
+      color: #1A56DB;
+      background: #FFFFFF;
+      border: 1px solid #BCD0EF;
+      text-decoration: none;
+    }
+
+    .arrival-page main a.arrival-next-actions__button:hover,
+    .arrival-page main a.arrival-next-actions__button:focus,
+    .arrival-page main a.arrival-next-actions__button:focus-visible {
+      color: #1A56DB;
+      background: #EFF6FF;
+      border-color: #1A56DB;
+      text-decoration: none;
+    }
+
+    .arrival-page main a.arrival-next-actions__button:focus-visible {
+      outline: 3px solid #1A56DB;
+      outline-offset: 2px;
+    }
+
+    @media (max-width: 700px) {
+      .arrival-page .arrival-next-actions {
+        padding: 20px;
+      }
+
+      .arrival-page .arrival-next-actions__button {
+        flex-basis: 100%;
+      }
+    }
+  </style>
   <script type="application/ld+json">
 {
       "@context": "https://schema.org",
@@ -202,7 +294,7 @@
           <h2 id="arrival-steps-title">Dari Pesawat ke Area Kedatangan</h2>
           <p>Bagi pelancong yang masuk ke Korea, rutenya biasanya sederhana. Jarak berjalan kaki bisa berbeda menurut gerbang dan terminal, tetapi urutan langkah utamanya sama.</p>
         </div>
-        <div class="arrival-steps-layout">
+        <div class="arrival-steps-layout arrival-steps-layout--stacked">
           <figure class="arrival-steps-media">
             <img src="../images/arrival/incheon-airport-arrival-route.webp" alt="Pelancong mengikuti petunjuk Immigration dan Baggage Claim di dalam Incheon International Airport" width="1448" height="1086" loading="lazy" decoding="async">
             <figcaption>Ikuti petunjuk bandara secara berurutan; rute jalan kaki Anda bergantung pada gerbang dan terminal.</figcaption>
@@ -245,10 +337,58 @@
               <span class="arrival-step__number" aria-hidden="true">04</span>
               <div class="arrival-step__content">
                 <h3>Bea Cukai</h3>
-                <p>Setelah mengambil bagasi, ikuti petunjuk bea cukai menuju pintu keluar.</p>
-                <p>Jika membawa barang yang mungkin perlu dideklarasikan, periksa ketentuan Korea Customs, alih-alih mengandalkan aturan negara lain. Barang yang melebihi batas bebas bea dan barang yang dibatasi dapat memerlukan deklarasi.</p>
-                <p>Jika tidak ada barang yang perlu dideklarasikan, ikuti jalur bea cukai yang sesuai dengan petunjuk bandara.</p>
-                <p class="arrival-context-link"><a href="https://www.customs.go.kr/english/main.do" target="_blank" rel="noopener noreferrer" aria-label="Informasi pelancong Korea Customs Service, situs eksternal, terbuka di tab baru">Korea Customs Service — Informasi Pelancong <span aria-hidden="true">↗</span></a></p>
+                <p>Setelah mengambil bagasi, ikuti petunjuk Customs sebelum masuk ke area kedatangan umum. Kewajiban membuat deklarasi bergantung pada barang yang Anda bawa ke Korea Selatan, bukan semata-mata kewarganegaraan Anda.</p>
+                <p><strong>Apakah perlu mengisi formulir deklarasi bea cukai?</strong></p>
+                <p>Jika tidak ada barang yang perlu dideklarasikan, Anda tidak perlu mengisi formulir deklarasi bea cukai. Ikuti jalur bertanda <strong>Tidak ada barang yang perlu dilaporkan (Nothing to Declare)</strong>. Petugas bea cukai tetap dapat memeriksa bagasi Anda.</p>
+                <p>Jika membawa barang yang wajib dideklarasikan, isi deklarasi dan gunakan jalur <strong>Barang yang perlu dilaporkan (Goods to Declare)</strong>.</p>
+                <p><strong>Apa yang perlu diperiksa sebelum tiba?</strong></p>
+                <ul class="arrival-editorial-list">
+                  <li class="arrival-editorial-block"><p><strong>Belanjaan dan hadiah:</strong> Batas pembebasan bea umum untuk barang bawaan pelancong yang dikenai pajak adalah US$800. Barang yang melebihi batas ini mungkin perlu dideklarasikan. Barang dagangan dan sampel memiliki aturan tersendiri.</p></li>
+                  <li class="arrival-editorial-block"><p><strong>Uang tunai dan alat pembayaran:</strong> Jumlah keseluruhan yang melebihi US$10,000 atau nilai setaranya mungkin perlu dideklarasikan kepada bea cukai. Ini mencakup mata uang asing, won Korea, dan cek yang termasuk dalam ketentuan pelaporan.</p></li>
+                  <li class="arrival-editorial-block"><p><strong>Makanan dan produk pertanian:</strong> Daging, daging kering, sosis, produk susu, telur, buah segar, tanaman, dan benih dapat dikenai pembatasan karantina. Kemasan tersegel tidak otomatis berarti barang tersebut boleh dibawa masuk.</p></li>
+                  <li class="arrival-editorial-block"><p><strong>Obat dan barang yang dibatasi:</strong> Obat tertentu, termasuk yang mengandung zat yang dikendalikan, memerlukan pemeriksaan tambahan atau izin sebelumnya. Deklarasi bea cukai tidak menggantikan izin impor.</p></li>
+                </ul>
+                <p><strong>Bagaimana dengan pakaian, laptop, atau kamera?</strong></p>
+                <p>Barang pribadi yang biasa digunakan tidak otomatis dianggap sebagai pembelian baru. Namun, perlakuan terhadap peralatan bernilai tinggi atau barang yang dibeli di luar negeri dapat bergantung pada nilai, tujuan penggunaan, dan apakah Anda akan membawanya keluar lagi dari Korea Selatan.</p>
+                <p>Jika hanya berkunjung sebentar ke Korea Selatan sambil membawa barang mahal yang dibeli di negara lain, tanyakan persyaratan impor sementara kepada Bea Cukai Korea Selatan sebelum bepergian. Jangan menganggap barang otomatis bebas bea hanya karena akan dibawa keluar lagi.</p>
+                <p><strong>Bagaimana cara mendeklarasikan barang?</strong></p>
+                <p>Anda dapat menggunakan formulir kertas atau layanan deklarasi seluler resmi Bea Cukai Korea Selatan. Siapkan kuitansi, dokumen pendukung, dan izin yang diperlukan untuk pemeriksaan.</p>
+                <p>Jika tidak yakin apakah suatu barang perlu dideklarasikan atau diperiksa oleh petugas karantina, tanyakan kepada petugas bea cukai atau karantina sebelum meninggalkan area bea cukai.</p>
+                <p><strong>e-Arrival Card</strong> untuk imigrasi berbeda dari deklarasi bea cukai. Mengisi salah satunya tidak menggantikan yang lain.</p>
+                <p><strong>Panduan resmi</strong></p>
+                <ul class="arrival-official-sources">
+                  <li><a href="https://www.customs.go.kr/english/cm/cntnts/cntntsView.do?cntntsId=2743&amp;mi=8069" target="_blank" rel="noopener noreferrer">Bea Cukai Korea Selatan — Panduan kepabeanan untuk pelancong</a></li>
+                  <li><a href="https://www.airport.kr/ap_en/1445/subview.do" target="_blank" rel="noopener noreferrer">Bandara Incheon — Deklarasi bea cukai</a></li>
+                  <li><a href="https://m.customs.go.kr/tms/" target="_blank" rel="noopener noreferrer">Deklarasi bea cukai resmi untuk pelancong — Layanan daring</a></li>
+                </ul>
+                <div class="arrival-entry-note">
+                  <p><strong>Membawa obat resep ke Korea Selatan</strong></p>
+                  <p>Jika Anda rutin menggunakan obat resep, periksa aturan impor Korea Selatan sebelum terbang. Obat yang diresepkan secara sah di negara asal tidak otomatis diizinkan masuk ke Korea Selatan.</p>
+                  <p><strong>Bolehkah saya membawa obat resep yang biasa digunakan?</strong></p>
+                  <p>Bea Cukai Korea Selatan menerbitkan pedoman pengeluaran obat untuk penggunaan pribadi berupa 6 botol atau persediaan hingga 3 bulan berdasarkan dosis penggunaan. Ini merupakan acuan kepabeanan umum, bukan izin menyeluruh untuk semua obat. Kandungan, jumlah, dan pembatasan impor tetap perlu diperhatikan.</p>
+                  <p><strong>Bagaimana jika saya memerlukan obat untuk lebih dari 3 bulan?</strong></p>
+                  <p>Jika Anda tinggal di Korea Selatan selama satu semester, bekerja di luar negeri, atau menjalani pengobatan penyakit kronis, jangan menganggap bahwa resep saja sudah cukup untuk membawa persediaan obat selama 6 bulan.</p>
+                  <p>Hubungi Bea Cukai Korea Selatan sebelum berangkat. Sampaikan zat aktif, kekuatan sediaan, dosis harian, jumlah keseluruhan, dan rencana lama tinggal. Tanyakan apakah diperlukan prosedur impor tambahan atau prosedur pengecualian.</p>
+                  <p><strong>Apakah ada obat resep yang memerlukan izin sebelumnya?</strong></p>
+                  <p>Ada. Obat yang mengandung zat yang diklasifikasikan sebagai narkotika atau psikotropika menurut hukum Korea Selatan memerlukan pemeriksaan tersendiri. Sebagian obat untuk ADHD, gangguan tidur, kecemasan, atau pereda nyeri yang diresepkan dapat termasuk dalam kategori ini.</p>
+                  <p>Periksa zat aktifnya, jangan hanya mengandalkan nama merek. Jika obat Anda dikendalikan di Korea Selatan, dapatkan izin yang diperlukan dari Kementerian Keamanan Pangan dan Obat Korea Selatan (MFDS) sebelum bepergian.</p>
+                  <p>Resep dokter atau deklarasi bea cukai tidak menggantikan izin MFDS.</p>
+                  <p><strong>Dokumen apa yang perlu disiapkan?</strong></p>
+                  <p>Sebisa mungkin, simpan obat dalam kemasan asli yang berlabel. Siapkan resep yang masih berlaku dan surat medis yang mencantumkan identitas pasien, nama generik obat, dosis yang diresepkan, jumlah, dan alasan pengobatan.</p>
+                  <p>Jika izin MFDS diperlukan, bawa izin yang sudah diterbitkan dan patuhi jumlah serta ketentuan yang tercantum di dalamnya.</p>
+                  <p>Untuk obat suntik atau obat yang memerlukan pendinginan, periksa juga ketentuan pengangkutan maskapai dan petunjuk penyimpanan obat sebelum terbang.</p>
+                  <p><strong>Bagaimana jika bea cukai menanyakan obat saya?</strong></p>
+                  <p>Jelaskan bahwa obat tersebut digunakan untuk pengobatan pribadi Anda, lalu tunjukkan resep, dokumen medis, dan izin yang diperlukan.</p>
+                  <p>Jika tidak yakin apakah obat harus dideklarasikan atau boleh dibawa masuk, tanyakan kepada petugas bea cukai sebelum meninggalkan area bea cukai. Mendeklarasikan obat yang dibatasi tidak otomatis membuat impornya menjadi legal.</p>
+                  <p>Jangan menunggu sampai tiba untuk memastikan persyaratan izin. Jika aturan yang berlaku tidak mengizinkan obat Anda dibawa ke Korea Selatan, bicarakan rencana pengobatan dan penyediaan obat yang sesuai dengan tenaga kesehatan yang meresepkannya sebelum bepergian.</p>
+                  <p><strong>Periksa persyaratan resmi</strong></p>
+                  <ul class="arrival-official-sources">
+                    <li><a href="https://www.customs.go.kr/incheon_airport/cm/cntnts/cntntsView.do?cntntsId=6689&amp;mi=12546" target="_blank" rel="noopener noreferrer">Bea Cukai Korea Selatan — Obat dan suplemen untuk penggunaan pribadi</a></li>
+                    <li><a href="https://nedrug.mfds.go.kr/CCAAI01/init" target="_blank" rel="noopener noreferrer">MFDS — Permohonan izin membawa narkotika untuk pengobatan pribadi</a></li>
+                    <li><a href="https://www.customs.go.kr/english/ad/engcnsl/selectEngCnslList.do?mi=8049" target="_blank" rel="noopener noreferrer">Bea Cukai Korea Selatan — Pertanyaan dan jawaban dalam bahasa Inggris</a></li>
+                  </ul>
+                  <p>Jika obat memerlukan izin MFDS, ajukan jauh sebelum tanggal keberangkatan dan pastikan izin sudah diterbitkan. Layanan daring resmi memungkinkan Anda memeriksa status permohonan.</p>
+                </div>
               </div>
             </li>
             <li class="arrival-step">
@@ -302,6 +442,13 @@
         <p>Setelah berada di area kedatangan umum, proses masuk sudah selesai. Langkah berikutnya bergantung pada perjalanan Anda: menghubungkan ponsel ke internet, menyimpan alamat penginapan dalam bahasa Korea, menyiapkan pembayaran cadangan, dan memilih rute yang tetap mudah dilalui dengan bagasi.</p>
         <p>Lanjutkan ke <a href="airport.html">Panduan Area Kedatangan Incheon Airport</a> untuk langkah praktis pertama tersebut.</p>
         <p>Jika pertanyaan Anda yang tersisa hanya cara menuju penginapan, <a href="airport-transfer.html">Panduan Transportasi dari dan ke Bandara</a> membandingkan AREX, bus bandara, taksi, dan transfer yang dipesan sebelumnya berdasarkan seluruh perjalanan sampai pintu penginapan.</p>
+        <aside class="arrival-next-actions" aria-labelledby="arrival-stay-guide-cta-title">
+          <p class="arrival-next-actions__title" id="arrival-stay-guide-cta-title">Masih menentukan tempat menginap di Seoul?</p>
+          <p class="arrival-next-actions__description">Lokasi hotel memengaruhi perjalanan dari bandara, termasuk perpindahan transportasi, membawa bagasi, dan bagian terakhir yang ditempuh dengan berjalan kaki.</p>
+          <div class="arrival-next-actions__buttons">
+            <a class="arrival-next-actions__button" href="accommodation.html">Lihat panduan menginap di Seoul</a>
+          </div>
+        </aside>
       </div>
     </section>
 

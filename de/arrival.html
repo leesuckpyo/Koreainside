@@ -22,6 +22,98 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400..600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
   <link rel="stylesheet" href="../arrival.css">
+  <style>
+    .arrival-page .arrival-steps-layout--stacked {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .arrival-page .arrival-steps-layout--stacked .arrival-steps-media,
+    .arrival-page .arrival-steps-layout--stacked .arrival-timeline {
+      width: 100%;
+      max-width: 900px;
+      margin-inline: auto;
+    }
+
+    .arrival-page .arrival-steps-layout--stacked .arrival-steps-media {
+      position: static;
+      top: auto;
+    }
+
+    .arrival-page .arrival-next-actions {
+      margin-top: 32px;
+      padding: 24px;
+      background: #f7f9fc;
+      border: 1px solid #dfe7f3;
+      border-radius: 12px;
+    }
+
+    .arrival-page .arrival-next-actions__title {
+      margin: 0;
+      color: #1f2937;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .arrival-page .arrival-next-actions__description {
+      margin: 8px 0 16px;
+      color: #4b5563;
+      line-height: 1.55;
+    }
+
+    .arrival-page .arrival-next-actions__buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .arrival-page .arrival-next-actions__button {
+      box-sizing: border-box;
+      display: inline-flex;
+      flex: 1 1 220px;
+      min-width: 0;
+      min-height: 44px;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-weight: 700;
+      line-height: 1.25;
+      text-align: center;
+      overflow-wrap: anywhere;
+    }
+
+    .arrival-page main a.arrival-next-actions__button,
+    .arrival-page main a.arrival-next-actions__button:visited {
+      color: #1A56DB;
+      background: #FFFFFF;
+      border: 1px solid #BCD0EF;
+      text-decoration: none;
+    }
+
+    .arrival-page main a.arrival-next-actions__button:hover,
+    .arrival-page main a.arrival-next-actions__button:focus,
+    .arrival-page main a.arrival-next-actions__button:focus-visible {
+      color: #1A56DB;
+      background: #EFF6FF;
+      border-color: #1A56DB;
+      text-decoration: none;
+    }
+
+    .arrival-page main a.arrival-next-actions__button:focus-visible {
+      outline: 3px solid #1A56DB;
+      outline-offset: 2px;
+    }
+
+    @media (max-width: 700px) {
+      .arrival-page .arrival-next-actions {
+        padding: 20px;
+      }
+
+      .arrival-page .arrival-next-actions__button {
+        flex-basis: 100%;
+      }
+    }
+  </style>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -200,7 +292,7 @@
           <h2 id="arrival-steps-title">Vom Flugzeug in den öffentlichen Ankunftsbereich</h2>
           <p>Für Reisende, die nach Korea einreisen, ist der Ablauf normalerweise einfach. Die Laufdistanz kann je nach Gate und Terminal unterschiedlich sein, aber die Reihenfolge der Hauptschritte bleibt gleich.</p>
         </div>
-        <div class="arrival-steps-layout">
+        <div class="arrival-steps-layout arrival-steps-layout--stacked">
           <figure class="arrival-steps-media">
             <img src="../images/arrival/incheon-airport-arrival-route.webp" alt="Reisende folgen im Incheon International Airport den Schildern zu Immigration und Gepäckausgabe" width="1448" height="1086" loading="lazy" decoding="async">
             <figcaption>Folge den Flughafenschildern in der richtigen Reihenfolge; dein genauer Fußweg hängt von Gate und Terminal ab.</figcaption>
@@ -243,10 +335,58 @@
               <span class="arrival-step__number" aria-hidden="true">04</span>
               <div class="arrival-step__content">
                 <h3>04 — Zoll</h3>
-                <p>Nach der Gepäckabholung den Zollschildern Richtung Ausgang folgen.</p>
-                <p>Wenn du Waren mitführst, die möglicherweise deklariert werden müssen, prüfe die Regeln von Korea Customs und verlasse dich nicht auf Vorschriften eines anderen Landes. Waren oberhalb der Zollfreigrenze und beschränkte Güter können eine Erklärung erfordern.</p>
-                <p>Wenn du nichts zu deklarieren hast, folge dem entsprechenden am Flughafen ausgewiesenen Zollkanal.</p>
-                <p class="arrival-context-link"><a href="https://www.customs.go.kr/english/main.do" target="_blank" rel="noopener noreferrer" aria-label="Reiseinformationen des Korea Customs Service, externe Website, öffnet in neuem Tab">Korea Customs Service — Informationen für Reisende<span aria-hidden="true">↗</span></a></p>
+                <p>Nachdem du dein Gepäck abgeholt hast, folge den Customs-Schildern zum Zoll, bevor du den öffentlichen Ankunftsbereich betrittst. Ob du etwas anmelden musst, hängt davon ab, was du nach Südkorea mitbringst, nicht allein von deiner Staatsangehörigkeit.</p>
+                <p><strong>Musst du eine Zollerklärung ausfüllen?</strong></p>
+                <p>Wenn du nichts anzumelden hast, musst du keine Zollerklärung ausfüllen. Nutze den am Flughafen ausgeschilderten Durchgang <strong>Nichts anzumelden (Nothing to Declare)</strong>. Der Zoll kann dein Gepäck trotzdem kontrollieren.</p>
+                <p>Wenn du anmeldepflichtige Waren mitführst, fülle eine Zollerklärung aus und nutze den Durchgang <strong>Waren anzumelden (Goods to Declare)</strong>.</p>
+                <p><strong>Was solltest du vor der Ankunft prüfen?</strong></p>
+                <ul class="arrival-editorial-list">
+                  <li class="arrival-editorial-block"><p><strong>Einkäufe und Geschenke:</strong> Für abgabenpflichtige Waren im Reisegepäck gilt eine allgemeine Freigrenze von US$800. Waren oberhalb dieser Grenze können anmeldepflichtig sein. Für gewerbliche Waren und Muster gelten gesonderte Regeln.</p></li>
+                  <li class="arrival-editorial-block"><p><strong>Bargeld und Zahlungsmittel:</strong> Gesamtbeträge von mehr als US$10,000 oder dem entsprechenden Gegenwert können beim Zoll anmeldepflichtig sein. Dazu zählen Fremdwährungen, koreanische Won und Schecks, die unter die jeweiligen Meldevorschriften fallen.</p></li>
+                  <li class="arrival-editorial-block"><p><strong>Lebensmittel und landwirtschaftliche Erzeugnisse:</strong> Fleisch, Trockenfleisch, Würste, Milchprodukte, Eier, frisches Obst, Pflanzen und Samen können Quarantänebeschränkungen unterliegen. Eine versiegelte Verpackung bedeutet nicht automatisch, dass die Einfuhr erlaubt ist.</p></li>
+                  <li class="arrival-editorial-block"><p><strong>Medikamente und beschränkte Waren:</strong> Bestimmte Medikamente, darunter solche mit kontrollierten Substanzen, erfordern zusätzliche Prüfungen oder eine vorherige Genehmigung. Eine Zollerklärung ersetzt keine Einfuhrgenehmigung.</p></li>
+                </ul>
+                <p><strong>Was ist mit Kleidung, Laptop oder Kamera?</strong></p>
+                <p>Übliche persönliche Gegenstände gelten nicht automatisch als Neuanschaffungen. Bei hochwertiger Ausrüstung oder im Ausland gekauften Waren kann die Behandlung jedoch vom Wert, Verwendungszweck und davon abhängen, ob du sie später wieder aus Südkorea mitnehmen möchtest.</p>
+                <p>Wenn du Südkorea nur kurz besuchst und teure, in einem anderen Land gekaufte Gegenstände mitbringst, kläre vor der Reise die Voraussetzungen für eine vorübergehende Einfuhr mit dem koreanischen Zoll. Gehe nicht davon aus, dass die spätere Wiederausfuhr allein eine Abgabenbefreiung garantiert.</p>
+                <p><strong>Wie meldest du etwas beim Zoll an?</strong></p>
+                <p>Du kannst ein Papierformular oder den offiziellen mobilen Anmeldedienst des koreanischen Zolls verwenden. Halte die relevanten Belege, Nachweise und erforderlichen Genehmigungen für eine Kontrolle bereit.</p>
+                <p>Wenn du nicht weißt, ob ein Gegenstand angemeldet werden muss oder einer Quarantänekontrolle unterliegt, frage beim Zoll oder beim zuständigen Quarantänepersonal nach, bevor du den Zollbereich verlässt.</p>
+                <p>Die <strong>e-Arrival Card</strong> für die Einreisekontrolle ist von der Zollerklärung getrennt. Das Ausfüllen der einen ersetzt die andere nicht.</p>
+                <p><strong>Offizielle Informationen</strong></p>
+                <ul class="arrival-official-sources">
+                  <li><a href="https://www.customs.go.kr/english/cm/cntnts/cntntsView.do?cntntsId=2743&amp;mi=8069" target="_blank" rel="noopener noreferrer">Koreanischer Zoll — Zollleitfaden für Reisende</a></li>
+                  <li><a href="https://www.airport.kr/ap_en/1445/subview.do" target="_blank" rel="noopener noreferrer">Flughafen Incheon — Zollerklärung</a></li>
+                  <li><a href="https://m.customs.go.kr/tms/" target="_blank" rel="noopener noreferrer">Offizielle Zollanmeldung für Reisende — Onlinedienst</a></li>
+                </ul>
+                <div class="arrival-entry-note">
+                  <p><strong>Verschreibungspflichtige Medikamente nach Südkorea mitnehmen</strong></p>
+                  <p>Wenn du regelmäßig verschreibungspflichtige Medikamente einnimmst, prüfe die koreanischen Einfuhrregeln vor dem Flug. Ein Medikament, das dir in deinem Heimatland rechtmäßig verschrieben wurde, darf deshalb nicht automatisch nach Südkorea eingeführt werden.</p>
+                  <p><strong>Darf ich meine gewohnten Medikamente mitnehmen?</strong></p>
+                  <p>Der koreanische Zoll nennt für die Abfertigung von Medikamenten zum persönlichen Gebrauch einen Richtwert von 6 Flaschen oder einem Bedarf für bis zu 3 Monate entsprechend der Dosierung. Das ist eine allgemeine Orientierung für die Zollabfertigung, keine pauschale Einfuhrerlaubnis für jedes Medikament. Inhaltsstoffe, Mengen und Einfuhrbeschränkungen bleiben entscheidend.</p>
+                  <p><strong>Was ist, wenn ich Medikamente für mehr als 3 Monate brauche?</strong></p>
+                  <p>Wenn du ein Semester in Südkorea bleibst, im Ausland arbeitest oder eine chronische Erkrankung behandelst, gehe nicht davon aus, dass du allein mit einem Rezept Medikamente für 6 Monate mitbringen darfst.</p>
+                  <p>Kontaktiere den koreanischen Zoll vor der Abreise. Nenne Wirkstoff, Wirkstärke, tägliche Dosis, Gesamtmenge und geplante Aufenthaltsdauer. Frage, ob ein zusätzliches Einfuhr- oder Ausnahmeverfahren erforderlich ist.</p>
+                  <p><strong>Brauchen bestimmte verschreibungspflichtige Medikamente eine vorherige Genehmigung?</strong></p>
+                  <p>Ja. Medikamente mit Substanzen, die nach koreanischem Recht als Betäubungsmittel oder psychotrope Stoffe eingestuft sind, müssen gesondert geprüft werden. Dazu können bestimmte ADHS-Medikamente, Schlafmittel, Medikamente gegen Angstzustände und verschreibungspflichtige Schmerzmittel gehören.</p>
+                  <p>Prüfe den Wirkstoff und verlasse dich nicht nur auf den Markennamen. Wenn dein Medikament in Südkorea kontrolliert wird, hole vor der Reise die erforderliche Genehmigung des südkoreanischen Ministeriums für Lebensmittel- und Arzneimittelsicherheit (MFDS) ein.</p>
+                  <p>Ein ärztliches Rezept oder eine Zollerklärung ersetzt keine MFDS-Genehmigung.</p>
+                  <p><strong>Welche Unterlagen solltest du vorbereiten?</strong></p>
+                  <p>Bewahre Medikamente möglichst in ihrer beschrifteten Originalverpackung auf. Bereite ein gültiges Rezept und ein medizinisches Schreiben vor, das die behandelte Person, den generischen Namen des Medikaments, die verordnete Dosis, die Menge und den Behandlungsgrund nennt.</p>
+                  <p>Wenn eine MFDS-Genehmigung erforderlich ist, führe die erteilte Genehmigung mit und halte die darin genannten Mengen und Bedingungen ein.</p>
+                  <p>Prüfe bei Injektionspräparaten oder kühlpflichtigen Medikamenten vor dem Flug auch die Beförderungsbedingungen der Airline und die Lagerungshinweise des Medikaments.</p>
+                  <p><strong>Was mache ich, wenn der Zoll nach meinen Medikamenten fragt?</strong></p>
+                  <p>Erkläre, dass die Medikamente für deine eigene Behandlung bestimmt sind, und zeige das Rezept, die medizinischen Unterlagen und gegebenenfalls erforderliche Genehmigungen vor.</p>
+                  <p>Wenn du unsicher bist, ob dein Medikament angemeldet werden muss oder eingeführt werden darf, frage beim Zoll nach, bevor du den Zollbereich verlässt. Die Anmeldung eines beschränkten Medikaments macht seine Einfuhr nicht automatisch legal.</p>
+                  <p>Kläre ungewisse Genehmigungsanforderungen nicht erst bei der Ankunft. Wenn du dein Medikament nach den geltenden Regeln nicht nach Südkorea mitbringen darfst, besprich vor der Reise mit der verschreibenden medizinischen Fachperson einen geeigneten Behandlungs- und Versorgungsplan.</p>
+                  <p><strong>Offizielle Anforderungen prüfen</strong></p>
+                  <ul class="arrival-official-sources">
+                    <li><a href="https://www.customs.go.kr/incheon_airport/cm/cntnts/cntntsView.do?cntntsId=6689&amp;mi=12546" target="_blank" rel="noopener noreferrer">Koreanischer Zoll — Medikamente und Nahrungsergänzungsmittel für den persönlichen Gebrauch</a></li>
+                    <li><a href="https://nedrug.mfds.go.kr/CCAAI01/init" target="_blank" rel="noopener noreferrer">MFDS — Antrag auf Mitnahme von Betäubungsmitteln zur eigenen Behandlung</a></li>
+                    <li><a href="https://www.customs.go.kr/english/ad/engcnsl/selectEngCnslList.do?mi=8049" target="_blank" rel="noopener noreferrer">Koreanischer Zoll — Fragen und Antworten auf Englisch</a></li>
+                  </ul>
+                  <p>Beantrage eine erforderliche MFDS-Genehmigung mit ausreichend Vorlauf vor deiner Abreise und prüfe, ob sie erteilt wurde. Im offiziellen Onlinedienst kannst du den Bearbeitungsstand des Antrags einsehen.</p>
+                </div>
               </div>
             </li>
             <li class="arrival-step">
@@ -300,6 +440,13 @@
         <p>Sobald du im öffentlichen Ankunftsbereich bist, liegt der Einreiseprozess hinter dir. Was als Nächstes wichtig ist, hängt von deiner Reise ab: Smartphone online bringen, Unterkunftsadresse auf Koreanisch speichern, eine Zahlungsreserve bereithalten und eine Route wählen, die auch mit deinem Gepäck funktioniert.</p>
         <p>Weiter mit dem <a href="/de/airport.html">Guide für die Ankunftshalle am Flughafen Incheon</a> für diese ersten praktischen Schritte.</p>
         <p>Wenn nur noch die Frage offen ist, wie du zur Unterkunft kommst, vergleicht der <a href="/de/airport-transfer.html">Flughafentransfer-Guide</a> AREX, Flughafenbus, Taxi und vorab gebuchten Transfer über die gesamte Tür-zu-Tür-Reise.</p>
+        <aside class="arrival-next-actions" aria-labelledby="arrival-stay-guide-cta-title">
+          <p class="arrival-next-actions__title" id="arrival-stay-guide-cta-title">Noch unsicher, wo du in Seoul übernachten möchtest?</p>
+          <p class="arrival-next-actions__description">Die Lage deines Hotels beeinflusst den Weg vom Flughafen, einschließlich der Umstiege, des Gepäcktransports und des letzten Fußwegs.</p>
+          <div class="arrival-next-actions__buttons">
+            <a class="arrival-next-actions__button" href="/de/accommodation.html">Unterkunftsratgeber für Seoul ansehen</a>
+          </div>
+        </aside>
       </div>
     </section>
 

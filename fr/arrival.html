@@ -22,6 +22,98 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400..600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
   <link rel="stylesheet" href="../arrival.css">
+  <style>
+    .arrival-page .arrival-steps-layout--stacked {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .arrival-page .arrival-steps-layout--stacked .arrival-steps-media,
+    .arrival-page .arrival-steps-layout--stacked .arrival-timeline {
+      width: 100%;
+      max-width: 900px;
+      margin-inline: auto;
+    }
+
+    .arrival-page .arrival-steps-layout--stacked .arrival-steps-media {
+      position: static;
+      top: auto;
+    }
+
+    .arrival-page .arrival-next-actions {
+      margin-top: 32px;
+      padding: 24px;
+      background: #f7f9fc;
+      border: 1px solid #dfe7f3;
+      border-radius: 12px;
+    }
+
+    .arrival-page .arrival-next-actions__title {
+      margin: 0;
+      color: #1f2937;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .arrival-page .arrival-next-actions__description {
+      margin: 8px 0 16px;
+      color: #4b5563;
+      line-height: 1.55;
+    }
+
+    .arrival-page .arrival-next-actions__buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .arrival-page .arrival-next-actions__button {
+      box-sizing: border-box;
+      display: inline-flex;
+      flex: 1 1 220px;
+      min-width: 0;
+      min-height: 44px;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-weight: 700;
+      line-height: 1.25;
+      text-align: center;
+      overflow-wrap: anywhere;
+    }
+
+    .arrival-page main a.arrival-next-actions__button,
+    .arrival-page main a.arrival-next-actions__button:visited {
+      color: #1A56DB;
+      background: #FFFFFF;
+      border: 1px solid #BCD0EF;
+      text-decoration: none;
+    }
+
+    .arrival-page main a.arrival-next-actions__button:hover,
+    .arrival-page main a.arrival-next-actions__button:focus,
+    .arrival-page main a.arrival-next-actions__button:focus-visible {
+      color: #1A56DB;
+      background: #EFF6FF;
+      border-color: #1A56DB;
+      text-decoration: none;
+    }
+
+    .arrival-page main a.arrival-next-actions__button:focus-visible {
+      outline: 3px solid #1A56DB;
+      outline-offset: 2px;
+    }
+
+    @media (max-width: 700px) {
+      .arrival-page .arrival-next-actions {
+        padding: 20px;
+      }
+
+      .arrival-page .arrival-next-actions__button {
+        flex-basis: 100%;
+      }
+    }
+  </style>
   <script type="application/ld+json">
 {
       "@context": "https://schema.org",
@@ -202,7 +294,7 @@
           <h2 id="arrival-steps-title">De l’avion au hall des arrivées</h2>
           <p>Pour les voyageurs qui entrent en Corée, le parcours est généralement simple. La distance à parcourir varie selon la porte et le terminal, mais l’ordre des grandes étapes reste le même.</p>
         </div>
-        <div class="arrival-steps-layout">
+        <div class="arrival-steps-layout arrival-steps-layout--stacked">
           <figure class="arrival-steps-media">
             <img src="../images/arrival/incheon-airport-arrival-route.webp" alt="Des voyageurs suivant les panneaux Immigration et Baggage Claim dans l’aéroport international d’Incheon" width="1448" height="1086" loading="lazy" decoding="async">
             <figcaption>Suivez les panneaux dans l’ordre ; le chemin exact dépend de la porte et du terminal.</figcaption>
@@ -245,10 +337,58 @@
               <span class="arrival-step__number" aria-hidden="true">04</span>
               <div class="arrival-step__content">
                 <h3>Douane</h3>
-                <p>Une fois vos bagages récupérés, suivez les panneaux de la douane vers la sortie.</p>
-                <p>Si vous transportez des biens susceptibles de devoir être déclarés, consultez les douanes coréennes plutôt que de vous fier aux règles d’un autre pays. Les articles dépassant la franchise et les marchandises soumises à restriction peuvent nécessiter une déclaration.</p>
-                <p>Si vous n’avez rien à déclarer, suivez le circuit correspondant indiqué à l’aéroport.</p>
-                <p class="arrival-context-link"><a href="https://www.customs.go.kr/english/main.do" target="_blank" rel="noopener noreferrer" aria-label="Informations du Korea Customs Service pour les voyageurs, site externe, s’ouvre dans un nouvel onglet">Korea Customs Service — Voyageurs <span aria-hidden="true">↗</span></a></p>
+                <p>Après avoir récupéré vos bagages, suivez les panneaux Customs avant d’entrer dans le hall public des arrivées. L’obligation de déclarer dépend de ce que vous apportez en Corée du Sud, et pas simplement de votre nationalité.</p>
+                <p><strong>Faut-il remplir une déclaration en douane ?</strong></p>
+                <p>Si vous n’avez rien à déclarer, vous n’avez pas besoin de remplir de formulaire de déclaration en douane. Empruntez le passage indiqué <strong>Rien à déclarer (Nothing to Declare)</strong>. Les agents des douanes peuvent néanmoins inspecter vos bagages.</p>
+                <p>Si vous transportez des biens à déclarer, remplissez une déclaration et empruntez le passage <strong>Marchandises à déclarer (Goods to Declare)</strong>.</p>
+                <p><strong>Que faut-il vérifier avant l’arrivée ?</strong></p>
+                <ul class="arrival-editorial-list">
+                  <li class="arrival-editorial-block"><p><strong>Achats et cadeaux :</strong> La franchise générale applicable aux biens imposables transportés par les voyageurs est de US$800. Les biens dépassant cette franchise peuvent devoir être déclarés. Les marchandises commerciales et les échantillons relèvent de règles distinctes.</p></li>
+                  <li class="arrival-editorial-block"><p><strong>Espèces et moyens de paiement :</strong> Un montant total supérieur à US$10,000 ou à sa contre-valeur peut nécessiter une déclaration en douane. Cela comprend les devises étrangères, les wons coréens et les chèques concernés par cette obligation.</p></li>
+                  <li class="arrival-editorial-block"><p><strong>Aliments et produits agricoles :</strong> La viande, la viande séchée, les saucisses, les produits laitiers, les œufs, les fruits frais, les plantes et les graines peuvent être soumis à des restrictions de quarantaine. Un emballage scellé ne signifie pas que le produit est autorisé à entrer.</p></li>
+                  <li class="arrival-editorial-block"><p><strong>Médicaments et biens soumis à restriction :</strong> Certains médicaments, notamment ceux contenant des substances réglementées, nécessitent des vérifications supplémentaires ou une autorisation préalable. Une déclaration en douane ne remplace pas une autorisation d’importation.</p></li>
+                </ul>
+                <p><strong>Et vos vêtements, votre ordinateur portable ou votre appareil photo ?</strong></p>
+                <p>Les effets personnels d’usage courant ne sont pas automatiquement considérés comme de nouveaux achats. Toutefois, le traitement des équipements de grande valeur ou des biens achetés à l’étranger peut dépendre de leur valeur, de leur usage et de votre intention de les ressortir de Corée du Sud.</p>
+                <p>Si vous séjournez brièvement en Corée du Sud avec des articles coûteux achetés dans un autre pays, renseignez-vous auprès des douanes coréennes sur les conditions d’admission temporaire avant de voyager. Ne supposez pas que le fait de les ressortir du pays suffit à les exonérer.</p>
+                <p><strong>Comment déclarer un article ?</strong></p>
+                <p>Vous pouvez utiliser un formulaire papier ou le service officiel de déclaration sur mobile des douanes coréennes. Gardez à portée de main les reçus, les justificatifs et les autorisations nécessaires en cas de contrôle.</p>
+                <p>Si vous ne savez pas si un article doit être déclaré ou soumis à un contrôle de quarantaine, demandez à un agent des douanes ou des services de quarantaine avant de quitter la zone douanière.</p>
+                <p>L’<strong>e-Arrival Card</strong> utilisée pour l’immigration est distincte de la déclaration en douane. Remplir l’une ne remplace pas l’autre.</p>
+                <p><strong>Informations officielles</strong></p>
+                <ul class="arrival-official-sources">
+                  <li><a href="https://www.customs.go.kr/english/cm/cntnts/cntntsView.do?cntntsId=2743&amp;mi=8069" target="_blank" rel="noopener noreferrer">Douanes coréennes — Guide douanier pour les voyageurs</a></li>
+                  <li><a href="https://www.airport.kr/ap_en/1445/subview.do" target="_blank" rel="noopener noreferrer">Aéroport d’Incheon — Déclaration en douane</a></li>
+                  <li><a href="https://m.customs.go.kr/tms/" target="_blank" rel="noopener noreferrer">Déclaration douanière officielle pour les voyageurs — Service en ligne</a></li>
+                </ul>
+                <div class="arrival-entry-note">
+                  <p><strong>Voyager en Corée du Sud avec des médicaments sur ordonnance</strong></p>
+                  <p>Si vous prenez régulièrement un médicament sur ordonnance, vérifiez les règles coréennes d’importation avant votre vol. Un médicament prescrit légalement dans votre pays n’est pas automatiquement autorisé à entrer en Corée du Sud.</p>
+                  <p><strong>Puis-je emporter mon traitement habituel ?</strong></p>
+                  <p>Les douanes coréennes publient, pour le dédouanement des médicaments à usage personnel, un repère de 6 flacons ou jusqu’à 3 mois de traitement selon la posologie. Il s’agit d’un repère douanier général, pas d’une autorisation valable pour tous les médicaments. Les ingrédients, les quantités et les restrictions d’importation restent à vérifier.</p>
+                  <p><strong>Et si j’ai besoin de plus de 3 mois de traitement ?</strong></p>
+                  <p>Si vous séjournez en Corée du Sud pendant un semestre, travaillez à l’étranger ou poursuivez le traitement d’une maladie chronique, ne supposez pas qu’une ordonnance suffit pour emporter 6 mois de médicaments.</p>
+                  <p>Contactez les douanes coréennes avant le départ. Indiquez le principe actif, le dosage du médicament, la dose quotidienne, la quantité totale et la durée prévue de votre séjour. Demandez si une procédure supplémentaire d’importation ou de dérogation est nécessaire.</p>
+                  <p><strong>Certains médicaments sur ordonnance nécessitent-ils une autorisation préalable ?</strong></p>
+                  <p>Oui. Les médicaments contenant des substances classées comme stupéfiants ou psychotropes par la législation coréenne nécessitent des vérifications distinctes. Certains traitements du TDAH, médicaments pour dormir ou contre l’anxiété et antidouleurs sur ordonnance peuvent être concernés.</p>
+                  <p>Vérifiez le principe actif plutôt que de vous fier uniquement au nom de marque. Si votre médicament est réglementé en Corée du Sud, obtenez l’autorisation nécessaire du ministère sud-coréen de la Sécurité alimentaire et pharmaceutique (MFDS) avant de voyager.</p>
+                  <p>Une ordonnance ou une déclaration en douane ne remplace pas l’autorisation du MFDS.</p>
+                  <p><strong>Quels documents préparer ?</strong></p>
+                  <p>Conservez si possible les médicaments dans leur emballage d’origine avec l’étiquette. Préparez une ordonnance en cours de validité et une attestation médicale précisant l’identité du patient, le nom générique du médicament, la dose prescrite, la quantité et le motif du traitement.</p>
+                  <p>Si une autorisation du MFDS est nécessaire, emportez le document délivré et respectez les quantités et conditions qui y figurent.</p>
+                  <p>Pour les médicaments injectables ou à conserver au froid, vérifiez aussi les conditions de transport de la compagnie aérienne et les consignes de conservation du médicament avant de prendre l’avion.</p>
+                  <p><strong>Que faire si la douane me pose des questions sur mes médicaments ?</strong></p>
+                  <p>Expliquez qu’ils sont destinés à votre traitement personnel et présentez l’ordonnance, les documents médicaux et toute autorisation requise.</p>
+                  <p>Si vous ne savez pas si votre médicament doit être déclaré ou peut entrer dans le pays, demandez à un agent des douanes avant de quitter la zone douanière. Déclarer un médicament soumis à restriction ne rend pas automatiquement son importation légale.</p>
+                  <p>N’attendez pas l’arrivée pour éclaircir une question d’autorisation. Si les règles applicables ne permettent pas d’emporter votre médicament en Corée du Sud, discutez avant le voyage avec le professionnel de santé qui vous le prescrit d’un plan adapté pour votre traitement et votre approvisionnement.</p>
+                  <p><strong>Vérifier les exigences officielles</strong></p>
+                  <ul class="arrival-official-sources">
+                    <li><a href="https://www.customs.go.kr/incheon_airport/cm/cntnts/cntntsView.do?cntntsId=6689&amp;mi=12546" target="_blank" rel="noopener noreferrer">Douanes coréennes — Médicaments et compléments alimentaires à usage personnel</a></li>
+                    <li><a href="https://nedrug.mfds.go.kr/CCAAI01/init" target="_blank" rel="noopener noreferrer">MFDS — Demande d’autorisation de transport de stupéfiants pour un traitement personnel</a></li>
+                    <li><a href="https://www.customs.go.kr/english/ad/engcnsl/selectEngCnslList.do?mi=8049" target="_blank" rel="noopener noreferrer">Douanes coréennes — Questions et réponses en anglais</a></li>
+                  </ul>
+                  <p>Pour les médicaments nécessitant une autorisation du MFDS, faites la demande suffisamment avant votre départ et vérifiez que l’autorisation a bien été délivrée. Le service officiel en ligne permet de suivre l’état de votre demande.</p>
+                </div>
               </div>
             </li>
             <li class="arrival-step">
@@ -302,6 +442,13 @@
         <p>Dans le hall public des arrivées, les formalités d’entrée sont derrière vous. La suite dépend du voyage : connecter votre téléphone, conserver l’adresse de l’hébergement en coréen, prévoir un paiement de secours et choisir un trajet adapté à vos bagages.</p>
         <p>Consultez le <a href="/fr/airport.html">guide du hall des arrivées d’Incheon</a> pour ces premières démarches pratiques.</p>
         <p>Si votre seule question restante concerne le trajet jusqu’à l’hébergement, le <a href="/fr/airport-transfer.html">guide des transports depuis l’aéroport</a> compare l’AREX, le bus d’aéroport, le taxi et le transfert réservé à partir du trajet complet, porte à porte.</p>
+        <aside class="arrival-next-actions" aria-labelledby="arrival-stay-guide-cta-title">
+          <p class="arrival-next-actions__title" id="arrival-stay-guide-cta-title">Vous cherchez encore où séjourner à Séoul ?</p>
+          <p class="arrival-next-actions__description">L’emplacement de votre hôtel influence le trajet depuis l’aéroport, notamment les correspondances, le transport des bagages et la dernière partie à pied.</p>
+          <div class="arrival-next-actions__buttons">
+            <a class="arrival-next-actions__button" href="/fr/accommodation.html">Consulter le guide des hébergements à Séoul</a>
+          </div>
+        </aside>
       </div>
     </section>
 
