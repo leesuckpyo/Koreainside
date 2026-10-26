@@ -22,6 +22,98 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400..600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
   <link rel="stylesheet" href="../arrival.css">
+  <style>
+    .arrival-page .arrival-steps-layout--stacked {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .arrival-page .arrival-steps-layout--stacked .arrival-steps-media,
+    .arrival-page .arrival-steps-layout--stacked .arrival-timeline {
+      width: 100%;
+      max-width: 900px;
+      margin-inline: auto;
+    }
+
+    .arrival-page .arrival-steps-layout--stacked .arrival-steps-media {
+      position: static;
+      top: auto;
+    }
+
+    .arrival-page .arrival-next-actions {
+      margin-top: 32px;
+      padding: 24px;
+      background: #f7f9fc;
+      border: 1px solid #dfe7f3;
+      border-radius: 12px;
+    }
+
+    .arrival-page .arrival-next-actions__title {
+      margin: 0;
+      color: #1f2937;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .arrival-page .arrival-next-actions__description {
+      margin: 8px 0 16px;
+      color: #4b5563;
+      line-height: 1.55;
+    }
+
+    .arrival-page .arrival-next-actions__buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .arrival-page .arrival-next-actions__button {
+      box-sizing: border-box;
+      display: inline-flex;
+      flex: 1 1 220px;
+      min-width: 0;
+      min-height: 44px;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-weight: 700;
+      line-height: 1.25;
+      text-align: center;
+      overflow-wrap: anywhere;
+    }
+
+    .arrival-page main a.arrival-next-actions__button,
+    .arrival-page main a.arrival-next-actions__button:visited {
+      color: #1A56DB;
+      background: #FFFFFF;
+      border: 1px solid #BCD0EF;
+      text-decoration: none;
+    }
+
+    .arrival-page main a.arrival-next-actions__button:hover,
+    .arrival-page main a.arrival-next-actions__button:focus,
+    .arrival-page main a.arrival-next-actions__button:focus-visible {
+      color: #1A56DB;
+      background: #EFF6FF;
+      border-color: #1A56DB;
+      text-decoration: none;
+    }
+
+    .arrival-page main a.arrival-next-actions__button:focus-visible {
+      outline: 3px solid #1A56DB;
+      outline-offset: 2px;
+    }
+
+    @media (max-width: 700px) {
+      .arrival-page .arrival-next-actions {
+        padding: 20px;
+      }
+
+      .arrival-page .arrival-next-actions__button {
+        flex-basis: 100%;
+      }
+    }
+  </style>
   <script type="application/ld+json">
 {
       "@context": "https://schema.org",
@@ -153,7 +245,7 @@
         </div>
         <figure class="arrival-hero__media">
           <img src="../images/arrival/incheon-airport-arrival-hero.webp" alt="Viajeros con maletas caminando bajo una señal de Arrivals en el aeropuerto internacional de Incheon" width="1536" height="1024" loading="eager" decoding="async" fetchpriority="high">
-          <figcaption>Llegadas · Incheon International Airport</figcaption>
+          <figcaption>Llegadas · Aeropuerto Internacional de Incheon</figcaption>
         </figure>
       </div>
     </section>
@@ -202,7 +294,7 @@
           <h2 id="arrival-steps-title">Del avión a la salida pública del aeropuerto</h2>
           <p>Para los viajeros que entran en Corea del Sur, el recorrido suele ser sencillo. La distancia a pie puede variar según la puerta y la terminal, pero el orden de los pasos principales es el mismo.</p>
         </div>
-        <div class="arrival-steps-layout">
+        <div class="arrival-steps-layout arrival-steps-layout--stacked">
           <figure class="arrival-steps-media">
             <img src="../images/arrival/incheon-airport-arrival-route.webp" alt="Viajeros siguiendo las señales de Immigration y Baggage Claim en el aeropuerto internacional de Incheon" width="1448" height="1086" loading="lazy" decoding="async">
             <figcaption>Sigue las señales del aeropuerto en orden; la ruta exacta a pie depende de la puerta y la terminal.</figcaption>
@@ -245,10 +337,58 @@
               <span class="arrival-step__number" aria-hidden="true">04</span>
               <div class="arrival-step__content">
                 <h3>Aduana</h3>
-                <p>Después de recoger el equipaje, sigue las señales de aduanas hacia la salida.</p>
-                <p>Si llevas artículos que puedan requerir declaración, consulta Korea Customs en lugar de basarte en las normas de otro país. Los artículos que superen la franquicia libre de impuestos y los bienes restringidos pueden requerir declaración.</p>
-                <p>Si no tienes nada que declarar, sigue el canal de aduanas correspondiente indicado en el aeropuerto.</p>
-                <p class="arrival-context-link"><a href="https://www.customs.go.kr/english/main.do" target="_blank" rel="noopener noreferrer" aria-label="Información para viajeros de Korea Customs Service, sitio externo, se abre en una pestaña nueva">Korea Customs Service — Viajeros <span aria-hidden="true">↗</span></a></p>
+                <p>Después de recoger tu equipaje, sigue los letreros de Customs antes de salir al área pública de llegadas. La necesidad de declarar depende de lo que lleves a Corea del Sur, no solamente de tu nacionalidad.</p>
+                <p><strong>¿Necesitas llenar una declaración de aduana?</strong></p>
+                <p>Si no tienes nada que declarar, no necesitas llenar una declaración de aduana. Sigue el paso señalado como <strong>Nada que declarar (Nothing to Declare)</strong>. Aun así, el personal de aduana puede revisar tu equipaje.</p>
+                <p>Si llevas artículos que debas declarar, llena la declaración y utiliza el paso de <strong>Artículos por declarar (Goods to Declare)</strong>.</p>
+                <p><strong>¿Qué debes revisar antes de llegar?</strong></p>
+                <ul class="arrival-editorial-list">
+                  <li class="arrival-editorial-block"><p><strong>Compras y regalos:</strong> La franquicia general para artículos sujetos a impuestos que llevan los viajeros es de US$800. Los artículos que superen ese monto pueden requerir declaración. Las mercancías comerciales y las muestras tienen reglas específicas.</p></li>
+                  <li class="arrival-editorial-block"><p><strong>Efectivo y medios de pago:</strong> Si el monto total supera US$10,000 o su equivalente, puede ser necesario declararlo en aduana. Esto incluye moneda extranjera, wones coreanos y los cheques sujetos a esta obligación.</p></li>
+                  <li class="arrival-editorial-block"><p><strong>Alimentos y productos agrícolas:</strong> La carne, la carne seca, los embutidos, los productos lácteos, los huevos, la fruta fresca, las plantas y las semillas pueden estar sujetos a restricciones de cuarentena. Que un producto venga sellado no significa que esté permitido ingresarlo.</p></li>
+                  <li class="arrival-editorial-block"><p><strong>Medicamentos y artículos restringidos:</strong> Algunos medicamentos, incluidos los que contienen sustancias controladas, requieren verificaciones adicionales o autorización previa. La declaración de aduana no sustituye un permiso de importación.</p></li>
+                </ul>
+                <p><strong>¿Qué pasa con tu ropa, laptop o cámara?</strong></p>
+                <p>Tus pertenencias personales de uso habitual no se consideran automáticamente compras nuevas. Sin embargo, el tratamiento de equipos de alto valor o de artículos comprados en el extranjero puede depender de su valor, su uso y de si los sacarás de Corea del Sur al terminar tu visita.</p>
+                <p>Si visitarás Corea del Sur por poco tiempo con artículos de alto valor comprados en otro país, consulta los requisitos de importación temporal con el Servicio de Aduanas de Corea antes de viajar. No des por hecho que volver a sacarlos del país los exenta automáticamente de impuestos.</p>
+                <p><strong>¿Cómo declaras un artículo?</strong></p>
+                <p>Puedes usar un formulario en papel o el servicio oficial de declaración móvil del Servicio de Aduanas de Corea. Ten a la mano los recibos, los documentos de respaldo y los permisos necesarios por si te los solicitan.</p>
+                <p>Si no sabes si un artículo se debe declarar o pasar por un control de cuarentena, pregunta al personal de aduana o de los servicios de cuarentena antes de salir del área de control aduanero.</p>
+                <p>La <strong>e-Arrival Card</strong> que se utiliza para migración es distinta de la declaración de aduana. Llenar una no sustituye la otra.</p>
+                <p><strong>Información oficial</strong></p>
+                <ul class="arrival-official-sources">
+                  <li><a href="https://www.customs.go.kr/english/cm/cntnts/cntntsView.do?cntntsId=2743&amp;mi=8069" target="_blank" rel="noopener noreferrer">Servicio de Aduanas de Corea — Guía aduanera para viajeros</a></li>
+                  <li><a href="https://www.airport.kr/ap_en/1445/subview.do" target="_blank" rel="noopener noreferrer">Aeropuerto de Incheon — Declaración de aduana</a></li>
+                  <li><a href="https://m.customs.go.kr/tms/" target="_blank" rel="noopener noreferrer">Declaración aduanera oficial para viajeros — Servicio en línea</a></li>
+                </ul>
+                <div class="arrival-entry-note">
+                  <p><strong>Llevar medicamentos recetados a Corea del Sur</strong></p>
+                  <p>Si tomas medicamentos recetados de forma habitual, revisa las reglas para ingresarlos a Corea del Sur antes de volar. Que te los hayan recetado legalmente en tu país no significa que su ingreso a Corea del Sur esté autorizado.</p>
+                  <p><strong>¿Puedo llevar mi medicamento habitual?</strong></p>
+                  <p>El Servicio de Aduanas de Corea publica como referencia para el despacho de medicamentos de uso personal una cantidad de 6 frascos o hasta 3 meses de tratamiento, según la dosis indicada. Es una referencia aduanera general, no una autorización para cualquier medicamento. También importan los ingredientes, la cantidad y las restricciones de importación.</p>
+                  <p><strong>¿Qué pasa si necesito medicamento para más de 3 meses?</strong></p>
+                  <p>Si pasarás un semestre en Corea del Sur, trabajarás en el extranjero o continuarás el tratamiento de una enfermedad crónica, no des por hecho que puedes llevar medicamento para 6 meses solo por tener una receta.</p>
+                  <p>Contacta al Servicio de Aduanas de Corea antes de salir. Indica el principio activo, la concentración del medicamento, la dosis diaria, la cantidad total y la duración prevista de tu estancia. Pregunta si necesitas algún trámite adicional de importación o de exención.</p>
+                  <p><strong>¿Hay medicamentos recetados que requieren autorización previa?</strong></p>
+                  <p>Sí. Los medicamentos que contienen sustancias clasificadas como estupefacientes o psicotrópicos conforme a la legislación coreana requieren verificaciones específicas. Entre ellos puede haber ciertos tratamientos para el TDAH, medicamentos para dormir o para la ansiedad y analgésicos recetados.</p>
+                  <p>Revisa el principio activo; no te guíes solo por la marca. Si tu medicamento está controlado en Corea del Sur, obtén la autorización necesaria del Ministerio de Seguridad Alimentaria y Farmacéutica de Corea del Sur (MFDS) antes de viajar.</p>
+                  <p>Una receta médica o una declaración de aduana no sustituye el permiso del MFDS.</p>
+                  <p><strong>¿Qué documentos debo preparar?</strong></p>
+                  <p>Siempre que sea posible, conserva los medicamentos en su empaque original con la etiqueta. Prepara una receta vigente y una carta médica que indique el paciente, el nombre genérico del medicamento, la dosis recetada, la cantidad y el motivo del tratamiento.</p>
+                  <p>Si necesitas un permiso del MFDS, lleva la autorización emitida y respeta las cantidades y condiciones que aparecen en ella.</p>
+                  <p>Si llevas medicamentos inyectables o que necesitan refrigeración, revisa también las condiciones de transporte de la aerolínea y las instrucciones de almacenamiento antes de volar.</p>
+                  <p><strong>¿Qué hago si aduana me pregunta por mis medicamentos?</strong></p>
+                  <p>Explica que los medicamentos son para tu tratamiento personal y muestra la receta, los documentos médicos y los permisos que correspondan.</p>
+                  <p>Si no sabes si tu medicamento se debe declarar o si está permitido ingresarlo, pregunta al personal de aduana antes de salir del área de control aduanero. Declarar un medicamento restringido no hace que su importación sea legal por sí sola.</p>
+                  <p>No esperes a llegar para resolver dudas sobre los permisos. Si las reglas aplicables no permiten llevar tu medicamento a Corea del Sur, acuerda antes del viaje con el profesional de salud que te lo receta un plan de tratamiento y suministro adecuado.</p>
+                  <p><strong>Consulta los requisitos oficiales</strong></p>
+                  <ul class="arrival-official-sources">
+                    <li><a href="https://www.customs.go.kr/incheon_airport/cm/cntnts/cntntsView.do?cntntsId=6689&amp;mi=12546" target="_blank" rel="noopener noreferrer">Servicio de Aduanas de Corea — Medicamentos y suplementos alimenticios para uso personal</a></li>
+                    <li><a href="https://nedrug.mfds.go.kr/CCAAI01/init" target="_blank" rel="noopener noreferrer">MFDS — Solicitud de permiso para llevar estupefacientes para tratamiento personal</a></li>
+                    <li><a href="https://www.customs.go.kr/english/ad/engcnsl/selectEngCnslList.do?mi=8049" target="_blank" rel="noopener noreferrer">Servicio de Aduanas de Corea — Consultas y respuestas en inglés</a></li>
+                  </ul>
+                  <p>Si tu medicamento requiere un permiso del MFDS, solicítalo con suficiente anticipación y confirma que ya fue autorizado antes de viajar. El servicio oficial en línea permite consultar el estado de la solicitud.</p>
+                </div>
               </div>
             </li>
             <li class="arrival-step">
@@ -279,7 +419,7 @@
             <article class="arrival-terminal-row">
               <h3>Terminal 2</h3>
               <p>Terminal 2 tiene sus propias instalaciones de llegada y no está conectada con Terminal 1 mediante una ruta peatonal pública. Si necesitas desplazarte entre terminales después de entrar en la zona pública, utiliza la información actual del aeropuerto sobre transporte entre terminales.</p>
-              <p class="arrival-context-link"><a href="https://www.airport.kr/ap_en/1525/subview.do" target="_blank" rel="noopener noreferrer" aria-label="Información oficial del aeropuerto de Incheon sobre traslados entre terminales; abre una pestaña nueva">Incheon Airport — Transporte entre terminales <span aria-hidden="true">↗</span></a></p>
+              <p class="arrival-context-link"><a href="https://www.airport.kr/ap_en/1525/subview.do" target="_blank" rel="noopener noreferrer" aria-label="Información oficial del aeropuerto de Incheon sobre traslados entre terminales; abre una pestaña nueva">Aeropuerto de Incheon — Transporte entre terminales <span aria-hidden="true">↗</span></a></p>
             </article>
             <p class="arrival-terminal-orientation">El mapa sirve para entender dónde se encuentran inmigración, recogida de equipaje, aduanas y la sala pública de llegadas entre sí. Para información en tiempo real sobre puertas, cintas o instalaciones, sigue la señalización actual del aeropuerto y la información de vuelos.</p>
           </div>
@@ -302,6 +442,13 @@
         <p>Cuando ya estás en la sala pública de llegadas, el proceso de entrada ha quedado atrás. Lo siguiente depende de tu viaje: conectar el teléfono, guardar la dirección del alojamiento en coreano, tener una alternativa de pago y elegir una ruta que siga siendo práctica con tu equipaje.</p>
         <p>Continúa con la <a href="airport.html">Guía de la Sala de Llegadas del aeropuerto de Incheon</a> para esos primeros pasos prácticos.</p>
         <p>Si la única duda que te queda es cómo llegar a tu alojamiento, la <a href="airport-transfer.html">Guía de Traslados desde el Aeropuerto</a> compara AREX, autobús del aeropuerto, taxi y traslado reservado con antelación según el viaje completo puerta a puerta.</p>
+        <aside class="arrival-next-actions" aria-labelledby="arrival-stay-guide-cta-title">
+          <p class="arrival-next-actions__title" id="arrival-stay-guide-cta-title">¿Sigues decidiendo dónde hospedarte en Seúl?</p>
+          <p class="arrival-next-actions__description">La ubicación de tu hotel influye en el traslado desde el aeropuerto, incluidos los transbordos, el manejo de tus maletas y el último tramo a pie.</p>
+          <div class="arrival-next-actions__buttons">
+            <a class="arrival-next-actions__button" href="accommodation.html">Ver guía de hospedaje en Seúl</a>
+          </div>
+        </aside>
       </div>
     </section>
 
@@ -346,9 +493,9 @@
           <p>Las normas de entrada y las operaciones del aeropuerto pueden cambiar. Usa estas fuentes oficiales cuando un detalle afecte a tu propio viaje.</p>
         </div>
         <ul class="arrival-official-sources">
-          <li><a href="https://www.airport.kr/ap_en/1439/subview.do" target="_blank" rel="noopener noreferrer" aria-label="Procedimientos de llegada al aeropuerto de Incheon; abre una pestaña nueva">Incheon Airport — Procedimientos de llegada <span aria-hidden="true">↗</span></a></li>
-          <li><a href="https://www.airport.kr/ap_en/1399/subview.do" target="_blank" rel="noopener noreferrer" aria-label="Vuelos de llegada al aeropuerto de Incheon; abre una pestaña nueva">Incheon Airport — Vuelos de llegada <span aria-hidden="true">↗</span></a></li>
-          <li><a href="https://www.airport.kr/ap_en/1525/subview.do" target="_blank" rel="noopener noreferrer" aria-label="Transporte entre terminales del aeropuerto de Incheon; abre una pestaña nueva">Incheon Airport — Transporte entre terminales <span aria-hidden="true">↗</span></a></li>
+          <li><a href="https://www.airport.kr/ap_en/1439/subview.do" target="_blank" rel="noopener noreferrer" aria-label="Procedimientos de llegada al aeropuerto de Incheon; abre una pestaña nueva">Aeropuerto de Incheon — Procedimientos de llegada <span aria-hidden="true">↗</span></a></li>
+          <li><a href="https://www.airport.kr/ap_en/1399/subview.do" target="_blank" rel="noopener noreferrer" aria-label="Vuelos de llegada al aeropuerto de Incheon; abre una pestaña nueva">Aeropuerto de Incheon — Vuelos de llegada <span aria-hidden="true">↗</span></a></li>
+          <li><a href="https://www.airport.kr/ap_en/1525/subview.do" target="_blank" rel="noopener noreferrer" aria-label="Transporte entre terminales del aeropuerto de Incheon; abre una pestaña nueva">Aeropuerto de Incheon — Transporte entre terminales <span aria-hidden="true">↗</span></a></li>
           <li><a href="https://www.k-eta.go.kr/" target="_blank" rel="noopener noreferrer" aria-label="Sitio oficial de K-ETA, sitio externo, se abre en una pestaña nueva">K-ETA <span aria-hidden="true">↗</span></a></li>
           <li><a href="https://www.e-arrivalcard.go.kr/portal/main/index.do?locale=EN" target="_blank" rel="noopener noreferrer" aria-label="Sitio oficial de e-Arrival Card de Corea del Sur; abre una pestaña nueva">Korea e-Arrival Card oficial <span aria-hidden="true">↗</span></a></li>
           <li><a href="https://www.customs.go.kr/english/main.do" target="_blank" rel="noopener noreferrer" aria-label="Korea Customs Service, sitio externo, se abre en una pestaña nueva">Korea Customs Service <span aria-hidden="true">↗</span></a></li>

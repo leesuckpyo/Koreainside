@@ -22,6 +22,98 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400..600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
   <link rel="stylesheet" href="../arrival.css">
+  <style>
+    .arrival-page .arrival-steps-layout--stacked {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .arrival-page .arrival-steps-layout--stacked .arrival-steps-media,
+    .arrival-page .arrival-steps-layout--stacked .arrival-timeline {
+      width: 100%;
+      max-width: 900px;
+      margin-inline: auto;
+    }
+
+    .arrival-page .arrival-steps-layout--stacked .arrival-steps-media {
+      position: static;
+      top: auto;
+    }
+
+    .arrival-page .arrival-next-actions {
+      margin-top: 32px;
+      padding: 24px;
+      background: #f7f9fc;
+      border: 1px solid #dfe7f3;
+      border-radius: 12px;
+    }
+
+    .arrival-page .arrival-next-actions__title {
+      margin: 0;
+      color: #1f2937;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .arrival-page .arrival-next-actions__description {
+      margin: 8px 0 16px;
+      color: #4b5563;
+      line-height: 1.55;
+    }
+
+    .arrival-page .arrival-next-actions__buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .arrival-page .arrival-next-actions__button {
+      box-sizing: border-box;
+      display: inline-flex;
+      flex: 1 1 220px;
+      min-width: 0;
+      min-height: 44px;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-weight: 700;
+      line-height: 1.25;
+      text-align: center;
+      overflow-wrap: anywhere;
+    }
+
+    .arrival-page main a.arrival-next-actions__button,
+    .arrival-page main a.arrival-next-actions__button:visited {
+      color: #1A56DB;
+      background: #FFFFFF;
+      border: 1px solid #BCD0EF;
+      text-decoration: none;
+    }
+
+    .arrival-page main a.arrival-next-actions__button:hover,
+    .arrival-page main a.arrival-next-actions__button:focus,
+    .arrival-page main a.arrival-next-actions__button:focus-visible {
+      color: #1A56DB;
+      background: #EFF6FF;
+      border-color: #1A56DB;
+      text-decoration: none;
+    }
+
+    .arrival-page main a.arrival-next-actions__button:focus-visible {
+      outline: 3px solid #1A56DB;
+      outline-offset: 2px;
+    }
+
+    @media (max-width: 700px) {
+      .arrival-page .arrival-next-actions {
+        padding: 20px;
+      }
+
+      .arrival-page .arrival-next-actions__button {
+        flex-basis: 100%;
+      }
+    }
+  </style>
   <script type="application/ld+json">
 {
       "@context": "https://schema.org",
@@ -202,7 +294,7 @@
           <h2 id="arrival-steps-title">從下飛機到入境大廳</h2>
           <p>對要入境韓國的旅客來說，動線通常很單純。步行距離會隨登機門與航廈不同，但主要步驟的順序相同。</p>
         </div>
-        <div class="arrival-steps-layout">
+        <div class="arrival-steps-layout arrival-steps-layout--stacked">
           <figure class="arrival-steps-media">
             <img src="../images/arrival/incheon-airport-arrival-route.webp" alt="旅客在仁川國際機場依循入境審查與行李提領指標前進" width="1448" height="1086" loading="lazy" decoding="async">
             <figcaption>依序跟著機場指標走；實際步行路線取決於登機門與航廈。</figcaption>
@@ -245,10 +337,58 @@
               <span class="arrival-step__number" aria-hidden="true">04</span>
               <div class="arrival-step__content">
                 <h3>海關</h3>
-                <p>領取行李後，依循海關指標前往出口。</p>
-                <p>若攜帶可能需要申報的物品，請查閱韓國海關規定，不要套用其他國家的規則。超過免稅額度的物品及管制物品可能需要申報。</p>
-                <p>如果沒有需要申報的物品，請依機場標示走適用的海關通道。</p>
-                <p class="arrival-context-link"><a href="https://www.customs.go.kr/english/main.do" target="_blank" rel="noopener noreferrer" aria-label="韓國關稅廳旅客資訊，外部網站，另開分頁">韓國關稅廳 — 旅客資訊 <span aria-hidden="true">↗</span></a></p>
+                <p>領取行李後，先依循 Customs 指標辦理海關通關，再進入入境大廳。是否需要申報，取決於你帶什麼物品進入韓國，而不只是國籍。</p>
+                <p><strong>需要填寫海關申報單嗎？</strong></p>
+                <p>如果沒有應申報的物品，就不需要填寫海關申報單。依機場標示走<strong>無應申報物品通道（Nothing to Declare）</strong>。海關人員仍可能檢查你的行李。</p>
+                <p>如果攜帶應申報物品，請填寫申報單，並走<strong>應申報物品通道（Goods to Declare）</strong>。</p>
+                <p><strong>抵達前應該確認哪些物品？</strong></p>
+                <ul class="arrival-editorial-list">
+                  <li class="arrival-editorial-block"><p><strong>購物與禮品：</strong>旅客攜帶應稅物品的一般免稅額度為 US$800。超過額度的物品可能需要申報。商業貨物與樣品另有規定。</p></li>
+                  <li class="arrival-editorial-block"><p><strong>現金與支付工具：</strong>合計超過 US$10,000 或等值金額時，可能需要向海關申報。計算範圍包括外幣、韓元及適用申報規定的支票等。</p></li>
+                  <li class="arrival-editorial-block"><p><strong>食品與農產品：</strong>肉類、肉乾、香腸、乳製品、蛋類、新鮮水果、植物與種子，可能受到檢疫限制。密封包裝不代表一定可以攜帶入境。</p></li>
+                  <li class="arrival-editorial-block"><p><strong>藥品與管制物品：</strong>部分藥品，包括含有管制成分的藥品，需要額外確認或事前許可。海關申報不能取代輸入許可。</p></li>
+                </ul>
+                <p><strong>衣物、筆電或相機也要申報嗎？</strong></p>
+                <p>平常使用的個人物品不會一律被當成新購商品。不過，高價設備或在國外購買的物品，可能因價值、用途，以及是否會在離開韓國時再帶出境，而有不同的通關處理方式。</p>
+                <p>如果只是短暫到訪韓國，卻攜帶在其他國家購買的高價物品，請在出發前向韓國關稅廳確認暫時輸入規定。不要認為之後會再帶出境，就一定免稅。</p>
+                <p><strong>如何辦理申報？</strong></p>
+                <p>可以填寫紙本申報單，或使用韓國關稅廳的官方行動申報服務。請備妥相關收據、證明文件，以及必要的許可文件，以便查驗。</p>
+                <p>如果不確定物品是否需要申報或檢疫，請在離開海關區域前詢問海關或檢疫人員。</p>
+                <p>入境審查使用的<strong>電子入境申報卡（e-Arrival Card）</strong>，與海關申報是不同的程序。完成其中一項，不能取代另一項。</p>
+                <p><strong>官方資訊</strong></p>
+                <ul class="arrival-official-sources">
+                  <li><a href="https://www.customs.go.kr/english/cm/cntnts/cntntsView.do?cntntsId=2743&amp;mi=8069" target="_blank" rel="noopener noreferrer">韓國關稅廳 — 旅客通關指南</a></li>
+                  <li><a href="https://www.airport.kr/ap_en/1445/subview.do" target="_blank" rel="noopener noreferrer">仁川機場 — 海關申報</a></li>
+                  <li><a href="https://m.customs.go.kr/tms/" target="_blank" rel="noopener noreferrer">官方旅客海關申報 — 線上服務</a></li>
+                </ul>
+                <div class="arrival-entry-note">
+                  <p><strong>攜帶處方藥入境韓國</strong></p>
+                  <p>如果平時固定使用處方藥，請在搭機前確認韓國的藥品輸入規定。在自己國家合法取得處方，不代表藥品就可以直接帶入韓國。</p>
+                  <p><strong>平常使用的處方藥可以帶嗎？</strong></p>
+                  <p>韓國關稅廳公布的自用藥品通關參考標準為 6 瓶，或依用法計算不超過 3 個月的用量。這是一般通關參考，並非所有藥品都能攜入的許可。成分、數量及輸入限制仍需確認。</p>
+                  <p><strong>如果需要超過 3 個月的藥量呢？</strong></p>
+                  <p>如果要在韓國待一個學期、到海外工作，或持續治療慢性疾病，不要以為有處方箋就一定可以帶 6 個月的藥量。</p>
+                  <p>請在出發前聯絡韓國關稅廳，提供藥品的有效成分、含量、每日用量、攜帶總量及預計停留時間，並詢問是否需要額外的輸入通關或豁免程序。</p>
+                  <p><strong>有處方藥需要事先取得許可嗎？</strong></p>
+                  <p>有。含有韓國法律列為麻醉藥品或精神藥物之成分的藥品，須另外確認規定。部分 ADHD 治療藥、安眠藥、抗焦慮藥與處方止痛藥可能屬於這類。</p>
+                  <p>請確認有效成分，不要只看品牌名稱。如果藥品在韓國屬於管制範圍，請在旅行前向韓國食品醫藥品安全處（MFDS）取得必要許可。</p>
+                  <p>醫師處方箋或海關申報，都不能取代 MFDS 許可。</p>
+                  <p><strong>需要準備哪些文件？</strong></p>
+                  <p>藥品盡量保留有標示的原包裝。準備有效的處方箋，以及載明病人、藥品學名、處方用量、數量與治療原因的醫師證明文件。</p>
+                  <p>若需要 MFDS 許可，請攜帶已核發的許可文件，並遵守其中記載的數量與條件。</p>
+                  <p>注射藥品或需要冷藏的藥品，也應在搭機前確認航空公司的運送要求及藥品保存方式。</p>
+                  <p><strong>海關詢問藥品時怎麼辦？</strong></p>
+                  <p>說明藥品是供自己治療使用，並出示處方箋、醫療文件及必要的許可文件。</p>
+                  <p>如果不確定藥品是否需要申報，或是否允許帶入韓國，請在離開海關區域前詢問海關人員。申報藥品，不代表受限制的藥品就能合法輸入。</p>
+                  <p>不要等抵達後才釐清許可要求。如果依適用規定無法把藥品帶入韓國，請在旅行前與開立處方的醫療人員討論合適的治療及藥品供應安排。</p>
+                  <p><strong>確認官方規定</strong></p>
+                  <ul class="arrival-official-sources">
+                    <li><a href="https://www.customs.go.kr/incheon_airport/cm/cntnts/cntntsView.do?cntntsId=6689&amp;mi=12546" target="_blank" rel="noopener noreferrer">韓國關稅廳 — 自用藥品與營養補充品</a></li>
+                    <li><a href="https://nedrug.mfds.go.kr/CCAAI01/init" target="_blank" rel="noopener noreferrer">MFDS — 自我治療用麻醉藥品攜帶入境許可申請</a></li>
+                    <li><a href="https://www.customs.go.kr/english/ad/engcnsl/selectEngCnslList.do?mi=8049" target="_blank" rel="noopener noreferrer">韓國關稅廳 — 英文諮詢與答覆</a></li>
+                  </ul>
+                  <p>需要 MFDS 許可的藥品，請在出發前提早申請，並確認許可已核發。官方線上服務可查詢申請進度。</p>
+                </div>
               </div>
             </li>
             <li class="arrival-step">
@@ -302,6 +442,13 @@
         <p>進入入境大廳，就表示入境程序已完成。接下來要處理什麼，取決於行程：讓手機連上網路、保存韓文住宿地址、準備備用付款方式，以及選一條帶著行李也走得通的路線。</p>
         <p>這些抵達後的實用步驟，請接著看 <a href="/zh-tw/airport.html">仁川機場入境大廳指南</a> 的說明。</p>
         <p>如果只剩如何前往住宿處還沒決定，可以參考<a href="/zh-tw/airport-transfer.html">機場交通指南</a>，直接比較 AREX、機場巴士、計程車與預約接送一路到住宿處的完整行程。</p>
+        <aside class="arrival-next-actions" aria-labelledby="arrival-stay-guide-cta-title">
+          <p class="arrival-next-actions__title" id="arrival-stay-guide-cta-title">還沒決定要住首爾哪裡？</p>
+          <p class="arrival-next-actions__description">飯店位置會影響從機場出發的整段行程，包括轉乘、搬運行李，以及最後一段步行。</p>
+          <div class="arrival-next-actions__buttons">
+            <a class="arrival-next-actions__button" href="/zh-tw/accommodation.html">查看首爾住宿指南</a>
+          </div>
+        </aside>
       </div>
     </section>
 

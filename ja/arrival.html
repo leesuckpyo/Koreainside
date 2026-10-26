@@ -22,6 +22,98 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400..600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
   <link rel="stylesheet" href="../arrival.css">
+  <style>
+    .arrival-page .arrival-steps-layout--stacked {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .arrival-page .arrival-steps-layout--stacked .arrival-steps-media,
+    .arrival-page .arrival-steps-layout--stacked .arrival-timeline {
+      width: 100%;
+      max-width: 900px;
+      margin-inline: auto;
+    }
+
+    .arrival-page .arrival-steps-layout--stacked .arrival-steps-media {
+      position: static;
+      top: auto;
+    }
+
+    .arrival-page .arrival-next-actions {
+      margin-top: 32px;
+      padding: 24px;
+      background: #f7f9fc;
+      border: 1px solid #dfe7f3;
+      border-radius: 12px;
+    }
+
+    .arrival-page .arrival-next-actions__title {
+      margin: 0;
+      color: #1f2937;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .arrival-page .arrival-next-actions__description {
+      margin: 8px 0 16px;
+      color: #4b5563;
+      line-height: 1.55;
+    }
+
+    .arrival-page .arrival-next-actions__buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .arrival-page .arrival-next-actions__button {
+      box-sizing: border-box;
+      display: inline-flex;
+      flex: 1 1 220px;
+      min-width: 0;
+      min-height: 44px;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-weight: 700;
+      line-height: 1.25;
+      text-align: center;
+      overflow-wrap: anywhere;
+    }
+
+    .arrival-page main a.arrival-next-actions__button,
+    .arrival-page main a.arrival-next-actions__button:visited {
+      color: #1A56DB;
+      background: #FFFFFF;
+      border: 1px solid #BCD0EF;
+      text-decoration: none;
+    }
+
+    .arrival-page main a.arrival-next-actions__button:hover,
+    .arrival-page main a.arrival-next-actions__button:focus,
+    .arrival-page main a.arrival-next-actions__button:focus-visible {
+      color: #1A56DB;
+      background: #EFF6FF;
+      border-color: #1A56DB;
+      text-decoration: none;
+    }
+
+    .arrival-page main a.arrival-next-actions__button:focus-visible {
+      outline: 3px solid #1A56DB;
+      outline-offset: 2px;
+    }
+
+    @media (max-width: 700px) {
+      .arrival-page .arrival-next-actions {
+        padding: 20px;
+      }
+
+      .arrival-page .arrival-next-actions__button {
+        flex-basis: 100%;
+      }
+    }
+  </style>
   <script type="application/ld+json">
 {
       "@context": "https://schema.org",
@@ -202,7 +294,7 @@
           <h2 id="arrival-steps-title">機内を降りて到着ロビーに出るまで</h2>
           <p>韓国に入国する旅行者の場合、流れ自体はシンプルです。ゲートやターミナルによって歩く距離は変わりますが、主な手続きの順番は同じです。</p>
         </div>
-        <div class="arrival-steps-layout">
+        <div class="arrival-steps-layout arrival-steps-layout--stacked">
           <figure class="arrival-steps-media">
             <img src="../images/arrival/incheon-airport-arrival-route.webp" alt="仁川国際空港内で「Immigration」と「Baggage Claim」の案内に従う旅行者" width="1448" height="1086" loading="lazy" decoding="async">
             <figcaption>空港内の案内表示を順にたどってください。実際に歩くルートはゲートとターミナルによって変わります。</figcaption>
@@ -245,10 +337,58 @@
               <span class="arrival-step__number" aria-hidden="true">04</span>
               <div class="arrival-step__content">
                 <h3>税関</h3>
-                <p>荷物を受け取ったら、税関の案内表示に従って出口へ進みます。</p>
-                <p>申告が必要になる可能性のある品物を持っている場合は、他国のルールではなくKorea Customs Serviceの案内を確認してください。免税範囲を超える品物や規制対象品は、申告が必要になることがあります。</p>
-                <p>申告するものがない場合は、空港に表示されている適切な税関レーンへ進んでください。</p>
-                <p class="arrival-context-link"><a href="https://www.customs.go.kr/english/main.do" target="_blank" rel="noopener noreferrer" aria-label="Korea Customs Serviceの旅行者向け情報（外部サイト、新しいタブで開きます）">Korea Customs Service — 旅行者向け情報 <span aria-hidden="true">↗</span></a></p>
+                <p>荷物を受け取ったら、一般到着ロビーへ出る前に、Customsの案内表示に従って税関へ進みます。申告が必要かどうかは、国籍だけではなく、韓国へ何を持ち込むかで決まります。</p>
+                <p><strong>税関申告書の記入は必要ですか？</strong></p>
+                <p>申告するものがなければ、税関申告書を記入する必要はありません。空港の表示に従い、<strong>申告するものがない人の通路（Nothing to Declare）</strong>へ進んでください。ただし、この場合も税関職員が荷物を検査することはあります。</p>
+                <p>申告が必要な品物がある場合は、申告書を記入し、<strong>申告するものがある人の通路（Goods to Declare）</strong>へ進みます。</p>
+                <p><strong>到着前に何を確認すればよいですか？</strong></p>
+                <ul class="arrival-editorial-list">
+                  <li class="arrival-editorial-block"><p><strong>購入品・贈り物：</strong>旅行者が持ち込む課税対象品の一般的な免税枠はUS$800です。この金額を超える品物は、申告が必要になることがあります。商用の品物や見本には別の規則があります。</p></li>
+                  <li class="arrival-editorial-block"><p><strong>現金・支払手段：</strong>合計額がUS$10,000相当を超える場合は、税関への申告が必要になることがあります。外貨、韓国ウォン、申告対象となる小切手などが含まれます。</p></li>
+                  <li class="arrival-editorial-block"><p><strong>食品・農産物：</strong>肉、ジャーキー、ソーセージ、乳製品、卵、生鮮果物、植物、種子は、検疫上の制限を受けることがあります。密封されているだけで持ち込みが認められるわけではありません。</p></li>
+                  <li class="arrival-editorial-block"><p><strong>医薬品・規制対象品：</strong>規制成分を含む薬など、一部の医薬品には追加の確認や事前許可が必要です。税関申告は輸入許可の代わりにはなりません。</p></li>
+                </ul>
+                <p><strong>衣類、ノートパソコン、カメラはどうなりますか？</strong></p>
+                <p>普段使っている身の回り品が、すべて新たな購入品として扱われるわけではありません。ただし、高額な機材や海外で購入した品物の扱いは、価格、用途、韓国出国時に再び持ち出す予定かどうかによって変わる場合があります。</p>
+                <p>他国で購入した高額品を持って韓国を短期間訪れる場合は、渡航前に韓国関税庁へ一時輸入の要件を確認してください。帰国時に持ち出す予定だからといって、それだけで免税になるとは限りません。</p>
+                <p><strong>申告はどのように行いますか？</strong></p>
+                <p>紙の申告書、または韓国関税庁の公式モバイル申告サービスを利用できます。確認を求められたときに提示できるよう、レシート、関係書類、必要な許可書を用意しておきましょう。</p>
+                <p>申告や検疫が必要か判断できない品物がある場合は、税関エリアを出る前に税関職員または検疫担当者へ確認してください。</p>
+                <p>入国審査に使う<strong>電子入国申告書（e-Arrival Card）</strong>と税関申告は別の手続きです。どちらか一方を済ませても、もう一方の代わりにはなりません。</p>
+                <p><strong>公式案内</strong></p>
+                <ul class="arrival-official-sources">
+                  <li><a href="https://www.customs.go.kr/english/cm/cntnts/cntntsView.do?cntntsId=2743&amp;mi=8069" target="_blank" rel="noopener noreferrer">韓国関税庁 — 旅行者向け通関ガイド</a></li>
+                  <li><a href="https://www.airport.kr/ap_en/1445/subview.do" target="_blank" rel="noopener noreferrer">仁川空港 — 税関申告</a></li>
+                  <li><a href="https://m.customs.go.kr/tms/" target="_blank" rel="noopener noreferrer">旅行者向け公式税関申告 — オンラインサービス</a></li>
+                </ul>
+                <div class="arrival-entry-note">
+                  <p><strong>処方薬を韓国へ持ち込むとき</strong></p>
+                  <p>処方薬を継続して使っている場合は、出発前に韓国への持ち込み規則を確認してください。自国で合法的に処方された薬でも、それだけで韓国への持ち込みが認められるわけではありません。</p>
+                  <p><strong>普段使っている処方薬は持ち込めますか？</strong></p>
+                  <p>韓国関税庁は、個人使用の医薬品について、6瓶または用法に基づく3か月分までを通関の目安として案内しています。これは一般的な税関の基準であり、すべての薬の持ち込みを認めるものではありません。成分、数量、輸入制限も確認が必要です。</p>
+                  <p><strong>3か月分を超える薬が必要な場合は？</strong></p>
+                  <p>韓国に1学期間滞在する場合、海外で働く場合、持病の治療を続ける場合でも、処方箋があるだけで6か月分の薬を持ち込めるとは考えないでください。</p>
+                  <p>出発前に韓国関税庁へ問い合わせてください。有効成分、含量、1日の使用量、持ち込む総量、滞在予定期間を伝え、追加の輸入手続きや要件免除の手続きが必要か確認します。</p>
+                  <p><strong>事前許可が必要な処方薬はありますか？</strong></p>
+                  <p>あります。韓国法で麻薬・向精神薬に分類される成分を含む医薬品は、別途確認が必要です。一部のADHD治療薬、睡眠薬、抗不安薬、処方鎮痛薬などが該当する場合があります。</p>
+                  <p>ブランド名だけでなく、有効成分を確認してください。韓国で規制対象となる薬の場合は、渡航前に韓国食品医薬品安全処（MFDS）から必要な許可を取得してください。</p>
+                  <p>医師の処方箋や税関申告は、MFDSの許可の代わりにはなりません。</p>
+                  <p><strong>どのような書類を準備すればよいですか？</strong></p>
+                  <p>できるだけ、表示のある元の包装のまま薬を保管してください。有効な処方箋と、患者名、薬の一般名、処方された用量、数量、治療理由を記載した医師の書類を用意します。</p>
+                  <p>MFDSの許可が必要な場合は、発行された許可書を携帯し、記載された数量と条件を守ってください。</p>
+                  <p>注射薬や冷蔵保存が必要な薬は、航空会社の運送条件と薬の保管方法も出発前に確認してください。</p>
+                  <p><strong>税関で薬について聞かれたら？</strong></p>
+                  <p>自分の治療に使う薬であることを説明し、処方箋、医師の書類、必要な許可書を提示してください。</p>
+                  <p>申告が必要か、持ち込みが認められているか分からない場合は、税関エリアを出る前に税関職員へ確認してください。規制対象の薬は、申告するだけで合法的に持ち込めるようになるわけではありません。</p>
+                  <p>許可が必要か分からないまま到着を迎えないでください。適用される規則上、その薬を韓国へ持ち込めない場合は、渡航前に処方を担当する医療者と相談し、適切な治療と薬の確保の計画を立ててください。</p>
+                  <p><strong>公式の要件を確認</strong></p>
+                  <ul class="arrival-official-sources">
+                    <li><a href="https://www.customs.go.kr/incheon_airport/cm/cntnts/cntntsView.do?cntntsId=6689&amp;mi=12546" target="_blank" rel="noopener noreferrer">韓国関税庁 — 個人使用の医薬品・サプリメント</a></li>
+                    <li><a href="https://nedrug.mfds.go.kr/CCAAI01/init" target="_blank" rel="noopener noreferrer">MFDS — 自己治療用麻薬類の携帯持ち込み許可申請</a></li>
+                    <li><a href="https://www.customs.go.kr/english/ad/engcnsl/selectEngCnslList.do?mi=8049" target="_blank" rel="noopener noreferrer">韓国関税庁 — 英語での相談・回答</a></li>
+                  </ul>
+                  <p>MFDSの許可が必要な薬は、出発日まで十分な余裕を持って申請し、許可が発行されたことを確認してください。公式オンラインサービスで申請状況を確認できます。</p>
+                </div>
               </div>
             </li>
             <li class="arrival-step">
@@ -302,6 +442,13 @@
         <p>一般到着ロビーに出れば、入国手続きは終わりです。その後に必要なことは旅によって変わります。スマホをネットにつなぐ、宿泊先の住所を韓国語で保存する、予備の支払い手段を用意する、荷物を持って無理なく移動できるルートを選ぶ、といった準備です。</p>
         <p>旅行開始直後の実用的な準備は、<a href="airport.html">仁川空港 到着ロビーガイド</a>で確認できます。</p>
         <p>宿泊先までの行き方だけを決めたいなら、 <a href="/ja/airport-transfer.html">空港送迎ガイド</a> で、AREX、空港バス、タクシー、事前予約送迎をドア・ツー・ドアの全行程で比較できます。</p>
+        <aside class="arrival-next-actions" aria-labelledby="arrival-stay-guide-cta-title">
+          <p class="arrival-next-actions__title" id="arrival-stay-guide-cta-title">ソウルでどこに泊まるか迷っていますか？</p>
+          <p class="arrival-next-actions__description">ホテルの場所によって、空港からの乗り換え、荷物を持っての移動、最後の徒歩区間が変わります。</p>
+          <div class="arrival-next-actions__buttons">
+            <a class="arrival-next-actions__button" href="/ja/accommodation.html">ソウルの宿泊ガイドを見る</a>
+          </div>
+        </aside>
       </div>
     </section>
 
