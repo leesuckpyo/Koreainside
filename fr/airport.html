@@ -20,6 +20,242 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400..600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
+  <style id="airport-next-actions-layout">
+    .airport-page .airport-next-actions {
+      margin-top: 32px;
+      padding: 24px;
+      background: #f7f9fc;
+      border: 1px solid #dfe7f3;
+      border-radius: 12px;
+    }
+
+    .airport-page .airport-next-actions-section {
+      margin-top: 56px;
+      margin-bottom: 56px;
+    }
+
+    .airport-page .airport-next-actions-section .airport-next-actions {
+      margin-top: 0;
+    }
+
+    .airport-page .airport-next-actions__group + .airport-next-actions__group {
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px solid #dfe7f3;
+    }
+
+    .airport-page .airport-next-actions__title {
+      margin: 0;
+      color: #1f2937;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .airport-page .airport-next-actions__description {
+      margin: 8px 0 16px;
+      color: #4b5563;
+      line-height: 1.55;
+    }
+
+    .airport-page .airport-next-actions__buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .airport-page .airport-next-actions__button {
+      box-sizing: border-box;
+      display: inline-flex;
+      flex: 1 1 220px;
+      min-width: 0;
+      min-height: 44px;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-weight: 700;
+      line-height: 1.25;
+      text-align: center;
+      overflow-wrap: anywhere;
+    }
+
+    .airport-page main a.airport-next-actions__button,
+    .airport-page main a.airport-next-actions__button:visited {
+      color: #1A56DB;
+      background: #FFFFFF;
+      border: 1px solid #BCD0EF;
+      text-decoration: none;
+    }
+
+    .airport-page main a.airport-next-actions__button:hover,
+    .airport-page main a.airport-next-actions__button:focus,
+    .airport-page main a.airport-next-actions__button:focus-visible {
+      color: #1A56DB;
+      background: #EFF6FF;
+      border-color: #1A56DB;
+      text-decoration: none;
+    }
+
+    .airport-page main a.airport-next-actions__button:focus-visible {
+      outline: 3px solid #1A56DB;
+      outline-offset: 2px;
+    }
+
+    .airport-page .airport-terminal-wayfinding__grid {
+      display: grid;
+      gap: 24px;
+    }
+
+    .airport-page .airport-terminal-wayfinding__card {
+      min-width: 0;
+      padding: 28px;
+      background: #FBF8F1;
+      border: 1px solid #D8D0C2;
+      border-radius: 12px;
+    }
+
+    .airport-page .airport-terminal-wayfinding__card h3 {
+      margin: 0;
+      color: #14130F;
+    }
+
+    .airport-page .airport-terminal-wayfinding__list {
+      margin: 24px 0 0;
+    }
+
+    .airport-page .airport-terminal-wayfinding__item + .airport-terminal-wayfinding__item {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid #D8D0C2;
+    }
+
+    .airport-page .airport-terminal-wayfinding__item dt {
+      color: #1D2B27;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .airport-page .airport-terminal-wayfinding__item dd {
+      margin: 8px 0 0;
+      color: #514C43;
+      font-size: 18px;
+      line-height: 1.72;
+      overflow-wrap: break-word;
+    }
+
+    .airport-page .airport-terminal-wayfinding__note {
+      margin: 32px 0 0;
+      padding: 18px 20px;
+      color: #514C43;
+      background: #F7F3EA;
+      border-left: 3px solid #3F5D52;
+      font-size: 18px;
+      line-height: 1.72;
+      overflow-wrap: break-word;
+    }
+
+    .airport-page .airport-terminal-wayfinding__sources {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 24px;
+      margin: 22px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .airport-page .airport-terminal-wayfinding__sources li {
+      min-width: 0;
+    }
+
+    .airport-page main .airport-terminal-wayfinding__sources a,
+    .airport-page main .airport-terminal-wayfinding__sources a:visited {
+      display: inline-flex;
+      min-height: 44px;
+      align-items: center;
+      color: #B73722;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.45;
+      text-decoration: underline;
+      text-decoration-color: #D8D0C2;
+      text-underline-offset: 4px;
+      overflow-wrap: anywhere;
+    }
+
+    .airport-page main .airport-terminal-wayfinding__sources a:hover,
+    .airport-page main .airport-terminal-wayfinding__sources a:focus-visible {
+      color: #14130F;
+    }
+
+    .airport-page main .airport-terminal-wayfinding__sources a:focus-visible {
+      outline: 3px solid #3F5D52;
+      outline-offset: 2px;
+    }
+
+    @media (min-width: 900px) {
+      .airport-page .airport-terminal-wayfinding__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 700px) {
+      .airport-page .airport-next-actions {
+        padding: 20px;
+      }
+
+      .airport-page .airport-next-actions__button {
+        flex-basis: 100%;
+      }
+
+      .airport-page .airport-terminal-wayfinding__card {
+        padding: 20px;
+      }
+
+      .airport-page .airport-terminal-wayfinding__item dt,
+      .airport-page .airport-terminal-wayfinding__item dd,
+      .airport-page .airport-terminal-wayfinding__note {
+        font-size: 17px;
+      }
+
+      .airport-page .airport-terminal-wayfinding__sources {
+        display: grid;
+        gap: 0;
+      }
+
+      .airport-page main .airport-terminal-wayfinding__sources a {
+        width: 100%;
+      }
+    }
+  </style>
+  <style id="airport-neutral-surfaces">
+    /* Airport page only — neutral backgrounds */
+    body.airport-page main {
+      background-color: #FFFFFF;
+    }
+
+    body.airport-page main .airport-page-hero,
+    body.airport-page main .airport-section,
+    body.airport-page main .airport-official-map-link-wrap {
+      background-color: #FFFFFF;
+    }
+
+    body.airport-page main .airport-section--gray {
+      background-color: #F7F9FC;
+    }
+
+    body.airport-page main .airport-official-map-link {
+      background-color: transparent;
+    }
+
+    body.airport-page main .airport-faq details {
+      background-color: #FFFFFF;
+    }
+
+    body.airport-page main .airport-faq details[open] {
+      background-color: #F7F9FC;
+    }
+  </style>
 <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
   (function () {
       var script = document.createElement("script");
@@ -179,6 +415,70 @@
       </div>
     </section>
 
+    <section id="terminal-wayfinding" class="airport-section airport-section--terminal-wayfinding" aria-labelledby="terminal-wayfinding-title">
+      <div class="container">
+        <div class="section__header">
+          <h2 id="terminal-wayfinding-title" class="section__title section__title--lg">Du hall des arrivées à votre transport : terminal 1 ou terminal 2</h2>
+          <p class="section__subtitle">Les deux terminaux disposent d’un hall public des arrivées au niveau 1 (1F), mais les accès aux bus et aux trains ne sont pas identiques. Vérifiez votre terminal d’arrivée avant de vous diriger vers les transports.</p>
+        </div>
+
+        <div class="airport-terminal-wayfinding__grid">
+          <article class="airport-terminal-wayfinding__card" aria-labelledby="terminal-wayfinding-t1-title">
+            <h3 id="terminal-wayfinding-t1-title">Terminal 1 (T1)</h3>
+            <dl class="airport-terminal-wayfinding__list">
+              <div class="airport-terminal-wayfinding__item">
+                <dt>AREX</dt>
+                <dd>Depuis le hall public des arrivées au niveau 1 (1F), suivez les panneaux « Airport Railroad » ou « Transportation Center » vers le niveau B1. Une fois dans le centre de transports, suivez les indications vers la gare et l’espace de billetterie.</dd>
+              </div>
+              <div class="airport-terminal-wayfinding__item">
+                <dt>Bus d’aéroport</dt>
+                <dd>Les bus d’aéroport à destination de Séoul partent des arrêts extérieurs du niveau 1 (1F) du terminal 1. Des guichets sont disponibles à l’intérieur, près des sorties 4 et 9, ainsi qu’à l’extérieur. Vérifiez votre ligne et votre arrêt exact avant de sortir du bâtiment.</dd>
+              </div>
+              <div class="airport-terminal-wayfinding__item">
+                <dt>Taxi</dt>
+                <dd>Utilisez les stations de taxis officielles à l’extérieur du hall des arrivées, au niveau 1 (1F). L’aéroport indique actuellement les emplacements 5C, 6C et 6D pour les taxis ordinaires à destination de Séoul. Suivez les panneaux officiels plutôt que d’accepter une proposition de course non sollicitée.</dd>
+              </div>
+              <div class="airport-terminal-wayfinding__item">
+                <dt>Prise en charge réservée à l’avance</dt>
+                <dd>Vérifiez le terminal, le lieu de rendez-vous, la sortie et les coordonnées du chauffeur dans votre confirmation de réservation. Ne supposez pas qu’une prise en charge privée s’effectue au même endroit que la file des taxis ordinaires.</dd>
+              </div>
+            </dl>
+          </article>
+
+          <article class="airport-terminal-wayfinding__card" aria-labelledby="terminal-wayfinding-t2-title">
+            <h3 id="terminal-wayfinding-t2-title">Terminal 2 (T2)</h3>
+            <dl class="airport-terminal-wayfinding__list">
+              <div class="airport-terminal-wayfinding__item">
+                <dt>AREX</dt>
+                <dd>Depuis le hall public des arrivées au niveau 1 (1F), suivez les panneaux « Airport Railroad » ou « Transportation Center » pour descendre au niveau B1. Continuez vers la gare et vérifiez le service ferroviaire avant d’accéder à la zone des quais.</dd>
+              </div>
+              <div class="airport-terminal-wayfinding__item">
+                <dt>Bus d’aéroport</dt>
+                <dd>Pour prendre un bus d’aéroport à destination de Séoul, rejoignez la gare routière située au niveau B1 du centre de transports. Vous y trouverez des guichets et des informations sur les bus. Ne la confondez pas avec les arrêts du niveau 1 (1F), utilisés par certains bus urbains d’Incheon, bus de groupes et navettes d’hôtels.</dd>
+              </div>
+              <div class="airport-terminal-wayfinding__item">
+                <dt>Taxi</dt>
+                <dd>Depuis le hall des arrivées du niveau 1 (1F), suivez les panneaux officiels indiquant les taxis. L’aéroport indique actuellement l’emplacement 7C pour les taxis ordinaires à destination de Séoul. Vérifiez la signalisation sur place avant de rejoindre la file.</dd>
+              </div>
+              <div class="airport-terminal-wayfinding__item">
+                <dt>Prise en charge réservée à l’avance</dt>
+                <dd>Suivez les instructions de rendez-vous fournies par votre prestataire. Un chauffeur privé peut utiliser un lieu de rendez-vous ou de prise en charge différent de celui des taxis ordinaires. Gardez les coordonnées de votre réservation à portée de main.</dd>
+              </div>
+            </dl>
+          </article>
+        </div>
+
+        <p class="airport-terminal-wayfinding__note">Les emplacements de prise en charge et l’organisation des installations peuvent changer. Si les panneaux actuels ou le plan officiel de l’aéroport diffèrent de ce guide, privilégiez les indications de l’aéroport. Avec des bagages lourds ou une mobilité réduite, recherchez un itinéraire avec ascenseur : tous les parcours signalés ne sont pas aussi pratiques.</p>
+
+        <ul class="airport-terminal-wayfinding__sources" aria-label="Guides officiels des transports dans les terminaux">
+          <li><a href="https://www.airport.kr/ap_en/1511/subview.do" target="_blank" rel="noopener noreferrer">Guide du train de l’aéroport</a></li>
+          <li><a href="https://www.airport.kr/ap_en/1502/subview.do" target="_blank" rel="noopener noreferrer">Arrêts de bus du terminal 1</a></li>
+          <li><a href="https://www.airport.kr/ap_en/1503/subview.do" target="_blank" rel="noopener noreferrer">Gare routière du terminal 2</a></li>
+          <li><a href="https://www.airport.kr/ap_en/1515/subview.do" target="_blank" rel="noopener noreferrer">Guide officiel des taxis</a></li>
+        </ul>
+      </div>
+    </section>
+
     <section id="arrival-guide" class="airport-section airport-section--gray">
       <div class="container">
         <div class="airport-arrival-bridge">
@@ -240,7 +540,26 @@
           <a href="/fr/rental-car.html" class="airport-text-link">Lire le guide de la location de voiture</a>
         </aside>
         <p>Votre quartier d’hébergement détermine le trajet d’aéroport le plus simple. Si vous préparez encore le voyage, comparez Hongdae, Gongdeok, la gare de Séoul et Myeongdong à partir du parcours complet entre l’aéroport et l’hôtel.</p>
-        <p><a href="/fr/best-area-for-airport-access-seoul.html" class="airport-text-link"><strong>Comparer les quartiers de Séoul selon l’accès à l’aéroport →</strong></a></p>
+        <aside class="airport-next-actions" aria-labelledby="airport-stay-options-cta-title airport-hotel-options-cta-title">
+          <div class="airport-next-actions__group">
+            <p class="airport-next-actions__title" id="airport-stay-options-cta-title">Vous cherchez encore où séjourner après votre arrivée à l’aéroport ?</p>
+            <p class="airport-next-actions__description">Le trajet le plus simple depuis l’aéroport n’est qu’une partie du choix. Comparez l’accès à l’aéroport avec les quartiers de Séoul où vous comptez passer votre temps.</p>
+            <div class="airport-next-actions__buttons">
+              <a class="airport-next-actions__button" href="/fr/best-area-for-airport-access-seoul.html">Quartiers bien reliés à l’aéroport</a>
+              <a class="airport-next-actions__button" href="/fr/accommodation.html">Guide des hébergements à Séoul</a>
+            </div>
+          </div>
+          <div class="airport-next-actions__group">
+            <p class="airport-next-actions__title" id="airport-hotel-options-cta-title">Vous avez choisi votre quartier, mais pas encore votre hôtel ?</p>
+            <p class="airport-next-actions__description">Avant de réserver, vérifiez l’emplacement de l’hôtel, les sorties de station, l’accès avec les bagages et les possibilités de réservation.</p>
+            <div class="airport-next-actions__buttons">
+              <a class="airport-next-actions__button" href="/fr/where-to-stay-in-hongdae.html">Hôtels à Hongdae</a>
+              <a class="airport-next-actions__button" href="/fr/hotels-near-gongdeok-station.html">Hôtels à Gongdeok et Mapo</a>
+              <a class="airport-next-actions__button" href="/fr/hotels-near-seoul-station.html">Hôtels près de la gare de Séoul</a>
+              <a class="airport-next-actions__button" href="/fr/where-to-stay-in-myeongdong.html">Hôtels à Myeongdong</a>
+            </div>
+          </div>
+        </aside>
       </div>
     </section>
 
@@ -358,6 +677,19 @@
         </div>
       </div>
     </section>
+
+    <aside class="airport-next-actions-section" aria-labelledby="airport-travel-guides-cta-title">
+      <div class="container">
+        <div class="airport-next-actions">
+          <p class="airport-next-actions__title" id="airport-travel-guides-cta-title">Que faire après votre arrivée à l’hôtel ?</p>
+          <p class="airport-next-actions__description">Hongdae et Myeongdong offrent deux façons différentes de découvrir Séoul. Explorez ces quartiers avant d’organiser votre première journée.</p>
+          <div class="airport-next-actions__buttons">
+            <a class="airport-next-actions__button" href="/fr/hongdae-travel-guide.html">Découvrir Hongdae</a>
+            <a class="airport-next-actions__button" href="/fr/myeongdong-travel-guide.html">Découvrir Myeongdong</a>
+          </div>
+        </div>
+      </div>
+    </aside>
 
     <section id="sources" class="airport-section">
       <div class="container">

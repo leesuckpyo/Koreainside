@@ -20,6 +20,242 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400..600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
+  <style id="airport-next-actions-layout">
+    .airport-page .airport-next-actions {
+      margin-top: 32px;
+      padding: 24px;
+      background: #f7f9fc;
+      border: 1px solid #dfe7f3;
+      border-radius: 12px;
+    }
+
+    .airport-page .airport-next-actions-section {
+      margin-top: 56px;
+      margin-bottom: 56px;
+    }
+
+    .airport-page .airport-next-actions-section .airport-next-actions {
+      margin-top: 0;
+    }
+
+    .airport-page .airport-next-actions__group + .airport-next-actions__group {
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px solid #dfe7f3;
+    }
+
+    .airport-page .airport-next-actions__title {
+      margin: 0;
+      color: #1f2937;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .airport-page .airport-next-actions__description {
+      margin: 8px 0 16px;
+      color: #4b5563;
+      line-height: 1.55;
+    }
+
+    .airport-page .airport-next-actions__buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .airport-page .airport-next-actions__button {
+      box-sizing: border-box;
+      display: inline-flex;
+      flex: 1 1 220px;
+      min-width: 0;
+      min-height: 44px;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-weight: 700;
+      line-height: 1.25;
+      text-align: center;
+      overflow-wrap: anywhere;
+    }
+
+    .airport-page main a.airport-next-actions__button,
+    .airport-page main a.airport-next-actions__button:visited {
+      color: #1A56DB;
+      background: #FFFFFF;
+      border: 1px solid #BCD0EF;
+      text-decoration: none;
+    }
+
+    .airport-page main a.airport-next-actions__button:hover,
+    .airport-page main a.airport-next-actions__button:focus,
+    .airport-page main a.airport-next-actions__button:focus-visible {
+      color: #1A56DB;
+      background: #EFF6FF;
+      border-color: #1A56DB;
+      text-decoration: none;
+    }
+
+    .airport-page main a.airport-next-actions__button:focus-visible {
+      outline: 3px solid #1A56DB;
+      outline-offset: 2px;
+    }
+
+    .airport-page .airport-terminal-wayfinding__grid {
+      display: grid;
+      gap: 24px;
+    }
+
+    .airport-page .airport-terminal-wayfinding__card {
+      min-width: 0;
+      padding: 28px;
+      background: #FBF8F1;
+      border: 1px solid #D8D0C2;
+      border-radius: 12px;
+    }
+
+    .airport-page .airport-terminal-wayfinding__card h3 {
+      margin: 0;
+      color: #14130F;
+    }
+
+    .airport-page .airport-terminal-wayfinding__list {
+      margin: 24px 0 0;
+    }
+
+    .airport-page .airport-terminal-wayfinding__item + .airport-terminal-wayfinding__item {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid #D8D0C2;
+    }
+
+    .airport-page .airport-terminal-wayfinding__item dt {
+      color: #1D2B27;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .airport-page .airport-terminal-wayfinding__item dd {
+      margin: 8px 0 0;
+      color: #514C43;
+      font-size: 18px;
+      line-height: 1.72;
+      overflow-wrap: break-word;
+    }
+
+    .airport-page .airport-terminal-wayfinding__note {
+      margin: 32px 0 0;
+      padding: 18px 20px;
+      color: #514C43;
+      background: #F7F3EA;
+      border-left: 3px solid #3F5D52;
+      font-size: 18px;
+      line-height: 1.72;
+      overflow-wrap: break-word;
+    }
+
+    .airport-page .airport-terminal-wayfinding__sources {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 24px;
+      margin: 22px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .airport-page .airport-terminal-wayfinding__sources li {
+      min-width: 0;
+    }
+
+    .airport-page main .airport-terminal-wayfinding__sources a,
+    .airport-page main .airport-terminal-wayfinding__sources a:visited {
+      display: inline-flex;
+      min-height: 44px;
+      align-items: center;
+      color: #B73722;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.45;
+      text-decoration: underline;
+      text-decoration-color: #D8D0C2;
+      text-underline-offset: 4px;
+      overflow-wrap: anywhere;
+    }
+
+    .airport-page main .airport-terminal-wayfinding__sources a:hover,
+    .airport-page main .airport-terminal-wayfinding__sources a:focus-visible {
+      color: #14130F;
+    }
+
+    .airport-page main .airport-terminal-wayfinding__sources a:focus-visible {
+      outline: 3px solid #3F5D52;
+      outline-offset: 2px;
+    }
+
+    @media (min-width: 900px) {
+      .airport-page .airport-terminal-wayfinding__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 700px) {
+      .airport-page .airport-next-actions {
+        padding: 20px;
+      }
+
+      .airport-page .airport-next-actions__button {
+        flex-basis: 100%;
+      }
+
+      .airport-page .airport-terminal-wayfinding__card {
+        padding: 20px;
+      }
+
+      .airport-page .airport-terminal-wayfinding__item dt,
+      .airport-page .airport-terminal-wayfinding__item dd,
+      .airport-page .airport-terminal-wayfinding__note {
+        font-size: 17px;
+      }
+
+      .airport-page .airport-terminal-wayfinding__sources {
+        display: grid;
+        gap: 0;
+      }
+
+      .airport-page main .airport-terminal-wayfinding__sources a {
+        width: 100%;
+      }
+    }
+  </style>
+  <style id="airport-neutral-surfaces">
+    /* Airport page only — neutral backgrounds */
+    body.airport-page main {
+      background-color: #FFFFFF;
+    }
+
+    body.airport-page main .airport-page-hero,
+    body.airport-page main .airport-section,
+    body.airport-page main .airport-official-map-link-wrap {
+      background-color: #FFFFFF;
+    }
+
+    body.airport-page main .airport-section--gray {
+      background-color: #F7F9FC;
+    }
+
+    body.airport-page main .airport-official-map-link {
+      background-color: transparent;
+    }
+
+    body.airport-page main .airport-faq details {
+      background-color: #FFFFFF;
+    }
+
+    body.airport-page main .airport-faq details[open] {
+      background-color: #F7F9FC;
+    }
+  </style>
 <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
   (function () {
       var script = document.createElement("script");
@@ -179,6 +415,70 @@
       </div>
     </section>
 
+    <section id="terminal-wayfinding" class="airport-section airport-section--terminal-wayfinding" aria-labelledby="terminal-wayfinding-title">
+      <div class="container">
+        <div class="section__header">
+          <h2 id="terminal-wayfinding-title" class="section__title section__title--lg">從入境大廳前往搭車處：第 1 航廈與第 2 航廈的差異</h2>
+          <p class="section__subtitle">兩座航廈的公共入境大廳都位於 1 樓（1F），但前往巴士與鐵路的動線不同。出發找交通工具前，先確認自己抵達哪一座航廈。</p>
+        </div>
+
+        <div class="airport-terminal-wayfinding__grid">
+          <article class="airport-terminal-wayfinding__card" aria-labelledby="terminal-wayfinding-t1-title">
+            <h3 id="terminal-wayfinding-t1-title">第 1 航廈（T1）</h3>
+            <dl class="airport-terminal-wayfinding__list">
+              <div class="airport-terminal-wayfinding__item">
+                <dt>AREX</dt>
+                <dd>從 1 樓（1F）的公共入境大廳出發，依照「Airport Railroad」或「Transportation Center」指標前往地下 1 樓（B1）。進入交通中心後，再跟著鐵路指標前往車站與購票區。</dd>
+              </div>
+              <div class="airport-terminal-wayfinding__item">
+                <dt>機場巴士</dt>
+                <dd>前往首爾的機場巴士在第 1 航廈 1 樓（1F）室外乘車處搭乘。售票櫃台設於航廈內靠近 4 號及 9 號出口的位置，室外也有售票處。離開航廈前，先確認路線和正確站位。</dd>
+              </div>
+              <div class="airport-terminal-wayfinding__item">
+                <dt>計程車</dt>
+                <dd>請使用 1 樓（1F）入境大廳外的指定計程車乘車處。機場目前列出 5C、6C、6D 為前往首爾的一般計程車搭乘位置。依照官方指標前往，不要接受陌生人主動招攬的接送服務。</dd>
+              </div>
+              <div class="airport-terminal-wayfinding__item">
+                <dt>事先預約的接送</dt>
+                <dd>請從訂單確認資訊中查看抵達航廈、會合地點、出口及司機聯絡方式。不要認為私人接送會在一般計程車排隊處接人。</dd>
+              </div>
+            </dl>
+          </article>
+
+          <article class="airport-terminal-wayfinding__card" aria-labelledby="terminal-wayfinding-t2-title">
+            <h3 id="terminal-wayfinding-t2-title">第 2 航廈（T2）</h3>
+            <dl class="airport-terminal-wayfinding__list">
+              <div class="airport-terminal-wayfinding__item">
+                <dt>AREX</dt>
+                <dd>從 1 樓（1F）的公共入境大廳，依照「Airport Railroad」或「Transportation Center」指標下到地下 1 樓（B1）。繼續前往鐵路車站，進入月台區前先確認要搭乘的列車。</dd>
+              </div>
+              <div class="airport-terminal-wayfinding__item">
+                <dt>機場巴士</dt>
+                <dd>前往首爾的機場巴士，請至交通中心地下 1 樓（B1）的巴士總站。現場有售票與巴士資訊。不要與 1 樓部分仁川市區巴士、團體巴士及飯店巴士的站牌混淆。</dd>
+              </div>
+              <div class="airport-terminal-wayfinding__item">
+                <dt>計程車</dt>
+                <dd>從 1 樓（1F）入境大廳依照官方計程車指標前往。機場目前列出 7C 為前往首爾的一般計程車搭乘位置。排隊前請再次確認現場站位標示。</dd>
+              </div>
+              <div class="airport-terminal-wayfinding__item">
+                <dt>事先預約的接送</dt>
+                <dd>請依接送業者提供的會合指示行動。私人接送司機可能使用不同於一般計程車的會合地點或上車位置，因此要先存好訂單聯絡資訊。</dd>
+              </div>
+            </dl>
+          </article>
+        </div>
+
+        <p class="airport-terminal-wayfinding__note">乘車站位與設施安排可能變動。若與本指南不同，請以機場現場指標和官方地圖為準。行李較多或行動不便時，請找電梯動線，不要認為每條有指標的路線都同樣好走。</p>
+
+        <ul class="airport-terminal-wayfinding__sources" aria-label="各航廈官方交通指南">
+          <li><a href="https://www.airport.kr/ap_en/1511/subview.do" target="_blank" rel="noopener noreferrer">機場鐵路指南</a></li>
+          <li><a href="https://www.airport.kr/ap_en/1502/subview.do" target="_blank" rel="noopener noreferrer">第 1 航廈巴士乘車處</a></li>
+          <li><a href="https://www.airport.kr/ap_en/1503/subview.do" target="_blank" rel="noopener noreferrer">第 2 航廈巴士總站</a></li>
+          <li><a href="https://www.airport.kr/ap_en/1515/subview.do" target="_blank" rel="noopener noreferrer">官方計程車指南</a></li>
+        </ul>
+      </div>
+    </section>
+
     <section id="arrival-guide" class="airport-section airport-section--gray">
       <div class="container">
         <div class="airport-arrival-bridge">
@@ -240,7 +540,26 @@
           <a href="/zh-tw/rental-car.html" class="airport-text-link">閱讀租車指南</a>
         </aside>
         <p>住哪裡，會改變哪條機場路線真正最省事。若仍在規劃，按完整機場到飯店路程，比較弘大、孔德、首爾站與明洞。</p>
-        <p><a href="/zh-tw/best-area-for-airport-access-seoul.html" class="airport-text-link"><strong>比較首爾住宿區的機場交通 →</strong></a></p>
+        <aside class="airport-next-actions" aria-labelledby="airport-stay-options-cta-title airport-hotel-options-cta-title">
+          <div class="airport-next-actions__group">
+            <p class="airport-next-actions__title" id="airport-stay-options-cta-title">還在決定從機場抵達後要住哪裡嗎？</p>
+            <p class="airport-next-actions__description">從機場移動方便只是住宿選擇的一部分。除了機場交通，也要比較你打算在首爾主要活動的區域。</p>
+            <div class="airport-next-actions__buttons">
+              <a class="airport-next-actions__button" href="/zh-tw/best-area-for-airport-access-seoul.html">機場交通方便的住宿區</a>
+              <a class="airport-next-actions__button" href="/zh-tw/accommodation.html">首爾住宿指南</a>
+            </div>
+          </div>
+          <div class="airport-next-actions__group">
+            <p class="airport-next-actions__title" id="airport-hotel-options-cta-title">住宿區已選好，飯店還沒決定？</p>
+            <p class="airport-next-actions__description">選飯店前，先確認飯店位置、車站出口、帶行李的動線，以及訂房選項。</p>
+            <div class="airport-next-actions__buttons">
+              <a class="airport-next-actions__button" href="/zh-tw/where-to-stay-in-hongdae.html">弘大飯店</a>
+              <a class="airport-next-actions__button" href="/zh-tw/hotels-near-gongdeok-station.html">孔德・麻浦飯店</a>
+              <a class="airport-next-actions__button" href="/zh-tw/hotels-near-seoul-station.html">首爾站周邊飯店</a>
+              <a class="airport-next-actions__button" href="/zh-tw/where-to-stay-in-myeongdong.html">明洞飯店</a>
+            </div>
+          </div>
+        </aside>
       </div>
     </section>
 
@@ -358,6 +677,19 @@
         </div>
       </div>
     </section>
+
+    <aside class="airport-next-actions-section" aria-labelledby="airport-travel-guides-cta-title">
+      <div class="container">
+        <div class="airport-next-actions">
+          <p class="airport-next-actions__title" id="airport-travel-guides-cta-title">辦好入住手續後，準備去哪裡？</p>
+          <p class="airport-next-actions__description">弘大和明洞能體驗到不同的首爾風貌。安排第一天行程前，先了解這兩個區域。</p>
+          <div class="airport-next-actions__buttons">
+            <a class="airport-next-actions__button" href="/zh-tw/hongdae-travel-guide.html">探索弘大</a>
+            <a class="airport-next-actions__button" href="/zh-tw/myeongdong-travel-guide.html">探索明洞</a>
+          </div>
+        </div>
+      </div>
+    </aside>
 
     <section id="sources" class="airport-section">
       <div class="container">

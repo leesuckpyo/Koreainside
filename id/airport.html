@@ -20,6 +20,242 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400..600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
+  <style id="airport-next-actions-layout">
+    .airport-page .airport-next-actions {
+      margin-top: 32px;
+      padding: 24px;
+      background: #f7f9fc;
+      border: 1px solid #dfe7f3;
+      border-radius: 12px;
+    }
+
+    .airport-page .airport-next-actions-section {
+      margin-top: 56px;
+      margin-bottom: 56px;
+    }
+
+    .airport-page .airport-next-actions-section .airport-next-actions {
+      margin-top: 0;
+    }
+
+    .airport-page .airport-next-actions__group + .airport-next-actions__group {
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px solid #dfe7f3;
+    }
+
+    .airport-page .airport-next-actions__title {
+      margin: 0;
+      color: #1f2937;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .airport-page .airport-next-actions__description {
+      margin: 8px 0 16px;
+      color: #4b5563;
+      line-height: 1.55;
+    }
+
+    .airport-page .airport-next-actions__buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .airport-page .airport-next-actions__button {
+      box-sizing: border-box;
+      display: inline-flex;
+      flex: 1 1 220px;
+      min-width: 0;
+      min-height: 44px;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-weight: 700;
+      line-height: 1.25;
+      text-align: center;
+      overflow-wrap: anywhere;
+    }
+
+    .airport-page main a.airport-next-actions__button,
+    .airport-page main a.airport-next-actions__button:visited {
+      color: #1A56DB;
+      background: #FFFFFF;
+      border: 1px solid #BCD0EF;
+      text-decoration: none;
+    }
+
+    .airport-page main a.airport-next-actions__button:hover,
+    .airport-page main a.airport-next-actions__button:focus,
+    .airport-page main a.airport-next-actions__button:focus-visible {
+      color: #1A56DB;
+      background: #EFF6FF;
+      border-color: #1A56DB;
+      text-decoration: none;
+    }
+
+    .airport-page main a.airport-next-actions__button:focus-visible {
+      outline: 3px solid #1A56DB;
+      outline-offset: 2px;
+    }
+
+    .airport-page .airport-terminal-wayfinding__grid {
+      display: grid;
+      gap: 24px;
+    }
+
+    .airport-page .airport-terminal-wayfinding__card {
+      min-width: 0;
+      padding: 28px;
+      background: #FBF8F1;
+      border: 1px solid #D8D0C2;
+      border-radius: 12px;
+    }
+
+    .airport-page .airport-terminal-wayfinding__card h3 {
+      margin: 0;
+      color: #14130F;
+    }
+
+    .airport-page .airport-terminal-wayfinding__list {
+      margin: 24px 0 0;
+    }
+
+    .airport-page .airport-terminal-wayfinding__item + .airport-terminal-wayfinding__item {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid #D8D0C2;
+    }
+
+    .airport-page .airport-terminal-wayfinding__item dt {
+      color: #1D2B27;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .airport-page .airport-terminal-wayfinding__item dd {
+      margin: 8px 0 0;
+      color: #514C43;
+      font-size: 18px;
+      line-height: 1.72;
+      overflow-wrap: break-word;
+    }
+
+    .airport-page .airport-terminal-wayfinding__note {
+      margin: 32px 0 0;
+      padding: 18px 20px;
+      color: #514C43;
+      background: #F7F3EA;
+      border-left: 3px solid #3F5D52;
+      font-size: 18px;
+      line-height: 1.72;
+      overflow-wrap: break-word;
+    }
+
+    .airport-page .airport-terminal-wayfinding__sources {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 24px;
+      margin: 22px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .airport-page .airport-terminal-wayfinding__sources li {
+      min-width: 0;
+    }
+
+    .airport-page main .airport-terminal-wayfinding__sources a,
+    .airport-page main .airport-terminal-wayfinding__sources a:visited {
+      display: inline-flex;
+      min-height: 44px;
+      align-items: center;
+      color: #B73722;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.45;
+      text-decoration: underline;
+      text-decoration-color: #D8D0C2;
+      text-underline-offset: 4px;
+      overflow-wrap: anywhere;
+    }
+
+    .airport-page main .airport-terminal-wayfinding__sources a:hover,
+    .airport-page main .airport-terminal-wayfinding__sources a:focus-visible {
+      color: #14130F;
+    }
+
+    .airport-page main .airport-terminal-wayfinding__sources a:focus-visible {
+      outline: 3px solid #3F5D52;
+      outline-offset: 2px;
+    }
+
+    @media (min-width: 900px) {
+      .airport-page .airport-terminal-wayfinding__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 700px) {
+      .airport-page .airport-next-actions {
+        padding: 20px;
+      }
+
+      .airport-page .airport-next-actions__button {
+        flex-basis: 100%;
+      }
+
+      .airport-page .airport-terminal-wayfinding__card {
+        padding: 20px;
+      }
+
+      .airport-page .airport-terminal-wayfinding__item dt,
+      .airport-page .airport-terminal-wayfinding__item dd,
+      .airport-page .airport-terminal-wayfinding__note {
+        font-size: 17px;
+      }
+
+      .airport-page .airport-terminal-wayfinding__sources {
+        display: grid;
+        gap: 0;
+      }
+
+      .airport-page main .airport-terminal-wayfinding__sources a {
+        width: 100%;
+      }
+    }
+  </style>
+  <style id="airport-neutral-surfaces">
+    /* Airport page only — neutral backgrounds */
+    body.airport-page main {
+      background-color: #FFFFFF;
+    }
+
+    body.airport-page main .airport-page-hero,
+    body.airport-page main .airport-section,
+    body.airport-page main .airport-official-map-link-wrap {
+      background-color: #FFFFFF;
+    }
+
+    body.airport-page main .airport-section--gray {
+      background-color: #F7F9FC;
+    }
+
+    body.airport-page main .airport-official-map-link {
+      background-color: transparent;
+    }
+
+    body.airport-page main .airport-faq details {
+      background-color: #FFFFFF;
+    }
+
+    body.airport-page main .airport-faq details[open] {
+      background-color: #F7F9FC;
+    }
+  </style>
 <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
   (function () {
       var script = document.createElement("script");
@@ -179,6 +415,70 @@
       </div>
     </section>
 
+    <section id="terminal-wayfinding" class="airport-section airport-section--terminal-wayfinding" aria-labelledby="terminal-wayfinding-title">
+      <div class="container">
+        <div class="section__header">
+          <h2 id="terminal-wayfinding-title" class="section__title section__title--lg">Dari Area Kedatangan ke Transportasi Anda: Perbedaan Terminal 1 dan Terminal 2</h2>
+          <p class="section__subtitle">Kedua terminal memiliki area kedatangan umum di lantai 1 (1F), tetapi jalur menuju bus dan kereta tidak sama. Pastikan terminal tempat Anda tiba sebelum menuju akses transportasi.</p>
+        </div>
+
+        <div class="airport-terminal-wayfinding__grid">
+          <article class="airport-terminal-wayfinding__card" aria-labelledby="terminal-wayfinding-t1-title">
+            <h3 id="terminal-wayfinding-t1-title">Terminal 1 (T1)</h3>
+            <dl class="airport-terminal-wayfinding__list">
+              <div class="airport-terminal-wayfinding__item">
+                <dt>AREX</dt>
+                <dd>Dari area kedatangan umum lantai 1 (1F), ikuti petunjuk Airport Railroad atau Transportation Center menuju lantai B1. Setelah masuk ke pusat transportasi, ikuti petunjuk kereta menuju stasiun dan area pembelian tiket.</dd>
+              </div>
+              <div class="airport-terminal-wayfinding__item">
+                <dt>Bus Bandara</dt>
+                <dd>Bus bandara menuju Seoul berangkat dari halte di luar Terminal 1 pada lantai 1 (1F). Loket tiket tersedia di dalam gedung dekat pintu keluar 4 dan 9, serta di luar gedung. Pastikan rute dan halte yang tepat sebelum keluar dari terminal.</dd>
+              </div>
+              <div class="airport-terminal-wayfinding__item">
+                <dt>Taksi</dt>
+                <dd>Gunakan pangkalan taksi resmi di luar area kedatangan lantai 1 (1F). Saat ini bandara mencantumkan area 5C, 6C, dan 6D untuk taksi reguler menuju Seoul. Ikuti petunjuk taksi resmi dan jangan menerima tawaran perjalanan yang tidak Anda minta.</dd>
+              </div>
+              <div class="airport-terminal-wayfinding__item">
+                <dt>Penjemputan yang Dipesan Sebelumnya</dt>
+                <dd>Periksa terminal, titik pertemuan, pintu keluar, dan kontak pengemudi pada konfirmasi pemesanan. Jangan menganggap penjemputan pribadi berada di lokasi yang sama dengan antrean taksi reguler.</dd>
+              </div>
+            </dl>
+          </article>
+
+          <article class="airport-terminal-wayfinding__card" aria-labelledby="terminal-wayfinding-t2-title">
+            <h3 id="terminal-wayfinding-t2-title">Terminal 2 (T2)</h3>
+            <dl class="airport-terminal-wayfinding__list">
+              <div class="airport-terminal-wayfinding__item">
+                <dt>AREX</dt>
+                <dd>Dari area kedatangan umum lantai 1 (1F), ikuti petunjuk Airport Railroad atau Transportation Center turun ke lantai B1. Lanjutkan menuju stasiun kereta dan periksa layanan kereta sebelum masuk ke area peron.</dd>
+              </div>
+              <div class="airport-terminal-wayfinding__item">
+                <dt>Bus Bandara</dt>
+                <dd>Untuk bus bandara menuju Seoul, pergilah ke terminal bus di lantai B1 pusat transportasi. Informasi bus dan penjualan tiket tersedia di sana. Jangan tertukar dengan halte lantai 1 (1F) yang digunakan oleh sebagian bus kota Incheon, bus rombongan, dan bus hotel.</dd>
+              </div>
+              <div class="airport-terminal-wayfinding__item">
+                <dt>Taksi</dt>
+                <dd>Dari area kedatangan lantai 1 (1F), ikuti petunjuk taksi resmi. Saat ini bandara mencantumkan area 7C untuk taksi reguler menuju Seoul. Periksa tanda di pangkalan taksi sebelum masuk antrean.</dd>
+              </div>
+              <div class="airport-terminal-wayfinding__item">
+                <dt>Penjemputan yang Dipesan Sebelumnya</dt>
+                <dd>Ikuti petunjuk titik pertemuan dari penyedia layanan. Pengemudi pribadi mungkin menggunakan titik pertemuan atau lokasi penjemputan yang berbeda dari taksi reguler, jadi simpan informasi kontak pemesanan agar mudah diakses.</dd>
+              </div>
+            </dl>
+          </article>
+        </div>
+
+        <p class="airport-terminal-wayfinding__note">Lokasi pemberhentian dan pengaturan fasilitas dapat berubah. Jika petunjuk terbaru di bandara atau peta resmi berbeda dari panduan ini, ikuti informasi bandara. Jika membawa bagasi berat atau memiliki keterbatasan mobilitas, cari rute dengan lift dan jangan menganggap semua jalur yang ditandai sama mudahnya dilalui.</p>
+
+        <ul class="airport-terminal-wayfinding__sources" aria-label="Panduan transportasi resmi setiap terminal">
+          <li><a href="https://www.airport.kr/ap_en/1511/subview.do" target="_blank" rel="noopener noreferrer">Panduan Kereta Bandara</a></li>
+          <li><a href="https://www.airport.kr/ap_en/1502/subview.do" target="_blank" rel="noopener noreferrer">Halte Bus Terminal 1</a></li>
+          <li><a href="https://www.airport.kr/ap_en/1503/subview.do" target="_blank" rel="noopener noreferrer">Terminal Bus Terminal 2</a></li>
+          <li><a href="https://www.airport.kr/ap_en/1515/subview.do" target="_blank" rel="noopener noreferrer">Panduan Taksi Resmi</a></li>
+        </ul>
+      </div>
+    </section>
+
     <section id="arrival-guide" class="airport-section airport-section--gray">
       <div class="container">
         <div class="airport-arrival-bridge">
@@ -240,7 +540,26 @@
           <a href="rental-car.html" class="airport-text-link">Baca panduan sewa mobil</a>
         </aside>
         <p>Lokasi menginap menentukan rute bandara yang paling mudah. Jika Anda masih merencanakan perjalanan, bandingkan Hongdae, Gongdeok, Seoul Station, dan Myeongdong berdasarkan seluruh perjalanan dari bandara ke hotel.</p>
-        <p><a href="best-area-for-airport-access-seoul.html" class="airport-text-link"><strong>Bandingkan kawasan Seoul berdasarkan akses bandara →</strong></a></p>
+        <aside class="airport-next-actions" aria-labelledby="airport-stay-options-cta-title airport-hotel-options-cta-title">
+          <div class="airport-next-actions__group">
+            <p class="airport-next-actions__title" id="airport-stay-options-cta-title">Masih menentukan tempat menginap setelah perjalanan dari bandara?</p>
+            <p class="airport-next-actions__description">Rute termudah dari bandara hanya salah satu hal yang perlu dipertimbangkan. Bandingkan akses bandara dengan kawasan di Seoul tempat Anda berencana menghabiskan waktu.</p>
+            <div class="airport-next-actions__buttons">
+              <a class="airport-next-actions__button" href="/id/best-area-for-airport-access-seoul.html">Kawasan dengan Akses Bandara yang Mudah</a>
+              <a class="airport-next-actions__button" href="/id/accommodation.html">Panduan Menginap di Seoul</a>
+            </div>
+          </div>
+          <div class="airport-next-actions__group">
+            <p class="airport-next-actions__title" id="airport-hotel-options-cta-title">Sudah memilih kawasan, tetapi belum menentukan hotel?</p>
+            <p class="airport-next-actions__description">Sebelum memesan, periksa lokasi hotel, pintu keluar stasiun, kemudahan membawa bagasi, dan pilihan pemesanannya.</p>
+            <div class="airport-next-actions__buttons">
+              <a class="airport-next-actions__button" href="/id/where-to-stay-in-hongdae.html">Hotel di Hongdae</a>
+              <a class="airport-next-actions__button" href="/id/hotels-near-gongdeok-station.html">Hotel di Gongdeok dan Mapo</a>
+              <a class="airport-next-actions__button" href="/id/hotels-near-seoul-station.html">Hotel Dekat Stasiun Seoul</a>
+              <a class="airport-next-actions__button" href="/id/where-to-stay-in-myeongdong.html">Hotel di Myeongdong</a>
+            </div>
+          </div>
+        </aside>
       </div>
     </section>
 
@@ -358,6 +677,19 @@
         </div>
       </div>
     </section>
+
+    <aside class="airport-next-actions-section" aria-labelledby="airport-travel-guides-cta-title">
+      <div class="container">
+        <div class="airport-next-actions">
+          <p class="airport-next-actions__title" id="airport-travel-guides-cta-title">Apa yang ingin Anda lakukan setelah check-in di hotel?</p>
+          <p class="airport-next-actions__description">Hongdae dan Myeongdong menawarkan pengalaman berbeda saat menjelajahi Seoul. Kenali kedua kawasan tersebut sebelum menyusun rencana hari pertama.</p>
+          <div class="airport-next-actions__buttons">
+            <a class="airport-next-actions__button" href="/id/hongdae-travel-guide.html">Jelajahi Hongdae</a>
+            <a class="airport-next-actions__button" href="/id/myeongdong-travel-guide.html">Jelajahi Myeongdong</a>
+          </div>
+        </div>
+      </div>
+    </aside>
 
     <section id="sources" class="airport-section">
       <div class="container">
