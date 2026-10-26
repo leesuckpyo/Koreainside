@@ -101,6 +101,104 @@
       outline-offset: 2px;
     }
 
+    .airport-page .airport-terminal-wayfinding__grid {
+      display: grid;
+      gap: 24px;
+    }
+
+    .airport-page .airport-terminal-wayfinding__card {
+      min-width: 0;
+      padding: 28px;
+      background: #FBF8F1;
+      border: 1px solid #D8D0C2;
+      border-radius: 12px;
+    }
+
+    .airport-page .airport-terminal-wayfinding__card h3 {
+      margin: 0;
+      color: #14130F;
+    }
+
+    .airport-page .airport-terminal-wayfinding__list {
+      margin: 24px 0 0;
+    }
+
+    .airport-page .airport-terminal-wayfinding__item + .airport-terminal-wayfinding__item {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid #D8D0C2;
+    }
+
+    .airport-page .airport-terminal-wayfinding__item dt {
+      color: #1D2B27;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .airport-page .airport-terminal-wayfinding__item dd {
+      margin: 8px 0 0;
+      color: #514C43;
+      font-size: 18px;
+      line-height: 1.72;
+      overflow-wrap: break-word;
+    }
+
+    .airport-page .airport-terminal-wayfinding__note {
+      margin: 32px 0 0;
+      padding: 18px 20px;
+      color: #514C43;
+      background: #F7F3EA;
+      border-left: 3px solid #3F5D52;
+      font-size: 18px;
+      line-height: 1.72;
+      overflow-wrap: break-word;
+    }
+
+    .airport-page .airport-terminal-wayfinding__sources {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 24px;
+      margin: 22px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .airport-page .airport-terminal-wayfinding__sources li {
+      min-width: 0;
+    }
+
+    .airport-page main .airport-terminal-wayfinding__sources a,
+    .airport-page main .airport-terminal-wayfinding__sources a:visited {
+      display: inline-flex;
+      min-height: 44px;
+      align-items: center;
+      color: #B73722;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.45;
+      text-decoration: underline;
+      text-decoration-color: #D8D0C2;
+      text-underline-offset: 4px;
+      overflow-wrap: anywhere;
+    }
+
+    .airport-page main .airport-terminal-wayfinding__sources a:hover,
+    .airport-page main .airport-terminal-wayfinding__sources a:focus-visible {
+      color: #14130F;
+    }
+
+    .airport-page main .airport-terminal-wayfinding__sources a:focus-visible {
+      outline: 3px solid #3F5D52;
+      outline-offset: 2px;
+    }
+
+    @media (min-width: 900px) {
+      .airport-page .airport-terminal-wayfinding__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
     @media (max-width: 700px) {
       .airport-page .airport-next-actions {
         padding: 20px;
@@ -109,6 +207,53 @@
       .airport-page .airport-next-actions__button {
         flex-basis: 100%;
       }
+
+      .airport-page .airport-terminal-wayfinding__card {
+        padding: 20px;
+      }
+
+      .airport-page .airport-terminal-wayfinding__item dt,
+      .airport-page .airport-terminal-wayfinding__item dd,
+      .airport-page .airport-terminal-wayfinding__note {
+        font-size: 17px;
+      }
+
+      .airport-page .airport-terminal-wayfinding__sources {
+        display: grid;
+        gap: 0;
+      }
+
+      .airport-page main .airport-terminal-wayfinding__sources a {
+        width: 100%;
+      }
+    }
+  </style>
+  <style id="airport-neutral-surfaces">
+    /* Airport page only — neutral backgrounds */
+    body.airport-page main {
+      background-color: #FFFFFF;
+    }
+
+    body.airport-page main .airport-page-hero,
+    body.airport-page main .airport-section,
+    body.airport-page main .airport-official-map-link-wrap {
+      background-color: #FFFFFF;
+    }
+
+    body.airport-page main .airport-section--gray {
+      background-color: #F7F9FC;
+    }
+
+    body.airport-page main .airport-official-map-link {
+      background-color: transparent;
+    }
+
+    body.airport-page main .airport-faq details {
+      background-color: #FFFFFF;
+    }
+
+    body.airport-page main .airport-faq details[open] {
+      background-color: #F7F9FC;
     }
   </style>
 <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
@@ -267,6 +412,70 @@
             <p class="airport-official-map-link__tip">The map may open on a different terminal or floor. Match both settings to your current arrival before following it.</p>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section id="terminal-wayfinding" class="airport-section airport-section--terminal-wayfinding" aria-labelledby="terminal-wayfinding-title">
+      <div class="container">
+        <div class="section__header">
+          <h2 id="terminal-wayfinding-title" class="section__title section__title--lg">From the Arrival Hall to Your Ride: Terminal 1 vs Terminal 2</h2>
+          <p class="section__subtitle">Both terminals have public arrival halls on 1F, but the routes to buses and trains are not identical. Check which terminal you arrived at before heading toward a transport entrance.</p>
+        </div>
+
+        <div class="airport-terminal-wayfinding__grid">
+          <article class="airport-terminal-wayfinding__card" aria-labelledby="terminal-wayfinding-t1-title">
+            <h3 id="terminal-wayfinding-t1-title">Terminal 1 (T1)</h3>
+            <dl class="airport-terminal-wayfinding__list">
+              <div class="airport-terminal-wayfinding__item">
+                <dt>AREX</dt>
+                <dd>From the 1F public arrival hall, follow the Airport Railroad or Transportation Center signs toward B1. Once inside the Transportation Center, follow the train signs to the station and ticketing area.</dd>
+              </div>
+              <div class="airport-terminal-wayfinding__item">
+                <dt>Airport Bus</dt>
+                <dd>Seoul-bound airport buses use the 1F bus stops outside Terminal 1. Bus ticket counters are available inside near exits 4 and 9, with additional counters outside. Confirm your route and exact stop before leaving the building.</dd>
+              </div>
+              <div class="airport-terminal-wayfinding__item">
+                <dt>Taxi</dt>
+                <dd>Use the designated taxi stands outside the 1F arrival hall. The airport currently lists 5C, 6C and 6D for standard Seoul-bound taxis. Follow the official taxi signs rather than accepting an unsolicited ride.</dd>
+              </div>
+              <div class="airport-terminal-wayfinding__item">
+                <dt>Pre-booked Pickup</dt>
+                <dd>Check the terminal, meeting point, exit and driver contact in your booking confirmation. Do not assume that a private pickup uses the same place as the regular taxi queue.</dd>
+              </div>
+            </dl>
+          </article>
+
+          <article class="airport-terminal-wayfinding__card" aria-labelledby="terminal-wayfinding-t2-title">
+            <h3 id="terminal-wayfinding-t2-title">Terminal 2 (T2)</h3>
+            <dl class="airport-terminal-wayfinding__list">
+              <div class="airport-terminal-wayfinding__item">
+                <dt>AREX</dt>
+                <dd>From the 1F public arrival hall, follow the Airport Railroad or Transportation Center signs down to B1. Continue toward the railway station and check the train service before entering the platform area.</dd>
+              </div>
+              <div class="airport-terminal-wayfinding__item">
+                <dt>Airport Bus</dt>
+                <dd>For Seoul-bound airport buses, head to the bus terminal on B1 of the Transportation Center. Ticketing and bus information are available there. Do not confuse this with the 1F stops used by some Incheon city, group and hotel buses.</dd>
+              </div>
+              <div class="airport-terminal-wayfinding__item">
+                <dt>Taxi</dt>
+                <dd>Follow the official taxi signs from the 1F arrival hall. The airport currently lists 7C for standard Seoul-bound taxis. Check the current stand signs before joining the queue.</dd>
+              </div>
+              <div class="airport-terminal-wayfinding__item">
+                <dt>Pre-booked Pickup</dt>
+                <dd>Use the meeting instructions supplied by your operator. A private driver may use a different meeting or vehicle pickup point from regular taxis, so keep the booking contact available.</dd>
+              </div>
+            </dl>
+          </article>
+        </div>
+
+        <p class="airport-terminal-wayfinding__note">Stand assignments and facility arrangements can change. Use the current airport signs and official map if they differ from this guide. With heavy luggage or limited mobility, look for the elevator route rather than assuming every signed route is equally convenient.</p>
+
+        <ul class="airport-terminal-wayfinding__sources" aria-label="Official terminal transport guides">
+          <li><a href="https://www.airport.kr/ap_en/1511/subview.do" target="_blank" rel="noopener noreferrer">Airport Railroad Guide</a></li>
+          <li><a href="https://www.airport.kr/ap_en/1502/subview.do" target="_blank" rel="noopener noreferrer">Terminal 1 Bus Stops</a></li>
+          <li><a href="https://www.airport.kr/ap_en/1503/subview.do" target="_blank" rel="noopener noreferrer">Terminal 2 Bus Terminal</a></li>
+          <li><a href="https://www.airport.kr/ap_en/1515/subview.do" target="_blank" rel="noopener noreferrer">Official Taxi Guide</a></li>
+        </ul>
       </div>
     </section>
 
