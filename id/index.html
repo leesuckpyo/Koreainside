@@ -29,6 +29,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Roboto+Flex:wght@400..600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../home-hub.css">
   <meta name="fo-verify" content="d152ecbe-746f-457f-9431-408e90abdcd0" />
   <script type="application/ld+json">
   {
@@ -136,7 +137,7 @@
   </header>
   <!-- GLOBAL_NAV_END -->
 
-  <main>
+  <main class="home-hub-v2">
     <section class="hero-banner">
       <picture class="hero-banner__media">
         <source media="(min-width: 768px)" srcset="../images/home/hero-home-hanyangdoseong-n-seoul-tower-1920-v20260917.webp" type="image/webp">
@@ -159,129 +160,237 @@
       <p class="hero-banner__credit">Foto: <a href="https://archive.visitseoul.net/en/contents/ARP007f71" target="_blank" rel="noopener noreferrer">Seoul Tourism Organization</a></p>
     </section>
 
-    <section class="home-discover" aria-labelledby="home-discover-title">
-      <div class="container">
-        <div class="home-discover-intro">
-          <h2 id="home-discover-title">Mulailah dari hal yang paling ingin Anda lakukan.</h2>
-          <p>Sebagian perjalanan dimulai dari makanan. Yang lain berfokus pada belanja, kecantikan, hiburan malam, atau sekadar menikmati kawasan yang sudah lama ingin dikunjungi. Setelah tahu apa yang paling ingin Anda lakukan, rencana perjalanan lainnya lebih mudah disusun.</p>
+    <nav class="start-nav" aria-label="Mulai dari pertanyaan yang paling penting untuk perjalanan Anda">
+      <div class="home-hub-container start-nav__grid">
+        <a class="start-nav__link" href="#explore"><strong>Jelajahi Korea</strong><span>Temukan kawasan Seoul yang cocok</span></a>
+        <a class="start-nav__link" href="#stay"><strong>Tempat menginap</strong><span>Pilih kawasan sebagai titik awal perjalanan</span></a>
+        <a class="start-nav__link" href="#plan"><strong>Rencanakan perjalanan</strong><span>Bandara, eSIM, pembayaran</span></a>
+        <a class="start-nav__link" href="#experience"><strong>Rasakan Korea</strong><span>Kuliner, kecantikan, budaya</span></a>
+      </div>
+    </nav>
+
+    <section class="editorial-section home-hub-section--explore" id="explore" aria-labelledby="explore-title">
+      <div class="home-hub-container">
+        <header class="section-head">
+          <p class="home-hub-eyebrow">JELAJAHI KOREA · KAWASAN SEOUL</p>
+          <h2 id="explore-title">Temukan kawasan Seoul yang sesuai dengan perjalanan Anda</h2>
+          <p class="section-head__lead">Setiap kawasan Seoul memberikan pengalaman sehari yang berbeda. Pertimbangkan apa yang ingin Anda lakukan, di mana Anda akan mengakhiri malam, dan seberapa jauh Anda bersedia bepergian. Setelah itu, baca panduan lengkap kawasan tersebut.</p>
+        </header>
+
+        <div class="feature-grid">
+          <article class="featured-card">
+            <a class="featured-card__media" href="hongdae-travel-guide.html">
+              <img src="../images/hongdae/hongdae-travel-guide-hero-1600-v20260916.webp" alt="Jalan pertokoan Hongdae yang ramai dengan pejalan kaki dan papan toko bercahaya pada sore hari" width="1600" height="900" loading="lazy" decoding="async">
+            </a>
+            <div class="featured-card__body">
+              <p class="home-hub-tag">Malam yang ramai</p>
+              <h3>Hongdae</h3>
+              <p>Kafe di Yeonnam, toko independen, dan jalanan yang masih ramai setelah makan malam. Luangkan waktu menjelajahi Hongdae jika suasana malam menjadi bagian dari rencana Anda.</p>
+              <a class="home-hub-link" href="hongdae-travel-guide.html">Jelajahi Hongdae <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+
+          <article class="featured-card">
+            <a class="featured-card__media" href="myeongdong-travel-guide.html">
+              <img src="../images/myeongdong/myeongdong-travel-guide-hero-1600-v20260916.webp" alt="Jalan belanja khusus pejalan kaki di Myeongdong, Seoul" width="1600" height="1067" loading="lazy" decoding="async">
+            </a>
+            <div class="featured-card__body">
+              <p class="home-hub-tag">Pusat Seoul</p>
+              <h3>Myeongdong</h3>
+              <p>Belanja, mengunjungi tempat wisata di pusat kota, dan mudah kembali di sela aktivitas. Kawasan yang praktis untuk memulai kunjungan pertama ke Seoul.</p>
+              <a class="home-hub-link" href="myeongdong-travel-guide.html">Jelajahi Myeongdong <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+
+          <article class="featured-card">
+            <a class="featured-card__media" href="seongsu-travel-guide.html">
+              <img src="../images/seongsu/seongsu-travel-guide-hero-1600-v20260916.webp" alt="Bangunan bata dan aktivitas di jalan kawasan Seongsu, Seoul" width="1600" height="901" loading="lazy" decoding="async">
+            </a>
+            <div class="featured-card__body">
+              <p class="home-hub-tag">Kafe dan toko pop-up</p>
+              <h3>Seongsu</h3>
+              <p>Jalan bekas kawasan industri dengan bangunan bata merah, toko desain, dan pop-up yang terus berganti. Sisihkan waktu untuk berjalan santai, bukan berpindah tempat terburu-buru.</p>
+              <a class="home-hub-link" href="seongsu-travel-guide.html">Jelajahi Seongsu <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
         </div>
 
-        <article class="home-taste-feature">
-          <div class="home-taste-feature-media">
-            <img
-              src="../images/taste-korea/jeonju-bibimbap-feature.webp"
-              alt="Hidangan bibimbap Korea yang menggambarkan pengalaman wisata kuliner di Korea"
-              width="1408"
-              height="768"
-              loading="lazy"
-              decoding="async"
-            >
-          </div>
-          <div class="home-taste-feature-copy">
-            <h3>Kuliner Korea</h3>
-            <p>Makanan Korea berbeda dari satu kawasan ke kawasan lain dan dari satu kota ke kota lain. Malam barbeku di Seoul, pagi di pasar Busan, atau hari menikmati kafe di Seongsu bisa membawa Anda ke tempat yang sangat berbeda — dan terkadang ke lokasi menginap yang berbeda.</p>
-            <a class="home-taste-feature__link" href="taste-korea.html">Jelajahi kuliner Korea</a>
-          </div>
-        </article>
-
-        <article class="home-kbeauty-row">
-          <div class="home-kbeauty-row__media">
-            <img
-              src="../images/k-beauty/k-beauty-makeup-product-display.webp"
-              alt="Produk rias K-Beauty yang dipajang untuk membandingkan produk dan warna"
-              width="2448"
-              height="2448"
-              loading="lazy"
-              decoding="async"
-            >
-          </div>
-          <div class="home-kbeauty-row__copy">
-            <h3>K-Beauty</h3>
-            <p>Belanja K-Beauty bisa membingungkan karena toko besar menawarkan jauh lebih banyak produk daripada yang perlu Anda beli. Yang lebih berguna adalah mengetahui area untuk membandingkan produk, perbedaan tiap kawasan, dan kapan toko utama sebuah merek layak didatangi meskipun tidak searah dengan rute Anda.</p>
-            <a class="home-kbeauty-row__link" href="k-beauty.html">Jelajahi K-Beauty di Korea</a>
-          </div>
-        </article>
+        <div class="area-list-head">
+          <h3>Kawasan lain yang perlu dikenali</h3>
+          <p>Panduan kawasan yang praktis · semua tautan tersedia</p>
+        </div>
+        <ul class="area-list">
+          <li>
+            <a class="area-list__link" href="insadong-travel-guide.html">
+              <span class="area-list__heading"><strong>Insadong</strong><span class="home-hub-tag">Budaya dan tradisi</span></span>
+              <span>Kedai teh, kerajinan tangan, dan jalan bersejarah yang lebih nyaman dijelajahi tanpa terburu-buru pada siang hari.</span>
+              <span class="area-list__cta">Lihat panduan <span aria-hidden="true">↗</span></span>
+            </a>
+          </li>
+          <li>
+            <a class="area-list__link" href="dongdaemun-travel-guide.html">
+              <span class="area-list__heading"><strong>Dongdaemun</strong><span class="home-hub-tag">Pasar dan desain</span></span>
+              <span>DDP, beberapa area belanja, dan toko yang buka hingga larut malam; sebaiknya kenali letak masing-masing sebelum berkunjung.</span>
+              <span class="area-list__cta">Lihat panduan <span aria-hidden="true">↗</span></span>
+            </a>
+          </li>
+          <li>
+            <a class="area-list__link" href="jamsil-travel-guide.html">
+              <span class="area-list__heading"><strong>Jamsil</strong><span class="home-hub-tag">Sehari bersama keluarga</span></span>
+              <span>Lotte World, Danau Seokchon, dan berbagai atraksi besar yang bisa mengisi satu hari.</span>
+              <span class="area-list__cta">Lihat panduan <span aria-hidden="true">↗</span></span>
+            </a>
+          </li>
+          <li>
+            <a class="area-list__link" href="gangnam-travel-guide.html">
+              <span class="area-list__heading"><strong>Gangnam</strong><span class="home-hub-tag">Seoul bagian selatan</span></span>
+              <span>Area bisnis, pertokoan, dan atraksi yang tersebar di beberapa kelompok lokasi berbeda.</span>
+              <span class="area-list__cta">Lihat panduan <span aria-hidden="true">↗</span></span>
+            </a>
+          </li>
+          <li>
+            <a class="area-list__link" href="itaewon-travel-guide.html">
+              <span class="area-list__heading"><strong>Itaewon</strong><span class="home-hub-tag">Kuliner dan kehidupan malam</span></span>
+              <span>Restoran internasional dan tempat hiburan malam, dengan jalan menanjak dan tata jalan yang perlu diperhatikan.</span>
+              <span class="area-list__cta">Lihat panduan <span aria-hidden="true">↗</span></span>
+            </a>
+          </li>
+          <li>
+            <a class="area-list__link" href="gongdeok-mapo-seoul-guide.html">
+              <span class="area-list__heading"><strong>Gongdeok dan Mapo</strong><span class="home-hub-tag">Kuliner dan akses transportasi</span></span>
+              <span>Kawasan kuliner dengan koneksi transportasi yang baik, berguna sebagai tempat menginap sekaligus tujuan singgah.</span>
+              <span class="area-list__cta">Lihat panduan <span aria-hidden="true">↗</span></span>
+            </a>
+          </li>
+        </ul>
       </div>
     </section>
 
-    <section class="home-journey" aria-labelledby="home-journey-title">
-      <div class="container">
-        <div class="home-journey__header">
-          <h2 id="home-journey-title">Tiga keputusan yang membuat hari kedatangan lebih mudah</h2>
-          <p>Anda tidak perlu menyelesaikan seluruh rencana perjalanan sebelum terbang ke Korea. Namun, tiga hal sebaiknya diputuskan lebih awal: tempat menginap, cara ponsel terhubung ke internet, dan cara menuju penginapan pertama dari bandara.</p>
+    <section class="editorial-section home-hub-section--stay" id="stay" aria-labelledby="stay-title">
+      <div class="home-hub-container stay-row">
+        <div class="stay-row__media">
+          <img src="../images/Accommodation/accommodation-hero-v1.webp" alt="Foto akomodasi untuk membantu merencanakan kawasan menginap di beranda Korea Inside" width="1536" height="1024" loading="lazy" decoding="async">
         </div>
+        <div class="stay-row__copy">
+          <header class="section-head">
+            <p class="home-hub-eyebrow">TEMPAT MENGINAP</p>
+            <h2 id="stay-title">Tentukan kawasan menginap sebelum memilih hotel</h2>
+            <p class="section-head__lead">Kawasan yang tepat bergantung pada kegiatan Anda, rute kedatangan, dan cara pulang pada malam hari. Harga hotel yang menarik tidak dapat mengimbangi perjalanan harian yang merepotkan.</p>
+          </header>
+          <h3>Lokasi menginap lebih dari sekadar pilihan hotel</h3>
+          <p>Lokasi yang strategis bisa menghemat lebih banyak waktu dibanding memilih hotel hanya karena harganya. Akses kereta bawah tanah penting, tetapi pertimbangkan pula kedatangan dari bandara, perjalanan pulang larut malam, barang belanjaan, dan seberapa sering Anda harus melintasi kota.</p>
+          <a class="home-hub-button" href="accommodation.html">Cari kawasan menginap yang sesuai <span aria-hidden="true">↗</span></a>
+          <div class="stay-links" aria-label="Panduan akomodasi lainnya">
+            <a class="home-hub-outline-link" href="best-area-for-first-time-visitors-seoul.html">Pertama kali berkunjung</a>
+            <a class="home-hub-outline-link" href="best-area-for-families-seoul.html">Keluarga</a>
+            <a class="home-hub-outline-link" href="best-area-for-airport-access-seoul.html">Akses bandara</a>
+            <a class="home-hub-outline-link" href="hongdae-vs-myeongdong.html">Hongdae vs Myeongdong</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <div class="home-journey__grid">
-          <article class="home-journey__row">
-            <div class="home-journey__media">
-              <img
-                class="home-journey__image"
-                src="../images/Accommodation/accommodation-hero-v1.webp"
-                alt="Kartu perencanaan penginapan untuk memilih tempat menginap di Korea"
-                loading="lazy"
-              >
-            </div>
-            <div class="home-journey__body">
-              <h3>Lokasi menginap memengaruhi lebih dari pilihan hotel</h3>
-              <p>Lokasi menginap yang praktis bisa menghemat lebih banyak waktu daripada memilih hotel hanya berdasarkan harga. Akses kereta bawah tanah penting, begitu juga kedatangan dari bandara, pulang larut malam, tas belanja, dan seberapa sering Anda perlu melintasi kota.</p>
-              <a href="accommodation.html" class="home-journey__link">Temukan kawasan menginap yang sesuai</a>
-            </div>
-          </article>
+    <section class="editorial-section home-hub-section--plan" id="plan" aria-labelledby="plan-title">
+      <div class="home-hub-container">
+        <header class="section-head">
+          <p class="home-hub-eyebrow">RENCANAKAN PERJALANAN</p>
+          <h2 id="plan-title">Beberapa keputusan awal membuat hari kedatangan lebih mudah</h2>
+          <p class="section-head__lead">Anda tidak harus menyelesaikan seluruh rencana perjalanan sebelum terbang ke Korea. Namun, ada tiga hal yang sebaiknya dipastikan lebih awal: lokasi menginap, cara ponsel terhubung ke internet, dan transportasi dari bandara ke penginapan pertama.</p>
+        </header>
 
-          <article class="home-journey__row home-journey__row--reverse">
-            <div class="home-journey__media">
-              <img
-                class="home-journey__image"
-                src="../images/esim/hero-esim.png"
-                alt="Pengaturan data seluler agar tetap terhubung di Korea"
-                loading="lazy"
-              >
+        <div class="planning-grid">
+          <article class="planning-card">
+            <div class="planning-card__media">
+              <img src="../images/esim/esim-hero-connected-seoul.webp" alt="Wisatawan menggunakan telepon, pencarian, dan peta di ponsel saat terhubung dengan internet di Seoul" width="1800" height="600" loading="lazy" decoding="async">
             </div>
-            <div class="home-journey__body">
+            <div class="planning-card__body">
+              <p class="home-hub-tag">KONEKSI SELULER</p>
               <h3>Siapkan ponsel sebelum Anda membutuhkannya</h3>
-              <p>Data seluler berguna hampir segera setelah mendarat — untuk peta, petunjuk ke hotel, pesan, reservasi, dan terjemahan. eSIM praktis bagi banyak wisatawan, tetapi kompatibilitas ponsel dan waktu aktivasi perlu diperiksa sebelum berangkat.</p>
-              <a href="esim.html" class="home-journey__link">Baca panduan eSIM Korea</a>
+              <p>Internet seluler hampir langsung dibutuhkan setelah mendarat, untuk peta, petunjuk ke hotel, pesan, reservasi, dan terjemahan. eSIM memudahkan banyak wisatawan, tetapi periksa kesesuaian perangkat dan waktu aktivasi sebelum berangkat.</p>
+              <a class="home-hub-link" href="esim.html">Baca panduan eSIM Korea <span aria-hidden="true">↗</span></a>
             </div>
           </article>
 
-          <article class="home-journey__row">
-            <div class="home-journey__media">
-              <img
-                class="home-journey__image"
-                src="../images/home/arrival-guide.png"
-                alt="Panduan kedatangan bandara untuk langkah pertama setelah mendarat di Korea"
-                loading="lazy"
-              >
+          <article class="planning-card">
+            <div class="planning-card__media">
+              <img src="../images/arrival/incheon-airport-arrival-hero.webp" alt="Wisatawan dengan koper berjalan di bawah papan Kedatangan di Bandara Internasional Incheon" width="1536" height="1024" loading="lazy" decoding="async">
             </div>
-            <div class="home-journey__body">
-              <h3>Rencanakan rute dari bandara sampai ke hotel Anda</h3>
-              <p>Pilihan bandara tercepat belum tentu yang paling mudah. Waktu kedatangan, koper, perpindahan, jarak jalan kaki dari stasiun, dan lokasi hotel bisa lebih penting daripada selisih beberapa menit perjalanan.</p>
-              <div class="home-journey__links">
-                <a href="airport-transfer.html" class="home-journey__link">Bandingkan pilihan transportasi bandara</a>
-                <a href="arrival.html" class="home-journey__link home-journey__link--secondary">Lihat panduan kedatangan lengkap</a>
+            <div class="planning-card__body">
+              <p class="home-hub-tag">BANDARA → HOTEL</p>
+              <h3>Rencanakan perjalanan dari bandara sampai ke hotel Anda</h3>
+              <p>Pilihan tercepat dari bandara belum tentu paling mudah. Waktu tiba, koper, perpindahan transportasi, jarak jalan kaki dari stasiun, dan lokasi hotel bisa lebih penting daripada menghemat beberapa menit.</p>
+              <div class="planning-card__links">
+                <a class="home-hub-link" href="airport-transfer.html">Bandingkan pilihan transportasi bandara <span aria-hidden="true">↗</span></a>
+                <a class="home-hub-link home-hub-link--secondary" href="arrival.html">Lihat panduan kedatangan lengkap <span aria-hidden="true">↗</span></a>
               </div>
             </div>
           </article>
         </div>
+
+        <div class="hour-panel">
+          <div class="hour-panel__intro">
+            <p class="home-hub-eyebrow">CEK SINGKAT</p>
+            <h3>Satu jam pertama Anda di Korea</h3>
+            <p><a href="checklist.html">Setelah mengambil bagasi, sebagian besar wisatawan perlu menyiapkan hal yang serupa</a>: ponsel yang bisa dipakai online, cara membayar transportasi lokal, aplikasi peta yang bekerja dengan baik di Korea, dan rute yang jelas menuju kota. Setelah semua siap, biasanya tidak perlu berlama-lama di bandara.</p>
+            <a class="home-hub-link" href="airport.html">Lihat panduan bandara lengkap <span aria-hidden="true">↗</span></a>
+          </div>
+          <ol class="hour-panel__steps">
+            <li><div><strong>Hubungkan ponsel ke internet</strong><a class="home-hub-outline-link" href="esim.html">Panduan eSIM Korea</a></div></li>
+            <li><div><strong>Naik kereta bawah tanah atau bus lokal? Siapkan atau isi saldo T-money</strong><a class="home-hub-outline-link" href="tmoney.html">Panduan T-money</a></div></li>
+            <li><div><strong>Simpan sedikit uang tunai sebagai cadangan</strong><span class="hour-panel__links"><a class="home-hub-outline-link" href="payments.html">Panduan pembayaran</a><a class="home-hub-outline-link" href="wowpass.html">Panduan WOWPASS</a></span></div></li>
+            <li><div><strong>Buka Naver Map atau KakaoMap</strong><a class="home-hub-outline-link" href="maps.html">Aplikasi peta di Korea</a></div></li>
+            <li><div><strong>Pilih rute dari bandara yang sesuai dengan lokasi hotel</strong><a class="home-hub-outline-link" href="airport-transfer.html">Panduan transportasi bandara</a></div></li>
+          </ol>
+        </div>
       </div>
     </section>
 
-    <section class="section section--gray home-prep-section">
-      <div class="container">
-        <div class="home-prep-grid">
-          <div class="first-hour-panel">
-            <h2 class="section__title">Jam pertama Anda di Korea</h2>
-            <p class="first-hour-panel__intro"><a href="checklist.html">Setelah mengambil bagasi, periksa kembali daftar persiapan Anda</a>: internet ponsel aktif, cara membayar transportasi sudah tersedia, aplikasi peta Korea bisa digunakan, dan rute ke kota sudah jelas. Jika semuanya siap, Anda biasanya tidak perlu berlama-lama di bandara.</p>
-            <ol class="first-hour-list">
-              <li><div><span>Hubungkan ponsel ke internet</span><a class="first-hour-list__link" href="esim.html">Panduan eSIM Korea</a></div></li>
-              <li><div><span>Dapatkan atau isi saldo T-money</span><a class="first-hour-list__link" href="tmoney.html">Panduan T-money</a></div></li>
-              <li><div><span>Simpan sedikit uang tunai sebagai cadangan</span><a class="first-hour-list__link" href="payments.html">Panduan pembayaran</a><a class="first-hour-list__link" href="wowpass.html">Panduan WOWPASS</a></div></li>
-              <li><div><span>Buka Naver Map atau KakaoMap</span><a class="first-hour-list__link" href="maps.html">Aplikasi peta di Korea</a></div></li>
-              <li><div><span>Gunakan rute bandara yang sesuai dengan hotel Anda</span><a class="first-hour-list__link" href="airport-transfer.html">Panduan transportasi bandara</a></div></li>
-            </ol>
-            <a href="airport.html" class="btn btn--text">Lihat panduan bandara lengkap &rarr;</a>
-          </div>
+    <section class="editorial-section home-hub-section--experience" id="experience" aria-labelledby="experience-title">
+      <div class="home-hub-container">
+        <header class="section-head">
+          <p class="home-hub-eyebrow">RASAKAN KOREA</p>
+          <h2 id="experience-title">Mulai dari hal yang paling ingin Anda lakukan</h2>
+          <p class="section-head__lead">Ada perjalanan yang berfokus pada makanan, ada pula yang mengutamakan belanja, kecantikan, kehidupan malam, atau sekadar menikmati kawasan yang sudah lama ingin dikunjungi. Setelah tahu prioritasnya, sisa rencana perjalanan lebih mudah disusun.</p>
+        </header>
+
+        <div class="experience-grid">
+          <article class="experience-card">
+            <div class="experience-card__media">
+              <img src="../images/taste-korea/jeonju-bibimbap-feature.webp" alt="Hidangan bibimbap sebagai contoh pengalaman wisata kuliner Korea" width="1408" height="768" loading="lazy" decoding="async">
+            </div>
+            <div class="experience-card__body">
+              <h3>Cita Rasa Korea</h3>
+              <p>Kuliner Korea berbeda dari satu kawasan ke kawasan lain dan dari satu kota ke kota lain. Makan barbeku di Seoul, mengunjungi pasar pada pagi hari di Busan, atau berkeliling kafe di Seongsu membawa Anda ke tempat berbeda, bahkan dapat memengaruhi pilihan lokasi menginap.</p>
+              <a class="home-hub-link" href="taste-korea.html">Jelajahi kuliner Korea <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+
+          <article class="experience-card">
+            <div class="experience-card__media">
+              <img src="../images/k-beauty/k-beauty-makeup-product-display.webp" alt="Produk rias wajah K-Beauty dipajang untuk membandingkan produk dan pilihan warna" width="2448" height="2448" loading="lazy" decoding="async">
+            </div>
+            <div class="experience-card__body">
+              <h3>K-Beauty</h3>
+              <p>Berbelanja produk kecantikan Korea bisa membingungkan karena toko besar menawarkan jauh lebih banyak pilihan daripada yang dibutuhkan kebanyakan wisatawan. Yang penting adalah mengetahui tempat untuk melihat-lihat, perbedaan antar kawasan, dan kapan kunjungan khusus ke toko flagship memang sepadan.</p>
+              <a class="home-hub-link" href="k-beauty.html">Jelajahi K-Beauty di Korea <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
         </div>
+      </div>
+    </section>
+
+    <section class="editorial-section home-hub-section--trust" id="trust" aria-labelledby="trust-title">
+      <div class="home-hub-container trust-grid">
+        <header class="section-head">
+          <p class="home-hub-eyebrow">TENTANG KOREA INSIDE</p>
+          <h2 id="trust-title">Informasi perjalanan untuk membantu Anda memilih</h2>
+          <p class="section-head__lead">Korea Inside adalah panduan perjalanan Korea yang praktis, ditulis dan ditinjau langsung di Korea oleh editor asal Korea. Kami menggunakan sumber resmi, konteks setempat, dan penilaian editorial independen untuk membantu pengunjung memahami pilihannya, termasuk ketika suatu pilihan kurang sesuai dengan rencana perjalanan mereka.</p>
+        </header>
+        <dl class="trust-list">
+          <div><dt>Informasi resmi</dt><dd>untuk fakta praktis dan ketentuan penting</dd></div>
+          <div><dt>Konteks setempat</dt><dd>untuk perjalanan, perpindahan transportasi, dan ruas jalan kaki terakhir</dd></div>
+          <div><dt>Penilaian independen</dt><dd>sebelum memesan atau membeli</dd></div>
+        </dl>
       </div>
     </section>
 

@@ -29,6 +29,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Roboto+Flex:wght@400..600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../home-hub.css">
   <meta name="fo-verify" content="d152ecbe-746f-457f-9431-408e90abdcd0" />
   <script type="application/ld+json">
   {
@@ -136,7 +137,7 @@
   </header>
   <!-- GLOBAL_NAV_END -->
 
-  <main>
+  <main class="home-hub-v2">
     <section class="hero-banner">
       <picture class="hero-banner__media">
         <source media="(min-width: 768px)" srcset="../images/home/hero-home-hanyangdoseong-n-seoul-tower-1920-v20260917.webp" type="image/webp">
@@ -159,129 +160,237 @@
       <p class="hero-banner__credit">写真： <a href="https://archive.visitseoul.net/en/contents/ARP007f71" target="_blank" rel="noopener noreferrer">Seoul Tourism Organization</a></p>
     </section>
 
-    <section class="home-discover" aria-labelledby="home-discover-title">
-      <div class="container">
-        <div class="home-discover-intro">
-          <h2 id="home-discover-title">まずは、韓国で何をしたいかから。</h2>
-          <p>食を楽しむことから始まる旅もあれば、ショッピングや美容、ナイトライフ、ずっと行ってみたかった街で過ごすことが目的の旅もあります。いちばん楽しみにしていることが決まれば、その後の旅程も組みやすくなります。</p>
+    <nav class="start-nav" aria-label="旅の目的に合わせて、知りたいことから選ぶ">
+      <div class="home-hub-container start-nav__grid">
+        <a class="start-nav__link" href="#explore"><strong>韓国を楽しむ</strong><span>ソウルのエリアを探す</span></a>
+        <a class="start-nav__link" href="#stay"><strong>宿泊エリアを選ぶ</strong><span>旅の拠点を決める</span></a>
+        <a class="start-nav__link" href="#plan"><strong>旅行の準備</strong><span>空港・eSIM・支払い</span></a>
+        <a class="start-nav__link" href="#experience"><strong>韓国で体験する</strong><span>グルメ・美容・カルチャー</span></a>
+      </div>
+    </nav>
+
+    <section class="editorial-section home-hub-section--explore" id="explore" aria-labelledby="explore-title">
+      <div class="home-hub-container">
+        <header class="section-head">
+          <p class="home-hub-eyebrow">韓国を楽しむ · ソウルのエリア</p>
+          <h2 id="explore-title">自分の旅に合うソウルのエリアを見つける</h2>
+          <p class="section-head__lead">ソウルはエリアによって、一日の回り方が変わります。何をしたいか、夜はどこで過ごすか、移動にどれくらい時間をかけられるかを考えてから、各エリアの詳しいガイドを確認しましょう。</p>
+        </header>
+
+        <div class="feature-grid">
+          <article class="featured-card">
+            <a class="featured-card__media" href="hongdae-travel-guide.html">
+              <img src="../images/hongdae/hongdae-travel-guide-hero-1600-v20260916.webp" alt="夕方の弘大の繁華街を歩く人々と、店先の明るい看板" width="1600" height="900" loading="lazy" decoding="async">
+            </a>
+            <div class="featured-card__body">
+              <p class="home-hub-tag">夜までにぎわう街</p>
+              <h3>弘大</h3>
+              <p>延南洞のカフェや個性的なショップが集まり、夕食後も通りに活気があります。夜の街歩きも旅の楽しみなら、時間を取って散策したいエリアです。</p>
+              <a class="home-hub-link" href="hongdae-travel-guide.html">弘大ガイドを見る <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+
+          <article class="featured-card">
+            <a class="featured-card__media" href="myeongdong-travel-guide.html">
+              <img src="../images/myeongdong/myeongdong-travel-guide-hero-1600-v20260916.webp" alt="ソウル・明洞の歩行者でにぎわうショッピング通り" width="1600" height="1067" loading="lazy" decoding="async">
+            </a>
+            <div class="featured-card__body">
+              <p class="home-hub-tag">ソウル中心部</p>
+              <h3>明洞</h3>
+              <p>ショッピングや中心部の観光を楽しみやすく、外出の合間に戻りやすい場所です。初めてのソウル観光で動き方を考える際の出発点になります。</p>
+              <a class="home-hub-link" href="myeongdong-travel-guide.html">明洞ガイドを見る <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+
+          <article class="featured-card">
+            <a class="featured-card__media" href="seongsu-travel-guide.html">
+              <img src="../images/seongsu/seongsu-travel-guide-hero-1600-v20260916.webp" alt="ソウル・聖水のレンガ造りの建物と通りの様子" width="1600" height="901" loading="lazy" decoding="async">
+            </a>
+            <div class="featured-card__body">
+              <p class="home-hub-tag">カフェと期間限定ショップ</p>
+              <h3>聖水</h3>
+              <p>赤レンガの建物が残る工業地帯の通りに、デザインショップや入れ替わるポップアップストアが点在します。次々と移動するより、余裕を持って歩きたいエリアです。</p>
+              <a class="home-hub-link" href="seongsu-travel-guide.html">聖水ガイドを見る <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
         </div>
 
-        <article class="home-taste-feature">
-          <div class="home-taste-feature-media">
-            <img
-              src="../images/taste-korea/jeonju-bibimbap-feature.webp"
-              alt="韓国グルメの旅をイメージしたビビンバの食事"
-              width="1408"
-              height="768"
-              loading="lazy"
-              decoding="async"
-            >
-          </div>
-          <div class="home-taste-feature-copy">
-            <h3>韓国グルメを楽しむ</h3>
-            <p>韓国の食は、街によっても都市によっても変わります。ソウルで焼肉を楽しむ夜、釜山の市場で過ごす朝、聖水でカフェを巡る一日では、行く場所が大きく変わり、場合によっては泊まるエリアの選び方まで変わります。</p>
-            <a class="home-taste-feature__link" href="/ja/taste-korea.html">韓国グルメを見る</a>
-          </div>
-        </article>
-
-        <article class="home-kbeauty-row">
-          <div class="home-kbeauty-row__media">
-            <img
-              src="../images/k-beauty/k-beauty-makeup-product-display.webp"
-              alt="商品や色味を比較できるよう並べられたK-Beautyのメイク用品"
-              width="2448"
-              height="2448"
-              loading="lazy"
-              decoding="async"
-            >
-          </div>
-          <div class="home-kbeauty-row__copy">
-            <h3>K-Beauty</h3>
-            <p>韓国でのコスメショッピングは、大型店の商品数が多すぎて、かえって迷いやすいものです。大切なのは、どこで見ればいいか、エリアごとに何が違うか、そして旗艦店まで足を延ばす価値があるのはどんなときかを知っておくことです。</p>
-            <a class="home-kbeauty-row__link" href="/ja/k-beauty.html">韓国のK-Beautyを見る</a>
-          </div>
-        </article>
+        <div class="area-list-head">
+          <h3>あわせて知っておきたいソウルのエリア</h3>
+          <p>実用的なエリア別ガイド · 各ページを公開中</p>
+        </div>
+        <ul class="area-list">
+          <li>
+            <a class="area-list__link" href="insadong-travel-guide.html">
+              <span class="area-list__heading"><strong>仁寺洞</strong><span class="home-hub-tag">文化と伝統</span></span>
+              <span>伝統茶屋や工芸品店、歴史ある通りを、日中ゆっくり歩いて楽しめます。</span>
+              <span class="area-list__cta">ガイドを見る <span aria-hidden="true">↗</span></span>
+            </a>
+          </li>
+          <li>
+            <a class="area-list__link" href="dongdaemun-travel-guide.html">
+              <span class="area-list__heading"><strong>東大門</strong><span class="home-hub-tag">市場とデザイン</span></span>
+              <span>DDPや複数の商業エリア、夜遅くまで営業する店など、場所の違いを把握してから回ると便利です。</span>
+              <span class="area-list__cta">ガイドを見る <span aria-hidden="true">↗</span></span>
+            </a>
+          </li>
+          <li>
+            <a class="area-list__link" href="jamsil-travel-guide.html">
+              <span class="area-list__heading"><strong>蚕室</strong><span class="home-hub-tag">家族で一日過ごす</span></span>
+              <span>ロッテワールド、石村湖、大型アトラクションなどを組み合わせて一日楽しむエリアです。</span>
+              <span class="area-list__cta">ガイドを見る <span aria-hidden="true">↗</span></span>
+            </a>
+          </li>
+          <li>
+            <a class="area-list__link" href="gangnam-travel-guide.html">
+              <span class="area-list__heading"><strong>江南</strong><span class="home-hub-tag">ソウル南部</span></span>
+              <span>ビジネス街や商業施設、観光スポットが複数のまとまりに分かれています。</span>
+              <span class="area-list__cta">ガイドを見る <span aria-hidden="true">↗</span></span>
+            </a>
+          </li>
+          <li>
+            <a class="area-list__link" href="itaewon-travel-guide.html">
+              <span class="area-list__heading"><strong>梨泰院</strong><span class="home-hub-tag">食事と夜の街</span></span>
+              <span>各国料理の店やナイトライフが集まる一方、坂道や通りの配置も考えて歩きたいエリアです。</span>
+              <span class="area-list__cta">ガイドを見る <span aria-hidden="true">↗</span></span>
+            </a>
+          </li>
+          <li>
+            <a class="area-list__link" href="gongdeok-mapo-seoul-guide.html">
+              <span class="area-list__heading"><strong>孔徳・麻浦</strong><span class="home-hub-tag">食事と交通の便利さ</span></span>
+              <span>飲食店街と交通の接続が特徴。観光に立ち寄る場所としても、滞在拠点としても検討できます。</span>
+              <span class="area-list__cta">ガイドを見る <span aria-hidden="true">↗</span></span>
+            </a>
+          </li>
+        </ul>
       </div>
     </section>
 
-    <section class="home-journey" aria-labelledby="home-journey-title">
-      <div class="container">
-        <div class="home-journey__header">
-          <h2 id="home-journey-title">初めての韓国旅行で、出発前に決めておきたいこと</h2>
-          <p>韓国へ出発する前に、旅程をすべて完成させる必要はありません。まずは<a href="/ja/checklist.html">韓国旅行チェックリスト</a>で持ち物と準備の抜けを確認し、泊まる場所、スマホをどうネットにつなぐか、空港から最初の宿泊先までどう移動するか。この3つを早めに決めておくと、到着日の負担を減らせます。</p>
+    <section class="editorial-section home-hub-section--stay" id="stay" aria-labelledby="stay-title">
+      <div class="home-hub-container stay-row">
+        <div class="stay-row__media">
+          <img src="../images/Accommodation/accommodation-hero-v1.webp" alt="Korea Insideのトップページで宿泊エリア選びを案内する写真" width="1536" height="1024" loading="lazy" decoding="async">
         </div>
+        <div class="stay-row__copy">
+          <header class="section-head">
+            <p class="home-hub-eyebrow">滞在エリアを選ぶ</p>
+            <h2 id="stay-title">ホテルより先に、泊まるエリアを決める</h2>
+            <p class="section-head__lead">どのエリアが合うかは、日中の予定、空港からの移動方法、夜の帰り方で変わります。ホテルが安くても、毎日の移動に時間がかかれば負担になります。</p>
+          </header>
+          <h3>ホテル選びは、エリア選びと切り離せない</h3>
+          <p>アクセスのよい場所に泊まると、宿泊料金だけで選ぶより時間を節約できることがあります。地下鉄への近さだけでなく、空港からの移動、夜遅くの帰り道、買い物の荷物、市内を何度横断するかも確認しましょう。</p>
+          <a class="home-hub-button" href="accommodation.html">自分に合う宿泊エリアを探す <span aria-hidden="true">↗</span></a>
+          <div class="stay-links" aria-label="宿泊エリアの関連ガイド">
+            <a class="home-hub-outline-link" href="best-area-for-first-time-visitors-seoul.html">初めての韓国旅行</a>
+            <a class="home-hub-outline-link" href="best-area-for-families-seoul.html">家族旅行</a>
+            <a class="home-hub-outline-link" href="best-area-for-airport-access-seoul.html">空港へのアクセス</a>
+            <a class="home-hub-outline-link" href="hongdae-vs-myeongdong.html">弘大と明洞を比較</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <div class="home-journey__grid">
-          <article class="home-journey__row">
-            <div class="home-journey__media">
-              <img
-                class="home-journey__image"
-                src="../images/Accommodation/accommodation-hero-v1.webp"
-                alt="韓国で泊まるエリアを選ぶための宿泊プランニングカード"
-                loading="lazy"
-              >
+    <section class="editorial-section home-hub-section--plan" id="plan" aria-labelledby="plan-title">
+      <div class="home-hub-container">
+        <header class="section-head">
+          <p class="home-hub-eyebrow">旅行の準備</p>
+          <h2 id="plan-title">到着日の負担を減らす、出発前の準備</h2>
+          <p class="section-head__lead">韓国に行く前に、旅程をすべて決める必要はありません。ただし、どこに泊まるか、スマートフォンをどうやってネットにつなぐか、空港から最初の宿泊先へどう行くかは、先に決めておきたいことです。</p>
+        </header>
+
+        <div class="planning-grid">
+          <article class="planning-card">
+            <div class="planning-card__media">
+              <img src="../images/esim/esim-hero-connected-seoul.webp" alt="ソウルでスマートフォンの通話、検索、地図を利用する旅行者のイメージ" width="1800" height="600" loading="lazy" decoding="async">
             </div>
-            <div class="home-journey__body">
-              <h3>泊まる場所で変わるのは、ホテルだけではありません</h3>
-              <p>料金だけでホテルを選ぶより、動きやすい拠点を選ぶほうが時間を節約できることがあります。地下鉄へのアクセスだけでなく、空港からの到着、夜遅くの帰り道、買い物袋を持っての移動、街を何度横断する予定かまで考えると選びやすくなります。</p>
-              <a href="/ja/accommodation.html" class="home-journey__link">自分に合う滞在エリアを探す</a>
+            <div class="planning-card__body">
+              <p class="home-hub-tag">通信の準備</p>
+              <h3>必要になる前にスマートフォンを使える状態に</h3>
+              <p>到着直後から、地図、ホテルへの道順、連絡、予約の確認、翻訳などにモバイル通信が役立ちます。eSIMは手軽な方法ですが、出発前に端末の対応状況と開通するタイミングを確認しましょう。</p>
+              <a class="home-hub-link" href="esim.html">韓国eSIMガイドを見る <span aria-hidden="true">↗</span></a>
             </div>
           </article>
 
-          <article class="home-journey__row home-journey__row--reverse">
-            <div class="home-journey__media">
-              <img
-                class="home-journey__image"
-                src="../images/esim/hero-esim-ja.png"
-                alt="韓国滞在中に通信するためのモバイルデータ設定"
-                loading="lazy"
-              >
+          <article class="planning-card">
+            <div class="planning-card__media">
+              <img src="../images/arrival/incheon-airport-arrival-hero.webp" alt="仁川国際空港の到着案内標識の下を、荷物を持って歩く旅行者" width="1536" height="1024" loading="lazy" decoding="async">
             </div>
-            <div class="home-journey__body">
-              <h3>必要になる前に、スマホの準備を</h3>
-              <p>モバイルデータは到着直後から、地図、ホテルまでの道順、メッセージ、予約、翻訳などに役立ちます。eSIMは多くの旅行者にとって便利ですが、出発前に端末の対応状況と開通するタイミングを確認しておくことが大切です。</p>
-              <a href="/ja/esim.html" class="home-journey__link">韓国eSIMガイドを見る</a>
-            </div>
-          </article>
-
-          <article class="home-journey__row">
-            <div class="home-journey__media">
-              <img
-                class="home-journey__image"
-                src="../images/home/arrival-guide-ja.png"
-                alt="韓国到着後の最初の動きを確認する空港到着ガイド"
-                loading="lazy"
-              >
-            </div>
-            <div class="home-journey__body">
-              <h3>空港からホテルまでの移動を先に決める</h3>
-              <p>いちばん速い空港アクセスが、いちばん楽とは限りません。到着時刻、荷物、乗り換え、駅から歩く距離、ホテルの場所によっては、数分の所要時間差より移動のしやすさのほうが重要です。</p>
-              <div class="home-journey__links">
-                <a href="/ja/airport-transfer.html" class="home-journey__link">空港からの移動手段を比較する</a>
-                <a href="/ja/arrival.html" class="home-journey__link home-journey__link--secondary">到着ガイドを詳しく見る</a>
+            <div class="planning-card__body">
+              <p class="home-hub-tag">空港 → ホテル</p>
+              <h3>空港から宿泊先までの移動を考える</h3>
+              <p>所要時間が短い方法が、必ずしも移動しやすいとは限りません。到着時刻、荷物の量、乗り換え、駅からの徒歩距離、ホテルの場所によっては、数分の差より移動のしやすさが重要です。</p>
+              <div class="planning-card__links">
+                <a class="home-hub-link" href="airport-transfer.html">空港アクセスの方法を比較する <span aria-hidden="true">↗</span></a>
+                <a class="home-hub-link home-hub-link--secondary" href="arrival.html">韓国到着ガイドを見る <span aria-hidden="true">↗</span></a>
               </div>
             </div>
           </article>
         </div>
+
+        <div class="hour-panel">
+          <div class="hour-panel__intro">
+            <p class="home-hub-eyebrow">到着後のチェック</p>
+            <h3>韓国到着後の最初の1時間</h3>
+            <p><a href="checklist.html">荷物を受け取った後、多くの旅行者が最初に確認したいことは共通しています</a>。スマートフォンの通信、現地交通の支払い方法、韓国で使いやすい地図、街までの移動経路です。これらが決まれば、空港に長くとどまる必要はあまりありません。</p>
+            <a class="home-hub-link" href="airport.html">空港ガイドを詳しく見る <span aria-hidden="true">↗</span></a>
+          </div>
+          <ol class="hour-panel__steps">
+            <li><div><strong>スマートフォンをネットにつなぐ</strong><a class="home-hub-outline-link" href="esim.html">韓国eSIMガイド</a></div></li>
+            <li><div><strong>地下鉄や路線バスに乗るなら、T-moneyを用意・チャージする</strong><a class="home-hub-outline-link" href="tmoney.html">T-moneyガイド</a></div></li>
+            <li><div><strong>予備の現金を少し持っておく</strong><span class="hour-panel__links"><a class="home-hub-outline-link" href="payments.html">支払いガイド</a><a class="home-hub-outline-link" href="wowpass.html">WOWPASSガイド</a></span></div></li>
+            <li><div><strong>NAVERマップかKakaoMapを開く</strong><a class="home-hub-outline-link" href="maps.html">韓国の地図アプリ</a></div></li>
+            <li><div><strong>ホテルまで行きやすい空港からの経路を選ぶ</strong><a class="home-hub-outline-link" href="airport-transfer.html">空港アクセスガイド</a></div></li>
+          </ol>
+        </div>
       </div>
     </section>
 
-    <section class="section section--gray home-prep-section">
-      <div class="container">
-        <div class="home-prep-grid">
-          <div class="first-hour-panel">
-            <h2 class="section__title">韓国到着後の最初の1時間</h2>
-            <p class="first-hour-panel__intro"><a href="/ja/checklist.html">手荷物を受け取った後、まず必要になるものはだいたい同じです</a>：通信できるスマホ、現地交通の支払い手段、韓国で使いやすい地図、そして市内までの分かりやすい移動ルートです。ここまで整えば、空港に長くとどまる必要はほとんどありません。</p>
-            <ol class="first-hour-list">
-              <li><div><span>スマホをネットにつなぐ</span><a class="first-hour-list__link" href="/ja/esim.html">韓国eSIMガイド</a></div></li>
-              <li><div><span>T-moneyを入手・チャージする</span><a class="first-hour-list__link" href="/ja/tmoney.html">T-moneyガイド</a></div></li>
-              <li><div><span>予備として少額の現金を持っておく</span><a class="first-hour-list__link" href="/ja/payments.html">支払いガイド</a><a class="first-hour-list__link" href="/ja/wowpass.html">WOWPASSガイド</a></div></li>
-              <li><div><span>Naver MapまたはKakaoMapを開く</span><a class="first-hour-list__link" href="/ja/maps.html">韓国の地図アプリ</a></div></li>
-              <li><div><span>ホテルに合う空港アクセスを選ぶ</span><a class="first-hour-list__link" href="/ja/airport-transfer.html">空港送迎ガイド</a></div></li>
-            </ol>
-            <a href="/ja/airport.html" class="btn btn--text">空港ガイドを詳しく見る &rarr;</a>
-          </div>
+    <section class="editorial-section home-hub-section--experience" id="experience" aria-labelledby="experience-title">
+      <div class="home-hub-container">
+        <header class="section-head">
+          <p class="home-hub-eyebrow">韓国で体験する</p>
+          <h2 id="experience-title">旅で一番楽しみにしていることから考える</h2>
+          <p class="section-head__lead">食事を中心に旅を組む人もいれば、買い物や美容、夜の街、ずっと行ってみたかったエリアでの散策を楽しみたい人もいます。何を優先したいかが決まると、ほかの予定も組みやすくなります。</p>
+        </header>
+
+        <div class="experience-grid">
+          <article class="experience-card">
+            <div class="experience-card__media">
+              <img src="../images/taste-korea/jeonju-bibimbap-feature.webp" alt="韓国旅行の食の楽しみを紹介するビビンバの一皿" width="1408" height="768" loading="lazy" decoding="async">
+            </div>
+            <div class="experience-card__body">
+              <h3>韓国グルメ</h3>
+              <p>韓国の食は、街や地域によって表情が変わります。ソウルでの焼肉、釜山の市場巡り、聖水でのカフェ巡りでは行き先も変わり、場合によっては泊まるエリアの選び方にも影響します。</p>
+              <a class="home-hub-link" href="taste-korea.html">韓国グルメを楽しむ <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+
+          <article class="experience-card">
+            <div class="experience-card__media">
+              <img src="../images/k-beauty/k-beauty-makeup-product-display.webp" alt="商品や色味を比較できるように並べたK-ビューティーのメイク用品" width="2448" height="2448" loading="lazy" decoding="async">
+            </div>
+            <div class="experience-card__body">
+              <h3>K-ビューティー</h3>
+              <p>韓国の大型コスメ店は品ぞろえが多く、かえって選びづらいことがあります。どのエリアで見て回るか、街による違い、旗艦店まで足を延ばす価値があるかを知っておくと選びやすくなります。</p>
+              <a class="home-hub-link" href="k-beauty.html">韓国のK-ビューティーを知る <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
         </div>
+      </div>
+    </section>
+
+    <section class="editorial-section home-hub-section--trust" id="trust" aria-labelledby="trust-title">
+      <div class="home-hub-container trust-grid">
+        <header class="section-head">
+          <p class="home-hub-eyebrow">KOREA INSIDEについて</p>
+          <h2 id="trust-title">旅行の選択に役立つ情報を</h2>
+          <p class="section-head__lead">Korea Insideは、韓国人編集者が現地で執筆・確認する実用的な韓国旅行ガイドです。公式情報、現地の事情、独立した編集判断をもとに、旅行者が選択肢を比較できるよう案内します。予定に合わない選択肢についても説明します。</p>
+        </header>
+        <dl class="trust-list">
+          <div><dt>公式情報</dt><dd>実用的な事実や重要な利用条件を確認</dd></div>
+          <div><dt>現地の事情</dt><dd>移動経路や乗り継ぎ、最後の徒歩区間まで考慮</dd></div>
+          <div><dt>独立した編集判断</dt><dd>予約や購入の前に比較できるように</dd></div>
+        </dl>
       </div>
     </section>
 

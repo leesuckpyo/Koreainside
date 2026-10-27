@@ -29,6 +29,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Roboto+Flex:wght@400..600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../home-hub.css">
   <meta name="fo-verify" content="d152ecbe-746f-457f-9431-408e90abdcd0" />
   <script type="application/ld+json">
   {
@@ -136,7 +137,7 @@
   </header>
   <!-- GLOBAL_NAV_END -->
 
-  <main>
+  <main class="home-hub-v2">
     <section class="hero-banner">
       <picture class="hero-banner__media">
         <source media="(min-width: 768px)" srcset="../images/home/hero-home-hanyangdoseong-n-seoul-tower-1920-v20260917.webp" type="image/webp">
@@ -159,129 +160,237 @@
       <p class="hero-banner__credit">照片： <a href="https://archive.visitseoul.net/en/contents/ARP007f71" target="_blank" rel="noopener noreferrer">Seoul Tourism Organization</a></p>
     </section>
 
-    <section class="home-discover" aria-labelledby="home-discover-title">
-      <div class="container">
-        <div class="home-discover-intro">
-          <h2 id="home-discover-title">從這趟旅行最期待的事開始。</h2>
-          <p>有人為美食而來，有人想購物、逛美妝、體驗夜生活，也有人只是想在嚮往已久的街區走走。先想清楚最期待的是什麼，其他行程就比較容易安排。</p>
+    <nav class="start-nav" aria-label="依照你的旅行需求開始規劃">
+      <div class="home-hub-container start-nav__grid">
+        <a class="start-nav__link" href="#explore"><strong>探索韓國</strong><span>找到適合你的首爾街區</span></a>
+        <a class="start-nav__link" href="#stay"><strong>住宿怎麼選</strong><span>先決定旅行據點</span></a>
+        <a class="start-nav__link" href="#plan"><strong>規劃韓國行程</strong><span>機場、eSIM、付款方式</span></a>
+        <a class="start-nav__link" href="#experience"><strong>體驗韓國</strong><span>美食、美妝與文化</span></a>
+      </div>
+    </nav>
+
+    <section class="editorial-section home-hub-section--explore" id="explore" aria-labelledby="explore-title">
+      <div class="home-hub-container">
+        <header class="section-head">
+          <p class="home-hub-eyebrow">探索韓國 · 首爾各區</p>
+          <h2 id="explore-title">找到適合這趟旅行的首爾街區</h2>
+          <p class="section-head__lead">首爾不同街區，會讓一天的行程有很不一樣的安排。先想想想去哪裡、晚上會在哪裡結束行程，以及願意花多少時間移動，再點進各區完整指南。</p>
+        </header>
+
+        <div class="feature-grid">
+          <article class="featured-card">
+            <a class="featured-card__media" href="hongdae-travel-guide.html">
+              <img src="../images/hongdae/hongdae-travel-guide-hero-1600-v20260916.webp" alt="傍晚的弘大商圈，行人穿梭於亮起招牌的街道" width="1600" height="900" loading="lazy" decoding="async">
+            </a>
+            <div class="featured-card__body">
+              <p class="home-hub-tag">熱鬧的夜晚</p>
+              <h3>弘大</h3>
+              <p>延南洞的咖啡廳、個性小店，以及晚餐後依然熱鬧的街道。如果晚上逛街也是行程重點，弘大值得留點時間慢慢走。</p>
+              <a class="home-hub-link" href="hongdae-travel-guide.html">探索弘大 <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+
+          <article class="featured-card">
+            <a class="featured-card__media" href="myeongdong-travel-guide.html">
+              <img src="../images/myeongdong/myeongdong-travel-guide-hero-1600-v20260916.webp" alt="首爾明洞熱鬧的行人購物街" width="1600" height="1067" loading="lazy" decoding="async">
+            </a>
+            <div class="featured-card__body">
+              <p class="home-hub-tag">首爾市中心</p>
+              <h3>明洞</h3>
+              <p>購物、市中心觀光方便，行程之間也容易回到這裡稍作休息。第一次來首爾，可以從明洞開始認識市區。</p>
+              <a class="home-hub-link" href="myeongdong-travel-guide.html">探索明洞 <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+
+          <article class="featured-card">
+            <a class="featured-card__media" href="seongsu-travel-guide.html">
+              <img src="../images/seongsu/seongsu-travel-guide-hero-1600-v20260916.webp" alt="首爾聖水的紅磚建築與街道活動" width="1600" height="901" loading="lazy" decoding="async">
+            </a>
+            <div class="featured-card__body">
+              <p class="home-hub-tag">咖啡廳與快閃店</p>
+              <h3>聖水</h3>
+              <p>紅磚工業街景、設計選物店和不斷更換的快閃空間。來聖水不妨放慢腳步逛逛，不用急著趕下一站。</p>
+              <a class="home-hub-link" href="seongsu-travel-guide.html">探索聖水 <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
         </div>
 
-        <article class="home-taste-feature">
-          <div class="home-taste-feature-media">
-            <img
-              src="../images/taste-korea/jeonju-bibimbap-feature.webp"
-              alt="以一份韓式拌飯呈現韓國美食旅行體驗"
-              width="1408"
-              height="768"
-              loading="lazy"
-              decoding="async"
-            >
-          </div>
-          <div class="home-taste-feature-copy">
-            <h3>韓國美食</h3>
-            <p>韓國各個街區、各座城市的飲食都有不同面貌。在首爾吃一晚烤肉、到釜山市場逛一個早晨，或在聖水度過咖啡廳時光，會帶你走向很不一樣的地方，有時也會影響住宿地點。</p>
-            <a class="home-taste-feature__link" href="/zh-tw/taste-korea.html">探索韓國美食</a>
-          </div>
-        </article>
-
-        <article class="home-kbeauty-row">
-          <div class="home-kbeauty-row__media">
-            <img
-              src="../images/k-beauty/k-beauty-makeup-product-display.webp"
-              alt="陳列供旅客比較品項與色號的 K-Beauty 彩妝產品"
-              width="2448"
-              height="2448"
-              loading="lazy"
-              decoding="async"
-            >
-          </div>
-          <div class="home-kbeauty-row__copy">
-            <h3>韓系美妝 K-Beauty</h3>
-            <p>在韓國買美妝，很容易越逛越複雜，因為大型店鋪的選擇遠超過多數旅客的需要。真正有用的是知道去哪裡逛、不同街區有什麼差別，以及哪些旗艦店值得特別繞過去。</p>
-            <a class="home-kbeauty-row__link" href="/zh-tw/k-beauty.html">探索韓國 K-Beauty 美妝</a>
-          </div>
-        </article>
+        <div class="area-list-head">
+          <h3>其他值得認識的首爾街區</h3>
+          <p>實用的街區旅遊指南 · 連結皆可使用</p>
+        </div>
+        <ul class="area-list">
+          <li>
+            <a class="area-list__link" href="insadong-travel-guide.html">
+              <span class="area-list__heading"><strong>仁寺洞</strong><span class="home-hub-tag">文化與傳統</span></span>
+              <span>茶館、手工藝店與老街，適合白天不趕時間地慢慢走。</span>
+              <span class="area-list__cta">查看指南 <span aria-hidden="true">↗</span></span>
+            </a>
+          </li>
+          <li>
+            <a class="area-list__link" href="dongdaemun-travel-guide.html">
+              <span class="area-list__heading"><strong>東大門</strong><span class="home-hub-tag">市場與設計</span></span>
+              <span>DDP、不同類型的商圈及營業到深夜的店家，先弄清區域分布會比較好逛。</span>
+              <span class="area-list__cta">查看指南 <span aria-hidden="true">↗</span></span>
+            </a>
+          </li>
+          <li>
+            <a class="area-list__link" href="jamsil-travel-guide.html">
+              <span class="area-list__heading"><strong>蠶室</strong><span class="home-hub-tag">親子一日遊</span></span>
+              <span>樂天世界、石村湖和大型景點，可以安排一整天遊玩。</span>
+              <span class="area-list__cta">查看指南 <span aria-hidden="true">↗</span></span>
+            </a>
+          </li>
+          <li>
+            <a class="area-list__link" href="gangnam-travel-guide.html">
+              <span class="area-list__heading"><strong>江南</strong><span class="home-hub-tag">首爾南部</span></span>
+              <span>商業區、購物與景點分散在幾個不同區塊。</span>
+              <span class="area-list__cta">查看指南 <span aria-hidden="true">↗</span></span>
+            </a>
+          </li>
+          <li>
+            <a class="area-list__link" href="itaewon-travel-guide.html">
+              <span class="area-list__heading"><strong>梨泰院</strong><span class="home-hub-tag">美食與夜生活</span></span>
+              <span>異國料理與夜生活集中，但也要留意坡道和街道動線。</span>
+              <span class="area-list__cta">查看指南 <span aria-hidden="true">↗</span></span>
+            </a>
+          </li>
+          <li>
+            <a class="area-list__link" href="gongdeok-mapo-seoul-guide.html">
+              <span class="area-list__heading"><strong>孔德與麻浦</strong><span class="home-hub-tag">美食與轉乘交通</span></span>
+              <span>美食街與方便的交通轉乘，適合當住宿據點，也能作為行程中的一站。</span>
+              <span class="area-list__cta">查看指南 <span aria-hidden="true">↗</span></span>
+            </a>
+          </li>
+        </ul>
       </div>
     </section>
 
-    <section class="home-journey" aria-labelledby="home-journey-title">
-      <div class="container">
-        <div class="home-journey__header">
-          <h2 id="home-journey-title">先決定幾件事，抵達當天就輕鬆許多</h2>
-          <p>飛往韓國前，不必把整份行程排好。但有三件事值得提早決定：住在哪裡、手機如何上網，以及怎麼從機場前往第一間住宿。</p>
+    <section class="editorial-section home-hub-section--stay" id="stay" aria-labelledby="stay-title">
+      <div class="home-hub-container stay-row">
+        <div class="stay-row__media">
+          <img src="../images/Accommodation/accommodation-hero-v1.webp" alt="Korea Inside 首頁用來介紹住宿地點選擇的照片" width="1536" height="1024" loading="lazy" decoding="async">
         </div>
+        <div class="stay-row__copy">
+          <header class="section-head">
+            <p class="home-hub-eyebrow">住宿怎麼選</p>
+            <h2 id="stay-title">先選住宿區域，再挑飯店</h2>
+            <p class="section-head__lead">適合的區域取決於每天的行程、從機場如何抵達，以及晚上怎麼回住宿處。就算飯店價格漂亮，每天通勤不順也可能很累。</p>
+          </header>
+          <h3>住在哪裡，影響的不只是飯店本身</h3>
+          <p>住宿地點選得方便，可能比單純挑便宜飯店更省時間。除了離地鐵站近不近，也要考慮機場抵達、深夜回程、購物後提著東西走路，以及需要橫越市區幾次。</p>
+          <a class="home-hub-button" href="accommodation.html">找到適合你的住宿區域 <span aria-hidden="true">↗</span></a>
+          <div class="stay-links" aria-label="更多住宿地點指南">
+            <a class="home-hub-outline-link" href="best-area-for-first-time-visitors-seoul.html">第一次到韓國</a>
+            <a class="home-hub-outline-link" href="best-area-for-families-seoul.html">親子與家庭旅遊</a>
+            <a class="home-hub-outline-link" href="best-area-for-airport-access-seoul.html">往返機場便利性</a>
+            <a class="home-hub-outline-link" href="hongdae-vs-myeongdong.html">弘大與明洞比較</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <div class="home-journey__grid">
-          <article class="home-journey__row">
-            <div class="home-journey__media">
-              <img
-                class="home-journey__image"
-                src="../images/Accommodation/accommodation-hero-v1.webp"
-                alt="協助挑選韓國住宿地點的住宿規劃卡片"
-                loading="lazy"
-              >
+    <section class="editorial-section home-hub-section--plan" id="plan" aria-labelledby="plan-title">
+      <div class="home-hub-container">
+        <header class="section-head">
+          <p class="home-hub-eyebrow">規劃韓國行程</p>
+          <h2 id="plan-title">先決定幾件事，抵達當天會輕鬆許多</h2>
+          <p class="section-head__lead">出發前不必把韓國行程排得滿滿，但有三件事值得先決定：住哪裡、手機怎麼上網，以及抵達機場後如何前往第一晚的住宿地點。</p>
+        </header>
+
+        <div class="planning-grid">
+          <article class="planning-card">
+            <div class="planning-card__media">
+              <img src="../images/esim/esim-hero-connected-seoul.webp" alt="旅客在首爾使用手機通話、搜尋與地圖的情境" width="1800" height="600" loading="lazy" decoding="async">
             </div>
-            <div class="home-journey__body">
-              <h3>住在哪裡，影響的不只是飯店本身</h3>
-              <p>與其只看房價挑飯店，住在順路的地方往往更能省下時間。地鐵交通固然重要，從機場抵達、深夜返回、提著購物袋走路，以及行程需要多常橫跨市區，也都值得一起考量。</p>
-              <a href="/zh-tw/accommodation.html" class="home-journey__link">找到合適的住宿區域</a>
+            <div class="planning-card__body">
+              <p class="home-hub-tag">手機上網</p>
+              <h3>需要上網之前，就先把手機準備好</h3>
+              <p>下飛機後很快就會用到行動網路：查地圖、找飯店、傳訊息、查看訂位或翻譯。eSIM 對許多旅客很方便，但出發前仍要確認手機是否支援，以及適合何時啟用。</p>
+              <a class="home-hub-link" href="esim.html">查看韓國 eSIM 指南 <span aria-hidden="true">↗</span></a>
             </div>
           </article>
 
-          <article class="home-journey__row home-journey__row--reverse">
-            <div class="home-journey__media">
-              <img
-                class="home-journey__image"
-                src="../images/esim/hero-esim-zh-tw.png"
-                alt="在韓國保持連線的行動上網設定"
-                loading="lazy"
-              >
+          <article class="planning-card">
+            <div class="planning-card__media">
+              <img src="../images/arrival/incheon-airport-arrival-hero.webp" alt="拖著行李的旅客走在仁川國際機場的抵達指示牌下方" width="1536" height="1024" loading="lazy" decoding="async">
             </div>
-            <div class="home-journey__body">
-              <h3>在需要用手機之前，先把上網安排好</h3>
-              <p>落地後幾乎馬上就會用到行動網路：查地圖、找飯店、傳訊息、確認預訂或翻譯。eSIM 對許多旅客來說很方便，不過出發前最好先確認手機是否支援，以及何時啟用。</p>
-              <a href="/zh-tw/esim.html" class="home-journey__link">閱讀韓國 eSIM 指南</a>
-            </div>
-          </article>
-
-          <article class="home-journey__row">
-            <div class="home-journey__media">
-              <img
-                class="home-journey__image"
-                src="../images/home/arrival-guide-zh-tw.png"
-                alt="說明抵達韓國後第一步該做什麼的機場抵達指南"
-                loading="lazy"
-              >
-            </div>
-            <div class="home-journey__body">
-              <h3>把機場交通規劃到你真正要住的飯店</h3>
-              <p>最快的機場交通不一定最輕鬆。抵達時間、行李、轉乘次數、出站後要走多遠，以及飯店位置，可能都比省下幾分鐘車程更重要。</p>
-              <div class="home-journey__links">
-                <a href="/zh-tw/airport-transfer.html" class="home-journey__link">比較機場交通方式</a>
-                <a href="/zh-tw/arrival.html" class="home-journey__link home-journey__link--secondary">查看完整抵達指南</a>
+            <div class="planning-card__body">
+              <p class="home-hub-tag">機場 → 飯店</p>
+              <h3>先想好從機場怎麼到實際入住的飯店</h3>
+              <p>最快的交通方式，不一定是最省事的。抵達時間、行李、轉乘、出站後要走多遠，以及飯店位置，有時比省下幾分鐘更重要。</p>
+              <div class="planning-card__links">
+                <a class="home-hub-link" href="airport-transfer.html">比較機場接駁方式 <span aria-hidden="true">↗</span></a>
+                <a class="home-hub-link home-hub-link--secondary" href="arrival.html">查看完整入境抵達指南 <span aria-hidden="true">↗</span></a>
               </div>
             </div>
           </article>
         </div>
+
+        <div class="hour-panel">
+          <div class="hour-panel__intro">
+            <p class="home-hub-eyebrow">抵達快速檢查</p>
+            <h3>抵達韓國後的第一個小時</h3>
+            <p><a href="checklist.html">領完行李後，大多數旅客都需要先處理幾件事</a>：讓手機可以上網、能支付當地交通費、準備在韓國好用的地圖，以及確認前往市區的路線。這些都搞定後，通常就不需要在機場停留太久。</p>
+            <a class="home-hub-link" href="airport.html">查看完整機場指南 <span aria-hidden="true">↗</span></a>
+          </div>
+          <ol class="hour-panel__steps">
+            <li><div><strong>先讓手機連上網路</strong><a class="home-hub-outline-link" href="esim.html">韓國 eSIM 指南</a></div></li>
+            <li><div><strong>要搭地鐵或公車？先買好或儲值 T-money</strong><a class="home-hub-outline-link" href="tmoney.html">T-money 指南</a></div></li>
+            <li><div><strong>準備少量現金備用</strong><span class="hour-panel__links"><a class="home-hub-outline-link" href="payments.html">韓國付款指南</a><a class="home-hub-outline-link" href="wowpass.html">WOWPASS 指南</a></span></div></li>
+            <li><div><strong>開啟 NAVER Map 或 KakaoMap</strong><a class="home-hub-outline-link" href="maps.html">韓國地圖 App 指南</a></div></li>
+            <li><div><strong>選擇適合前往飯店的機場交通路線</strong><a class="home-hub-outline-link" href="airport-transfer.html">機場交通指南</a></div></li>
+          </ol>
+        </div>
       </div>
     </section>
 
-    <section class="section section--gray home-prep-section">
-      <div class="container">
-        <div class="home-prep-grid">
-          <div class="first-hour-panel">
-            <h2 class="section__title">抵達韓國後的第一個小時</h2>
-            <p class="first-hour-panel__intro"><a href="/zh-tw/checklist.html">領完行李後，多數旅客需要的其實就是幾件事</a>：一支能上網的手機、支付市區交通的方式、在韓國好用的地圖，以及清楚的進城路線。這些都安排妥當後，通常就不用再在機場待太久。</p>
-            <ol class="first-hour-list">
-              <li><div><span>讓手機連上網路</span><a class="first-hour-list__link" href="/zh-tw/esim.html">韓國 eSIM 指南</a></div></li>
-              <li><div><span>購買或儲值 T-money</span><a class="first-hour-list__link" href="/zh-tw/tmoney.html">T-money 指南</a></div></li>
-              <li><div><span>留一點現金備用</span><a class="first-hour-list__link" href="/zh-tw/payments.html">付款指南</a><a class="first-hour-list__link" href="/zh-tw/wowpass.html">WOWPASS 指南</a></div></li>
-              <li><div><span>開啟 Naver Map 或 KakaoMap</span><a class="first-hour-list__link" href="/zh-tw/maps.html">韓國地圖 App</a></div></li>
-              <li><div><span>選擇適合前往你飯店的機場交通路線</span><a class="first-hour-list__link" href="/zh-tw/airport-transfer.html">機場交通指南</a></div></li>
-            </ol>
-            <a href="/zh-tw/airport.html" class="btn btn--text">查看完整機場指南 →</a>
-          </div>
+    <section class="editorial-section home-hub-section--experience" id="experience" aria-labelledby="experience-title">
+      <div class="home-hub-container">
+        <header class="section-head">
+          <p class="home-hub-eyebrow">體驗韓國</p>
+          <h2 id="experience-title">從這趟旅程最期待的事開始</h2>
+          <p class="section-head__lead">有些旅行從美食開始，有些人為了購物、美妝、夜生活，或是走進一直想逛的街區而來。先知道自己最期待什麼，其他行程會更容易安排。</p>
+        </header>
+
+        <div class="experience-grid">
+          <article class="experience-card">
+            <div class="experience-card__media">
+              <img src="../images/taste-korea/jeonju-bibimbap-feature.webp" alt="代表韓國美食體驗的韓式拌飯餐點" width="1408" height="768" loading="lazy" decoding="async">
+            </div>
+            <div class="experience-card__body">
+              <h3>品味韓國</h3>
+              <p>韓國美食會隨著街區和城市改變。在首爾吃烤肉、到釜山市場逛早市，或在聖水走訪咖啡廳，會帶你到很不同的地方，有時甚至影響住宿區域的選擇。</p>
+              <a class="home-hub-link" href="taste-korea.html">探索韓國美食 <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+
+          <article class="experience-card">
+            <div class="experience-card__media">
+              <img src="../images/k-beauty/k-beauty-makeup-product-display.webp" alt="陳列供比較商品與色號的韓系美妝彩妝品" width="2448" height="2448" loading="lazy" decoding="async">
+            </div>
+            <div class="experience-card__body">
+              <h3>韓系美妝</h3>
+              <p>韓國大型美妝店商品很多，反而容易讓人不知道從哪裡挑。比較實用的是先了解去哪個街區逛、不同區域的差別，以及是否值得特地前往旗艦店。</p>
+              <a class="home-hub-link" href="k-beauty.html">探索韓國美妝 <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
         </div>
+      </div>
+    </section>
+
+    <section class="editorial-section home-hub-section--trust" id="trust" aria-labelledby="trust-title">
+      <div class="home-hub-container trust-grid">
+        <header class="section-head">
+          <p class="home-hub-eyebrow">關於 KOREA INSIDE</p>
+          <h2 id="trust-title">幫助你做旅行決定的資訊</h2>
+          <p class="section-head__lead">Korea Inside 是由韓國在地編輯撰寫並審閱的實用韓國旅遊指南。我們結合官方資料、在地情況與獨立編輯判斷，協助旅客比較各種選項，也會說明哪些選擇可能不適合你的行程。</p>
+        </header>
+        <dl class="trust-list">
+          <div><dt>官方資訊</dt><dd>確認實用資訊與重要條件</dd></div>
+          <div><dt>在地脈絡</dt><dd>考慮交通路線、轉乘與最後一段步行</dd></div>
+          <div><dt>獨立編輯判斷</dt><dd>在預訂或購買前幫助比較</dd></div>
+        </dl>
       </div>
     </section>
 

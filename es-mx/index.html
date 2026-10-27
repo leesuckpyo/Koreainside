@@ -29,6 +29,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Roboto+Flex:wght@400..600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../home-hub.css">
   <meta name="fo-verify" content="d152ecbe-746f-457f-9431-408e90abdcd0" />
   <script type="application/ld+json">
   {
@@ -136,7 +137,7 @@
   </header>
   <!-- GLOBAL_NAV_END -->
 
-  <main>
+  <main class="home-hub-v2">
     <section class="hero-banner">
       <picture class="hero-banner__media">
         <source media="(min-width: 768px)" srcset="../images/home/hero-home-hanyangdoseong-n-seoul-tower-1920-v20260917.webp" type="image/webp">
@@ -159,129 +160,237 @@
       <p class="hero-banner__credit">Foto: <a href="https://archive.visitseoul.net/en/contents/ARP007f71" target="_blank" rel="noopener noreferrer">Seoul Tourism Organization</a></p>
     </section>
 
-    <section class="home-discover" aria-labelledby="home-discover-title">
-      <div class="container">
-        <div class="home-discover-intro">
-          <h2 id="home-discover-title">Empieza por lo que más te interesa de Corea del Sur</h2>
-          <p>Algunos viajes empiezan por la comida. Otros giran en torno a las compras, la belleza, la vida nocturna o simplemente a pasar tiempo en un barrio que llevabas tiempo queriendo conocer. Cuando sabes qué es lo que más te apetece, resulta mucho más fácil dar forma al resto del itinerario.</p>
+    <nav class="start-nav" aria-label="Empieza por lo que necesitas resolver para tu viaje">
+      <div class="home-hub-container start-nav__grid">
+        <a class="start-nav__link" href="#explore"><strong>Explora Corea</strong><span>Encuentra tu zona de Seúl</span></a>
+        <a class="start-nav__link" href="#stay"><strong>Dónde hospedarte</strong><span>Elige una buena base para tu viaje</span></a>
+        <a class="start-nav__link" href="#plan"><strong>Planea tu viaje</strong><span>Aeropuerto, eSIM y pagos</span></a>
+        <a class="start-nav__link" href="#experience"><strong>Descubre Corea</strong><span>Comida, belleza y cultura</span></a>
+      </div>
+    </nav>
+
+    <section class="editorial-section home-hub-section--explore" id="explore" aria-labelledby="explore-title">
+      <div class="home-hub-container">
+        <header class="section-head">
+          <p class="home-hub-eyebrow">EXPLORA COREA · ZONAS DE SEÚL</p>
+          <h2 id="explore-title">Encuentra la zona de Seúl que va con tu viaje</h2>
+          <p class="section-head__lead">Cada zona de Seúl cambia la manera de organizar el día. Piensa en qué quieres hacer, dónde terminarás la noche y cuánto quieres desplazarte. Después consulta la guía completa de cada barrio.</p>
+        </header>
+
+        <div class="feature-grid">
+          <article class="featured-card">
+            <a class="featured-card__media" href="hongdae-travel-guide.html">
+              <img src="../images/hongdae/hongdae-travel-guide-hero-1600-v20260916.webp" alt="Calle comercial concurrida en Hongdae, con peatones y letreros iluminados al anochecer" width="1600" height="900" loading="lazy" decoding="async">
+            </a>
+            <div class="featured-card__body">
+              <p class="home-hub-tag">Noches animadas</p>
+              <h3>Hongdae</h3>
+              <p>Cafeterías en Yeonnam, tiendas independientes y calles con movimiento después de cenar. Hongdae vale la pena si salir por la noche es parte de tu plan.</p>
+              <a class="home-hub-link" href="hongdae-travel-guide.html">Explora Hongdae <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+
+          <article class="featured-card">
+            <a class="featured-card__media" href="myeongdong-travel-guide.html">
+              <img src="../images/myeongdong/myeongdong-travel-guide-hero-1600-v20260916.webp" alt="Calle peatonal de tiendas en Myeongdong, Seúl" width="1600" height="1067" loading="lazy" decoding="async">
+            </a>
+            <div class="featured-card__body">
+              <p class="home-hub-tag">Centro de Seúl</p>
+              <h3>Myeongdong</h3>
+              <p>Compras, paseos por los principales atractivos del centro y un lugar al que es fácil volver entre salidas. Una base práctica para tu primera visita a Seúl.</p>
+              <a class="home-hub-link" href="myeongdong-travel-guide.html">Explora Myeongdong <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+
+          <article class="featured-card">
+            <a class="featured-card__media" href="seongsu-travel-guide.html">
+              <img src="../images/seongsu/seongsu-travel-guide-hero-1600-v20260916.webp" alt="Edificio de ladrillo y personas en una calle de Seongsu, Seúl" width="1600" height="901" loading="lazy" decoding="async">
+            </a>
+            <div class="featured-card__body">
+              <p class="home-hub-tag">Cafeterías y tiendas temporales</p>
+              <h3>Seongsu</h3>
+              <p>Calles industriales de ladrillo rojo, tiendas de diseño y espacios temporales que cambian con frecuencia. Date tiempo para recorrer Seongsu sin ir de un lugar a otro a las carreras.</p>
+              <a class="home-hub-link" href="seongsu-travel-guide.html">Explora Seongsu <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
         </div>
 
-        <article class="home-taste-feature">
-          <div class="home-taste-feature-media">
-            <img
-              src="../images/taste-korea/jeonju-bibimbap-feature.webp"
-              alt="Bibimbap coreano como ejemplo de una experiencia gastronómica durante un viaje por Corea"
-              width="1408"
-              height="768"
-              loading="lazy"
-              decoding="async"
-            >
-          </div>
-          <div class="home-taste-feature-copy">
-            <h3>Taste Korea</h3>
-            <p>La comida coreana cambia de un barrio a otro y también de una ciudad a otra. Una noche de barbacoa en Seúl, una mañana de mercado en Busan o un día de cafés en Seongsu pueden llevarte a zonas muy distintas y, a veces, incluso hacerte replantear dónde alojarte.</p>
-            <a class="home-taste-feature__link" href="taste-korea.html">Descubre la gastronomía coreana</a>
-          </div>
-        </article>
-
-        <article class="home-kbeauty-row">
-          <div class="home-kbeauty-row__media">
-            <img
-              src="../images/k-beauty/k-beauty-makeup-product-display.webp"
-              alt="Productos de maquillaje K-Beauty expuestos para comparar productos y tonos"
-              width="2448"
-              height="2448"
-              loading="lazy"
-              decoding="async"
-            >
-          </div>
-          <div class="home-kbeauty-row__copy">
-            <h3>K-Beauty</h3>
-            <p>Es fácil complicarse de más con las compras de belleza coreana porque las tiendas grandes ofrecen muchísimo más de lo que la mayoría de viajeros necesita. Lo útil es saber dónde mirar, qué cambia de un barrio a otro y cuándo merece realmente la pena desviarse para visitar una tienda insignia.</p>
-            <a class="home-kbeauty-row__link" href="k-beauty.html">Descubre la K-Beauty en Corea</a>
-          </div>
-        </article>
+        <div class="area-list-head">
+          <h3>Otras zonas que conviene conocer</h3>
+          <p>Guías prácticas de barrios · enlaces disponibles</p>
+        </div>
+        <ul class="area-list">
+          <li>
+            <a class="area-list__link" href="insadong-travel-guide.html">
+              <span class="area-list__heading"><strong>Insadong</strong><span class="home-hub-tag">Cultura y tradición</span></span>
+              <span>Casas de té, artesanías y calles históricas que se disfrutan más con una visita tranquila de día.</span>
+              <span class="area-list__cta">Ver guía <span aria-hidden="true">↗</span></span>
+            </a>
+          </li>
+          <li>
+            <a class="area-list__link" href="dongdaemun-travel-guide.html">
+              <span class="area-list__heading"><strong>Dongdaemun</strong><span class="home-hub-tag">Mercados y diseño</span></span>
+              <span>El DDP, distintas zonas de compras y comercios que cierran tarde; conviene ubicarse antes de recorrerlos.</span>
+              <span class="area-list__cta">Ver guía <span aria-hidden="true">↗</span></span>
+            </a>
+          </li>
+          <li>
+            <a class="area-list__link" href="jamsil-travel-guide.html">
+              <span class="area-list__heading"><strong>Jamsil</strong><span class="home-hub-tag">Un día en familia</span></span>
+              <span>Lotte World, el lago Seokchon y grandes atracciones para dedicarles un día completo.</span>
+              <span class="area-list__cta">Ver guía <span aria-hidden="true">↗</span></span>
+            </a>
+          </li>
+          <li>
+            <a class="area-list__link" href="gangnam-travel-guide.html">
+              <span class="area-list__heading"><strong>Gangnam</strong><span class="home-hub-tag">Sur de Seúl</span></span>
+              <span>Zonas de oficinas, tiendas y atractivos repartidos entre varios sectores diferentes.</span>
+              <span class="area-list__cta">Ver guía <span aria-hidden="true">↗</span></span>
+            </a>
+          </li>
+          <li>
+            <a class="area-list__link" href="itaewon-travel-guide.html">
+              <span class="area-list__heading"><strong>Itaewon</strong><span class="home-hub-tag">Comida y vida nocturna</span></span>
+              <span>Restaurantes internacionales y vida nocturna, con pendientes y calles que conviene considerar al armar tu recorrido.</span>
+              <span class="area-list__cta">Ver guía <span aria-hidden="true">↗</span></span>
+            </a>
+          </li>
+          <li>
+            <a class="area-list__link" href="gongdeok-mapo-seoul-guide.html">
+              <span class="area-list__heading"><strong>Gongdeok y Mapo</strong><span class="home-hub-tag">Comida y conexiones</span></span>
+              <span>Calles para comer y buenas conexiones de transporte; una zona útil tanto para hospedarte como para visitar.</span>
+              <span class="area-list__cta">Ver guía <span aria-hidden="true">↗</span></span>
+            </a>
+          </li>
+        </ul>
       </div>
     </section>
 
-    <section class="home-journey" aria-labelledby="home-journey-title">
-      <div class="container">
-        <div class="home-journey__header">
-          <h2 id="home-journey-title">Qué preparar antes de llegar a Corea del Sur</h2>
-          <p>No necesitas tener todo el itinerario cerrado antes de volar a Corea. Pero hay tres cosas que conviene decidir con tiempo: dónde vas a alojarte, cómo tendrás conexión en el móvil y cómo irás desde el aeropuerto hasta tu primer alojamiento.</p>
+    <section class="editorial-section home-hub-section--stay" id="stay" aria-labelledby="stay-title">
+      <div class="home-hub-container stay-row">
+        <div class="stay-row__media">
+          <img src="../images/Accommodation/accommodation-hero-v1.webp" alt="Foto de alojamiento utilizada en la guía de Korea Inside para planear dónde hospedarse" width="1536" height="1024" loading="lazy" decoding="async">
         </div>
+        <div class="stay-row__copy">
+          <header class="section-head">
+            <p class="home-hub-eyebrow">DÓNDE HOSPEDARTE</p>
+            <h2 id="stay-title">Primero elige la zona; después, el hotel</h2>
+            <p class="section-head__lead">La zona adecuada depende de lo que harás cada día, cómo llegarás y cómo regresarás de noche. Una buena oferta de hotel no compensa traslados diarios incómodos.</p>
+          </header>
+          <h3>La zona importa tanto como el hotel</h3>
+          <p>Una base bien ubicada puede ahorrarte más tiempo que elegir un hotel solo por su precio. Importa tener metro cerca, pero también cómo llegarás desde el aeropuerto, los regresos tarde, las bolsas de compras y cuántas veces cruzarás la ciudad.</p>
+          <a class="home-hub-button" href="accommodation.html">Encuentra la zona adecuada para hospedarte <span aria-hidden="true">↗</span></a>
+          <div class="stay-links" aria-label="Más guías de hospedaje">
+            <a class="home-hub-outline-link" href="best-area-for-first-time-visitors-seoul.html">Primera visita</a>
+            <a class="home-hub-outline-link" href="best-area-for-families-seoul.html">Familias</a>
+            <a class="home-hub-outline-link" href="best-area-for-airport-access-seoul.html">Acceso al aeropuerto</a>
+            <a class="home-hub-outline-link" href="hongdae-vs-myeongdong.html">Hongdae vs. Myeongdong</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <div class="home-journey__grid">
-          <article class="home-journey__row">
-            <div class="home-journey__media">
-              <img
-                class="home-journey__image"
-                src="../images/Accommodation/accommodation-hero-v1.webp"
-                alt="Planificación del alojamiento para decidir dónde quedarse en Corea"
-                loading="lazy"
-              >
+    <section class="editorial-section home-hub-section--plan" id="plan" aria-labelledby="plan-title">
+      <div class="home-hub-container">
+        <header class="section-head">
+          <p class="home-hub-eyebrow">PLANEA TU VIAJE</p>
+          <h2 id="plan-title">Resolver algunas cosas facilita mucho el día de llegada</h2>
+          <p class="section-head__lead">No necesitas tener listo todo tu itinerario antes de volar a Corea del Sur. Pero vale la pena definir tres cosas: dónde te hospedarás, cómo tendrás internet en tu celular y cómo irás del aeropuerto a tu primer alojamiento.</p>
+        </header>
+
+        <div class="planning-grid">
+          <article class="planning-card">
+            <div class="planning-card__media">
+              <img src="../images/esim/esim-hero-connected-seoul.webp" alt="Viajeros usando llamadas, búsquedas y mapas en sus celulares mientras tienen conexión en Seúl" width="1800" height="600" loading="lazy" decoding="async">
             </div>
-            <div class="home-journey__body">
-              <h3>La zona donde te hospedas importa tanto como el hotel</h3>
-              <p>Una buena base puede ahorrarte más tiempo que elegir un hotel solo por el precio. Importa el acceso al metro, pero también la llegada desde el aeropuerto, volver tarde por la noche, cargar con bolsas de compras y cuántas veces piensas cruzar la ciudad.</p>
-              <a href="accommodation.html" class="home-journey__link">Compara zonas para hospedarte</a>
+            <div class="planning-card__body">
+              <p class="home-hub-tag">CONEXIÓN MÓVIL</p>
+              <h3>Prepara tu celular antes de necesitarlo</h3>
+              <p>Los datos móviles sirven casi desde el momento en que aterrizas: para mapas, indicaciones al hotel, mensajes, reservaciones y traducciones. Una eSIM es cómoda para muchos viajeros, pero revisa la compatibilidad del celular y cuándo activarla antes de salir.</p>
+              <a class="home-hub-link" href="esim.html">Consulta la guía de eSIM para Corea <span aria-hidden="true">↗</span></a>
             </div>
           </article>
 
-          <article class="home-journey__row home-journey__row--reverse">
-            <div class="home-journey__media">
-              <img
-                class="home-journey__image"
-                src="../images/esim/hero-esim-es.png"
-                alt="Configuración de datos móviles para mantenerse conectado durante un viaje por Corea"
-                loading="lazy"
-              >
+          <article class="planning-card">
+            <div class="planning-card__media">
+              <img src="../images/arrival/incheon-airport-arrival-hero.webp" alt="Viajeros con equipaje caminando bajo un letrero de llegadas en el Aeropuerto Internacional de Incheon" width="1536" height="1024" loading="lazy" decoding="async">
             </div>
-            <div class="home-journey__body">
-              <h3>Prepara tu celular antes de necesitar internet</h3>
-              <p>Los datos móviles empiezan a ser útiles casi en cuanto aterrizas: para mapas, indicaciones hasta el hotel, mensajes, reservas y traducción. Una eSIM es cómoda para muchos viajeros, pero conviene comprobar antes de salir la compatibilidad del teléfono y cuándo debe activarse.</p>
-              <a href="esim.html" class="home-journey__link">Prepara tu eSIM para Corea del Sur</a>
-            </div>
-          </article>
-
-          <article class="home-journey__row">
-            <div class="home-journey__media">
-              <img
-                class="home-journey__image"
-                src="../images/home/arrival-guide-es.png"
-                alt="Guía de llegada al aeropuerto con los primeros pasos después de aterrizar en Corea"
-                loading="lazy"
-              >
-            </div>
-            <div class="home-journey__body">
-              <h3>Planea el trayecto completo del aeropuerto a tu hotel</h3>
-              <p>La opción más rápida desde el aeropuerto no siempre es la más sencilla. La hora de llegada, el equipaje, los transbordos, la distancia a pie desde la estación y la ubicación del hotel pueden importar más que ahorrar unos pocos minutos de viaje.</p>
-              <div class="home-journey__links">
-                <a href="airport-transfer.html" class="home-journey__link">Compara las opciones de traslado desde el aeropuerto</a>
-                <a href="arrival.html" class="home-journey__link home-journey__link--secondary">Consulta la guía completa de llegada</a>
+            <div class="planning-card__body">
+              <p class="home-hub-tag">AEROPUERTO → HOTEL</p>
+              <h3>Planea el traslado del aeropuerto hasta tu hotel</h3>
+              <p>Lo más rápido no siempre es lo más sencillo. La hora de llegada, el equipaje, los transbordos, la caminata desde la estación y la ubicación del hotel pueden importar más que ahorrar unos minutos.</p>
+              <div class="planning-card__links">
+                <a class="home-hub-link" href="airport-transfer.html">Compara las opciones de traslado <span aria-hidden="true">↗</span></a>
+                <a class="home-hub-link home-hub-link--secondary" href="arrival.html">Consulta la guía completa de llegada <span aria-hidden="true">↗</span></a>
               </div>
             </div>
           </article>
         </div>
+
+        <div class="hour-panel">
+          <div class="hour-panel__intro">
+            <p class="home-hub-eyebrow">REVISIÓN RÁPIDA</p>
+            <h3>Tu primera hora en Corea</h3>
+            <p><a href="checklist.html">Después de recoger el equipaje, casi todos necesitan resolver lo mismo</a>: tener el celular conectado, cómo pagar el transporte local, un mapa que funcione bien en Corea y una ruta clara hacia la ciudad. Con eso listo, normalmente no hay razón para quedarse mucho más tiempo en el aeropuerto.</p>
+            <a class="home-hub-link" href="airport.html">Conoce la guía completa del aeropuerto <span aria-hidden="true">↗</span></a>
+          </div>
+          <ol class="hour-panel__steps">
+            <li><div><strong>Conecta tu celular a internet</strong><a class="home-hub-outline-link" href="esim.html">Guía de eSIM para Corea</a></div></li>
+            <li><div><strong>¿Usarás metro o autobús? Consigue o recarga tu T-money</strong><a class="home-hub-outline-link" href="tmoney.html">Guía de T-money</a></div></li>
+            <li><div><strong>Lleva un poco de efectivo como respaldo</strong><span class="hour-panel__links"><a class="home-hub-outline-link" href="payments.html">Guía para pagar en Corea</a><a class="home-hub-outline-link" href="wowpass.html">Guía de WOWPASS</a></span></div></li>
+            <li><div><strong>Abre Naver Map o KakaoMap</strong><a class="home-hub-outline-link" href="maps.html">Apps de mapas en Corea</a></div></li>
+            <li><div><strong>Toma la ruta del aeropuerto que más te convenga para llegar a tu hotel</strong><a class="home-hub-outline-link" href="airport-transfer.html">Guía de traslados del aeropuerto</a></div></li>
+          </ol>
+        </div>
       </div>
     </section>
 
-    <section class="section section--gray home-prep-section">
-      <div class="container">
-        <div class="home-prep-grid">
-          <div class="first-hour-panel">
-            <h2 class="section__title">Tu primera hora después de aterrizar en Corea</h2>
-            <p class="first-hour-panel__intro"><a href="checklist.html">Después de recoger el equipaje, la mayoría de viajeros necesita resolver las mismas pocas cosas</a>: un móvil con conexión, una forma de pagar el transporte local, un mapa que funcione bien en Corea y una ruta clara hasta la ciudad. Una vez resuelto eso, normalmente no hay motivo para pasar mucho más tiempo en el aeropuerto.</p>
-            <ol class="first-hour-list">
-              <li><div><span>Conecta tu móvil a internet</span><a class="first-hour-list__link" href="esim.html">Guía de eSIM para Corea</a></div></li>
-              <li><div><span>Consigue o recarga T-money</span><a class="first-hour-list__link" href="tmoney.html">Guía de T-money</a></div></li>
-              <li><div><span>Lleva una pequeña cantidad de efectivo como respaldo</span><a class="first-hour-list__link" href="payments.html">Cómo pagar en Corea del Sur</a><a class="first-hour-list__link" href="wowpass.html">Guía de WOWPASS</a></div></li>
-              <li><div><span>Abre Naver Map o KakaoMap</span><a class="first-hour-list__link" href="maps.html">Apps de mapas en Corea</a></div></li>
-              <li><div><span>Elige la ruta desde el aeropuerto que mejor encaje con tu hotel</span><a class="first-hour-list__link" href="airport-transfer.html">Guía de traslados desde el aeropuerto</a></div></li>
-            </ol>
-            <a href="airport.html" class="btn btn--text">Consulta la guía completa del aeropuerto →</a>
-          </div>
+    <section class="editorial-section home-hub-section--experience" id="experience" aria-labelledby="experience-title">
+      <div class="home-hub-container">
+        <header class="section-head">
+          <p class="home-hub-eyebrow">DESCUBRE COREA</p>
+          <h2 id="experience-title">Empieza por lo que más te emociona del viaje</h2>
+          <p class="section-head__lead">Algunos viajes empiezan por la comida. Otros giran en torno a las compras, la belleza, la vida nocturna o simplemente conocer un barrio que tenías en mente. Cuando identificas qué te interesa más, organizar el resto del recorrido es más fácil.</p>
+        </header>
+
+        <div class="experience-grid">
+          <article class="experience-card">
+            <div class="experience-card__media">
+              <img src="../images/taste-korea/jeonju-bibimbap-feature.webp" alt="Un platillo de bibimbap coreano como muestra de la comida que puedes descubrir en Corea" width="1408" height="768" loading="lazy" decoding="async">
+            </div>
+            <div class="experience-card__body">
+              <h3>Sabores de Corea</h3>
+              <p>La comida coreana cambia de un barrio a otro y de una ciudad a otra. Una cena de barbacoa en Seúl, una mañana en un mercado de Busan o un recorrido por cafeterías de Seongsu pueden llevarte a lugares muy diferentes e incluso influir en dónde te conviene hospedarte.</p>
+              <a class="home-hub-link" href="taste-korea.html">Explora la comida coreana <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+
+          <article class="experience-card">
+            <div class="experience-card__media">
+              <img src="../images/k-beauty/k-beauty-makeup-product-display.webp" alt="Productos de maquillaje K-Beauty exhibidos para comparar artículos y tonos" width="2448" height="2448" loading="lazy" decoding="async">
+            </div>
+            <div class="experience-card__body">
+              <h3>K-Beauty</h3>
+              <p>Comprar productos de belleza coreanos puede volverse complicado porque las tiendas grandes tienen mucho más de lo que la mayoría necesita. Lo útil es saber dónde buscar, qué cambia de un barrio a otro y cuándo vale la pena desviarse hasta una tienda insignia.</p>
+              <a class="home-hub-link" href="k-beauty.html">Explora la K-Beauty en Corea <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
         </div>
+      </div>
+    </section>
+
+    <section class="editorial-section home-hub-section--trust" id="trust" aria-labelledby="trust-title">
+      <div class="home-hub-container trust-grid">
+        <header class="section-head">
+          <p class="home-hub-eyebrow">ACERCA DE KOREA INSIDE</p>
+          <h2 id="trust-title">Información para tomar mejores decisiones de viaje</h2>
+          <p class="section-head__lead">Korea Inside es una guía práctica de Corea del Sur, escrita y revisada localmente por un editor coreano. Usamos fuentes oficiales, contexto local y criterio editorial independiente para ayudarte a comparar opciones, incluso cuando alguna no se ajusta a tu viaje.</p>
+        </header>
+        <dl class="trust-list">
+          <div><dt>Información oficial</dt><dd>para datos prácticos y condiciones importantes</dd></div>
+          <div><dt>Contexto local</dt><dd>para trayectos, conexiones y la última caminata</dd></div>
+          <div><dt>Criterio independiente</dt><dd>antes de reservar o comprar</dd></div>
+        </dl>
       </div>
     </section>
 

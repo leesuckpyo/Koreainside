@@ -29,6 +29,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Roboto+Flex:wght@400..600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../home-hub.css">
   <meta name="fo-verify" content="d152ecbe-746f-457f-9431-408e90abdcd0" />
   <script type="application/ld+json">
 {
@@ -136,7 +137,7 @@
   </header>
   <!-- GLOBAL_NAV_END -->
 
-  <main>
+  <main class="home-hub-v2">
     <section class="hero-banner">
       <picture class="hero-banner__media">
         <source media="(min-width: 768px)" srcset="../images/home/hero-home-hanyangdoseong-n-seoul-tower-1920-v20260917.webp" type="image/webp">
@@ -157,129 +158,237 @@
       <p class="hero-banner__credit">ภาพ: <a href="https://archive.visitseoul.net/en/contents/ARP007f71" target="_blank" rel="noopener noreferrer">Seoul Tourism Organization</a></p>
     </section>
 
-    <section class="home-discover" aria-labelledby="home-discover-title">
-      <div class="container">
-        <div class="home-discover-intro">
-          <h2 id="home-discover-title">เริ่มจากสิ่งที่ทำให้คุณอยากมาเกาหลี</h2>
-          <p>บางทริปเริ่มจากอาหาร บางทริปเน้นช้อปปิ้ง beauty, nightlife หรือแค่อยากใช้เวลาในย่านที่อยากเห็นมานาน เมื่อรู้ว่าอะไรทำให้ตื่นเต้นที่สุด ส่วนที่เหลือของ itinerary จะจัดง่ายขึ้น</p>
+    <nav class="start-nav" aria-label="เริ่มจากสิ่งที่อยากรู้สำหรับทริปนี้">
+      <div class="home-hub-container start-nav__grid">
+        <a class="start-nav__link" href="#explore"><strong>เที่ยวเกาหลี</strong><span>เลือกย่านในโซลที่เหมาะกับทริป</span></a>
+        <a class="start-nav__link" href="#stay"><strong>พักที่ไหนดี</strong><span>เลือกย่านที่ใช้เป็นฐานเที่ยว</span></a>
+        <a class="start-nav__link" href="#plan"><strong>วางแผนการเดินทาง</strong><span>สนามบิน eSIM และการจ่ายเงิน</span></a>
+        <a class="start-nav__link" href="#experience"><strong>สัมผัสเกาหลี</strong><span>อาหาร ความงาม และวัฒนธรรม</span></a>
+      </div>
+    </nav>
+
+    <section class="editorial-section home-hub-section--explore" id="explore" aria-labelledby="explore-title">
+      <div class="home-hub-container">
+        <header class="section-head">
+          <p class="home-hub-eyebrow">เที่ยวเกาหลี · ย่านต่าง ๆ ในโซล</p>
+          <h2 id="explore-title">เลือกย่านในโซลให้เหมาะกับรูปแบบทริป</h2>
+          <p class="section-head__lead">แต่ละย่านของโซลทำให้การจัดเวลาในหนึ่งวันต่างกัน ลองดูว่าอยากทำอะไร จะจบวันแถวไหน และสะดวกเดินทางไกลแค่ไหน แล้วค่อยเปิดอ่านคู่มือของแต่ละย่านอย่างละเอียด</p>
+        </header>
+
+        <div class="feature-grid">
+          <article class="featured-card">
+            <a class="featured-card__media" href="hongdae-travel-guide.html">
+              <img src="../images/hongdae/hongdae-travel-guide-hero-1600-v20260916.webp" alt="ถนนช็อปปิงในย่านฮงแดที่มีผู้คนและป้ายร้านสว่างไสวช่วงเย็น" width="1600" height="900" loading="lazy" decoding="async">
+            </a>
+            <div class="featured-card__body">
+              <p class="home-hub-tag">ย่านที่คึกคักยามค่ำ</p>
+              <h3>ฮงแด</h3>
+              <p>คาเฟ่ย่านยอนนัม ร้านค้าอิสระ และถนนที่ยังคึกคักหลังมื้อเย็น เหมาะจะเผื่อเวลาเดินเที่ยวหากช่วงค่ำเป็นส่วนสำคัญของทริป</p>
+              <a class="home-hub-link" href="hongdae-travel-guide.html">สำรวจฮงแด <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+
+          <article class="featured-card">
+            <a class="featured-card__media" href="myeongdong-travel-guide.html">
+              <img src="../images/myeongdong/myeongdong-travel-guide-hero-1600-v20260916.webp" alt="ถนนคนเดินและร้านค้าในย่านเมียงดง กรุงโซล" width="1600" height="1067" loading="lazy" decoding="async">
+            </a>
+            <div class="featured-card__body">
+              <p class="home-hub-tag">ใจกลางโซล</p>
+              <h3>เมียงดง</h3>
+              <p>ทั้งช็อปปิง เที่ยวสถานที่สำคัญในตัวเมือง และกลับที่พักระหว่างวันได้สะดวก เป็นจุดเริ่มต้นที่วางแผนเที่ยวโซลครั้งแรกได้ง่าย</p>
+              <a class="home-hub-link" href="myeongdong-travel-guide.html">สำรวจเมียงดง <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+
+          <article class="featured-card">
+            <a class="featured-card__media" href="seongsu-travel-guide.html">
+              <img src="../images/seongsu/seongsu-travel-guide-hero-1600-v20260916.webp" alt="อาคารอิฐและบรรยากาศผู้คนบนถนนในย่านซองซู กรุงโซล" width="1600" height="901" loading="lazy" decoding="async">
+            </a>
+            <div class="featured-card__body">
+              <p class="home-hub-tag">คาเฟ่และร้านป๊อปอัป</p>
+              <h3>ซองซู</h3>
+              <p>ถนนสายอุตสาหกรรมเก่าที่มีอาคารอิฐแดง ร้านงานออกแบบ และร้านป๊อปอัปที่เปลี่ยนไปเรื่อย ๆ ควรเผื่อเวลาเดินดูมากกว่าจะรีบแวะทีละจุด</p>
+              <a class="home-hub-link" href="seongsu-travel-guide.html">สำรวจซองซู <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
         </div>
 
-        <article class="home-taste-feature">
-          <div class="home-taste-feature-media">
-            <img
-              src="../images/taste-korea/jeonju-bibimbap-feature.webp"
-              alt="มื้อ Bibimbap เกาหลีที่สื่อถึงประสบการณ์ท่องเที่ยวผ่านอาหารในเกาหลี"
-              width="1408"
-              height="768"
-              loading="lazy"
-              decoding="async"
-            >
-          </div>
-          <div class="home-taste-feature-copy">
-            <h3>Taste Korea</h3>
-            <p>อาหารเกาหลีเปลี่ยนไปตามย่านและเมือง คืนปิ้งย่างใน Seoul, เช้าตลาดใน Busan หรือวันคาเฟ่ใน Seongsu สามารถพาคุณไปคนละพื้นที่—และบางครั้งไปสู่การเลือกที่พักคนละแบบ</p>
-            <a class="home-taste-feature__link" href="/th/taste-korea.html">สำรวจอาหารเกาหลี</a>
-          </div>
-        </article>
-
-        <article class="home-kbeauty-row">
-          <div class="home-kbeauty-row__media">
-            <img
-              src="../images/k-beauty/k-beauty-makeup-product-display.webp"
-              alt="เครื่องสำอาง K-Beauty สำหรับเปรียบเทียบผลิตภัณฑ์และเฉดสี"
-              width="2448"
-              height="2448"
-              loading="lazy"
-              decoding="async"
-            >
-          </div>
-          <div class="home-kbeauty-row__copy">
-            <h3>K-Beauty</h3>
-            <p>การช้อป K-Beauty ในเกาหลีทำให้ซับซ้อนเกินจำเป็นได้ง่าย เพราะร้านใหญ่มีของมากกว่าที่นักท่องเที่ยวส่วนใหญ่ต้องใช้ สิ่งที่มีประโยชน์กว่าคือรู้ว่าควรไปดูที่ไหน แต่ละย่านต่างกันอย่างไร และเมื่อไร flagship store คุ้มกับการอ้อม</p>
-            <a class="home-kbeauty-row__link" href="/th/k-beauty.html">สำรวจ K-Beauty ในเกาหลี</a>
-          </div>
-        </article>
+        <div class="area-list-head">
+          <h3>ย่านอื่นที่ควรรู้จักก่อนวางแผน</h3>
+          <p>คู่มือย่านต่าง ๆ ที่ใช้วางแผนได้จริง · มีลิงก์ทุกหน้า</p>
+        </div>
+        <ul class="area-list">
+          <li>
+            <a class="area-list__link" href="insadong-travel-guide.html">
+              <span class="area-list__heading"><strong>อินซาดง</strong><span class="home-hub-tag">วัฒนธรรมและประเพณี</span></span>
+              <span>ร้านชา งานหัตถกรรม และถนนเก่าที่เหมาะกับการเดินชมแบบไม่เร่งรีบในช่วงกลางวัน</span>
+              <span class="area-list__cta">ดูคู่มือ <span aria-hidden="true">↗</span></span>
+            </a>
+          </li>
+          <li>
+            <a class="area-list__link" href="dongdaemun-travel-guide.html">
+              <span class="area-list__heading"><strong>ทงแดมุน</strong><span class="home-hub-tag">ตลาดและงานออกแบบ</span></span>
+              <span>มีทั้ง DDP ย่านช็อปปิงหลายรูปแบบ และร้านค้าที่เปิดถึงดึก ควรรู้ตำแหน่งแต่ละโซนก่อนเที่ยว</span>
+              <span class="area-list__cta">ดูคู่มือ <span aria-hidden="true">↗</span></span>
+            </a>
+          </li>
+          <li>
+            <a class="area-list__link" href="jamsil-travel-guide.html">
+              <span class="area-list__heading"><strong>จัมชิล</strong><span class="home-hub-tag">เที่ยวกับครอบครัวหนึ่งวัน</span></span>
+              <span>Lotte World ทะเลสาบซอกชน และสถานที่ท่องเที่ยวขนาดใหญ่ที่จัดเที่ยวได้เต็มวัน</span>
+              <span class="area-list__cta">ดูคู่มือ <span aria-hidden="true">↗</span></span>
+            </a>
+          </li>
+          <li>
+            <a class="area-list__link" href="gangnam-travel-guide.html">
+              <span class="area-list__heading"><strong>กังนัม</strong><span class="home-hub-tag">โซลฝั่งใต้</span></span>
+              <span>ย่านธุรกิจ แหล่งช็อปปิง และสถานที่เที่ยวกระจายอยู่หลายกลุ่มพื้นที่</span>
+              <span class="area-list__cta">ดูคู่มือ <span aria-hidden="true">↗</span></span>
+            </a>
+          </li>
+          <li>
+            <a class="area-list__link" href="itaewon-travel-guide.html">
+              <span class="area-list__heading"><strong>อิแทวอน</strong><span class="home-hub-tag">อาหารและยามค่ำคืน</span></span>
+              <span>ร้านอาหารนานาชาติและแหล่งเที่ยวกลางคืน โดยควรเผื่อเรื่องทางลาดชันและรูปแบบถนนไว้ด้วย</span>
+              <span class="area-list__cta">ดูคู่มือ <span aria-hidden="true">↗</span></span>
+            </a>
+          </li>
+          <li>
+            <a class="area-list__link" href="gongdeok-mapo-seoul-guide.html">
+              <span class="area-list__heading"><strong>กงด็อกและมาโพ</strong><span class="home-hub-tag">อาหารและการเดินทางต่อ</span></span>
+              <span>มีถนนร้านอาหารและจุดเชื่อมต่อขนส่งที่สะดวก น่าสนใจทั้งในฐานะย่านพักและจุดแวะเที่ยว</span>
+              <span class="area-list__cta">ดูคู่มือ <span aria-hidden="true">↗</span></span>
+            </a>
+          </li>
+        </ul>
       </div>
     </section>
 
-    <section class="home-journey" aria-labelledby="home-journey-title">
-      <div class="container">
-        <div class="home-journey__header">
-          <h2 id="home-journey-title">การตัดสินใจไม่กี่อย่างช่วยให้วันมาถึงง่ายขึ้นมาก</h2>
-          <p>ไม่จำเป็นต้องมี itinerary สมบูรณ์ก่อนบินไปเกาหลี แต่มี 3 เรื่องที่ควรตัดสินใจเร็ว: จะพักที่ไหน โทรศัพท์จะออนไลน์อย่างไร และจะเดินทางจากสนามบินไปที่พักแรกอย่างไร</p>
+    <section class="editorial-section home-hub-section--stay" id="stay" aria-labelledby="stay-title">
+      <div class="home-hub-container stay-row">
+        <div class="stay-row__media">
+          <img src="../images/Accommodation/accommodation-hero-v1.webp" alt="ภาพประกอบการวางแผนเลือกย่านที่พักบนหน้าแรกของ Korea Inside" width="1536" height="1024" loading="lazy" decoding="async">
         </div>
+        <div class="stay-row__copy">
+          <header class="section-head">
+            <p class="home-hub-eyebrow">พักที่ไหนดี</p>
+            <h2 id="stay-title">เลือกย่านที่จะพักก่อนเลือกโรงแรม</h2>
+            <p class="section-head__lead">ย่านที่เหมาะขึ้นอยู่กับแผนเที่ยวแต่ละวัน เส้นทางจากสนามบิน และวิธีกลับที่พักตอนกลางคืน แม้ได้ราคาโรงแรมดี แต่ก็อาจไม่คุ้มหากต้องเดินทางลำบากทุกวัน</p>
+          </header>
+          <h3>ทำเลที่พักสำคัญมากกว่าแค่ตัวโรงแรม</h3>
+          <p>การพักในย่านที่เดินทางสะดวกอาจช่วยประหยัดเวลาได้มากกว่าการเลือกโรงแรมจากราคาเพียงอย่างเดียว นอกจากรถไฟใต้ดินแล้ว ยังต้องคิดถึงการเดินทางจากสนามบิน การกลับดึก ถุงช็อปปิง และจำนวนครั้งที่ต้องข้ามเมืองด้วย</p>
+          <a class="home-hub-button" href="accommodation.html">ค้นหาย่านที่เหมาะสำหรับพัก <span aria-hidden="true">↗</span></a>
+          <div class="stay-links" aria-label="คู่มือเลือกที่พักเพิ่มเติม">
+            <a class="home-hub-outline-link" href="best-area-for-first-time-visitors-seoul.html">เที่ยวเกาหลีครั้งแรก</a>
+            <a class="home-hub-outline-link" href="best-area-for-families-seoul.html">ครอบครัว</a>
+            <a class="home-hub-outline-link" href="best-area-for-airport-access-seoul.html">เดินทางไปสนามบินสะดวก</a>
+            <a class="home-hub-outline-link" href="hongdae-vs-myeongdong.html">ฮงแดเทียบกับเมียงดง</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <div class="home-journey__grid">
-          <article class="home-journey__row">
-            <div class="home-journey__media">
-              <img
-                class="home-journey__image"
-                src="../images/Accommodation/accommodation-hero-v1.webp"
-                alt="การวางแผนที่พักเพื่อเลือกว่าจะพักย่านไหนในเกาหลี"
-                loading="lazy"
-              >
+    <section class="editorial-section home-hub-section--plan" id="plan" aria-labelledby="plan-title">
+      <div class="home-hub-container">
+        <header class="section-head">
+          <p class="home-hub-eyebrow">วางแผนการเดินทาง</p>
+          <h2 id="plan-title">ตัดสินใจไม่กี่เรื่องก่อนเดินทาง ช่วยให้วันมาถึงง่ายขึ้น</h2>
+          <p class="section-head__lead">ไม่จำเป็นต้องวางแผนเที่ยวเกาหลีครบทุกวันก่อนบิน แต่มีสามเรื่องที่ควรตกลงให้เรียบร้อยก่อน ได้แก่ จะพักที่ไหน โทรศัพท์จะใช้อินเทอร์เน็ตอย่างไร และจะเดินทางจากสนามบินไปที่พักแรกอย่างไร</p>
+        </header>
+
+        <div class="planning-grid">
+          <article class="planning-card">
+            <div class="planning-card__media">
+              <img src="../images/esim/esim-hero-connected-seoul.webp" alt="นักเดินทางใช้โทรศัพท์ โทรค้นหาข้อมูล และเปิดแผนที่ขณะเชื่อมต่ออินเทอร์เน็ตในโซล" width="1800" height="600" loading="lazy" decoding="async">
             </div>
-            <div class="home-journey__body">
-              <h3>ย่านพักเปลี่ยนมากกว่าแค่โรงแรม</h3>
-              <p>ฐานที่สะดวกอาจประหยัดเวลาได้มากกว่าการเลือกโรงแรมจากราคาอย่างเดียว การเข้าถึงรถไฟใต้ดินสำคัญ แต่ airport arrival, การกลับดึก, ถุงช้อปปิ้ง และความถี่ที่ต้องข้ามเมืองก็สำคัญเช่นกัน</p>
-              <a href="/th/accommodation.html" class="home-journey__link">เลือกย่านพักที่เหมาะกับทริป</a>
+            <div class="planning-card__body">
+              <p class="home-hub-tag">อินเทอร์เน็ตมือถือ</p>
+              <h3>เตรียมโทรศัพท์ให้พร้อมก่อนถึงเวลาต้องใช้</h3>
+              <p>อินเทอร์เน็ตมือถือมีประโยชน์แทบจะทันทีหลังลงเครื่อง ทั้งดูแผนที่ เส้นทางไปโรงแรม ส่งข้อความ ตรวจการจอง และแปลภาษา eSIM สะดวกสำหรับหลายคน แต่ควรเช็กว่าโทรศัพท์รองรับหรือไม่ และควรเปิดใช้งานเมื่อใดก่อนออกเดินทาง</p>
+              <a class="home-hub-link" href="esim.html">อ่านคู่มือ eSIM สำหรับเกาหลี <span aria-hidden="true">↗</span></a>
             </div>
           </article>
 
-          <article class="home-journey__row home-journey__row--reverse">
-            <div class="home-journey__media">
-              <img
-                class="home-journey__image"
-                src="../images/esim/hero-esim.png"
-                alt="การตั้งค่า Mobile Data เพื่อเชื่อมต่ออินเทอร์เน็ตในเกาหลี"
-                loading="lazy"
-              >
+          <article class="planning-card">
+            <div class="planning-card__media">
+              <img src="../images/arrival/incheon-airport-arrival-hero.webp" alt="นักเดินทางพร้อมกระเป๋าเดินทางใต้ป้ายผู้โดยสารขาเข้าที่สนามบินนานาชาติอินชอน" width="1536" height="1024" loading="lazy" decoding="async">
             </div>
-            <div class="home-journey__body">
-              <h3>เตรียมโทรศัพท์ให้พร้อมก่อนต้องใช้จริง</h3>
-              <p>Mobile data มีประโยชน์แทบจะทันทีหลังลงเครื่อง—สำหรับ maps, ทางไปโรงแรม, messages, reservations และ translation eSIM สะดวกสำหรับนักท่องเที่ยวจำนวนมาก แต่ควรเช็ก compatibility ของโทรศัพท์และ activation timing ก่อนออกเดินทาง</p>
-              <a href="/th/esim.html" class="home-journey__link">อ่านคู่มือ eSIM เกาหลี</a>
-            </div>
-          </article>
-
-          <article class="home-journey__row">
-            <div class="home-journey__media">
-              <img
-                class="home-journey__image"
-                src="../images/home/arrival-guide.png"
-                alt="คู่มือ Arrival สนามบินสำหรับขั้นตอนแรกหลังลงเครื่องในเกาหลี"
-                loading="lazy"
-              >
-            </div>
-            <div class="home-journey__body">
-              <h3>วางแผนจากสนามบินไปถึงโรงแรมจริง</h3>
-              <p>ตัวเลือกจากสนามบินที่เร็วที่สุดไม่ได้ง่ายที่สุดเสมอ Arrival time, luggage, การต่อรถ, ระยะเดินจากสถานี และตำแหน่งโรงแรมอาจสำคัญกว่าความต่างของเวลาเพียงไม่กี่นาที</p>
-              <div class="home-journey__links">
-                <a href="/th/airport-transfer.html" class="home-journey__link">เปรียบเทียบวิธีเดินทางจากสนามบิน</a>
-                <a href="/th/arrival.html" class="home-journey__link home-journey__link--secondary">ดูคู่มือ Arrival ฉบับเต็ม</a>
+            <div class="planning-card__body">
+              <p class="home-hub-tag">สนามบิน → โรงแรม</p>
+              <h3>วางแผนเดินทางจากสนามบินไปถึงโรงแรมจริง ๆ</h3>
+              <p>วิธีที่ใช้เวลาน้อยที่สุดอาจไม่ใช่วิธีที่สะดวกที่สุด เวลาเครื่องลง จำนวนกระเป๋า การต่อรถ ระยะเดินจากสถานี และที่ตั้งโรงแรมอาจสำคัญกว่าการประหยัดเวลาเดินทางไม่กี่นาที</p>
+              <div class="planning-card__links">
+                <a class="home-hub-link" href="airport-transfer.html">เปรียบเทียบวิธีเดินทางจากสนามบิน <span aria-hidden="true">↗</span></a>
+                <a class="home-hub-link home-hub-link--secondary" href="arrival.html">ดูคู่มือเดินทางมาถึงเกาหลีฉบับเต็ม <span aria-hidden="true">↗</span></a>
               </div>
             </div>
           </article>
         </div>
+
+        <div class="hour-panel">
+          <div class="hour-panel__intro">
+            <p class="home-hub-eyebrow">เช็กอย่างรวดเร็ว</p>
+            <h3>ชั่วโมงแรกหลังมาถึงเกาหลี</h3>
+            <p><a href="checklist.html">หลังรับกระเป๋าแล้ว นักเดินทางส่วนใหญ่มักต้องจัดการเรื่องพื้นฐานคล้ายกัน</a> ได้แก่ โทรศัพท์ที่ใช้อินเทอร์เน็ตได้ วิธีจ่ายค่าเดินทางในเมือง แอปแผนที่ที่ใช้ได้ดีในเกาหลี และเส้นทางเข้าเมือง เมื่อเตรียมครบแล้วก็มักไม่จำเป็นต้องอยู่ที่สนามบินนาน</p>
+            <a class="home-hub-link" href="airport.html">ดูคู่มือสนามบินฉบับเต็ม <span aria-hidden="true">↗</span></a>
+          </div>
+          <ol class="hour-panel__steps">
+            <li><div><strong>เชื่อมต่ออินเทอร์เน็ตให้โทรศัพท์</strong><a class="home-hub-outline-link" href="esim.html">คู่มือ eSIM เกาหลี</a></div></li>
+            <li><div><strong>จะขึ้นรถไฟใต้ดินหรือรถบัสประจำทาง เตรียมหรือเติมเงิน T-money</strong><a class="home-hub-outline-link" href="tmoney.html">คู่มือ T-money</a></div></li>
+            <li><div><strong>พกเงินสดจำนวนเล็กน้อยเผื่อไว้</strong><span class="hour-panel__links"><a class="home-hub-outline-link" href="payments.html">คู่มือการจ่ายเงิน</a><a class="home-hub-outline-link" href="wowpass.html">คู่มือ WOWPASS</a></span></div></li>
+            <li><div><strong>เปิด Naver Map หรือ KakaoMap</strong><a class="home-hub-outline-link" href="maps.html">แอปแผนที่สำหรับเกาหลี</a></div></li>
+            <li><div><strong>เลือกเส้นทางจากสนามบินที่เหมาะกับที่ตั้งโรงแรม</strong><a class="home-hub-outline-link" href="airport-transfer.html">คู่มือเดินทางจากสนามบิน</a></div></li>
+          </ol>
+        </div>
       </div>
     </section>
 
-    <section class="section section--gray home-prep-section">
-      <div class="container">
-        <div class="home-prep-grid">
-          <div class="first-hour-panel">
-            <h2 class="section__title">ชั่วโมงแรกในเกาหลี</h2>
-            <p class="first-hour-panel__intro"><a href="/th/checklist.html">หลังรับกระเป๋า นักท่องเที่ยวส่วนใหญ่ต้องการสิ่งคล้ายกันไม่กี่อย่าง: </a>โทรศัพท์ที่ใช้งานได้ วิธีจ่ายค่าขนส่งท้องถิ่น แผนที่ที่ทำงานได้ดีในเกาหลี และเส้นทางเข้าเมืองที่ชัด เมื่อจัดการสิ่งเหล่านี้แล้ว โดยทั่วไปไม่จำเป็นต้องใช้เวลาอยู่สนามบินนานกว่านั้น</p>
-            <ol class="first-hour-list">
-              <li><div><span>ต่อโทรศัพท์ให้ Online </span><a class="first-hour-list__link" href="/th/esim.html">คู่มือ eSIM เกาหลี</a></div></li>
-              <li><div><span>ซื้อหรือเติม T-money </span><a class="first-hour-list__link" href="/th/tmoney.html">คู่มือ T-money</a></div></li>
-              <li><div><span>เก็บเงินสดเล็กน้อยเป็น Backup </span><a class="first-hour-list__link" href="/th/payments.html">คู่มือการชำระเงิน </a><a class="first-hour-list__link" href="/th/wowpass.html">· คู่มือ WOWPASS</a></div></li>
-              <li><div><span>เปิด Naver Map หรือ KakaoMap </span><a class="first-hour-list__link" href="/th/maps.html">แอปแผนที่ในเกาหลี</a></div></li>
-              <li><div><span>ใช้เส้นทางจากสนามบินที่เหมาะกับโรงแรมจริง คู่มือ </span><a class="first-hour-list__link" href="/th/airport-transfer.html">Airport Transfer</a></div></li>
-            </ol>
-            <a href="/th/airport.html" class="btn btn--text">ดูคู่มือสนามบินฉบับเต็ม →</a>
-          </div>
+    <section class="editorial-section home-hub-section--experience" id="experience" aria-labelledby="experience-title">
+      <div class="home-hub-container">
+        <header class="section-head">
+          <p class="home-hub-eyebrow">สัมผัสเกาหลี</p>
+          <h2 id="experience-title">เริ่มจากสิ่งที่อยากทำมากที่สุดในทริปนี้</h2>
+          <p class="section-head__lead">บางคนเดินทางมาเพื่ออาหาร บางคนตั้งใจช็อปปิง ดูเครื่องสำอาง เที่ยวกลางคืน หรือใช้เวลาในย่านที่อยากไปมานาน เมื่อรู้ว่าสิ่งไหนสำคัญที่สุด ก็จะจัดแผนส่วนที่เหลือได้ง่ายขึ้น</p>
+        </header>
+
+        <div class="experience-grid">
+          <article class="experience-card">
+            <div class="experience-card__media">
+              <img src="../images/taste-korea/jeonju-bibimbap-feature.webp" alt="อาหารบิบิมบับที่สื่อถึงประสบการณ์เที่ยวชิมอาหารเกาหลี" width="1408" height="768" loading="lazy" decoding="async">
+            </div>
+            <div class="experience-card__body">
+              <h3>ชิมอาหารเกาหลี</h3>
+              <p>อาหารเกาหลีมีความแตกต่างกันทั้งระหว่างย่านและระหว่างเมือง มื้อปิ้งย่างในโซล เช้าตลาดในปูซาน หรือวันเดินคาเฟ่ในซองซู อาจพาไปคนละพื้นที่ และบางครั้งก็มีผลต่อการเลือกย่านที่พัก</p>
+              <a class="home-hub-link" href="taste-korea.html">สำรวจอาหารเกาหลี <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+
+          <article class="experience-card">
+            <div class="experience-card__media">
+              <img src="../images/k-beauty/k-beauty-makeup-product-display.webp" alt="ผลิตภัณฑ์แต่งหน้า K-Beauty ที่จัดวางให้เปรียบเทียบชนิดสินค้าและเฉดสี" width="2448" height="2448" loading="lazy" decoding="async">
+            </div>
+            <div class="experience-card__body">
+              <h3>K-Beauty</h3>
+              <p>ร้านเครื่องสำอางขนาดใหญ่ในเกาหลีมีสินค้าให้เลือกมากจนเลือกยาก สิ่งที่ช่วยได้คือรู้ว่าควรเดินดูที่ไหน แต่ละย่านต่างกันอย่างไร และเมื่อใดควรเผื่อเวลาไปที่ร้านแฟลกชิปโดยเฉพาะ</p>
+              <a class="home-hub-link" href="k-beauty.html">สำรวจ K-Beauty ในเกาหลี <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
         </div>
+      </div>
+    </section>
+
+    <section class="editorial-section home-hub-section--trust" id="trust" aria-labelledby="trust-title">
+      <div class="home-hub-container trust-grid">
+        <header class="section-head">
+          <p class="home-hub-eyebrow">เกี่ยวกับ KOREA INSIDE</p>
+          <h2 id="trust-title">ข้อมูลที่ช่วยตัดสินใจเรื่องท่องเที่ยว</h2>
+          <p class="section-head__lead">Korea Inside เป็นคู่มือเที่ยวเกาหลีเชิงปฏิบัติที่เขียนและตรวจทานในเกาหลีโดยบรรณาธิการชาวเกาหลี เนื้อหาอ้างอิงข้อมูลทางการ บริบทท้องถิ่น และการพิจารณาอย่างอิสระ เพื่อช่วยให้นักเดินทางเข้าใจตัวเลือก รวมถึงกรณีที่ตัวเลือกนั้นอาจไม่เหมาะกับแผนของตน</p>
+        </header>
+        <dl class="trust-list">
+          <div><dt>ข้อมูลทางการ</dt><dd>สำหรับข้อเท็จจริงที่ใช้งานได้และเงื่อนไขสำคัญ</dd></div>
+          <div><dt>บริบทท้องถิ่น</dt><dd>สำหรับเส้นทาง การต่อรถ และช่วงเดินเท้าสุดท้าย</dd></div>
+          <div><dt>การตัดสินใจอย่างอิสระ</dt><dd>ก่อนจองหรือซื้อ</dd></div>
+        </dl>
       </div>
     </section>
 
