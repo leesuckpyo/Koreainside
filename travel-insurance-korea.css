@@ -44,6 +44,35 @@ body.travel-insurance-page main a:focus-visible {
   outline-offset: 3px;
 }
 
+body.travel-insurance-page main a.insurance-cta-button,
+body.travel-insurance-page main a.insurance-cta-button:visited {
+  display: inline-block;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 12px 18px;
+  background: #1f5fbf;
+  color: #ffffff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  line-height: 1.45;
+  text-align: center;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+body.travel-insurance-page main a.insurance-cta-button:hover,
+body.travel-insurance-page main a.insurance-cta-button:focus-visible {
+  background: #164b96;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+body.travel-insurance-page main a.insurance-cta-button:focus-visible {
+  outline: 3px solid #164b96;
+  outline-offset: 3px;
+}
+
 .travel-insurance-page .insurance-container {
   width: min(calc(100% - 40px), 1120px);
   margin-inline: auto;
@@ -51,7 +80,7 @@ body.travel-insurance-page main a:focus-visible {
 
 .travel-insurance-page .insurance-hero {
   padding: 76px 0 80px;
-  border-bottom: 1px solid var(--insurance-line);
+  border-bottom: none;
   background: var(--insurance-paper);
 }
 
@@ -133,9 +162,35 @@ body.travel-insurance-page main a:focus-visible {
   font-weight: 700;
 }
 
+.travel-insurance-page .insurance-next-step {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 78ch;
+  margin-top: 28px;
+  padding: 24px 28px;
+  background: #f5f7fa;
+  border: 1px solid #dde3e8;
+  border-radius: 12px;
+  box-shadow: none;
+}
+
+.travel-insurance-page .insurance-next-step p {
+  margin: 0;
+  line-height: inherit;
+  overflow-wrap: break-word;
+}
+
+.travel-insurance-page .insurance-next-step p + p {
+  margin-top: 12px;
+}
+
+.travel-insurance-page .insurance-next-step .insurance-cta-wrap {
+  margin-top: 18px;
+}
+
 .travel-insurance-page .insurance-section {
   padding: 72px 0;
-  border-bottom: 1px solid var(--insurance-line);
+  border-bottom: none;
   background: var(--insurance-paper);
 }
 
@@ -359,6 +414,10 @@ body.travel-insurance-page main a:focus-visible {
 
   .travel-insurance-page .insurance-intro {
     margin-top: 28px;
+  }
+
+  .travel-insurance-page .insurance-next-step {
+    padding: 18px 20px;
   }
 
   .travel-insurance-page .insurance-section {
