@@ -1,0 +1,44 @@
+.page-korea-phone-esim main.best-esim-page .ki-phone-esim-purchase {
+  max-width: 78ch;
+  margin-top: 20px;
+}
+
+.page-korea-phone-esim main.best-esim-page .ki-phone-esim-purchase__note {
+  margin: 0;
+}
+
+.page-korea-phone-esim main.best-esim-page .ki-phone-esim-buy-button,
+.page-korea-phone-esim main.best-esim-page .ki-phone-esim-buy-button:visited {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  box-sizing: border-box;
+  margin-top: 16px;
+  padding: 12px 18px;
+  background: #1F5FBF;
+  color: #FFFFFF;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  line-height: 1.45;
+  text-align: center;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.page-korea-phone-esim main.best-esim-page .ki-phone-esim-buy-button:hover,
+.page-korea-phone-esim main.best-esim-page .ki-phone-esim-buy-button:focus-visible {
+  background: #164B96;
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+.page-korea-phone-esim main.best-esim-page .ki-phone-esim-buy-button:focus-visible {
+  outline: 3px solid #164B96;
+  outline-offset: 3px;
+}
+
+.page-korea-phone-esim main.best-esim-page .ki-phone-esim-support {
+  margin: 12px 0 0;
+}
