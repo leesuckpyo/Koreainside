@@ -1,0 +1,80 @@
+body.airport-transfer-page main #practical-answer .transfer-chapter__header {
+  margin-bottom: 0;
+}
+
+body.airport-transfer-page main #practical-answer .airport-transfer-guide-bridges {
+  display: grid;
+  width: 100%;
+  max-width: 860px;
+  min-width: 0;
+  margin: 24px 0 0;
+  padding: 0;
+  gap: 18px;
+}
+
+body.airport-transfer-page main .airport-transfer-guide-card {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 24px 28px;
+  background: #F5F7FA;
+  border: 1px solid #DDE3E8;
+  border-radius: 12px;
+  box-shadow: none;
+}
+
+body.airport-transfer-page main .airport-transfer-guide-card p {
+  margin: 0;
+  line-height: inherit;
+  overflow-wrap: break-word;
+}
+
+body.airport-transfer-page main .airport-transfer-guide-card p + p {
+  margin-top: 12px;
+}
+
+body.airport-transfer-page main .airport-transfer-guide-card strong {
+  font-weight: 700;
+}
+
+body.airport-transfer-page main .airport-transfer-guide-card .airport-transfer-guide-card__action {
+  margin-top: 18px;
+}
+
+body.airport-transfer-page main .airport-transfer-guide-button,
+body.airport-transfer-page main .airport-transfer-guide-button:visited {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 12px 18px;
+  background: #1F5FBF;
+  color: #FFFFFF;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  line-height: 1.45;
+  text-align: center;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+body.airport-transfer-page main .airport-transfer-guide-button:hover,
+body.airport-transfer-page main .airport-transfer-guide-button:focus-visible {
+  background: #164B96;
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+body.airport-transfer-page main .airport-transfer-guide-button:focus-visible {
+  outline: 3px solid #164B96;
+  outline-offset: 3px;
+}
+
+@media (max-width: 700px) {
+  body.airport-transfer-page main .airport-transfer-guide-card {
+    padding: 18px 20px;
+  }
+}
