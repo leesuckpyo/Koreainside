@@ -1,0 +1,81 @@
+/* Korea Inside eSIM guide bridges — existing approved phone-number eSIM card design, scoped to esim.html */
+.page-esim main.esim-page .esim-guide-bridge {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0;
+}
+
+.page-esim main.esim-page .esim-guide-bridge .ki-phone-esim-guide-cards {
+  display: grid;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  gap: 18px;
+}
+
+.page-esim main.esim-page .esim-guide-bridge .ki-phone-esim-guide-card {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  padding: 24px 28px;
+  background: #F5F7FA;
+  border: 1px solid #DDE3E8;
+  border-radius: 12px;
+  box-shadow: none;
+}
+
+.page-esim main.esim-page .esim-guide-bridge .ki-phone-esim-guide-card p {
+  margin: 0;
+  line-height: inherit;
+  overflow-wrap: break-word;
+}
+
+.page-esim main.esim-page .esim-guide-bridge .ki-phone-esim-guide-card p + p {
+  margin-top: 12px;
+}
+
+.page-esim main.esim-page .esim-guide-bridge .ki-phone-esim-guide-card strong {
+  font-weight: 700;
+}
+
+.page-esim main.esim-page .esim-guide-bridge .ki-phone-esim-guide-card .ki-phone-esim-guide-card__action {
+  margin-top: 18px;
+}
+
+.page-esim main.esim-page .esim-guide-bridge .ki-phone-esim-guide-button,
+.page-esim main.esim-page .esim-guide-bridge .ki-phone-esim-guide-button:visited {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 12px 18px;
+  background: #1F5FBF;
+  color: #FFFFFF;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  line-height: 1.45;
+  text-align: center;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.page-esim main.esim-page .esim-guide-bridge .ki-phone-esim-guide-button:hover,
+.page-esim main.esim-page .esim-guide-bridge .ki-phone-esim-guide-button:focus-visible {
+  background: #164B96;
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+.page-esim main.esim-page .esim-guide-bridge .ki-phone-esim-guide-button:focus-visible {
+  outline: 3px solid #164B96;
+  outline-offset: 3px;
+}
+
+@media (max-width: 700px) {
+  .page-esim main.esim-page .esim-guide-bridge .ki-phone-esim-guide-card {
+    padding: 18px 20px;
+  }
+}
