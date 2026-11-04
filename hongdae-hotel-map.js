@@ -70,7 +70,7 @@
     return {
       content: content,
       size: new window.naver.maps.Size(36, 46),
-      anchor: new window.naver.maps.Point(18, 44)
+      anchor: new window.naver.maps.Point(18, 39)
     };
   }
 
