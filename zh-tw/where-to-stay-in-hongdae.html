@@ -20,6 +20,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400..600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../hongdae-hotel-map.css">
   <style>
     .hongdae-detail-page main .hm-booking-strip {
       margin-top: 24px;
@@ -340,6 +341,50 @@
       </div>
     </section>
 
+    <section class="hm-section hongdae-hotel-map-section" id="hongdae-hotel-map" aria-labelledby="hongdae-hotel-map-title"
+      data-map-asset-prefix="../"
+      data-map-copy-default="已顯示全部14間住宿的位置。請選擇圖釘或住宿名稱。"
+      data-map-copy-selected="已選取{name}。第{number}號圖釘維持紅色，其餘圖釘為藍色。"
+      data-map-copy-unavailable-selected="已選取{name}。NAVER地圖目前無法使用，但頁面內的連結仍可操作。"
+      data-map-copy-pending-selected="已選取{name}。地圖載入完成後會顯示這項選擇。"
+      data-map-copy-fallback="無法載入NAVER互動地圖。你仍可透過清單查看全部14間住宿，稍後再試。"
+      data-map-copy-fallback-status="NAVER地圖目前無法使用。住宿名稱清單與頁面內連結仍可使用。"
+      data-map-copy-marker-aria="選取第{number}號：{name}">
+      <div class="container">
+        <header class="hm-section__header">
+          <h2 id="hongdae-hotel-map-title">弘大的住宿地點在哪裡？</h2>
+          <p class="hm-section__intro">點選地圖圖釘或住宿名稱，即可查看位置。</p>
+        </header>
+        <div class="hongdae-hotel-map-layout">
+          <div>
+            <div class="hongdae-hotel-map-shell">
+              <div class="hongdae-hotel-map-canvas" id="hongdae-hotel-map-canvas" role="region" aria-label="顯示弘大14間住宿位置的互動地圖" tabindex="0"></div>
+            </div>
+            <p class="hongdae-hotel-map-status" id="hongdae-hotel-map-status" role="status" aria-live="polite">正在載入住宿地圖…</p>
+          </div>
+          <aside class="hongdae-hotel-map-directory" aria-labelledby="hongdae-hotel-map-directory-title">
+            <h3 id="hongdae-hotel-map-directory-title">地圖上的住宿清單</h3>
+            <ol class="hongdae-hotel-map-list">
+              <li><button type="button" data-map-hotel="jsm-studio-hongdae" aria-controls="hongdae-hotel-map-canvas" aria-pressed="false"><span class="hongdae-hotel-map-number">1</span><span>JSM Studio Hongdae</span></button></li>
+              <li><button type="button" data-map-hotel="stay-here-again" aria-controls="hongdae-hotel-map-canvas" aria-pressed="false"><span class="hongdae-hotel-map-number">2</span><span>Stay Here, Again</span></button></li>
+              <li><button type="button" data-map-hotel="l7-hongdae" aria-controls="hongdae-hotel-map-canvas" aria-pressed="false"><span class="hongdae-hotel-map-number">3</span><span>L7 HONGDAE by LOTTE HOTELS</span></button></li>
+              <li><button type="button" data-map-hotel="ryse-autograph-collection" aria-controls="hongdae-hotel-map-canvas" aria-pressed="false"><span class="hongdae-hotel-map-number">4</span><span>RYSE, Autograph Collection</span></button></li>
+              <li><button type="button" data-map-hotel="holiday-inn-express-seoul-hongdae" aria-controls="hongdae-hotel-map-canvas" aria-pressed="false"><span class="hongdae-hotel-map-number">5</span><span>Holiday Inn Express Seoul Hongdae</span></button></li>
+              <li><button type="button" data-map-hotel="mercure-ambassador-seoul-hongdae" aria-controls="hongdae-hotel-map-canvas" aria-pressed="false"><span class="hongdae-hotel-map-number">6</span><span>Mercure Ambassador Seoul Hongdae</span></button></li>
+              <li><button type="button" data-map-hotel="9-brick-hotel" aria-controls="hongdae-hotel-map-canvas" aria-pressed="false"><span class="hongdae-hotel-map-number">7</span><span>9 Brick Hotel</span></button></li>
+              <li><button type="button" data-map-hotel="junibino-hotel-hongdae" aria-controls="hongdae-hotel-map-canvas" aria-pressed="false"><span class="hongdae-hotel-map-number">8</span><span>Junibino Hotel Hongdae</span></button></li>
+              <li><button type="button" data-map-hotel="amanti-hotel-seoul" aria-controls="hongdae-hotel-map-canvas" aria-pressed="false"><span class="hongdae-hotel-map-number">9</span><span>Amanti Hotel Seoul</span></button></li>
+              <li><button type="button" data-map-hotel="localstitch-creator-town-seogyo" aria-controls="hongdae-hotel-map-canvas" aria-pressed="false"><span class="hongdae-hotel-map-number">10</span><span>Localstitch Creator Town Seogyo</span></button></li>
+              <li><button type="button" data-map-hotel="batwo-stay" aria-controls="hongdae-hotel-map-canvas" aria-pressed="false"><span class="hongdae-hotel-map-number">11</span><span>Batwo Stay - For foreigners only</span></button></li>
+              <li><button type="button" data-map-hotel="baroato-2nd" aria-controls="hongdae-hotel-map-canvas" aria-pressed="false"><span class="hongdae-hotel-map-number">12</span><span>Hotel Baroato 2nd</span></button></li>
+              <li><button type="button" data-map-hotel="hongdae-style-guesthouse" aria-controls="hongdae-hotel-map-canvas" aria-pressed="false"><span class="hongdae-hotel-map-number">13</span><span>Hongdae Style Guesthouse</span></button></li>
+              <li><button type="button" data-map-hotel="twotwo-house" aria-controls="hongdae-hotel-map-canvas" aria-pressed="false"><span class="hongdae-hotel-map-number">14</span><span>TwoTwo House</span></button></li>
+            </ol>
+          </aside>
+        </div>
+      </div>
+    </section>
+
     <div class="hm-section hm-section--cream" id="hongdae-stays">
       <div class="container">
         <section class="hm-hotel-region" aria-labelledby="hongdae-family-stays">
@@ -349,7 +394,7 @@
           </header>
 
           <div class="hm-choice-list">
-            <article class="hm-choice-row hm-editorial-row">
+            <article class="hm-choice-row hm-editorial-row" data-hotel-id="jsm-studio-hongdae">
               <div class="hm-editorial-row__label">
                 <p class="hm-row-kicker">6 人入住 — 弘大入口站旁</p>
                 <h3>JSM Studio Hongdae</h3>
@@ -361,6 +406,7 @@
                   <img src="../images/Accommodation/hotels/jsm-studio-hongdae/jsm-studio-hongdae-exterior.webp" alt="JSM Studio Hongdae 所在 Paradisetel 大樓外觀" width="2133" height="1145" loading="lazy" decoding="async">
                   <figcaption class="hongdae-map-figure__note">照片：Kakao Map 街景</figcaption>
                 </figure>
+                <p class="hongdae-map-link-wrap"><a class="hongdae-map-link" href="#hongdae-hotel-map" data-map-hotel="jsm-studio-hongdae">📌 在地圖上查看</a></p>
                 <div class="hm-booking-strip">
                   <p class="hm-booking-strip__eyebrow">查看房價</p>
                   <p class="hm-booking-strip__title">在訂房網站比較這間飯店</p>
@@ -372,7 +418,7 @@
               </div>
             </article>
 
-            <article class="hm-choice-row hm-editorial-row">
+            <article class="hm-choice-row hm-editorial-row" data-hotel-id="stay-here-again">
               <div class="hm-editorial-row__label">
                 <p class="hm-row-kicker">5–6 人入住 — 弘大入口站旁</p>
                 <h3>Stay Here, Again</h3>
@@ -384,6 +430,7 @@
                   <img src="../images/Accommodation/hotels/stay-here-again/stay-here-again-exterior.webp" alt="Stay Here, Again 所在 Withus Building 外觀" width="2133" height="1145" loading="lazy" decoding="async">
                   <figcaption class="hongdae-map-figure__note">照片：Kakao Map 街景</figcaption>
                 </figure>
+                <p class="hongdae-map-link-wrap"><a class="hongdae-map-link" href="#hongdae-hotel-map" data-map-hotel="stay-here-again">📌 在地圖上查看</a></p>
                 <div class="hm-booking-strip">
                   <p class="hm-booking-strip__eyebrow">查看房價</p>
                   <p class="hm-booking-strip__title">在訂房網站比較這間飯店</p>
@@ -407,7 +454,7 @@
           </header>
 
           <div class="hm-hotel-region__list">
-            <article class="hm-hotel" id="l7-hongdae-details">
+            <article class="hm-hotel" id="l7-hongdae-details" data-hotel-id="l7-hongdae">
               <h3>L7 HONGDAE by LOTTE HOTELS</h3>
               <div class="hm-hotel-photo-row">
                 <img class="hm-hotel-photo" src="../images/Accommodation/hotels/l7-hongdae/l7-hongdae-by-lotte-hotels-exterior.webp" alt="首爾 L7 HONGDAE by LOTTE HOTELS 外觀" width="2133" height="1145" loading="lazy" decoding="async">
@@ -415,6 +462,7 @@
               </div>
               <p>L7 HONGDAE 值得列在這裡，是因為弘大中心大部分地方，能和飯店融入同一套步行動線。如果有好幾個晚上待在街區，晚餐、購物或晚歸後不必再搭地鐵，就很實用。</p>
               <p>透過弘大入口站往返機場仍很簡單，但這不是多花錢住 L7 的主要理由。更值得多花錢的理由是：完整服務的飯店，就在預計反覆活動的區域中心。淺眠、寧願犧牲便利換較安靜街道的旅客，應往離中心遠一點的地方找。</p>
+              <p class="hongdae-map-link-wrap"><a class="hongdae-map-link" href="#hongdae-hotel-map" data-map-hotel="l7-hongdae">📌 在地圖上查看</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">查看房價</p>
                 <p class="hm-booking-strip__title">在訂房網站比較這間飯店</p>
@@ -426,7 +474,7 @@
               </div>
             </article>
 
-            <article class="hm-hotel">
+            <article class="hm-hotel" data-hotel-id="ryse-autograph-collection">
               <h3>RYSE, Autograph Collection</h3>
               <div class="hm-hotel-photo-row">
                 <img class="hm-hotel-photo" src="../images/Accommodation/hotels/ryse-autograph-collection-seoul/ryse-autograph-collection-exterior.webp" alt="首爾 RYSE, Autograph Collection 外觀" width="2133" height="1145" loading="lazy" decoding="async">
@@ -434,6 +482,7 @@
               </div>
               <p>只有當飯店本身也是願意付費的體驗，RYSE 才更有優勢。位於弘大中心，餐廳、購物與深夜街道本來就在附近；額外住這裡的理由，是你也重視設計、客房與待在飯店裡的時間。</p>
               <p>如果大多數日子一早出門，只回來睡覺，較高房價就難以合理化。弘大入口站仍讓機場與 2 號線交通很簡單，但主要為地點選房的旅客，不住 RYSE 也能享有大部分便利。</p>
+              <p class="hongdae-map-link-wrap"><a class="hongdae-map-link" href="#hongdae-hotel-map" data-map-hotel="ryse-autograph-collection">📌 在地圖上查看</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">查看房價</p>
                 <p class="hm-booking-strip__title">在訂房網站比較這間飯店</p>
@@ -454,7 +503,7 @@
           </header>
 
           <div class="hm-hotel-region__list">
-            <article class="hm-hotel">
+            <article class="hm-hotel" data-hotel-id="holiday-inn-express-seoul-hongdae">
               <h3>Holiday Inn Express Seoul Hongdae</h3>
               <div class="hm-hotel-photo-row">
                 <img class="hm-hotel-photo" src="../images/Accommodation/hotels/holiday-inn-express-seoul-hongdae/holiday-inn-express-seoul-hongdae-exterior.jpg" alt="Holiday Inn Express Seoul Hongdae 外觀" width="2133" height="1145" loading="lazy" decoding="async">
@@ -462,6 +511,7 @@
               </div>
               <p>抵達當天，Holiday Inn Express Seoul Hongdae 的優勢最明顯。AREX 普通列車直達弘大入口站，帶行李的旅客因此能省掉首爾飯店交通裡較煩的一件事：還沒到街區就要換車。</p>
               <p>入住後，飯店較重效率而非氣氛。2 號線能處理不少往首爾各地的後續行程，同時仍容易前往弘大中心，不必把夜生活當成訂房理由。若希望飯店或周遭街道在旅程裡占更大分量，附近有更合適的選擇。</p>
+              <p class="hongdae-map-link-wrap"><a class="hongdae-map-link" href="#hongdae-hotel-map" data-map-hotel="holiday-inn-express-seoul-hongdae">📌 在地圖上查看</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">查看房價</p>
                 <p class="hm-booking-strip__title">在訂房網站比較這間飯店</p>
@@ -473,7 +523,7 @@
               </div>
             </article>
 
-            <article class="hm-hotel">
+            <article class="hm-hotel" data-hotel-id="mercure-ambassador-seoul-hongdae">
               <h3>Mercure Ambassador Seoul Hongdae</h3>
               <figure class="hm-hotel-photo-row">
                 <img class="hm-hotel-photo" src="../images/Accommodation/hotels/mercure-ambassador-seoul-hongdae/mercure-ambassador-seoul-hongdae-exterior.jpg" alt="Mercure Ambassador Seoul Hongdae 外觀" width="940" height="705" loading="lazy" decoding="async">
@@ -481,6 +531,7 @@
                 <figcaption class="hongdae-map-figure__note hm-hotel-photo-credit">照片：© Korea Tourism Organization</figcaption>
               </figure>
               <p>Mercure 兼顧弘大住宿裡常互相拉扯的兩種需求：從機場輕鬆抵達，以及放下行李後仍能融入主要街道。AREX 普通列車與 6002 機場巴士處理抵達交通，弘大中心則近到晚上可以步行活動。但同一位置也是淺眠者的缺點；選 Mercure，就代表接受比更安靜邊緣地區更多的深夜活動。</p>
+              <p class="hongdae-map-link-wrap"><a class="hongdae-map-link" href="#hongdae-hotel-map" data-map-hotel="mercure-ambassador-seoul-hongdae">📌 在地圖上查看</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">查看房價</p>
                 <p class="hm-booking-strip__title">在訂房網站比較這間飯店</p>
@@ -501,13 +552,14 @@
           </header>
 
           <div class="hm-hotel-region__list">
-            <article class="hm-hotel">
+            <article class="hm-hotel" data-hotel-id="9-brick-hotel">
               <h3>9 Brick Hotel</h3>
               <div class="hm-hotel-photo-row">
                 <img class="hm-hotel-photo" src="../images/Accommodation/hotels/9-brick-hotel/9-brick-hotel-exterior.png" alt="弘大 9 Brick Hotel 外觀" width="2133" height="1145" loading="lazy" decoding="async">
                 <img class="hm-hotel-photo" src="../images/Accommodation/hotels/9-brick-hotel/9-brick-hotel-room.jpg" alt="9 Brick Hotel 客房" width="1082" height="587" loading="lazy" decoding="async">
               </div>
               <p>9 Brick 主要是讓弘大中心保持在附近，又不必選上面服務較完整的飯店。餐廳、購物與深夜街道仍能步行前往，原本好幾個晚上就在這裡結束時很實用。缺點也正是同一位置：想早睡或對街上活動敏感的人，即使地圖看起來稍微不方便，選比較不居中的飯店可能更值得。</p>
+              <p class="hongdae-map-link-wrap"><a class="hongdae-map-link" href="#hongdae-hotel-map" data-map-hotel="9-brick-hotel">📌 在地圖上查看</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">查看房價</p>
                 <p class="hm-booking-strip__title">在訂房網站比較這間飯店</p>
@@ -519,7 +571,7 @@
               </div>
             </article>
 
-            <article class="hm-hotel">
+            <article class="hm-hotel" data-hotel-id="junibino-hotel-hongdae">
               <h3>Junibino Hotel Hongdae</h3>
               <figure class="hm-hotel-photo-row">
                 <img class="hm-hotel-photo" src="../images/Accommodation/hotels/junibino-hotel-hongdae/junibino-hotel-hongdae-exterior.jpg" alt="Junibino Hotel Hongdae 外觀" width="2133" height="1145" loading="lazy" decoding="async">
@@ -527,6 +579,7 @@
               </figure>
               <p>Junibino 改變的是住宿位置，而不只是提供較便宜的弘大中心版本。它位於合井方向，2 號線與 6 號線會成為日常動線，飯店外也不再直接是弘大最繁忙的街道。</p>
               <p>晚上，這段額外距離可能正合心意；但也意味著放棄最短的弘大入口站與 AREX 動線。6002 機場巴士仍停靠合井一帶。應該因為轉向合井符合旅程而選 Junibino，而不是只因飯店名字有弘大。</p>
+              <p class="hongdae-map-link-wrap"><a class="hongdae-map-link" href="#hongdae-hotel-map" data-map-hotel="junibino-hotel-hongdae">📌 在地圖上查看</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">查看房價</p>
                 <p class="hm-booking-strip__title">在訂房網站比較這間飯店</p>
@@ -547,7 +600,7 @@
           </header>
 
           <div class="hm-hotel-region__list">
-            <article class="hm-hotel">
+            <article class="hm-hotel" data-hotel-id="amanti-hotel-seoul">
               <h3>Amanti Hotel Seoul</h3>
               <div class="hm-hotel-photo-row">
                 <figure>
@@ -559,6 +612,7 @@
                 </figure>
               </div>
               <p>住 Amanti，要接受多走一點路，換取不睡在弘大最忙碌的街道中央。弘大中心仍可步行抵達，但這段距離不代表保證安靜；臨路情況與房間朝向仍會影響夜晚。這是一間常規飯店，適合願意多走一些、與深夜夜生活核心拉開一點距離的旅客。</p>
+              <p class="hongdae-map-link-wrap"><a class="hongdae-map-link" href="#hongdae-hotel-map" data-map-hotel="amanti-hotel-seoul">📌 在地圖上查看</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">查看房價</p>
                 <p class="hm-booking-strip__title">在訂房網站比較這間飯店</p>
@@ -570,10 +624,11 @@
               </div>
             </article>
 
-            <article class="hm-hotel">
+            <article class="hm-hotel" data-hotel-id="localstitch-creator-town-seogyo">
               <h3>Localstitch Creator Town Seogyo</h3>
               <p>比較重點不再只放在私人客房時，就更容易理解 Localstitch。共享工作區、交誼空間、共用廚房與洗衣設施，才是改變這裡住宿方式的設施，部分私人房間仍然較小。</p>
               <p>較長的旅程，或每天有一部分時間要工作，這種安排確實有價值。主要想要寬敞常規飯店客房的人，就比較不適合。西橋的位置也離開弘大中心最繁忙的地方，但不保證夜晚安靜。</p>
+              <p class="hongdae-map-link-wrap"><a class="hongdae-map-link" href="#hongdae-hotel-map" data-map-hotel="localstitch-creator-town-seogyo">📌 在地圖上查看</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">查看房價</p>
                 <p class="hm-booking-strip__title">在訂房網站比較這間飯店</p>
@@ -593,10 +648,11 @@
           </header>
 
           <div class="hm-hotel-region__list">
-            <article class="hm-hotel">
+            <article class="hm-hotel" data-hotel-id="batwo-stay">
               <h3>Batwo Stay - For foreigners only</h3>
               <p>Batwo 很容易判斷是否合適。住客必須為 18–35 歲，不接待兒童。符合這些條件，就能在弘大入口站附近，以民宿形式入住，選擇私人房或宿舍床位，並使用共用廚房、交誼空間與洗衣設施。</p>
               <p>比起飯店服務，更在意實用落腳處與共用設施的人，會更合適。如果重視隱私，付款前看清楚確切房型。帶孩子同行，或有人不在允許年齡範圍內，就略過這間。</p>
+              <p class="hongdae-map-link-wrap"><a class="hongdae-map-link" href="#hongdae-hotel-map" data-map-hotel="batwo-stay">📌 在地圖上查看</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">查看房價</p>
                 <p class="hm-booking-strip__title">在訂房網站比較這間飯店</p>
@@ -607,10 +663,11 @@
               </div>
             </article>
 
-            <article class="hm-hotel">
+            <article class="hm-hotel" data-hotel-id="baroato-2nd">
               <h3>Hotel Baroato 2nd</h3>
               <p>想在弘大入口站附近住私人房，又不想為用不到的設施付錢，Baroato 2nd 是較直接的選擇。有單人、雙人與較大房型，但不接待兒童，因此是成人住宿選擇，而非家庭住宿。</p>
               <p>訂房前要留意建築本身：沒有電梯。拖重行李箱抵達時，這點很重要。晚到也得先確認；目前訂房資訊對晚上 10 點後的處理方式不完全一致，如果航班或機場交通可能讓你晚到，請先聯絡住宿。</p>
+              <p class="hongdae-map-link-wrap"><a class="hongdae-map-link" href="#hongdae-hotel-map" data-map-hotel="baroato-2nd">📌 在地圖上查看</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">查看房價</p>
                 <p class="hm-booking-strip__title">在訂房網站比較這間飯店</p>
@@ -631,9 +688,10 @@
           </header>
 
           <div class="hm-hotel-region__list">
-            <article class="hm-hotel" id="hongdae-style-details">
+            <article class="hm-hotel" id="hongdae-style-details" data-hotel-id="hongdae-style-guesthouse">
               <h3>Hongdae Style Guesthouse</h3>
               <p>Hongdae Style Guesthouse 靠近弘大入口站，提供不同大小的私人房，也有共用廚房與行李寄放。獨自旅行、情侶或小團體，都能在同一住宿找到不同配置，不必每筆訂房都套用同一種房間。它不提供完整飯店服務；需要常規飯店體驗的人，應在比價前先排除。</p>
+              <p class="hongdae-map-link-wrap"><a class="hongdae-map-link" href="#hongdae-hotel-map" data-map-hotel="hongdae-style-guesthouse">📌 在地圖上查看</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">查看房價</p>
                 <p class="hm-booking-strip__title">在訂房網站比較這間飯店</p>
@@ -645,10 +703,11 @@
               </div>
             </article>
 
-            <article class="hm-hotel">
+            <article class="hm-hotel" data-hotel-id="twotwo-house">
               <h3>TwoTwo House</h3>
               <p>TwoTwo House 讓你體驗弘大的另一側。位置朝延南與京義線林蔭公園，同時仍可步行到弘大入口站。共用廚房、洗衣設施與私人房選擇，對不只住一兩晚的旅客很實用。</p>
               <p>訂房前有一項實際缺點要留意：住宿沒有電梯。目前訂房網站對兒童政策與確切晚到規則的說法也不一致；若任一項會影響旅程，請直接向住宿確認。</p>
+              <p class="hongdae-map-link-wrap"><a class="hongdae-map-link" href="#hongdae-hotel-map" data-map-hotel="twotwo-house">📌 在地圖上查看</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">查看房價</p>
                 <p class="hm-booking-strip__title">在訂房網站比較這間飯店</p>
@@ -750,6 +809,7 @@
     </div>
   </footer>
 
+  <script src="../hongdae-hotel-map.js" defer></script>
   <script src="../guide-year.js" defer></script>
   <script src="../common.js"></script>
 <script>

@@ -33,14 +33,38 @@
   var selectedId = null;
   var sdkPromise = null;
   var authFailed = false;
+  var assetPrefix = section.getAttribute("data-map-asset-prefix") || "";
   var pinPaths = {
-    red: "images/Accommodation/hongdae-hotel-pin-red.svg",
-    blue: "images/Accommodation/hongdae-hotel-pin-blue.svg"
+    red: assetPrefix + "images/Accommodation/hongdae-hotel-pin-red.svg",
+    blue: assetPrefix + "images/Accommodation/hongdae-hotel-pin-blue.svg"
+  };
+  var defaultCopy = {
+    default: "All 14 hotel locations are shown. Select a pin or hotel name.",
+    selected: "Selected: {name}. Pin {number} remains red; the other hotel pins are blue.",
+    unavailable_selected: "Selected: {name}. NAVER map is unavailable, but the in-page hotel link remains active.",
+    pending_selected: "Selected: {name}. The map will apply this selection when it is ready.",
+    fallback: "The interactive NAVER map could not load. Use the hotel list to review all 14 stays, then try again later.",
+    fallback_status: "NAVER map unavailable. Hotel names and in-page links remain available.",
+    marker_aria: "Select {number}. {name}"
   };
 
   hotels.forEach(function (hotel) {
+    var heading = document.querySelector('[data-hotel-id="' + hotel.id + '"] h3');
+    if (heading) {
+      hotel.name = heading.textContent.trim();
+    }
     hotelById[hotel.id] = hotel;
   });
+
+  function mapText(key, hotel) {
+    var template = section.getAttribute("data-map-copy-" + key.replace(/_/g, "-")) || defaultCopy[key];
+    if (!hotel) {
+      return template;
+    }
+    return template.replace(/\{(name|number)\}/g, function (match, field) {
+      return hotel[field];
+    });
+  }
 
   function escapeHtml(value) {
     return String(value)
@@ -59,7 +83,7 @@
 
     content += '<button type="button" class="hongdae-map-marker' + sideClass + '"';
     content += ' data-map-marker="' + escapeHtml(hotel.id) + '"';
-    content += ' aria-label="Select ' + hotel.number + '. ' + escapeHtml(hotel.name) + '"';
+    content += ' aria-label="' + escapeHtml(mapText("marker_aria", hotel)) + '"';
     content += ' aria-pressed="' + (isSelected ? "true" : "false") + '"';
     content += ' style="--label-y:' + hotel.labelY + 'px">';
     content += '<img class="hongdae-map-marker__pin" src="' + pinPaths[color] + '" alt="">';
@@ -128,11 +152,11 @@
     }
 
     if (map) {
-      status.textContent = "Selected: " + hotel.name + ". Pin " + hotel.number + " remains red; the other hotel pins are blue.";
+      status.textContent = mapText("selected", hotel);
     } else if (authFailed) {
-      status.textContent = "Selected: " + hotel.name + ". NAVER map is unavailable, but the in-page hotel link remains active.";
+      status.textContent = mapText("unavailable_selected", hotel);
     } else {
-      status.textContent = "Selected: " + hotel.name + ". The map will apply this selection when it is ready.";
+      status.textContent = mapText("pending_selected", hotel);
     }
 
     if (settings.focusList) {
@@ -173,8 +197,8 @@
   function showMapFailure() {
     map = null;
     markers = {};
-    canvas.innerHTML = '<p class="hongdae-hotel-map-fallback">The interactive NAVER map could not load. Use the hotel list to review all 14 stays, then try again later.</p>';
-    status.textContent = "NAVER map unavailable. Hotel names and in-page links remain available.";
+    canvas.innerHTML = '<p class="hongdae-hotel-map-fallback">' + escapeHtml(mapText("fallback")) + "</p>";
+    status.textContent = mapText("fallback_status");
   }
 
   function loadSdk() {
@@ -255,7 +279,7 @@
     if (selectedId) {
       selectHotel(selectedId);
     } else {
-      status.textContent = "All 14 hotel locations are shown. Select a pin or hotel name.";
+      status.textContent = mapText("default");
     }
 
     window.addEventListener("resize", function () {

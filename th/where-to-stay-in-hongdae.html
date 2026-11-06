@@ -20,6 +20,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400..600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../hongdae-hotel-map.css">
   <style>
     .hongdae-detail-page main .hm-booking-strip {
       margin-top: 24px;
@@ -340,6 +341,50 @@
       </div>
     </section>
 
+    <section class="hm-section hongdae-hotel-map-section" id="hongdae-hotel-map" aria-labelledby="hongdae-hotel-map-title"
+      data-map-asset-prefix="../"
+      data-map-copy-default="แสดงตำแหน่งที่พักครบทั้ง 14 แห่งแล้ว เลือกหมุดหรือชื่อที่พักได้เลย"
+      data-map-copy-selected="เลือก {name} แล้ว หมุดหมายเลข {number} ยังคงเป็นสีแดง ส่วนหมุดอื่นเป็นสีน้ำเงิน"
+      data-map-copy-unavailable-selected="เลือก {name} แล้ว ขณะนี้แผนที่ NAVER ใช้งานไม่ได้ แต่ลิงก์ภายในหน้ายังใช้งานได้"
+      data-map-copy-pending-selected="เลือก {name} แล้ว ระบบจะแสดงการเลือกบนแผนที่เมื่อโหลดเสร็จ"
+      data-map-copy-fallback="ไม่สามารถโหลดแผนที่ NAVER แบบโต้ตอบได้ คุณยังดูที่พักทั้ง 14 แห่งจากรายชื่อได้ แล้วลองใหม่ภายหลัง"
+      data-map-copy-fallback-status="ขณะนี้แผนที่ NAVER ใช้งานไม่ได้ แต่ยังดูรายชื่อที่พักและใช้ลิงก์ภายในหน้าได้"
+      data-map-copy-marker-aria="เลือกหมายเลข {number}: {name}">
+      <div class="container">
+        <header class="hm-section__header">
+          <h2 id="hongdae-hotel-map-title">ที่พักในฮงแดอยู่ตรงไหนบ้าง?</h2>
+          <p class="hm-section__intro">เลือกหมุดหรือชื่อที่พักเพื่อดูตำแหน่งบนแผนที่</p>
+        </header>
+        <div class="hongdae-hotel-map-layout">
+          <div>
+            <div class="hongdae-hotel-map-shell">
+              <div class="hongdae-hotel-map-canvas" id="hongdae-hotel-map-canvas" role="region" aria-label="แผนที่แบบโต้ตอบแสดงตำแหน่งที่พัก 14 แห่งในฮงแด" tabindex="0"></div>
+            </div>
+            <p class="hongdae-hotel-map-status" id="hongdae-hotel-map-status" role="status" aria-live="polite">กำลังโหลดแผนที่ที่พัก…</p>
+          </div>
+          <aside class="hongdae-hotel-map-directory" aria-labelledby="hongdae-hotel-map-directory-title">
+            <h3 id="hongdae-hotel-map-directory-title">รายชื่อที่พักบนแผนที่</h3>
+            <ol class="hongdae-hotel-map-list">
+              <li><button type="button" data-map-hotel="jsm-studio-hongdae" aria-controls="hongdae-hotel-map-canvas" aria-pressed="false"><span class="hongdae-hotel-map-number">1</span><span>JSM Studio Hongdae</span></button></li>
+              <li><button type="button" data-map-hotel="stay-here-again" aria-controls="hongdae-hotel-map-canvas" aria-pressed="false"><span class="hongdae-hotel-map-number">2</span><span>Stay Here, Again</span></button></li>
+              <li><button type="button" data-map-hotel="l7-hongdae" aria-controls="hongdae-hotel-map-canvas" aria-pressed="false"><span class="hongdae-hotel-map-number">3</span><span>L7 HONGDAE by LOTTE HOTELS</span></button></li>
+              <li><button type="button" data-map-hotel="ryse-autograph-collection" aria-controls="hongdae-hotel-map-canvas" aria-pressed="false"><span class="hongdae-hotel-map-number">4</span><span>RYSE, Autograph Collection</span></button></li>
+              <li><button type="button" data-map-hotel="holiday-inn-express-seoul-hongdae" aria-controls="hongdae-hotel-map-canvas" aria-pressed="false"><span class="hongdae-hotel-map-number">5</span><span>Holiday Inn Express Seoul Hongdae</span></button></li>
+              <li><button type="button" data-map-hotel="mercure-ambassador-seoul-hongdae" aria-controls="hongdae-hotel-map-canvas" aria-pressed="false"><span class="hongdae-hotel-map-number">6</span><span>Mercure Ambassador Seoul Hongdae</span></button></li>
+              <li><button type="button" data-map-hotel="9-brick-hotel" aria-controls="hongdae-hotel-map-canvas" aria-pressed="false"><span class="hongdae-hotel-map-number">7</span><span>9 Brick Hotel</span></button></li>
+              <li><button type="button" data-map-hotel="junibino-hotel-hongdae" aria-controls="hongdae-hotel-map-canvas" aria-pressed="false"><span class="hongdae-hotel-map-number">8</span><span>Junibino Hotel Hongdae</span></button></li>
+              <li><button type="button" data-map-hotel="amanti-hotel-seoul" aria-controls="hongdae-hotel-map-canvas" aria-pressed="false"><span class="hongdae-hotel-map-number">9</span><span>Amanti Hotel Seoul</span></button></li>
+              <li><button type="button" data-map-hotel="localstitch-creator-town-seogyo" aria-controls="hongdae-hotel-map-canvas" aria-pressed="false"><span class="hongdae-hotel-map-number">10</span><span>Localstitch Creator Town Seogyo</span></button></li>
+              <li><button type="button" data-map-hotel="batwo-stay" aria-controls="hongdae-hotel-map-canvas" aria-pressed="false"><span class="hongdae-hotel-map-number">11</span><span>Batwo Stay - For foreigners only</span></button></li>
+              <li><button type="button" data-map-hotel="baroato-2nd" aria-controls="hongdae-hotel-map-canvas" aria-pressed="false"><span class="hongdae-hotel-map-number">12</span><span>Hotel Baroato 2nd</span></button></li>
+              <li><button type="button" data-map-hotel="hongdae-style-guesthouse" aria-controls="hongdae-hotel-map-canvas" aria-pressed="false"><span class="hongdae-hotel-map-number">13</span><span>Hongdae Style Guesthouse</span></button></li>
+              <li><button type="button" data-map-hotel="twotwo-house" aria-controls="hongdae-hotel-map-canvas" aria-pressed="false"><span class="hongdae-hotel-map-number">14</span><span>TwoTwo House</span></button></li>
+            </ol>
+          </aside>
+        </div>
+      </div>
+    </section>
+
     <div class="hm-section hm-section--cream" id="hongdae-stays">
       <div class="container">
         <section class="hm-hotel-region" aria-labelledby="hongdae-family-stays">
@@ -349,7 +394,7 @@
           </header>
 
           <div class="hm-choice-list">
-            <article class="hm-choice-row hm-editorial-row">
+            <article class="hm-choice-row hm-editorial-row" data-hotel-id="jsm-studio-hongdae">
               <div class="hm-editorial-row__label">
                 <p class="hm-row-kicker">สำหรับ 6 คน — ใกล้สถานี Hongik University</p>
                 <h3>JSM Studio Hongdae</h3>
@@ -361,6 +406,7 @@
                   <img src="../images/Accommodation/hotels/jsm-studio-hongdae/jsm-studio-hongdae-exterior.webp" alt="ภายนอกอาคาร Paradisetel ซึ่งเป็นที่ตั้งของ JSM Studio Hongdae" width="2133" height="1145" loading="lazy" decoding="async">
                   <figcaption class="hongdae-map-figure__note">ภาพ: Kakao Map road view</figcaption>
                 </figure>
+                <p class="hongdae-map-link-wrap"><a class="hongdae-map-link" href="#hongdae-hotel-map" data-map-hotel="jsm-studio-hongdae">📌 ดูบนแผนที่</a></p>
                 <div class="hm-booking-strip">
                   <p class="hm-booking-strip__eyebrow">เช็กราคา</p>
                   <p class="hm-booking-strip__title">เปรียบเทียบที่พักนี้บนเว็บไซต์จอง</p>
@@ -372,7 +418,7 @@
               </div>
             </article>
 
-            <article class="hm-choice-row hm-editorial-row">
+            <article class="hm-choice-row hm-editorial-row" data-hotel-id="stay-here-again">
               <div class="hm-editorial-row__label">
                 <p class="hm-row-kicker">สำหรับ 5–6 คน — ใกล้สถานี Hongik University</p>
                 <h3>Stay Here, Again</h3>
@@ -384,6 +430,7 @@
                   <img src="../images/Accommodation/hotels/stay-here-again/stay-here-again-exterior.webp" alt="ภายนอกอาคาร Withus ซึ่งเป็นที่ตั้งของ Stay Here, Again" width="2133" height="1145" loading="lazy" decoding="async">
                   <figcaption class="hongdae-map-figure__note">ภาพ: Kakao Map road view</figcaption>
                 </figure>
+                <p class="hongdae-map-link-wrap"><a class="hongdae-map-link" href="#hongdae-hotel-map" data-map-hotel="stay-here-again">📌 ดูบนแผนที่</a></p>
                 <div class="hm-booking-strip">
                   <p class="hm-booking-strip__eyebrow">เช็กราคา</p>
                   <p class="hm-booking-strip__title">เปรียบเทียบที่พักนี้บนเว็บไซต์จอง</p>
@@ -407,7 +454,7 @@
           </header>
 
           <div class="hm-hotel-region__list">
-            <article class="hm-hotel" id="l7-hongdae-details">
+            <article class="hm-hotel" id="l7-hongdae-details" data-hotel-id="l7-hongdae">
               <h3>L7 HONGDAE by LOTTE HOTELS</h3>
               <div class="hm-hotel-photo-row">
                 <img class="hm-hotel-photo" src="../images/Accommodation/hotels/l7-hongdae/l7-hongdae-by-lotte-hotels-exterior.webp" alt="ภายนอก L7 HONGDAE by LOTTE HOTELS ในกรุงโซล" width="2133" height="1145" loading="lazy" decoding="async">
@@ -415,6 +462,7 @@
               </div>
               <p>L7 HONGDAE เหมาะอยู่ในรายการนี้เพราะทำให้พื้นที่ส่วนใหญ่ของใจกลางฮงแดอยู่ในกิจวัตรเดินเดียวกับโรงแรม เรื่องนี้มีผลกับทริปที่ใช้เวลาหลายเย็นในย่าน: มื้อเย็น ช้อป หรือกลับดึกไม่จำเป็นต้องจบด้วยรถไฟใต้ดินอีกเที่ยว</p>
               <p>สนามบินยังเดินทางง่ายผ่านสถานี Hongik University แต่นั่นไม่ใช่เหตุผลหลักที่ควรจ่ายให้ L7 เหตุผลที่แข็งแรงกว่าคือได้โรงแรมบริการเต็มรูปแบบตรงกลางย่านที่คุณคาดว่าจะใช้งานซ้ำ คนที่ไวต่อเสียงและยอมแลกความสะดวกกับถนนที่สงบกว่าควรมองออกไปจากใจกลางมากขึ้น</p>
+              <p class="hongdae-map-link-wrap"><a class="hongdae-map-link" href="#hongdae-hotel-map" data-map-hotel="l7-hongdae">📌 ดูบนแผนที่</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">เช็กราคา</p>
                 <p class="hm-booking-strip__title">เปรียบเทียบโรงแรมนี้บนเว็บไซต์จอง</p>
@@ -426,7 +474,7 @@
               </div>
             </article>
 
-            <article class="hm-hotel">
+            <article class="hm-hotel" data-hotel-id="ryse-autograph-collection">
               <h3>RYSE, Autograph Collection</h3>
               <div class="hm-hotel-photo-row">
                 <img class="hm-hotel-photo" src="../images/Accommodation/hotels/ryse-autograph-collection-seoul/ryse-autograph-collection-exterior.webp" alt="ภายนอก RYSE, Autograph Collection ในกรุงโซล" width="2133" height="1145" loading="lazy" decoding="async">
@@ -434,6 +482,7 @@
               </div>
               <p>RYSE จะเป็นตัวเลือกที่แข็งแรงกว่าก็ต่อเมื่อ “ตัวโรงแรม” เป็นส่วนหนึ่งของสิ่งที่คุณยอมจ่าย ทำเลใจกลางฮงแดทำให้ร้านอาหาร ช้อป และถนนดึกอยู่ใกล้อยู่แล้ว เหตุผลเพิ่มในการพักที่นี่คือคุณคาดว่าดีไซน์ ห้อง และเวลาที่ใช้ในโรงแรมจะมีความหมายกับทริปด้วย</p>
               <p>ถ้าแต่ละวันเริ่มนอกโรงแรมและจบด้วยการกลับมาเพียงนอน ราคาพรีเมียมนี้จะอธิบายยากขึ้น สถานี Hongik University ยังทำให้สนามบินและสาย 2 ง่าย แต่คนที่เลือกจากทำเลเป็นหลักสามารถได้ความสะดวกส่วนใหญ่โดยไม่จำเป็นต้องเลือก RYSE</p>
+              <p class="hongdae-map-link-wrap"><a class="hongdae-map-link" href="#hongdae-hotel-map" data-map-hotel="ryse-autograph-collection">📌 ดูบนแผนที่</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">เช็กราคา</p>
                 <p class="hm-booking-strip__title">เปรียบเทียบโรงแรมนี้บนเว็บไซต์จอง</p>
@@ -454,7 +503,7 @@
           </header>
 
           <div class="hm-hotel-region__list">
-            <article class="hm-hotel">
+            <article class="hm-hotel" data-hotel-id="holiday-inn-express-seoul-hongdae">
               <h3>Holiday Inn Express Seoul Hongdae</h3>
               <div class="hm-hotel-photo-row">
                 <img class="hm-hotel-photo" src="../images/Accommodation/hotels/holiday-inn-express-seoul-hongdae/holiday-inn-express-seoul-hongdae-exterior.jpg" alt="ภายนอก Holiday Inn Express Seoul Hongdae" width="2133" height="1145" loading="lazy" decoding="async">
@@ -462,6 +511,7 @@
               </div>
               <p>วันมาถึงคือจุดที่ Holiday Inn Express Seoul Hongdae ได้เปรียบชัดที่สุด AREX แบบจอดทุกสถานีถึงสถานี Hongik University โดยตรง นักเดินทางที่มีกระเป๋าจึงตัดหนึ่งในส่วนที่น่ารำคาญของการย้ายโรงแรมในโซลออกได้: ไม่ต้องเปลี่ยนรถไฟก่อนถึงย่านด้วยซ้ำ</p>
               <p>หลังเช็กอิน โรงแรมนี้เน้นประสิทธิภาพมากกว่าบรรยากาศ สาย 2 รองรับการเดินทางต่อทั่วโซลได้มาก ขณะที่ใจกลางฮงแดยังเข้าถึงได้โดยไม่จำเป็นต้องให้ชีวิตกลางคืนเป็นเหตุผลในการจอง คนที่อยากให้โรงแรมหรือถนนรอบๆ เป็นส่วนใหญ่ของทริปมีทางเลือกอื่นใกล้ๆ ที่แข็งแรงกว่า</p>
+              <p class="hongdae-map-link-wrap"><a class="hongdae-map-link" href="#hongdae-hotel-map" data-map-hotel="holiday-inn-express-seoul-hongdae">📌 ดูบนแผนที่</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">เช็กราคา</p>
                 <p class="hm-booking-strip__title">เปรียบเทียบโรงแรมนี้บนเว็บไซต์จอง</p>
@@ -473,7 +523,7 @@
               </div>
             </article>
 
-            <article class="hm-hotel">
+            <article class="hm-hotel" data-hotel-id="mercure-ambassador-seoul-hongdae">
               <h3>Mercure Ambassador Seoul Hongdae</h3>
               <figure class="hm-hotel-photo-row">
                 <img class="hm-hotel-photo" src="../images/Accommodation/hotels/mercure-ambassador-seoul-hongdae/mercure-ambassador-seoul-hongdae-exterior.jpg" alt="ภายนอก Mercure Ambassador Seoul Hongdae" width="940" height="705" loading="lazy" decoding="async">
@@ -481,6 +531,7 @@
                 <figcaption class="hongdae-map-figure__note hm-hotel-photo-credit">ภาพ: © Korea Tourism Organization</figcaption>
               </figure>
               <p>Mercure อยู่กึ่งกลางระหว่างสองความต้องการที่มักแข่งกันในฮงแด: มาถึงจากสนามบินง่าย และยังรู้สึกเชื่อมกับถนนหลักหลังวางกระเป๋า AREX แบบจอดทุกสถานีและ Airport Limousine 6002 ดูแลฝั่งวันมาถึง ขณะที่ใจกลางฮงแดอยู่ใกล้พอให้เดินใช้ช่วงค่ำได้ ตำแหน่งเดียวกันนี้เป็นข้อเสียสำหรับคนนอนหลับไวต่อเสียง; เลือก Mercure หมายถึงยอมรับกิจกรรมช่วงดึกมากกว่าการพักไปทางขอบย่านที่สงบกว่า</p>
+              <p class="hongdae-map-link-wrap"><a class="hongdae-map-link" href="#hongdae-hotel-map" data-map-hotel="mercure-ambassador-seoul-hongdae">📌 ดูบนแผนที่</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">เช็กราคา</p>
                 <p class="hm-booking-strip__title">เปรียบเทียบโรงแรมนี้บนเว็บไซต์จอง</p>
@@ -501,13 +552,14 @@
           </header>
 
           <div class="hm-hotel-region__list">
-            <article class="hm-hotel">
+            <article class="hm-hotel" data-hotel-id="9-brick-hotel">
               <h3>9 Brick Hotel</h3>
               <div class="hm-hotel-photo-row">
                 <img class="hm-hotel-photo" src="../images/Accommodation/hotels/9-brick-hotel/9-brick-hotel-exterior.png" alt="ภายนอก 9 Brick Hotel ในฮงแด" width="2133" height="1145" loading="lazy" decoding="async">
                 <img class="hm-hotel-photo" src="../images/Accommodation/hotels/9-brick-hotel/9-brick-hotel-room.jpg" alt="ห้องพักของ 9 Brick Hotel" width="1082" height="587" loading="lazy" decoding="async">
               </div>
               <p>9 Brick เน้นการทำให้ใจกลางฮงแดอยู่ใกล้โดยไม่ต้องขยับขึ้นไปโรงแรมบริการเต็มรูปแบบด้านบน ร้านอาหาร ช้อป และถนนดึกยังเดินถึงได้ ซึ่งมีผลเมื่อหลายเย็นของทริปจบที่นี่อยู่แล้ว ข้อเสียมาจากทำเลเดียวกัน: คนที่นอนเร็วหรือไวต่อกิจกรรมบนถนนอาจได้ความคุ้มมากกว่าจากโรงแรมที่ไม่กลางเท่า แม้บนแผนที่จะดูสะดวกน้อยลงเล็กน้อย</p>
+              <p class="hongdae-map-link-wrap"><a class="hongdae-map-link" href="#hongdae-hotel-map" data-map-hotel="9-brick-hotel">📌 ดูบนแผนที่</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">เช็กราคา</p>
                 <p class="hm-booking-strip__title">เปรียบเทียบโรงแรมนี้บนเว็บไซต์จอง</p>
@@ -519,7 +571,7 @@
               </div>
             </article>
 
-            <article class="hm-hotel">
+            <article class="hm-hotel" data-hotel-id="junibino-hotel-hongdae">
               <h3>Junibino Hotel Hongdae</h3>
               <figure class="hm-hotel-photo-row">
                 <img class="hm-hotel-photo" src="../images/Accommodation/hotels/junibino-hotel-hongdae/junibino-hotel-hongdae-exterior.jpg" alt="ภายนอก Junibino Hotel Hongdae" width="2133" height="1145" loading="lazy" decoding="async">
@@ -527,6 +579,7 @@
               </figure>
               <p>Junibino เปลี่ยนภูมิศาสตร์ของการพัก ไม่ใช่แค่เป็นเวอร์ชันถูกกว่าของใจกลางฮงแด ที่พักอยู่ไปทางฮับจอง ซึ่งสาย 2 และสาย 6 กลายเป็นส่วนของเส้นทางประจำวัน และถนนฮงแดที่คึกคักที่สุดไม่ได้อยู่หน้าที่พักทันที</p>
               <p>ระยะที่เพิ่มขึ้นนี้อาจเป็นข้อดีตอนกลางคืน แต่ก็หมายถึงยอมเสียเส้นทางสั้นที่สุดไปสถานี Hongik University และ AREX Airport Limousine 6002 ยังให้บริการย่านฮับจอง เลือก Junibino เพราะการขยับไปฮับจองเหมาะกับทริป ไม่ใช่เพราะชื่อโรงแรมมีคำว่า Hongdae</p>
+              <p class="hongdae-map-link-wrap"><a class="hongdae-map-link" href="#hongdae-hotel-map" data-map-hotel="junibino-hotel-hongdae">📌 ดูบนแผนที่</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">เช็กราคา</p>
                 <p class="hm-booking-strip__title">เปรียบเทียบโรงแรมนี้บนเว็บไซต์จอง</p>
@@ -547,7 +600,7 @@
           </header>
 
           <div class="hm-hotel-region__list">
-            <article class="hm-hotel">
+            <article class="hm-hotel" data-hotel-id="amanti-hotel-seoul">
               <h3>Amanti Hotel Seoul</h3>
               <div class="hm-hotel-photo-row">
                 <figure>
@@ -559,6 +612,7 @@
                 </figure>
               </div>
               <p>Amanti ขอให้คุณยอมเดินเพิ่มเล็กน้อยแลกกับการไม่ได้นอนกลางถนนที่คึกคักที่สุดของฮงแด ใจกลางฮงแดยังใกล้พอเดินถึง แต่ระยะเพิ่มนี้ไม่ควรอ่านว่าเป็นการการันตีความเงียบ; การติดถนนและทิศห้องยังเปลี่ยนกลางคืนได้ เป็นโรงแรมทั่วไปสำหรับคนที่ยอมแลกระยะเดินสั้นกว่ากับการแยกตัวออกจากแกนดึกมากขึ้นเล็กน้อย</p>
+              <p class="hongdae-map-link-wrap"><a class="hongdae-map-link" href="#hongdae-hotel-map" data-map-hotel="amanti-hotel-seoul">📌 ดูบนแผนที่</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">เช็กราคา</p>
                 <p class="hm-booking-strip__title">เปรียบเทียบโรงแรมนี้บนเว็บไซต์จอง</p>
@@ -570,10 +624,11 @@
               </div>
             </article>
 
-            <article class="hm-hotel">
+            <article class="hm-hotel" data-hotel-id="localstitch-creator-town-seogyo">
               <h3>Localstitch Creator Town Seogyo</h3>
               <p>Localstitch เข้าใจง่ายขึ้นเมื่อเลิกวางห้องส่วนตัวเป็นศูนย์กลางการเปรียบเทียบ พื้นที่ coworking, lounge, ครัวส่วนกลาง และซักผ้าคือสิ่งอำนวยความสะดวกที่เปลี่ยนการพักที่นี่ ขณะที่ห้องส่วนตัวบางแบบยังค่อนข้างกะทัดรัด</p>
               <p>รูปแบบนี้มีคุณค่าจริงกับทริปยาวหรือเมื่อการทำงานกินเวลาบางส่วนของวัน แต่มีเหตุผลน้อยลงมากสำหรับคนที่ต้องการห้องโรงแรมทั่วไปกว้างๆ เป็นหลัก ทำเลซอกโยยังขยับออกจากส่วนที่คึกคักที่สุดของใจกลางฮงแดโดยไม่ได้รับประกันคืนที่เงียบ</p>
+              <p class="hongdae-map-link-wrap"><a class="hongdae-map-link" href="#hongdae-hotel-map" data-map-hotel="localstitch-creator-town-seogyo">📌 ดูบนแผนที่</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">เช็กราคา</p>
                 <p class="hm-booking-strip__title">เปรียบเทียบโรงแรมนี้บนเว็บไซต์จอง</p>
@@ -593,10 +648,11 @@
           </header>
 
           <div class="hm-hotel-region__list">
-            <article class="hm-hotel">
+            <article class="hm-hotel" data-hotel-id="batwo-stay">
               <h3>Batwo Stay - For foreigners only</h3>
               <p>Batwo ตัดสินใจได้ง่ายว่าควรเลือกหรือข้าม ผู้เข้าพักต้องอายุ 18–35 ปี และไม่รับเด็ก ถ้าตรงกับทริป ที่นี่ให้ฐานแบบเกสต์เฮาส์ใกล้สถานี Hongik University มีทั้งห้องส่วนตัวและ Dormitory พร้อมครัวส่วนกลาง lounge และบริการซักผ้า</p>
               <p>ที่นี่เหมาะกว่าถ้าคุณให้ความสำคัญกับฐานใช้งานจริงและพื้นที่ส่วนกลางมากกว่าบริการโรงแรม หากความเป็นส่วนตัวสำคัญ ให้เช็กประเภทห้องจริงก่อนจ่าย ถ้าเดินทางกับเด็กหรือมีใครอายุนอกช่วงที่รับ ให้ข้ามตัวเลือกนี้</p>
+              <p class="hongdae-map-link-wrap"><a class="hongdae-map-link" href="#hongdae-hotel-map" data-map-hotel="batwo-stay">📌 ดูบนแผนที่</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">เช็กราคา</p>
                 <p class="hm-booking-strip__title">เปรียบเทียบโรงแรมนี้บนเว็บไซต์จอง</p>
@@ -607,10 +663,11 @@
               </div>
             </article>
 
-            <article class="hm-hotel">
+            <article class="hm-hotel" data-hotel-id="baroato-2nd">
               <h3>Hotel Baroato 2nd</h3>
               <p>Baroato 2nd เป็นตัวเลือกที่ตรงไปตรงมากว่าหากต้องการห้องส่วนตัวใกล้สถานี Hongik University โดยไม่จ่ายให้สิ่งอำนวยความสะดวกที่ไม่ได้วางแผนใช้ มีทั้งห้อง Single, Double และห้องใหญ่กว่า แต่ไม่รับเด็ก ดังนั้นนี่เป็นตัวเลือกผู้ใหญ่ ไม่ใช่ที่พักครอบครัว</p>
               <p>รายละเอียดที่ต้องสังเกตก่อนจองคือตัวอาคาร: ไม่มีลิฟต์ เรื่องนี้สำคัญถ้ามาถึงพร้อมกระเป๋าหนัก การมาถึงดึกก็ต้องตรวจสอบเช่นกัน — ข้อมูลจองปัจจุบันไม่สอดคล้องกันทั้งหมดว่าหลัง 22:00 น. ต้องทำอย่างไร ดังนั้นติดต่อที่พักล่วงหน้าหากเที่ยวบินหรือการเดินทางสนามบินอาจทำให้มาถึงดึก</p>
+              <p class="hongdae-map-link-wrap"><a class="hongdae-map-link" href="#hongdae-hotel-map" data-map-hotel="baroato-2nd">📌 ดูบนแผนที่</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">เช็กราคา</p>
                 <p class="hm-booking-strip__title">เปรียบเทียบโรงแรมนี้บนเว็บไซต์จอง</p>
@@ -631,9 +688,10 @@
           </header>
 
           <div class="hm-hotel-region__list">
-            <article class="hm-hotel" id="hongdae-style-details">
+            <article class="hm-hotel" id="hongdae-style-details" data-hotel-id="hongdae-style-guesthouse">
               <h3>Hongdae Style Guesthouse</h3>
               <p>Hongdae Style Guesthouse ทำให้สถานี Hongik University อยู่ใกล้ พร้อมห้องส่วนตัวหลายขนาด ครัวส่วนกลาง และฝากกระเป๋า ความหลากหลายนี้ทำให้คนเที่ยวคนเดียว คู่รัก หรือกลุ่มเล็กใช้ที่พักเดียวกันได้โดยไม่บังคับทุกการจองให้อยู่ในรูปแบบห้องเดียว สิ่งที่ไม่มีคือบริการโรงแรมเต็มรูปแบบ ดังนั้นคนที่ต้องการประสบการณ์โรงแรมทั่วไปควรตัดประเด็นนี้ให้ชัดก่อนเทียบราคา</p>
+              <p class="hongdae-map-link-wrap"><a class="hongdae-map-link" href="#hongdae-hotel-map" data-map-hotel="hongdae-style-guesthouse">📌 ดูบนแผนที่</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">เช็กราคา</p>
                 <p class="hm-booking-strip__title">เปรียบเทียบโรงแรมนี้บนเว็บไซต์จอง</p>
@@ -645,10 +703,11 @@
               </div>
             </article>
 
-            <article class="hm-hotel">
+            <article class="hm-hotel" data-hotel-id="twotwo-house">
               <h3>TwoTwo House</h3>
               <p>TwoTwo House ให้คุณเห็นฮงแดอีกด้าน ที่พักอยู่ไปทางยอนนัมและ Gyeongui Line Forest Park ขณะที่ยังเดินถึงสถานี Hongik University ได้ ครัวส่วนกลาง บริการซักผ้า และตัวเลือกห้องส่วนตัวมีประโยชน์เมื่อพักมากกว่าหนึ่งหรือสองคืน</p>
               <p>มีข้อเสียใช้งานจริงหนึ่งอย่างที่ต้องเห็นก่อนจอง: ที่พักไม่มีลิฟต์ เว็บไซต์จองปัจจุบันยังให้ข้อมูลนโยบายเด็กและกฎการมาถึงดึกไม่ตรงกัน ดังนั้นถ้าสองเรื่องนี้สำคัญกับทริป ให้ตรวจสอบโดยตรงกับที่พักทั้งคู่</p>
+              <p class="hongdae-map-link-wrap"><a class="hongdae-map-link" href="#hongdae-hotel-map" data-map-hotel="twotwo-house">📌 ดูบนแผนที่</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">เช็กราคา</p>
                 <p class="hm-booking-strip__title">เปรียบเทียบโรงแรมนี้บนเว็บไซต์จอง</p>
@@ -750,6 +809,7 @@
     </div>
   </footer>
 
+  <script src="../hongdae-hotel-map.js" defer></script>
   <script src="../guide-year.js" defer></script>
   <script src="../common.js"></script>
 <script>
