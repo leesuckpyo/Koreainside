@@ -20,6 +20,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400..600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="myeongdong-hotel-map.css">
   <style>
     .hongdae-myeongdong-page main .hm-hotel-region[aria-labelledby="myeongdong-station-stay-guide"] {
       padding-top: 36px;
@@ -563,6 +564,40 @@
       </div>
     </section>
 
+    <section class="hm-section myeongdong-hotel-map-section" id="myeongdong-hotel-map" aria-labelledby="myeongdong-hotel-map-title">
+      <div class="container">
+        <header class="hm-section__header">
+          <h2 id="myeongdong-hotel-map-title">Where Are the Hotels in Myeongdong?</h2>
+          <p class="hm-section__intro">Select a hotel pin or name to see its location.</p>
+        </header>
+        <div class="myeongdong-hotel-map-layout">
+          <div>
+            <div class="myeongdong-hotel-map-shell">
+              <div class="myeongdong-hotel-map-canvas" id="myeongdong-hotel-map-canvas" role="region" aria-label="Interactive map showing 11 Myeongdong hotels" tabindex="0"></div>
+            </div>
+            <p class="myeongdong-hotel-map-status" id="myeongdong-hotel-map-status" role="status" aria-live="polite">Loading the hotel map…</p>
+          </div>
+          <aside class="myeongdong-hotel-map-directory" aria-labelledby="myeongdong-hotel-map-directory-title">
+            <h3 id="myeongdong-hotel-map-directory-title">Hotels on this map</h3>
+            <ol class="myeongdong-hotel-map-list">
+              <li><button type="button" data-map-hotel="l7-myeongdong" aria-controls="myeongdong-hotel-map-canvas" aria-pressed="false"><span class="myeongdong-hotel-map-number">1</span><span>L7 MYEONGDONG by LOTTE HOTELS</span></button></li>
+              <li><button type="button" data-map-hotel="skypark-myeongdong-iii" aria-controls="myeongdong-hotel-map-canvas" aria-pressed="false"><span class="myeongdong-hotel-map-number">2</span><span>Hotel Skypark Myeongdong Ⅲ</span></button></li>
+              <li><button type="button" data-map-hotel="le-meridien-myeongdong" aria-controls="myeongdong-hotel-map-canvas" aria-pressed="false"><span class="myeongdong-hotel-map-number">3</span><span>Le Méridien Seoul, Myeongdong</span></button></li>
+              <li><button type="button" data-map-hotel="hotel28-myeongdong" aria-controls="myeongdong-hotel-map-canvas" aria-pressed="false"><span class="myeongdong-hotel-map-number">4</span><span>Hotel28 Myeongdong</span></button></li>
+              <li><button type="button" data-map-hotel="royal-hotel-seoul" aria-controls="myeongdong-hotel-map-canvas" aria-pressed="false"><span class="myeongdong-hotel-map-number">5</span><span>Royal Hotel Seoul</span></button></li>
+              <li><button type="button" data-map-hotel="grand-lotte-seoul" aria-controls="myeongdong-hotel-map-canvas" aria-pressed="false"><span class="myeongdong-hotel-map-number">6</span><span>THE GRAND LOTTE SEOUL</span></button></li>
+              <li><button type="button" data-map-hotel="nine-tree-myeongdong-ii" aria-controls="myeongdong-hotel-map-canvas" aria-pressed="false"><span class="myeongdong-hotel-map-number">7</span><span>NINE TREE BY PARNAS SEOUL MYEONGDONG II</span></button></li>
+              <li><button type="button" data-map-hotel="sotetsu-fresa-myeongdong" aria-controls="myeongdong-hotel-map-canvas" aria-pressed="false"><span class="myeongdong-hotel-map-number">8</span><span>Sotetsu Fresa Inn Seoul Myeong-dong</span></button></li>
+              <li><button type="button" data-map-hotel="ibis-ambassador-myeongdong" aria-controls="myeongdong-hotel-map-canvas" aria-pressed="false"><span class="myeongdong-hotel-map-number">9</span><span>ibis Ambassador Seoul Myeongdong</span></button></li>
+              <li><button type="button" data-map-hotel="moxy-myeongdong" aria-controls="myeongdong-hotel-map-canvas" aria-pressed="false"><span class="myeongdong-hotel-map-number">10</span><span>Moxy Seoul Myeongdong</span></button></li>
+              <li><button type="button" data-map-hotel="uh-suite-myeongdong" aria-controls="myeongdong-hotel-map-canvas" aria-describedby="myeongdong-hotel-map-uh-note" aria-pressed="false"><span class="myeongdong-hotel-map-number">11</span><span>UH Suite The Myeongdong</span></button></li>
+            </ol>
+            <p class="myeongdong-hotel-map-note" id="myeongdong-hotel-map-uh-note"><strong>UH Suite The Myeongdong</strong><br>The map pin shows the main building at 49 Myeongdong 8ga-gil. Depending on your booking, your room may be in the annex at No. 47 or the new building at No. 51. Check the exact building address on your booking confirmation before arrival.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
     <section class="hm-section hm-section--cream" id="compare-hotels" aria-label="Myeongdong hotel recommendations">
       <div class="container">
         <div class="hm-hotel-notices">
@@ -582,7 +617,7 @@
           </header>
 
           <div class="hm-hotel-region__list">
-            <article class="hm-hotel">
+            <article class="hm-hotel" id="hotel-l7-myeongdong" data-hotel-id="l7-myeongdong">
               <h3>L7 MYEONGDONG by LOTTE HOTELS</h3>
               <figure class="hotel-editorial-image">
                 <img
@@ -605,6 +640,7 @@
                   <li class="hotel-airport-route__stop"><span class="hotel-airport-route__label">Hotel</span><span class="hotel-airport-route__value hotel-airport-route__value--hotel">L7 MYEONGDONG by LOTTE HOTELS</span></li>
                 </ol>
               </div>
+              <p class="myeongdong-map-link-wrap"><a class="myeongdong-map-link" href="#myeongdong-hotel-map" data-map-hotel="l7-myeongdong">📌 View on Map</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
                 <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
@@ -616,7 +652,7 @@
               </div>
             </article>
 
-            <article class="hm-hotel">
+            <article class="hm-hotel" id="hotel-skypark-myeongdong-iii" data-hotel-id="skypark-myeongdong-iii">
               <h3>Hotel Skypark Myeongdong Ⅲ</h3>
               <figure class="hotel-editorial-image">
                 <img
@@ -636,6 +672,7 @@
                   <li class="hotel-airport-route__stop"><span class="hotel-airport-route__label">Hotel</span><span class="hotel-airport-route__value hotel-airport-route__value--hotel">Hotel Skypark Myeongdong Ⅲ</span></li>
                 </ol>
               </div>
+              <p class="myeongdong-map-link-wrap"><a class="myeongdong-map-link" href="#myeongdong-hotel-map" data-map-hotel="skypark-myeongdong-iii">📌 View on Map</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
                 <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
@@ -656,7 +693,7 @@
           </header>
 
           <div class="hm-hotel-region__list">
-            <article class="hm-hotel">
+            <article class="hm-hotel" id="hotel-le-meridien-myeongdong" data-hotel-id="le-meridien-myeongdong">
               <h3>Le Méridien Seoul, Myeongdong</h3>
               <figure class="hotel-editorial-image">
                 <img
@@ -678,6 +715,7 @@
                   <li class="hotel-airport-route__stop"><span class="hotel-airport-route__label">Hotel</span><span class="hotel-airport-route__value hotel-airport-route__value--hotel">Le Méridien Seoul, Myeongdong</span></li>
                 </ol>
               </div>
+              <p class="myeongdong-map-link-wrap"><a class="myeongdong-map-link" href="#myeongdong-hotel-map" data-map-hotel="le-meridien-myeongdong">📌 View on Map</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
                 <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
@@ -689,11 +727,12 @@
               </div>
             </article>
 
-            <article class="hm-hotel">
+            <article class="hm-hotel" id="hotel-hotel28-myeongdong" data-hotel-id="hotel28-myeongdong">
               <h3>Hotel28 Myeongdong</h3>
               <p>Hotel28 Myeongdong makes more sense when being inside the shopping and restaurant streets matters more than having Myeongdong Station at the door. The hotel sits on Myeongdong 7-gil, with Euljiro 1-ga Station about 300 metres away. The 6015 airport-bus stop at ibis Ambassador Myeongdong is also only about 80 metres from the hotel, which gives this central position a surprisingly practical arrival route.</p>
               <p>The rooms are also less uniform than the boutique-hotel label might suggest. The Standard Queen is 22.1 m² for two people, while the Family Twin is 38.5 m² with two queen beds for up to four. That can matter when a couple wants more room or a family of four wants to stay together, but the larger room categories should be compared by actual price rather than assuming Hotel28 is automatically good value.</p>
               <p>This is not the hotel I would choose simply because someone says “stay near Myeongdong Station.” The reason to book it is different: you want to step outside into Myeongdong itself and still have a workable Euljiro and airport-bus route. If Line 4 at Myeongdong Station will be your main transport every day, L7 or Skypark III keeps that routine simpler.</p>
+              <p class="myeongdong-map-link-wrap"><a class="myeongdong-map-link" href="#myeongdong-hotel-map" data-map-hotel="hotel28-myeongdong">📌 View on Map</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
                 <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
@@ -705,11 +744,12 @@
               </div>
             </article>
 
-            <article class="hm-hotel">
+            <article class="hm-hotel" id="hotel-royal-hotel-seoul" data-hotel-id="royal-hotel-seoul">
               <h3>Royal Hotel Seoul</h3>
               <p>Royal Hotel Seoul sits in a part of Myeongdong that works differently from the hotels clustered around Myeongdong Station. It is about a five-minute walk from Myeongdong Station and six minutes from Euljiro 1-ga, placing it between the two lines rather than making either station the whole reason for the stay.</p>
               <p>What changes the decision here is the hotel itself. Royal Hotel Seoul has a fuller range of rooms than a basic city hotel: standard doubles are 22 m², while the hotel also lists Family Twin, Triple, Korean Suite and Premier Quad layouts. The Triple is 35 m² and the Premier Quad 44 m², so three or four adults do not automatically have to split into two standard rooms.</p>
               <p>There is also more reason to spend time inside the property, including the 21st-floor dining and lounge spaces. That makes Royal Hotel Seoul a different proposition from a hotel chosen mainly for the shortest station walk. But if your plan is to leave early, return late and use Myeongdong Station repeatedly, paying for a fuller hotel setup may add little to the trip.</p>
+              <p class="myeongdong-map-link-wrap"><a class="myeongdong-map-link" href="#myeongdong-hotel-map" data-map-hotel="royal-hotel-seoul">📌 View on Map</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
                 <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
@@ -730,7 +770,7 @@
           </header>
 
           <div class="hm-hotel-region__list">
-            <article class="hm-hotel">
+            <article class="hm-hotel" id="hotel-grand-lotte-seoul" data-hotel-id="grand-lotte-seoul">
               <h3>THE GRAND LOTTE SEOUL</h3>
               <figure class="hotel-editorial-image">
                 <img
@@ -752,6 +792,7 @@
                   <li class="hotel-airport-route__stop"><span class="hotel-airport-route__label">Hotel</span><span class="hotel-airport-route__value hotel-airport-route__value--hotel">THE GRAND LOTTE SEOUL</span></li>
                 </ol>
               </div>
+              <p class="myeongdong-map-link-wrap"><a class="myeongdong-map-link" href="#myeongdong-hotel-map" data-map-hotel="grand-lotte-seoul">📌 View on Map</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
                 <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
@@ -763,7 +804,7 @@
               </div>
             </article>
 
-            <article class="hm-hotel">
+            <article class="hm-hotel" id="hotel-nine-tree-myeongdong-ii" data-hotel-id="nine-tree-myeongdong-ii">
               <h3>NINE TREE BY PARNAS SEOUL MYEONGDONG II</h3>
               <figure class="hotel-editorial-image">
                 <img
@@ -785,6 +826,7 @@
                   <li class="hotel-airport-route__stop"><span class="hotel-airport-route__label">Hotel</span><span class="hotel-airport-route__value hotel-airport-route__value--hotel">NINE TREE BY PARNAS SEOUL MYEONGDONG II</span></li>
                 </ol>
               </div>
+              <p class="myeongdong-map-link-wrap"><a class="myeongdong-map-link" href="#myeongdong-hotel-map" data-map-hotel="nine-tree-myeongdong-ii">📌 View on Map</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
                 <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
@@ -807,10 +849,11 @@
           </header>
 
           <div class="hm-hotel-region__list">
-            <article class="hm-hotel">
+            <article class="hm-hotel" id="hotel-sotetsu-fresa-myeongdong" data-hotel-id="sotetsu-fresa-myeongdong">
               <h3>Sotetsu Fresa Inn Seoul Myeong-dong</h3>
               <p>Sotetsu Fresa Inn Seoul Myeong-dong fits a trip where the room is mostly somewhere to sleep, shower and leave your bags between long days outside. The hotel sits about five minutes on foot from both Myeongdong Station and Euljiro 1-ga Station, so you are not locked into one subway line when plans change. The trade is room space: the standard double rooms are only 12.3–14.4 m², although larger twin categories are available.</p>
               <p>There is no restaurant inside the hotel, and the property is cashless. Breakfast or meal vouchers are used at nearby restaurants instead. That setup is easy enough for travelers who expect to eat around Myeongdong anyway, but it is less attractive if you want a substantial hotel breakfast, room to spread out, or most services under one roof.</p>
+              <p class="myeongdong-map-link-wrap"><a class="myeongdong-map-link" href="#myeongdong-hotel-map" data-map-hotel="sotetsu-fresa-myeongdong">📌 View on Map</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
                 <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
@@ -822,10 +865,11 @@
               </div>
             </article>
 
-            <article class="hm-hotel">
+            <article class="hm-hotel" id="hotel-ibis-ambassador-myeongdong" data-hotel-id="ibis-ambassador-myeongdong">
               <h3>ibis Ambassador Seoul Myeongdong</h3>
               <p>ibis Ambassador Seoul Myeongdong is more useful when the edge of Myeongdong is actually an advantage. Euljiro 1-ga Station is roughly a three-minute walk away, while Myeongdong Station is farther at about eight minutes. More importantly on airport days, Accor currently lists an airport limousine bus stop directly in front of the hotel.</p>
               <p>The standard rooms are 21 m², and Accor lists double, twin and three-single-bed layouts with capacity up to three people. That gives three travelers a straightforward hotel option without moving into a family-suite category. But someone who expects to step straight out into the pedestrian heart of Myeongdong may prefer one of the hotels farther south; this property sits closer to Namdaemun-ro and Euljiro 1-ga, and that difference becomes noticeable when Myeongdong Station is the route you plan to use every day.</p>
+              <p class="myeongdong-map-link-wrap"><a class="myeongdong-map-link" href="#myeongdong-hotel-map" data-map-hotel="ibis-ambassador-myeongdong">📌 View on Map</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
                 <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
@@ -846,10 +890,11 @@
           </header>
 
           <div class="hm-hotel-region__list">
-            <article class="hm-hotel">
+            <article class="hm-hotel" id="hotel-moxy-myeongdong" data-hotel-id="moxy-myeongdong">
               <h3>Moxy Seoul Myeongdong</h3>
               <p>Moxy Seoul Myeongdong keeps the conventional-hotel experience available to larger families and groups. Marriott lists room types such as Quad Bunk, Family Queen Queen and the much larger Moxy Suite, while the hotel also has a 24-hour front desk, elevators and luggage storage. Children are accepted, but cribs and extra beds are not, so the full number and ages of guests should be entered before comparing rooms.</p>
               <p>The room type matters more here than the hotel name. Some layouts are built for groups, but that does not mean every available room can take the whole party. On busy dates, a family may still end up needing two rooms. This is the option to check when you want central Myeongdong and a staffed hotel rather than an apartment-style stay.</p>
+              <p class="myeongdong-map-link-wrap"><a class="myeongdong-map-link" href="#myeongdong-hotel-map" data-map-hotel="moxy-myeongdong">📌 View on Map</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
                 <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
@@ -861,11 +906,12 @@
               </div>
             </article>
 
-            <article class="hm-hotel">
+            <article class="hm-hotel" id="hotel-uh-suite-myeongdong" data-hotel-id="uh-suite-myeongdong">
               <h3>UH Suite The Myeongdong</h3>
               <p>UH Suite The Myeongdong solves a different problem: keeping six people in one unit without turning the stay into two separate hotel rooms. Its own booking system currently lists a Superior Family Suite for six with two bedrooms, three beds and two bathrooms, and a Standard Triple Suite for six with three bedrooms. The brand describes this Myeongdong property as offering accommodation for 2–8 guests.</p>
               <p>The layouts are closer to suite or serviced-apartment living, with a living area and kitchen in the six-person options. Myeongdong Station is about a minute away on foot, and current OTA listings show an elevator and a staffed 24-hour front desk.</p>
               <p>Do not assume that every UH Suite room sleeps eight. Capacity, bedroom count and bathroom count change by room type, and the property uses more than one building. For a family or group booking, the exact suite name matters here much more than it does at a standard hotel.</p>
+              <p class="myeongdong-map-link-wrap"><a class="myeongdong-map-link" href="#myeongdong-hotel-map" data-map-hotel="uh-suite-myeongdong">📌 View on Map</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
                 <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
@@ -991,6 +1037,7 @@
 
   <script src="guide-year.js" defer></script>
   <script src="common.js"></script>
+  <script src="myeongdong-hotel-map.js" defer></script>
 <script>
   window.va = window.va || function () {
     (window.vaq = window.vaq || []).push(arguments);
