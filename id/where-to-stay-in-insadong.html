@@ -24,6 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400..600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../insadong-hotel-map.css">
   <style>
     body.insadong-page main .hm-hero__copy {
       grid-column: 1 / -1;
@@ -215,13 +216,48 @@
       </div>
     </section>
 
+    <section class="hm-section insadong-hotel-map-section" id="insadong-hotel-map" aria-labelledby="insadong-hotel-map-title"
+      data-map-asset-prefix="../"
+      data-map-copy-default="Lokasi seluruh 7 penginapan ditampilkan. Pilih pin atau nama penginapan."
+      data-map-copy-selected="Dipilih: {name}. Pin nomor {number} tetap merah; pin lainnya berwarna biru."
+      data-map-copy-unavailable-selected="Dipilih: {name}. Peta NAVER tidak tersedia, tetapi tautan ke penginapan di halaman ini masih berfungsi."
+      data-map-copy-pending-selected="Dipilih: {name}. Pilihan ini akan ditampilkan setelah peta siap."
+      data-map-copy-fallback="Peta interaktif NAVER tidak dapat dimuat. Lihat daftar 7 penginapan, lalu coba lagi nanti."
+      data-map-copy-fallback-status="Peta NAVER tidak tersedia. Nama dan tautan ke penginapan di halaman ini tetap dapat diakses."
+      data-map-copy-marker-aria="Pilih nomor {number}: {name}">
+      <div class="container">
+        <header class="hm-section__header">
+          <h2 id="insadong-hotel-map-title">Di mana lokasi penginapan di Insadong?</h2>
+          <p class="hm-section__intro">Pilih pin atau nama penginapan untuk melihat lokasinya.</p>
+        </header>
+        <div class="insadong-hotel-map-layout">
+          <div class="insadong-hotel-map-shell">
+            <div class="insadong-hotel-map-canvas" id="insadong-hotel-map-canvas" role="region" tabindex="0" aria-label="Peta interaktif yang menampilkan 7 penginapan di Insadong"></div>
+            <p class="insadong-hotel-map-status" id="insadong-hotel-map-status" role="status" aria-live="polite">Memuat peta penginapan…</p>
+          </div>
+          <aside class="insadong-hotel-map-directory" aria-labelledby="insadong-hotel-map-directory-title">
+            <h3 id="insadong-hotel-map-directory-title">Penginapan di peta ini</h3>
+            <ol class="insadong-hotel-map-list">
+              <li><button type="button" data-map-hotel="nine-tree" aria-controls="insadong-hotel-map-canvas" aria-pressed="false"><span class="insadong-hotel-map-number" aria-hidden="true">1</span><span>Nine Tree by Parnas Seoul Insadong</span></button></li>
+              <li><button type="button" data-map-hotel="sunbee" aria-controls="insadong-hotel-map-canvas" aria-pressed="false"><span class="insadong-hotel-map-number" aria-hidden="true">2</span><span>Hotel Sunbee Insadong</span></button></li>
+              <li><button type="button" data-map-hotel="amid" aria-controls="insadong-hotel-map-canvas" aria-pressed="false"><span class="insadong-hotel-map-number" aria-hidden="true">3</span><span>AMID Hotel Seoul</span></button></li>
+              <li><button type="button" data-map-hotel="dormy-inn" aria-controls="insadong-hotel-map-canvas" aria-pressed="false"><span class="insadong-hotel-map-number" aria-hidden="true">4</span><span>Dormy Inn EXPRESS Seoul Insadong</span></button></li>
+              <li><button type="button" data-map-hotel="moxy" aria-controls="insadong-hotel-map-canvas" aria-pressed="false"><span class="insadong-hotel-map-number" aria-hidden="true">5</span><span>Moxy Seoul Insadong</span></button></li>
+              <li><button type="button" data-map-hotel="orakai" aria-controls="insadong-hotel-map-canvas" aria-pressed="false"><span class="insadong-hotel-map-number" aria-hidden="true">6</span><span>Orakai Insadong Suites</span></button></li>
+              <li><button type="button" data-map-hotel="somerset-palace" aria-controls="insadong-hotel-map-canvas" aria-pressed="false"><span class="insadong-hotel-map-number" aria-hidden="true">7</span><span>Somerset Palace Seoul</span></button></li>
+            </ol>
+          </aside>
+        </div>
+      </div>
+    </section>
+
     <section class="hm-section hm-section--cream" id="hotels" aria-labelledby="hotels-title">
       <div class="container">
         <header class="hm-hotel-guide">
           <h2 id="hotels-title">Hotel di Insadong</h2>
         </header>
         <div class="hm-hotel-region__list">
-          <article class="hm-hotel hm-editorial-row" id="nine-tree" aria-labelledby="nine-tree-title">
+          <article class="hm-hotel hm-editorial-row" id="nine-tree" data-hotel-id="nine-tree" aria-labelledby="nine-tree-title">
             <div class="hm-editorial-row__label">
               <h3 id="nine-tree-title">Nine Tree by Parnas Seoul Insadong</h3>
             </div>
@@ -229,6 +265,7 @@
               <p>Nine Tree menyederhanakan pilihan ketika Anda ingin hotel konvensional di Insadong-gil. Anguk adalah stasiun terdekat, dan posisi hotel mendukung kegiatan di sekitar Insadong serta kawasan istana. Anda memilih lokasi terlebih dahulu, bukan dapur, apartemen besar, atau hotel yang berpusat pada hiburan malam.</p>
               <p>Untuk tiga orang dewasa yang masing-masing ingin tempat tidur sendiri, <strong>Standard Triple</strong> adalah kamar yang perlu diperiksa. Kamar ini memiliki tiga tempat tidur single, menampung tiga orang, dan seluas <strong>24.5 m²</strong>. Ini memenuhi kebutuhan tidur, tetapi tetap satu kamar hotel bersama, bukan suite luas.</p>
               <p>Fasilitas cuci mandiri berbayar tersedia. Untuk kunjungan wisata ketika Anda hanya perlu sesekali mencuci pakaian, itu mungkin cukup. Anda tidak selalu perlu memesan apartemen dengan mesin cuci sendiri.</p>
+              <p class="insadong-hotel-map-link-wrap"><a class="insadong-hotel-map-link" href="#insadong-hotel-map" data-map-hotel="nine-tree" aria-controls="insadong-hotel-map-canvas">📌 Lihat di Peta</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-affiliate-note">Halaman ini memuat tautan afiliasi.</p>
                 <p class="hm-booking-strip__eyebrow">LIHAT TARIF</p>
@@ -242,7 +279,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row" id="sunbee" aria-labelledby="sunbee-title">
+          <article class="hm-hotel hm-editorial-row" id="sunbee" data-hotel-id="sunbee" aria-labelledby="sunbee-title">
             <div class="hm-editorial-row__label">
               <h3 id="sunbee-title">Hotel Sunbee Insadong</h3>
             </div>
@@ -250,6 +287,7 @@
               <p>Kamar <strong>Standard Double di Sunbee seluas 32 m²</strong>. Bahkan untuk dua orang, tambahan luas lantai penting ketika menginap beberapa malam dengan bagasi besar. Pasangan yang tidak ingin terus melangkahi bagasi selama beberapa malam sebaiknya mempertimbangkannya sebelum menganggap perlu kategori kamar lebih besar di tempat lain.</p>
               <p>Keluarga perlu lebih memperhatikan nama kamar. <strong>Deluxe KOR Double (Family) seluas 39 m²</strong> menampung hingga empat orang, tetapi menggabungkan tempat tidur double besar dengan alas tidur di lantai bergaya Korea. Ini bukan kamar dengan empat tempat tidur konvensional. Bagi orang yang tidak bersedia tidur di lantai, susunan itu membuatnya tidak sesuai, betapapun menariknya luas kamar.</p>
               <p>Sunbee juga menyediakan ruang cuci bersama gratis dengan mesin cuci, pengering, dan deterjen. Jalan kaki stasiunnya lebih panjang daripada Nine Tree: hotel memperkirakan sekitar tujuh menit dari Anguk atau Jonggak dan delapan dari pintu keluar Jongno 3-ga yang disebutkan. Kami akan memilihnya untuk kamar dan fasilitas cuci, dengan menerima jalan kaki tersebut, bukan menyebutnya hotel tepat di pintu stasiun.</p>
+              <p class="insadong-hotel-map-link-wrap"><a class="insadong-hotel-map-link" href="#insadong-hotel-map" data-map-hotel="sunbee" aria-controls="insadong-hotel-map-canvas">📌 Lihat di Peta</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">LIHAT TARIF</p>
                 <p class="hm-booking-strip__title">Bandingkan hotel ini di situs pemesanan</p>
@@ -262,7 +300,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row" id="amid" aria-labelledby="amid-title">
+          <article class="hm-hotel hm-editorial-row" id="amid" data-hotel-id="amid" aria-labelledby="amid-title">
             <div class="hm-editorial-row__label">
               <h3 id="amid-title">AMID Hotel Seoul</h3>
             </div>
@@ -270,6 +308,7 @@
               <p>AMID adalah hotel untuk dibandingkan jika Anda lebih ingin mencapai Insadong dari <strong>Jonggak</strong> daripada Anguk. Alamatnya di Insadong 5-gil menempatkan hotel di sisi Jonggak, sehingga ada pilihan hotel konvensional lain tanpa memindahkan masa menginap Anda dari Insadong.</p>
               <p>Hotel ini juga layak diperiksa untuk tiga orang dewasa yang bepergian bersama. Daftar Standard Triple dan Deluxe Triple yang diperiksa untuk panduan ini sama-sama menyebut <strong>tiga tempat tidur single dan maksimal tiga tamu</strong>. Bandingkan kategori kamar yang tepat itu dengan Standard Triple Nine Tree, termasuk ketentuan pembatalan dan total biaya untuk tiga orang.</p>
               <p>Jangan memilih kamar hanya karena kata “Deluxe”. Periksa foto serta tata ruang kategori yang benar-benar Anda pesan. AMID lebih menarik ketika sisi Jonggak Insadong atau tiga tempat tidur terpisah penting bagi perjalanan. Jangan menganggap setiap kamar luar biasa besar.</p>
+              <p class="insadong-hotel-map-link-wrap"><a class="insadong-hotel-map-link" href="#insadong-hotel-map" data-map-hotel="amid" aria-controls="insadong-hotel-map-canvas">📌 Lihat di Peta</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">LIHAT TARIF</p>
                 <p class="hm-booking-strip__title">Bandingkan hotel ini di situs pemesanan</p>
@@ -282,7 +321,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row" id="dormy-inn" aria-labelledby="dormy-inn-title">
+          <article class="hm-hotel hm-editorial-row" id="dormy-inn" data-hotel-id="dormy-inn" aria-labelledby="dormy-inn-title">
             <div class="hm-editorial-row__label">
               <h3 id="dormy-inn-title">Dormy Inn EXPRESS Seoul Insadong</h3>
             </div>
@@ -290,6 +329,7 @@
               <p>Di Dormy Inn, berendam menjadi bagian dari menginap. Hotel memiliki area pemandian bersama terpisah untuk pria dan wanita, dengan pemandian air panas, air dingin, serta sauna kering. Pemandian dijadwalkan buka dari <strong>pukul 3 sore hingga 10 pagi keesokan harinya</strong>, sementara sauna tutup antara <strong>pukul 1 dini hari dan 5 pagi.</strong></p>
               <p>Ruang tidur lebih terbatas. Kamar Standard Double dan Standard Twin seluas <strong>16 m²</strong>. Pertimbangannya sederhana: kamar standar kecil, tetapi Anda mendapat pemandian dan sauna yang membedakan Dormy dari hotel lain di sini. Wisatawan dengan dua koper besar yang ingin membiarkan keduanya terbuka sebaiknya lebih dahulu membandingkan kamar lebih luas di tempat lain.</p>
               <p>Ada pula area cuci dan pengering bersama. Ini membantu perjalanan lebih panjang, tetapi berbeda dari peralatan cuci di dalam kamar.</p>
+              <p class="insadong-hotel-map-link-wrap"><a class="insadong-hotel-map-link" href="#insadong-hotel-map" data-map-hotel="dormy-inn" aria-controls="insadong-hotel-map-canvas">📌 Lihat di Peta</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">LIHAT TARIF</p>
                 <p class="hm-booking-strip__title">Bandingkan hotel ini di situs pemesanan</p>
@@ -302,7 +342,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row" id="moxy" aria-labelledby="moxy-title">
+          <article class="hm-hotel hm-editorial-row" id="moxy" data-hotel-id="moxy" aria-labelledby="moxy-title">
             <div class="hm-editorial-row__label">
               <h3 id="moxy-title">Moxy Seoul Insadong</h3>
             </div>
@@ -310,6 +350,7 @@
               <p>Moxy sesuai untuk malam yang berakhir di sekitar Jongno 3-ga atau Ikseon-dong: makan malam, minum, lalu jalan kaki singkat kembali. Hotel berada di sebelah kawasan Jongno 3-ga dan Ikseon-dong, dengan bar atap serta ruang bersama sendiri. Wisatawan yang menikmati suasana malam itu memiliki alasan menginap lebih jelas daripada orang yang hanya mencari kamar tenang dekat istana.</p>
               <p>Kamar standar seluas <strong>20 m²</strong>; kategori keluarga dan suite yang lebih besar juga tersedia. Periksa kategori yang terkait dengan tarif Anda, tanpa membiarkan foto suite besar membentuk harapan terhadap kamar dasar.</p>
               <p>Kebisingan jalan perlu menjadi bagian dari pertimbangan. Laporan seorang tamu baru-baru ini menyebut suara orang di luar pada malam hari, tetapi tidak membuktikan bahwa setiap kamar mengalami hal yang sama. Untuk orang yang mudah terbangun, kami akan mulai dari pilihan lain. Permintaan lantai lebih tinggi atau kamar yang jauh dari jalan tersibuk tetap permintaan, bukan janji keheningan.</p>
+              <p class="insadong-hotel-map-link-wrap"><a class="insadong-hotel-map-link" href="#insadong-hotel-map" data-map-hotel="moxy" aria-controls="insadong-hotel-map-canvas">📌 Lihat di Peta</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">LIHAT TARIF</p>
                 <p class="hm-booking-strip__title">Bandingkan hotel ini di situs pemesanan</p>
@@ -335,7 +376,7 @@
           </div>
         </header>
         <div class="hm-hotel-region__list">
-          <article class="hm-hotel hm-editorial-row" id="orakai" aria-labelledby="orakai-title">
+          <article class="hm-hotel hm-editorial-row" id="orakai" data-hotel-id="orakai" aria-labelledby="orakai-title">
             <div class="hm-editorial-row__label">
               <h3 id="orakai-title">Orakai Insadong Suites</h3>
             </div>
@@ -344,6 +385,7 @@
               <p>Bagi keluarga atau rombongan yang akan sarapan di apartemen, mencuci pakaian di tengah perjalanan, atau menghabiskan sebagian malam di dalam, ruang bersama tambahan itu bisa berarti. Bagi dua orang yang akan keluar setelah sarapan dan kembali hanya untuk tidur, hotel konvensional mungkin memenuhi kebutuhan tanpa membayar ruang bersama yang jarang digunakan.</p>
               <p>Sebelum memesan, tentukan <strong>siapa yang akan tidur di setiap tempat tidur</strong>. Keterangan “dua kamar tidur” memberi tahu jumlah kamar tidur, tetapi tidak dengan sendirinya menetapkan jumlah orang yang diizinkan atau menjamin tempat tidur untuk setiap orang. Dapatkan susunan tempat tidur yang tepat, batas jumlah tamu, dan biaya tamu tambahan untuk apartemen yang dijual.</p>
               <p>Lalu bandingkan harga apartemen secara keseluruhan dengan kamar hotel yang dibutuhkan rombongan jika tidak memilih apartemen.</p>
+              <p class="insadong-hotel-map-link-wrap"><a class="insadong-hotel-map-link" href="#insadong-hotel-map" data-map-hotel="orakai" aria-controls="insadong-hotel-map-canvas">📌 Lihat di Peta</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">LIHAT TARIF</p>
                 <p class="hm-booking-strip__title">Bandingkan hotel ini di situs pemesanan</p>
@@ -356,7 +398,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row" id="somerset-palace" aria-labelledby="somerset-palace-title">
+          <article class="hm-hotel hm-editorial-row" id="somerset-palace" data-hotel-id="somerset-palace" aria-labelledby="somerset-palace-title">
             <div class="hm-editorial-row__label">
               <h3 id="somerset-palace-title">Somerset Palace Seoul</h3>
             </div>
@@ -364,6 +406,7 @@
               <p>Somerset bukan hanya untuk keluarga besar. <strong>Studio Executive seluas 29 m²</strong> dan kategori apartemen satu kamar tidur memungkinkan pelancong solo serta pasangan memesan fasilitas memasak dan cuci di dalam unit tanpa mengambil unit dengan beberapa kamar tidur.</p>
               <p>Untuk rombongan lebih besar, <strong>Two-Bedroom Executive seluas 80 m²</strong> perlu dibaca lebih teliti. Penginapan mencantumkan maksimal empat tamu, dengan tiga orang sebagai kapasitas dasar dan tamu keempat dikenai biaya. Masukkan semua orang dalam pemesanan, tanpa menganggap “menampung empat” berarti empat orang sudah termasuk dalam harga yang ditampilkan.</p>
               <p>Kolam luar ruangan di atap bersifat musiman. Jangan memesan pada musim dingin dengan anggapan tersedia tempat berenang. Pada musim dingin, abaikan kolam saat membandingkan pilihan. Dapur, fasilitas cuci, dan tata ruang apartemen tetap penting sepanjang tahun.</p>
+              <p class="insadong-hotel-map-link-wrap"><a class="insadong-hotel-map-link" href="#insadong-hotel-map" data-map-hotel="somerset-palace" aria-controls="insadong-hotel-map-canvas">📌 Lihat di Peta</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">LIHAT TARIF</p>
                 <p class="hm-booking-strip__title">Bandingkan hotel ini di situs pemesanan</p>
@@ -472,6 +515,7 @@
 
   <script src="../guide-year.js" defer></script>
   <script src="../common.js"></script>
+  <script src="../insadong-hotel-map.js" defer></script>
 <script>
   window.va = window.va || function () {
     (window.vaq = window.vaq || []).push(arguments);

@@ -24,6 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400..600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../insadong-hotel-map.css">
   <style>
     body.insadong-page main .hm-hero__copy {
       grid-column: 1 / -1;
@@ -215,13 +216,48 @@
       </div>
     </section>
 
+    <section class="hm-section insadong-hotel-map-section" id="insadong-hotel-map" aria-labelledby="insadong-hotel-map-title"
+      data-map-asset-prefix="../"
+      data-map-copy-default="已顯示 7 間住宿的位置。請選擇地圖標記或住宿名稱。"
+      data-map-copy-selected="已選擇：{name}。第 {number} 號標記維持紅色，其餘標記為藍色。"
+      data-map-copy-unavailable-selected="已選擇：{name}。NAVER 地圖目前無法使用，但頁面內的住宿連結仍可使用。"
+      data-map-copy-pending-selected="已選擇：{name}。地圖載入完成後會顯示此選擇。"
+      data-map-copy-fallback="無法載入 NAVER 互動地圖。請先透過住宿清單查看全部 7 個選項，稍後再試。"
+      data-map-copy-fallback-status="NAVER 地圖目前無法使用。住宿名稱與頁面內連結仍可使用。"
+      data-map-copy-marker-aria="選擇第 {number} 號：{name}">
+      <div class="container">
+        <header class="hm-section__header">
+          <h2 id="insadong-hotel-map-title">仁寺洞的住宿位置在哪裡？</h2>
+          <p class="hm-section__intro">點選地圖標記或住宿名稱，即可查看位置。</p>
+        </header>
+        <div class="insadong-hotel-map-layout">
+          <div class="insadong-hotel-map-shell">
+            <div class="insadong-hotel-map-canvas" id="insadong-hotel-map-canvas" role="region" tabindex="0" aria-label="顯示仁寺洞 7 間住宿的互動地圖"></div>
+            <p class="insadong-hotel-map-status" id="insadong-hotel-map-status" role="status" aria-live="polite">正在載入住宿地圖…</p>
+          </div>
+          <aside class="insadong-hotel-map-directory" aria-labelledby="insadong-hotel-map-directory-title">
+            <h3 id="insadong-hotel-map-directory-title">地圖上的住宿</h3>
+            <ol class="insadong-hotel-map-list">
+              <li><button type="button" data-map-hotel="nine-tree" aria-controls="insadong-hotel-map-canvas" aria-pressed="false"><span class="insadong-hotel-map-number" aria-hidden="true">1</span><span>Nine Tree by Parnas Seoul Insadong</span></button></li>
+              <li><button type="button" data-map-hotel="sunbee" aria-controls="insadong-hotel-map-canvas" aria-pressed="false"><span class="insadong-hotel-map-number" aria-hidden="true">2</span><span>Hotel Sunbee Insadong</span></button></li>
+              <li><button type="button" data-map-hotel="amid" aria-controls="insadong-hotel-map-canvas" aria-pressed="false"><span class="insadong-hotel-map-number" aria-hidden="true">3</span><span>AMID Hotel Seoul</span></button></li>
+              <li><button type="button" data-map-hotel="dormy-inn" aria-controls="insadong-hotel-map-canvas" aria-pressed="false"><span class="insadong-hotel-map-number" aria-hidden="true">4</span><span>Dormy Inn EXPRESS Seoul Insadong</span></button></li>
+              <li><button type="button" data-map-hotel="moxy" aria-controls="insadong-hotel-map-canvas" aria-pressed="false"><span class="insadong-hotel-map-number" aria-hidden="true">5</span><span>Moxy Seoul Insadong</span></button></li>
+              <li><button type="button" data-map-hotel="orakai" aria-controls="insadong-hotel-map-canvas" aria-pressed="false"><span class="insadong-hotel-map-number" aria-hidden="true">6</span><span>Orakai Insadong Suites</span></button></li>
+              <li><button type="button" data-map-hotel="somerset-palace" aria-controls="insadong-hotel-map-canvas" aria-pressed="false"><span class="insadong-hotel-map-number" aria-hidden="true">7</span><span>Somerset Palace Seoul</span></button></li>
+            </ol>
+          </aside>
+        </div>
+      </div>
+    </section>
+
     <section class="hm-section hm-section--cream" id="hotels" aria-labelledby="hotels-title">
       <div class="container">
         <header class="hm-hotel-guide">
           <h2 id="hotels-title">仁寺洞飯店</h2>
         </header>
         <div class="hm-hotel-region__list">
-          <article class="hm-hotel hm-editorial-row" id="nine-tree" aria-labelledby="nine-tree-title">
+          <article class="hm-hotel hm-editorial-row" id="nine-tree" data-hotel-id="nine-tree" aria-labelledby="nine-tree-title">
             <div class="hm-editorial-row__label">
               <h3 id="nine-tree-title">Nine Tree by Parnas Seoul Insadong</h3>
             </div>
@@ -229,6 +265,7 @@
               <p>想在仁寺洞街住常規飯店，Nine Tree 讓選擇很簡單。安國是最近車站，位置適合在仁寺洞與宮殿區活動的日子。選它先看地點，而不是廚房、大公寓，或以夜間娛樂為主的飯店。</p>
               <p>三位成人各自想睡一張床，可以看 <strong>Standard Triple</strong>。它有三張單人床，可住三人，面積為 <strong>24.5 平方公尺</strong>。睡眠配置解決了，但仍是共用一間客房，不是寬敞套房。</p>
               <p>飯店有付費自助洗衣。以觀光為主、只偶爾洗衣，可能已經夠用，不一定得訂有自備洗衣機的公寓。</p>
+              <p class="insadong-hotel-map-link-wrap"><a class="insadong-hotel-map-link" href="#insadong-hotel-map" data-map-hotel="nine-tree" aria-controls="insadong-hotel-map-canvas">📌 在地圖上查看</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-affiliate-note">本頁包含聯盟行銷連結。</p>
                 <p class="hm-booking-strip__eyebrow">查看房價</p>
@@ -242,7 +279,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row" id="sunbee" aria-labelledby="sunbee-title">
+          <article class="hm-hotel hm-editorial-row" id="sunbee" data-hotel-id="sunbee" aria-labelledby="sunbee-title">
             <div class="hm-editorial-row__label">
               <h3 id="sunbee-title">Hotel Sunbee Insadong</h3>
             </div>
@@ -250,6 +287,7 @@
               <p>一間 <strong>Sunbee 的 Standard Double 為 32 平方公尺</strong>。即使兩人入住，帶大行李住好幾晚，多出的地面空間也重要。不想連續幾天在行李之間側身走的情侶，可以先看這裡，不必先假設得在別間飯店升級較大房型。</p>
               <p>家庭要更仔細看房型名稱。 <strong>39 平方公尺的 Deluxe KOR Double (Family)</strong> 最多四人入住，但配置是大雙人床搭配韓式地鋪，不是四張一般床。若有人不願睡地板，不論房間面積多吸引人，這種安排就不合適。</p>
               <p>Sunbee 也有免費共用洗衣間，附洗衣機、烘衣機與洗劑。到車站比 Nine Tree 遠：飯店估計從安國或鐘閣約七分鐘，從指定的鐘路 3 街出口約八分鐘。我們會為房間與洗衣設施選它，接受這段步行，而不會把它說成出站即到的飯店。</p>
+              <p class="insadong-hotel-map-link-wrap"><a class="insadong-hotel-map-link" href="#insadong-hotel-map" data-map-hotel="sunbee" aria-controls="insadong-hotel-map-canvas">📌 在地圖上查看</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">查看房價</p>
                 <p class="hm-booking-strip__title">在訂房網站比較這間飯店</p>
@@ -262,7 +300,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row" id="amid" aria-labelledby="amid-title">
+          <article class="hm-hotel hm-editorial-row" id="amid" data-hotel-id="amid" aria-labelledby="amid-title">
             <div class="hm-editorial-row__label">
               <h3 id="amid-title">AMID Hotel Seoul</h3>
             </div>
@@ -270,6 +308,7 @@
               <p>AMID 適合想從仁寺洞的 <strong>鐘閣</strong> 一側進出，而不是安國的旅客。地址在仁寺洞 5 街，位於街區鐘閣側，不必離開仁寺洞就多一間常規飯店可選。</p>
               <p>三位成人同行也值得看。本指南查核的 Standard Triple 與 Deluxe Triple 頁面都明列 <strong>三張單人床，最多三位入住</strong>。把這些確切房型和 Nine Tree 的 Standard Triple 比較，包括取消條件與三人總費用。</p>
               <p>別只因房型叫「Deluxe」就選。看實際準備訂的類別照片與格局。仁寺洞的鐘閣一側，或三張獨立床對旅程重要時，AMID 更值得考慮；別假設每間房都特別大。</p>
+              <p class="insadong-hotel-map-link-wrap"><a class="insadong-hotel-map-link" href="#insadong-hotel-map" data-map-hotel="amid" aria-controls="insadong-hotel-map-canvas">📌 在地圖上查看</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">查看房價</p>
                 <p class="hm-booking-strip__title">在訂房網站比較這間飯店</p>
@@ -282,7 +321,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row" id="dormy-inn" aria-labelledby="dormy-inn-title">
+          <article class="hm-hotel hm-editorial-row" id="dormy-inn" data-hotel-id="dormy-inn" aria-labelledby="dormy-inn-title">
             <div class="hm-editorial-row__label">
               <h3 id="dormy-inn-title">Dormy Inn EXPRESS Seoul Insadong</h3>
             </div>
@@ -290,6 +329,7 @@
               <p>在 Dormy Inn，泡澡是住宿的一部分。飯店有男女分開的共用浴場，含熱水池、冷水池與乾式三溫暖。浴場預定開放時間為 <strong>下午 3 點至隔天上午 10 點</strong>，三溫暖的暫停開放時段為 <strong>凌晨 1 點至 5 點</strong></p>
               <p>睡覺的空間較有限。Standard Double 與 Standard Twin 為 <strong>16 平方公尺</strong>。取捨很簡單：標準房小，但有讓 Dormy 和這裡其他飯店不同的浴場與三溫暖。帶兩個大行李箱、想同時攤開的旅客，應先比較別處較大房型。</p>
               <p>另有共用洗衣與烘衣區。這有助於較長旅程，但不等於房內有洗衣設備。</p>
+              <p class="insadong-hotel-map-link-wrap"><a class="insadong-hotel-map-link" href="#insadong-hotel-map" data-map-hotel="dormy-inn" aria-controls="insadong-hotel-map-canvas">📌 在地圖上查看</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">查看房價</p>
                 <p class="hm-booking-strip__title">在訂房網站比較這間飯店</p>
@@ -302,7 +342,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row" id="moxy" aria-labelledby="moxy-title">
+          <article class="hm-hotel hm-editorial-row" id="moxy" data-hotel-id="moxy" aria-labelledby="moxy-title">
             <div class="hm-editorial-row__label">
               <h3 id="moxy-title">Moxy Seoul Insadong</h3>
             </div>
@@ -310,6 +350,7 @@
               <p>Moxy 適合晚上在鐘路 3 街或益善洞結束：吃飯、喝酒，再走一小段回來。飯店就在鐘路 3 街與益善洞一帶旁邊，也有自己的屋頂酒吧與共用空間。喜歡這種晚間環境的人，比只想在宮殿附近找安靜房間的人，更有理由住這裡。</p>
               <p>標準房為 <strong>20 平方公尺</strong>；另有較大的家庭與套房類別。看房價對應的確切房型，別讓大套房照片決定對基本客房的期待。</p>
               <p>街道噪音需要納入考量。近期一則住客回報提到晚上聽到外面人聲，但這不代表每間房都有相同體驗。淺眠者，我們會先看其他選擇。要求高樓層或遠離繁忙街道，只是提出需求，不是安靜保證。</p>
+              <p class="insadong-hotel-map-link-wrap"><a class="insadong-hotel-map-link" href="#insadong-hotel-map" data-map-hotel="moxy" aria-controls="insadong-hotel-map-canvas">📌 在地圖上查看</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">查看房價</p>
                 <p class="hm-booking-strip__title">在訂房網站比較這間飯店</p>
@@ -335,7 +376,7 @@
           </div>
         </header>
         <div class="hm-hotel-region__list">
-          <article class="hm-hotel hm-editorial-row" id="orakai" aria-labelledby="orakai-title">
+          <article class="hm-hotel hm-editorial-row" id="orakai" data-hotel-id="orakai" aria-labelledby="orakai-title">
             <div class="hm-editorial-row__label">
               <h3 id="orakai-title">Orakai Insadong Suites</h3>
             </div>
@@ -344,6 +385,7 @@
               <p>家庭或團體若預計在公寓吃早餐、旅途中洗衣，或有些晚上待在室內，額外起居空間可能很重要。兩人若早餐後出門，只回來睡覺，常規飯店可能已能滿足需求，不必為幾乎用不到的客廳付錢。</p>
               <p>預訂前，先安排好 <strong>每張床由誰睡</strong>。「兩房」只告訴你有幾間臥室，本身不代表允許多少人，也不保證每人都有床。取得所售公寓確切的床位配置、人數上限與任何加人費用。</p>
               <p>再把完整公寓總價，和同團原本需要的飯店客房總價比較。</p>
+              <p class="insadong-hotel-map-link-wrap"><a class="insadong-hotel-map-link" href="#insadong-hotel-map" data-map-hotel="orakai" aria-controls="insadong-hotel-map-canvas">📌 在地圖上查看</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">查看房價</p>
                 <p class="hm-booking-strip__title">在訂房網站比較這間飯店</p>
@@ -356,7 +398,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row" id="somerset-palace" aria-labelledby="somerset-palace-title">
+          <article class="hm-hotel hm-editorial-row" id="somerset-palace" data-hotel-id="somerset-palace" aria-labelledby="somerset-palace-title">
             <div class="hm-editorial-row__label">
               <h3 id="somerset-palace-title">Somerset Palace Seoul</h3>
             </div>
@@ -364,6 +406,7 @@
               <p>Somerset 不只適合大家庭。它的 <strong>29 平方公尺 Studio Executive</strong> 與一房公寓，讓獨旅與情侶不必訂多房單位，也能使用烹飪與房內洗衣設施。</p>
               <p>較多人同行時， <strong>80 平方公尺 Two-Bedroom Executive</strong> 需要仔細讀。住宿列出最多四位，以三人入住為基本，第四位需另付費。訂房時輸入所有人，不要把「可住四人」當成顯示價格已含四人的確認。</p>
               <p>屋頂戶外泳池採季節性開放。別以為冬天入住也能游泳。冬季比較時先不考慮泳池；廚房、洗衣與公寓格局，才是全年都重要的部分。</p>
+              <p class="insadong-hotel-map-link-wrap"><a class="insadong-hotel-map-link" href="#insadong-hotel-map" data-map-hotel="somerset-palace" aria-controls="insadong-hotel-map-canvas">📌 在地圖上查看</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">查看房價</p>
                 <p class="hm-booking-strip__title">在訂房網站比較這間飯店</p>
@@ -472,6 +515,7 @@
 
   <script src="../guide-year.js" defer></script>
   <script src="../common.js"></script>
+  <script src="../insadong-hotel-map.js" defer></script>
 <script>
   window.va = window.va || function () {
     (window.vaq = window.vaq || []).push(arguments);

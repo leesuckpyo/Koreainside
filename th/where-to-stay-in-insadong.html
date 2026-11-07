@@ -24,6 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400..600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../insadong-hotel-map.css">
   <style>
     body.insadong-page main .hm-hero__copy {
       grid-column: 1 / -1;
@@ -215,13 +216,48 @@
       </div>
     </section>
 
+    <section class="hm-section insadong-hotel-map-section" id="insadong-hotel-map" aria-labelledby="insadong-hotel-map-title"
+      data-map-asset-prefix="../"
+      data-map-copy-default="แผนที่แสดงตำแหน่งที่พักทั้ง 7 แห่งแล้ว เลือกหมุดหรือชื่อที่พักได้เลย"
+      data-map-copy-selected="เลือกแล้ว: {name} หมุดหมายเลข {number} ยังคงเป็นสีแดง ส่วนหมุดอื่นเป็นสีน้ำเงิน"
+      data-map-copy-unavailable-selected="เลือกแล้ว: {name} ขณะนี้แผนที่ NAVER ใช้งานไม่ได้ แต่ลิงก์ไปยังที่พักภายในหน้านี้ยังใช้ได้"
+      data-map-copy-pending-selected="เลือกแล้ว: {name} ระบบจะแสดงตำแหน่งที่เลือกเมื่อแผนที่โหลดเสร็จ"
+      data-map-copy-fallback="ไม่สามารถโหลดแผนที่ NAVER แบบโต้ตอบได้ โปรดดูที่พักทั้ง 7 แห่งจากรายชื่อ แล้วลองอีกครั้งภายหลัง"
+      data-map-copy-fallback-status="แผนที่ NAVER ใช้งานไม่ได้ แต่ชื่อที่พักและลิงก์ภายในหน้านี้ยังใช้งานได้"
+      data-map-copy-marker-aria="เลือกหมุดหมายเลข {number}: {name}">
+      <div class="container">
+        <header class="hm-section__header">
+          <h2 id="insadong-hotel-map-title">ที่พักในอินซาดงอยู่ตรงไหน?</h2>
+          <p class="hm-section__intro">เลือกหมุดหรือชื่อที่พักเพื่อดูตำแหน่งบนแผนที่</p>
+        </header>
+        <div class="insadong-hotel-map-layout">
+          <div class="insadong-hotel-map-shell">
+            <div class="insadong-hotel-map-canvas" id="insadong-hotel-map-canvas" role="region" tabindex="0" aria-label="แผนที่แบบโต้ตอบแสดงที่พัก 7 แห่งในอินซาดง"></div>
+            <p class="insadong-hotel-map-status" id="insadong-hotel-map-status" role="status" aria-live="polite">กำลังโหลดแผนที่ที่พัก…</p>
+          </div>
+          <aside class="insadong-hotel-map-directory" aria-labelledby="insadong-hotel-map-directory-title">
+            <h3 id="insadong-hotel-map-directory-title">ที่พักบนแผนที่นี้</h3>
+            <ol class="insadong-hotel-map-list">
+              <li><button type="button" data-map-hotel="nine-tree" aria-controls="insadong-hotel-map-canvas" aria-pressed="false"><span class="insadong-hotel-map-number" aria-hidden="true">1</span><span>Nine Tree by Parnas Seoul Insadong</span></button></li>
+              <li><button type="button" data-map-hotel="sunbee" aria-controls="insadong-hotel-map-canvas" aria-pressed="false"><span class="insadong-hotel-map-number" aria-hidden="true">2</span><span>Hotel Sunbee Insadong</span></button></li>
+              <li><button type="button" data-map-hotel="amid" aria-controls="insadong-hotel-map-canvas" aria-pressed="false"><span class="insadong-hotel-map-number" aria-hidden="true">3</span><span>AMID Hotel Seoul</span></button></li>
+              <li><button type="button" data-map-hotel="dormy-inn" aria-controls="insadong-hotel-map-canvas" aria-pressed="false"><span class="insadong-hotel-map-number" aria-hidden="true">4</span><span>Dormy Inn EXPRESS Seoul Insadong</span></button></li>
+              <li><button type="button" data-map-hotel="moxy" aria-controls="insadong-hotel-map-canvas" aria-pressed="false"><span class="insadong-hotel-map-number" aria-hidden="true">5</span><span>Moxy Seoul Insadong</span></button></li>
+              <li><button type="button" data-map-hotel="orakai" aria-controls="insadong-hotel-map-canvas" aria-pressed="false"><span class="insadong-hotel-map-number" aria-hidden="true">6</span><span>Orakai Insadong Suites</span></button></li>
+              <li><button type="button" data-map-hotel="somerset-palace" aria-controls="insadong-hotel-map-canvas" aria-pressed="false"><span class="insadong-hotel-map-number" aria-hidden="true">7</span><span>Somerset Palace Seoul</span></button></li>
+            </ol>
+          </aside>
+        </div>
+      </div>
+    </section>
+
     <section class="hm-section hm-section--cream" id="hotels" aria-labelledby="hotels-title">
       <div class="container">
         <header class="hm-hotel-guide">
           <h2 id="hotels-title">โรงแรมในอินซาดง</h2>
         </header>
         <div class="hm-hotel-region__list">
-          <article class="hm-hotel hm-editorial-row" id="nine-tree" aria-labelledby="nine-tree-title">
+          <article class="hm-hotel hm-editorial-row" id="nine-tree" data-hotel-id="nine-tree" aria-labelledby="nine-tree-title">
             <div class="hm-editorial-row__label">
               <h3 id="nine-tree-title">Nine Tree by Parnas Seoul Insadong</h3>
             </div>
@@ -229,6 +265,7 @@
               <p>Nine Tree ทำให้การเลือกตรงไปตรงมาเมื่ออยากได้โรงแรมทั่วไปบน Insadong-gil Anguk เป็นสถานีที่ใกล้ที่สุด และตำแหน่งโรงแรมเหมาะกับวันที่ใช้เวลาแถวอินซาดงและพระราชวัง คุณกำลังเลือกทำเลก่อน มากกว่าครัว อพาร์ตเมนต์ใหญ่ หรือโรงแรมที่สร้างรอบความบันเทิงตอนเย็น</p>
               <p>สำหรับผู้ใหญ่ 3 คนที่แต่ละคนอยากได้เตียงของตัวเอง ห้อง <strong>Standard Triple</strong> คือประเภทที่ควรดู มีเตียง Single 3 เตียง รองรับ 3 คน และมีพื้นที่ <strong>24.5 m²</strong>. รูปแบบนี้แก้เรื่องที่นอนได้ แม้ยังเป็นห้องโรงแรมร่วม ไม่ใช่ Suite กว้าง</p>
               <p>มีบริการซักผ้าแบบบริการตนเองที่มีค่าใช้จ่าย สำหรับทริปเที่ยวที่ต้องซักผ้าเป็นครั้งคราว แค่นี้อาจพอ; ไม่จำเป็นต้องจองอพาร์ตเมนต์ที่มีเครื่องของตัวเองเสมอ</p>
+              <p class="insadong-hotel-map-link-wrap"><a class="insadong-hotel-map-link" href="#insadong-hotel-map" data-map-hotel="nine-tree" aria-controls="insadong-hotel-map-canvas">📌 ดูบนแผนที่</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-affiliate-note">หน้านี้มีลิงก์ Affiliate</p>
                 <p class="hm-booking-strip__eyebrow">เช็กราคา</p>
@@ -242,7 +279,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row" id="sunbee" aria-labelledby="sunbee-title">
+          <article class="hm-hotel hm-editorial-row" id="sunbee" data-hotel-id="sunbee" aria-labelledby="sunbee-title">
             <div class="hm-editorial-row__label">
               <h3 id="sunbee-title">Hotel Sunbee Insadong</h3>
             </div>
@@ -250,6 +287,7 @@
               <p>ห้อง <strong>Standard Double ของ Sunbee มีพื้นที่ 32 m²</strong>. แม้สำหรับ 2 คน พื้นที่พื้นเพิ่มนี้มีความหมายเมื่อพักหลายคืนพร้อมกระเป๋าใบใหญ่ คู่รักที่ไม่อยากใช้หลายคืนก้าวหลบกระเป๋าควรดูที่นี่ก่อนคิดว่าต้องอัปไปห้องใหญ่กว่าที่อื่น</p>
               <p>ครอบครัวต้องดูชื่อห้องให้ละเอียดกว่า ห้อง <strong>Deluxe KOR Double (Family) ขนาด 39 m²</strong> รองรับสูงสุด 4 คน แต่รวมเตียง Double ใหญ่กับเครื่องนอนแบบปูพื้นเกาหลี ไม่ใช่ห้องที่มีเตียงทั่วไป 4 เตียง สำหรับคนที่ไม่ต้องการนอนพื้น รูปแบบนี้ตัดตัวเลือกออกไม่ว่าขนาดห้องจะน่าสนใจแค่ไหน</p>
               <p>Sunbee ยังมีห้องซักผ้าส่วนกลางฟรี พร้อมเครื่องซัก เครื่องอบ และผงซักฟอก ระยะเดินจากสถานียาวกว่า Nine Tree: โรงแรมประเมินประมาณ 7 นาทีจาก Anguk หรือ Jonggak และ 8 นาทีจากทางออก Jongno 3-ga ที่ระบุ เราจะเลือกเพราะห้องและซักผ้า โดยยอมรับระยะเดินนั้น แทนการเรียกว่าโรงแรมติดสถานี</p>
+              <p class="insadong-hotel-map-link-wrap"><a class="insadong-hotel-map-link" href="#insadong-hotel-map" data-map-hotel="sunbee" aria-controls="insadong-hotel-map-canvas">📌 ดูบนแผนที่</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">เช็กราคา</p>
                 <p class="hm-booking-strip__title">เปรียบเทียบโรงแรมนี้บนเว็บไซต์จอง</p>
@@ -262,7 +300,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row" id="amid" aria-labelledby="amid-title">
+          <article class="hm-hotel hm-editorial-row" id="amid" data-hotel-id="amid" aria-labelledby="amid-title">
             <div class="hm-editorial-row__label">
               <h3 id="amid-title">AMID Hotel Seoul</h3>
             </div>
@@ -270,6 +308,7 @@
               <p>AMID คือโรงแรมที่ควรเทียบเมื่อคุณอยากเข้าหาอินซาดงจาก <strong>Jonggak</strong> มากกว่า Anguk ที่อยู่บน Insadong 5-gil วางโรงแรมไว้ฝั่ง Jonggak ของย่าน ทำให้มีตัวเลือกโรงแรมทั่วไปอีกแบบโดยไม่ย้ายฐานออกจากอินซาดง</p>
               <p>ยังควรดูสำหรับผู้ใหญ่ 3 คนที่เดินทางด้วยกัน รายการ Standard Triple และ Deluxe Triple ที่ตรวจสำหรับคู่มือนี้ระบุ <strong>เตียง Single 3 เตียง และรองรับสูงสุด 3 คน</strong>. เปรียบเทียบประเภทห้องเหล่านี้ตรงๆ กับ Standard Triple ของ Nine Tree รวมเงื่อนไขยกเลิกและยอดรวมสำหรับ 3 คน</p>
               <p>อย่าเลือกห้องเพียงเพราะคำว่า “Deluxe” ดูรูปและ Layout ของประเภทที่กำลังจองจริง AMID น่าเลือกมากขึ้นเมื่อฝั่ง Jonggak ของอินซาดงหรือเตียงแยก 3 เตียงสำคัญ; อย่าคิดว่าทุกห้องใหญ่ผิดปกติ</p>
+              <p class="insadong-hotel-map-link-wrap"><a class="insadong-hotel-map-link" href="#insadong-hotel-map" data-map-hotel="amid" aria-controls="insadong-hotel-map-canvas">📌 ดูบนแผนที่</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">เช็กราคา</p>
                 <p class="hm-booking-strip__title">เปรียบเทียบโรงแรมนี้บนเว็บไซต์จอง</p>
@@ -282,7 +321,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row" id="dormy-inn" aria-labelledby="dormy-inn-title">
+          <article class="hm-hotel hm-editorial-row" id="dormy-inn" data-hotel-id="dormy-inn" aria-labelledby="dormy-inn-title">
             <div class="hm-editorial-row__label">
               <h3 id="dormy-inn-title">Dormy Inn EXPRESS Seoul Insadong</h3>
             </div>
@@ -290,6 +329,7 @@
               <p>ที่ Dormy Inn บ่ออาบน้ำเป็นส่วนหนึ่งของการพัก โรงแรมมีพื้นที่อาบน้ำรวมชายและหญิงแยก พร้อมบ่อน้ำร้อน บ่อน้ำเย็น และซาวน่าแห้ง บ่ออาบน้ำมีกำหนดเปิดตั้งแต่ <strong>15:00 ถึง 10:00 ของเช้าวันถัดไป</strong>ส่วนซาวน่าปิดระหว่าง <strong>01:00 ถึง 05:00</strong></p>
               <p>พื้นที่ที่นอนจำกัดกว่า ห้อง Standard Double และ Standard Twin มีพื้นที่ <strong>16 m²</strong>. ข้อแลกเปลี่ยนชัดเจน: ห้องมาตรฐานเล็ก แต่ได้บ่ออาบน้ำและซาวน่าที่ทำให้ Dormy ต่างจากโรงแรมอื่น คนที่มีกระเป๋าใหญ่สองใบและอยากเปิดทั้งสองใบควรเทียบห้องใหญ่กว่าที่อื่นก่อน</p>
               <p>ยังมีพื้นที่ซักและอบส่วนกลาง สนับสนุนทริปยาว แต่ไม่ควรสับสนกับการมีเครื่องซักผ้าในห้อง</p>
+              <p class="insadong-hotel-map-link-wrap"><a class="insadong-hotel-map-link" href="#insadong-hotel-map" data-map-hotel="dormy-inn" aria-controls="insadong-hotel-map-canvas">📌 ดูบนแผนที่</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">เช็กราคา</p>
                 <p class="hm-booking-strip__title">เปรียบเทียบโรงแรมนี้บนเว็บไซต์จอง</p>
@@ -302,7 +342,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row" id="moxy" aria-labelledby="moxy-title">
+          <article class="hm-hotel hm-editorial-row" id="moxy" data-hotel-id="moxy" aria-labelledby="moxy-title">
             <div class="hm-editorial-row__label">
               <h3 id="moxy-title">Moxy Seoul Insadong</h3>
             </div>
@@ -310,6 +350,7 @@
               <p>Moxy เหมาะกับคืนที่จบรอบ Jongno 3-ga หรือ Ikseon-dong: มื้อเย็น เครื่องดื่ม แล้วเดินกลับสั้นๆ โรงแรมอยู่ติดย่าน Jongno 3-ga และ Ikseon-dong พร้อม Rooftop Bar และพื้นที่ส่วนกลางของตัวเอง คนที่ชอบบรรยากาศช่วงค่ำแบบนี้มีเหตุผลชัดกว่าคนที่เพียงต้องการห้องเงียบใกล้พระราชวัง</p>
               <p>ห้องมาตรฐานมีพื้นที่ <strong>20 m²</strong>; ยังมีห้อง Family และ Suite ที่ใหญ่กว่า ดูประเภทที่ผูกกับราคาที่กำลังจอง แทนปล่อยให้ภาพ Suite ใหญ่สร้างความคาดหวังต่อห้องพื้นฐาน</p>
               <p>เสียงถนนต้องอยู่ในการตัดสินใจ บัญชีแขกล่าสุดรายหนึ่งพูดถึงการได้ยินคนข้างนอกตอนกลางคืน แม้ไม่ได้พิสูจน์ว่าทุกห้องเจอเหมือนกัน สำหรับคนนอนหลับไว เราจะเริ่มจากตัวเลือกอื่น คำขอชั้นสูงหรือห้องห่างถนนคึกคักเป็นเพียงคำขอ ไม่ใช่คำสัญญาว่าจะเงียบ</p>
+              <p class="insadong-hotel-map-link-wrap"><a class="insadong-hotel-map-link" href="#insadong-hotel-map" data-map-hotel="moxy" aria-controls="insadong-hotel-map-canvas">📌 ดูบนแผนที่</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">เช็กราคา</p>
                 <p class="hm-booking-strip__title">เปรียบเทียบโรงแรมนี้บนเว็บไซต์จอง</p>
@@ -335,7 +376,7 @@
           </div>
         </header>
         <div class="hm-hotel-region__list">
-          <article class="hm-hotel hm-editorial-row" id="orakai" aria-labelledby="orakai-title">
+          <article class="hm-hotel hm-editorial-row" id="orakai" data-hotel-id="orakai" aria-labelledby="orakai-title">
             <div class="hm-editorial-row__label">
               <h3 id="orakai-title">Orakai Insadong Suites</h3>
             </div>
@@ -344,6 +385,7 @@
               <p>สำหรับครอบครัวหรือกลุ่มที่คาดว่าจะกินอาหารเช้าในอพาร์ตเมนต์ ซักผ้ากลางทริป หรือใช้ช่วงค่ำบางส่วนข้างใน พื้นที่นั่งเล่นเพิ่มมีความหมาย สำหรับ 2 คนที่ออกหลังอาหารเช้าและกลับมาเพียงนอน โรงแรมทั่วไปอาจตอบโจทย์โดยไม่ต้องจ่ายให้พื้นที่ที่แทบไม่ได้ใช้</p>
               <p>ก่อนจอง ให้ตัดสินใจให้ชัดว่า <strong>ใครจะนอนเตียงไหน</strong>. คำว่า “two-bedroom” บอกจำนวนห้องนอน แต่ไม่ได้ยืนยันจำนวนผู้เข้าพักที่อนุญาตหรือรับประกันเตียงสำหรับทุกคนโดยตัวมันเอง ขอรูปแบบเตียง จำนวนผู้เข้าพักสูงสุด และค่าใช้จ่ายเพิ่มสำหรับยูนิตที่ขายจริงให้ชัด</p>
               <p>จากนั้นเปรียบเทียบราคาอพาร์ตเมนต์ทั้งหมดกับจำนวนห้องโรงแรมที่กลุ่มของคุณต้องใช้ถ้าไม่เลือกอพาร์ตเมนต์</p>
+              <p class="insadong-hotel-map-link-wrap"><a class="insadong-hotel-map-link" href="#insadong-hotel-map" data-map-hotel="orakai" aria-controls="insadong-hotel-map-canvas">📌 ดูบนแผนที่</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">เช็กราคา</p>
                 <p class="hm-booking-strip__title">เปรียบเทียบโรงแรมนี้บนเว็บไซต์จอง</p>
@@ -356,7 +398,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row" id="somerset-palace" aria-labelledby="somerset-palace-title">
+          <article class="hm-hotel hm-editorial-row" id="somerset-palace" data-hotel-id="somerset-palace" aria-labelledby="somerset-palace-title">
             <div class="hm-editorial-row__label">
               <h3 id="somerset-palace-title">Somerset Palace Seoul</h3>
             </div>
@@ -364,6 +406,7 @@
               <p>Somerset ไม่ได้มีไว้สำหรับครอบครัวใหญ่เท่านั้น ห้อง <strong>Studio Executive ขนาด 29 m²</strong> และอพาร์ตเมนต์ 1 ห้องนอน ทำให้คนเที่ยวคนเดียวและคู่รักจองครัวกับซักผ้าในห้องได้โดยไม่ต้องใช้ยูนิตหลายห้องนอน</p>
               <p>สำหรับกลุ่มใหญ่ <strong>Two-Bedroom Executive ขนาด 80 m²</strong> ต้องอ่านละเอียดขึ้น ที่พักระบุสูงสุด 4 คน โดย 3 คนเป็นจำนวนพื้นฐาน และคนที่ 4 มีค่าใช้จ่ายเพิ่ม กรอกทุกคนในการจอง แทนตีความ “พักได้ 4” ว่าราคาที่แสดงรวม 4 คนแล้ว</p>
               <p>สระกลางแจ้งบน Rooftop เปิดตามฤดูกาล อย่าจองฤดูหนาวโดยคิดว่าจะมีที่ว่ายน้ำ ในฤดูหนาวให้ตัดสระออกจากการเปรียบเทียบ; ครัว ซักผ้า และ Layout อพาร์ตเมนต์คือสิ่งที่ยังมีความหมายตลอดปี</p>
+              <p class="insadong-hotel-map-link-wrap"><a class="insadong-hotel-map-link" href="#insadong-hotel-map" data-map-hotel="somerset-palace" aria-controls="insadong-hotel-map-canvas">📌 ดูบนแผนที่</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">เช็กราคา</p>
                 <p class="hm-booking-strip__title">เปรียบเทียบโรงแรมนี้บนเว็บไซต์จอง</p>
@@ -472,6 +515,7 @@
 
   <script src="../guide-year.js" defer></script>
   <script src="../common.js"></script>
+  <script src="../insadong-hotel-map.js" defer></script>
 <script>
   window.va = window.va || function () {
     (window.vaq = window.vaq || []).push(arguments);
