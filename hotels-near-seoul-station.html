@@ -20,6 +20,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400..600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="seoul-station-hotel-map.css">
   <style>
     body.seoul-station-page main .hm-section {
       height: auto;
@@ -604,6 +605,34 @@
       </div>
     </section>
 
+    <section class="hm-section seoul-station-hotel-map-section" id="seoul-station-hotel-map" aria-labelledby="seoul-station-hotel-map-title">
+      <div class="container">
+        <header class="hm-section__header">
+          <h2 id="seoul-station-hotel-map-title">Where Are the Hotels Near Seoul Station?</h2>
+          <p class="hm-section__intro">Select a hotel pin or name to see its location.</p>
+        </header>
+        <div class="seoul-station-hotel-map-layout">
+          <div class="seoul-station-hotel-map-shell">
+            <div class="seoul-station-hotel-map-canvas" id="seoul-station-hotel-map-canvas" role="region" tabindex="0" aria-label="Interactive map showing 8 stays near Seoul Station"></div>
+            <p class="seoul-station-hotel-map-status" id="seoul-station-hotel-map-status" role="status" aria-live="polite">Loading the hotel map…</p>
+          </div>
+          <aside class="seoul-station-hotel-map-directory" aria-labelledby="seoul-station-hotel-map-directory-title">
+            <h3 id="seoul-station-hotel-map-directory-title">Stays on this map</h3>
+            <ol class="seoul-station-hotel-map-list">
+              <li><button type="button" data-map-hotel="four-points-seoul-station" aria-controls="seoul-station-hotel-map-canvas" aria-pressed="false"><span class="seoul-station-hotel-map-number" aria-hidden="true">1</span><span>Four Points by Sheraton Josun, Seoul Station</span></button></li>
+              <li><button type="button" data-map-hotel="hotelette-seoul-station" aria-controls="seoul-station-hotel-map-canvas" aria-pressed="false"><span class="seoul-station-hotel-map-number" aria-hidden="true">2</span><span>Hotelette Seoul Station</span></button></li>
+              <li><button type="button" data-map-hotel="ziyolk-seoul-station" aria-controls="seoul-station-hotel-map-canvas" aria-pressed="false"><span class="seoul-station-hotel-map-number" aria-hidden="true">3</span><span>ZIYOLK Seoul Station</span></button></li>
+              <li><button type="button" data-map-hotel="hotel-manu-seoul" aria-controls="seoul-station-hotel-map-canvas" aria-pressed="false"><span class="seoul-station-hotel-map-number" aria-hidden="true">4</span><span>Hotel Manu Seoul</span></button></li>
+              <li><button type="button" data-map-hotel="hotel-gracery-seoul" aria-controls="seoul-station-hotel-map-canvas" aria-pressed="false"><span class="seoul-station-hotel-map-number" aria-hidden="true">5</span><span>Hotel Gracery Seoul</span></button></li>
+              <li><button type="button" data-map-hotel="uh-suite-the-seoul" aria-controls="seoul-station-hotel-map-canvas" aria-pressed="false"><span class="seoul-station-hotel-map-number" aria-hidden="true">6</span><span>UH Suite The Seoul</span></button></li>
+              <li><button type="button" data-map-hotel="ramada-namdaemun" aria-controls="seoul-station-hotel-map-canvas" aria-pressed="false"><span class="seoul-station-hotel-map-number" aria-hidden="true">7</span><span>Ramada Hotel &amp; Suites by Wyndham Seoul Namdaemun</span></button></li>
+              <li><button type="button" data-map-hotel="travel-house" aria-controls="seoul-station-hotel-map-canvas" aria-pressed="false"><span class="seoul-station-hotel-map-number" aria-hidden="true">8</span><span>Travel House</span></button></li>
+            </ol>
+          </aside>
+        </div>
+      </div>
+    </section>
+
     <section class="hm-section" id="hotel-recommendations" aria-labelledby="seoul-station-hotels-guide">
       <div class="container">
         <header class="hm-hotel-guide">
@@ -611,7 +640,7 @@
         </header>
 
         <div class="hm-hotel-region__list">
-          <article class="hm-hotel hm-editorial-row seoul-station-hotel">
+          <article class="hm-hotel hm-editorial-row seoul-station-hotel" data-hotel-id="four-points-seoul-station">
             <div class="hm-editorial-row__label">
               <p class="hm-decision-card__label">FULL-SERVICE STATION BASE</p>
               <h3>Four Points by Sheraton Josun, Seoul Station</h3>
@@ -621,6 +650,7 @@
               <p>Four Points is the hotel I would start with when Seoul Station itself is the reason for the stay. It works particularly well for a business trip, an overnight between Incheon Airport and a KTX journey, or the final night in Seoul before heading to the airport. Unlike the smaller stays around the station, you are getting a conventional full-service hotel with a 24-hour hotel environment, restaurants, a fitness center, and rooms with proper work desks and Wi-Fi.</p>
               <p>The important detail is what “connected to Seoul Station” actually means. The hotel connects to the station through the underground passage at Exit 12, but the walk from Seoul Station is still roughly 8–15 minutes. KTX, AREX, GTX-A and subway passengers still have to move through a large station complex before reaching the hotel side. That indoor route is useful in bad weather, but this is not a hotel where you step off the train and walk straight into the lobby.</p>
               <p>I would be less enthusiastic about paying for Four Points if you only need a bed for a few hours before an early train, or if most of the trip is about cafés, nightlife and sightseeing elsewhere in Seoul. Rooms can also feel compact once several suitcases are open. In those cases, the value of the full-service hotel has to matter enough to justify choosing it over a smaller station stay or a more interesting neighborhood.</p>
+              <p class="seoul-station-hotel-map-link-wrap"><a class="seoul-station-hotel-map-link" href="#seoul-station-hotel-map" data-map-hotel="four-points-seoul-station" aria-controls="seoul-station-hotel-map-canvas">📌 View on Map</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
                 <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
@@ -633,7 +663,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row seoul-station-hotel">
+          <article class="hm-hotel hm-editorial-row seoul-station-hotel" data-hotel-id="hotelette-seoul-station">
             <div class="hm-editorial-row__label">
               <p class="hm-decision-card__label">COMPACT SOLO OVERNIGHT</p>
               <h3>Hotelette Seoul Station</h3>
@@ -643,6 +673,7 @@
               <p>Hotelette is the kind of place to consider when the night is mostly about sleeping close to Seoul Station and leaving again the next morning. It sits right by Exit 10, and for a solo traveler with a backpack or small carry-on, that proximity can matter more than having a large room or full hotel facilities.</p>
               <p>The room is the limiting factor, not the location. The rooms are very compact, and a full-size suitcase can quickly take over the available floor space. The hotel itself has an elevator, but Exit 10 includes a short flight of stairs. That is manageable with light luggage and much less appealing with a large case.</p>
               <p>There is also a clear family filter: children are not allowed, and there are no cots or extra beds. This is therefore not a small family hotel disguised as a budget option. It is a narrow-purpose stay for one adult who values the station more than room space.</p>
+              <p class="seoul-station-hotel-map-link-wrap"><a class="seoul-station-hotel-map-link" href="#seoul-station-hotel-map" data-map-hotel="hotelette-seoul-station" aria-controls="seoul-station-hotel-map-canvas">📌 View on Map</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
                 <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
@@ -655,7 +686,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row seoul-station-hotel">
+          <article class="hm-hotel hm-editorial-row seoul-station-hotel" data-hotel-id="ziyolk-seoul-station">
             <div class="hm-editorial-row__label">
               <p class="hm-decision-card__label">COMPACT STAY FOR 2–4</p>
               <h3>ZIYOLK Seoul Station</h3>
@@ -665,6 +696,7 @@
               <p>ZIYOLK fills a gap that Hotelette does not. The rooms are still compact, but there is a real four-person option: the Family Room is 21㎡ with two double beds, while the Double and Twin rooms are 10㎡ and 12㎡. That makes it worth considering for a couple or small group that wants to stay very close to Seoul Station without moving up to a larger full-service hotel.</p>
               <p>Exit 10 is the shortest approach for most guests. The catch is the final approach: there is a short but fairly steep slope, and Exit 10 itself is not the easiest choice with heavy luggage.</p>
               <p>I would choose ZIYOLK for a short rail-focused stay rather than for room space. The rooms fill up quickly once a suitcase is opened. Self-service check-in outside staffed hours can help with a late arrival, but soundproofing and the compact layout are reasons not to treat the Family Room as a roomy family hotel.</p>
+              <p class="seoul-station-hotel-map-link-wrap"><a class="seoul-station-hotel-map-link" href="#seoul-station-hotel-map" data-map-hotel="ziyolk-seoul-station" aria-controls="seoul-station-hotel-map-canvas">📌 View on Map</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
                 <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
@@ -677,7 +709,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row seoul-station-hotel">
+          <article class="hm-hotel hm-editorial-row seoul-station-hotel" data-hotel-id="hotel-manu-seoul">
             <div class="hm-editorial-row__label">
               <p class="hm-decision-card__label">STATION + CITY BALANCE</p>
               <h3>Hotel Manu Seoul</h3>
@@ -687,6 +719,7 @@
               <p>If Seoul Station matters but you do not want the station to dominate the whole stay, Hotel Manu is where the balance starts to shift. It sits on the Sungnyemun and Namdaemun side rather than directly beside the platforms, so you can still use KTX while having a more natural route toward Namdaemun Market, Myeongdong and central Seoul.</p>
               <p>The walk needs a little explanation. One practical route is to use the outdoor elevator up to Seoullo 7017 and follow the elevated walkway toward the hotel, which can be easier with luggage than blindly following the nearest station exit. But “close to Seoul Station” still does not mean close to the KTX platform. The size of the station complex adds time after you reach the station itself.</p>
               <p>That is why I would not pick Manu for a dawn departure when shaving every possible minute off the station approach is the priority. Its stronger case is a mixed itinerary—one or two rail trips, then meals, sightseeing or business in central Seoul. Room type still matters because some rooms are compact.</p>
+              <p class="seoul-station-hotel-map-link-wrap"><a class="seoul-station-hotel-map-link" href="#seoul-station-hotel-map" data-map-hotel="hotel-manu-seoul" aria-controls="seoul-station-hotel-map-canvas">📌 View on Map</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
                 <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
@@ -699,7 +732,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row seoul-station-hotel">
+          <article class="hm-hotel hm-editorial-row seoul-station-hotel" data-hotel-id="hotel-gracery-seoul">
             <div class="hm-editorial-row__label">
               <p class="hm-decision-card__label">BUSINESS + CITY HALL BASE</p>
               <h3>Hotel Gracery Seoul</h3>
@@ -709,6 +742,7 @@
               <p>Hotel Gracery only belongs in this guide when Seoul Station is part of the trip rather than the whole reason for the stay. The hotel is much more naturally tied to City Hall and Namdaemun. Seoul Station is walkable, but this is enough distance that I would not treat it as a station-front hotel.</p>
               <p>Where Gracery becomes more convincing is a business or mixed city itinerary. The hotel has a business center with laptops and printing, coin laundry, a 24-hour front desk, and self-service luggage lockers.</p>
               <p>I would choose it when meetings around City Hall or central Seoul occupy most of the stay and KTX is needed only once or twice. I would not choose it simply because a booking site labels it “near Seoul Station,” especially before an early train. Gracery earns its place by giving the days in Seoul more convenience, not by giving you the shortest route to a KTX platform.</p>
+              <p class="seoul-station-hotel-map-link-wrap"><a class="seoul-station-hotel-map-link" href="#seoul-station-hotel-map" data-map-hotel="hotel-gracery-seoul" aria-controls="seoul-station-hotel-map-canvas">📌 View on Map</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
                 <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
@@ -721,7 +755,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row seoul-station-hotel">
+          <article class="hm-hotel hm-editorial-row seoul-station-hotel" data-hotel-id="uh-suite-the-seoul">
             <div class="hm-editorial-row__label">
               <p class="hm-decision-card__label">FAMILY &amp; GROUP SUITE</p>
               <h3>UH Suite The Seoul</h3>
@@ -731,6 +765,7 @@
               <p>UH Suite The Seoul becomes much more interesting once three or more people are traveling together. Its Family City Suite sleeps up to six in three separate bedrooms with three beds and a living room, while the Private City Suite takes up to four with two bedrooms and a living area. That is a very different proposition from squeezing four people into one compact station hotel room.</p>
               <p>The location also fits the kind of trip this page is about. This is the kind of property that becomes especially useful when Seoul Station is part of a family’s onward journey—such as returning from another city for a final night in Seoul or leaving by KTX the next morning.</p>
               <p>I would still check the exact room type before booking. “Suite” does not automatically mean every bedroom or living area is large. For a couple, paying for this layout may be unnecessary. For four to six people who want separate sleeping spaces near Seoul Station, however, it solves a problem the smaller hotels in this guide simply do not.</p>
+              <p class="seoul-station-hotel-map-link-wrap"><a class="seoul-station-hotel-map-link" href="#seoul-station-hotel-map" data-map-hotel="uh-suite-the-seoul" aria-controls="seoul-station-hotel-map-canvas">📌 View on Map</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
                 <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
@@ -743,7 +778,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row seoul-station-hotel">
+          <article class="hm-hotel hm-editorial-row seoul-station-hotel" data-hotel-id="ramada-namdaemun">
             <div class="hm-editorial-row__label">
               <p class="hm-decision-card__label">FAMILY / GROUP + AIRPORT BUS</p>
               <h3>Ramada Hotel &amp; Suites by Wyndham Seoul Namdaemun</h3>
@@ -753,6 +788,7 @@
               <p>Ramada is worth considering when several people are traveling together and the trip involves both the airport and Seoul Station. The hotel is not beside the KTX platforms—the walk from Seoul Station Exit 3 is about 10–15 minutes—but it has something the closer compact stays do not: a wide range of larger room configurations for three, four, and even five guests.</p>
               <p>The airport connection is the other reason to look at it. K-Limousine route 6702 currently stops at Ramada Hotel &amp; Suites Namdaemun. For a family arriving with several people and then taking KTX the next day, that can be simpler than moving everyone through AREX, Seoul Station, and another hotel transfer on the same evening.</p>
               <p>Room choice matters here. Available configurations include rooms with three single beds, two double beds, a double plus two singles, and four single beds. I would not choose Ramada if the only goal is the shortest possible walk to an early KTX. It works better when room layout and airport access matter enough to accept the longer station walk.</p>
+              <p class="seoul-station-hotel-map-link-wrap"><a class="seoul-station-hotel-map-link" href="#seoul-station-hotel-map" data-map-hotel="ramada-namdaemun" aria-controls="seoul-station-hotel-map-canvas">📌 View on Map</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
                 <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
@@ -765,7 +801,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row seoul-station-hotel">
+          <article class="hm-hotel hm-editorial-row seoul-station-hotel" data-hotel-id="travel-house">
             <div class="hm-editorial-row__label">
               <p class="hm-decision-card__label">APARTMENT BASE FOR GROUPS</p>
               <h3>Travel House</h3>
@@ -775,6 +811,7 @@
               <p>Travel House is the option I would look at when a hotel room stops being the most practical setup. Several apartment configurations can accommodate four to six or more guests, with kitchen facilities, a washing machine, dining space, a lift, and luggage storage. For a family or group spending several nights in Seoul between trips to other Korean cities, being able to wash clothes and eat something simple in the apartment can matter more than having a hotel lobby or daily full-service facilities.</p>
               <p>The property is on the west side of Seoul Station, around the Exit 15 approach. I would not publish a precise platform-to-door time because map estimates vary. The useful point is that this is part of the station’s west-side apartment cluster.</p>
               <p>Group capacity needs a reality check, though. A unit that technically sleeps five or six is not automatically comfortable for five or six adults. Check the exact bed layout, bathroom count and apartment type before booking—especially for a larger family.</p>
+              <p class="seoul-station-hotel-map-link-wrap"><a class="seoul-station-hotel-map-link" href="#seoul-station-hotel-map" data-map-hotel="travel-house" aria-controls="seoul-station-hotel-map-canvas">📌 View on Map</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
                 <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
@@ -988,6 +1025,7 @@
 
   <script src="guide-year.js" defer></script>
   <script src="common.js"></script>
+  <script src="seoul-station-hotel-map.js" defer></script>
 <script>
   window.va = window.va || function () {
     (window.vaq = window.vaq || []).push(arguments);
