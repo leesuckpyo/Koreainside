@@ -24,6 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400..600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../gangnam-hotel-map.css">
   <style>
     body.gangnam-page main .hm-hero__copy {
       grid-column: 1 / -1;
@@ -231,13 +232,50 @@
       </div>
     </section>
 
+    <section class="hm-section gangnam-hotel-map-section" id="gangnam-hotel-map" aria-labelledby="gangnam-hotel-map-title" data-map-asset-prefix="../"
+      data-map-copy-default="已顯示10間飯店的位置。請點選圖釘或飯店名稱。"
+      data-map-copy-selected="已選取：{name}。編號{number}的圖釘維持紅色，其餘圖釘顯示為藍色。"
+      data-map-copy-unavailable-selected="已選取：{name}。NAVER地圖目前無法使用，但仍可使用本頁的飯店連結。"
+      data-map-copy-pending-selected="已選取：{name}。地圖載入完成後會套用此選取結果。"
+      data-map-copy-fallback="無法載入NAVER互動地圖。請先查看10間飯店的列表，稍後再試。"
+      data-map-copy-fallback-status="NAVER地圖無法使用。飯店名稱及本頁連結仍可使用。"
+      data-map-copy-marker-aria="選取編號{number}：{name}">
+      <div class="container">
+        <header class="hm-section__header">
+          <h2 id="gangnam-hotel-map-title">江南的飯店在哪裡？</h2>
+          <p class="hm-section__intro">點選地圖圖釘或飯店名稱，即可查看位置。</p>
+        </header>
+        <div class="gangnam-hotel-map-layout">
+          <div class="gangnam-hotel-map-shell">
+            <div class="gangnam-hotel-map-canvas" id="gangnam-hotel-map-canvas" role="region" tabindex="0" aria-label="顯示江南10間飯店位置的互動地圖"></div>
+            <p class="gangnam-hotel-map-status" id="gangnam-hotel-map-status" role="status" aria-live="polite">正在載入飯店地圖…</p>
+          </div>
+          <aside class="gangnam-hotel-map-directory" aria-labelledby="gangnam-hotel-map-directory-title">
+            <h3 id="gangnam-hotel-map-directory-title">地圖上的飯店</h3>
+            <ol class="gangnam-hotel-map-list">
+              <li><button type="button" data-map-hotel="novotel" aria-controls="gangnam-hotel-map-canvas" aria-pressed="false"><span class="gangnam-hotel-map-number" aria-hidden="true">1</span><span>Novotel Ambassador Seoul Gangnam</span></button></li>
+              <li><button type="button" data-map-hotel="dormy-inn" aria-controls="gangnam-hotel-map-canvas" aria-pressed="false"><span class="gangnam-hotel-map-number" aria-hidden="true">2</span><span>Dormy Inn Seoul Gangnam</span></button></li>
+              <li><button type="button" data-map-hotel="ocloud" aria-controls="gangnam-hotel-map-canvas" aria-pressed="false"><span class="gangnam-hotel-map-number" aria-hidden="true">3</span><span>Ocloud Hotel Gangnam</span></button></li>
+              <li><button type="button" data-map-hotel="hotel-cappuccino" aria-controls="gangnam-hotel-map-canvas" aria-pressed="false"><span class="gangnam-hotel-map-number" aria-hidden="true">4</span><span>Hotel Cappuccino</span></button></li>
+              <li><button type="button" data-map-hotel="ac-hotel" aria-controls="gangnam-hotel-map-canvas" aria-pressed="false"><span class="gangnam-hotel-map-number" aria-hidden="true">5</span><span>AC Hotel Seoul Gangnam</span></button></li>
+              <li><button type="button" data-map-hotel="grand-intercontinental" aria-controls="gangnam-hotel-map-canvas" aria-pressed="false"><span class="gangnam-hotel-map-number" aria-hidden="true">6</span><span>Grand InterContinental Seoul Parnas</span></button></li>
+              <li><button type="button" data-map-hotel="shilla-stay-samsung" aria-controls="gangnam-hotel-map-canvas" aria-pressed="false"><span class="gangnam-hotel-map-number" aria-hidden="true">7</span><span>Shilla Stay Samsung</span></button></li>
+              <li><button type="button" data-map-hotel="hotel-peyto-samseong" aria-controls="gangnam-hotel-map-canvas" aria-pressed="false"><span class="gangnam-hotel-map-number" aria-hidden="true">8</span><span>Hotel Peyto Samseong</span></button></li>
+              <li><button type="button" data-map-hotel="andaz" aria-controls="gangnam-hotel-map-canvas" aria-pressed="false"><span class="gangnam-hotel-map-number" aria-hidden="true">9</span><span>Andaz Seoul Gangnam</span></button></li>
+              <li><button type="button" data-map-hotel="voco" aria-controls="gangnam-hotel-map-canvas" aria-pressed="false"><span class="gangnam-hotel-map-number" aria-hidden="true">10</span><span>voco Seoul Gangnam</span></button></li>
+            </ol>
+          </aside>
+        </div>
+      </div>
+    </section>
+
     <section class="hm-section hm-section--cream" id="gangnam-station-hotels" aria-labelledby="gangnam-station-hotels-title">
       <div class="container">
         <header class="hm-section__header">
           <h2 id="gangnam-station-hotels-title">江南站、新論峴與驛三周邊飯店</h2>
         </header>
         <div class="hm-hotel-region__list">
-          <article class="hm-hotel hm-editorial-row" id="novotel" aria-labelledby="novotel-title">
+          <article class="hm-hotel hm-editorial-row" id="novotel" data-hotel-id="novotel" aria-labelledby="novotel-title">
             <div class="hm-editorial-row__label">
               <h3 id="novotel-title">Novotel Ambassador Seoul Gangnam</h3>
             </div>
@@ -248,6 +286,7 @@
               <p>若每趟行程都以 2 號線規劃，這點重要。晚上在新論峴周邊、白天在首爾南部，這個位置就更合理。</p>
               <p>機場抵達也是值得看的理由。6703 機場巴士服務這一帶，長途飛行後，不一定需要拖行李轉地鐵。</p>
               <p class="hm-affiliate-note">本頁包含聯盟行銷連結。</p>
+              <p class="gangnam-map-link-wrap"><a class="gangnam-map-link" href="#gangnam-hotel-map" data-map-hotel="novotel" aria-controls="gangnam-hotel-map-canvas">📌 在地圖上查看</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">查看房價</p>
                 <p class="hm-booking-strip__title">在訂房網站比較這間飯店</p>
@@ -259,7 +298,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="dormy-inn" aria-labelledby="dormy-inn-title">
+          <article class="hm-hotel hm-editorial-row" id="dormy-inn" data-hotel-id="dormy-inn" aria-labelledby="dormy-inn-title">
             <div class="hm-editorial-row__label">
               <h3 id="dormy-inn-title">Dormy Inn Seoul Gangnam</h3>
             </div>
@@ -269,6 +308,7 @@
               <p>浴場營業到隔天早上，三溫暖在夜間部分時段暫停。特別為這些設施訂房，抵達前應確認最新開放時間。</p>
               <p>飯店也比許多旅客從名字預期的更靠近新論峴。Novotel 附近的 6703 機場巴士站，到 Dormy Inn 只需走一小段。</p>
               <p>想要大房間攤開兩個行李箱，就看別處。如果知道每晚都會泡澡，小房間就成了較合理的取捨。</p>
+              <p class="gangnam-map-link-wrap"><a class="gangnam-map-link" href="#gangnam-hotel-map" data-map-hotel="dormy-inn" aria-controls="gangnam-hotel-map-canvas">📌 在地圖上查看</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">查看房價</p>
                 <p class="hm-booking-strip__title">在訂房網站比較這間飯店</p>
@@ -280,7 +320,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="ocloud" aria-labelledby="ocloud-title">
+          <article class="hm-hotel hm-editorial-row" id="ocloud" data-hotel-id="ocloud" aria-labelledby="ocloud-title">
             <div class="hm-editorial-row__label">
               <h3 id="ocloud-title">Ocloud Hotel Gangnam</h3>
             </div>
@@ -290,6 +330,7 @@
               <p>晚餐吃得晚，也能方便回來，不必圍繞末班地鐵規劃整晚。</p>
               <p>Family Twin 房型多了另一種用途，但各訂房網站列的人數上限並非一直一致。別只數床位，就假設允許同樣人數的成人。先把所有人輸入訂房。</p>
               <p>如果每天都在 COEX，Ocloud 就較不適合。這種情況，住三成能減少更多路程。</p>
+              <p class="gangnam-map-link-wrap"><a class="gangnam-map-link" href="#gangnam-hotel-map" data-map-hotel="ocloud" aria-controls="gangnam-hotel-map-canvas">📌 在地圖上查看</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">查看房價</p>
                 <p class="hm-booking-strip__title">在訂房網站比較這間飯店</p>
@@ -301,7 +342,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="hotel-cappuccino" aria-labelledby="hotel-cappuccino-title">
+          <article class="hm-hotel hm-editorial-row" id="hotel-cappuccino" data-hotel-id="hotel-cappuccino" aria-labelledby="hotel-cappuccino-title">
             <div class="hm-editorial-row__label">
               <h3 id="hotel-cappuccino-title">Hotel Cappuccino</h3>
             </div>
@@ -311,6 +352,7 @@
               <p>另有自助洗衣，對較長旅程，比多一項裝飾性飯店備品更有價值。</p>
               <p>適合喜歡驛三／江南晚間環境，且不需要大型完整服務飯店的旅客。想找安靜高級住宿或直接前往 COEX，別處有更好的選擇。</p>
               <p>團體仍要按確切房型訂。標準房照片很有設計感，不是四位成人可以入住的證明。</p>
+              <p class="gangnam-map-link-wrap"><a class="gangnam-map-link" href="#gangnam-hotel-map" data-map-hotel="hotel-cappuccino" aria-controls="gangnam-hotel-map-canvas">📌 在地圖上查看</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">查看房價</p>
                 <p class="hm-booking-strip__title">在訂房網站比較這間飯店</p>
@@ -322,7 +364,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="ac-hotel" aria-labelledby="ac-hotel-title">
+          <article class="hm-hotel hm-editorial-row" id="ac-hotel" data-hotel-id="ac-hotel" aria-labelledby="ac-hotel-title">
             <div class="hm-editorial-row__label">
               <h3 id="ac-hotel-title">AC Hotel Seoul Gangnam</h3>
             </div>
@@ -332,6 +374,7 @@
               <p>多數旅客會把它當成現代化常規飯店，但部分較高房型提供更多。Premier Suite 有獨立起居空間與完整廚房，讓長住的實用性不同。</p>
               <p>這不代表每個人都該花錢訂套房。如果早餐後出門、很晚才回來，廚房可能幾乎不重要。</p>
               <p>驛三本來就是需要停留的地方，AC Hotel 最有優勢。</p>
+              <p class="gangnam-map-link-wrap"><a class="gangnam-map-link" href="#gangnam-hotel-map" data-map-hotel="ac-hotel" aria-controls="gangnam-hotel-map-canvas">📌 在地圖上查看</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">查看房價</p>
                 <p class="hm-booking-strip__title">在訂房網站比較這間飯店</p>
@@ -353,7 +396,7 @@
           <h2 id="samseong-coex-hotels-title">三成與 COEX 周邊飯店</h2>
         </header>
         <div class="hm-hotel-region__list">
-          <article class="hm-hotel hm-editorial-row" id="grand-intercontinental" aria-labelledby="grand-intercontinental-title">
+          <article class="hm-hotel hm-editorial-row" id="grand-intercontinental" data-hotel-id="grand-intercontinental" aria-labelledby="grand-intercontinental-title">
             <div class="hm-editorial-row__label">
               <h3 id="grand-intercontinental-title">Grand InterContinental Seoul Parnas</h3>
             </div>
@@ -363,6 +406,7 @@
               <p>這會改變開會當天的早晨。不必計畫幾點出發、留意天氣、帶工作資料搭地鐵，直接走過去就好。</p>
               <p>6103 機場巴士也服務這一帶，比需要轉乘的鐵路路線，更方便帶行李抵達。</p>
               <p>有用到地點或飯店本身，房價才合理。如果一週都在別處觀光，只短暫去一次 COEX，每晚為這份便利付費，就比較難說值得。</p>
+              <p class="gangnam-map-link-wrap"><a class="gangnam-map-link" href="#gangnam-hotel-map" data-map-hotel="grand-intercontinental" aria-controls="gangnam-hotel-map-canvas">📌 在地圖上查看</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">查看房價</p>
                 <p class="hm-booking-strip__title">在訂房網站比較這間飯店</p>
@@ -374,7 +418,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="shilla-stay-samsung" aria-labelledby="shilla-stay-samsung-title">
+          <article class="hm-hotel hm-editorial-row" id="shilla-stay-samsung" data-hotel-id="shilla-stay-samsung" aria-labelledby="shilla-stay-samsung-title">
             <div class="hm-editorial-row__label">
               <h3 id="shilla-stay-samsung-title">Shilla Stay Samsung</h3>
             </div>
@@ -384,6 +428,7 @@
               <p>訂房時有個容易忽略的細節：部分 Family Twin 與標準房是以 <strong>無景觀房</strong>販售。家庭房不代表景觀更好，或房間更明亮。</p>
               <p>若重視窗外江南景色，確認確切類別，別以為飯店名稱就是保證。</p>
               <p>在 COEX 周邊開會、購物或短暫家庭住宿，較簡單的飯店設施可能已夠用。</p>
+              <p class="gangnam-map-link-wrap"><a class="gangnam-map-link" href="#gangnam-hotel-map" data-map-hotel="shilla-stay-samsung" aria-controls="gangnam-hotel-map-canvas">📌 在地圖上查看</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">查看房價</p>
                 <p class="hm-booking-strip__title">在訂房網站比較這間飯店</p>
@@ -395,7 +440,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="hotel-peyto-samseong" aria-labelledby="hotel-peyto-samseong-title">
+          <article class="hm-hotel hm-editorial-row" id="hotel-peyto-samseong" data-hotel-id="hotel-peyto-samseong" aria-labelledby="hotel-peyto-samseong-title">
             <div class="hm-editorial-row__label">
               <h3 id="hotel-peyto-samseong-title">Hotel Peyto Samseong</h3>
             </div>
@@ -404,6 +449,7 @@
               <p>靠近 COEX，也有投幣洗衣等實用設施。比起晚上待在飯店，更在意地點的一兩位旅客，尤其好用。</p>
               <p>別把雙床房格局當成彈性團體住宿。加床選項有限，三位成人不會是我們從這裡開始找的情況。</p>
               <p>也很適合江南購物行程。COEX、百貨公司與三成是當天重點，住附近比只因江南站更有名就從那裡通勤實用。</p>
+              <p class="gangnam-map-link-wrap"><a class="gangnam-map-link" href="#gangnam-hotel-map" data-map-hotel="hotel-peyto-samseong" aria-controls="gangnam-hotel-map-canvas">📌 在地圖上查看</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">查看房價</p>
                 <p class="hm-booking-strip__title">在訂房網站比較這間飯店</p>
@@ -425,7 +471,7 @@
           <h2 id="apgujeong-cheongdam-hotels-title">狎鷗亭與清潭</h2>
         </header>
         <div class="hm-hotel-region__list">
-          <article class="hm-hotel hm-editorial-row" id="andaz" aria-labelledby="andaz-title">
+          <article class="hm-hotel hm-editorial-row" id="andaz" data-hotel-id="andaz" aria-labelledby="andaz-title">
             <div class="hm-editorial-row__label">
               <h3 id="andaz-title">Andaz Seoul Gangnam</h3>
             </div>
@@ -435,6 +481,7 @@
               <p>起始房型就比首爾市中心許多飯店大，更高類別空間也明顯增加。部分配置可供家庭入住，但訂房時仍要確認確切人數上限。</p>
               <p>我們不會只為說自己住過江南就花錢訂這間。如果每天在 COEX，Andaz 帶來的通勤，Grand InterContinental 就不需要。</p>
               <p>若行事曆排滿狎鷗亭診所、清潭預約與購物，判斷就反過來。</p>
+              <p class="gangnam-map-link-wrap"><a class="gangnam-map-link" href="#gangnam-hotel-map" data-map-hotel="andaz" aria-controls="gangnam-hotel-map-canvas">📌 在地圖上查看</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">查看房價</p>
                 <p class="hm-booking-strip__title">在訂房網站比較這間飯店</p>
@@ -456,7 +503,7 @@
           <h2 id="sinsa-dosan-hotels-title">新沙與島山</h2>
         </header>
         <div class="hm-hotel-region__list">
-          <article class="hm-hotel hm-editorial-row" id="voco" aria-labelledby="voco-title">
+          <article class="hm-hotel hm-editorial-row" id="voco" data-hotel-id="voco" aria-labelledby="voco-title">
             <div class="hm-editorial-row__label">
               <h3 id="voco-title">voco Seoul Gangnam</h3>
             </div>
@@ -466,6 +513,7 @@
               <p>大部分情侶不需要接近這種規模。重點是同一間飯店，可以供一般兩人住宿，也能透過合適房型接待更大的家庭或團體。</p>
               <p>沒有飯店機場接駁車可依賴，抵達前要查機場巴士或最後一段計程車，別假設高級飯店會處理接送。</p>
               <p>林蔭道、島山公園、美容預約與新沙晚餐，這個位置值得選；COEX 會議則不是。</p>
+              <p class="gangnam-map-link-wrap"><a class="gangnam-map-link" href="#gangnam-hotel-map" data-map-hotel="voco" aria-controls="gangnam-hotel-map-canvas">📌 在地圖上查看</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">查看房價</p>
                 <p class="hm-booking-strip__title">在訂房網站比較這間飯店</p>
@@ -623,6 +671,7 @@
 
   <script src="../guide-year.js" defer></script>
   <script src="../common.js"></script>
+  <script src="../gangnam-hotel-map.js" defer></script>
 <script>
   window.va = window.va || function () {
     (window.vaq = window.vaq || []).push(arguments);

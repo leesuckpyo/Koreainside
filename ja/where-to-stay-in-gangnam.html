@@ -24,6 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400..600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../gangnam-hotel-map.css">
   <style>
     body.gangnam-page main .hm-hero__copy {
       grid-column: 1 / -1;
@@ -231,13 +232,50 @@
       </div>
     </section>
 
+    <section class="hm-section gangnam-hotel-map-section" id="gangnam-hotel-map" aria-labelledby="gangnam-hotel-map-title" data-map-asset-prefix="../"
+      data-map-copy-default="ホテル10軒の位置を表示しています。ピンまたはホテル名を選んでください。"
+      data-map-copy-selected="選択中：{name}。{number}番のピンは赤色のまま、ほかのピンは青色で表示されます。"
+      data-map-copy-unavailable-selected="選択中：{name}。NAVERマップは利用できませんが、ページ内のホテルへのリンクは使用できます。"
+      data-map-copy-pending-selected="選択中：{name}。地図の読み込みが完了すると、この選択が反映されます。"
+      data-map-copy-fallback="NAVERのインタラクティブマップを読み込めませんでした。10軒のホテル一覧をご確認のうえ、時間をおいて再度お試しください。"
+      data-map-copy-fallback-status="NAVERマップを利用できません。ホテル名とページ内リンクは引き続き使用できます。"
+      data-map-copy-marker-aria="{number}番、{name}を選択">
+      <div class="container">
+        <header class="hm-section__header">
+          <h2 id="gangnam-hotel-map-title">江南のホテルはどこにある？</h2>
+          <p class="hm-section__intro">地図のピンまたはホテル名を選ぶと、場所を確認できます。</p>
+        </header>
+        <div class="gangnam-hotel-map-layout">
+          <div class="gangnam-hotel-map-shell">
+            <div class="gangnam-hotel-map-canvas" id="gangnam-hotel-map-canvas" role="region" tabindex="0" aria-label="江南のホテル10軒の位置を示すインタラクティブマップ"></div>
+            <p class="gangnam-hotel-map-status" id="gangnam-hotel-map-status" role="status" aria-live="polite">ホテルの地図を読み込んでいます…</p>
+          </div>
+          <aside class="gangnam-hotel-map-directory" aria-labelledby="gangnam-hotel-map-directory-title">
+            <h3 id="gangnam-hotel-map-directory-title">地図に表示されているホテル</h3>
+            <ol class="gangnam-hotel-map-list">
+              <li><button type="button" data-map-hotel="novotel" aria-controls="gangnam-hotel-map-canvas" aria-pressed="false"><span class="gangnam-hotel-map-number" aria-hidden="true">1</span><span>Novotel Ambassador Seoul Gangnam</span></button></li>
+              <li><button type="button" data-map-hotel="dormy-inn" aria-controls="gangnam-hotel-map-canvas" aria-pressed="false"><span class="gangnam-hotel-map-number" aria-hidden="true">2</span><span>Dormy Inn Seoul Gangnam</span></button></li>
+              <li><button type="button" data-map-hotel="ocloud" aria-controls="gangnam-hotel-map-canvas" aria-pressed="false"><span class="gangnam-hotel-map-number" aria-hidden="true">3</span><span>Ocloud Hotel Gangnam</span></button></li>
+              <li><button type="button" data-map-hotel="hotel-cappuccino" aria-controls="gangnam-hotel-map-canvas" aria-pressed="false"><span class="gangnam-hotel-map-number" aria-hidden="true">4</span><span>Hotel Cappuccino</span></button></li>
+              <li><button type="button" data-map-hotel="ac-hotel" aria-controls="gangnam-hotel-map-canvas" aria-pressed="false"><span class="gangnam-hotel-map-number" aria-hidden="true">5</span><span>AC Hotel Seoul Gangnam</span></button></li>
+              <li><button type="button" data-map-hotel="grand-intercontinental" aria-controls="gangnam-hotel-map-canvas" aria-pressed="false"><span class="gangnam-hotel-map-number" aria-hidden="true">6</span><span>Grand InterContinental Seoul Parnas</span></button></li>
+              <li><button type="button" data-map-hotel="shilla-stay-samsung" aria-controls="gangnam-hotel-map-canvas" aria-pressed="false"><span class="gangnam-hotel-map-number" aria-hidden="true">7</span><span>Shilla Stay Samsung</span></button></li>
+              <li><button type="button" data-map-hotel="hotel-peyto-samseong" aria-controls="gangnam-hotel-map-canvas" aria-pressed="false"><span class="gangnam-hotel-map-number" aria-hidden="true">8</span><span>Hotel Peyto Samseong</span></button></li>
+              <li><button type="button" data-map-hotel="andaz" aria-controls="gangnam-hotel-map-canvas" aria-pressed="false"><span class="gangnam-hotel-map-number" aria-hidden="true">9</span><span>Andaz Seoul Gangnam</span></button></li>
+              <li><button type="button" data-map-hotel="voco" aria-controls="gangnam-hotel-map-canvas" aria-pressed="false"><span class="gangnam-hotel-map-number" aria-hidden="true">10</span><span>voco Seoul Gangnam</span></button></li>
+            </ol>
+          </aside>
+        </div>
+      </div>
+    </section>
+
     <section class="hm-section hm-section--cream" id="gangnam-station-hotels" aria-labelledby="gangnam-station-hotels-title">
       <div class="container">
         <header class="hm-section__header">
           <h2 id="gangnam-station-hotels-title">江南駅・新論峴・駅三周辺のホテル</h2>
         </header>
         <div class="hm-hotel-region__list">
-          <article class="hm-hotel hm-editorial-row" id="novotel" aria-labelledby="novotel-title">
+          <article class="hm-hotel hm-editorial-row" id="novotel" data-hotel-id="novotel" aria-labelledby="novotel-title">
             <div class="hm-editorial-row__label">
               <h3 id="novotel-title">Novotel Ambassador Seoul Gangnam</h3>
             </div>
@@ -248,6 +286,7 @@
               <p>2号線中心で動くならこの差は重要です。夜を新論峴周辺で過ごし、日中もソウル南側が中心なら、この立地を活かしやすくなります。</p>
               <p>空港到着でも候補になります。6703リムジンがこのホテル周辺を通るため、長いフライト後に荷物を持って地下鉄乗換をする必要がない場合があります。</p>
               <p class="hm-affiliate-note">このページにはアフィリエイトリンクが含まれます。</p>
+              <p class="gangnam-map-link-wrap"><a class="gangnam-map-link" href="#gangnam-hotel-map" data-map-hotel="novotel" aria-controls="gangnam-hotel-map-canvas">📌 地図で見る</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">料金を確認</p>
                 <p class="hm-booking-strip__title">予約サイトでこのホテルを比較</p>
@@ -259,7 +298,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="dormy-inn" aria-labelledby="dormy-inn-title">
+          <article class="hm-hotel hm-editorial-row" id="dormy-inn" data-hotel-id="dormy-inn" aria-labelledby="dormy-inn-title">
             <div class="hm-editorial-row__label">
               <h3 id="dormy-inn-title">Dormy Inn Seoul Gangnam</h3>
             </div>
@@ -269,6 +308,7 @@
               <p>大浴場は翌朝まで営業しますが、サウナは深夜帯の一部で休止します。設備目当てで予約するなら、到着前に最新の営業時間を確認してください。</p>
               <p>ホテルは名前から想像するより新論峴に近い立地です。Novotel近くの6703空港バス停からDormy Innまでは短い徒歩で済みます。</p>
               <p>スーツケース2個を広げられる大きな部屋が欲しいなら別のホテルへ。毎晩大浴場を使うつもりなら、小さめの客室も納得しやすい妥協になります。</p>
+              <p class="gangnam-map-link-wrap"><a class="gangnam-map-link" href="#gangnam-hotel-map" data-map-hotel="dormy-inn" aria-controls="gangnam-hotel-map-canvas">📌 地図で見る</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">料金を確認</p>
                 <p class="hm-booking-strip__title">予約サイトでこのホテルを比較</p>
@@ -280,7 +320,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="ocloud" aria-labelledby="ocloud-title">
+          <article class="hm-hotel hm-editorial-row" id="ocloud" data-hotel-id="ocloud" aria-labelledby="ocloud-title">
             <div class="hm-editorial-row__label">
               <h3 id="ocloud-title">Ocloud Hotel Gangnam</h3>
             </div>
@@ -290,6 +330,7 @@
               <p>遅い夕食のあと、終電を気にして夜を組み立てずに戻りやすいのが利点です。</p>
               <p>Family Twinも用途を広げますが、定員表記は予約サイト間で必ずしも一致していません。ベッド数だけ見て大人の定員を決めず、予約画面に宿泊者全員を入力してください。</p>
               <p>毎日COEXへ行く人にはOcloudを勧めにくくなります。その場合は三成に泊まるほうが移動を減らせます。</p>
+              <p class="gangnam-map-link-wrap"><a class="gangnam-map-link" href="#gangnam-hotel-map" data-map-hotel="ocloud" aria-controls="gangnam-hotel-map-canvas">📌 地図で見る</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">料金を確認</p>
                 <p class="hm-booking-strip__title">予約サイトでこのホテルを比較</p>
@@ -301,7 +342,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="hotel-cappuccino" aria-labelledby="hotel-cappuccino-title">
+          <article class="hm-hotel hm-editorial-row" id="hotel-cappuccino" data-hotel-id="hotel-cappuccino" aria-labelledby="hotel-cappuccino-title">
             <div class="hm-editorial-row__label">
               <h3 id="hotel-cappuccino-title">Hotel Cappuccino</h3>
             </div>
@@ -311,6 +352,7 @@
               <p>セルフサービスのランドリーもあり、長期滞在では装飾的な設備より価値が出ます。</p>
               <p>駅三・江南の夜の雰囲気が好きで、大型フルサービスホテルを必要としない旅行者に合います。静かな高級滞在やCOEXへの直結性を求めるなら、ほかに向くホテルがあります。</p>
               <p>グループ旅行でも必ず正確な客室カテゴリーで予約してください。おしゃれな標準客室の写真は、大人4人で泊まれる根拠にはなりません。</p>
+              <p class="gangnam-map-link-wrap"><a class="gangnam-map-link" href="#gangnam-hotel-map" data-map-hotel="hotel-cappuccino" aria-controls="gangnam-hotel-map-canvas">📌 地図で見る</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">料金を確認</p>
                 <p class="hm-booking-strip__title">予約サイトでこのホテルを比較</p>
@@ -322,7 +364,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="ac-hotel" aria-labelledby="ac-hotel-title">
+          <article class="hm-hotel hm-editorial-row" id="ac-hotel" data-hotel-id="ac-hotel" aria-labelledby="ac-hotel-title">
             <div class="hm-editorial-row__label">
               <h3 id="ac-hotel-title">AC Hotel Seoul Gangnam</h3>
             </div>
@@ -332,6 +374,7 @@
               <p>多くの旅行者は現代的な一般ホテルとして使いますが、上位客室には別の選択肢もあります。Premier Suiteには独立したリビングとフルキッチンがあるタイプがあり、長期滞在で使い方が変わります。</p>
               <p>だからといって全員がスイートに払う必要はありません。朝出て夜遅く戻る旅なら、キッチンをほとんど使わないこともあります。</p>
               <p>AC Hotelは、駅三がすでに自分の目的地になっているときに特に使いやすいホテルです。</p>
+              <p class="gangnam-map-link-wrap"><a class="gangnam-map-link" href="#gangnam-hotel-map" data-map-hotel="ac-hotel" aria-controls="gangnam-hotel-map-canvas">📌 地図で見る</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">料金を確認</p>
                 <p class="hm-booking-strip__title">予約サイトでこのホテルを比較</p>
@@ -353,7 +396,7 @@
           <h2 id="samseong-coex-hotels-title">三成・COEX周辺のホテル</h2>
         </header>
         <div class="hm-hotel-region__list">
-          <article class="hm-hotel hm-editorial-row" id="grand-intercontinental" aria-labelledby="grand-intercontinental-title">
+          <article class="hm-hotel hm-editorial-row" id="grand-intercontinental" data-hotel-id="grand-intercontinental" aria-labelledby="grand-intercontinental-title">
             <div class="hm-editorial-row__label">
               <h3 id="grand-intercontinental-title">Grand InterContinental Seoul Parnas</h3>
             </div>
@@ -363,6 +406,7 @@
               <p>会議の朝が変わります。出発時間や天気を気にし、仕事道具を持って地下鉄に乗る代わりに、歩いて会場へ行けます。</p>
               <p>6103空港リムジンもこのエリアを通るため、荷物を持って鉄道を乗り継ぐより到着が楽になります。</p>
               <p>料金に納得できるのは、立地やホテル設備を実際に使う場合です。1週間の観光中にCOEXへ短時間だけ行くなら、毎晩この便利さに追加料金を払う理由は弱くなります。</p>
+              <p class="gangnam-map-link-wrap"><a class="gangnam-map-link" href="#gangnam-hotel-map" data-map-hotel="grand-intercontinental" aria-controls="gangnam-hotel-map-canvas">📌 地図で見る</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">料金を確認</p>
                 <p class="hm-booking-strip__title">予約サイトでこのホテルを比較</p>
@@ -374,7 +418,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="shilla-stay-samsung" aria-labelledby="shilla-stay-samsung-title">
+          <article class="hm-hotel hm-editorial-row" id="shilla-stay-samsung" data-hotel-id="shilla-stay-samsung" aria-labelledby="shilla-stay-samsung-title">
             <div class="hm-editorial-row__label">
               <h3 id="shilla-stay-samsung-title">Shilla Stay Samsung</h3>
             </div>
@@ -384,6 +428,7 @@
               <p>予約時に見落としやすい点があります。Family Twinや標準客室の一部は<strong>眺望なし</strong>として販売されています。ファミリー客室だから自動的に眺めが良い、明るい部屋になるわけではありません。</p>
               <p>江南の景色を重視するなら、ホテル名だけでなく正確な客室カテゴリーを確認してください。</p>
               <p>COEX周辺の会議、買い物、短めの家族滞在なら、シンプルなホテル設備で十分なことがあります。</p>
+              <p class="gangnam-map-link-wrap"><a class="gangnam-map-link" href="#gangnam-hotel-map" data-map-hotel="shilla-stay-samsung" aria-controls="gangnam-hotel-map-canvas">📌 地図で見る</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">料金を確認</p>
                 <p class="hm-booking-strip__title">予約サイトでこのホテルを比較</p>
@@ -395,7 +440,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="hotel-peyto-samseong" aria-labelledby="hotel-peyto-samseong-title">
+          <article class="hm-hotel hm-editorial-row" id="hotel-peyto-samseong" data-hotel-id="hotel-peyto-samseong" aria-labelledby="hotel-peyto-samseong-title">
             <div class="hm-editorial-row__label">
               <h3 id="hotel-peyto-samseong-title">Hotel Peyto Samseong</h3>
             </div>
@@ -404,6 +449,7 @@
               <p>COEXに近く、コインランドリーなど実用的な設備があります。ホテルで夜を過ごすことより立地を重視する1〜2名には特に使いやすいです。</p>
               <p>ツインルームを柔軟なグループ客室と考えないでください。エキストラベッドの選択肢は限られるため、大人3人ならここから探し始めるホテルではありません。</p>
               <p>江南で買い物をする旅にも合います。COEX、百貨店、三成が一日の目的なら、有名だからという理由だけで江南駅から通うより近くに泊まるほうが実用的です。</p>
+              <p class="gangnam-map-link-wrap"><a class="gangnam-map-link" href="#gangnam-hotel-map" data-map-hotel="hotel-peyto-samseong" aria-controls="gangnam-hotel-map-canvas">📌 地図で見る</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">料金を確認</p>
                 <p class="hm-booking-strip__title">予約サイトでこのホテルを比較</p>
@@ -425,7 +471,7 @@
           <h2 id="apgujeong-cheongdam-hotels-title">狎鴎亭・清潭</h2>
         </header>
         <div class="hm-hotel-region__list">
-          <article class="hm-hotel hm-editorial-row" id="andaz" aria-labelledby="andaz-title">
+          <article class="hm-hotel hm-editorial-row" id="andaz" data-hotel-id="andaz" aria-labelledby="andaz-title">
             <div class="hm-editorial-row__label">
               <h3 id="andaz-title">Andaz Seoul Gangnam</h3>
             </div>
@@ -435,6 +481,7 @@
               <p>客室はソウル中心部の多くのホテルより広めから始まり、上位カテゴリーではさらに余裕があります。家族で使える構成もありますが、正確な定員は予約時に確認が必要です。</p>
               <p>『江南に泊まった』と言うためだけにこのホテルへ追加料金を払う必要はありません。日中がCOEXなら、AndazではGrand InterContinentalにない移動が発生します。</p>
               <p>逆に、予定表が狎鴎亭のクリニック、清潭の予約、ショッピングで埋まっているなら評価は反対になります。</p>
+              <p class="gangnam-map-link-wrap"><a class="gangnam-map-link" href="#gangnam-hotel-map" data-map-hotel="andaz" aria-controls="gangnam-hotel-map-canvas">📌 地図で見る</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">料金を確認</p>
                 <p class="hm-booking-strip__title">予約サイトでこのホテルを比較</p>
@@ -456,7 +503,7 @@
           <h2 id="sinsa-dosan-hotels-title">新沙・島山</h2>
         </header>
         <div class="hm-hotel-region__list">
-          <article class="hm-hotel hm-editorial-row" id="voco" aria-labelledby="voco-title">
+          <article class="hm-hotel hm-editorial-row" id="voco" data-hotel-id="voco" aria-labelledby="voco-title">
             <div class="hm-editorial-row__label">
               <h3 id="voco-title">voco Seoul Gangnam</h3>
             </div>
@@ -466,6 +513,7 @@
               <p>多くのカップルにはそこまで必要ありません。大事なのは、同じホテルで通常の2名滞在から、正しいカテゴリーを選べば大きな家族・グループまで対応できることです。</p>
               <p>ホテルの空港シャトルを前提にはできないため、到着前に空港リムジンや最後のタクシー区間を確認してください。プレミアムホテルだから送迎をすべて処理してくれるとは限りません。</p>
               <p>カロスキル、島山公園、美容予約、新沙周辺の夕食には立地の価値があります。COEXの会議が目的ならそうではありません。</p>
+              <p class="gangnam-map-link-wrap"><a class="gangnam-map-link" href="#gangnam-hotel-map" data-map-hotel="voco" aria-controls="gangnam-hotel-map-canvas">📌 地図で見る</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">料金を確認</p>
                 <p class="hm-booking-strip__title">予約サイトでこのホテルを比較</p>
@@ -623,6 +671,7 @@
 
   <script src="../guide-year.js" defer></script>
   <script src="../common.js"></script>
+  <script src="../gangnam-hotel-map.js" defer></script>
 <script>
   window.va = window.va || function () {
     (window.vaq = window.vaq || []).push(arguments);
