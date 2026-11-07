@@ -244,6 +244,7 @@
     ]
   }
   </script>
+  <link rel="stylesheet" href="../gongdeok-hotel-map.css">
 </head>
 <body class="stay-cluster hongdae-myeongdong-page gongdeok-station-page" data-section="stay">
 <!-- Humanization status: DONE LOCKED -->
@@ -429,6 +430,33 @@
       </div>
     </section>
 
+    <section class="hm-section gongdeok-hotel-map-section" id="gongdeok-hotel-map" aria-labelledby="gongdeok-hotel-map-title" data-map-asset-prefix="../" data-map-copy-default="已顯示 7 間住宿的位置。請選擇地圖標記或住宿名稱。" data-map-copy-selected="已選擇：{name}。第 {number} 號標記維持紅色，其餘標記為藍色。" data-map-copy-unavailable-selected="已選擇：{name}。NAVER 地圖目前無法使用，但頁面內的住宿連結仍可使用。" data-map-copy-pending-selected="已選擇：{name}。地圖載入完成後會顯示此選擇。" data-map-copy-fallback="無法載入 NAVER 互動地圖。請先透過住宿清單查看全部 7 個選項，稍後再試。" data-map-copy-fallback-status="NAVER 地圖目前無法使用。住宿名稱與頁面內連結仍可使用。" data-map-copy-marker-aria="選擇第 {number} 號：{name}">
+      <div class="container">
+        <header class="hm-section__header">
+          <h2 id="gongdeok-hotel-map-title">孔德站與麻浦站附近的住宿在哪裡？</h2>
+          <p class="hm-section__intro">點選地圖標記或住宿名稱，即可查看位置。</p>
+        </header>
+        <div class="gongdeok-hotel-map-layout">
+          <div class="gongdeok-hotel-map-shell">
+            <div class="gongdeok-hotel-map-canvas" id="gongdeok-hotel-map-canvas" role="region" tabindex="0" aria-label="顯示孔德站與麻浦站附近 7 間住宿的互動地圖"></div>
+            <p class="gongdeok-hotel-map-status" id="gongdeok-hotel-map-status" role="status" aria-live="polite">正在載入住宿地圖…</p>
+          </div>
+          <aside class="gongdeok-hotel-map-directory" aria-labelledby="gongdeok-hotel-map-directory-title">
+            <h3 id="gongdeok-hotel-map-directory-title">地圖上的住宿</h3>
+            <ol class="gongdeok-hotel-map-list">
+              <li><button type="button" data-map-hotel="glad-mapo" aria-controls="gongdeok-hotel-map-canvas" aria-pressed="false"><span class="gongdeok-hotel-map-number" aria-hidden="true">1</span><span>GLAD Mapo</span></button></li>
+              <li><button type="button" data-map-hotel="lotte-city-hotel-mapo" aria-controls="gongdeok-hotel-map-canvas" aria-pressed="false"><span class="gongdeok-hotel-map-number" aria-hidden="true">2</span><span>LOTTE City Hotel Mapo</span></button></li>
+              <li><button type="button" data-map-hotel="roynet-hotel-seoul-mapo" aria-controls="gongdeok-hotel-map-canvas" aria-pressed="false"><span class="gongdeok-hotel-map-number" aria-hidden="true">3</span><span>Roynet Hotel Seoul Mapo</span></button></li>
+              <li><button type="button" data-map-hotel="shilla-stay-mapo" aria-controls="gongdeok-hotel-map-canvas" aria-pressed="false"><span class="gongdeok-hotel-map-number" aria-hidden="true">4</span><span>Shilla Stay Mapo</span></button></li>
+              <li><button type="button" data-map-hotel="seoul-garden-hotel" aria-controls="gongdeok-hotel-map-canvas" aria-pressed="false"><span class="gongdeok-hotel-map-number" aria-hidden="true">5</span><span>Seoul Garden Hotel</span></button></li>
+              <li><button type="button" data-map-hotel="hotel-naru-seoul" aria-controls="gongdeok-hotel-map-canvas" aria-pressed="false"><span class="gongdeok-hotel-map-number" aria-hidden="true">6</span><span>Hotel Naru Seoul MGallery Ambassador</span></button></li>
+              <li><button type="button" data-map-hotel="gongdeok-stay-masil" aria-controls="gongdeok-hotel-map-canvas" aria-pressed="false"><span class="gongdeok-hotel-map-number" aria-hidden="true">7</span><span>Gongdeok Stay Masil</span></button></li>
+            </ol>
+          </aside>
+        </div>
+      </div>
+    </section>
+
     <section class="hm-section hm-section--cream" id="hotel-recommendations" aria-labelledby="gongdeok-hotels-guide">
       <div class="container">
         <header class="hm-hotel-guide">
@@ -436,7 +464,7 @@
           <p>這些是編輯提供的比較起點，不是排名。房價、空房與確切格局會變，應比較實際訂得到的房型，而不只看住宿名稱。</p>
         </header>
         <div class="hm-hotel-region__list">
-          <article class="hm-hotel hm-editorial-row gongdeok-hotel">
+          <article class="hm-hotel hm-editorial-row gongdeok-hotel" data-hotel-id="glad-mapo">
             <div class="hm-editorial-row__label">
               <p class="hm-decision-card__label">孔德的優先起點</p>
               <h3>GLAD Mapo</h3>
@@ -446,6 +474,7 @@
               <p>如果孔德站本身就是選這一區的理由，GLAD Mapo 最適合作為起點。飯店官方資訊對應孔德 8、9 號出口，一側通往 5、6 號線，另一側銜接 AREX／京義中央線。機場抵達、商務旅行，或會往返首爾幾個區域的住宿，都很合理。</p>
               <p>房型範圍比基本商務飯店廣。Deluxe Twin 加床最多可住三人；Jumbo Family Twin 配一張雙人床與一張單人床，最多三人；GLAD House 則是較大的 54.8㎡ 選擇，有獨立起居區與兩間廁所。情侶與小家庭的彈性，比商務飯店形象乍看之下更多。</p>
               <p>我仍會為交通路網選它，而不是街區氣氛。如果大多數晚上要在弘大，或觀光主要在鐘路、明洞，車站便利必須能在其他行程省下足夠時間，住這裡才值得。</p>
+              <p class="gongdeok-hotel-map-link-wrap"><a class="gongdeok-hotel-map-link" href="#gongdeok-hotel-map" data-map-hotel="glad-mapo" aria-controls="gongdeok-hotel-map-canvas">📌 在地圖上查看</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">查看房價</p>
                 <p class="hm-booking-strip__title">在訂房網站比較這間飯店</p>
@@ -458,7 +487,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row gongdeok-hotel">
+          <article class="hm-hotel hm-editorial-row gongdeok-hotel" data-hotel-id="lotte-city-hotel-mapo">
             <div class="hm-editorial-row__label">
               <p class="hm-decision-card__label">商務與家庭套房</p>
               <h3>LOTTE City Hotel Mapo</h3>
@@ -468,6 +497,7 @@
               <p>標準雙人或雙床房不夠時，LOTTE City Hotel Mapo 就更值得看。套房選擇改變了比較方式：Superior Suite Double Double 為 56.2㎡，兩張雙人床供四人入住；其他 56.2㎡ 套房則可住三到四人。對不想拆成兩間房的小家庭，它是孔德一帶較明確的常規飯店選項之一。</p>
               <p>商務用途仍然明確。套房有工作桌與高速網路，飯店也推廣長住方案。所以這不只是家庭的替代安排，也適合較長的出差；住幾晚之後，有獨立起居空間會更重要。</p>
               <p>要注意，較大空間的優點屬於特定套房，不是整間飯店。便宜的標準房沒有相同空間或入住人數。把 LOTTE City Hotel Mapo 當成家庭選擇之前，先比確切房型名稱、床位配置與人數上限。</p>
+              <p class="gongdeok-hotel-map-link-wrap"><a class="gongdeok-hotel-map-link" href="#gongdeok-hotel-map" data-map-hotel="lotte-city-hotel-mapo" aria-controls="gongdeok-hotel-map-canvas">📌 在地圖上查看</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">查看房價</p>
                 <p class="hm-booking-strip__title">在訂房網站比較這間飯店</p>
@@ -480,7 +510,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row gongdeok-hotel">
+          <article class="hm-hotel hm-editorial-row gongdeok-hotel" data-hotel-id="roynet-hotel-seoul-mapo">
             <div class="hm-editorial-row__label">
               <p class="hm-decision-card__label">較長的商務住宿</p>
               <h3>Roynet Hotel Seoul Mapo</h3>
@@ -490,6 +520,7 @@
               <p>出差長到房間與飯店設施開始重要時，Roynet 更有優勢。官方資訊列有 23㎡ 標準房、39㎡ 以上較大房型，以及最大 77.7㎡ 的套房，多數客房的浴室與廁所分開。寬桌面、商務中心、健身房與 24 小時自助洗衣，住幾晚後會有明顯差別。</p>
               <p>AREX 銜接簡單，但出口細節重要。Roynet 說明從孔德站約步行四分鐘；官方交通指南指出，1 號出口最近，但只有樓梯，想搭電梯的旅客建議改走 9 號出口。拖大行李箱抵達前，這種差別值得先知道。</p>
               <p>單純一兩晚出差，Roynet 提供的設施可能比實際需要多。真正會用工作桌、洗衣、較大房型或分開的衛浴格局，而不只是睡在孔德站旁時，優勢才更明顯。</p>
+              <p class="gongdeok-hotel-map-link-wrap"><a class="gongdeok-hotel-map-link" href="#gongdeok-hotel-map" data-map-hotel="roynet-hotel-seoul-mapo" aria-controls="gongdeok-hotel-map-canvas">📌 在地圖上查看</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">查看房價</p>
                 <p class="hm-booking-strip__title">在訂房網站比較這間飯店</p>
@@ -502,7 +533,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row gongdeok-hotel">
+          <article class="hm-hotel hm-editorial-row gongdeok-hotel" data-hotel-id="shilla-stay-mapo">
             <div class="hm-editorial-row__label">
               <p class="hm-decision-card__label">單純的商務落腳處</p>
               <h3>Shilla Stay Mapo</h3>
@@ -512,6 +543,7 @@
               <p>Shilla Stay Mapo 是較常規的商務飯店選擇。飯店自述為汝矣島附近的高級商務住宿，有會議室、商務角落、健身房與餐廳。官方資訊顯示，孔德站 1 號出口約步行三分鐘，適合短暫出差、房間主要作為會議之間可靠落腳處的旅程。</p>
               <p>在這組飯店裡，機場交通選項特別多。除透過孔德搭 AREX，飯店官方另列有孔德站停靠的 6015、6701 與 6702 機場巴士。商務旅客可依航班時間、行李與航廈，在鐵路與巴士之間選擇。</p>
               <p>Standard 與 Deluxe 房為 21.7㎡，一般以一或兩位成人為主；飯店也列有 Standard Family Twin，部分客房含兒童時最多可住三人。幾位成人同行，或家庭需要真正額外的空間，直接選 Shilla Stay 前，值得先比較 LOTTE City Hotel Mapo 或 Seoul Garden。</p>
+              <p class="gongdeok-hotel-map-link-wrap"><a class="gongdeok-hotel-map-link" href="#gongdeok-hotel-map" data-map-hotel="shilla-stay-mapo" aria-controls="gongdeok-hotel-map-canvas">📌 在地圖上查看</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">查看房價</p>
                 <p class="hm-booking-strip__title">在訂房網站比較這間飯店</p>
@@ -524,7 +556,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row gongdeok-hotel">
+          <article class="hm-hotel hm-editorial-row gongdeok-hotel" data-hotel-id="seoul-garden-hotel">
             <div class="hm-editorial-row__label">
               <p class="hm-decision-card__label">麻浦與孔德之間的家庭／團體住宿</p>
               <h3>Seoul Garden Hotel</h3>
@@ -534,6 +566,7 @@
               <p>Seoul Garden Hotel 的價值，在於位居兩個好用車站之間，而不是只靠一站。官方路線說明，麻浦站 3 號出口約三分鐘，孔德站 8 號出口約五分鐘。麻浦提供 5 號線；需要時，孔德再加上 AREX、6 號線與京義中央線。</p>
               <p>真正值得家庭與團體看的是房型組合。飯店目前列有三張單人床的 Triple、一張雙人床加一張單人床的 Family Twin，以及一張雙人床加上下舖的 Quad。三種都約 25.87㎡，差別不在房間特別大，而在床位格局確實符合三或四位旅客。</p>
               <p>團體配置比直接住孔德站上方更重要時，我會選 Seoul Garden。兩位成人只需要單純的機場與地鐵落腳處，GLAD 或 Shilla Stay 可能更簡單。三或四人想避免訂兩間房，Seoul Garden 就更有理由留在名單上。</p>
+              <p class="gongdeok-hotel-map-link-wrap"><a class="gongdeok-hotel-map-link" href="#gongdeok-hotel-map" data-map-hotel="seoul-garden-hotel" aria-controls="gongdeok-hotel-map-canvas">📌 在地圖上查看</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">查看房價</p>
                 <p class="hm-booking-strip__title">在訂房網站比較這間飯店</p>
@@ -546,7 +579,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row gongdeok-hotel">
+          <article class="hm-hotel hm-editorial-row gongdeok-hotel" data-hotel-id="hotel-naru-seoul">
             <div class="hm-editorial-row__label">
               <p class="hm-decision-card__label">漢江旁高級住宿</p>
               <h3>Hotel Naru Seoul MGallery Ambassador</h3>
@@ -557,6 +590,7 @@
               <p>家庭不一定要訂兩間房。官方 Family Room 為 43㎡，有兩張雙人床，含兒童最多四人入住。在許多首爾高檔客房仍只住兩或三人的類別裡，Hotel Naru 是實際的四人選擇。</p>
               <p>取捨是交通。孔德的 AREX 與多線轉乘站不在飯店正下方；從仁川機場的官方路線建議，在孔德轉 5 號線，再搭一站到麻浦。K-Limousine 6702 也停靠飯店，所以機場交通仍可安排，只是和住孔德站本身不同。</p>
               <p>因此，我會把 Hotel Naru 留給想在河邊享受較安靜、高檔住宿，並願意用部分轉乘便利換飯店體驗的旅客。</p>
+              <p class="gongdeok-hotel-map-link-wrap"><a class="gongdeok-hotel-map-link" href="#gongdeok-hotel-map" data-map-hotel="hotel-naru-seoul" aria-controls="gongdeok-hotel-map-canvas">📌 在地圖上查看</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">查看房價</p>
                 <p class="hm-booking-strip__title">在訂房網站比較這間飯店</p>
@@ -569,7 +603,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row gongdeok-hotel">
+          <article class="hm-hotel hm-editorial-row gongdeok-hotel" data-hotel-id="gongdeok-stay-masil">
             <div class="hm-editorial-row__label">
               <p class="hm-decision-card__label">私人 3 房團體住宿</p>
               <h3>Gongdeok Stay Masil</h3>
@@ -579,6 +613,7 @@
               <p>Gongdeok Stay Masil 是不訂兩三間飯店客房時，最明確的替代。整棟別墅有三間臥室與起居空間，目前 Booking 頁面列有三張雙人床，最多六人入住。也有廚房與洗衣機，適合想住在一起、不想分散在不同客房的家庭或朋友。</p>
               <p>這個位置對這類團體旅行確實實用。Seoul Stay 列明住宿離孔德站 10 號出口約步行三分鐘，車站可搭 AREX、5 號線、6 號線與京義中央線。</p>
               <p>選它之前，我會查兩個訂房細節。第一，Seoul Stay 說明會依入住人數開放更多臥室：三位起開放第 2 間，五位起開放第 3 間。第二，住宿只有一間浴室。對家庭可能完全可以安排，但六位成人要準備趕早班飛機或整天觀光，感受可能很不同。</p>
+              <p class="gongdeok-hotel-map-link-wrap"><a class="gongdeok-hotel-map-link" href="#gongdeok-hotel-map" data-map-hotel="gongdeok-stay-masil" aria-controls="gongdeok-hotel-map-canvas">📌 在地圖上查看</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">查看房價</p>
                 <p class="hm-booking-strip__title">在訂房網站比較這間飯店</p>
@@ -782,6 +817,7 @@
 
   <script src="../guide-year.js" defer></script>
   <script src="../common.js"></script>
+  <script src="../gongdeok-hotel-map.js" defer></script>
 <script>
   window.va = window.va || function () {
     (window.vaq = window.vaq || []).push(arguments);

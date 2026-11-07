@@ -244,6 +244,7 @@
   ]
 }
   </script>
+  <link rel="stylesheet" href="../gongdeok-hotel-map.css">
 </head>
 <body class="stay-cluster hongdae-myeongdong-page gongdeok-station-page" data-section="stay">
 <!-- Humanization status: DONE LOCKED -->
@@ -429,6 +430,33 @@
       </div>
     </section>
 
+    <section class="hm-section gongdeok-hotel-map-section" id="gongdeok-hotel-map" aria-labelledby="gongdeok-hotel-map-title" data-map-asset-prefix="../" data-map-copy-default="Se muestran las ubicaciones de los 7 alojamientos. Selecciona un marcador o un nombre." data-map-copy-selected="Seleccionado: {name}. El marcador {number} sigue rojo; los demás están azules." data-map-copy-unavailable-selected="Seleccionado: {name}. El mapa de NAVER no está disponible, pero el enlace al alojamiento dentro de esta página sigue funcionando." data-map-copy-pending-selected="Seleccionado: {name}. El mapa aplicará esta selección cuando termine de cargar." data-map-copy-fallback="No se pudo cargar el mapa interactivo de NAVER. Consulta la lista de los 7 alojamientos e inténtalo de nuevo más tarde." data-map-copy-fallback-status="Mapa de NAVER no disponible. Los nombres y enlaces internos a los alojamientos siguen accesibles." data-map-copy-marker-aria="Seleccionar {number}. {name}">
+      <div class="container">
+        <header class="hm-section__header">
+          <h2 id="gongdeok-hotel-map-title">¿Dónde están los alojamientos cerca de Gongdeok y Mapo?</h2>
+          <p class="hm-section__intro">Selecciona un marcador o el nombre de un alojamiento para ver su ubicación.</p>
+        </header>
+        <div class="gongdeok-hotel-map-layout">
+          <div class="gongdeok-hotel-map-shell">
+            <div class="gongdeok-hotel-map-canvas" id="gongdeok-hotel-map-canvas" role="region" tabindex="0" aria-label="Mapa interactivo con 7 alojamientos cerca de las estaciones de Gongdeok y Mapo"></div>
+            <p class="gongdeok-hotel-map-status" id="gongdeok-hotel-map-status" role="status" aria-live="polite">Cargando el mapa de alojamientos…</p>
+          </div>
+          <aside class="gongdeok-hotel-map-directory" aria-labelledby="gongdeok-hotel-map-directory-title">
+            <h3 id="gongdeok-hotel-map-directory-title">Alojamientos en este mapa</h3>
+            <ol class="gongdeok-hotel-map-list">
+              <li><button type="button" data-map-hotel="glad-mapo" aria-controls="gongdeok-hotel-map-canvas" aria-pressed="false"><span class="gongdeok-hotel-map-number" aria-hidden="true">1</span><span>GLAD Mapo</span></button></li>
+              <li><button type="button" data-map-hotel="lotte-city-hotel-mapo" aria-controls="gongdeok-hotel-map-canvas" aria-pressed="false"><span class="gongdeok-hotel-map-number" aria-hidden="true">2</span><span>LOTTE City Hotel Mapo</span></button></li>
+              <li><button type="button" data-map-hotel="roynet-hotel-seoul-mapo" aria-controls="gongdeok-hotel-map-canvas" aria-pressed="false"><span class="gongdeok-hotel-map-number" aria-hidden="true">3</span><span>Roynet Hotel Seoul Mapo</span></button></li>
+              <li><button type="button" data-map-hotel="shilla-stay-mapo" aria-controls="gongdeok-hotel-map-canvas" aria-pressed="false"><span class="gongdeok-hotel-map-number" aria-hidden="true">4</span><span>Shilla Stay Mapo</span></button></li>
+              <li><button type="button" data-map-hotel="seoul-garden-hotel" aria-controls="gongdeok-hotel-map-canvas" aria-pressed="false"><span class="gongdeok-hotel-map-number" aria-hidden="true">5</span><span>Seoul Garden Hotel</span></button></li>
+              <li><button type="button" data-map-hotel="hotel-naru-seoul" aria-controls="gongdeok-hotel-map-canvas" aria-pressed="false"><span class="gongdeok-hotel-map-number" aria-hidden="true">6</span><span>Hotel Naru Seoul MGallery Ambassador</span></button></li>
+              <li><button type="button" data-map-hotel="gongdeok-stay-masil" aria-controls="gongdeok-hotel-map-canvas" aria-pressed="false"><span class="gongdeok-hotel-map-number" aria-hidden="true">7</span><span>Gongdeok Stay Masil</span></button></li>
+            </ol>
+          </aside>
+        </div>
+      </div>
+    </section>
+
     <section class="hm-section hm-section--cream" id="hotel-recommendations" aria-labelledby="gongdeok-hotels-guide">
       <div class="container">
         <header class="hm-hotel-guide">
@@ -436,7 +464,7 @@
           <p>Estos son puntos de partida editoriales, no un ranking. Las tarifas, la disponibilidad y las distribuciones concretas cambian, así que compara la habitación que realmente puedes reservar y no solo el nombre del alojamiento.</p>
         </header>
         <div class="hm-hotel-region__list">
-          <article class="hm-hotel hm-editorial-row gongdeok-hotel">
+          <article class="hm-hotel hm-editorial-row gongdeok-hotel" data-hotel-id="glad-mapo">
             <div class="hm-editorial-row__label">
               <p class="hm-decision-card__label">OPCIÓN BASE EN GONGDEOK</p>
               <h3>GLAD Mapo</h3>
@@ -446,6 +474,7 @@
               <p>GLAD Mapo es el lugar más sencillo por el que empezar cuando Gongdeok Station es precisamente la razón para elegir la zona. El hotel está oficialmente vinculado con Gongdeok Exits 8 y 9, con acceso a las líneas 5 y 6 por un lado y a AREX / Gyeongui-Jungang por el otro. Eso lo convierte en una base sensata para una llegada desde el aeropuerto, un viaje de negocios o una estancia que se mueve entre varias partes de Seúl.</p>
               <p>La gama de habitaciones es más amplia que la de un hotel de negocios básico. Deluxe Twin puede alojar hasta tres huéspedes con una cama extra, Jumbo Family Twin utiliza una cama doble más una individual para hasta tres, y GLAD House es una opción de 54.8㎡ con sala de estar independiente y dos aseos. Eso da a parejas y familias pequeñas más flexibilidad de la que inicialmente sugiere la imagen empresarial del hotel.</p>
               <p>Aun así, lo elegiría por la red de transporte y no por el ambiente del barrio. Si la mayoría de las noches van a terminar en Hongdae o la mayor parte del turismo está alrededor de Jongno y Myeongdong, la comodidad de la estación tiene que ahorrar suficiente tiempo en otras partes del itinerario para justificar dormir aquí.</p>
+              <p class="gongdeok-hotel-map-link-wrap"><a class="gongdeok-hotel-map-link" href="#gongdeok-hotel-map" data-map-hotel="glad-mapo" aria-controls="gongdeok-hotel-map-canvas">📌 Ver en el mapa</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">VER TARIFAS</p>
                 <p class="hm-booking-strip__title">Compara este hotel en sitios de reserva</p>
@@ -458,7 +487,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row gongdeok-hotel">
+          <article class="hm-hotel hm-editorial-row gongdeok-hotel" data-hotel-id="lotte-city-hotel-mapo">
             <div class="hm-editorial-row__label">
               <p class="hm-decision-card__label">NEGOCIOS + SUITE FAMILIAR</p>
               <h3>LOTTE City Hotel Mapo</h3>
@@ -468,6 +497,7 @@
               <p>LOTTE City Hotel Mapo se vuelve más interesante cuando una habitación double o twin estándar no es suficiente. Su gama de suites cambia la decisión: Superior Suite Double Double tiene 56.2㎡ con dos camas dobles para cuatro huéspedes, mientras otras suites de 56.2㎡ alojan de tres a cuatro personas. Eso lo convierte en una de las opciones hoteleras convencionales más claras alrededor de Gongdeok para una familia pequeña que no quiere dividirse en dos habitaciones.</p>
               <p>La parte de negocios sigue siendo real. Las suites incluyen escritorios y conexión a internet de alta velocidad, y el hotel también comercializa paquetes de larga estancia. Por tanto, no es solo una solución familiar; también encaja en un viaje de trabajo largo cuando disponer de una sala de estar independiente empieza a importar después de varias noches.</p>
               <p>El inconveniente es que la ventaja de espacio pertenece a categorías concretas de suite y no a todo el hotel. Una habitación estándar barata no proporciona el mismo espacio ni la misma ocupación. Compara el nombre exacto de la habitación, las camas y la ocupación máxima antes de tratar LOTTE City Hotel Mapo como la opción familiar.</p>
+              <p class="gongdeok-hotel-map-link-wrap"><a class="gongdeok-hotel-map-link" href="#gongdeok-hotel-map" data-map-hotel="lotte-city-hotel-mapo" aria-controls="gongdeok-hotel-map-canvas">📌 Ver en el mapa</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">VER TARIFAS</p>
                 <p class="hm-booking-strip__title">Compara este hotel en sitios de reserva</p>
@@ -480,7 +510,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row gongdeok-hotel">
+          <article class="hm-hotel hm-editorial-row gongdeok-hotel" data-hotel-id="roynet-hotel-seoul-mapo">
             <div class="hm-editorial-row__label">
               <p class="hm-decision-card__label">ESTANCIA DE NEGOCIOS MÁS LARGA</p>
               <h3>Roynet Hotel Seoul Mapo</h3>
@@ -490,6 +520,7 @@
               <p>Roynet es la opción más adecuada cuando un viaje de negocios dura lo suficiente como para que la habitación y las instalaciones empiecen a importar. La información oficial incluye habitaciones estándar de 23㎡, habitaciones más grandes de 39㎡ o más y suites de hasta 77.7㎡, mientras la mayoría separa bañera y aseo. Un escritorio amplio, centro de negocios, gimnasio y lavandería automática 24 horas marcan una diferencia real después de varias noches.</p>
               <p>La conexión con AREX es sencilla, pero el detalle de la salida importa. Roynet indica unos cuatro minutos a pie desde Gongdeok Station. Su guía oficial señala que Exit 1 es la ruta más cercana, pero solo tiene escaleras; a quienes quieran ascensor se les recomienda utilizar Exit 9. Ese es exactamente el tipo de diferencia que conviene conocer antes de llegar con una maleta grande.</p>
               <p>Para un viaje de negocios sencillo de una o dos noches, Roynet puede ofrecer más instalaciones de las que realmente necesitas. Su ventaja se vuelve más clara si vas a utilizar el escritorio, la lavandería, las habitaciones más grandes o el baño separado en lugar de limitarte a dormir cerca de Gongdeok Station.</p>
+              <p class="gongdeok-hotel-map-link-wrap"><a class="gongdeok-hotel-map-link" href="#gongdeok-hotel-map" data-map-hotel="roynet-hotel-seoul-mapo" aria-controls="gongdeok-hotel-map-canvas">📌 Ver en el mapa</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">VER TARIFAS</p>
                 <p class="hm-booking-strip__title">Compara este hotel en sitios de reserva</p>
@@ -502,7 +533,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row gongdeok-hotel">
+          <article class="hm-hotel hm-editorial-row gongdeok-hotel" data-hotel-id="shilla-stay-mapo">
             <div class="hm-editorial-row__label">
               <p class="hm-decision-card__label">BASE DE NEGOCIOS SENCILLA</p>
               <h3>Shilla Stay Mapo</h3>
@@ -512,6 +543,7 @@
               <p>Shilla Stay Mapo es la opción de hotel de negocios más convencional. El hotel se describe como una propiedad premium de negocios cerca de Yeouido, con sala de reuniones, business corner, gimnasio y restaurante. Gongdeok Station Exit 1 está oficialmente a unos tres minutos a pie, por lo que la ubicación funciona bien para una estancia corta de trabajo donde la habitación sirve principalmente como base fiable entre reuniones.</p>
               <p>Las opciones desde el aeropuerto son inusualmente amplias dentro de este grupo. El hotel publica Airport Limousine 6015, 6701 y 6702 en la parada Gongdeok Station, además del acceso por AREX. Esto permite elegir entre tren y autobús según la hora del vuelo, el equipaje y la terminal.</p>
               <p>Las habitaciones Standard y Deluxe tienen 21.7㎡ y generalmente están diseñadas para uno o dos adultos, aunque el hotel también incluye Standard Family Twin y permite hasta tres huéspedes en algunas habitaciones cuando se incluye un niño. Para varios adultos o una familia que necesite espacio adicional real, LOTTE City Hotel Mapo o Seoul Garden merecen comparación antes de elegir Shilla Stay por defecto.</p>
+              <p class="gongdeok-hotel-map-link-wrap"><a class="gongdeok-hotel-map-link" href="#gongdeok-hotel-map" data-map-hotel="shilla-stay-mapo" aria-controls="gongdeok-hotel-map-canvas">📌 Ver en el mapa</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">VER TARIFAS</p>
                 <p class="hm-booking-strip__title">Compara este hotel en sitios de reserva</p>
@@ -524,7 +556,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row gongdeok-hotel">
+          <article class="hm-hotel hm-editorial-row gongdeok-hotel" data-hotel-id="seoul-garden-hotel">
             <div class="hm-editorial-row__label">
               <p class="hm-decision-card__label">FAMILIA / GRUPO ENTRE MAPO Y GONGDEOK</p>
               <h3>Seoul Garden Hotel</h3>
@@ -534,6 +566,7 @@
               <p>Seoul Garden Hotel se gana su lugar por situarse entre dos estaciones útiles en lugar de comprometerse únicamente con una. Las indicaciones oficiales sitúan Mapo Station Exit 3 a unos tres minutos y Gongdeok Station Exit 8 a unos cinco. Eso da acceso a la línea 5 en Mapo, mientras Gongdeok añade AREX, la línea 6 y la línea Gyeongui-Jungang cuando las necesitas.</p>
               <p>La combinación de habitaciones es la verdadera razón para mirarlo en familias y grupos. El hotel ofrece actualmente Triple con tres camas individuales, Family Twin con una doble y una individual, y Quad con una doble más litera. Las tres rondan 25.87㎡, así que la diferencia no es una superficie enorme, sino disponer de distribuciones de camas que realmente coinciden con tres o cuatro viajeros.</p>
               <p>Elegiría Seoul Garden cuando la configuración del grupo importe más que dormir directamente sobre Gongdeok Station. Si dos adultos solo necesitan una base sencilla para aeropuerto y metro, GLAD o Shilla Stay pueden resultar más simples. Para tres o cuatro personas que intentan evitar reservar dos habitaciones, Seoul Garden tiene una razón más clara para permanecer en la lista.</p>
+              <p class="gongdeok-hotel-map-link-wrap"><a class="gongdeok-hotel-map-link" href="#gongdeok-hotel-map" data-map-hotel="seoul-garden-hotel" aria-controls="gongdeok-hotel-map-canvas">📌 Ver en el mapa</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">VER TARIFAS</p>
                 <p class="hm-booking-strip__title">Compara este hotel en sitios de reserva</p>
@@ -546,7 +579,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row gongdeok-hotel">
+          <article class="hm-hotel hm-editorial-row gongdeok-hotel" data-hotel-id="hotel-naru-seoul">
             <div class="hm-editorial-row__label">
               <p class="hm-decision-card__label">ESTANCIA DE LUJO JUNTO AL HAN RIVER</p>
               <h3>Hotel Naru Seoul MGallery Ambassador</h3>
@@ -557,6 +590,7 @@
               <p>Las familias no están limitadas a reservar dos habitaciones. La Family Room oficial tiene 43㎡, dos camas dobles y capacidad para hasta cuatro huéspedes, incluidos niños. Eso convierte Hotel Naru en una opción real para cuatro personas dentro de una categoría donde muchas habitaciones upscale de Seúl siguen limitándose a dos o tres.</p>
               <p>La contrapartida es el transporte. El AREX y el intercambiador de varias líneas de Gongdeok no están directamente debajo del hotel; la ruta oficial desde Incheon Airport sugiere cambiar en Gongdeok y continuar una parada por la línea 5 hasta Mapo. K-Limousine 6702 también atiende el hotel, así que el acceso al aeropuerto sigue siendo práctico, simplemente distinto de alojarse en Gongdeok Station.</p>
               <p>Por eso reservaría Hotel Naru para viajeros que quieren una estancia más tranquila y de gama alta junto al río y están dispuestos a cambiar algo de comodidad de intercambiador por la experiencia del hotel.</p>
+              <p class="gongdeok-hotel-map-link-wrap"><a class="gongdeok-hotel-map-link" href="#gongdeok-hotel-map" data-map-hotel="hotel-naru-seoul" aria-controls="gongdeok-hotel-map-canvas">📌 Ver en el mapa</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">VER TARIFAS</p>
                 <p class="hm-booking-strip__title">Compara este hotel en sitios de reserva</p>
@@ -569,7 +603,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row gongdeok-hotel">
+          <article class="hm-hotel hm-editorial-row gongdeok-hotel" data-hotel-id="gongdeok-stay-masil">
             <div class="hm-editorial-row__label">
               <p class="hm-decision-card__label">ALOJAMIENTO PRIVADO DE 3 DORMITORIOS PARA GRUPOS</p>
               <h3>Gongdeok Stay Masil</h3>
@@ -579,6 +613,7 @@
               <p>Gongdeok Stay Masil es la alternativa más clara a reservar dos o tres habitaciones de hotel. La villa completa tiene tres dormitorios y sala de estar, y las fichas actuales de reserva permiten hasta seis huéspedes con tres camas dobles. También dispone de cocina y lavadora, por lo que la distribución encaja con familias o amigos que quieren permanecer juntos y no dividirse entre distintas habitaciones.</p>
               <p>La ubicación es realmente útil para este tipo de viaje en grupo. Seoul Stay sitúa el alojamiento aproximadamente a tres minutos a pie de Gongdeok Station Exit 10, con AREX, las líneas 5 y 6 y la línea Gyeongui-Jungang disponibles desde la estación.</p>
               <p>Hay dos detalles de reserva que comprobaría antes de elegirlo. Primero, Seoul Stay indica que se abren dormitorios adicionales según el número de huéspedes: Bedroom 2 a partir de tres personas y Bedroom 3 a partir de cinco. Segundo, el alojamiento tiene un solo baño. Puede ser perfectamente manejable para una familia, pero seis adultos preparándose para un vuelo temprano o un día completo de turismo pueden vivirlo de manera muy distinta.</p>
+              <p class="gongdeok-hotel-map-link-wrap"><a class="gongdeok-hotel-map-link" href="#gongdeok-hotel-map" data-map-hotel="gongdeok-stay-masil" aria-controls="gongdeok-hotel-map-canvas">📌 Ver en el mapa</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">VER TARIFAS</p>
                 <p class="hm-booking-strip__title">Compara este hotel en sitios de reserva</p>
@@ -782,6 +817,7 @@
 
   <script src="../guide-year.js" defer></script>
   <script src="../common.js"></script>
+  <script src="../gongdeok-hotel-map.js" defer></script>
 <script>
   window.va = window.va || function () {
     (window.vaq = window.vaq || []).push(arguments);

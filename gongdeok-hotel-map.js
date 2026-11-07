@@ -343,14 +343,18 @@
   }
 
   function bindControls() {
-    document.addEventListener("click", function (event) {
+    // Native button activation has no mousedown coordinates for the SDK click handler.
+    // Own marker clicks before the SDK receives them, including Enter and Space clicks.
+    canvas.addEventListener("click", function (event) {
       var markerControl = event.target.closest("[data-map-marker]");
       if (markerControl) {
         event.preventDefault();
+        event.stopPropagation();
         selectHotel(markerControl.getAttribute("data-map-marker"));
-        return;
       }
+    }, true);
 
+    document.addEventListener("click", function (event) {
       var mapControl = event.target.closest("[data-map-hotel]");
       if (!mapControl) {
         return;

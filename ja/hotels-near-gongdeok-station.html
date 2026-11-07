@@ -244,6 +244,7 @@
     ]
   }
   </script>
+  <link rel="stylesheet" href="../gongdeok-hotel-map.css">
 </head>
 <body class="stay-cluster hongdae-myeongdong-page gongdeok-station-page" data-section="stay">
 <!-- Humanization status: DONE LOCKED -->
@@ -429,6 +430,33 @@
       </div>
     </section>
 
+    <section class="hm-section gongdeok-hotel-map-section" id="gongdeok-hotel-map" aria-labelledby="gongdeok-hotel-map-title" data-map-asset-prefix="../" data-map-copy-default="宿泊施設7件の位置を表示しています。ピンまたは施設名を選んでください。" data-map-copy-selected="選択中：{name}。{number}番のピンは赤、ほかのピンは青で表示されています。" data-map-copy-unavailable-selected="選択中：{name}。NAVERの地図は利用できませんが、ページ内の宿泊施設リンクは引き続き使えます。" data-map-copy-pending-selected="選択中：{name}。地図の読み込みが完了すると、この選択が反映されます。" data-map-copy-fallback="NAVERのインタラクティブ地図を読み込めませんでした。宿泊施設7件は一覧で確認できます。時間をおいて再度お試しください。" data-map-copy-fallback-status="NAVERの地図を利用できません。宿泊施設名とページ内リンクは引き続き使えます。" data-map-copy-marker-aria="{number}番を選択：{name}">
+      <div class="container">
+        <header class="hm-section__header">
+          <h2 id="gongdeok-hotel-map-title">孔徳駅・麻浦駅周辺の宿泊施設はどこにある？</h2>
+          <p class="hm-section__intro">地図上のピンまたは宿泊施設名を選ぶと、位置を確認できます。</p>
+        </header>
+        <div class="gongdeok-hotel-map-layout">
+          <div class="gongdeok-hotel-map-shell">
+            <div class="gongdeok-hotel-map-canvas" id="gongdeok-hotel-map-canvas" role="region" tabindex="0" aria-label="孔徳駅と麻浦駅の周辺にある宿泊施設7件を表示するインタラクティブ地図"></div>
+            <p class="gongdeok-hotel-map-status" id="gongdeok-hotel-map-status" role="status" aria-live="polite">宿泊施設の地図を読み込み中…</p>
+          </div>
+          <aside class="gongdeok-hotel-map-directory" aria-labelledby="gongdeok-hotel-map-directory-title">
+            <h3 id="gongdeok-hotel-map-directory-title">地図に表示されている宿泊施設</h3>
+            <ol class="gongdeok-hotel-map-list">
+              <li><button type="button" data-map-hotel="glad-mapo" aria-controls="gongdeok-hotel-map-canvas" aria-pressed="false"><span class="gongdeok-hotel-map-number" aria-hidden="true">1</span><span>GLAD Mapo</span></button></li>
+              <li><button type="button" data-map-hotel="lotte-city-hotel-mapo" aria-controls="gongdeok-hotel-map-canvas" aria-pressed="false"><span class="gongdeok-hotel-map-number" aria-hidden="true">2</span><span>LOTTE City Hotel Mapo</span></button></li>
+              <li><button type="button" data-map-hotel="roynet-hotel-seoul-mapo" aria-controls="gongdeok-hotel-map-canvas" aria-pressed="false"><span class="gongdeok-hotel-map-number" aria-hidden="true">3</span><span>Roynet Hotel Seoul Mapo</span></button></li>
+              <li><button type="button" data-map-hotel="shilla-stay-mapo" aria-controls="gongdeok-hotel-map-canvas" aria-pressed="false"><span class="gongdeok-hotel-map-number" aria-hidden="true">4</span><span>Shilla Stay Mapo</span></button></li>
+              <li><button type="button" data-map-hotel="seoul-garden-hotel" aria-controls="gongdeok-hotel-map-canvas" aria-pressed="false"><span class="gongdeok-hotel-map-number" aria-hidden="true">5</span><span>Seoul Garden Hotel</span></button></li>
+              <li><button type="button" data-map-hotel="hotel-naru-seoul" aria-controls="gongdeok-hotel-map-canvas" aria-pressed="false"><span class="gongdeok-hotel-map-number" aria-hidden="true">6</span><span>Hotel Naru Seoul MGallery Ambassador</span></button></li>
+              <li><button type="button" data-map-hotel="gongdeok-stay-masil" aria-controls="gongdeok-hotel-map-canvas" aria-pressed="false"><span class="gongdeok-hotel-map-number" aria-hidden="true">7</span><span>Gongdeok Stay Masil</span></button></li>
+            </ol>
+          </aside>
+        </div>
+      </div>
+    </section>
+
     <section class="hm-section hm-section--cream" id="hotel-recommendations" aria-labelledby="gongdeok-hotels-guide">
       <div class="container">
         <header class="hm-hotel-guide">
@@ -436,7 +464,7 @@
           <p>これは編集上の比較出発点であり、ランキングではありません。料金、空室、正確な客室レイアウトは変わるため、施設名だけでなく実際に予約できる客室を比較してください。</p>
         </header>
         <div class="hm-hotel-region__list">
-          <article class="hm-hotel hm-editorial-row gongdeok-hotel">
+          <article class="hm-hotel hm-editorial-row gongdeok-hotel" data-hotel-id="glad-mapo">
             <div class="hm-editorial-row__label">
               <p class="hm-decision-card__label">孔徳の基本候補</p>
               <h3>GLAD Mapo</h3>
@@ -446,6 +474,7 @@
               <p>孔徳駅そのものがこのエリアを選ぶ理由なら、GLAD Mapoから比較すると分かりやすいです。公式案内では孔徳駅8・9番出口に関連し、一方から5号線・6号線、もう一方からAREX・京義中央線へアクセスできます。空港到着、出張、ソウルの複数エリアを動く滞在に使いやすい拠点です。</p>
               <p>客室の選択肢は一般的なビジネスホテルより広めです。Deluxe Twinはエキストラベッド利用で最大3名、Jumbo Family Twinはダブル＋シングルで最大3名、GLAD Houseは54.8㎡で独立したリビングとトイレ2か所を備えます。ビジネスホテルという第一印象より、カップルや小家族にも柔軟に対応できます。</p>
               <p>それでも選ぶ理由は街の雰囲気より交通網です。夜の多くを弘大で過ごす、または観光の大半が鍾路や明洞なら、孔徳の駅利便性が旅程の別の部分で十分な時間を節約できるかを考えてください。</p>
+              <p class="gongdeok-hotel-map-link-wrap"><a class="gongdeok-hotel-map-link" href="#gongdeok-hotel-map" data-map-hotel="glad-mapo" aria-controls="gongdeok-hotel-map-canvas">📌 地図で見る</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">料金を確認</p>
                 <p class="hm-booking-strip__title">予約サイトでこのホテルを比較</p>
@@ -458,7 +487,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row gongdeok-hotel">
+          <article class="hm-hotel hm-editorial-row gongdeok-hotel" data-hotel-id="lotte-city-hotel-mapo">
             <div class="hm-editorial-row__label">
               <p class="hm-decision-card__label">出張＋ファミリースイート</p>
               <h3>LOTTE City Hotel Mapo</h3>
@@ -468,6 +497,7 @@
               <p>スタンダードのダブルやツインでは足りないとき、LOTTE City Hotel Mapoの価値が上がります。スイート構成が判断を変えます。Superior Suite Double Doubleは56.2㎡でダブルベッド2台・4名、ほかの56.2㎡スイートも3～4名に対応します。2室に分かれたくない小家族にとって、孔徳周辺の一般的なホテルでは分かりやすい候補です。</p>
               <p>出張向けの強みもあります。スイートにはワークデスクと高速インターネットがあり、長期滞在パッケージも案内されています。家族向けの代替案だけでなく、数泊すると独立したリビングが役立つ長めの出張にも合います。</p>
               <p>注意点は、広い客室の利点が特定のスイートカテゴリーに限られることです。安いスタンダード客室では同じ広さや定員になりません。LOTTE City Hotel Mapoを家族向けとして判断する前に、正確な客室名、ベッド構成、最大定員を比較してください。</p>
+              <p class="gongdeok-hotel-map-link-wrap"><a class="gongdeok-hotel-map-link" href="#gongdeok-hotel-map" data-map-hotel="lotte-city-hotel-mapo" aria-controls="gongdeok-hotel-map-canvas">📌 地図で見る</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">料金を確認</p>
                 <p class="hm-booking-strip__title">予約サイトでこのホテルを比較</p>
@@ -480,7 +510,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row gongdeok-hotel">
+          <article class="hm-hotel hm-editorial-row gongdeok-hotel" data-hotel-id="roynet-hotel-seoul-mapo">
             <div class="hm-editorial-row__label">
               <p class="hm-decision-card__label">長めの出張</p>
               <h3>Roynet Hotel Seoul Mapo</h3>
@@ -490,6 +520,7 @@
               <p>出張が長くなり、客室や館内設備の差が効いてくるとRoynetが有力になります。公式情報では23㎡のスタンダード、39㎡以上の広めの客室、最大77.7㎡のスイートがあり、多くの客室でバス・トイレが分離しています。広いデスク、ビジネスセンター、フィットネスルーム、24時間セルフランドリーは、数泊すると便利さを実感しやすい設備です。</p>
               <p>AREXへの接続は分かりやすいですが、出口の違いが重要です。Roynetは孔徳駅・麻浦駅のどちらからも徒歩約4分と案内しています。孔徳駅では1番出口が最寄りですが階段のみで、エレベーターを使いたい場合は9番出口を推奨しています。5号線だけを使うなら、麻浦駅2番出口にはエスカレーターがあります。大きなスーツケースで到着する日は、駅名だけでなく使う出口まで決めておくと楽です。</p>
               <p>1～2泊のシンプルな出張なら、Roynetの設備は必要以上かもしれません。孔徳駅近くで寝るだけではなく、デスク、ランドリー、広い客室、バス・トイレ分離を実際に使うときに利点がはっきりします。</p>
+              <p class="gongdeok-hotel-map-link-wrap"><a class="gongdeok-hotel-map-link" href="#gongdeok-hotel-map" data-map-hotel="roynet-hotel-seoul-mapo" aria-controls="gongdeok-hotel-map-canvas">📌 地図で見る</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">料金を確認</p>
                 <p class="hm-booking-strip__title">予約サイトでこのホテルを比較</p>
@@ -502,7 +533,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row gongdeok-hotel">
+          <article class="hm-hotel hm-editorial-row gongdeok-hotel" data-hotel-id="shilla-stay-mapo">
             <div class="hm-editorial-row__label">
               <p class="hm-decision-card__label">分かりやすい出張拠点</p>
               <h3>Shilla Stay Mapo</h3>
@@ -512,6 +543,7 @@
               <p>Shilla Stay Mapoは、より一般的なビジネスホテルの選択肢です。ホテルは汝矣島近くのプレミアムビジネスホテルとして案内し、会議室、ビジネスコーナー、ジム、レストランがあります。孔徳駅1番出口から公式案内で徒歩約3分のため、客室を会議の合間の安定した拠点として使う短期出張に合います。</p>
               <p>このグループのホテルとしては空港移動の選択肢が多いです。孔徳経由のAREXに加え、ホテル公式では孔徳駅停留所の空港リムジン6015、6701、6702番を案内しています。フライト時刻、荷物、ターミナルに応じて鉄道とバスを選べます。</p>
               <p>StandardとDeluxeは21.7㎡で、基本的に大人1～2名向けです。Standard Family Twinもあり、子どもを含む場合は一部客室で最大3名まで宿泊できます。大人複数人や、実際に広さが必要な家族なら、Shilla Stayに決める前にLOTTE City Hotel MapoやSeoul Gardenも比較してください。</p>
+              <p class="gongdeok-hotel-map-link-wrap"><a class="gongdeok-hotel-map-link" href="#gongdeok-hotel-map" data-map-hotel="shilla-stay-mapo" aria-controls="gongdeok-hotel-map-canvas">📌 地図で見る</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">料金を確認</p>
                 <p class="hm-booking-strip__title">予約サイトでこのホテルを比較</p>
@@ -524,7 +556,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row gongdeok-hotel">
+          <article class="hm-hotel hm-editorial-row gongdeok-hotel" data-hotel-id="seoul-garden-hotel">
             <div class="hm-editorial-row__label">
               <p class="hm-decision-card__label">麻浦・孔徳の間で家族／グループ滞在</p>
               <h3>Seoul Garden Hotel</h3>
@@ -534,6 +566,7 @@
               <p>Seoul Garden Hotelの強みは、どちらか一駅に固定されず、使いやすい2駅の間にあることです。公式案内では麻浦駅3番出口から約3分、孔徳駅8番出口から約5分です。麻浦では5号線、必要なときは孔徳でAREX、6号線、京義中央線を使えます。</p>
               <p>家族・グループで見るべき理由は客室構成です。現在、シングルベッド3台のTriple、ダブル1台＋シングル1台のFamily Twin、ダブル1台＋二段ベッドのQuadを掲載しています。いずれも約25.87㎡で、広大な客室というより、3～4人に合うベッド構成があることがポイントです。</p>
               <p>孔徳駅のすぐ上に泊まることより、グループ向けの客室構成を重視するならSeoul Gardenを選びます。大人2人で空港と地下鉄の使いやすさだけが必要なら、GLADやShilla Stayのほうがシンプルです。3～4人が2室予約を避けたいなら、Seoul Gardenには明確な選ぶ理由があります。</p>
+              <p class="gongdeok-hotel-map-link-wrap"><a class="gongdeok-hotel-map-link" href="#gongdeok-hotel-map" data-map-hotel="seoul-garden-hotel" aria-controls="gongdeok-hotel-map-canvas">📌 地図で見る</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">料金を確認</p>
                 <p class="hm-booking-strip__title">予約サイトでこのホテルを比較</p>
@@ -546,7 +579,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row gongdeok-hotel">
+          <article class="hm-hotel hm-editorial-row gongdeok-hotel" data-hotel-id="hotel-naru-seoul">
             <div class="hm-editorial-row__label">
               <p class="hm-decision-card__label">漢江沿いのラグジュアリーステイ</p>
               <h3>Hotel Naru Seoul MGallery Ambassador</h3>
@@ -557,6 +590,7 @@
               <p>家族が必ず2室に分かれる必要はありません。公式Family Roomは43㎡、ダブルベッド2台で、子どもを含め最大4名まで宿泊できます。高級ホテルでも2～3名までの客室が多い中、Hotel Naruは4人で実際に泊まれる選択肢です。</p>
               <p>代わりに弱くなるのは交通です。孔徳のAREXと複数路線乗換駅がホテル直下にあるわけではありません。仁川空港からの公式案内では、孔徳で乗り換え、5号線で1駅の麻浦まで進むルートを案内しています。K-Limousine 6702番もホテルに停車するため空港アクセスは可能ですが、孔徳駅そのものに泊まる場合とは使い方が違います。</p>
               <p>そのためHotel Naruは、乗換駅の便利さを少し手放しても、漢江沿いの落ち着いた上質な滞在とホテル体験を優先したい旅行者向けです。</p>
+              <p class="gongdeok-hotel-map-link-wrap"><a class="gongdeok-hotel-map-link" href="#gongdeok-hotel-map" data-map-hotel="hotel-naru-seoul" aria-controls="gongdeok-hotel-map-canvas">📌 地図で見る</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">料金を確認</p>
                 <p class="hm-booking-strip__title">予約サイトでこのホテルを比較</p>
@@ -569,7 +603,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row gongdeok-hotel">
+          <article class="hm-hotel hm-editorial-row gongdeok-hotel" data-hotel-id="gongdeok-stay-masil">
             <div class="hm-editorial-row__label">
               <p class="hm-decision-card__label">3ベッドルームのプライベートグループ滞在</p>
               <h3>Gongdeok Stay Masil</h3>
@@ -579,6 +613,7 @@
               <p>Gongdeok Stay Masilは、ホテルを2～3室予約する代わりとして最も分かりやすい候補です。ヴィラ一棟に3ベッドルームとリビングがあり、現在のBooking掲載ではダブルベッド3台・最大6名です。キッチンと洗濯機もあるため、別々のホテル客室に分かれず一緒に泊まりたい家族や友人グループに合います。</p>
               <p>このタイプのグループ旅行には立地も実用的です。Seoul Stayでは孔徳駅10番出口から徒歩約3分と案内されており、駅からAREX、5号線、6号線、京義中央線を使えます。</p>
               <p>予約前に2点確認したい宿です。まずSeoul Stayでは、宿泊人数に応じて追加寝室が開放され、3名からBedroom 2、5名からBedroom 3を利用すると案内しています。次に、バスルームは1か所です。家族なら問題なく使える場合もありますが、大人6人が早朝フライトや一日観光の準備をする状況では使い勝手が大きく変わります。</p>
+              <p class="gongdeok-hotel-map-link-wrap"><a class="gongdeok-hotel-map-link" href="#gongdeok-hotel-map" data-map-hotel="gongdeok-stay-masil" aria-controls="gongdeok-hotel-map-canvas">📌 地図で見る</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">料金を確認</p>
                 <p class="hm-booking-strip__title">予約サイトでこのホテルを比較</p>
@@ -782,6 +817,7 @@
 
   <script src="../guide-year.js" defer></script>
   <script src="../common.js"></script>
+  <script src="../gongdeok-hotel-map.js" defer></script>
 <script>
   window.va = window.va || function () {
     (window.vaq = window.vaq || []).push(arguments);
