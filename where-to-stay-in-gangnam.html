@@ -24,6 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400..600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="gangnam-hotel-map.css">
   <style>
     body.gangnam-page main .hm-hero__copy {
       grid-column: 1 / -1;
@@ -233,13 +234,43 @@
       </div>
     </section>
 
+    <section class="hm-section gangnam-hotel-map-section" id="gangnam-hotel-map" aria-labelledby="gangnam-hotel-map-title">
+      <div class="container">
+        <header class="hm-section__header">
+          <h2 id="gangnam-hotel-map-title">Where Are the Hotels in Gangnam?</h2>
+          <p class="hm-section__intro">Select a hotel pin or name to see its location.</p>
+        </header>
+        <div class="gangnam-hotel-map-layout">
+          <div class="gangnam-hotel-map-shell">
+            <div class="gangnam-hotel-map-canvas" id="gangnam-hotel-map-canvas" role="region" tabindex="0" aria-label="Interactive map showing 10 Gangnam hotels"></div>
+            <p class="gangnam-hotel-map-status" id="gangnam-hotel-map-status" role="status" aria-live="polite">Loading the hotel map…</p>
+          </div>
+          <aside class="gangnam-hotel-map-directory" aria-labelledby="gangnam-hotel-map-directory-title">
+            <h3 id="gangnam-hotel-map-directory-title">Hotels on this map</h3>
+            <ol class="gangnam-hotel-map-list">
+              <li><button type="button" data-map-hotel="novotel" aria-controls="gangnam-hotel-map-canvas" aria-pressed="false"><span class="gangnam-hotel-map-number" aria-hidden="true">1</span><span>Novotel Ambassador Seoul Gangnam</span></button></li>
+              <li><button type="button" data-map-hotel="dormy-inn" aria-controls="gangnam-hotel-map-canvas" aria-pressed="false"><span class="gangnam-hotel-map-number" aria-hidden="true">2</span><span>Dormy Inn Seoul Gangnam</span></button></li>
+              <li><button type="button" data-map-hotel="ocloud" aria-controls="gangnam-hotel-map-canvas" aria-pressed="false"><span class="gangnam-hotel-map-number" aria-hidden="true">3</span><span>Ocloud Hotel Gangnam</span></button></li>
+              <li><button type="button" data-map-hotel="hotel-cappuccino" aria-controls="gangnam-hotel-map-canvas" aria-pressed="false"><span class="gangnam-hotel-map-number" aria-hidden="true">4</span><span>Hotel Cappuccino</span></button></li>
+              <li><button type="button" data-map-hotel="ac-hotel" aria-controls="gangnam-hotel-map-canvas" aria-pressed="false"><span class="gangnam-hotel-map-number" aria-hidden="true">5</span><span>AC Hotel Seoul Gangnam</span></button></li>
+              <li><button type="button" data-map-hotel="grand-intercontinental" aria-controls="gangnam-hotel-map-canvas" aria-pressed="false"><span class="gangnam-hotel-map-number" aria-hidden="true">6</span><span>Grand InterContinental Seoul Parnas</span></button></li>
+              <li><button type="button" data-map-hotel="shilla-stay-samsung" aria-controls="gangnam-hotel-map-canvas" aria-pressed="false"><span class="gangnam-hotel-map-number" aria-hidden="true">7</span><span>Shilla Stay Samsung</span></button></li>
+              <li><button type="button" data-map-hotel="hotel-peyto-samseong" aria-controls="gangnam-hotel-map-canvas" aria-pressed="false"><span class="gangnam-hotel-map-number" aria-hidden="true">8</span><span>Hotel Peyto Samseong</span></button></li>
+              <li><button type="button" data-map-hotel="andaz" aria-controls="gangnam-hotel-map-canvas" aria-pressed="false"><span class="gangnam-hotel-map-number" aria-hidden="true">9</span><span>Andaz Seoul Gangnam</span></button></li>
+              <li><button type="button" data-map-hotel="voco" aria-controls="gangnam-hotel-map-canvas" aria-pressed="false"><span class="gangnam-hotel-map-number" aria-hidden="true">10</span><span>voco Seoul Gangnam</span></button></li>
+            </ol>
+          </aside>
+        </div>
+      </div>
+    </section>
+
     <section class="hm-section hm-section--cream" id="gangnam-station-hotels" aria-labelledby="gangnam-station-hotels-title">
       <div class="container">
         <header class="hm-section__header">
           <h2 id="gangnam-station-hotels-title">Hotels around Gangnam Station, Sinnonhyeon, and Yeoksam</h2>
         </header>
         <div class="hm-hotel-region__list">
-          <article class="hm-hotel hm-editorial-row" id="novotel" aria-labelledby="novotel-title">
+          <article class="hm-hotel hm-editorial-row" id="novotel" data-hotel-id="novotel" aria-labelledby="novotel-title">
             <div class="hm-editorial-row__label">
               <h3 id="novotel-title">Novotel Ambassador Seoul Gangnam</h3>
             </div>
@@ -250,6 +281,7 @@
               <p>That matters if you plan every trip around Line 2. If your evenings are around Sinnonhyeon and your days are in southern Seoul, the location makes more sense.</p>
               <p>Airport arrival is another reason to look at it. The 6703 limousine serves this hotel area, so you do not necessarily need to drag luggage through a subway transfer after a long flight.</p>
               <p class="hm-affiliate-note">This page contains affiliate links.</p>
+              <p class="gangnam-map-link-wrap"><a class="gangnam-map-link" href="#gangnam-hotel-map" data-map-hotel="novotel" aria-controls="gangnam-hotel-map-canvas">📌 View on Map</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
                 <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
@@ -261,7 +293,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="dormy-inn" aria-labelledby="dormy-inn-title">
+          <article class="hm-hotel hm-editorial-row" id="dormy-inn" data-hotel-id="dormy-inn" aria-labelledby="dormy-inn-title">
             <div class="hm-editorial-row__label">
               <h3 id="dormy-inn-title">Dormy Inn Seoul Gangnam</h3>
             </div>
@@ -271,6 +303,7 @@
               <p>The bath operates into the next morning; the sauna pauses for part of the overnight period. Anyone booking specifically for those facilities should check the current operating hours before arrival.</p>
               <p>The hotel is also closer to Sinnonhyeon than many travelers expect from the name. The 6703 airport bus stop near Novotel leaves only a short walk to Dormy Inn.</p>
               <p>If you want a large room to spread out two suitcases, look elsewhere. If you know you will actually use the bath every night, the small room becomes a more reasonable compromise.</p>
+              <p class="gangnam-map-link-wrap"><a class="gangnam-map-link" href="#gangnam-hotel-map" data-map-hotel="dormy-inn" aria-controls="gangnam-hotel-map-canvas">📌 View on Map</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
                 <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
@@ -282,7 +315,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="ocloud" aria-labelledby="ocloud-title">
+          <article class="hm-hotel hm-editorial-row" id="ocloud" data-hotel-id="ocloud" aria-labelledby="ocloud-title">
             <div class="hm-editorial-row__label">
               <h3 id="ocloud-title">Ocloud Hotel Gangnam</h3>
             </div>
@@ -292,6 +325,7 @@
               <p>That makes it a sensible place to come back to after a late dinner without planning your evening around the last subway.</p>
               <p>Family Twin categories add another use case, although occupancy listings have not always been consistent across booking sites. Do not count beds and assume the room accepts the same number of adults. Put the full party into the reservation first.</p>
               <p>Ocloud is harder to justify for someone spending every day at COEX. In that case, staying in Samseong removes more travel.</p>
+              <p class="gangnam-map-link-wrap"><a class="gangnam-map-link" href="#gangnam-hotel-map" data-map-hotel="ocloud" aria-controls="gangnam-hotel-map-canvas">📌 View on Map</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
                 <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
@@ -303,7 +337,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="hotel-cappuccino" aria-labelledby="hotel-cappuccino-title">
+          <article class="hm-hotel hm-editorial-row" id="hotel-cappuccino" data-hotel-id="hotel-cappuccino" aria-labelledby="hotel-cappuccino-title">
             <div class="hm-editorial-row__label">
               <h3 id="hotel-cappuccino-title">Hotel Cappuccino</h3>
             </div>
@@ -313,6 +347,7 @@
               <p>There is also self-service laundry, which is more valuable on a longer trip than another decorative hotel amenity.</p>
               <p>The hotel suits travelers who like the Yeoksam/Gangnam evening environment and do not need a large full-service property. Someone looking for a quiet luxury stay or direct COEX access has better choices elsewhere.</p>
               <p>For a group, still book by the exact room category. A stylish photograph of a standard room is not evidence that four adults can stay there.</p>
+              <p class="gangnam-map-link-wrap"><a class="gangnam-map-link" href="#gangnam-hotel-map" data-map-hotel="hotel-cappuccino" aria-controls="gangnam-hotel-map-canvas">📌 View on Map</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
                 <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
@@ -324,7 +359,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="ac-hotel" aria-labelledby="ac-hotel-title">
+          <article class="hm-hotel hm-editorial-row" id="ac-hotel" data-hotel-id="ac-hotel" aria-labelledby="ac-hotel-title">
             <div class="hm-editorial-row__label">
               <h3 id="ac-hotel-title">AC Hotel Seoul Gangnam</h3>
             </div>
@@ -334,6 +369,7 @@
               <p>Most travelers will use it as a modern conventional hotel, but some higher room categories go further. Premier Suite options include a separate living area and full kitchen, which changes the usefulness for longer stays.</p>
               <p>That does not mean everyone should pay for a suite. If you will leave after breakfast and return late, the kitchen may barely matter.</p>
               <p>AC Hotel is strongest when Yeoksam is already where you need to be.</p>
+              <p class="gangnam-map-link-wrap"><a class="gangnam-map-link" href="#gangnam-hotel-map" data-map-hotel="ac-hotel" aria-controls="gangnam-hotel-map-canvas">📌 View on Map</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
                 <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
@@ -355,7 +391,7 @@
           <h2 id="samseong-coex-hotels-title">Hotels around Samseong and COEX</h2>
         </header>
         <div class="hm-hotel-region__list">
-          <article class="hm-hotel hm-editorial-row" id="grand-intercontinental" aria-labelledby="grand-intercontinental-title">
+          <article class="hm-hotel hm-editorial-row" id="grand-intercontinental" data-hotel-id="grand-intercontinental" aria-labelledby="grand-intercontinental-title">
             <div class="hm-editorial-row__label">
               <h3 id="grand-intercontinental-title">Grand InterContinental Seoul Parnas</h3>
             </div>
@@ -365,6 +401,7 @@
               <p>That changes the morning of a conference. Instead of planning when to leave, watching the weather, and carrying work material on the subway, you can simply walk over.</p>
               <p>The 6103 airport limousine also serves this area, which makes arrival with luggage easier than a rail trip with transfers.</p>
               <p>The price only makes sense if you use the location or the hotel. If COEX is one short visit during a week of sightseeing elsewhere, paying for this convenience every night is harder to defend.</p>
+              <p class="gangnam-map-link-wrap"><a class="gangnam-map-link" href="#gangnam-hotel-map" data-map-hotel="grand-intercontinental" aria-controls="gangnam-hotel-map-canvas">📌 View on Map</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
                 <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
@@ -376,7 +413,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="shilla-stay-samsung" aria-labelledby="shilla-stay-samsung-title">
+          <article class="hm-hotel hm-editorial-row" id="shilla-stay-samsung" data-hotel-id="shilla-stay-samsung" aria-labelledby="shilla-stay-samsung-title">
             <div class="hm-editorial-row__label">
               <h3 id="shilla-stay-samsung-title">Shilla Stay Samsung</h3>
             </div>
@@ -386,6 +423,7 @@
               <p>There is one detail easy to miss when booking: some Family Twin and standard categories are sold as <strong>no-view rooms</strong>. A family room does not automatically mean a better view or a brighter room.</p>
               <p>If looking out over Gangnam matters to you, check the exact category rather than assuming the hotel name guarantees it.</p>
               <p>For a conference, shopping, or short family stay around COEX, the simpler hotel facilities may be enough.</p>
+              <p class="gangnam-map-link-wrap"><a class="gangnam-map-link" href="#gangnam-hotel-map" data-map-hotel="shilla-stay-samsung" aria-controls="gangnam-hotel-map-canvas">📌 View on Map</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
                 <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
@@ -397,7 +435,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="hotel-peyto-samseong" aria-labelledby="hotel-peyto-samseong-title">
+          <article class="hm-hotel hm-editorial-row" id="hotel-peyto-samseong" data-hotel-id="hotel-peyto-samseong" aria-labelledby="hotel-peyto-samseong-title">
             <div class="hm-editorial-row__label">
               <h3 id="hotel-peyto-samseong-title">Hotel Peyto Samseong</h3>
             </div>
@@ -406,6 +444,7 @@
               <p>It sits close to COEX and has practical facilities including coin laundry. That makes it particularly useful for one or two travelers who care more about location than spending the evening inside the hotel.</p>
               <p>Do not treat the twin-room layout as flexible group accommodation. Extra-bed options are limited, so this is not where we would start for three adults.</p>
               <p>It also fits the shopping side of Gangnam well. If COEX, department stores, and Samseong are the point of the day, staying nearby is more useful than commuting from Gangnam Station simply because that area is more famous.</p>
+              <p class="gangnam-map-link-wrap"><a class="gangnam-map-link" href="#gangnam-hotel-map" data-map-hotel="hotel-peyto-samseong" aria-controls="gangnam-hotel-map-canvas">📌 View on Map</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
                 <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
@@ -427,7 +466,7 @@
           <h2 id="apgujeong-cheongdam-hotels-title">Apgujeong and Cheongdam</h2>
         </header>
         <div class="hm-hotel-region__list">
-          <article class="hm-hotel hm-editorial-row" id="andaz" aria-labelledby="andaz-title">
+          <article class="hm-hotel hm-editorial-row" id="andaz" data-hotel-id="andaz" aria-labelledby="andaz-title">
             <div class="hm-editorial-row__label">
               <h3 id="andaz-title">Andaz Seoul Gangnam</h3>
             </div>
@@ -437,6 +476,7 @@
               <p>Rooms start larger than many central Seoul hotels, and higher categories give substantially more space. Some configurations can also work for families, but the exact occupancy still needs to be checked at booking.</p>
               <p>This is not the hotel we would pay for simply to say we stayed in Gangnam. If your days are at COEX, Andaz creates a commute that Grand InterContinental does not.</p>
               <p>If your calendar is filled with Apgujeong clinics, Cheongdam reservations, and shopping, the calculation reverses.</p>
+              <p class="gangnam-map-link-wrap"><a class="gangnam-map-link" href="#gangnam-hotel-map" data-map-hotel="andaz" aria-controls="gangnam-hotel-map-canvas">📌 View on Map</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
                 <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
@@ -458,7 +498,7 @@
           <h2 id="sinsa-dosan-hotels-title">Sinsa and Dosan</h2>
         </header>
         <div class="hm-hotel-region__list">
-          <article class="hm-hotel hm-editorial-row" id="voco" aria-labelledby="voco-title">
+          <article class="hm-hotel hm-editorial-row" id="voco" data-hotel-id="voco" aria-labelledby="voco-title">
             <div class="hm-editorial-row__label">
               <h3 id="voco-title">voco Seoul Gangnam</h3>
             </div>
@@ -468,6 +508,7 @@
               <p>Most couples do not need anything close to that. The useful point is that the same property can work for a normal two-person stay or, with the correct category, a much larger family or group.</p>
               <p>There is no hotel airport shuttle to rely on, so check the airport limousine or final taxi leg before arrival rather than assuming a premium hotel handles the transfer.</p>
               <p>For Garosu-gil, Dosan Park, beauty appointments, and dinners around Sinsa, the location earns its place. For a COEX conference, it does not.</p>
+              <p class="gangnam-map-link-wrap"><a class="gangnam-map-link" href="#gangnam-hotel-map" data-map-hotel="voco" aria-controls="gangnam-hotel-map-canvas">📌 View on Map</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">CHECK RATES</p>
                 <p class="hm-booking-strip__title">Compare this hotel on booking sites</p>
@@ -625,6 +666,7 @@
 
   <script src="guide-year.js" defer></script>
   <script src="common.js"></script>
+  <script src="gangnam-hotel-map.js" defer></script>
 <script>
   window.va = window.va || function () {
     (window.vaq = window.vaq || []).push(arguments);

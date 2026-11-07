@@ -1,0 +1,313 @@
+.gangnam-page .gangnam-hotel-map-section {
+  background: var(--white);
+  scroll-margin-top: calc(var(--header-height) + 24px);
+}
+
+.gangnam-page .gangnam-hotel-map-section .hm-section__header {
+  margin-bottom: 24px;
+}
+
+.gangnam-page .gangnam-hotel-map-section .hm-section__intro {
+  max-width: 72ch;
+}
+
+.gangnam-page .gangnam-hotel-map-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(280px, .75fr);
+  gap: 24px;
+  align-items: stretch;
+}
+
+.gangnam-page .gangnam-hotel-map-shell {
+  position: relative;
+  min-width: 0;
+  border: 1px solid var(--gray-200);
+  background: var(--gray-50);
+}
+
+.gangnam-page .gangnam-hotel-map-canvas {
+  width: 100%;
+  height: 520px;
+  min-height: 420px;
+}
+
+.gangnam-page .gangnam-hotel-map-canvas:focus-visible {
+  outline: 3px solid var(--blue-accent);
+  outline-offset: 3px;
+}
+
+.gangnam-page .gangnam-hotel-map-fallback {
+  display: grid;
+  min-height: 420px;
+  place-items: center;
+  margin: 0;
+  padding: 32px;
+  color: var(--blue-muted);
+  font-size: 18px;
+  line-height: 1.72;
+  text-align: center;
+}
+
+.gangnam-page .gangnam-hotel-map-status {
+  margin: 12px 0 0;
+  color: var(--blue-muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.gangnam-page .gangnam-hotel-map-directory {
+  min-width: 0;
+  padding: 20px;
+  border: 1px solid #d8d0c2;
+  background: var(--gray-50);
+}
+
+.gangnam-page .gangnam-hotel-map-directory h3 {
+  margin: 0 0 14px;
+  color: var(--blue-deep);
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+.gangnam-page .gangnam-hotel-map-list {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overscroll-behavior: contain;
+}
+
+.gangnam-page .gangnam-hotel-map-list button {
+  display: grid;
+  width: 100%;
+  min-height: 44px;
+  grid-template-columns: 32px minmax(0, 1fr);
+  gap: 10px;
+  align-items: center;
+  padding: 8px 10px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--blue-muted);
+  font: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.35;
+  text-align: left;
+  cursor: pointer;
+}
+
+.gangnam-page .gangnam-hotel-map-list button:hover,
+.gangnam-page .gangnam-hotel-map-list button:focus-visible {
+  border-color: var(--gray-200);
+  background: var(--white);
+  color: var(--blue-deep);
+}
+
+.gangnam-page .gangnam-hotel-map-list button:focus-visible {
+  outline: 3px solid var(--blue-accent);
+  outline-offset: 2px;
+}
+
+.gangnam-page .gangnam-hotel-map-list button[aria-pressed="true"] {
+  border-color: #b73722;
+  background: var(--white);
+  color: var(--blue-deep);
+  font-weight: 700;
+}
+
+.gangnam-page .gangnam-hotel-map-number {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--blue-accent);
+  color: var(--white);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.gangnam-page .gangnam-hotel-map-list button[aria-pressed="true"] .gangnam-hotel-map-number {
+  background: #b73722;
+}
+
+.gangnam-page .gangnam-map-marker {
+  position: relative;
+  display: block;
+  width: 36px;
+  height: 46px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  overflow: visible;
+}
+
+.gangnam-page .gangnam-map-marker:focus-visible {
+  outline: 3px solid var(--blue-accent);
+  outline-offset: 3px;
+}
+
+.gangnam-page .gangnam-map-marker__pin {
+  display: block;
+  width: 36px;
+  height: 42px;
+}
+
+.gangnam-page .gangnam-map-marker__number {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  min-width: 18px;
+  padding: 0 2px;
+  transform: translateX(-50%);
+  color: var(--white);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .45);
+}
+
+.gangnam-page .gangnam-map-marker__label {
+  position: absolute;
+  top: 20px;
+  left: calc(100% + 8px);
+  width: max-content;
+  max-width: 190px;
+  transform: translateY(calc(-50% + var(--label-y, 0px)));
+  padding: 5px 7px;
+  border: 1px solid var(--gray-200);
+  background: rgba(255, 255, 255, .96);
+  color: var(--blue-deep);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.25;
+  text-align: left;
+  white-space: normal;
+  box-shadow: var(--shadow-sm);
+  pointer-events: auto;
+}
+
+.gangnam-page .gangnam-map-marker--left .gangnam-map-marker__label {
+  right: calc(100% + 8px);
+  left: auto;
+  text-align: right;
+}
+
+.gangnam-page .gangnam-map-marker__label::before {
+  position: absolute;
+  top: 50%;
+  left: -9px;
+  width: 9px;
+  height: 1px;
+  background: var(--blue-muted);
+  content: "";
+}
+
+.gangnam-page .gangnam-map-marker--left .gangnam-map-marker__label::before {
+  right: -9px;
+  left: auto;
+}
+
+.gangnam-page .gangnam-map-marker[aria-pressed="true"] .gangnam-map-marker__label {
+  border-color: #b73722;
+  color: #7c2115;
+  font-weight: 700;
+  box-shadow: var(--shadow-md);
+}
+
+.gangnam-page .gangnam-map-link-wrap {
+  margin: 16px 0 0;
+}
+
+.gangnam-page .gangnam-map-link {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  color: var(--blue-accent);
+  font-weight: 600;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.gangnam-page .gangnam-map-link:hover,
+.gangnam-page .gangnam-map-link:focus-visible {
+  color: var(--blue-deep);
+}
+
+.gangnam-page .gangnam-map-link:focus-visible {
+  outline: 3px solid var(--blue-accent);
+  outline-offset: 3px;
+}
+
+@media (max-width: 900px) {
+  .gangnam-page .gangnam-hotel-map-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .gangnam-page .gangnam-hotel-map-canvas {
+    height: 420px;
+  }
+
+  .gangnam-page .gangnam-hotel-map-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-height: none;
+    overflow: visible;
+  }
+}
+
+@media (max-width: 620px) {
+  .gangnam-page .gangnam-hotel-map-section .hm-section__header {
+    margin-bottom: 20px;
+  }
+
+  .gangnam-page .gangnam-hotel-map-layout {
+    gap: 18px;
+  }
+
+  .gangnam-page .gangnam-hotel-map-canvas {
+    height: 360px;
+    min-height: 320px;
+  }
+
+  .gangnam-page .gangnam-hotel-map-fallback {
+    min-height: 320px;
+    padding: 24px 18px;
+    font-size: 17px;
+    line-height: 1.68;
+  }
+
+  .gangnam-page .gangnam-hotel-map-directory {
+    padding: 16px;
+  }
+
+  .gangnam-page .gangnam-hotel-map-list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .gangnam-page .gangnam-hotel-map-list button {
+    font-size: 16px;
+  }
+
+  .gangnam-page .gangnam-map-marker__label {
+    display: none;
+  }
+}
+
+.gangnam-page .gangnam-hotel-map-list button > span:last-child {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.gangnam-page article.hm-hotel[data-hotel-id][data-map-selected] {
+  outline: 2px solid #b73722;
+  outline-offset: 4px;
+}
+
+
+.gangnam-page .gangnam-map-marker[data-label-hidden] .gangnam-map-marker__label {
+  visibility: hidden;
+}
