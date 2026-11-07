@@ -20,6 +20,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400..600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../seoul-station-hotel-map.css">
   <style>
     body.seoul-station-page main .hm-section {
       height: auto;
@@ -608,6 +609,34 @@
       </div>
     </section>
 
+    <section class="hm-section seoul-station-hotel-map-section" id="seoul-station-hotel-map" data-map-asset-prefix="../" data-map-copy-default="已顯示 8 間住宿的位置。請選擇地圖標記或住宿名稱。" data-map-copy-selected="已選擇：{name}。第 {number} 號標記維持紅色，其餘標記為藍色。" data-map-copy-unavailable-selected="已選擇：{name}。NAVER 地圖目前無法使用，但頁面內的住宿連結仍可使用。" data-map-copy-pending-selected="已選擇：{name}。地圖載入完成後會顯示此選擇。" data-map-copy-fallback="無法載入 NAVER 互動地圖。請先透過住宿清單查看全部 8 個選項，稍後再試。" data-map-copy-fallback-status="NAVER 地圖目前無法使用。住宿名稱與頁面內連結仍可使用。" data-map-copy-marker-aria="選擇第 {number} 號：{name}" aria-labelledby="seoul-station-hotel-map-title">
+      <div class="container">
+        <header class="hm-section__header">
+          <h2 id="seoul-station-hotel-map-title">首爾站附近的住宿在哪裡？</h2>
+          <p class="hm-section__intro">點選地圖標記或住宿名稱，即可查看位置。</p>
+        </header>
+        <div class="seoul-station-hotel-map-layout">
+          <div class="seoul-station-hotel-map-shell">
+            <div class="seoul-station-hotel-map-canvas" id="seoul-station-hotel-map-canvas" role="region" tabindex="0" aria-label="顯示首爾站附近 8 間住宿的互動地圖"></div>
+            <p class="seoul-station-hotel-map-status" id="seoul-station-hotel-map-status" role="status" aria-live="polite">正在載入住宿地圖…</p>
+          </div>
+          <aside class="seoul-station-hotel-map-directory" aria-labelledby="seoul-station-hotel-map-directory-title">
+            <h3 id="seoul-station-hotel-map-directory-title">地圖上的住宿</h3>
+            <ol class="seoul-station-hotel-map-list">
+              <li><button type="button" data-map-hotel="four-points-seoul-station" aria-controls="seoul-station-hotel-map-canvas" aria-pressed="false"><span class="seoul-station-hotel-map-number" aria-hidden="true">1</span><span>Four Points by Sheraton Josun, Seoul Station</span></button></li>
+              <li><button type="button" data-map-hotel="hotelette-seoul-station" aria-controls="seoul-station-hotel-map-canvas" aria-pressed="false"><span class="seoul-station-hotel-map-number" aria-hidden="true">2</span><span>Hotelette Seoul Station</span></button></li>
+              <li><button type="button" data-map-hotel="ziyolk-seoul-station" aria-controls="seoul-station-hotel-map-canvas" aria-pressed="false"><span class="seoul-station-hotel-map-number" aria-hidden="true">3</span><span>ZIYOLK Seoul Station</span></button></li>
+              <li><button type="button" data-map-hotel="hotel-manu-seoul" aria-controls="seoul-station-hotel-map-canvas" aria-pressed="false"><span class="seoul-station-hotel-map-number" aria-hidden="true">4</span><span>Hotel Manu Seoul</span></button></li>
+              <li><button type="button" data-map-hotel="hotel-gracery-seoul" aria-controls="seoul-station-hotel-map-canvas" aria-pressed="false"><span class="seoul-station-hotel-map-number" aria-hidden="true">5</span><span>Hotel Gracery Seoul</span></button></li>
+              <li><button type="button" data-map-hotel="uh-suite-the-seoul" aria-controls="seoul-station-hotel-map-canvas" aria-pressed="false"><span class="seoul-station-hotel-map-number" aria-hidden="true">6</span><span>UH Suite The Seoul</span></button></li>
+              <li><button type="button" data-map-hotel="ramada-namdaemun" aria-controls="seoul-station-hotel-map-canvas" aria-pressed="false"><span class="seoul-station-hotel-map-number" aria-hidden="true">7</span><span>Ramada Hotel &amp; Suites by Wyndham Seoul Namdaemun</span></button></li>
+              <li><button type="button" data-map-hotel="travel-house" aria-controls="seoul-station-hotel-map-canvas" aria-pressed="false"><span class="seoul-station-hotel-map-number" aria-hidden="true">8</span><span>Travel House</span></button></li>
+            </ol>
+          </aside>
+        </div>
+      </div>
+    </section>
+
     <section class="hm-section" id="hotel-recommendations" aria-labelledby="seoul-station-hotels-guide">
       <div class="container">
         <header class="hm-hotel-guide">
@@ -615,7 +644,7 @@
         </header>
 
         <div class="hm-hotel-region__list">
-          <article class="hm-hotel hm-editorial-row seoul-station-hotel">
+          <article class="hm-hotel hm-editorial-row seoul-station-hotel" data-hotel-id="four-points-seoul-station">
             <div class="hm-editorial-row__label">
               <p class="hm-decision-card__label">車站旁的完整服務飯店</p>
               <h3>Four Points by Sheraton Josun, Seoul Station</h3>
@@ -625,6 +654,7 @@
               <p>首爾站本身就是住宿理由時，我會先看 Four Points。它特別適合商務旅行、仁川機場與 KTX 旅程之間的過夜，或前往機場前在首爾的最後一晚。和周邊小型住宿不同，這是一間常規的完整服務飯店，有 24 小時飯店服務環境、餐廳、健身中心，以及配備合適工作桌與 Wi-Fi 的客房。</p>
               <p>重要的是「連接首爾站」實際代表什麼。飯店透過 12 號出口的地下通道連到車站，但從首爾站仍約需步行 8–15 分鐘。KTX、AREX、GTX-A 與地鐵旅客，都得先穿過大型車站設施才到飯店側。天候不好時，室內路線很有用，但這不是下火車就能直接走進大廳的飯店。</p>
               <p>如果只需在早班列車前睡幾個小時，或大多數行程在首爾其他地方逛咖啡廳、享受夜生活與觀光，我就比較不會想多花錢住 Four Points。幾個行李箱攤開後，房間也可能顯得緊湊。這時，完整服務飯店的價值必須夠重要，才值得捨棄較小的車站住宿或更有意思的街區。</p>
+              <p class="seoul-station-hotel-map-link-wrap"><a class="seoul-station-hotel-map-link" href="#seoul-station-hotel-map" data-map-hotel="four-points-seoul-station" aria-controls="seoul-station-hotel-map-canvas">📌 在地圖上查看</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">查看房價</p>
                 <p class="hm-booking-strip__title">在訂房網站比較這間飯店</p>
@@ -637,7 +667,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row seoul-station-hotel">
+          <article class="hm-hotel hm-editorial-row seoul-station-hotel" data-hotel-id="hotelette-seoul-station">
             <div class="hm-editorial-row__label">
               <p class="hm-decision-card__label">獨旅短暫過夜的小房間</p>
               <h3>Hotelette Seoul Station</h3>
@@ -647,6 +677,7 @@
               <p>如果這一晚主要是睡在首爾站旁，隔天早上又出發，就可考慮 Hotelette。它就在 10 號出口旁；一個人帶背包或小登機箱，這份接近可能比大房間或完整飯店設施更重要。</p>
               <p>限制在房間，不是位置。房間非常小，一個大行李箱很快就會占掉可用地面空間。飯店本身有電梯，但 10 號出口有一小段樓梯。行李輕還好，帶大箱就沒那麼理想。</p>
               <p>家庭也有明確限制：不接待兒童，沒有嬰兒床或加床。因此，這不是披著平價外衣的小型家庭飯店，而是用途很明確，適合一位把車站便利看得比房間空間重要的成人。</p>
+              <p class="seoul-station-hotel-map-link-wrap"><a class="seoul-station-hotel-map-link" href="#seoul-station-hotel-map" data-map-hotel="hotelette-seoul-station" aria-controls="seoul-station-hotel-map-canvas">📌 在地圖上查看</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">查看房價</p>
                 <p class="hm-booking-strip__title">在訂房網站比較這間飯店</p>
@@ -659,7 +690,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row seoul-station-hotel">
+          <article class="hm-hotel hm-editorial-row seoul-station-hotel" data-hotel-id="ziyolk-seoul-station">
             <div class="hm-editorial-row__label">
               <p class="hm-decision-card__label">2–4 人的緊湊住宿</p>
               <h3>ZIYOLK Seoul Station</h3>
@@ -669,6 +700,7 @@
               <p>ZIYOLK 補上 Hotelette 沒有的選擇。房間仍小，但確實有四人房：Family Room 為 21㎡，有兩張雙人床；Double 與 Twin 分別為 10㎡ 與 12㎡。情侶或小團體想住得很靠近首爾站，又不想升到較大、完整服務的飯店，值得考慮。</p>
               <p>對多數住客，10 號出口是最短路線。問題在最後一段：有一段短但頗陡的坡道，而且 10 號出口本身並不是帶重行李最輕鬆的選擇。</p>
               <p>我會為短暫、以鐵路為主的停留選 ZIYOLK，而不是為了空間。行李箱一打開，房間很快就滿了。非值班時段的自助入住，可能有助於晚到；但隔音與緊湊格局，都讓 Family Room 不該被當成寬敞的家庭飯店。</p>
+              <p class="seoul-station-hotel-map-link-wrap"><a class="seoul-station-hotel-map-link" href="#seoul-station-hotel-map" data-map-hotel="ziyolk-seoul-station" aria-controls="seoul-station-hotel-map-canvas">📌 在地圖上查看</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">查看房價</p>
                 <p class="hm-booking-strip__title">在訂房網站比較這間飯店</p>
@@ -681,7 +713,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row seoul-station-hotel">
+          <article class="hm-hotel hm-editorial-row seoul-station-hotel" data-hotel-id="hotel-manu-seoul">
             <div class="hm-editorial-row__label">
               <p class="hm-decision-card__label">車站與市區之間的平衡</p>
               <h3>Hotel Manu Seoul</h3>
@@ -691,6 +723,7 @@
               <p>首爾站重要，但不希望整段住宿都圍繞車站，Hotel Manu 是平衡開始轉變的地方。它位於崇禮門與南大門一側，而不是緊貼月台，所以仍能搭 KTX，同時更自然地前往南大門市場、明洞與首爾市中心。</p>
               <p>步行路線需要稍作說明。一條實用路線，是搭戶外電梯上首爾路 7017，再沿高架步道往飯店；拖行李時，可能比盲目跟著最近的車站出口更省力。但「靠近首爾站」仍不代表靠近 KTX 月台。抵達車站建築後，大型站體內的移動還會增加時間。</p>
               <p>因此，若清晨出發、最在意把到站時間盡量壓短，我不會選 Manu。它更適合混合行程：一兩趟鐵路旅程，加上首爾市中心的餐飲、觀光或商務。部分房間較小，房型仍重要。</p>
+              <p class="seoul-station-hotel-map-link-wrap"><a class="seoul-station-hotel-map-link" href="#seoul-station-hotel-map" data-map-hotel="hotel-manu-seoul" aria-controls="seoul-station-hotel-map-canvas">📌 在地圖上查看</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">查看房價</p>
                 <p class="hm-booking-strip__title">在訂房網站比較這間飯店</p>
@@ -703,7 +736,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row seoul-station-hotel">
+          <article class="hm-hotel hm-editorial-row seoul-station-hotel" data-hotel-id="hotel-gracery-seoul">
             <div class="hm-editorial-row__label">
               <p class="hm-decision-card__label">商務與市廳住宿區</p>
               <h3>Hotel Gracery Seoul</h3>
@@ -713,6 +746,7 @@
               <p>只有當首爾站只是旅程的一部分，而不是選住宿的唯一理由時，Hotel Gracery 才適合列在這份指南。飯店和市廳、南大門的連結更自然。可以走到首爾站，但距離已讓我不會把它視為站前飯店。</p>
               <p>商務或混合市區行程，才是 Gracery 更有說服力的情況。飯店有提供筆電與列印的商務中心、投幣洗衣、24 小時櫃檯與自助行李置物櫃。</p>
               <p>大部分時間在市廳或首爾市中心開會，只搭一兩次 KTX，我會選它。尤其要搭早班列車時，不會只因訂房網站標示「首爾站附近」就選。Gracery 的價值，是讓待在首爾的日子更方便，而不是提供到 KTX 月台最短的路。</p>
+              <p class="seoul-station-hotel-map-link-wrap"><a class="seoul-station-hotel-map-link" href="#seoul-station-hotel-map" data-map-hotel="hotel-gracery-seoul" aria-controls="seoul-station-hotel-map-canvas">📌 在地圖上查看</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">查看房價</p>
                 <p class="hm-booking-strip__title">在訂房網站比較這間飯店</p>
@@ -725,7 +759,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row seoul-station-hotel">
+          <article class="hm-hotel hm-editorial-row seoul-station-hotel" data-hotel-id="uh-suite-the-seoul">
             <div class="hm-editorial-row__label">
               <p class="hm-decision-card__label">家庭與團體套房</p>
               <h3>UH Suite The Seoul</h3>
@@ -735,6 +769,7 @@
               <p>三人以上同行時，UH Suite The Seoul 就更值得看。Family City Suite 有三間獨立臥室、三張床與客廳，最多住六人；Private City Suite 有兩間臥室與起居空間，最多住四人。這和把四人擠進一間緊湊的車站飯店客房，是很不同的安排。</p>
               <p>地點也符合這頁討論的旅行方式。首爾站是家庭下一段行程的一部分，例如從其他城市回來住首爾最後一晚，或隔天早上搭 KTX 離開，這類住宿就尤其實用。</p>
               <p>訂房前，我仍會確認確切房型。「套房」不代表每間臥室或起居空間都大。情侶可能不必為這種格局多花錢，但四到六人想在首爾站附近有分開的睡眠空間，它確實能解決本指南較小飯店無法處理的需求。</p>
+              <p class="seoul-station-hotel-map-link-wrap"><a class="seoul-station-hotel-map-link" href="#seoul-station-hotel-map" data-map-hotel="uh-suite-the-seoul" aria-controls="seoul-station-hotel-map-canvas">📌 在地圖上查看</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">查看房價</p>
                 <p class="hm-booking-strip__title">在訂房網站比較這間飯店</p>
@@ -747,7 +782,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row seoul-station-hotel">
+          <article class="hm-hotel hm-editorial-row seoul-station-hotel" data-hotel-id="ramada-namdaemun">
             <div class="hm-editorial-row__label">
               <p class="hm-decision-card__label">家庭／團體與機場巴士</p>
               <h3>Ramada Hotel &amp; Suites by Wyndham Seoul Namdaemun</h3>
@@ -757,6 +792,7 @@
               <p>多人同行，又同時用到機場與首爾站，Ramada 值得考慮。飯店不在 KTX 月台旁，從首爾站 3 號出口約步行 10–15 分鐘，但它有較近的小型住宿沒有的選擇：多種較大格局，可住三、四，甚至五位旅客。</p>
               <p>機場交通是另一個值得看的理由。K-Limousine 6702 路線目前停靠 Ramada Hotel &amp; Suites Namdaemun。多人家庭抵達、隔天再搭 KTX，這可能比同一晚讓所有人穿過 AREX、首爾站，再移動到飯店更簡單。</p>
               <p>這裡要看房型。可選配置包括三張單人床、兩張雙人床、一張雙人床加兩張單人床，以及四張單人床。如果唯一目的是走最短的路搭早班 KTX，我不會選 Ramada。當房間格局與機場交通重要到願意接受較長到站步行，它才更合適。</p>
+              <p class="seoul-station-hotel-map-link-wrap"><a class="seoul-station-hotel-map-link" href="#seoul-station-hotel-map" data-map-hotel="ramada-namdaemun" aria-controls="seoul-station-hotel-map-canvas">📌 在地圖上查看</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">查看房價</p>
                 <p class="hm-booking-strip__title">在訂房網站比較這間飯店</p>
@@ -769,7 +805,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row seoul-station-hotel">
+          <article class="hm-hotel hm-editorial-row seoul-station-hotel" data-hotel-id="travel-house">
             <div class="hm-editorial-row__label">
               <p class="hm-decision-card__label">團體的公寓落腳處</p>
               <h3>Travel House</h3>
@@ -779,6 +815,7 @@
               <p>飯店客房不再是最實用的安排時，我會看 Travel House。多種公寓格局可住四到六人或更多，附有廚房設施、洗衣機、用餐空間、電梯與行李寄放。家庭或團體在往返韓國其他城市之間，於首爾住幾晚，能在公寓洗衣與簡單吃點東西，可能比飯店大廳或每日完整服務更重要。</p>
               <p>住宿在首爾站西側，約在 15 號出口動線一帶。因地圖估算不一，我不會刊出精確的月台到門口時間。重點是它位於車站西側的公寓住宿群。</p>
               <p>但團體人數需要實際確認。名義上可睡五或六人的單位，不代表五或六位成人就住得舒適。訂房前確認確切床位格局、浴室數與公寓類型，較大家庭尤其如此。</p>
+              <p class="seoul-station-hotel-map-link-wrap"><a class="seoul-station-hotel-map-link" href="#seoul-station-hotel-map" data-map-hotel="travel-house" aria-controls="seoul-station-hotel-map-canvas">📌 在地圖上查看</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">查看房價</p>
                 <p class="hm-booking-strip__title">在訂房網站比較這間飯店</p>
@@ -991,6 +1028,7 @@
 
   <script src="../guide-year.js" defer></script>
   <script src="../common.js"></script>
+  <script src="../seoul-station-hotel-map.js" defer></script>
 <script>
   window.va = window.va || function () {
     (window.vaq = window.vaq || []).push(arguments);

@@ -20,6 +20,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400..600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../seoul-station-hotel-map.css">
   <style>
     body.seoul-station-page main .hm-section {
       height: auto;
@@ -608,6 +609,34 @@
       </div>
     </section>
 
+    <section class="hm-section seoul-station-hotel-map-section" id="seoul-station-hotel-map" data-map-asset-prefix="../" data-map-copy-default="แผนที่แสดงตำแหน่งที่พักทั้ง 8 แห่งแล้ว เลือกหมุดหรือชื่อที่พักได้เลย" data-map-copy-selected="เลือกแล้ว: {name} หมุดหมายเลข {number} ยังคงเป็นสีแดง ส่วนหมุดอื่นเป็นสีน้ำเงิน" data-map-copy-unavailable-selected="เลือกแล้ว: {name} ขณะนี้แผนที่ NAVER ใช้งานไม่ได้ แต่ลิงก์ไปยังที่พักภายในหน้านี้ยังใช้ได้" data-map-copy-pending-selected="เลือกแล้ว: {name} ระบบจะแสดงตำแหน่งที่เลือกเมื่อแผนที่โหลดเสร็จ" data-map-copy-fallback="ไม่สามารถโหลดแผนที่ NAVER แบบโต้ตอบได้ โปรดดูที่พักทั้ง 8 แห่งจากรายชื่อ แล้วลองอีกครั้งภายหลัง" data-map-copy-fallback-status="แผนที่ NAVER ใช้งานไม่ได้ แต่ชื่อที่พักและลิงก์ภายในหน้านี้ยังใช้งานได้" data-map-copy-marker-aria="เลือกหมุดหมายเลข {number}: {name}" aria-labelledby="seoul-station-hotel-map-title">
+      <div class="container">
+        <header class="hm-section__header">
+          <h2 id="seoul-station-hotel-map-title">ที่พักใกล้สถานีโซลอยู่ตรงไหน?</h2>
+          <p class="hm-section__intro">เลือกหมุดหรือชื่อที่พักเพื่อดูตำแหน่งบนแผนที่</p>
+        </header>
+        <div class="seoul-station-hotel-map-layout">
+          <div class="seoul-station-hotel-map-shell">
+            <div class="seoul-station-hotel-map-canvas" id="seoul-station-hotel-map-canvas" role="region" tabindex="0" aria-label="แผนที่แบบโต้ตอบแสดงที่พัก 8 แห่งใกล้สถานีโซล"></div>
+            <p class="seoul-station-hotel-map-status" id="seoul-station-hotel-map-status" role="status" aria-live="polite">กำลังโหลดแผนที่ที่พัก…</p>
+          </div>
+          <aside class="seoul-station-hotel-map-directory" aria-labelledby="seoul-station-hotel-map-directory-title">
+            <h3 id="seoul-station-hotel-map-directory-title">ที่พักบนแผนที่นี้</h3>
+            <ol class="seoul-station-hotel-map-list">
+              <li><button type="button" data-map-hotel="four-points-seoul-station" aria-controls="seoul-station-hotel-map-canvas" aria-pressed="false"><span class="seoul-station-hotel-map-number" aria-hidden="true">1</span><span>Four Points by Sheraton Josun, Seoul Station</span></button></li>
+              <li><button type="button" data-map-hotel="hotelette-seoul-station" aria-controls="seoul-station-hotel-map-canvas" aria-pressed="false"><span class="seoul-station-hotel-map-number" aria-hidden="true">2</span><span>Hotelette Seoul Station</span></button></li>
+              <li><button type="button" data-map-hotel="ziyolk-seoul-station" aria-controls="seoul-station-hotel-map-canvas" aria-pressed="false"><span class="seoul-station-hotel-map-number" aria-hidden="true">3</span><span>ZIYOLK Seoul Station</span></button></li>
+              <li><button type="button" data-map-hotel="hotel-manu-seoul" aria-controls="seoul-station-hotel-map-canvas" aria-pressed="false"><span class="seoul-station-hotel-map-number" aria-hidden="true">4</span><span>Hotel Manu Seoul</span></button></li>
+              <li><button type="button" data-map-hotel="hotel-gracery-seoul" aria-controls="seoul-station-hotel-map-canvas" aria-pressed="false"><span class="seoul-station-hotel-map-number" aria-hidden="true">5</span><span>Hotel Gracery Seoul</span></button></li>
+              <li><button type="button" data-map-hotel="uh-suite-the-seoul" aria-controls="seoul-station-hotel-map-canvas" aria-pressed="false"><span class="seoul-station-hotel-map-number" aria-hidden="true">6</span><span>UH Suite The Seoul</span></button></li>
+              <li><button type="button" data-map-hotel="ramada-namdaemun" aria-controls="seoul-station-hotel-map-canvas" aria-pressed="false"><span class="seoul-station-hotel-map-number" aria-hidden="true">7</span><span>Ramada Hotel &amp; Suites by Wyndham Seoul Namdaemun</span></button></li>
+              <li><button type="button" data-map-hotel="travel-house" aria-controls="seoul-station-hotel-map-canvas" aria-pressed="false"><span class="seoul-station-hotel-map-number" aria-hidden="true">8</span><span>Travel House</span></button></li>
+            </ol>
+          </aside>
+        </div>
+      </div>
+    </section>
+
     <section class="hm-section" id="hotel-recommendations" aria-labelledby="seoul-station-hotels-guide">
       <div class="container">
         <header class="hm-hotel-guide">
@@ -615,7 +644,7 @@
         </header>
 
         <div class="hm-hotel-region__list">
-          <article class="hm-hotel hm-editorial-row seoul-station-hotel">
+          <article class="hm-hotel hm-editorial-row seoul-station-hotel" data-hotel-id="four-points-seoul-station">
             <div class="hm-editorial-row__label">
               <p class="hm-decision-card__label">ฐานเต็มรูปแบบใกล้สถานี</p>
               <h3>Four Points by Sheraton Josun, Seoul Station</h3>
@@ -625,6 +654,7 @@
               <p>Four Points คือโรงแรมที่เราจะเริ่มดูก่อนเมื่อสถานีโซลเองคือเหตุผลของการพัก เหมาะเป็นพิเศษกับทริปธุรกิจ คืนค้างระหว่างสนามบินอินชอนกับขา KTX หรือคืนสุดท้ายในโซลก่อนออกสนามบิน ต่างจากที่พักขนาดเล็กรอบสถานี คุณได้โรงแรมบริการเต็มรูปแบบ มีบริการตลอด 24 ชั่วโมง ร้านอาหาร ฟิตเนส และห้องที่มีโต๊ะทำงานกับ Wi-Fi เหมาะกับการทำงานจริง</p>
               <p>รายละเอียดสำคัญคือคำว่า “เชื่อมกับสถานีโซล” หมายถึงอะไร โรงแรมเชื่อมผ่านทางใต้ดินที่ ทางออก 12 แต่ระยะเดินจากสถานีโซลยังราว 8–15 นาที คนใช้ KTX, AREX, GTX-A และรถไฟใต้ดินยังต้องเดินผ่านคอมเพล็กซ์สถานีขนาดใหญ่กว่าจะถึงฝั่งโรงแรม เส้นทางในอาคารมีประโยชน์เมื่ออากาศไม่ดี แต่ไม่ใช่แบบลงรถไฟแล้วเดินเข้าล็อบบี้ทันที</p>
               <p>เราจะลังเลมากขึ้นที่จะจ่ายเพิ่มให้ Four Points หากต้องการแค่เตียงไม่กี่ชั่วโมงก่อนรถไฟเช้า หรือถ้าทริปส่วนใหญ่คือคาเฟ่ nightlife และเที่ยวที่อื่นในโซล ห้องอาจรู้สึกกะทัดรัดเมื่อเปิดกระเป๋าหลายใบ ในกรณีเหล่านี้ ต้องถามว่าคุณให้คุณค่ากับโรงแรมบริการเต็มรูปแบบมากพอที่จะเลือกเหนือที่พักเล็กใกล้สถานีหรือย่านที่น่าเที่ยวกว่าหรือไม่</p>
+              <p class="seoul-station-hotel-map-link-wrap"><a class="seoul-station-hotel-map-link" href="#seoul-station-hotel-map" data-map-hotel="four-points-seoul-station" aria-controls="seoul-station-hotel-map-canvas">📌 ดูบนแผนที่</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">เช็กราคา</p>
                 <p class="hm-booking-strip__title">เปรียบเทียบโรงแรมนี้บนเว็บไซต์จอง</p>
@@ -637,7 +667,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row seoul-station-hotel">
+          <article class="hm-hotel hm-editorial-row seoul-station-hotel" data-hotel-id="hotelette-seoul-station">
             <div class="hm-editorial-row__label">
               <p class="hm-decision-card__label">พักค้างสั้นๆ แบบกะทัดรัดสำหรับคนเดียว</p>
               <h3>Hotelette Seoul Station</h3>
@@ -647,6 +677,7 @@
               <p>Hotelette เหมาะเมื่อคืนนี้มีหน้าที่หลักคือ “นอนใกล้สถานีแล้วออกเช้าวันถัดไป” ทำเลอยู่ติดทางออก 10 และสำหรับคนเดียวที่มีเป้หรือกระเป๋าใบเล็ก ความใกล้นี้อาจสำคัญกว่าห้องใหญ่หรือสิ่งอำนวยความสะดวกเต็มรูปแบบ</p>
               <p>ข้อจำกัดอยู่ที่ห้อง ไม่ใช่ทำเล ห้องกะทัดรัดมาก กระเป๋าใบใหญ่สามารถกินพื้นที่พื้นเกือบทั้งหมด ตัวโรงแรมมีลิฟต์ แต่ทางออก 10 มีบันไดสั้นๆ จัดการได้กับสัมภาระเบา และน่าสนใจน้อยลงมากเมื่อมีกระเป๋าใหญ่</p>
               <p>มีตัวกรองชัดสำหรับครอบครัว: ไม่รับเด็ก และไม่มีเตียงเด็กหรือเตียงเสริม จึงไม่ใช่โรงแรมครอบครัวขนาดเล็กที่แค่ราคาถูก แต่เป็นที่พักเฉพาะทางสำหรับผู้ใหญ่หนึ่งคนที่ให้ความสำคัญกับสถานีมากกว่าพื้นที่ห้อง</p>
+              <p class="seoul-station-hotel-map-link-wrap"><a class="seoul-station-hotel-map-link" href="#seoul-station-hotel-map" data-map-hotel="hotelette-seoul-station" aria-controls="seoul-station-hotel-map-canvas">📌 ดูบนแผนที่</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">เช็กราคา</p>
                 <p class="hm-booking-strip__title">เปรียบเทียบโรงแรมนี้บนเว็บไซต์จอง</p>
@@ -659,7 +690,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row seoul-station-hotel">
+          <article class="hm-hotel hm-editorial-row seoul-station-hotel" data-hotel-id="ziyolk-seoul-station">
             <div class="hm-editorial-row__label">
               <p class="hm-decision-card__label">ที่พักกะทัดรัดสำหรับ 2–4 คน</p>
               <h3>ZIYOLK Seoul Station</h3>
@@ -669,6 +700,7 @@
               <p>ZIYOLK เติมช่องว่างที่ Hotelette ทำไม่ได้ ห้องยังค่อนข้างกะทัดรัด แต่มีตัวเลือกสำหรับสี่คนจริง: Family Room 21㎡ มีเตียง Double 2 เตียง ส่วน Double และ Twin อยู่ที่ 10㎡ และ 12㎡ จึงเหมาะกับคู่รักหรือกลุ่มเล็กที่อยากอยู่ใกล้สถานีมากโดยไม่ขยับไปโรงแรมบริการเต็มรูปแบบที่ใหญ่กว่า</p>
               <p>ทางออก 10 เป็นเส้นทางสั้นที่สุดสำหรับแขกส่วนใหญ่ ข้อแลกเปลี่ยนคือช่วงสุดท้ายมีเนินสั้นแต่ค่อนข้างชัน และทางออก 10 เองไม่ใช่ตัวเลือกที่ง่ายที่สุดหากมีกระเป๋าหนัก</p>
               <p>เราจะเลือก ZIYOLK สำหรับการพักสั้นที่เน้นรถไฟ มากกว่าจะเลือกเพราะพื้นที่ห้อง พอเปิดกระเป๋าแล้วห้องจะเต็มเร็ว ระบบ self check-in นอกเวลาพนักงานช่วยเรื่องมาถึงดึกได้ แต่เรื่องกันเสียงและผังห้องกะทัดรัดเป็นเหตุผลที่ไม่ควรมอง Family Room ว่าเป็น “โรงแรมครอบครัวห้องกว้าง”</p>
+              <p class="seoul-station-hotel-map-link-wrap"><a class="seoul-station-hotel-map-link" href="#seoul-station-hotel-map" data-map-hotel="ziyolk-seoul-station" aria-controls="seoul-station-hotel-map-canvas">📌 ดูบนแผนที่</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">เช็กราคา</p>
                 <p class="hm-booking-strip__title">เปรียบเทียบโรงแรมนี้บนเว็บไซต์จอง</p>
@@ -681,7 +713,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row seoul-station-hotel">
+          <article class="hm-hotel hm-editorial-row seoul-station-hotel" data-hotel-id="hotel-manu-seoul">
             <div class="hm-editorial-row__label">
               <p class="hm-decision-card__label">สมดุลระหว่างสถานีกับเที่ยวเมือง</p>
               <h3>Hotel Manu Seoul</h3>
@@ -691,6 +723,7 @@
               <p>ถ้าสถานีโซลสำคัญแต่ไม่อยากให้สถานีเป็นศูนย์กลางของการพักทั้งหมด Hotel Manu คือจุดที่สมดุลเริ่มเปลี่ยน โรงแรมอยู่ฝั่ง Sungnyemun และ Namdaemun มากกว่าติดชานชาลา จึงยังใช้ KTX ได้และเชื่อมไป Namdaemun Market เมียงดง และใจกลางเมืองได้เป็นธรรมชาติขึ้น</p>
               <p>เส้นทางเดินควรอธิบายให้ชัด หนึ่งในเส้นทางที่ใช้งานได้คือขึ้นลิฟต์กลางแจ้งไป Seoullo 7017 แล้วเดินตามทางยกระดับไปโรงแรม ซึ่งอาจง่ายกว่าสำหรับกระเป๋าเมื่อเทียบกับการตาม “ทางออกที่ใกล้ที่สุด” แบบไม่ดูสภาพจริง แต่คำว่าใกล้สถานีโซลยังไม่ได้แปลว่าใกล้ชานชาลา KTX ตัวคอมเพล็กซ์สถานีมีขนาดใหญ่และเพิ่มเวลาเอง</p>
               <p>ดังนั้นเราจะไม่เลือก Manu สำหรับรถไฟเช้ามืด หากเป้าหมายคือบีบทุกนาทีในการเข้าถึงสถานี จุดแข็งของมันคือแผนแบบผสม: รถไฟหนึ่งหรือสองเที่ยว แล้วมีมื้ออาหาร เที่ยวเมือง หรือทำงานในใจกลางโซล ห้องจริงยังต้องเช็กเพราะบางประเภทกะทัดรัด</p>
+              <p class="seoul-station-hotel-map-link-wrap"><a class="seoul-station-hotel-map-link" href="#seoul-station-hotel-map" data-map-hotel="hotel-manu-seoul" aria-controls="seoul-station-hotel-map-canvas">📌 ดูบนแผนที่</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">เช็กราคา</p>
                 <p class="hm-booking-strip__title">เปรียบเทียบโรงแรมนี้บนเว็บไซต์จอง</p>
@@ -703,7 +736,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row seoul-station-hotel">
+          <article class="hm-hotel hm-editorial-row seoul-station-hotel" data-hotel-id="hotel-gracery-seoul">
             <div class="hm-editorial-row__label">
               <p class="hm-decision-card__label">ฐานธุรกิจ + City Hall</p>
               <h3>Hotel Gracery Seoul</h3>
@@ -713,6 +746,7 @@
               <p>Hotel Gracery ควรอยู่ในคู่มือนี้ก็ต่อเมื่อสถานีโซลเป็น “ส่วนหนึ่ง” ของทริป ไม่ใช่เหตุผลทั้งหมดของการพัก โรงแรมผูกกับ City Hall และ Namdaemun มากกว่า สถานีโซลเดินถึงได้ แต่ระยะมากพอที่จะไม่ควรเรียกว่าโรงแรมหน้าสถานี</p>
               <p>จุดที่ Gracery น่าสนใจขึ้นคือทริปธุรกิจหรือทริปเมืองแบบผสม โรงแรมมี business center พร้อมแล็ปท็อปและเครื่องพิมพ์ มี coin laundry แผนกต้อนรับ 24 ชั่วโมง และล็อกเกอร์ฝากกระเป๋าแบบ self-service</p>
               <p>เราจะเลือกเมื่อการประชุมแถว City Hall หรือใจกลางโซลกินเวลาส่วนใหญ่ และใช้ KTX แค่หนึ่งหรือสองครั้ง จะไม่เลือกเพียงเพราะเว็บไซต์จองติดป้ายว่า “ใกล้สถานีโซล” โดยเฉพาะก่อนรถไฟเช้า เหตุผลของ Gracery คือทำให้วันในโซลง่ายขึ้น ไม่ใช่ทำให้ระยะถึงชานชาลา KTX สั้นที่สุด</p>
+              <p class="seoul-station-hotel-map-link-wrap"><a class="seoul-station-hotel-map-link" href="#seoul-station-hotel-map" data-map-hotel="hotel-gracery-seoul" aria-controls="seoul-station-hotel-map-canvas">📌 ดูบนแผนที่</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">เช็กราคา</p>
                 <p class="hm-booking-strip__title">เปรียบเทียบโรงแรมนี้บนเว็บไซต์จอง</p>
@@ -725,7 +759,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row seoul-station-hotel">
+          <article class="hm-hotel hm-editorial-row seoul-station-hotel" data-hotel-id="uh-suite-the-seoul">
             <div class="hm-editorial-row__label">
               <p class="hm-decision-card__label">Suite สำหรับครอบครัวและกลุ่ม</p>
               <h3>UH Suite The Seoul</h3>
@@ -735,6 +769,7 @@
               <p>UH Suite The Seoul น่าสนใจขึ้นมากเมื่อเดินทางตั้งแต่สามคนขึ้นไป Family City Suite พักได้ถึง 6 คน ใน 3 ห้องนอนแยก 3 เตียง พร้อมห้องนั่งเล่น ส่วน Private City Suite พักได้ถึง 4 คน ด้วย 2 ห้องนอนและพื้นที่นั่งเล่น นี่ต่างจากการพยายามบีบสี่คนลงห้องสถานีขนาดเล็กอย่างชัดเจน</p>
               <p>ทำเลเหมาะกับทริปประเภทนี้เช่นกัน โดยเฉพาะครอบครัวที่ใช้สถานีโซลเป็นส่วนหนึ่งของการเดินทางต่อ เช่น กลับจากเมืองอื่นเพื่อค้างคืนสุดท้ายในโซล หรือขึ้น KTX เช้าวันถัดไป</p>
               <p>ยังควรเช็กประเภทห้องจริงก่อนจอง คำว่า “Suite” ไม่ได้หมายความว่าทุกห้องนอนหรือห้องนั่งเล่นจะกว้าง สำหรับคู่รัก การจ่ายเพื่อผังแบบนี้อาจไม่จำเป็น แต่สำหรับ 4–6 คนที่ต้องการพื้นที่นอนแยกใกล้สถานีโซล ที่นี่แก้ปัญหาที่โรงแรมเล็กในคู่มือนี้แก้ไม่ได้</p>
+              <p class="seoul-station-hotel-map-link-wrap"><a class="seoul-station-hotel-map-link" href="#seoul-station-hotel-map" data-map-hotel="uh-suite-the-seoul" aria-controls="seoul-station-hotel-map-canvas">📌 ดูบนแผนที่</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">เช็กราคา</p>
                 <p class="hm-booking-strip__title">เปรียบเทียบโรงแรมนี้บนเว็บไซต์จอง</p>
@@ -747,7 +782,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row seoul-station-hotel">
+          <article class="hm-hotel hm-editorial-row seoul-station-hotel" data-hotel-id="ramada-namdaemun">
             <div class="hm-editorial-row__label">
               <p class="hm-decision-card__label">ครอบครัว / กลุ่ม + Airport Bus</p>
               <h3>Ramada Hotel &amp; Suites by Wyndham Seoul Namdaemun</h3>
@@ -757,6 +792,7 @@
               <p>Ramada น่าสนใจเมื่อเดินทางหลายคนและทริปเกี่ยวทั้งสนามบินกับสถานีโซล โรงแรมไม่ได้ติดชานชาลา KTX — เดินจากทางออก 3 ราว 10–15 นาที — แต่มีสิ่งที่ที่พักกะทัดรัดใกล้กว่าไม่มี คือรูปแบบห้องใหญ่หลายแบบสำหรับ 3, 4 หรือแม้แต่ 5 คน</p>
               <p>การเดินทางสนามบินคืออีกเหตุผลหนึ่ง K-Limousine สาย 6702 ปัจจุบันจอดที่ Ramada Hotel &amp; Suites Namdaemun สำหรับครอบครัวที่มาหลายคนและจะขึ้น KTX วันถัดไป นี่อาจง่ายกว่าการพาทุกคนผ่าน AREX สถานีโซล แล้วต่อไปโรงแรมอีกครั้งในเย็นเดียว</p>
               <p>ประเภทห้องสำคัญ มีห้องที่จัดเป็นเตียง Single 3 เตียง, Double 2 เตียง, Double + Single 2 เตียง และ Single 4 เตียง เราจะไม่เลือก Ramada หากเหตุผลเดียวคืออยากเดินสั้นที่สุดถึง KTX เช้า มันเหมาะกว่าเมื่อรูปแบบห้องและ Airport Bus สำคัญพอที่จะยอมเดินถึงสถานีนานขึ้น</p>
+              <p class="seoul-station-hotel-map-link-wrap"><a class="seoul-station-hotel-map-link" href="#seoul-station-hotel-map" data-map-hotel="ramada-namdaemun" aria-controls="seoul-station-hotel-map-canvas">📌 ดูบนแผนที่</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">เช็กราคา</p>
                 <p class="hm-booking-strip__title">เปรียบเทียบโรงแรมนี้บนเว็บไซต์จอง</p>
@@ -769,7 +805,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row seoul-station-hotel">
+          <article class="hm-hotel hm-editorial-row seoul-station-hotel" data-hotel-id="travel-house">
             <div class="hm-editorial-row__label">
               <p class="hm-decision-card__label">ฐานอพาร์ตเมนต์สำหรับกลุ่ม</p>
               <h3>Travel House</h3>
@@ -779,6 +815,7 @@
               <p>Travel House เป็นตัวเลือกที่ควรดูเมื่อห้องโรงแรมเริ่มไม่ใช่รูปแบบที่ใช้งานจริง อพาร์ตเมนต์หลายแบบรองรับ 4–6 คนหรือมากกว่า มีครัว เครื่องซักผ้า พื้นที่กินข้าว ลิฟต์ และที่ฝากกระเป๋า สำหรับครอบครัวหรือกลุ่มที่พักหลายคืนในโซลคั่นระหว่างการเดินทางไปเมืองอื่น ความสามารถในการซักผ้าและทำอาหารง่ายๆ ในห้องอาจมีประโยชน์มากกว่าล็อบบี้หรือบริการโรงแรมเต็มรูปแบบทุกวัน</p>
               <p>ที่พักอยู่ฝั่งตะวันตกของสถานีโซลแถวทางออก 15 เราจะไม่ระบุเวลาจากชานชาลาถึงประตูแบบตายตัวเพราะเวลาบนแผนที่ต่างกัน ประเด็นที่มีประโยชน์คือที่นี่อยู่ในกลุ่มอพาร์ตเมนต์ฝั่งตะวันตกของสถานี</p>
               <p>แต่ความจุกลุ่มต้องดูให้เป็นจริง ยูนิตที่ระบุว่านอนได้ 5 หรือ 6 คนไม่ได้หมายความว่าสบายสำหรับผู้ใหญ่ 5–6 คนเสมอ เช็กผังเตียง จำนวนห้องน้ำ และประเภทอพาร์ตเมนต์จริงก่อนจอง โดยเฉพาะครอบครัวใหญ่</p>
+              <p class="seoul-station-hotel-map-link-wrap"><a class="seoul-station-hotel-map-link" href="#seoul-station-hotel-map" data-map-hotel="travel-house" aria-controls="seoul-station-hotel-map-canvas">📌 ดูบนแผนที่</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">เช็กราคา</p>
                 <p class="hm-booking-strip__title">เปรียบเทียบโรงแรมนี้บนเว็บไซต์จอง</p>
@@ -991,6 +1028,7 @@
 
   <script src="../guide-year.js" defer></script>
   <script src="../common.js"></script>
+  <script src="../seoul-station-hotel-map.js" defer></script>
 <script>
   window.va = window.va || function () {
     (window.vaq = window.vaq || []).push(arguments);

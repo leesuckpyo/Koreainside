@@ -20,6 +20,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400..600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../seoul-station-hotel-map.css">
   <style>
     body.seoul-station-page main .hm-section {
       height: auto;
@@ -608,6 +609,34 @@
       </div>
     </section>
 
+    <section class="hm-section seoul-station-hotel-map-section" id="seoul-station-hotel-map" data-map-asset-prefix="../" data-map-copy-default="Lokasi seluruh 8 penginapan ditampilkan. Pilih pin atau nama penginapan." data-map-copy-selected="Dipilih: {name}. Pin nomor {number} tetap merah; pin lainnya berwarna biru." data-map-copy-unavailable-selected="Dipilih: {name}. Peta NAVER tidak tersedia, tetapi tautan ke penginapan di halaman ini masih berfungsi." data-map-copy-pending-selected="Dipilih: {name}. Pilihan ini akan ditampilkan setelah peta siap." data-map-copy-fallback="Peta interaktif NAVER tidak dapat dimuat. Lihat daftar 8 penginapan, lalu coba lagi nanti." data-map-copy-fallback-status="Peta NAVER tidak tersedia. Nama dan tautan ke penginapan di halaman ini tetap dapat diakses." data-map-copy-marker-aria="Pilih nomor {number}: {name}" aria-labelledby="seoul-station-hotel-map-title">
+      <div class="container">
+        <header class="hm-section__header">
+          <h2 id="seoul-station-hotel-map-title">Di mana lokasi penginapan dekat Stasiun Seoul?</h2>
+          <p class="hm-section__intro">Pilih pin atau nama penginapan untuk melihat lokasinya.</p>
+        </header>
+        <div class="seoul-station-hotel-map-layout">
+          <div class="seoul-station-hotel-map-shell">
+            <div class="seoul-station-hotel-map-canvas" id="seoul-station-hotel-map-canvas" role="region" tabindex="0" aria-label="Peta interaktif yang menampilkan 8 penginapan dekat Stasiun Seoul"></div>
+            <p class="seoul-station-hotel-map-status" id="seoul-station-hotel-map-status" role="status" aria-live="polite">Memuat peta penginapan…</p>
+          </div>
+          <aside class="seoul-station-hotel-map-directory" aria-labelledby="seoul-station-hotel-map-directory-title">
+            <h3 id="seoul-station-hotel-map-directory-title">Penginapan di peta ini</h3>
+            <ol class="seoul-station-hotel-map-list">
+              <li><button type="button" data-map-hotel="four-points-seoul-station" aria-controls="seoul-station-hotel-map-canvas" aria-pressed="false"><span class="seoul-station-hotel-map-number" aria-hidden="true">1</span><span>Four Points by Sheraton Josun, Seoul Station</span></button></li>
+              <li><button type="button" data-map-hotel="hotelette-seoul-station" aria-controls="seoul-station-hotel-map-canvas" aria-pressed="false"><span class="seoul-station-hotel-map-number" aria-hidden="true">2</span><span>Hotelette Seoul Station</span></button></li>
+              <li><button type="button" data-map-hotel="ziyolk-seoul-station" aria-controls="seoul-station-hotel-map-canvas" aria-pressed="false"><span class="seoul-station-hotel-map-number" aria-hidden="true">3</span><span>ZIYOLK Seoul Station</span></button></li>
+              <li><button type="button" data-map-hotel="hotel-manu-seoul" aria-controls="seoul-station-hotel-map-canvas" aria-pressed="false"><span class="seoul-station-hotel-map-number" aria-hidden="true">4</span><span>Hotel Manu Seoul</span></button></li>
+              <li><button type="button" data-map-hotel="hotel-gracery-seoul" aria-controls="seoul-station-hotel-map-canvas" aria-pressed="false"><span class="seoul-station-hotel-map-number" aria-hidden="true">5</span><span>Hotel Gracery Seoul</span></button></li>
+              <li><button type="button" data-map-hotel="uh-suite-the-seoul" aria-controls="seoul-station-hotel-map-canvas" aria-pressed="false"><span class="seoul-station-hotel-map-number" aria-hidden="true">6</span><span>UH Suite The Seoul</span></button></li>
+              <li><button type="button" data-map-hotel="ramada-namdaemun" aria-controls="seoul-station-hotel-map-canvas" aria-pressed="false"><span class="seoul-station-hotel-map-number" aria-hidden="true">7</span><span>Ramada Hotel &amp; Suites by Wyndham Seoul Namdaemun</span></button></li>
+              <li><button type="button" data-map-hotel="travel-house" aria-controls="seoul-station-hotel-map-canvas" aria-pressed="false"><span class="seoul-station-hotel-map-number" aria-hidden="true">8</span><span>Travel House</span></button></li>
+            </ol>
+          </aside>
+        </div>
+      </div>
+    </section>
+
     <section class="hm-section" id="hotel-recommendations" aria-labelledby="seoul-station-hotels-guide">
       <div class="container">
         <header class="hm-hotel-guide">
@@ -615,7 +644,7 @@
         </header>
 
         <div class="hm-hotel-region__list">
-          <article class="hm-hotel hm-editorial-row seoul-station-hotel">
+          <article class="hm-hotel hm-editorial-row seoul-station-hotel" data-hotel-id="four-points-seoul-station">
             <div class="hm-editorial-row__label">
               <p class="hm-decision-card__label">HOTEL STASIUN DENGAN LAYANAN LENGKAP</p>
               <h3>Four Points by Sheraton Josun, Seoul Station</h3>
@@ -625,6 +654,7 @@
               <p>Four Points adalah hotel yang akan saya pertimbangkan pertama ketika Seoul Station sendiri menjadi alasan menginap. Hotel ini sangat sesuai untuk perjalanan bisnis, menginap semalam di antara Bandara Incheon dan perjalanan KTX, atau malam terakhir di Seoul sebelum menuju bandara. Berbeda dari penginapan kecil di sekitar stasiun, Anda mendapat hotel konvensional dengan layanan lengkap yang beroperasi 24 jam, restoran, pusat kebugaran, serta kamar dengan meja kerja yang memadai dan Wi-Fi.</p>
               <p>Hal penting adalah arti sebenarnya “terhubung dengan Seoul Station”. Hotel terhubung ke stasiun melalui jalur bawah tanah di Pintu Keluar 12, tetapi jalan kaki dari Seoul Station tetap sekitar 8–15 menit. Penumpang KTX, AREX, GTX-A, dan kereta bawah tanah tetap harus bergerak melalui kompleks stasiun besar sebelum mencapai sisi hotel. Rute dalam ruangan itu membantu saat cuaca buruk, tetapi ini bukan hotel tempat Anda turun dari kereta lalu langsung masuk ke lobi.</p>
               <p>Saya akan kurang tertarik membayar Four Points jika Anda hanya membutuhkan tempat tidur beberapa jam sebelum kereta pagi, atau jika sebagian besar perjalanan berpusat pada kafe, hiburan malam, dan wisata di bagian Seoul lain. Kamar juga bisa terasa kecil ketika beberapa koper dibuka. Dalam keadaan itu, manfaat hotel dengan layanan lengkap harus cukup berarti untuk membenarkan memilihnya daripada penginapan stasiun kecil atau lingkungan yang lebih menarik.</p>
+              <p class="seoul-station-hotel-map-link-wrap"><a class="seoul-station-hotel-map-link" href="#seoul-station-hotel-map" data-map-hotel="four-points-seoul-station" aria-controls="seoul-station-hotel-map-canvas">📌 Lihat di Peta</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">LIHAT TARIF</p>
                 <p class="hm-booking-strip__title">Bandingkan hotel ini di situs pemesanan</p>
@@ -637,7 +667,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row seoul-station-hotel">
+          <article class="hm-hotel hm-editorial-row seoul-station-hotel" data-hotel-id="hotelette-seoul-station">
             <div class="hm-editorial-row__label">
               <p class="hm-decision-card__label">KAMAR KECIL UNTUK SOLO SEMALAM</p>
               <h3>Hotelette Seoul Station</h3>
@@ -647,6 +677,7 @@
               <p>Hotelette patut dipertimbangkan ketika tujuan malam terutama tidur dekat Seoul Station dan berangkat lagi keesokan paginya. Hotel berada tepat di dekat Pintu Keluar 10. Untuk pelancong solo dengan ransel atau bagasi kabin kecil, kedekatan itu bisa lebih penting daripada kamar besar atau fasilitas hotel lengkap.</p>
               <p>Batasannya adalah kamar, bukan lokasi. Kamarnya sangat kecil, dan koper ukuran penuh bisa cepat memenuhi ruang lantai yang tersedia. Hotel memiliki lift, tetapi Pintu Keluar 10 memiliki tangga pendek. Ini mudah dengan bagasi ringan dan jauh kurang menarik dengan koper besar.</p>
               <p>Ada pula batasan jelas untuk keluarga: anak-anak tidak diizinkan, dan tidak tersedia ranjang bayi atau tempat tidur tambahan. Jadi, ini bukan hotel keluarga kecil yang tampak sebagai pilihan hemat. Ini penginapan dengan kegunaan terbatas untuk satu orang dewasa yang lebih mengutamakan stasiun daripada ruang kamar.</p>
+              <p class="seoul-station-hotel-map-link-wrap"><a class="seoul-station-hotel-map-link" href="#seoul-station-hotel-map" data-map-hotel="hotelette-seoul-station" aria-controls="seoul-station-hotel-map-canvas">📌 Lihat di Peta</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">LIHAT TARIF</p>
                 <p class="hm-booking-strip__title">Bandingkan hotel ini di situs pemesanan</p>
@@ -659,7 +690,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row seoul-station-hotel">
+          <article class="hm-hotel hm-editorial-row seoul-station-hotel" data-hotel-id="ziyolk-seoul-station">
             <div class="hm-editorial-row__label">
               <p class="hm-decision-card__label">KAMAR KECIL UNTUK 2–4 ORANG</p>
               <h3>ZIYOLK Seoul Station</h3>
@@ -669,6 +700,7 @@
               <p>ZIYOLK memenuhi kebutuhan yang tidak dipenuhi Hotelette. Kamarnya tetap kecil, tetapi ada pilihan nyata untuk empat orang: Family Room seluas 21㎡ dengan dua tempat tidur double, sementara kamar Double dan Twin seluas 10㎡ dan 12㎡. Ini layak dipertimbangkan bagi pasangan atau rombongan kecil yang ingin sangat dekat Seoul Station tanpa beralih ke hotel lebih besar dengan layanan lengkap.</p>
               <p>Pintu Keluar 10 adalah akses terpendek bagi sebagian besar tamu. Kekurangannya ada pada rute terakhir: tanjakannya pendek tetapi cukup curam, dan Pintu Keluar 10 sendiri bukan pilihan termudah dengan bagasi berat.</p>
               <p>Saya akan memilih ZIYOLK untuk masa menginap singkat yang berpusat pada perjalanan kereta, bukan untuk ruang kamar. Kamar cepat terasa penuh setelah koper dibuka. Check-in mandiri di luar jam petugas bisa membantu kedatangan terlambat, tetapi peredaman suara dan tata ruang kecil menjadi alasan untuk tidak menganggap Family Room sebagai hotel keluarga yang luas.</p>
+              <p class="seoul-station-hotel-map-link-wrap"><a class="seoul-station-hotel-map-link" href="#seoul-station-hotel-map" data-map-hotel="ziyolk-seoul-station" aria-controls="seoul-station-hotel-map-canvas">📌 Lihat di Peta</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">LIHAT TARIF</p>
                 <p class="hm-booking-strip__title">Bandingkan hotel ini di situs pemesanan</p>
@@ -681,7 +713,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row seoul-station-hotel">
+          <article class="hm-hotel hm-editorial-row seoul-station-hotel" data-hotel-id="hotel-manu-seoul">
             <div class="hm-editorial-row__label">
               <p class="hm-decision-card__label">KESEIMBANGAN STASIUN + KOTA</p>
               <h3>Hotel Manu Seoul</h3>
@@ -691,6 +723,7 @@
               <p>Jika Seoul Station penting tetapi Anda tidak ingin stasiun mendominasi seluruh masa menginap, Hotel Manu menjadi titik ketika keseimbangannya mulai berubah. Hotel berada di sisi Sungnyemun dan Namdaemun, bukan tepat di sebelah peron. Anda tetap bisa menggunakan KTX sambil memiliki rute lebih alami menuju Namdaemun Market, Myeongdong, dan pusat Seoul.</p>
               <p>Jalan kakinya perlu sedikit penjelasan. Salah satu rute praktis adalah menggunakan lift luar ruangan menuju Seoullo 7017, lalu mengikuti jalur pejalan kaki di atas menuju hotel. Ini bisa lebih mudah dengan bagasi daripada langsung mengikuti pintu keluar stasiun terdekat. Namun, “dekat Seoul Station” tetap tidak berarti dekat peron KTX. Ukuran kompleks stasiun menambah waktu setelah Anda mencapai stasiun itu sendiri.</p>
               <p>Karena itu, saya tidak akan memilih Manu untuk keberangkatan saat fajar ketika memangkas setiap menit menuju stasiun menjadi prioritas. Alasan yang lebih kuat adalah perjalanan campuran: satu atau dua perjalanan kereta, lalu makan, wisata, atau bisnis di pusat Seoul. Jenis kamar tetap penting karena sebagian kamar berukuran kecil.</p>
+              <p class="seoul-station-hotel-map-link-wrap"><a class="seoul-station-hotel-map-link" href="#seoul-station-hotel-map" data-map-hotel="hotel-manu-seoul" aria-controls="seoul-station-hotel-map-canvas">📌 Lihat di Peta</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">LIHAT TARIF</p>
                 <p class="hm-booking-strip__title">Bandingkan hotel ini di situs pemesanan</p>
@@ -703,7 +736,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row seoul-station-hotel">
+          <article class="hm-hotel hm-editorial-row seoul-station-hotel" data-hotel-id="hotel-gracery-seoul">
             <div class="hm-editorial-row__label">
               <p class="hm-decision-card__label">TEMPAT MENGINAP UNTUK BISNIS + CITY HALL</p>
               <h3>Hotel Gracery Seoul</h3>
@@ -713,6 +746,7 @@
               <p>Hotel Gracery hanya termasuk dalam panduan ini ketika Seoul Station menjadi bagian perjalanan, bukan seluruh alasan menginap. Hotel lebih terkait dengan City Hall dan Namdaemun. Seoul Station bisa dicapai dengan berjalan kaki, tetapi jaraknya cukup jauh sehingga saya tidak akan menganggapnya hotel tepat di depan stasiun.</p>
               <p>Gracery lebih menarik untuk perjalanan bisnis atau kegiatan kota yang beragam. Hotel memiliki pusat bisnis dengan laptop dan pencetakan, fasilitas cuci berbayar koin, resepsionis 24 jam, dan loker bagasi mandiri.</p>
               <p>Saya akan memilihnya ketika rapat di sekitar City Hall atau pusat Seoul mengisi sebagian besar masa menginap dan KTX hanya dibutuhkan sekali atau dua kali. Saya tidak akan memilihnya hanya karena situs pemesanan menyebut “dekat Seoul Station”, terutama sebelum kereta pagi. Gracery cocok karena memudahkan hari-hari di Seoul, bukan karena memberi rute terpendek ke peron KTX.</p>
+              <p class="seoul-station-hotel-map-link-wrap"><a class="seoul-station-hotel-map-link" href="#seoul-station-hotel-map" data-map-hotel="hotel-gracery-seoul" aria-controls="seoul-station-hotel-map-canvas">📌 Lihat di Peta</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">LIHAT TARIF</p>
                 <p class="hm-booking-strip__title">Bandingkan hotel ini di situs pemesanan</p>
@@ -725,7 +759,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row seoul-station-hotel">
+          <article class="hm-hotel hm-editorial-row seoul-station-hotel" data-hotel-id="uh-suite-the-seoul">
             <div class="hm-editorial-row__label">
               <p class="hm-decision-card__label">SUITE KELUARGA &amp; ROMBONGAN</p>
               <h3>UH Suite The Seoul</h3>
@@ -735,6 +769,7 @@
               <p>UH Suite The Seoul menjadi jauh lebih menarik ketika tiga orang atau lebih bepergian bersama. Family City Suite menampung hingga enam orang dalam tiga kamar tidur terpisah dengan tiga tempat tidur dan ruang bersama. Private City Suite menampung hingga empat orang dengan dua kamar tidur serta ruang bersama. Ini sangat berbeda dari memadatkan empat orang dalam satu kamar hotel kecil dekat stasiun.</p>
               <p>Lokasinya juga sesuai dengan jenis perjalanan yang dibahas halaman ini. Penginapan seperti ini sangat membantu ketika Seoul Station menjadi bagian dari perjalanan lanjutan keluarga, seperti kembali dari kota lain untuk malam terakhir di Seoul atau berangkat dengan KTX keesokan paginya.</p>
               <p>Saya tetap akan memeriksa jenis kamar yang tepat sebelum memesan. “Suite” tidak otomatis berarti setiap kamar tidur atau ruang bersama besar. Bagi pasangan, membayar tata ruang ini mungkin tidak diperlukan. Namun, bagi empat hingga enam orang yang ingin ruang tidur terpisah dekat Seoul Station, pilihan ini memenuhi kebutuhan yang tidak dipenuhi hotel kecil dalam panduan ini.</p>
+              <p class="seoul-station-hotel-map-link-wrap"><a class="seoul-station-hotel-map-link" href="#seoul-station-hotel-map" data-map-hotel="uh-suite-the-seoul" aria-controls="seoul-station-hotel-map-canvas">📌 Lihat di Peta</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">LIHAT TARIF</p>
                 <p class="hm-booking-strip__title">Bandingkan hotel ini di situs pemesanan</p>
@@ -747,7 +782,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row seoul-station-hotel">
+          <article class="hm-hotel hm-editorial-row seoul-station-hotel" data-hotel-id="ramada-namdaemun">
             <div class="hm-editorial-row__label">
               <p class="hm-decision-card__label">KELUARGA / ROMBONGAN + BUS BANDARA</p>
               <h3>Ramada Hotel &amp; Suites by Wyndham Seoul Namdaemun</h3>
@@ -757,6 +792,7 @@
               <p>Ramada layak dipertimbangkan ketika beberapa orang bepergian bersama dan perjalanan melibatkan bandara serta Seoul Station. Hotel tidak berada di sebelah peron KTX. Jalan kaki dari Pintu Keluar 3 Seoul Station sekitar 10–15 menit. Namun, hotel memiliki sesuatu yang tidak dimiliki penginapan kecil lebih dekat: pilihan konfigurasi kamar lebih besar yang beragam untuk tiga, empat, bahkan lima tamu.</p>
               <p>Koneksi bandara menjadi alasan lain untuk melihatnya. Rute K-Limousine 6702 saat ini berhenti di Ramada Hotel &amp; Suites Namdaemun. Bagi keluarga yang tiba bersama beberapa orang lalu naik KTX keesokan hari, ini bisa lebih sederhana daripada membawa semua orang melalui AREX, Seoul Station, dan perjalanan lagi menuju hotel pada malam yang sama.</p>
               <p>Pilihan kamar penting di sini. Konfigurasi yang tersedia mencakup kamar dengan tiga tempat tidur single, dua tempat tidur double, satu double ditambah dua single, serta empat tempat tidur single. Saya tidak akan memilih Ramada jika satu-satunya tujuan adalah jalan kaki sesingkat mungkin ke KTX pagi. Hotel ini lebih sesuai ketika tata ruang kamar dan akses bandara cukup penting sehingga jalan kaki stasiun yang lebih panjang dapat diterima.</p>
+              <p class="seoul-station-hotel-map-link-wrap"><a class="seoul-station-hotel-map-link" href="#seoul-station-hotel-map" data-map-hotel="ramada-namdaemun" aria-controls="seoul-station-hotel-map-canvas">📌 Lihat di Peta</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">LIHAT TARIF</p>
                 <p class="hm-booking-strip__title">Bandingkan hotel ini di situs pemesanan</p>
@@ -769,7 +805,7 @@
             </div>
           </article>
 
-          <article class="hm-hotel hm-editorial-row seoul-station-hotel">
+          <article class="hm-hotel hm-editorial-row seoul-station-hotel" data-hotel-id="travel-house">
             <div class="hm-editorial-row__label">
               <p class="hm-decision-card__label">APARTEMEN UNTUK ROMBONGAN</p>
               <h3>Travel House</h3>
@@ -779,6 +815,7 @@
               <p>Travel House adalah pilihan yang akan saya lihat ketika kamar hotel tidak lagi menjadi pengaturan paling praktis. Beberapa konfigurasi apartemen bisa menampung empat hingga enam tamu atau lebih, dengan fasilitas dapur, mesin cuci, ruang makan, lift, dan penitipan bagasi. Bagi keluarga atau rombongan yang menghabiskan beberapa malam di Seoul di antara perjalanan ke kota-kota Korea lain, mencuci pakaian dan makan sederhana di apartemen bisa lebih penting daripada lobi hotel atau fasilitas layanan lengkap setiap hari.</p>
               <p>Penginapan berada di sisi barat Seoul Station, di sekitar akses Pintu Keluar 15. Saya tidak akan mencantumkan waktu pasti dari peron ke pintu karena perkiraan peta berbeda-beda. Hal yang penting adalah lokasi ini termasuk kelompok apartemen di sisi barat stasiun.</p>
               <p>Namun, kapasitas rombongan perlu diperiksa secara realistis. Unit yang secara teknis menampung lima atau enam orang tidak otomatis nyaman untuk lima atau enam orang dewasa. Periksa susunan tempat tidur, jumlah kamar mandi, dan jenis apartemen yang tepat sebelum memesan, terutama untuk keluarga lebih besar.</p>
+              <p class="seoul-station-hotel-map-link-wrap"><a class="seoul-station-hotel-map-link" href="#seoul-station-hotel-map" data-map-hotel="travel-house" aria-controls="seoul-station-hotel-map-canvas">📌 Lihat di Peta</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">LIHAT TARIF</p>
                 <p class="hm-booking-strip__title">Bandingkan hotel ini di situs pemesanan</p>
@@ -991,6 +1028,7 @@
 
   <script src="../guide-year.js" defer></script>
   <script src="../common.js"></script>
+  <script src="../seoul-station-hotel-map.js" defer></script>
 <script>
   window.va = window.va || function () {
     (window.vaq = window.vaq || []).push(arguments);
