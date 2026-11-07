@@ -31,7 +31,7 @@
       --detail-hero-last-gap: 72px;
       position: relative;
       isolation: isolate;
-      aspect-ratio: 16 / 9;
+      aspect-ratio: auto;
       overflow: hidden;
       background: #1d2b27;
       border-bottom: 0;
@@ -62,6 +62,10 @@
     body.seoul-station-page main .hm-hero__copy {
       max-width: 58%;
       text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+    }
+
+    body.seoul-station-page main .hm-hero .hm-hero__grid .hm-hero__copy .hm-hero__answer {
+      background: transparent;
     }
 
     body.seoul-station-page main .hm-hero .hm-breadcrumb,
@@ -201,7 +205,8 @@
 
     @media (min-width: 901px) {
       body.seoul-station-page main .hm-hero {
-        height: clamp(560px, 42vw, 620px);
+        height: auto;
+        min-height: clamp(560px, 42vw, 620px);
         aspect-ratio: auto;
       }
 
