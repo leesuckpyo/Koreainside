@@ -24,6 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400..600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../jamsil-hotel-map.css">
   <style>
     body.jamsil-page main .hm-hero__copy {
       grid-column: 1 / -1;
@@ -228,13 +229,47 @@
       </div>
     </section>
 
+    <section class="hm-section jamsil-hotel-map-section" id="jamsil-hotel-map" data-map-asset-prefix="../" aria-labelledby="jamsil-hotel-map-title"
+      data-map-copy-default="ホテル7軒の位置を表示しています。ピンまたはホテル名を選んでください。"
+      data-map-copy-selected="選択中：{name}。{number}番のピンは赤、ほかのピンは青で表示されています。"
+      data-map-copy-unavailable-selected="選択中：{name}。NAVERの地図は利用できませんが、ページ内のホテルリンクは引き続き使えます。"
+      data-map-copy-pending-selected="選択中：{name}。地図の読み込みが完了すると、この選択が反映されます。"
+      data-map-copy-fallback="NAVERのインタラクティブ地図を読み込めませんでした。ホテル7軒は一覧で確認できます。時間をおいて再度お試しください。"
+      data-map-copy-fallback-status="NAVERの地図を利用できません。ホテル名とページ内リンクは引き続き使えます。"
+      data-map-copy-marker-aria="{number}番を選択：{name}">
+      <div class="container">
+        <header class="hm-section__header">
+          <h2 id="jamsil-hotel-map-title">蚕室のホテルはどこにある？</h2>
+          <p class="hm-section__intro">地図上のピンまたはホテル名を選ぶと、位置を確認できます。</p>
+        </header>
+        <div class="jamsil-hotel-map-layout">
+          <div class="jamsil-hotel-map-shell">
+            <div class="jamsil-hotel-map-canvas" id="jamsil-hotel-map-canvas" role="region" tabindex="0" aria-label="蚕室にあるホテル7軒を表示するインタラクティブ地図"></div>
+            <p class="jamsil-hotel-map-status" id="jamsil-hotel-map-status" role="status" aria-live="polite">ホテルの地図を読み込み中…</p>
+          </div>
+          <aside class="jamsil-hotel-map-directory" aria-labelledby="jamsil-hotel-map-directory-title">
+            <h3 id="jamsil-hotel-map-directory-title">地図に表示されているホテル</h3>
+            <ol class="jamsil-hotel-map-list">
+              <li><button type="button" data-map-hotel="lotte-hotel-world" aria-controls="jamsil-hotel-map-canvas" aria-pressed="false"><span class="jamsil-hotel-map-number" aria-hidden="true">1</span><span>Lotte Hotel World</span></button></li>
+              <li><button type="button" data-map-hotel="sofitel" aria-controls="jamsil-hotel-map-canvas" aria-pressed="false"><span class="jamsil-hotel-map-number" aria-hidden="true">2</span><span>Sofitel Ambassador Seoul Hotel &amp; Serviced Residences</span></button></li>
+              <li><button type="button" data-map-hotel="rosana" aria-controls="jamsil-hotel-map-canvas" aria-pressed="false"><span class="jamsil-hotel-map-number" aria-hidden="true">3</span><span>Rosana Hotel</span></button></li>
+              <li><button type="button" data-map-hotel="delight" aria-controls="jamsil-hotel-map-canvas" aria-pressed="false"><span class="jamsil-hotel-map-number" aria-hidden="true">4</span><span>Delight Hotel Jamsil</span></button></li>
+              <li><button type="button" data-map-hotel="seoul-sangju" aria-controls="jamsil-hotel-map-canvas" aria-pressed="false"><span class="jamsil-hotel-map-number" aria-hidden="true">5</span><span>Seoul Sangju Hotel</span></button></li>
+              <li><button type="button" data-map-hotel="hotel-lake" aria-controls="jamsil-hotel-map-canvas" aria-pressed="false"><span class="jamsil-hotel-map-number" aria-hidden="true">6</span><span>Hotel Lake</span></button></li>
+              <li><button type="button" data-map-hotel="signiel" aria-controls="jamsil-hotel-map-canvas" aria-pressed="false"><span class="jamsil-hotel-map-number" aria-hidden="true">7</span><span>SIGNIEL Seoul</span></button></li>
+            </ol>
+          </aside>
+        </div>
+      </div>
+    </section>
+
     <section class="hm-section hm-section--cream" id="hotels" aria-labelledby="hotels-title">
       <div class="container">
         <header class="hm-hotel-guide">
           <h2 id="hotels-title">蚕室のホテル</h2>
         </header>
         <div class="hm-hotel-region__list">
-          <article class="hm-hotel hm-editorial-row" id="lotte-hotel-world" aria-labelledby="lotte-hotel-world-title">
+          <article class="hm-hotel hm-editorial-row" id="lotte-hotel-world" aria-labelledby="lotte-hotel-world-title" data-hotel-id="lotte-hotel-world">
             <div class="hm-editorial-row__label">
               <h3 id="lotte-hotel-world-title">Lotte Hotel World</h3>
             </div>
@@ -245,6 +280,7 @@
               <p>弱点は蚕室を使わない日です。観光の大半がソウル中心部や西側なら、毎日離れる立地のために追加料金を払うことになります。</p>
               <p>ロッテワールドが旅程の一項目ではなく、蚕室を選んだ大きな理由の一つなら、このホテルの強みが最も生きます。</p>
               <p class="hm-affiliate-note">このページにはアフィリエイトリンクが含まれます。</p>
+              <p class="jamsil-hotel-map-link-wrap"><a class="jamsil-hotel-map-link" href="#jamsil-hotel-map" data-map-hotel="lotte-hotel-world" aria-controls="jamsil-hotel-map-canvas">📌 地図で見る</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">料金を確認</p>
                 <p class="hm-booking-strip__title">予約サイトでこのホテルを比較</p>
@@ -256,7 +292,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="sofitel" aria-labelledby="sofitel-title">
+          <article class="hm-hotel hm-editorial-row" id="sofitel" aria-labelledby="sofitel-title" data-hotel-id="sofitel">
             <div class="hm-editorial-row__label">
               <h3 id="sofitel-title">Sofitel Ambassador Seoul Hotel &amp; Serviced Residences</h3>
             </div>
@@ -266,6 +302,7 @@
               <p>毎食外食したくない家族や、ベッドを増やした1室ではなく実際の居住空間が必要なグループには便利です。</p>
               <p>空港バスがホテル入口に停まると思い込まないでください。ホテルの交通案内では6705Aの停留所から徒歩約15分です。スーツケース1個なら問題なくても、子ども連れで荷物が多いとLotte Hotel Worldとは到着時の負担が違います。</p>
               <p>石村湖、客室の質、レジデンス設備を重視するならSofitel。目的が『できるだけ早くロッテワールドへ入ること』だけならLotte Hotel Worldのほうが直接的です。</p>
+              <p class="jamsil-hotel-map-link-wrap"><a class="jamsil-hotel-map-link" href="#jamsil-hotel-map" data-map-hotel="sofitel" aria-controls="jamsil-hotel-map-canvas">📌 地図で見る</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">料金を確認</p>
                 <p class="hm-booking-strip__title">予約サイトでこのホテルを比較</p>
@@ -277,7 +314,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="rosana" aria-labelledby="rosana-title">
+          <article class="hm-hotel hm-editorial-row" id="rosana" aria-labelledby="rosana-title" data-hotel-id="rosana">
             <div class="hm-editorial-row__label">
               <h3 id="rosana-title">Rosana Hotel</h3>
             </div>
@@ -287,6 +324,7 @@
               <p>立地は正しく理解しておきたいホテルです。Rosanaは石村湖に近いものの、蚕室駅の目の前ではありません。ホテル案内では蚕室駅まで徒歩約15分、石村古墳駅のほうがかなり近いとされています。</p>
               <p>荷物があるとこの差は重要です。9号線をよく使う、または湖周辺を楽しみたいなら使いやすい立地です。一方、毎朝幼い子どもと蚕室駅から動くなら、予約前に徒歩区間を確認しましょう。</p>
               <p>プールやラウンジ、大型国際ブランドより客室構成を優先するなら、ここでは実用的な選択肢の一つです。</p>
+              <p class="jamsil-hotel-map-link-wrap"><a class="jamsil-hotel-map-link" href="#jamsil-hotel-map" data-map-hotel="rosana" aria-controls="jamsil-hotel-map-canvas">📌 地図で見る</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">料金を確認</p>
                 <p class="hm-booking-strip__title">予約サイトでこのホテルを比較</p>
@@ -298,7 +336,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="delight" aria-labelledby="delight-title">
+          <article class="hm-hotel hm-editorial-row" id="delight" aria-labelledby="delight-title" data-hotel-id="delight">
             <div class="hm-editorial-row__label">
               <h3 id="delight-title">Delight Hotel Jamsil</h3>
             </div>
@@ -308,6 +346,7 @@
               <p>客室表記は慎重に確認してください。Premium Twinにダブル1台＋シングル1台と表示されても、予約サイトによって定員表記が完全には一致していないことがあります。ベッドが2台あるから大人3名で泊まれるとは限りません。</p>
               <p>特に家族や3人旅では、料金比較の前に宿泊者全員を入力してください。</p>
               <p>大型国際ホテルの安定した設備を求める人への第一候補ではありません。芳荑洞という立地を実際に使う人のほうが選ぶ理由が明確です。</p>
+              <p class="jamsil-hotel-map-link-wrap"><a class="jamsil-hotel-map-link" href="#jamsil-hotel-map" data-map-hotel="delight" aria-controls="jamsil-hotel-map-canvas">📌 地図で見る</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">料金を確認</p>
                 <p class="hm-booking-strip__title">予約サイトでこのホテルを比較</p>
@@ -319,7 +358,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="seoul-sangju" aria-labelledby="seoul-sangju-title">
+          <article class="hm-hotel hm-editorial-row" id="seoul-sangju" aria-labelledby="seoul-sangju-title" data-hotel-id="seoul-sangju">
             <div class="hm-editorial-row__label">
               <h3 id="seoul-sangju-title">Seoul Sangju Hotel</h3>
             </div>
@@ -330,6 +369,7 @@
               <p>カップル、一人旅、またはイベント後に蚕室を横断せず戻りたい友人2人のほうが用途は明確です。</p>
               <p>空港バス6006も総合運動場側を通るため、ロッテワールド周辺ホテルとは空港到着時の動線が異なります。</p>
               <p>イベント終了が遅いなら、地区で最も有名なホテルに泊まることより、蚕室の正しい側にいることのほうが重要になる場合があります。</p>
+              <p class="jamsil-hotel-map-link-wrap"><a class="jamsil-hotel-map-link" href="#jamsil-hotel-map" data-map-hotel="seoul-sangju" aria-controls="jamsil-hotel-map-canvas">📌 地図で見る</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">料金を確認</p>
                 <p class="hm-booking-strip__title">予約サイトでこのホテルを比較</p>
@@ -341,7 +381,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="hotel-lake" aria-labelledby="hotel-lake-title">
+          <article class="hm-hotel hm-editorial-row" id="hotel-lake" aria-labelledby="hotel-lake-title" data-hotel-id="hotel-lake">
             <div class="hm-editorial-row__label">
               <h3 id="hotel-lake-title">Hotel Lake</h3>
             </div>
@@ -351,6 +391,7 @@
               <p>宿泊者の評価は一様ではありません。最近の口コミでは客室の広さ、湖沿いの立地、バスルームを評価する声が多い一方、古い仕上げ、におい、清掃、メンテナンスへの指摘もあります。ばらつきがあるため、常に洗練されたホテルとは表現しません。</p>
               <p>湖沿いを拠点にしたく、古めのホテルでも気にならないなら候補になります。</p>
               <p>古い仕上げや客室状態のばらつきが滞在中ずっと気になるタイプなら、新しいホテルに予算を上げるか近隣の別の一般ホテルを選ぶほうが安心です。</p>
+              <p class="jamsil-hotel-map-link-wrap"><a class="jamsil-hotel-map-link" href="#jamsil-hotel-map" data-map-hotel="hotel-lake" aria-controls="jamsil-hotel-map-canvas">📌 地図で見る</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">料金を確認</p>
                 <p class="hm-booking-strip__title">予約サイトでこのホテルを比較</p>
@@ -362,7 +403,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="signiel" aria-labelledby="signiel-title">
+          <article class="hm-hotel hm-editorial-row" id="signiel" aria-labelledby="signiel-title" data-hotel-id="signiel">
             <div class="hm-editorial-row__label">
               <h3 id="signiel-title">SIGNIEL Seoul</h3>
             </div>
@@ -371,6 +412,7 @@
               <p>ロッテワールドタワーの高層階に泊まり、眺望、サービス、ホテル体験そのものが料金の大きな部分を占めます。非常に広いスイートもありますが、面積が広いから自動的に家族向けになるわけではなく、プレミアム客室の中には2名利用を前提としたものもあります。</p>
               <p>誕生日、記念日、プロポーズ旅行、あるいはホテル自体を旅程に入れる1泊なら、SIGNIELを選ぶ理由は明確です。</p>
               <p>家族でロッテワールドを楽にすることが目的なら、追加料金で解決する問題が違います。Lotte Hotel Worldなら、ホテル自体を主役にせず実用的な立地を得られます。</p>
+              <p class="jamsil-hotel-map-link-wrap"><a class="jamsil-hotel-map-link" href="#jamsil-hotel-map" data-map-hotel="signiel" aria-controls="jamsil-hotel-map-canvas">📌 地図で見る</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">料金を確認</p>
                 <p class="hm-booking-strip__title">予約サイトでこのホテルを比較</p>
@@ -517,6 +559,7 @@
 
   <script src="../guide-year.js" defer></script>
   <script src="../common.js"></script>
+  <script src="../jamsil-hotel-map.js" defer></script>
 <script>
   window.va = window.va || function () {
     (window.vaq = window.vaq || []).push(arguments);

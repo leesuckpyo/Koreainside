@@ -24,6 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400..600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../jamsil-hotel-map.css">
   <style>
     body.jamsil-page main .hm-hero__copy {
       grid-column: 1 / -1;
@@ -228,13 +229,47 @@
       </div>
     </section>
 
+    <section class="hm-section jamsil-hotel-map-section" id="jamsil-hotel-map" data-map-asset-prefix="../" aria-labelledby="jamsil-hotel-map-title"
+      data-map-copy-default="Lokasi ketujuh hotel ditampilkan. Pilih pin atau nama hotel."
+      data-map-copy-selected="Dipilih: {name}. Pin nomor {number} tetap merah; pin lainnya berwarna biru."
+      data-map-copy-unavailable-selected="Dipilih: {name}. Peta NAVER tidak tersedia, tetapi tautan ke hotel di halaman ini tetap dapat digunakan."
+      data-map-copy-pending-selected="Dipilih: {name}. Pilihan ini akan ditampilkan setelah peta siap."
+      data-map-copy-fallback="Peta interaktif NAVER gagal dimuat. Lihat ketujuh pilihan hotel dalam daftar, lalu coba lagi nanti."
+      data-map-copy-fallback-status="Peta NAVER tidak tersedia. Nama hotel dan tautan dalam halaman ini tetap dapat diakses."
+      data-map-copy-marker-aria="Pilih nomor {number}. {name}">
+      <div class="container">
+        <header class="hm-section__header">
+          <h2 id="jamsil-hotel-map-title">Di Mana Lokasi Hotel-Hotel di Jamsil?</h2>
+          <p class="hm-section__intro">Pilih pin atau nama hotel untuk melihat lokasinya.</p>
+        </header>
+        <div class="jamsil-hotel-map-layout">
+          <div class="jamsil-hotel-map-shell">
+            <div class="jamsil-hotel-map-canvas" id="jamsil-hotel-map-canvas" role="region" tabindex="0" aria-label="Peta interaktif yang menampilkan 7 hotel di Jamsil"></div>
+            <p class="jamsil-hotel-map-status" id="jamsil-hotel-map-status" role="status" aria-live="polite">Memuat peta hotel…</p>
+          </div>
+          <aside class="jamsil-hotel-map-directory" aria-labelledby="jamsil-hotel-map-directory-title">
+            <h3 id="jamsil-hotel-map-directory-title">Hotel di peta ini</h3>
+            <ol class="jamsil-hotel-map-list">
+              <li><button type="button" data-map-hotel="lotte-hotel-world" aria-controls="jamsil-hotel-map-canvas" aria-pressed="false"><span class="jamsil-hotel-map-number" aria-hidden="true">1</span><span>Lotte Hotel World</span></button></li>
+              <li><button type="button" data-map-hotel="sofitel" aria-controls="jamsil-hotel-map-canvas" aria-pressed="false"><span class="jamsil-hotel-map-number" aria-hidden="true">2</span><span>Sofitel Ambassador Seoul Hotel &amp; Serviced Residences</span></button></li>
+              <li><button type="button" data-map-hotel="rosana" aria-controls="jamsil-hotel-map-canvas" aria-pressed="false"><span class="jamsil-hotel-map-number" aria-hidden="true">3</span><span>Rosana Hotel</span></button></li>
+              <li><button type="button" data-map-hotel="delight" aria-controls="jamsil-hotel-map-canvas" aria-pressed="false"><span class="jamsil-hotel-map-number" aria-hidden="true">4</span><span>Delight Hotel Jamsil</span></button></li>
+              <li><button type="button" data-map-hotel="seoul-sangju" aria-controls="jamsil-hotel-map-canvas" aria-pressed="false"><span class="jamsil-hotel-map-number" aria-hidden="true">5</span><span>Seoul Sangju Hotel</span></button></li>
+              <li><button type="button" data-map-hotel="hotel-lake" aria-controls="jamsil-hotel-map-canvas" aria-pressed="false"><span class="jamsil-hotel-map-number" aria-hidden="true">6</span><span>Hotel Lake</span></button></li>
+              <li><button type="button" data-map-hotel="signiel" aria-controls="jamsil-hotel-map-canvas" aria-pressed="false"><span class="jamsil-hotel-map-number" aria-hidden="true">7</span><span>SIGNIEL Seoul</span></button></li>
+            </ol>
+          </aside>
+        </div>
+      </div>
+    </section>
+
     <section class="hm-section hm-section--cream" id="hotels" aria-labelledby="hotels-title">
       <div class="container">
         <header class="hm-hotel-guide">
           <h2 id="hotels-title">Hotel di Jamsil</h2>
         </header>
         <div class="hm-hotel-region__list">
-          <article class="hm-hotel hm-editorial-row" id="lotte-hotel-world" aria-labelledby="lotte-hotel-world-title">
+          <article class="hm-hotel hm-editorial-row" id="lotte-hotel-world" aria-labelledby="lotte-hotel-world-title" data-hotel-id="lotte-hotel-world">
             <div class="hm-editorial-row__label">
               <h3 id="lotte-hotel-world-title">Lotte Hotel World</h3>
             </div>
@@ -245,6 +280,7 @@
               <p>Kekurangannya terasa pada hari ketika Anda tidak berkegiatan di Jamsil. Jika sebagian besar wisata berada di pusat atau barat Seoul, Anda membayar keuntungan lokasi yang terus Anda tinggalkan.</p>
               <p>Hotel ini paling kuat ketika Lotte World bukan hanya satu persinggahan, tetapi salah satu alasan utama Anda memilih Jamsil.</p>
               <p class="hm-affiliate-note">Halaman ini memuat tautan afiliasi.</p>
+              <p class="jamsil-hotel-map-link-wrap"><a class="jamsil-hotel-map-link" href="#jamsil-hotel-map" data-map-hotel="lotte-hotel-world" aria-controls="jamsil-hotel-map-canvas">📌 Lihat di Peta</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">LIHAT TARIF</p>
                 <p class="hm-booking-strip__title">Bandingkan hotel ini di situs pemesanan</p>
@@ -256,7 +292,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="sofitel" aria-labelledby="sofitel-title">
+          <article class="hm-hotel hm-editorial-row" id="sofitel" aria-labelledby="sofitel-title" data-hotel-id="sofitel">
             <div class="hm-editorial-row__label">
               <h3 id="sofitel-title">Sofitel Ambassador Seoul Hotel &amp; Serviced Residences</h3>
             </div>
@@ -266,6 +302,7 @@
               <p>Ini membantu keluarga yang tidak ingin makan di luar setiap waktu, atau rombongan yang membutuhkan ruang bersama sebenarnya, bukan satu kamar dengan beberapa tempat tidur.</p>
               <p>Jangan menganggap bus bandara berhenti di pintu hotel. Petunjuk transportasi hotel sendiri menempatkan halte 6705A sekitar 15 menit berjalan kaki dari hotel. Dengan satu koper, itu mungkin tidak masalah. Dengan anak-anak dan beberapa tas, kedatangannya berbeda dari Lotte Hotel World.</p>
               <p>Pilih Sofitel untuk Seokchon Lake, kualitas kamar, dan fasilitas residensi. Jika satu-satunya tujuan adalah mencapai Lotte World secepat mungkin, Lotte Hotel World merupakan pilihan lebih langsung.</p>
+              <p class="jamsil-hotel-map-link-wrap"><a class="jamsil-hotel-map-link" href="#jamsil-hotel-map" data-map-hotel="sofitel" aria-controls="jamsil-hotel-map-canvas">📌 Lihat di Peta</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">LIHAT TARIF</p>
                 <p class="hm-booking-strip__title">Bandingkan hotel ini di situs pemesanan</p>
@@ -277,7 +314,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="rosana" aria-labelledby="rosana-title">
+          <article class="hm-hotel hm-editorial-row" id="rosana" aria-labelledby="rosana-title" data-hotel-id="rosana">
             <div class="hm-editorial-row__label">
               <h3 id="rosana-title">Rosana Hotel</h3>
             </div>
@@ -287,6 +324,7 @@
               <p>Lokasi perlu dipahami dengan benar. Rosana dekat Seokchon Lake, tetapi bukan hotel tepat di pintu Jamsil Station. Petunjuk hotel sendiri menempatkan Jamsil Station sekitar 15 menit berjalan kaki, sementara Seokchon Gobun Station jauh lebih dekat.</p>
               <p>Perbedaan itu penting dengan bagasi. Jika Anda sering menggunakan Jalur 9 atau menikmati kawasan danau, lokasinya bisa sesuai. Jika setiap hari dimulai di Jamsil Station bersama anak kecil, bandingkan jalan kaki sebelum memesan.</p>
               <p>Rosana adalah salah satu pilihan lebih praktis di sini ketika konfigurasi kamar lebih penting daripada kolam renang, lounge, atau hotel besar bermerek internasional.</p>
+              <p class="jamsil-hotel-map-link-wrap"><a class="jamsil-hotel-map-link" href="#jamsil-hotel-map" data-map-hotel="rosana" aria-controls="jamsil-hotel-map-canvas">📌 Lihat di Peta</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">LIHAT TARIF</p>
                 <p class="hm-booking-strip__title">Bandingkan hotel ini di situs pemesanan</p>
@@ -298,7 +336,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="delight" aria-labelledby="delight-title">
+          <article class="hm-hotel hm-editorial-row" id="delight" aria-labelledby="delight-title" data-hotel-id="delight">
             <div class="hm-editorial-row__label">
               <h3 id="delight-title">Delight Hotel Jamsil</h3>
             </div>
@@ -308,6 +346,7 @@
               <p>Deskripsi kamar perlu dibaca lebih teliti. Premium Twin mungkin menunjukkan satu double dan satu single, tetapi batas jumlah tamu belum sepenuhnya konsisten di berbagai situs pemesanan. Jangan menganggap dua tempat tidur otomatis berarti tiga orang dewasa diizinkan.</p>
               <p>Masukkan seluruh rombongan sebelum membandingkan tarif, terutama untuk keluarga atau tiga orang.</p>
               <p>Ini bukan pilihan pertama kami bagi orang yang menginginkan fasilitas hotel internasional besar yang dapat diprediksi. Hotel lebih menarik ketika lokasi Bangi-dong benar-benar akan Anda gunakan.</p>
+              <p class="jamsil-hotel-map-link-wrap"><a class="jamsil-hotel-map-link" href="#jamsil-hotel-map" data-map-hotel="delight" aria-controls="jamsil-hotel-map-canvas">📌 Lihat di Peta</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">LIHAT TARIF</p>
                 <p class="hm-booking-strip__title">Bandingkan hotel ini di situs pemesanan</p>
@@ -319,7 +358,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="seoul-sangju" aria-labelledby="seoul-sangju-title">
+          <article class="hm-hotel hm-editorial-row" id="seoul-sangju" aria-labelledby="seoul-sangju-title" data-hotel-id="seoul-sangju">
             <div class="hm-editorial-row__label">
               <h3 id="seoul-sangju-title">Seoul Sangju Hotel</h3>
             </div>
@@ -330,6 +369,7 @@
               <p>Perannya lebih jelas bagi pasangan, pelancong solo, atau dua teman yang ingin kembali dari acara tanpa melintasi Jamsil sesudahnya.</p>
               <p>Bus Bandara 6006 juga melayani sisi Sports Complex, sehingga bagian Jamsil ini memiliki pola kedatangan dari bandara berbeda dari hotel Lotte World.</p>
               <p>Jika acara berakhir larut, berada di sisi Jamsil yang tepat bisa lebih penting daripada menginap di hotel paling terkenal di kawasan.</p>
+              <p class="jamsil-hotel-map-link-wrap"><a class="jamsil-hotel-map-link" href="#jamsil-hotel-map" data-map-hotel="seoul-sangju" aria-controls="jamsil-hotel-map-canvas">📌 Lihat di Peta</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">LIHAT TARIF</p>
                 <p class="hm-booking-strip__title">Bandingkan hotel ini di situs pemesanan</p>
@@ -341,7 +381,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="hotel-lake" aria-labelledby="hotel-lake-title">
+          <article class="hm-hotel hm-editorial-row" id="hotel-lake" aria-labelledby="hotel-lake-title" data-hotel-id="hotel-lake">
             <div class="hm-editorial-row__label">
               <h3 id="hotel-lake-title">Hotel Lake</h3>
             </div>
@@ -351,6 +391,7 @@
               <p>Ulasan tamu tidak sepenuhnya seragam. Banyak tamu baru-baru ini menyukai luas kamar, suasana danau, dan kamar mandi, sementara ulasan lain menyebut interior lama, bau, kebersihan, atau pemeliharaan. Keragaman itu cukup berarti sehingga kami tidak akan menyebut hotel ini selalu terawat dengan baik.</p>
               <p>Jika terutama ingin tempat menginap di sisi danau dan tidak keberatan hotel yang lebih lama, ini bisa masuk akal.</p>
               <p>Jika interior yang sudah aus atau kondisi kamar yang tidak merata akan mengganggu selama menginap, bayar lebih untuk salah satu hotel baru atau pilih hotel konvensional lain di dekatnya.</p>
+              <p class="jamsil-hotel-map-link-wrap"><a class="jamsil-hotel-map-link" href="#jamsil-hotel-map" data-map-hotel="hotel-lake" aria-controls="jamsil-hotel-map-canvas">📌 Lihat di Peta</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">LIHAT TARIF</p>
                 <p class="hm-booking-strip__title">Bandingkan hotel ini di situs pemesanan</p>
@@ -362,7 +403,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="signiel" aria-labelledby="signiel-title">
+          <article class="hm-hotel hm-editorial-row" id="signiel" aria-labelledby="signiel-title" data-hotel-id="signiel">
             <div class="hm-editorial-row__label">
               <h3 id="signiel-title">SIGNIEL Seoul</h3>
             </div>
@@ -371,6 +412,7 @@
               <p>Anda menginap di lantai tinggi Lotte World Tower, dan pemandangan, layanan, serta pengalaman hotel membentuk sebagian besar harganya. Sebagian suite sangat besar, tetapi luas lantai besar tidak otomatis menjadikannya kamar keluarga. Beberapa kategori kamar premium dirancang untuk dua tamu.</p>
               <p>Untuk ulang tahun, hari jadi, perjalanan lamaran, atau satu malam ketika hotel itu sendiri menjadi bagian rencana, SIGNIEL memiliki peran jelas di halaman ini.</p>
               <p>Bagi keluarga yang ingin memudahkan Lotte World, biaya tambahan biasanya tidak memenuhi kebutuhan yang tepat. Lotte Hotel World memberi lokasi praktis tanpa menjadikan hotel kegiatan utama.</p>
+              <p class="jamsil-hotel-map-link-wrap"><a class="jamsil-hotel-map-link" href="#jamsil-hotel-map" data-map-hotel="signiel" aria-controls="jamsil-hotel-map-canvas">📌 Lihat di Peta</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">LIHAT TARIF</p>
                 <p class="hm-booking-strip__title">Bandingkan hotel ini di situs pemesanan</p>
@@ -517,6 +559,7 @@
 
   <script src="../guide-year.js" defer></script>
   <script src="../common.js"></script>
+  <script src="../jamsil-hotel-map.js" defer></script>
 <script>
   window.va = window.va || function () {
     (window.vaq = window.vaq || []).push(arguments);

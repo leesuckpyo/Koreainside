@@ -31,6 +31,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400..600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../jamsil-hotel-map.css">
   <style>
     body.jamsil-page main .hm-hero__copy {
       grid-column: 1 / -1;
@@ -235,13 +236,47 @@
       </div>
     </section>
 
+    <section class="hm-section jamsil-hotel-map-section" id="jamsil-hotel-map" data-map-asset-prefix="../" aria-labelledby="jamsil-hotel-map-title"
+      data-map-copy-default="แสดงตำแหน่งโรงแรมทั้ง 7 แห่งแล้ว เลือกหมุดหรือชื่อโรงแรม"
+      data-map-copy-selected="เลือกแล้ว: {name} หมุดหมายเลข {number} ยังคงเป็นสีแดง ส่วนหมุดอื่นเป็นสีน้ำเงิน"
+      data-map-copy-unavailable-selected="เลือกแล้ว: {name} แผนที่ NAVER ไม่พร้อมใช้งาน แต่ลิงก์ไปยังโรงแรมในหน้านี้ยังใช้งานได้"
+      data-map-copy-pending-selected="เลือกแล้ว: {name} แผนที่จะแสดงรายการที่เลือกเมื่อโหลดเสร็จ"
+      data-map-copy-fallback="ไม่สามารถโหลดแผนที่ NAVER แบบโต้ตอบได้ โปรดดูโรงแรมทั้ง 7 แห่งจากรายการ แล้วลองอีกครั้งภายหลัง"
+      data-map-copy-fallback-status="แผนที่ NAVER ไม่พร้อมใช้งาน แต่ยังดูชื่อโรงแรมและใช้ลิงก์ภายในหน้านี้ได้"
+      data-map-copy-marker-aria="เลือกหมายเลข {number}: {name}">
+      <div class="container">
+        <header class="hm-section__header">
+          <h2 id="jamsil-hotel-map-title">โรงแรมในจัมซิลอยู่ตรงไหนบ้าง?</h2>
+          <p class="hm-section__intro">เลือกหมุดหรือชื่อโรงแรมเพื่อดูตำแหน่งบนแผนที่</p>
+        </header>
+        <div class="jamsil-hotel-map-layout">
+          <div class="jamsil-hotel-map-shell">
+            <div class="jamsil-hotel-map-canvas" id="jamsil-hotel-map-canvas" role="region" tabindex="0" aria-label="แผนที่แบบโต้ตอบแสดงโรงแรม 7 แห่งในจัมซิล"></div>
+            <p class="jamsil-hotel-map-status" id="jamsil-hotel-map-status" role="status" aria-live="polite">กำลังโหลดแผนที่โรงแรม…</p>
+          </div>
+          <aside class="jamsil-hotel-map-directory" aria-labelledby="jamsil-hotel-map-directory-title">
+            <h3 id="jamsil-hotel-map-directory-title">โรงแรมบนแผนที่นี้</h3>
+            <ol class="jamsil-hotel-map-list">
+              <li><button type="button" data-map-hotel="lotte-hotel-world" aria-controls="jamsil-hotel-map-canvas" aria-pressed="false"><span class="jamsil-hotel-map-number" aria-hidden="true">1</span><span>Lotte Hotel World</span></button></li>
+              <li><button type="button" data-map-hotel="sofitel" aria-controls="jamsil-hotel-map-canvas" aria-pressed="false"><span class="jamsil-hotel-map-number" aria-hidden="true">2</span><span>Sofitel Ambassador Seoul Hotel &amp; Serviced Residences</span></button></li>
+              <li><button type="button" data-map-hotel="rosana" aria-controls="jamsil-hotel-map-canvas" aria-pressed="false"><span class="jamsil-hotel-map-number" aria-hidden="true">3</span><span>Rosana Hotel</span></button></li>
+              <li><button type="button" data-map-hotel="delight" aria-controls="jamsil-hotel-map-canvas" aria-pressed="false"><span class="jamsil-hotel-map-number" aria-hidden="true">4</span><span>Delight Hotel Jamsil</span></button></li>
+              <li><button type="button" data-map-hotel="seoul-sangju" aria-controls="jamsil-hotel-map-canvas" aria-pressed="false"><span class="jamsil-hotel-map-number" aria-hidden="true">5</span><span>Seoul Sangju Hotel</span></button></li>
+              <li><button type="button" data-map-hotel="hotel-lake" aria-controls="jamsil-hotel-map-canvas" aria-pressed="false"><span class="jamsil-hotel-map-number" aria-hidden="true">6</span><span>Hotel Lake</span></button></li>
+              <li><button type="button" data-map-hotel="signiel" aria-controls="jamsil-hotel-map-canvas" aria-pressed="false"><span class="jamsil-hotel-map-number" aria-hidden="true">7</span><span>SIGNIEL Seoul</span></button></li>
+            </ol>
+          </aside>
+        </div>
+      </div>
+    </section>
+
     <section class="hm-section hm-section--cream" id="hotels" aria-labelledby="hotels-title">
       <div class="container">
         <header class="hm-hotel-guide">
           <h2 id="hotels-title">โรงแรมในจัมซิล</h2>
         </header>
         <div class="hm-hotel-region__list">
-          <article class="hm-hotel hm-editorial-row" id="lotte-hotel-world" aria-labelledby="lotte-hotel-world-title">
+          <article class="hm-hotel hm-editorial-row" id="lotte-hotel-world" aria-labelledby="lotte-hotel-world-title" data-hotel-id="lotte-hotel-world">
             <div class="hm-editorial-row__label">
               <h3 id="lotte-hotel-world-title">Lotte Hotel World</h3>
             </div>
@@ -252,6 +287,7 @@
               <p>ข้อแลกเปลี่ยนจะเห็นในวันที่คุณไม่ได้ใช้จัมซิล ถ้าส่วนใหญ่เที่ยวใจกลางหรือฝั่งตะวันตกของโซล คุณกำลังจ่ายเพิ่มเพื่อข้อได้เปรียบด้านทำเลที่ตัวเองเดินทางออกจากมันทุกวัน</p>
               <p>โรงแรมนี้แข็งแรงที่สุดเมื่อ Lotte World ไม่ใช่แค่จุดหนึ่งใน แผนเที่ยว แต่เป็นหนึ่งในเหตุผลหลักที่คุณเลือกจัมซิล</p>
               <p class="hm-affiliate-note">หน้านี้มีลิงก์ Affiliate</p>
+              <p class="jamsil-hotel-map-link-wrap"><a class="jamsil-hotel-map-link" href="#jamsil-hotel-map" data-map-hotel="lotte-hotel-world" aria-controls="jamsil-hotel-map-canvas">📌 ดูบนแผนที่</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">เช็กราคา</p>
                 <p class="hm-booking-strip__title">เปรียบเทียบโรงแรมนี้บนเว็บไซต์จอง</p>
@@ -263,7 +299,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="sofitel" aria-labelledby="sofitel-title">
+          <article class="hm-hotel hm-editorial-row" id="sofitel" aria-labelledby="sofitel-title" data-hotel-id="sofitel">
             <div class="hm-editorial-row__label">
               <h3 id="sofitel-title">Sofitel Ambassador Seoul Hotel &amp; Serviced Residences</h3>
             </div>
@@ -273,6 +309,7 @@
               <p>มีประโยชน์กับครอบครัวที่ไม่อยากกินทุกมื้อนอกบ้าน หรือกลุ่มที่ต้องการพื้นที่ใช้ชีวิตจริง ไม่ใช่ห้องเดียวที่ยัดหลายเตียง</p>
               <p>อย่าคิดว่ารถบัสสนามบินหยุดหน้าประตูโรงแรม ข้อมูลการเดินทางของโรงแรมเองระบุว่าป้าย 6705A อยู่ห่างประมาณเดิน 15 นาที กระเป๋าใบเดียวอาจไม่มีปัญหา แต่ถ้ามีเด็กและกระเป๋าหลายใบ นี่เป็นการมาถึงที่ต่างจาก Lotte Hotel World</p>
               <p>เลือก Sofitel เมื่อทะเลสาบซอกชน คุณภาพห้อง และสิ่งอำนวยความสะดวกแบบ residence สำคัญ ถ้าเป้าหมายเดียวคือเข้า Lotte World ให้เร็วที่สุด Lotte Hotel World ตรงกว่า</p>
+              <p class="jamsil-hotel-map-link-wrap"><a class="jamsil-hotel-map-link" href="#jamsil-hotel-map" data-map-hotel="sofitel" aria-controls="jamsil-hotel-map-canvas">📌 ดูบนแผนที่</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">เช็กราคา</p>
                 <p class="hm-booking-strip__title">เปรียบเทียบโรงแรมนี้บนเว็บไซต์จอง</p>
@@ -284,7 +321,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="rosana" aria-labelledby="rosana-title">
+          <article class="hm-hotel hm-editorial-row" id="rosana" aria-labelledby="rosana-title" data-hotel-id="rosana">
             <div class="hm-editorial-row__label">
               <h3 id="rosana-title">Rosana Hotel</h3>
             </div>
@@ -294,6 +331,7 @@
               <p>ต้องเข้าใจทำเลให้ถูก Rosana อยู่ใกล้ทะเลสาบซอกชน แต่ไม่ใช่โรงแรมหน้าสถานี Jamsil ข้อมูลของโรงแรมเองระบุว่าเดินไปสถานี Jamsil ราว 15 นาที ขณะที่สถานี Seokchon Gobun ใกล้กว่ามาก</p>
               <p>ความต่างนี้สำคัญเมื่อมีกระเป๋า ถ้าจะใช้สาย 9 บ่อยหรือชอบโซนทะเลสาบ ทำเลนี้ใช้งานได้ดี แต่ถ้าทุกวันเริ่มที่สถานี Jamsil พร้อมเด็กเล็ก ให้เทียบระยะเดินก่อนจอง</p>
               <p>Rosana เป็นหนึ่งในตัวเลือกที่ใช้งานจริงเมื่อรูปแบบห้องสำคัญกว่าสระว่ายน้ำ เลานจ์ หรือโรงแรมแบรนด์นานาชาติขนาดใหญ่</p>
+              <p class="jamsil-hotel-map-link-wrap"><a class="jamsil-hotel-map-link" href="#jamsil-hotel-map" data-map-hotel="rosana" aria-controls="jamsil-hotel-map-canvas">📌 ดูบนแผนที่</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">เช็กราคา</p>
                 <p class="hm-booking-strip__title">เปรียบเทียบโรงแรมนี้บนเว็บไซต์จอง</p>
@@ -305,7 +343,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="delight" aria-labelledby="delight-title">
+          <article class="hm-hotel hm-editorial-row" id="delight" aria-labelledby="delight-title" data-hotel-id="delight">
             <div class="hm-editorial-row__label">
               <h3 id="delight-title">Delight Hotel Jamsil</h3>
             </div>
@@ -315,6 +353,7 @@
               <p>คำอธิบายห้องต้องดูให้ละเอียด Premium Twin อาจแสดงเตียง double และ single แต่ข้อจำกัดผู้เข้าพักไม่ได้สอดคล้องกันทั้งหมดระหว่างเว็บไซต์จอง อย่าคิดว่าสองเตียงหมายถึงผู้ใหญ่ 3 คนเข้าพักได้อัตโนมัติ</p>
               <p>ใส่จำนวนผู้เข้าพักทั้งหมดก่อนเทียบราคา โดยเฉพาะครอบครัวหรือทริป 3 คน</p>
               <p>นี่ไม่ใช่ตัวเลือกแรกของเราสำหรับคนที่ต้องการสิ่งอำนวยความสะดวกคาดเดาได้แบบโรงแรมนานาชาติขนาดใหญ่ มันน่าเชื่อกว่าเมื่อทำเล Bangi-dong เป็นสิ่งที่คุณจะใช้จริง</p>
+              <p class="jamsil-hotel-map-link-wrap"><a class="jamsil-hotel-map-link" href="#jamsil-hotel-map" data-map-hotel="delight" aria-controls="jamsil-hotel-map-canvas">📌 ดูบนแผนที่</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">เช็กราคา</p>
                 <p class="hm-booking-strip__title">เปรียบเทียบโรงแรมนี้บนเว็บไซต์จอง</p>
@@ -326,7 +365,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="seoul-sangju" aria-labelledby="seoul-sangju-title">
+          <article class="hm-hotel hm-editorial-row" id="seoul-sangju" aria-labelledby="seoul-sangju-title" data-hotel-id="seoul-sangju">
             <div class="hm-editorial-row__label">
               <h3 id="seoul-sangju-title">Seoul Sangju Hotel</h3>
             </div>
@@ -337,6 +376,7 @@
               <p>บทบาทชัดกว่าสำหรับคู่รัก นักเดินทางคนเดียว หรือเพื่อน 2 คนที่อยากกลับจากอีเวนต์โดยไม่ต้องข้ามจัมซิลอีก</p>
               <p>Airport Bus 6006 ให้บริการฝั่ง Sports Complex ด้วย ทำให้รูปแบบการมาจากสนามบินของฝั่งนี้ต่างจากโรงแรม Lotte World</p>
               <p>ถ้าอีเวนต์จบดึก การอยู่ถูกฝั่งของจัมซิลอาจสำคัญกว่าการพักโรงแรมที่มีชื่อเสียงที่สุดในย่าน</p>
+              <p class="jamsil-hotel-map-link-wrap"><a class="jamsil-hotel-map-link" href="#jamsil-hotel-map" data-map-hotel="seoul-sangju" aria-controls="jamsil-hotel-map-canvas">📌 ดูบนแผนที่</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">เช็กราคา</p>
                 <p class="hm-booking-strip__title">เปรียบเทียบโรงแรมนี้บนเว็บไซต์จอง</p>
@@ -348,7 +388,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="hotel-lake" aria-labelledby="hotel-lake-title">
+          <article class="hm-hotel hm-editorial-row" id="hotel-lake" aria-labelledby="hotel-lake-title" data-hotel-id="hotel-lake">
             <div class="hm-editorial-row__label">
               <h3 id="hotel-lake-title">Hotel Lake</h3>
             </div>
@@ -358,6 +398,7 @@
               <p>ความคิดเห็นผู้เข้าพักไม่ได้ไปทางเดียวทั้งหมด แขกช่วงหลังจำนวนมากชอบขนาดห้อง ทำเลริมทะเลสาบ และห้องน้ำ ขณะที่รีวิวอื่นพูดถึงงานตกแต่งเก่า กลิ่น ความสะอาด หรือการบำรุงรักษา ความแตกต่างนี้มากพอที่เราไม่ควรเรียกโรงแรมนี้ว่าเรียบร้อยสม่ำเสมอ</p>
               <p>ถ้าต้องการฐานริมทะเลสาบเป็นหลักและไม่ติดโรงแรมเก่ากว่า ก็มีเหตุผล</p>
               <p>ถ้างานตกแต่งที่สึกหรือสภาพห้องไม่สม่ำเสมอจะรบกวนคุณตลอดการพัก ให้จ่ายเพิ่มกับที่ใหม่กว่า หรือเลือกโรงแรมทั่วไปแห่งอื่นใกล้ๆ</p>
+              <p class="jamsil-hotel-map-link-wrap"><a class="jamsil-hotel-map-link" href="#jamsil-hotel-map" data-map-hotel="hotel-lake" aria-controls="jamsil-hotel-map-canvas">📌 ดูบนแผนที่</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">เช็กราคา</p>
                 <p class="hm-booking-strip__title">เปรียบเทียบโรงแรมนี้บนเว็บไซต์จอง</p>
@@ -369,7 +410,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="signiel" aria-labelledby="signiel-title">
+          <article class="hm-hotel hm-editorial-row" id="signiel" aria-labelledby="signiel-title" data-hotel-id="signiel">
             <div class="hm-editorial-row__label">
               <h3 id="signiel-title">SIGNIEL Seoul</h3>
             </div>
@@ -378,6 +419,7 @@
               <p>คุณพักอยู่สูงภายใน Lotte World Tower และวิว บริการ และประสบการณ์โรงแรมเป็นสัดส่วนใหญ่ของราคา ห้องสวีทบางประเภทใหญ่มาก แต่พื้นที่กว้างไม่ได้ทำให้เป็น family room อัตโนมัติ ห้อง premium หลายประเภทออกแบบสำหรับ 2 คน</p>
               <p>สำหรับวันเกิด วันครบรอบ ทริปขอแต่งงาน หรือหนึ่งคืนที่โรงแรมเองเป็นส่วนของ แผนเที่ยว SIGNIEL มีตำแหน่งชัดเจนในหน้านี้</p>
               <p>สำหรับครอบครัวที่พยายามทำ Lotte World ให้ง่ายขึ้น เงินเพิ่มมักแก้ปัญหาผิดจุด Lotte Hotel World ให้ทำเลที่ใช้งานได้จริงโดยไม่เปลี่ยนโรงแรมเป็นกิจกรรมหลัก</p>
+              <p class="jamsil-hotel-map-link-wrap"><a class="jamsil-hotel-map-link" href="#jamsil-hotel-map" data-map-hotel="signiel" aria-controls="jamsil-hotel-map-canvas">📌 ดูบนแผนที่</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">เช็กราคา</p>
                 <p class="hm-booking-strip__title">เปรียบเทียบโรงแรมนี้บนเว็บไซต์จอง</p>
@@ -524,6 +566,7 @@
 
   <script src="../guide-year.js" defer></script>
   <script src="../common.js"></script>
+  <script src="../jamsil-hotel-map.js" defer></script>
 <script>
   window.va = window.va || function () {
     (window.vaq = window.vaq || []).push(arguments);
