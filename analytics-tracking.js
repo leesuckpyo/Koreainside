@@ -21,11 +21,20 @@
       canonical.pathname !== publicPath || canonical.search || canonical.hash) return;
 
   var dnt = String(window.navigator.doNotTrack || window.doNotTrack || '').toLowerCase();
-  if (window.navigator.globalPrivacyControl === true || dnt === '1' || dnt === 'yes') return;
+  if (window.navigator.globalPrivacyControl === true || dnt === '1' || dnt === 'yes') {
+    if (Array.isArray(window.__kiaMatomoAffiliateQueue)) {
+      window.__kiaMatomoAffiliateQueue.length = 0;
+    }
+    return;
+  }
 
   var endpoint = 'https://analytics.getkoreainside.com';
   var queue = window._paq = window._paq || [];
   var optedOut = /(?:^|;\s*)mtm_consent_removed=/.test(document.cookie);
+  var affiliateQueueName = '__kiaMatomoAffiliateQueue';
+  var pendingAffiliateClicks = Array.isArray(window[affiliateQueueName]) ?
+    window[affiliateQueueName] : [];
+  window[affiliateQueueName] = pendingAffiliateClicks;
   var ready = false;
   var loading = false;
   var pageviewSent = false;
@@ -56,6 +65,63 @@
     pageviewSent = true;
   }
 
+  function eventIdentifier(value) {
+    var text = String(value || '').trim();
+    return /^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$/.test(text) ? text : '';
+  }
+
+  function affiliateProvider(value) {
+    var text = String(value || '').trim();
+    return /^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$/.test(text) ? text : '';
+  }
+
+  function normalizeAffiliateClick(data) {
+    if (!data || typeof data !== 'object') return null;
+    var action = data.action === 'hotel_cta_click' ? 'hotel_cta_click' :
+      data.action === 'affiliate_outlink_click' ? 'affiliate_outlink_click' : '';
+    var provider = affiliateProvider(data.provider);
+    var hotelId = eventIdentifier(data.hotelId);
+    if (!action || !provider || (action === 'hotel_cta_click' && !hotelId)) return null;
+    return {
+      action: action,
+      provider: provider,
+      hotelId: hotelId,
+      placement: eventIdentifier(data.placement)
+    };
+  }
+
+  function sendAffiliateClick(data) {
+    var click = normalizeAffiliateClick(data);
+    if (!click || optedOut || !ready) return false;
+    var name = [];
+    if (click.hotelId) name.push('hotel_id=' + click.hotelId);
+    if (click.placement) name.push('placement=' + click.placement);
+    var event = ['trackEvent', 'kia_affiliate:' + click.provider, click.action];
+    if (name.length) event.push(name.join('|'));
+    window._paq.push(event);
+    return true;
+  }
+
+  function flushAffiliateClicks() {
+    if (optedOut) {
+      pendingAffiliateClicks.length = 0;
+      return;
+    }
+    if (!ready) return;
+    var clicks = pendingAffiliateClicks.splice(0, pendingAffiliateClicks.length);
+    clicks.forEach(sendAffiliateClick);
+  }
+
+  function trackAffiliateClick(data) {
+    var click = normalizeAffiliateClick(data);
+    if (!click || optedOut) return false;
+    if (!ready) {
+      if (pendingAffiliateClicks.length < 50) pendingAffiliateClicks.push(click);
+      return true;
+    }
+    return sendAffiliateClick(click);
+  }
+
   function loadLibrary() {
     if (loading || ready) return;
     loading = true;
@@ -67,6 +133,7 @@
       loading = false;
       ready = true;
       recordPageview();
+      flushAffiliateClicks();
     };
     script.onerror = function () {
       loading = false;
@@ -77,6 +144,7 @@
 
   function revoke() {
     optedOut = true;
+    pendingAffiliateClicks.length = 0;
     window._paq.push(['optUserOut']);
   }
 
@@ -91,8 +159,10 @@
   window.KIAMatomoPageview = Object.freeze({
     revoke: revoke,
     enable: enable,
-    isOptedOut: function () { return optedOut; }
+    isOptedOut: function () { return optedOut; },
+    trackAffiliateClick: trackAffiliateClick
   });
   document.addEventListener('kia:analytics-consent-revoked', revoke);
-  if (!optedOut) loadLibrary();
+  if (optedOut) pendingAffiliateClicks.length = 0;
+  else loadLibrary();
 }(window, document));
