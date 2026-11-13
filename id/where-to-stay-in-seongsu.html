@@ -24,6 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400..600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../seongsu-hotel-map.css">
   <style>
     body.seongsu-page main .hm-hero__copy {
       grid-column: 1 / -1;
@@ -241,13 +242,45 @@
       </div>
     </section>
 
+    <section class="hm-section seongsu-hotel-map-section" id="seongsu-hotel-map" aria-labelledby="seongsu-hotel-map-title"
+      data-map-asset-prefix="../"
+      data-map-copy-default="Lokasi keempat akomodasi ditampilkan. Pilih pin atau nama akomodasi."
+      data-map-copy-selected="Dipilih: {name}. Pin nomor {number} tetap merah; pin lainnya berwarna biru."
+      data-map-copy-unavailable-selected="Dipilih: {name}. Peta NAVER tidak tersedia, tetapi tautan ke akomodasi di halaman ini tetap dapat digunakan."
+      data-map-copy-pending-selected="Dipilih: {name}. Pilihan ini akan ditampilkan setelah peta siap."
+      data-map-copy-fallback="Peta interaktif NAVER gagal dimuat. Lihat keempat pilihan akomodasi dalam daftar, lalu coba lagi nanti."
+      data-map-copy-fallback-status="Peta NAVER tidak tersedia. Nama akomodasi dan tautan dalam halaman ini tetap dapat diakses."
+      data-map-copy-marker-aria="Pilih nomor {number}. {name}">
+      <div class="container">
+        <header class="hm-section__header">
+          <h2 id="seongsu-hotel-map-title">Di Mana Akomodasi di Seongsu Berada?</h2>
+          <p class="hm-section__intro">Pilih pin atau nama akomodasi untuk melihat lokasinya.</p>
+        </header>
+        <div class="seongsu-hotel-map-layout">
+          <div class="seongsu-hotel-map-shell">
+            <div class="seongsu-hotel-map-canvas" id="seongsu-hotel-map-canvas" role="region" tabindex="0" aria-label="Peta interaktif yang menampilkan 4 akomodasi di Seongsu"></div>
+            <p class="seongsu-hotel-map-status" id="seongsu-hotel-map-status" role="status" aria-live="polite">Memuat peta akomodasi…</p>
+          </div>
+          <aside class="seongsu-hotel-map-directory" aria-labelledby="seongsu-hotel-map-directory-title">
+            <h3 id="seongsu-hotel-map-directory-title">Akomodasi di peta ini</h3>
+            <ol class="seongsu-hotel-map-list">
+              <li><button type="button" data-map-hotel="hotel-poco-seongsu" aria-controls="seongsu-hotel-map-canvas" aria-pressed="false"><span class="seongsu-hotel-map-number" aria-hidden="true">1</span><span>Hotel POCO Seongsu</span></button></li>
+              <li><button type="button" data-map-hotel="onjae-stay-seongsu" aria-controls="seongsu-hotel-map-canvas" aria-pressed="false"><span class="seongsu-hotel-map-number" aria-hidden="true">2</span><span>ONJAE STAY SEONGSU</span></button></li>
+              <li><button type="button" data-map-hotel="stay-but-seongsu" aria-controls="seongsu-hotel-map-canvas" aria-pressed="false"><span class="seongsu-hotel-map-number" aria-hidden="true">3</span><span>Stay BUT SEONGSU</span></button></li>
+              <li><button type="button" data-map-hotel="seoul-forest-stay" aria-controls="seongsu-hotel-map-canvas" aria-pressed="false"><span class="seongsu-hotel-map-number" aria-hidden="true">4</span><span>Seoul Forest Stay</span></button></li>
+            </ol>
+          </aside>
+        </div>
+      </div>
+    </section>
+
     <section class="hm-section hm-section--cream" id="seongsu-stays" aria-labelledby="seongsu-stays-title">
       <div class="container">
         <header class="hm-section__header">
           <h2 id="seongsu-stays-title">Hotel dan penginapan kecil di Seongsu</h2>
         </header>
         <div class="hm-hotel-region__list">
-          <article class="hm-hotel hm-editorial-row" id="hotel-poco-seongsu" aria-labelledby="hotel-poco-seongsu-title">
+          <article class="hm-hotel hm-editorial-row" id="hotel-poco-seongsu" data-hotel-id="hotel-poco-seongsu" aria-labelledby="hotel-poco-seongsu-title">
             <div class="hm-editorial-row__label">
               <h3 id="hotel-poco-seongsu-title">Hotel POCO Seongsu</h3>
             </div>
@@ -258,6 +291,7 @@
               <p>Penitipan bagasi perlu direncanakan. POCO telah menghentikan layanan penitipan gratis dan menggunakan loker berbayar. Tarif yang dipublikasikan mulai dari <strong>₩4,000 untuk loker kecil atau ₩8,000 untuk loker besar selama lima jam pertama</strong>, dengan biaya tambahan per jam. Hotel mengarahkan tamu ke fasilitas penitipan di luar jika lokernya penuh.</p>
               <p>Kembali ke kamar dengan belanjaan selama menginap berbeda dengan meninggalkan koper setelah check-out untuk menikmati sore terakhir di Seongsu. Perhitungkan biaya dan ketersediaan penitipan.</p>
               <p class="hm-affiliate-note">Halaman ini memuat tautan afiliasi.</p>
+              <p class="seongsu-hotel-map-link-wrap"><a class="seongsu-hotel-map-link" href="#seongsu-hotel-map" data-map-hotel="hotel-poco-seongsu" aria-controls="seongsu-hotel-map-canvas">📌 Lihat di Peta</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">CEK TARIF</p>
                 <p class="hm-booking-strip__title">Bandingkan hotel ini di situs pemesanan</p>
@@ -269,7 +303,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="onjae-stay-seongsu" aria-labelledby="onjae-stay-seongsu-title">
+          <article class="hm-hotel hm-editorial-row" id="onjae-stay-seongsu" data-hotel-id="onjae-stay-seongsu" aria-labelledby="onjae-stay-seongsu-title">
             <div class="hm-editorial-row__label">
               <h3 id="onjae-stay-seongsu-title">ONJAE STAY SEONGSU</h3>
             </div>
@@ -278,6 +312,7 @@
               <p><strong>Tidak ada lift.</strong> Jika membawa kereta bayi, beberapa koper berat, atau seseorang yang kesulitan menaiki tangga, kami akan mencari pilihan lain kecuali penginapan dapat memastikan pengaturan yang sesuai untuk rombongan Anda.</p>
               <p>Prosedur kedatangannya juga berbeda dari lobi hotel dengan staf. Kebijakan di Expedia menjelaskan resepsionis virtual dan meminta tamu menghubungi penginapan setidaknya 24 jam sebelum kedatangan untuk mendapatkan petunjuk akses. Simpan petunjuk tersebut sebelum berangkat ke penginapan.</p>
               <p>ONJAE dapat dipertimbangkan oleh wisatawan yang menerima pengaturan tersebut demi konfigurasi tempat tidurnya. Ini bukan pilihan utama kami untuk keluarga yang tiba dengan banyak bagasi.</p>
+              <p class="seongsu-hotel-map-link-wrap"><a class="seongsu-hotel-map-link" href="#seongsu-hotel-map" data-map-hotel="onjae-stay-seongsu" aria-controls="seongsu-hotel-map-canvas">📌 Lihat di Peta</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">CEK TARIF</p>
                 <p class="hm-booking-strip__title">Bandingkan penginapan ini di situs pemesanan</p>
@@ -289,7 +324,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="stay-but-seongsu" aria-labelledby="stay-but-seongsu-title">
+          <article class="hm-hotel hm-editorial-row" id="stay-but-seongsu" data-hotel-id="stay-but-seongsu" aria-labelledby="stay-but-seongsu-title">
             <div class="hm-editorial-row__label">
               <h3 id="stay-but-seongsu-title">Stay BUT SEONGSU</h3>
             </div>
@@ -298,6 +333,7 @@
               <p>Pengaturan ini bisa sesuai untuk pasangan yang ingin sarapan di kamar atau menginap lebih lama dengan beberapa kali makan di penginapan. Namun, itu tidak berarti setiap unit menyediakan apartemen keluarga yang luas.</p>
               <p>Rombongan perlu lebih teliti memeriksa rincian pemesanan. Listing saat ini menggunakan nama <strong>Family Suite</strong> dengan deskripsi tempat tidur dan kapasitas yang berbeda. Sebelum memesan untuk rombongan dengan tarif yang tidak dapat dikembalikan, pastikan nomor kamar, pengaturan tidur, dan tata letak yang terkait dengan tarif tersebut. Kami tidak akan memilihnya hanya berdasarkan luas yang diiklankan.</p>
               <p>Untuk saat ini, anggap Stay BUT sebagai alternatif hotel berupa penginapan pribadi dengan dapur. Pilih unit yang lebih besar hanya setelah akomodasi sebenarnya, bukan sekadar deskripsi umum penginapan, sesuai untuk semua anggota rombongan.</p>
+              <p class="seongsu-hotel-map-link-wrap"><a class="seongsu-hotel-map-link" href="#seongsu-hotel-map" data-map-hotel="stay-but-seongsu" aria-controls="seongsu-hotel-map-canvas">📌 Lihat di Peta</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">CEK TARIF</p>
                 <p class="hm-booking-strip__title">Bandingkan penginapan ini di situs pemesanan</p>
@@ -308,7 +344,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="seoul-forest-stay" aria-labelledby="seoul-forest-stay-title">
+          <article class="hm-hotel hm-editorial-row" id="seoul-forest-stay" data-hotel-id="seoul-forest-stay" aria-labelledby="seoul-forest-stay-title">
             <div class="hm-editorial-row__label">
               <h3 id="seoul-forest-stay-title">Seoul Forest Stay</h3>
             </div>
@@ -317,6 +353,7 @@
               <p>Bandingkan pilihan ini jika Anda nyaman dengan akomodasi bergaya hostel. Informasi pemesanan mencakup akses dapur bersama serta pengaturan kamar mandi pribadi dan bersama. Memilih kamar tidur pribadi saja belum memastikan pengaturan kamar mandi yang akan Anda gunakan.</p>
               <p>Bangunannya <strong>tidak memiliki lift</strong>, dan waktu check-in yang dipublikasikan adalah <strong>pukul 2 siang hingga 10 malam.</strong> Tamu yang tiba lebih larut diminta mengatur akses terlebih dahulu. Saat tiba dengan bagasi setelah penerbangan, rincian ini lebih menentukan daripada foto atap bangunan.</p>
               <p>Wisatawan solo mungkin memilih kamar bersama, sedangkan pasangan mungkin memilih kamar pribadi. Keduanya sebaiknya tidak menganggap layanan atau prosedur kedatangannya sama dengan hotel berlayanan lengkap.</p>
+              <p class="seongsu-hotel-map-link-wrap"><a class="seongsu-hotel-map-link" href="#seongsu-hotel-map" data-map-hotel="seoul-forest-stay" aria-controls="seongsu-hotel-map-canvas">📌 Lihat di Peta</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">CEK TARIF</p>
                 <p class="hm-booking-strip__title">Bandingkan penginapan ini di situs pemesanan</p>
@@ -447,6 +484,7 @@
 
   <script src="../guide-year.js" defer></script>
   <script src="../common.js"></script>
+  <script src="../seongsu-hotel-map.js" defer></script>
 <script>
   window.va = window.va || function () {
     (window.vaq = window.vaq || []).push(arguments);

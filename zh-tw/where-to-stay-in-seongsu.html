@@ -24,6 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400..600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../seongsu-hotel-map.css">
   <style>
     body.seongsu-page main .hm-hero__copy {
       grid-column: 1 / -1;
@@ -241,13 +242,45 @@
       </div>
     </section>
 
+    <section class="hm-section seongsu-hotel-map-section" id="seongsu-hotel-map" aria-labelledby="seongsu-hotel-map-title"
+      data-map-asset-prefix="../"
+      data-map-copy-default="已顯示 4 間住宿的位置。請選擇地圖標記或住宿名稱。"
+      data-map-copy-selected="已選擇：{name}。第 {number} 號標記維持紅色，其餘標記為藍色。"
+      data-map-copy-unavailable-selected="已選擇：{name}。NAVER 地圖目前無法使用，但頁面內的住宿連結仍可使用。"
+      data-map-copy-pending-selected="已選擇：{name}。地圖載入完成後會顯示此選擇。"
+      data-map-copy-fallback="無法載入 NAVER 互動地圖。請先透過住宿清單查看全部 4 個選項，稍後再試。"
+      data-map-copy-fallback-status="NAVER 地圖目前無法使用。住宿名稱與頁面內連結仍可使用。"
+      data-map-copy-marker-aria="選擇第 {number} 號：{name}">
+      <div class="container">
+        <header class="hm-section__header">
+          <h2 id="seongsu-hotel-map-title">聖水的住宿位置在哪裡？</h2>
+          <p class="hm-section__intro">點選地圖標記或住宿名稱，即可查看位置。</p>
+        </header>
+        <div class="seongsu-hotel-map-layout">
+          <div class="seongsu-hotel-map-shell">
+            <div class="seongsu-hotel-map-canvas" id="seongsu-hotel-map-canvas" role="region" tabindex="0" aria-label="顯示聖水 4 間住宿的互動地圖"></div>
+            <p class="seongsu-hotel-map-status" id="seongsu-hotel-map-status" role="status" aria-live="polite">正在載入住宿地圖…</p>
+          </div>
+          <aside class="seongsu-hotel-map-directory" aria-labelledby="seongsu-hotel-map-directory-title">
+            <h3 id="seongsu-hotel-map-directory-title">地圖上的住宿</h3>
+            <ol class="seongsu-hotel-map-list">
+              <li><button type="button" data-map-hotel="hotel-poco-seongsu" aria-controls="seongsu-hotel-map-canvas" aria-pressed="false"><span class="seongsu-hotel-map-number" aria-hidden="true">1</span><span>Hotel POCO Seongsu</span></button></li>
+              <li><button type="button" data-map-hotel="onjae-stay-seongsu" aria-controls="seongsu-hotel-map-canvas" aria-pressed="false"><span class="seongsu-hotel-map-number" aria-hidden="true">2</span><span>ONJAE STAY SEONGSU</span></button></li>
+              <li><button type="button" data-map-hotel="stay-but-seongsu" aria-controls="seongsu-hotel-map-canvas" aria-pressed="false"><span class="seongsu-hotel-map-number" aria-hidden="true">3</span><span>Stay BUT SEONGSU</span></button></li>
+              <li><button type="button" data-map-hotel="seoul-forest-stay" aria-controls="seongsu-hotel-map-canvas" aria-pressed="false"><span class="seongsu-hotel-map-number" aria-hidden="true">4</span><span>Seoul Forest Stay</span></button></li>
+            </ol>
+          </aside>
+        </div>
+      </div>
+    </section>
+
     <section class="hm-section hm-section--cream" id="seongsu-stays" aria-labelledby="seongsu-stays-title">
       <div class="container">
         <header class="hm-section__header">
           <h2 id="seongsu-stays-title">聖水飯店與小型住宿</h2>
         </header>
         <div class="hm-hotel-region__list">
-          <article class="hm-hotel hm-editorial-row" id="hotel-poco-seongsu" aria-labelledby="hotel-poco-seongsu-title">
+          <article class="hm-hotel hm-editorial-row" id="hotel-poco-seongsu" data-hotel-id="hotel-poco-seongsu" aria-labelledby="hotel-poco-seongsu-title">
             <div class="hm-editorial-row__label">
               <h3 id="hotel-poco-seongsu-title">Hotel POCO Seongsu</h3>
             </div>
@@ -258,6 +291,7 @@
               <p>行李寄放需要規劃。POCO 已停止免費寄放，改用付費置物櫃。公布費率起價為 <strong>前五小時，小櫃 ₩4,000，大櫃 ₩8,000</strong>，之後按小時加收。櫃子滿時，飯店會引導住客使用外部寄放設施。</p>
               <p>住宿期間帶購物袋回房間是一回事，退房後寄行李、最後一個下午繼續逛聖水是另一回事，要把寄放費與可用空間算進去。</p>
               <p class="hm-affiliate-note">本頁包含聯盟行銷連結。</p>
+              <p class="seongsu-hotel-map-link-wrap"><a class="seongsu-hotel-map-link" href="#seongsu-hotel-map" data-map-hotel="hotel-poco-seongsu" aria-controls="seongsu-hotel-map-canvas">📌 在地圖上查看</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">查看房價</p>
                 <p class="hm-booking-strip__title">在訂房網站比較這間飯店</p>
@@ -269,7 +303,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="onjae-stay-seongsu" aria-labelledby="onjae-stay-seongsu-title">
+          <article class="hm-hotel hm-editorial-row" id="onjae-stay-seongsu" data-hotel-id="onjae-stay-seongsu" aria-labelledby="onjae-stay-seongsu-title">
             <div class="hm-editorial-row__label">
               <h3 id="onjae-stay-seongsu-title">ONJAE STAY SEONGSU</h3>
             </div>
@@ -278,6 +312,7 @@
               <p><strong>沒有電梯。</strong> 有嬰兒車、幾個重行李箱，或有人不便走樓梯，除非住宿能確認適合同團的安排，我們會看別處。</p>
               <p>抵達也不同於有人值班的飯店大廳。Expedia 的政策描述為線上櫃檯，並要求住客最少在抵達前 24 小時聯絡，取得進入說明。出發前往住宿前，先存好這些指示。</p>
               <p>願意接受這些安排，以換取合適床位配置的旅客，可考慮 ONJAE。但對帶很多行李抵達的家庭，我們不會把它當成首選。</p>
+              <p class="seongsu-hotel-map-link-wrap"><a class="seongsu-hotel-map-link" href="#seongsu-hotel-map" data-map-hotel="onjae-stay-seongsu" aria-controls="seongsu-hotel-map-canvas">📌 在地圖上查看</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">查看房價</p>
                 <p class="hm-booking-strip__title">在訂房網站比較這間住宿</p>
@@ -289,7 +324,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="stay-but-seongsu" aria-labelledby="stay-but-seongsu-title">
+          <article class="hm-hotel hm-editorial-row" id="stay-but-seongsu" data-hotel-id="stay-but-seongsu" aria-labelledby="stay-but-seongsu-title">
             <div class="hm-editorial-row__label">
               <h3 id="stay-but-seongsu-title">Stay BUT SEONGSU</h3>
             </div>
@@ -298,6 +333,7 @@
               <p>情侶想在房內吃早餐，或長住時有些餐自己處理，可能合適。但不代表每個單位都是寬敞家庭公寓。</p>
               <p>團體需要更仔細看訂房細節。目前不同頁面使用 <strong>Family Suite</strong> 名稱，卻有不同床位與入住人數說明。決定不可退款團體訂房前，取得該房價對應的確切房號、睡眠安排與格局。我們不會只看標示面積就選。</p>
               <p>目前，把 Stay BUT 當成私人、附廚房的飯店替代選項。只有實際住宿，而不只是整體介紹，確實適合所有人，才選較大單位。</p>
+              <p class="seongsu-hotel-map-link-wrap"><a class="seongsu-hotel-map-link" href="#seongsu-hotel-map" data-map-hotel="stay-but-seongsu" aria-controls="seongsu-hotel-map-canvas">📌 在地圖上查看</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">查看房價</p>
                 <p class="hm-booking-strip__title">在訂房網站比較這間住宿</p>
@@ -308,7 +344,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="seoul-forest-stay" aria-labelledby="seoul-forest-stay-title">
+          <article class="hm-hotel hm-editorial-row" id="seoul-forest-stay" data-hotel-id="seoul-forest-stay" aria-labelledby="seoul-forest-stay-title">
             <div class="hm-editorial-row__label">
               <h3 id="seoul-forest-stay-title">Seoul Forest Stay</h3>
             </div>
@@ -317,6 +353,7 @@
               <p>能接受青年旅館式住宿時，可比較這個選項。訂房資訊含共用廚房，以及獨立或共用衛浴安排。選私人臥室，本身不代表衛浴安排已確定。</p>
               <p>建築 <strong>沒有電梯</strong>，公布的入住時段為 <strong>下午 2 點至晚上 10 點</strong> 較晚到的住客需事先安排進入方式。搭飛機後帶行李抵達，這些細節比屋頂照片更影響實際住宿。</p>
               <p>獨旅可能偏好宿舍，情侶可能偏好私人房。但兩者都不應假設服務或抵達安排，與完整服務飯店相同。</p>
+              <p class="seongsu-hotel-map-link-wrap"><a class="seongsu-hotel-map-link" href="#seongsu-hotel-map" data-map-hotel="seoul-forest-stay" aria-controls="seongsu-hotel-map-canvas">📌 在地圖上查看</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">查看房價</p>
                 <p class="hm-booking-strip__title">在訂房網站比較這間住宿</p>
@@ -447,6 +484,7 @@
 
   <script src="../guide-year.js" defer></script>
   <script src="../common.js"></script>
+  <script src="../seongsu-hotel-map.js" defer></script>
 <script>
   window.va = window.va || function () {
     (window.vaq = window.vaq || []).push(arguments);

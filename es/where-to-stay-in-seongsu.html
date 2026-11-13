@@ -24,6 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400..600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../seongsu-hotel-map.css">
   <style>
     body.seongsu-page main .hm-hero__copy {
       grid-column: 1 / -1;
@@ -241,13 +242,45 @@
       </div>
     </section>
 
+    <section class="hm-section seongsu-hotel-map-section" id="seongsu-hotel-map" aria-labelledby="seongsu-hotel-map-title"
+      data-map-asset-prefix="../"
+      data-map-copy-default="Se muestran las ubicaciones de los 4 alojamientos. Selecciona un marcador o un nombre."
+      data-map-copy-selected="Seleccionado: {name}. El marcador {number} sigue rojo; los demás están azules."
+      data-map-copy-unavailable-selected="Seleccionado: {name}. El mapa de NAVER no está disponible, pero el enlace al alojamiento dentro de esta página sigue funcionando."
+      data-map-copy-pending-selected="Seleccionado: {name}. El mapa aplicará esta selección cuando termine de cargar."
+      data-map-copy-fallback="No se pudo cargar el mapa interactivo de NAVER. Consulta la lista de los 4 alojamientos e inténtalo de nuevo más tarde."
+      data-map-copy-fallback-status="Mapa de NAVER no disponible. Los nombres y enlaces internos a los alojamientos siguen accesibles."
+      data-map-copy-marker-aria="Seleccionar {number}. {name}">
+      <div class="container">
+        <header class="hm-section__header">
+          <h2 id="seongsu-hotel-map-title">¿Dónde están los alojamientos de Seongsu?</h2>
+          <p class="hm-section__intro">Selecciona un marcador o el nombre de un alojamiento para ver su ubicación.</p>
+        </header>
+        <div class="seongsu-hotel-map-layout">
+          <div class="seongsu-hotel-map-shell">
+            <div class="seongsu-hotel-map-canvas" id="seongsu-hotel-map-canvas" role="region" tabindex="0" aria-label="Mapa interactivo con 4 alojamientos en Seongsu"></div>
+            <p class="seongsu-hotel-map-status" id="seongsu-hotel-map-status" role="status" aria-live="polite">Cargando el mapa de alojamientos…</p>
+          </div>
+          <aside class="seongsu-hotel-map-directory" aria-labelledby="seongsu-hotel-map-directory-title">
+            <h3 id="seongsu-hotel-map-directory-title">Alojamientos en este mapa</h3>
+            <ol class="seongsu-hotel-map-list">
+              <li><button type="button" data-map-hotel="hotel-poco-seongsu" aria-controls="seongsu-hotel-map-canvas" aria-pressed="false"><span class="seongsu-hotel-map-number" aria-hidden="true">1</span><span>Hotel POCO Seongsu</span></button></li>
+              <li><button type="button" data-map-hotel="onjae-stay-seongsu" aria-controls="seongsu-hotel-map-canvas" aria-pressed="false"><span class="seongsu-hotel-map-number" aria-hidden="true">2</span><span>ONJAE STAY SEONGSU</span></button></li>
+              <li><button type="button" data-map-hotel="stay-but-seongsu" aria-controls="seongsu-hotel-map-canvas" aria-pressed="false"><span class="seongsu-hotel-map-number" aria-hidden="true">3</span><span>Stay BUT SEONGSU</span></button></li>
+              <li><button type="button" data-map-hotel="seoul-forest-stay" aria-controls="seongsu-hotel-map-canvas" aria-pressed="false"><span class="seongsu-hotel-map-number" aria-hidden="true">4</span><span>Seoul Forest Stay</span></button></li>
+            </ol>
+          </aside>
+        </div>
+      </div>
+    </section>
+
     <section class="hm-section hm-section--cream" id="seongsu-stays" aria-labelledby="seongsu-stays-title">
       <div class="container">
         <header class="hm-section__header">
           <h2 id="seongsu-stays-title">Hoteles y alojamientos pequeños en Seongsu</h2>
         </header>
         <div class="hm-hotel-region__list">
-          <article class="hm-hotel hm-editorial-row" id="hotel-poco-seongsu" aria-labelledby="hotel-poco-seongsu-title">
+          <article class="hm-hotel hm-editorial-row" id="hotel-poco-seongsu" data-hotel-id="hotel-poco-seongsu" aria-labelledby="hotel-poco-seongsu-title">
             <div class="hm-editorial-row__label">
               <h3 id="hotel-poco-seongsu-title">Hotel POCO Seongsu</h3>
             </div>
@@ -258,6 +291,7 @@
               <p>La consigna de equipaje requiere planificación. POCO terminó su servicio gratuito y utiliza taquillas de pago. Las tarifas publicadas empiezan en <strong>₩4.000 para una taquilla pequeña o ₩8.000 para una grande durante las primeras cinco horas</strong>, con cargos adicionales por hora. Cuando las taquillas están llenas, el hotel dirige a los huéspedes a servicios externos.</p>
               <p>Volver a la habitación con bolsas durante la estancia es una cosa. Dejar maletas después del check-out para pasar una última tarde en Seongsu es otra: cuenta con el coste y la disponibilidad de la consigna.</p>
               <p class="hm-affiliate-note">Esta página contiene enlaces de afiliados.</p>
+              <p class="seongsu-hotel-map-link-wrap"><a class="seongsu-hotel-map-link" href="#seongsu-hotel-map" data-map-hotel="hotel-poco-seongsu" aria-controls="seongsu-hotel-map-canvas">📌 Ver en el mapa</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow"><strong>VER TARIFAS</strong></p>
                 <p class="hm-booking-strip__title">Compara este hotel en sitios de reserva</p>
@@ -269,7 +303,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="onjae-stay-seongsu" aria-labelledby="onjae-stay-seongsu-title">
+          <article class="hm-hotel hm-editorial-row" id="onjae-stay-seongsu" data-hotel-id="onjae-stay-seongsu" aria-labelledby="onjae-stay-seongsu-title">
             <div class="hm-editorial-row__label">
               <h3 id="onjae-stay-seongsu-title">ONJAE STAY SEONGSU</h3>
             </div>
@@ -278,6 +312,7 @@
               <p><strong>No hay ascensor.</strong> Con cochecito, varias maletas pesadas o alguien que tenga dificultades con las escaleras, buscaría otra opción salvo que la propiedad pueda confirmar una solución adecuada para el grupo.</p>
               <p>La llegada también difiere de la de un hotel con recepción presencial. La política de Expedia describe una recepción virtual y pide contactar con la propiedad al menos <strong>24 horas antes de la llegada</strong> para recibir las instrucciones de acceso. Guárdalas antes de salir hacia el alojamiento.</p>
               <p>ONJAE es una opción para viajeros que aceptan esas condiciones a cambio de la distribución de camas. No es nuestra opción por defecto para una familia con mucho equipaje.</p>
+              <p class="seongsu-hotel-map-link-wrap"><a class="seongsu-hotel-map-link" href="#seongsu-hotel-map" data-map-hotel="onjae-stay-seongsu" aria-controls="seongsu-hotel-map-canvas">📌 Ver en el mapa</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow"><strong>VER TARIFAS</strong></p>
                 <p class="hm-booking-strip__title">Compara este alojamiento en sitios de reserva</p>
@@ -289,7 +324,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="stay-but-seongsu" aria-labelledby="stay-but-seongsu-title">
+          <article class="hm-hotel hm-editorial-row" id="stay-but-seongsu" data-hotel-id="stay-but-seongsu" aria-labelledby="stay-but-seongsu-title">
             <div class="hm-editorial-row__label">
               <h3 id="stay-but-seongsu-title">Stay BUT SEONGSU</h3>
             </div>
@@ -298,6 +333,7 @@
               <p>Puede servir a una pareja que quiera desayunar en la habitación o a una estancia más larga con algunas comidas en casa. Eso no significa que todas las unidades sean apartamentos familiares espaciosos.</p>
               <p>Para grupos, los detalles de la reserva requieren más atención. Los listados actuales utilizan el nombre <strong>Family Suite</strong> con descripciones diferentes de camas y ocupación. Antes de comprometerte con una reserva no reembolsable para un grupo, obtén el número exacto de habitación, la distribución para dormir y el plano asociados a esa tarifa. No lo elegiría solo por la superficie anunciada.</p>
               <p>Por ahora, trata Stay BUT como una alternativa privada con cocina a un hotel. Elige una unidad grande solo cuando el alojamiento exacto —no la descripción general de la propiedad— funcione para todos.</p>
+              <p class="seongsu-hotel-map-link-wrap"><a class="seongsu-hotel-map-link" href="#seongsu-hotel-map" data-map-hotel="stay-but-seongsu" aria-controls="seongsu-hotel-map-canvas">📌 Ver en el mapa</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow"><strong>VER TARIFAS</strong></p>
                 <p class="hm-booking-strip__title">Compara este alojamiento en sitios de reserva</p>
@@ -308,7 +344,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="seoul-forest-stay" aria-labelledby="seoul-forest-stay-title">
+          <article class="hm-hotel hm-editorial-row" id="seoul-forest-stay" data-hotel-id="seoul-forest-stay" aria-labelledby="seoul-forest-stay-title">
             <div class="hm-editorial-row__label">
               <h3 id="seoul-forest-stay-title">Seoul Forest Stay</h3>
             </div>
@@ -317,6 +353,7 @@
               <p>Es la opción que conviene comparar cuando te sientes cómodo con un alojamiento tipo hostel. La información de reserva incluye cocina compartida y opciones de baño tanto privado como compartido. Elegir un dormitorio privado no resuelve por sí solo qué tipo de baño tendrás.</p>
               <p><strong>El edificio no tiene ascensor</strong> y el horario publicado de check-in es de <strong>14:00 a 22:00</strong>. A los huéspedes que llegan más tarde se les pide organizar el acceso con antelación. Cuando llegas con equipaje después de un vuelo, estos detalles importan más que las fotografías de la azotea.</p>
               <p>Un viajero solo puede preferir un dormitorio; una pareja, una habitación privada. Ninguno debería asumir que los servicios o la llegada serán iguales a los de un hotel de servicio completo.</p>
+              <p class="seongsu-hotel-map-link-wrap"><a class="seongsu-hotel-map-link" href="#seongsu-hotel-map" data-map-hotel="seoul-forest-stay" aria-controls="seongsu-hotel-map-canvas">📌 Ver en el mapa</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow"><strong>VER TARIFAS</strong></p>
                 <p class="hm-booking-strip__title">Compara este alojamiento en sitios de reserva</p>
@@ -447,6 +484,7 @@
 
   <script src="../guide-year.js" defer></script>
   <script src="../common.js"></script>
+  <script src="../seongsu-hotel-map.js" defer></script>
 <script>
   window.va = window.va || function () {
     (window.vaq = window.vaq || []).push(arguments);
