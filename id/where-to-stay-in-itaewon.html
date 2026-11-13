@@ -24,6 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400..600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../itaewon-hotel-map.css">
   <style>
     body.itaewon-page main .hm-hero__copy {
       grid-column: 1 / -1;
@@ -235,13 +236,46 @@
       </div>
     </section>
 
+    <section class="hm-section itaewon-hotel-map-section" id="itaewon-hotel-map" aria-labelledby="itaewon-hotel-map-title" data-map-asset-prefix="../"
+      data-map-copy-default="Lokasi keenam akomodasi ditampilkan. Pilih pin atau nama akomodasi."
+      data-map-copy-selected="Dipilih: {name}. Pin nomor {number} tetap merah; pin lainnya berwarna biru."
+      data-map-copy-unavailable-selected="Dipilih: {name}. Peta NAVER tidak tersedia, tetapi tautan ke akomodasi di halaman ini tetap dapat digunakan."
+      data-map-copy-pending-selected="Dipilih: {name}. Pilihan ini akan ditampilkan setelah peta siap."
+      data-map-copy-fallback="Peta interaktif NAVER gagal dimuat. Lihat keenam pilihan akomodasi dalam daftar, lalu coba lagi nanti."
+      data-map-copy-fallback-status="Peta NAVER tidak tersedia. Nama akomodasi dan tautan dalam halaman ini tetap dapat diakses."
+      data-map-copy-marker-aria="Pilih nomor {number}. {name}">
+      <div class="container">
+        <header class="hm-section__header">
+          <h2 id="itaewon-hotel-map-title">Di Mana Akomodasi di Itaewon Berada?</h2>
+          <p class="hm-section__intro">Pilih pin atau nama akomodasi untuk melihat lokasinya.</p>
+        </header>
+        <div class="itaewon-hotel-map-layout">
+          <div class="itaewon-hotel-map-shell">
+            <div class="itaewon-hotel-map-canvas" id="itaewon-hotel-map-canvas" role="region" tabindex="0" aria-label="Peta interaktif yang menampilkan 6 akomodasi di Itaewon"></div>
+            <p class="itaewon-hotel-map-status" id="itaewon-hotel-map-status" role="status" aria-live="polite">Memuat peta akomodasi…</p>
+          </div>
+          <aside class="itaewon-hotel-map-directory" aria-labelledby="itaewon-hotel-map-directory-title">
+            <h3 id="itaewon-hotel-map-directory-title">Akomodasi di peta ini</h3>
+            <ol class="itaewon-hotel-map-list">
+              <li><button type="button" data-map-hotel="hamilton-hotel" aria-controls="itaewon-hotel-map-canvas" aria-pressed="false"><span class="itaewon-hotel-map-number" aria-hidden="true">1</span><span>Hamilton Hotel</span></button></li>
+              <li><button type="button" data-map-hotel="imperial-palace-boutique-hotel" aria-controls="itaewon-hotel-map-canvas" aria-pressed="false"><span class="itaewon-hotel-map-number" aria-hidden="true">2</span><span>Imperial Palace Boutique Hotel</span></button></li>
+              <li><button type="button" data-map-hotel="h-hostel-itaewon" aria-controls="itaewon-hotel-map-canvas" aria-pressed="false"><span class="itaewon-hotel-map-number" aria-hidden="true">3</span><span>H HOSTEL Itaewon</span></button></li>
+              <li><button type="button" data-map-hotel="g-guesthouse-itaewon" aria-controls="itaewon-hotel-map-canvas" aria-pressed="false"><span class="itaewon-hotel-map-number" aria-hidden="true">4</span><span>G Guesthouse Itaewon</span></button></li>
+              <li><button type="button" data-map-hotel="mondrian-seoul-itaewon" aria-controls="itaewon-hotel-map-canvas" aria-pressed="false"><span class="itaewon-hotel-map-number" aria-hidden="true">5</span><span>Mondrian Seoul Itaewon</span></button></li>
+              <li><button type="button" data-map-hotel="grand-hyatt-seoul" aria-controls="itaewon-hotel-map-canvas" aria-pressed="false"><span class="itaewon-hotel-map-number" aria-hidden="true">6</span><span>Grand Hyatt Seoul</span></button></li>
+            </ol>
+          </aside>
+        </div>
+      </div>
+    </section>
+
     <section class="hm-section hm-section--cream" id="central-itaewon-hotels" aria-labelledby="central-itaewon-hotels-title">
       <div class="container">
         <header class="hm-section__header">
           <h2 id="central-itaewon-hotels-title">Hotel dekat pusat Itaewon</h2>
         </header>
         <div class="hm-hotel-region__list">
-          <article class="hm-hotel hm-editorial-row" id="hamilton-hotel" aria-labelledby="hamilton-hotel-title">
+          <article class="hm-hotel hm-editorial-row" id="hamilton-hotel" aria-labelledby="hamilton-hotel-title" data-hotel-id="hamilton-hotel">
             <div class="hm-editorial-row__label">
               <h3 id="hamilton-hotel-title">Hamilton Hotel</h3>
             </div>
@@ -252,6 +286,7 @@
               <p>Kolam renang luar ruang juga perlu dipahami dengan benar. Kebijakan resmi melarang tamu berusia di bawah 19 tahun dan mengiklankan <strong>diskon 30% untuk tiket masuk bagi tamu hotel</strong>, bukan akses gratis biasa. Kolam beroperasi secara musiman. Jangan memilih Hamilton sebagai hotel dengan kolam untuk anak atau menganggap berenang sudah termasuk dalam tarif kamar.</p>
               <p>Pilih Hamilton jika pusat Itaewon menjadi tempat Anda menghabiskan malam dan Anda menerima risiko gangguan tidur. Untuk perjalanan dengan keberangkatan pagi setiap hari, lokasi yang sama mungkin kurang sepadan.</p>
               <p class="hm-affiliate-note">Halaman ini memuat tautan afiliasi.</p>
+              <p class="itaewon-hotel-map-link-wrap"><a class="itaewon-hotel-map-link" href="#itaewon-hotel-map" data-map-hotel="hamilton-hotel" aria-controls="itaewon-hotel-map-canvas">📌 Lihat di Peta</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">CEK TARIF</p>
                 <p class="hm-booking-strip__title">Bandingkan hotel ini di situs pemesanan</p>
@@ -263,7 +298,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="imperial-palace-boutique-hotel" aria-labelledby="imperial-palace-boutique-hotel-title">
+          <article class="hm-hotel hm-editorial-row" id="imperial-palace-boutique-hotel" aria-labelledby="imperial-palace-boutique-hotel-title" data-hotel-id="imperial-palace-boutique-hotel">
             <div class="hm-editorial-row__label">
               <h3 id="imperial-palace-boutique-hotel-title">Imperial Palace Boutique Hotel</h3>
             </div>
@@ -274,6 +309,7 @@
               <p><strong>Periksa kebijakan usia sebelum memesan untuk siapa pun yang berusia di bawah 19 tahun.</strong> Halaman kamar hotel dalam bahasa Korea menyatakan tamu di bawah 19 tahun tidak boleh menginap, sementara kebijakan anak di Expedia menyebut anak diterima. Kami tidak menganggap perbedaan itu sebagai izin bagi anak yang didampingi. Dapatkan konfirmasi hotel sebelum memesan dengan tarif yang tidak dapat dikembalikan untuk rombongan yang mencakup anak di bawah umur.</p>
               <p>Jangan pula memilihnya sebagai alternatif Hamilton yang dijamin tenang. Hotel telah menerbitkan peringatan tentang kebisingan klub pada malam Jumat dan Sabtu. Jika tidur tenang penting, tanyakan apakah peringatan tersebut berlaku pada tanggal Anda.</p>
               <p>Kami akan membandingkan Imperial Palace untuk rombongan dewasa yang kebutuhan kamarnya sesuai dengan kategori Deluxe. Ini bukan rekomendasi utama kami untuk keluarga selama informasi usia masih tidak konsisten.</p>
+              <p class="itaewon-hotel-map-link-wrap"><a class="itaewon-hotel-map-link" href="#itaewon-hotel-map" data-map-hotel="imperial-palace-boutique-hotel" aria-controls="itaewon-hotel-map-canvas">📌 Lihat di Peta</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">CEK TARIF</p>
                 <p class="hm-booking-strip__title">Bandingkan hotel ini di situs pemesanan</p>
@@ -295,7 +331,7 @@
           <h2 id="private-rooms-and-hostels-title">Kamar pribadi dan penginapan hostel</h2>
         </header>
         <div class="hm-hotel-region__list">
-          <article class="hm-hotel hm-editorial-row" id="h-hostel-itaewon" aria-labelledby="h-hostel-itaewon-title">
+          <article class="hm-hotel hm-editorial-row" id="h-hostel-itaewon" aria-labelledby="h-hostel-itaewon-title" data-hotel-id="h-hostel-itaewon">
             <div class="hm-editorial-row__label">
               <h3 id="h-hostel-itaewon-title">H HOSTEL Itaewon</h3>
             </div>
@@ -304,6 +340,7 @@
               <p>Kamar <strong>Deluxe Triple</strong> tercantum untuk tiga orang dengan satu queen dan satu single besar; kamar <strong>Deluxe Quadruple</strong> untuk empat orang dengan dua queen. Sebagian kamar pribadi Economy menggunakan kamar mandi bersama. Kamar tidur pribadi belum memastikan pengaturan kamar mandi.</p>
               <p>Untuk keluarga atau rombongan, mulailah dari tempat tidur dan kamar mandi. Kata “hostel” saja tidak menunjukkan apakah pengaturannya sesuai.</p>
               <p>Waktu check-in yang dipublikasikan adalah <strong>pukul 3 sore hingga 9:30 malam</strong>, dengan permintaan menghubungi terlebih dahulu untuk kedatangan setelah pukul 9 malam. Atur kedatangan dari penerbangan larut sebelum bepergian. Ini berbeda dari pulang larut setelah Anda sudah check-in.</p>
+              <p class="itaewon-hotel-map-link-wrap"><a class="itaewon-hotel-map-link" href="#itaewon-hotel-map" data-map-hotel="h-hostel-itaewon" aria-controls="itaewon-hotel-map-canvas">📌 Lihat di Peta</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">CEK TARIF</p>
                 <p class="hm-booking-strip__title">Bandingkan penginapan ini di situs pemesanan</p>
@@ -315,7 +352,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="g-guesthouse-itaewon" aria-labelledby="g-guesthouse-itaewon-title">
+          <article class="hm-hotel hm-editorial-row" id="g-guesthouse-itaewon" aria-labelledby="g-guesthouse-itaewon-title" data-hotel-id="g-guesthouse-itaewon">
             <div class="hm-editorial-row__label">
               <h3 id="g-guesthouse-itaewon-title">G Guesthouse Itaewon</h3>
             </div>
@@ -325,6 +362,7 @@
               <p><strong>Tidak ada lift.</strong> Pertimbangkan bagasi yang akan dibawa, alih-alih mengabaikan tangga karena masa menginap singkat.</p>
               <p>Kedatangan juga perlu diatur. Informasi yang dipublikasikan menyebut jam resepsionis <strong>pukul 8 pagi hingga tengah malam</strong> dan meminta tamu menghubungi penginapan setidaknya 24 jam sebelum kedatangan untuk petunjuk. Label check-in “kapan saja” di bagian lain listing tidak boleh dianggap sebagai janji resepsionis dengan staf sepanjang malam.</p>
               <p>Pilih kamar atau kamar bersama yang benar-benar sesuai, lalu pastikan aksesnya. Orang yang ingin privasi penuh dan layanan ala hotel sebaiknya membandingkan jenis penginapan lain.</p>
+              <p class="itaewon-hotel-map-link-wrap"><a class="itaewon-hotel-map-link" href="#itaewon-hotel-map" data-map-hotel="g-guesthouse-itaewon" aria-controls="itaewon-hotel-map-canvas">📌 Lihat di Peta</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">CEK TARIF</p>
                 <p class="hm-booking-strip__title">Bandingkan penginapan ini di situs pemesanan</p>
@@ -346,7 +384,7 @@
           <h2 id="hotel-focused-stays-title">Hotel yang dipilih untuk menikmati pengalaman menginapnya</h2>
         </header>
         <div class="hm-hotel-region__list">
-          <article class="hm-hotel hm-editorial-row" id="mondrian-seoul-itaewon" aria-labelledby="mondrian-seoul-itaewon-title">
+          <article class="hm-hotel hm-editorial-row" id="mondrian-seoul-itaewon" aria-labelledby="mondrian-seoul-itaewon-title" data-hotel-id="mondrian-seoul-itaewon">
             <div class="hm-editorial-row__label">
               <h3 id="mondrian-seoul-itaewon-title">Mondrian Seoul Itaewon</h3>
             </div>
@@ -356,6 +394,7 @@
               <p>Listing hotel mencantumkan kapasitas maksimal tiga orang untuk sebagian kategori Signature, tetapi tempat tidur yang tertera tidak menyediakan tiga tempat tidur mandiri. Periksa kombinasi dewasa dan anak yang diizinkan serta perlengkapan tidur tambahan, alih-alih menganggap kapasitas maksimal sebagai rekomendasi kamar untuk tiga orang dewasa.</p>
               <p>Foto kolam perlu disertai pemeriksaan tersendiri atas ketentuan pemesanan. Pastikan kolam mana yang tercakup dalam tarif, musim operasional, dan batasan masuknya. Jangan menganggap kolam luar ruang dan fasilitas dalam ruang hotel mengikuti aturan yang sama.</p>
               <p>Kami akan memilih Mondrian untuk perjalanan yang menyisihkan waktu bagi makanan, desain, dan fasilitas hotel. Jika prioritas Anda adalah jarak berjalan terpendek dari pusat Itaewon, mulailah dari rute jalan sebelum terpikat galeri foto.</p>
+              <p class="itaewon-hotel-map-link-wrap"><a class="itaewon-hotel-map-link" href="#itaewon-hotel-map" data-map-hotel="mondrian-seoul-itaewon" aria-controls="itaewon-hotel-map-canvas">📌 Lihat di Peta</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">CEK TARIF</p>
                 <p class="hm-booking-strip__title">Bandingkan hotel ini di situs pemesanan</p>
@@ -367,7 +406,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="grand-hyatt-seoul" aria-labelledby="grand-hyatt-seoul-title">
+          <article class="hm-hotel hm-editorial-row" id="grand-hyatt-seoul" aria-labelledby="grand-hyatt-seoul-title" data-hotel-id="grand-hyatt-seoul">
             <div class="hm-editorial-row__label">
               <h3 id="grand-hyatt-seoul-title">Grand Hyatt Seoul</h3>
             </div>
@@ -378,6 +417,7 @@
               <p>Kedatangan dari bandara bisa lebih sederhana daripada kesan awal lokasi di lereng bukit: <strong>6702 memiliki halte Grand Hyatt Seoul</strong>. Hotel juga mengiklankan shuttle gratis yang melayani Hangangjin dan Myeongdong, meskipun ini bukan layanan pulang sepanjang malam.</p>
               <p>Kombinasi ini bisa sesuai bagi wisatawan yang bersedia mengatur perjalanan di luar sesuai waktu yang dihabiskan di hotel. Namun, Grand Hyatt tetap berbeda dari hotel dekat Stasiun Itaewon untuk berjalan kembali dari bar.</p>
               <p>Pilih Grand Hyatt jika kamar, tempat makan, dan waktu di hotel sepadan dengan lokasi serta biayanya. Jika setiap hari dan malam dihabiskan di tempat lain, bandingkan fasilitas yang benar-benar akan digunakan sebelum membayar lebih.</p>
+              <p class="itaewon-hotel-map-link-wrap"><a class="itaewon-hotel-map-link" href="#itaewon-hotel-map" data-map-hotel="grand-hyatt-seoul" aria-controls="itaewon-hotel-map-canvas">📌 Lihat di Peta</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">CEK TARIF</p>
                 <p class="hm-booking-strip__title">Bandingkan hotel ini di situs pemesanan</p>
@@ -520,6 +560,7 @@
 
   <script src="../guide-year.js" defer></script>
   <script src="../common.js"></script>
+  <script src="../itaewon-hotel-map.js" defer></script>
 <script>
   window.va = window.va || function () {
     (window.vaq = window.vaq || []).push(arguments);

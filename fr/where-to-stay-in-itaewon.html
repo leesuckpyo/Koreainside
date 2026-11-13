@@ -24,6 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400..600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../itaewon-hotel-map.css">
   <style>
     body.itaewon-page main .hm-hero__copy {
       grid-column: 1 / -1;
@@ -235,13 +236,46 @@
       </div>
     </section>
 
+    <section class="hm-section itaewon-hotel-map-section" id="itaewon-hotel-map" aria-labelledby="itaewon-hotel-map-title" data-map-asset-prefix="../"
+      data-map-copy-default="Les 6 hébergements sont indiqués sur la carte. Sélectionnez un repère ou un nom."
+      data-map-copy-selected="Sélection : {name}. Le repère {number} reste rouge ; les autres sont bleus."
+      data-map-copy-unavailable-selected="Sélection : {name}. La carte NAVER est indisponible, mais le lien vers l’hébergement sur cette page reste actif."
+      data-map-copy-pending-selected="Sélection : {name}. Ce choix s’affichera dès que la carte sera prête."
+      data-map-copy-fallback="Impossible de charger la carte interactive NAVER. Consultez la liste des 6 hébergements, puis réessayez plus tard."
+      data-map-copy-fallback-status="Carte NAVER indisponible. Les noms et les liens vers les hébergements sur cette page restent accessibles."
+      data-map-copy-marker-aria="Sélectionner le repère {number} : {name}">
+      <div class="container">
+        <header class="hm-section__header">
+          <h2 id="itaewon-hotel-map-title">Où se trouvent les hébergements à Itaewon ?</h2>
+          <p class="hm-section__intro">Sélectionnez un repère ou le nom d’un hébergement pour voir où il se trouve.</p>
+        </header>
+        <div class="itaewon-hotel-map-layout">
+          <div class="itaewon-hotel-map-shell">
+            <div class="itaewon-hotel-map-canvas" id="itaewon-hotel-map-canvas" role="region" tabindex="0" aria-label="Carte interactive présentant 6 hébergements à Itaewon"></div>
+            <p class="itaewon-hotel-map-status" id="itaewon-hotel-map-status" role="status" aria-live="polite">Chargement de la carte des hébergements…</p>
+          </div>
+          <aside class="itaewon-hotel-map-directory" aria-labelledby="itaewon-hotel-map-directory-title">
+            <h3 id="itaewon-hotel-map-directory-title">Hébergements sur cette carte</h3>
+            <ol class="itaewon-hotel-map-list">
+              <li><button type="button" data-map-hotel="hamilton-hotel" aria-controls="itaewon-hotel-map-canvas" aria-pressed="false"><span class="itaewon-hotel-map-number" aria-hidden="true">1</span><span>Hamilton Hotel</span></button></li>
+              <li><button type="button" data-map-hotel="imperial-palace-boutique-hotel" aria-controls="itaewon-hotel-map-canvas" aria-pressed="false"><span class="itaewon-hotel-map-number" aria-hidden="true">2</span><span>Imperial Palace Boutique Hotel</span></button></li>
+              <li><button type="button" data-map-hotel="h-hostel-itaewon" aria-controls="itaewon-hotel-map-canvas" aria-pressed="false"><span class="itaewon-hotel-map-number" aria-hidden="true">3</span><span>H HOSTEL Itaewon</span></button></li>
+              <li><button type="button" data-map-hotel="g-guesthouse-itaewon" aria-controls="itaewon-hotel-map-canvas" aria-pressed="false"><span class="itaewon-hotel-map-number" aria-hidden="true">4</span><span>G Guesthouse Itaewon</span></button></li>
+              <li><button type="button" data-map-hotel="mondrian-seoul-itaewon" aria-controls="itaewon-hotel-map-canvas" aria-pressed="false"><span class="itaewon-hotel-map-number" aria-hidden="true">5</span><span>Mondrian Seoul Itaewon</span></button></li>
+              <li><button type="button" data-map-hotel="grand-hyatt-seoul" aria-controls="itaewon-hotel-map-canvas" aria-pressed="false"><span class="itaewon-hotel-map-number" aria-hidden="true">6</span><span>Grand Hyatt Seoul</span></button></li>
+            </ol>
+          </aside>
+        </div>
+      </div>
+    </section>
+
     <section class="hm-section hm-section--cream" id="central-itaewon-hotels" aria-labelledby="central-itaewon-hotels-title">
       <div class="container">
         <header class="hm-section__header">
           <h2 id="central-itaewon-hotels-title">Hôtels près du centre d’Itaewon</h2>
         </header>
         <div class="hm-hotel-region__list">
-          <article class="hm-hotel hm-editorial-row" id="hamilton-hotel" aria-labelledby="hamilton-hotel-title">
+          <article class="hm-hotel hm-editorial-row" id="hamilton-hotel" aria-labelledby="hamilton-hotel-title" data-hotel-id="hamilton-hotel">
             <div class="hm-editorial-row__label">
               <h3 id="hamilton-hotel-title">Hamilton Hotel</h3>
             </div>
@@ -252,6 +286,7 @@
               <p>Il faut aussi bien comprendre la piscine extérieure. Les règles officielles excluent les moins de 19 ans et annoncent une <strong>réduction de 30 % sur l’entrée pour les clients de l’hôtel</strong>, plutôt qu’un accès gratuit ordinaire. Elle est saisonnière. Ne choisissez pas Hamilton comme hôtel avec piscine pour enfants et ne supposez pas que la baignade est comprise dans la chambre.</p>
               <p>Choisissez-le si vous passerez vos soirées dans le centre d’Itaewon et acceptez le risque pour le sommeil. Avec des départs tôt chaque matin, le même emplacement peut être un mauvais compromis.</p>
               <p class="hm-affiliate-note">Cette page contient des liens d’affiliation.</p>
+              <p class="itaewon-hotel-map-link-wrap"><a class="itaewon-hotel-map-link" href="#itaewon-hotel-map" data-map-hotel="hamilton-hotel" aria-controls="itaewon-hotel-map-canvas">📌 Voir sur la carte</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">VOIR LES TARIFS</p>
                 <p class="hm-booking-strip__title">Comparer cet hôtel sur les sites de réservation</p>
@@ -263,7 +298,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="imperial-palace-boutique-hotel" aria-labelledby="imperial-palace-boutique-hotel-title">
+          <article class="hm-hotel hm-editorial-row" id="imperial-palace-boutique-hotel" aria-labelledby="imperial-palace-boutique-hotel-title" data-hotel-id="imperial-palace-boutique-hotel">
             <div class="hm-editorial-row__label">
               <h3 id="imperial-palace-boutique-hotel-title">Imperial Palace Boutique Hotel</h3>
             </div>
@@ -274,6 +309,7 @@
               <p><strong>Vérifiez les règles d’âge avant de réserver pour une personne de moins de 19 ans.</strong> Les pages coréennes des chambres indiquent que les moins de 19 ans ne peuvent pas séjourner, tandis qu’Expedia indique que les enfants sont les bienvenus. Nous ne considérons pas cette contradiction comme une autorisation pour un enfant accompagné. Obtenez une confirmation de l’hôtel avant une réservation non remboursable comprenant un mineur.</p>
               <p>Ne le choisissez pas non plus comme alternative garantie calme à Hamilton. L’hôtel a publié des avertissements sur le bruit des clubs le vendredi et le samedi soir. Demandez s’ils concernent vos dates si le calme compte.</p>
               <p>Nous comparerions Imperial Palace pour des groupes d’adultes dont les besoins correspondent aux catégories Deluxe. Ce n’est pas notre recommandation familiale par défaut tant que les informations d’âge restent contradictoires.</p>
+              <p class="itaewon-hotel-map-link-wrap"><a class="itaewon-hotel-map-link" href="#itaewon-hotel-map" data-map-hotel="imperial-palace-boutique-hotel" aria-controls="itaewon-hotel-map-canvas">📌 Voir sur la carte</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">VOIR LES TARIFS</p>
                 <p class="hm-booking-strip__title">Comparer cet hôtel sur les sites de réservation</p>
@@ -295,7 +331,7 @@
           <h2 id="private-rooms-and-hostels-title">Chambres privées et auberges</h2>
         </header>
         <div class="hm-hotel-region__list">
-          <article class="hm-hotel hm-editorial-row" id="h-hostel-itaewon" aria-labelledby="h-hostel-itaewon-title">
+          <article class="hm-hotel hm-editorial-row" id="h-hostel-itaewon" aria-labelledby="h-hostel-itaewon-title" data-hotel-id="h-hostel-itaewon">
             <div class="hm-editorial-row__label">
               <h3 id="h-hostel-itaewon-title">H HOSTEL Itaewon</h3>
             </div>
@@ -304,6 +340,7 @@
               <p>La <strong>Deluxe Triple</strong> est annoncée pour trois avec un lit queen et un grand lit simple ; la <strong>Deluxe Quadruple</strong> pour quatre avec deux queen. Certaines chambres privées Economy ont des sanitaires partagés. Une chambre privée ne règle pas la question de la salle de bains.</p>
               <p>En famille ou en groupe, commencez par lits et sanitaires. Le mot « auberge » ne suffit pas à savoir si l’organisation convient.</p>
               <p>Le créneau d’arrivée publié va de <strong>15 h à 21 h 30</strong>, avec demande de contact préalable pour toute arrivée après 21 h. Organisez l’arrivée d’un vol tardif avant de voyager. C’est différent d’un retour tardif après avoir déjà pris la chambre.</p>
+              <p class="itaewon-hotel-map-link-wrap"><a class="itaewon-hotel-map-link" href="#itaewon-hotel-map" data-map-hotel="h-hostel-itaewon" aria-controls="itaewon-hotel-map-canvas">📌 Voir sur la carte</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">VOIR LES TARIFS</p>
                 <p class="hm-booking-strip__title">Comparer cet hébergement sur les sites de réservation</p>
@@ -315,7 +352,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="g-guesthouse-itaewon" aria-labelledby="g-guesthouse-itaewon-title">
+          <article class="hm-hotel hm-editorial-row" id="g-guesthouse-itaewon" aria-labelledby="g-guesthouse-itaewon-title" data-hotel-id="g-guesthouse-itaewon">
             <div class="hm-editorial-row__label">
               <h3 id="g-guesthouse-itaewon-title">G Guesthouse Itaewon</h3>
             </div>
@@ -325,6 +362,7 @@
               <p><strong>Il n’y a pas d’ascenseur.</strong> Pensez aux bagages réels, sans minimiser les escaliers parce que le séjour est court.</p>
               <p>L’arrivée doit aussi s’organiser. Les informations publiées donnent une réception ouverte de <strong>8 h à minuit</strong> et demandent de contacter l’établissement au moins 24 heures avant pour les instructions. Une mention d’arrivée « à toute heure » ailleurs dans l’annonce ne promet pas une réception avec personnel toute la nuit.</p>
               <p>Choisissez la chambre ou le dortoir adapté, puis confirmez l’accès. Pour une intimité complète et un service hôtelier, comparez un autre type d’hébergement.</p>
+              <p class="itaewon-hotel-map-link-wrap"><a class="itaewon-hotel-map-link" href="#itaewon-hotel-map" data-map-hotel="g-guesthouse-itaewon" aria-controls="itaewon-hotel-map-canvas">📌 Voir sur la carte</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">VOIR LES TARIFS</p>
                 <p class="hm-booking-strip__title">Comparer cet hébergement sur les sites de réservation</p>
@@ -346,7 +384,7 @@
           <h2 id="hotel-focused-stays-title">Hôtels où le séjour lui-même compte</h2>
         </header>
         <div class="hm-hotel-region__list">
-          <article class="hm-hotel hm-editorial-row" id="mondrian-seoul-itaewon" aria-labelledby="mondrian-seoul-itaewon-title">
+          <article class="hm-hotel hm-editorial-row" id="mondrian-seoul-itaewon" aria-labelledby="mondrian-seoul-itaewon-title" data-hotel-id="mondrian-seoul-itaewon">
             <div class="hm-editorial-row__label">
               <h3 id="mondrian-seoul-itaewon-title">Mondrian Seoul Itaewon</h3>
             </div>
@@ -356,6 +394,7 @@
               <p>L’annonce indique jusqu’à trois personnes pour certaines Signature, mais les lits ne donnent pas trois couchages indépendants. Vérifiez la combinaison adultes-enfants autorisée et les couchages supplémentaires, sans transformer le maximum affiché en recommandation pour trois adultes.</p>
               <p>Les photos de piscine demandent une lecture distincte des conditions. Confirmez la piscine couverte par le tarif, la saison d’ouverture et les restrictions d’accès. Ne supposez pas les mêmes règles pour l’extérieur et les installations intérieures.</p>
               <p>Nous choisirions Mondrian pour un voyage laissant du temps aux restaurants, au design et aux équipements de l’hôtel. Pour le retour à pied le plus court depuis le centre, commencez par le trajet dans la rue avant de vous laisser convaincre par les photos.</p>
+              <p class="itaewon-hotel-map-link-wrap"><a class="itaewon-hotel-map-link" href="#itaewon-hotel-map" data-map-hotel="mondrian-seoul-itaewon" aria-controls="itaewon-hotel-map-canvas">📌 Voir sur la carte</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">VOIR LES TARIFS</p>
                 <p class="hm-booking-strip__title">Comparer cet hôtel sur les sites de réservation</p>
@@ -367,7 +406,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="grand-hyatt-seoul" aria-labelledby="grand-hyatt-seoul-title">
+          <article class="hm-hotel hm-editorial-row" id="grand-hyatt-seoul" aria-labelledby="grand-hyatt-seoul-title" data-hotel-id="grand-hyatt-seoul">
             <div class="hm-editorial-row__label">
               <h3 id="grand-hyatt-seoul-title">Grand Hyatt Seoul</h3>
             </div>
@@ -378,6 +417,7 @@
               <p>L’arrivée de l’aéroport peut être plus simple que l’emplacement en hauteur ne le laisse penser : <strong>le 6702 comprend un arrêt Grand Hyatt Seoul</strong>. L’hôtel annonce aussi une navette gratuite vers Hangangjin et Myeongdong, mais ce n’est pas un service de retour toute la nuit.</p>
               <p>Cela peut convenir à ceux qui organisent leurs trajets autour du temps passé à l’hôtel. Cela ne rend pas Grand Hyatt équivalent à un hôtel près d’Itaewon Station pour rentrer à pied des bars.</p>
               <p>Choisissez-le si chambre, restaurants et temps à l’hôtel justifient l’emplacement et le prix. Si toutes vos journées et soirées se passent ailleurs, comparez l’usage réel avant de payer le supplément.</p>
+              <p class="itaewon-hotel-map-link-wrap"><a class="itaewon-hotel-map-link" href="#itaewon-hotel-map" data-map-hotel="grand-hyatt-seoul" aria-controls="itaewon-hotel-map-canvas">📌 Voir sur la carte</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">VOIR LES TARIFS</p>
                 <p class="hm-booking-strip__title">Comparer cet hôtel sur les sites de réservation</p>
@@ -520,6 +560,7 @@
 
   <script src="../guide-year.js" defer></script>
   <script src="../common.js"></script>
+  <script src="../itaewon-hotel-map.js" defer></script>
 <script>
   window.va = window.va || function () {
     (window.vaq = window.vaq || []).push(arguments);
