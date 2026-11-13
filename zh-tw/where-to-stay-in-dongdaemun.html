@@ -24,6 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400..600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../dongdaemun-hotel-map.css">
   <style>
     body.dongdaemun-page main .hm-hero__copy {
       grid-column: 1 / -1;
@@ -244,13 +245,48 @@
       </div>
     </section>
 
+    <section class="hm-section dongdaemun-hotel-map-section" id="dongdaemun-hotel-map" aria-labelledby="dongdaemun-hotel-map-title" data-map-asset-prefix="../"
+      data-map-copy-default="已顯示 8 間住宿的位置。請選擇地圖標記或住宿名稱。"
+      data-map-copy-selected="已選擇：{name}。第 {number} 號標記維持紅色，其餘標記為藍色。"
+      data-map-copy-unavailable-selected="已選擇：{name}。NAVER 地圖目前無法使用，但頁面內的住宿連結仍可使用。"
+      data-map-copy-pending-selected="已選擇：{name}。地圖載入完成後會顯示此選擇。"
+      data-map-copy-fallback="無法載入 NAVER 互動地圖。請先透過住宿清單查看全部 8 個選項，稍後再試。"
+      data-map-copy-fallback-status="NAVER 地圖目前無法使用。住宿名稱與頁面內連結仍可使用。"
+      data-map-copy-marker-aria="選擇第 {number} 號：{name}">
+      <div class="container">
+        <header class="hm-section__header">
+          <h2 id="dongdaemun-hotel-map-title">東大門的住宿位置在哪裡？</h2>
+          <p class="hm-section__intro">點選地圖標記或住宿名稱，即可查看位置。</p>
+        </header>
+        <div class="dongdaemun-hotel-map-layout">
+          <div class="dongdaemun-hotel-map-shell">
+            <div class="dongdaemun-hotel-map-canvas" id="dongdaemun-hotel-map-canvas" role="region" tabindex="0" aria-label="顯示東大門 8 間住宿的互動地圖"></div>
+            <p class="dongdaemun-hotel-map-status" id="dongdaemun-hotel-map-status" role="status" aria-live="polite">正在載入住宿地圖…</p>
+          </div>
+          <aside class="dongdaemun-hotel-map-directory" aria-labelledby="dongdaemun-hotel-map-directory-title">
+            <h3 id="dongdaemun-hotel-map-directory-title">地圖上的住宿</h3>
+            <ol class="dongdaemun-hotel-map-list">
+              <li><button type="button" data-map-hotel="sotetsu" aria-controls="dongdaemun-hotel-map-canvas" aria-pressed="false"><span class="dongdaemun-hotel-map-number" aria-hidden="true">1</span><span>Sotetsu Hotels The Splaisir Seoul Dongdaemun</span></button></li>
+              <li><button type="button" data-map-hotel="novotel" aria-controls="dongdaemun-hotel-map-canvas" aria-pressed="false"><span class="dongdaemun-hotel-map-number" aria-hidden="true">2</span><span>Novotel Ambassador Seoul Dongdaemun Hotels &amp; Residences</span></button></li>
+              <li><button type="button" data-map-hotel="skypark-kingstown" aria-controls="dongdaemun-hotel-map-canvas" aria-pressed="false"><span class="dongdaemun-hotel-map-number" aria-hidden="true">3</span><span>Hotel Skypark Kingstown Dongdaemun</span></button></li>
+              <li><button type="button" data-map-hotel="nine-tree" aria-controls="dongdaemun-hotel-map-canvas" aria-pressed="false"><span class="dongdaemun-hotel-map-number" aria-hidden="true">4</span><span>Nine Tree by Parnas Seoul Dongdaemun</span></button></li>
+              <li><button type="button" data-map-hotel="toyoko-inn-ii" aria-controls="dongdaemun-hotel-map-canvas" aria-pressed="false"><span class="dongdaemun-hotel-map-number" aria-hidden="true">5</span><span>Toyoko Inn Seoul Dongdaemun II</span></button></li>
+              <li><button type="button" data-map-hotel="summit" aria-controls="dongdaemun-hotel-map-canvas" aria-pressed="false"><span class="dongdaemun-hotel-map-number" aria-hidden="true">6</span><span>The Summit Hotel Seoul Dongdaemun</span></button></li>
+              <li><button type="button" data-map-hotel="jw-marriott" aria-controls="dongdaemun-hotel-map-canvas" aria-pressed="false"><span class="dongdaemun-hotel-map-number" aria-hidden="true">7</span><span>JW Marriott Dongdaemun Square Seoul</span></button></li>
+              <li><button type="button" data-map-hotel="mangrove-dongdaemun" aria-controls="dongdaemun-hotel-map-canvas" aria-pressed="false"><span class="dongdaemun-hotel-map-number" aria-hidden="true">8</span><span>Mangrove Dongdaemun</span></button></li>
+            </ol>
+          </aside>
+        </div>
+      </div>
+    </section>
+
     <section class="hm-section hm-section--cream" id="ddp-hotels" aria-labelledby="ddp-hotels-title">
       <div class="container">
         <header class="hm-section__header">
           <h2 id="ddp-hotels-title">DDP 與東大門歷史文化公園附近飯店</h2>
         </header>
         <div class="hm-hotel-region__list">
-          <article class="hm-hotel hm-editorial-row" id="sotetsu" aria-labelledby="sotetsu-title">
+          <article class="hm-hotel hm-editorial-row" id="sotetsu" aria-labelledby="sotetsu-title" data-hotel-id="sotetsu">
             <div class="hm-editorial-row__label">
               <h3 id="sotetsu-title">Sotetsu Hotels The Splaisir Seoul Dongdaemun</h3>
             </div>
@@ -260,6 +296,7 @@
               <p>房型組合也比一般兩人商務飯店更有彈性。Standard Triple 為 <strong>28 平方公尺，配三張單人床</strong>，Deluxe Family Twin 結合一張大床與一張單人床，56 平方公尺的 Splaisir Suite 則可接待更大團體。</p>
               <p>車站、電梯、機場巴士與真正三人房這個組合，就是它適合深夜購物旅程的理由。</p>
               <p class="hm-affiliate-note">本頁包含聯盟行銷連結。</p>
+              <p class="dongdaemun-hotel-map-link-wrap"><a class="dongdaemun-hotel-map-link" href="#dongdaemun-hotel-map" data-map-hotel="sotetsu" aria-controls="dongdaemun-hotel-map-canvas">📌 在地圖上查看</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">查看房價</p>
                 <p class="hm-booking-strip__title">在訂房網站比較這間飯店</p>
@@ -271,7 +308,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="novotel" aria-labelledby="novotel-title">
+          <article class="hm-hotel hm-editorial-row" id="novotel" aria-labelledby="novotel-title" data-hotel-id="novotel">
             <div class="hm-editorial-row__label">
               <h3 id="novotel-title">Novotel Ambassador Seoul Dongdaemun Hotels &amp; Residences</h3>
             </div>
@@ -282,6 +319,7 @@
               <p>飯店也有室內與屋頂戶外泳池、Kids Zone、健身設施，並在常規客房之外提供公寓房型。</p>
               <p>從機場抵達的省力程度不如 Sotetsu。東大門歷史文化公園 12 號出口約三分鐘，但飯店的 6001 機場巴士說明，約需 <strong>下車後步行 10 分鐘</strong>。</p>
               <p>兩人如果會逛到晚、睡覺、隔早再出門，可能不必為公寓設施多付錢。但家庭住一週、把房間當生活空間，這些設施可能改變旅程。</p>
+              <p class="dongdaemun-hotel-map-link-wrap"><a class="dongdaemun-hotel-map-link" href="#dongdaemun-hotel-map" data-map-hotel="novotel" aria-controls="dongdaemun-hotel-map-canvas">📌 在地圖上查看</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">查看房價</p>
                 <p class="hm-booking-strip__title">在訂房網站比較這間飯店</p>
@@ -293,7 +331,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="skypark-kingstown" aria-labelledby="skypark-kingstown-title">
+          <article class="hm-hotel hm-editorial-row" id="skypark-kingstown" aria-labelledby="skypark-kingstown-title" data-hotel-id="skypark-kingstown">
             <div class="hm-editorial-row__label">
               <h3 id="skypark-kingstown-title">Hotel Skypark Kingstown Dongdaemun</h3>
             </div>
@@ -303,6 +341,7 @@
               <p>這和 Sotetsu 是不同的優勢。接受稍長的到站步行，換取置身商場區。</p>
               <p>飯店販售標準房，以及 Deluxe Twin、Triple、Residence 與 Family 類別。三人入住，別只看到「雙床」就訂；打開確切房型細節，確認允許人數與床位格局。</p>
               <p>如果購物不只是附近的娛樂，而是住宿期間會反覆回來做的事，這種情況下最值得考慮這間飯店。</p>
+              <p class="dongdaemun-hotel-map-link-wrap"><a class="dongdaemun-hotel-map-link" href="#dongdaemun-hotel-map" data-map-hotel="skypark-kingstown" aria-controls="dongdaemun-hotel-map-canvas">📌 在地圖上查看</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">查看房價</p>
                 <p class="hm-booking-strip__title">在訂房網站比較這間飯店</p>
@@ -314,7 +353,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="nine-tree" aria-labelledby="nine-tree-title">
+          <article class="hm-hotel hm-editorial-row" id="nine-tree" aria-labelledby="nine-tree-title" data-hotel-id="nine-tree">
             <div class="hm-editorial-row__label">
               <h3 id="nine-tree-title">Nine Tree by Parnas Seoul Dongdaemun</h3>
             </div>
@@ -324,6 +363,7 @@
               <p>家庭另有選擇：21.4 平方公尺的 Family Room 配有 <strong>一張雙人床與一張上下舖，可住三人</strong>。飯店也列有專門的 Quadruple 類別，而不是臨時才考慮四人需求。</p>
               <p>另有付費投幣洗衣與自助行李寄放。</p>
               <p>Family Room 與 Triple 解決不同需求。父母帶孩子可能喜歡上下舖；三位成人想分床睡，就直接看 Triple。別讓「Family」一詞替你做決定。</p>
+              <p class="dongdaemun-hotel-map-link-wrap"><a class="dongdaemun-hotel-map-link" href="#dongdaemun-hotel-map" data-map-hotel="nine-tree" aria-controls="dongdaemun-hotel-map-canvas">📌 在地圖上查看</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">查看房價</p>
                 <p class="hm-booking-strip__title">在訂房網站比較這間飯店</p>
@@ -335,7 +375,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="toyoko-inn-ii" aria-labelledby="toyoko-inn-ii-title">
+          <article class="hm-hotel hm-editorial-row" id="toyoko-inn-ii" aria-labelledby="toyoko-inn-ii-title" data-hotel-id="toyoko-inn-ii">
             <div class="hm-editorial-row__label">
               <h3 id="toyoko-inn-ii-title">Toyoko Inn Seoul Dongdaemun II</h3>
             </div>
@@ -344,6 +384,7 @@
               <p>它約距 <strong>東大門歷史文化公園 4 號出口步行一分鐘</strong>，並含早餐。目前官方房型以單純的 Single、Double 與 Twin 類型為主，而不是大家庭套房。</p>
               <p>獨旅或兩人同行、預期大部分時間都在外面，可能已經夠用。</p>
               <p>想要泳池、大型交誼空間、廚房或特殊家庭格局，就不是來訂這裡的理由。如果那些設施重要，簡單省事就不再是優勢。</p>
+              <p class="dongdaemun-hotel-map-link-wrap"><a class="dongdaemun-hotel-map-link" href="#dongdaemun-hotel-map" data-map-hotel="toyoko-inn-ii" aria-controls="dongdaemun-hotel-map-canvas">📌 在地圖上查看</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">查看房價</p>
                 <p class="hm-booking-strip__title">在訂房網站比較這間飯店</p>
@@ -355,7 +396,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="summit" aria-labelledby="summit-title">
+          <article class="hm-hotel hm-editorial-row" id="summit" aria-labelledby="summit-title" data-hotel-id="summit">
             <div class="hm-editorial-row__label">
               <h3 id="summit-title">The Summit Hotel Seoul Dongdaemun</h3>
             </div>
@@ -364,6 +405,7 @@
               <p>目前房型包含 Deluxe Triple，配有 <strong>三張單人床</strong>，另有 Royal Twin，配有 <strong>兩張雙人床</strong>。三或四人旅行值得確認。</p>
               <p>但房型名稱要仔細讀。同一批目前房源也包含 <strong>無窗的 Basement Twin</strong>。如果期待一般地面以上、有日光的房間抵達，再便宜也不算划算。</p>
               <p>這間飯店，訂房畫面比飯店名稱更值得留意。</p>
+              <p class="dongdaemun-hotel-map-link-wrap"><a class="dongdaemun-hotel-map-link" href="#dongdaemun-hotel-map" data-map-hotel="summit" aria-controls="dongdaemun-hotel-map-canvas">📌 在地圖上查看</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">查看房價</p>
                 <p class="hm-booking-strip__title">在訂房網站比較這間飯店</p>
@@ -385,7 +427,7 @@
           <h2 id="dongdaemun-station-hotels-title">東大門站與傳統市場一側</h2>
         </header>
         <div class="hm-hotel-region__list">
-          <article class="hm-hotel hm-editorial-row" id="jw-marriott" aria-labelledby="jw-marriott-title">
+          <article class="hm-hotel hm-editorial-row" id="jw-marriott" aria-labelledby="jw-marriott-title" data-hotel-id="jw-marriott">
             <div class="hm-editorial-row__label">
               <h3 id="jw-marriott-title">JW Marriott Dongdaemun Square Seoul</h3>
             </div>
@@ -394,6 +436,7 @@
               <p>飯店有室內泳池、水療、行政貴賓廳、餐廳、健身中心、館內洗衣、每日客房清潔，以及大型高級飯店預期的服務水準。</p>
               <p>位置也讓你更靠近東大門站、興仁之門與傳統市場一側，而不是每天都以 DDP 為中心。</p>
               <p>購物旅行如果飯店只是睡覺處，通常不需要這筆花費。但特別住宿想要外面是市場、裡面是完整服務的高級飯店，它提供了本頁其他住宿沒有的角色。</p>
+              <p class="dongdaemun-hotel-map-link-wrap"><a class="dongdaemun-hotel-map-link" href="#dongdaemun-hotel-map" data-map-hotel="jw-marriott" aria-controls="dongdaemun-hotel-map-canvas">📌 在地圖上查看</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">查看房價</p>
                 <p class="hm-booking-strip__title">在訂房網站比較這間飯店</p>
@@ -415,13 +458,14 @@
           <h2 id="longer-stay-title">較長住宿的另一種選擇</h2>
         </header>
         <div class="hm-prose">
-          <div class="dongdaemun-area" id="mangrove-dongdaemun">
+          <div class="dongdaemun-area" id="mangrove-dongdaemun" data-hotel-id="mangrove-dongdaemun">
             <h3>Mangrove Dongdaemun</h3>
             <p>不應拿星級把 Mangrove 和上面的飯店比較。</p>
             <p>它是提供短住的大型共居空間。東大門館除了私人客房，還有 <strong>24 小時共享工作區、共用廚房、附洗衣機與烘衣機的 24 小時免費洗衣間、交誼空間、健身與放鬆空間，以及屋頂露台</strong>。</p>
             <p>住較久、遠端工作、偶爾煮飯，或想降低洗衣花費的人，可能很合適。</p>
             <p>同樣的安排，對期待典型飯店服務的人可能不合。共用廚房不是房內小廚房；只有願意離開房間去使用，共用設施才有用。</p>
             <p>快速三晚觀光，一般飯店通常更簡單。獨旅想在首爾住久一點，Mangrove 值得獨立比較。</p>
+            <p class="dongdaemun-hotel-map-link-wrap"><a class="dongdaemun-hotel-map-link" href="#dongdaemun-hotel-map" data-map-hotel="mangrove-dongdaemun" aria-controls="dongdaemun-hotel-map-canvas">📌 在地圖上查看</a></p>
             <div class="hm-booking-strip">
               <p class="hm-booking-strip__eyebrow">查看房價</p>
               <p class="hm-booking-strip__title">在訂房網站比較這間住宿</p>
@@ -574,6 +618,7 @@
 
   <script src="../guide-year.js" defer></script>
   <script src="../common.js"></script>
+  <script src="../dongdaemun-hotel-map.js" defer></script>
 <script>
   window.va = window.va || function () {
     (window.vaq = window.vaq || []).push(arguments);

@@ -24,6 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400..600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../dongdaemun-hotel-map.css">
   <style>
     body.dongdaemun-page main .hm-hero__copy {
       grid-column: 1 / -1;
@@ -244,13 +245,48 @@
       </div>
     </section>
 
+    <section class="hm-section dongdaemun-hotel-map-section" id="dongdaemun-hotel-map" aria-labelledby="dongdaemun-hotel-map-title" data-map-asset-prefix="../"
+      data-map-copy-default="Lokasi seluruh 8 penginapan ditampilkan. Pilih pin atau nama penginapan."
+      data-map-copy-selected="Dipilih: {name}. Pin nomor {number} tetap merah; pin lainnya berwarna biru."
+      data-map-copy-unavailable-selected="Dipilih: {name}. Peta NAVER tidak tersedia, tetapi tautan ke penginapan di halaman ini masih berfungsi."
+      data-map-copy-pending-selected="Dipilih: {name}. Pilihan ini akan ditampilkan setelah peta siap."
+      data-map-copy-fallback="Peta interaktif NAVER tidak dapat dimuat. Lihat daftar 8 penginapan, lalu coba lagi nanti."
+      data-map-copy-fallback-status="Peta NAVER tidak tersedia. Nama dan tautan ke penginapan di halaman ini tetap dapat diakses."
+      data-map-copy-marker-aria="Pilih nomor {number}: {name}">
+      <div class="container">
+        <header class="hm-section__header">
+          <h2 id="dongdaemun-hotel-map-title">Di mana lokasi penginapan di Dongdaemun?</h2>
+          <p class="hm-section__intro">Pilih pin atau nama penginapan untuk melihat lokasinya.</p>
+        </header>
+        <div class="dongdaemun-hotel-map-layout">
+          <div class="dongdaemun-hotel-map-shell">
+            <div class="dongdaemun-hotel-map-canvas" id="dongdaemun-hotel-map-canvas" role="region" tabindex="0" aria-label="Peta interaktif yang menampilkan 8 penginapan di Dongdaemun"></div>
+            <p class="dongdaemun-hotel-map-status" id="dongdaemun-hotel-map-status" role="status" aria-live="polite">Memuat peta penginapan…</p>
+          </div>
+          <aside class="dongdaemun-hotel-map-directory" aria-labelledby="dongdaemun-hotel-map-directory-title">
+            <h3 id="dongdaemun-hotel-map-directory-title">Penginapan di peta ini</h3>
+            <ol class="dongdaemun-hotel-map-list">
+              <li><button type="button" data-map-hotel="sotetsu" aria-controls="dongdaemun-hotel-map-canvas" aria-pressed="false"><span class="dongdaemun-hotel-map-number" aria-hidden="true">1</span><span>Sotetsu Hotels The Splaisir Seoul Dongdaemun</span></button></li>
+              <li><button type="button" data-map-hotel="novotel" aria-controls="dongdaemun-hotel-map-canvas" aria-pressed="false"><span class="dongdaemun-hotel-map-number" aria-hidden="true">2</span><span>Novotel Ambassador Seoul Dongdaemun Hotels &amp; Residences</span></button></li>
+              <li><button type="button" data-map-hotel="skypark-kingstown" aria-controls="dongdaemun-hotel-map-canvas" aria-pressed="false"><span class="dongdaemun-hotel-map-number" aria-hidden="true">3</span><span>Hotel Skypark Kingstown Dongdaemun</span></button></li>
+              <li><button type="button" data-map-hotel="nine-tree" aria-controls="dongdaemun-hotel-map-canvas" aria-pressed="false"><span class="dongdaemun-hotel-map-number" aria-hidden="true">4</span><span>Nine Tree by Parnas Seoul Dongdaemun</span></button></li>
+              <li><button type="button" data-map-hotel="toyoko-inn-ii" aria-controls="dongdaemun-hotel-map-canvas" aria-pressed="false"><span class="dongdaemun-hotel-map-number" aria-hidden="true">5</span><span>Toyoko Inn Seoul Dongdaemun II</span></button></li>
+              <li><button type="button" data-map-hotel="summit" aria-controls="dongdaemun-hotel-map-canvas" aria-pressed="false"><span class="dongdaemun-hotel-map-number" aria-hidden="true">6</span><span>The Summit Hotel Seoul Dongdaemun</span></button></li>
+              <li><button type="button" data-map-hotel="jw-marriott" aria-controls="dongdaemun-hotel-map-canvas" aria-pressed="false"><span class="dongdaemun-hotel-map-number" aria-hidden="true">7</span><span>JW Marriott Dongdaemun Square Seoul</span></button></li>
+              <li><button type="button" data-map-hotel="mangrove-dongdaemun" aria-controls="dongdaemun-hotel-map-canvas" aria-pressed="false"><span class="dongdaemun-hotel-map-number" aria-hidden="true">8</span><span>Mangrove Dongdaemun</span></button></li>
+            </ol>
+          </aside>
+        </div>
+      </div>
+    </section>
+
     <section class="hm-section hm-section--cream" id="ddp-hotels" aria-labelledby="ddp-hotels-title">
       <div class="container">
         <header class="hm-section__header">
           <h2 id="ddp-hotels-title">Hotel dekat DDP dan Dongdaemun History &amp; Culture Park</h2>
         </header>
         <div class="hm-hotel-region__list">
-          <article class="hm-hotel hm-editorial-row" id="sotetsu" aria-labelledby="sotetsu-title">
+          <article class="hm-hotel hm-editorial-row" id="sotetsu" aria-labelledby="sotetsu-title" data-hotel-id="sotetsu">
             <div class="hm-editorial-row__label">
               <h3 id="sotetsu-title">Sotetsu Hotels The Splaisir Seoul Dongdaemun</h3>
             </div>
@@ -260,6 +296,7 @@
               <p>Pilihan kamarnya juga lebih fleksibel daripada hotel bisnis dua orang biasa. Standard Triple seluas <strong>28 m² dengan tiga tempat tidur single</strong>, Deluxe Family Twin menggabungkan satu tempat tidur besar dan satu single, dan Splaisir Suite seluas 56 m² bisa menampung rombongan lebih besar.</p>
               <p>Kombinasi stasiun, lift, bus bandara, dan kamar nyata untuk tiga orang itulah yang membuat hotel sangat sesuai untuk perjalanan belanja hingga larut.</p>
               <p class="hm-affiliate-note">Halaman ini memuat tautan afiliasi.</p>
+              <p class="dongdaemun-hotel-map-link-wrap"><a class="dongdaemun-hotel-map-link" href="#dongdaemun-hotel-map" data-map-hotel="sotetsu" aria-controls="dongdaemun-hotel-map-canvas">📌 Lihat di Peta</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">LIHAT TARIF</p>
                 <p class="hm-booking-strip__title">Bandingkan hotel ini di situs pemesanan</p>
@@ -271,7 +308,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="novotel" aria-labelledby="novotel-title">
+          <article class="hm-hotel hm-editorial-row" id="novotel" aria-labelledby="novotel-title" data-hotel-id="novotel">
             <div class="hm-editorial-row__label">
               <h3 id="novotel-title">Novotel Ambassador Seoul Dongdaemun Hotels &amp; Residences</h3>
             </div>
@@ -282,6 +319,7 @@
               <p>Hotel juga memiliki kolam dalam ruangan dan kolam luar ruangan di atap, Kids Zone, fasilitas kebugaran, serta pilihan residensi selain kamar hotel konvensional.</p>
               <p>Lokasinya tidak semudah Sotetsu untuk kedatangan dari bandara. Pintu Keluar 12 Dongdaemun History &amp; Culture Park sekitar tiga menit, tetapi petunjuk bus bandara 6001 hotel menyisakan sekitar <strong>10 menit berjalan kaki setelah turun</strong>.</p>
               <p>Untuk dua orang yang akan belanja hingga larut, tidur, lalu keluar lagi pada pagi hari, membayar fasilitas residensi mungkin tidak diperlukan. Bagi keluarga yang menggunakan kamar sebagai tempat tinggal selama seminggu, fasilitas itu bisa mengubah perjalanan.</p>
+              <p class="dongdaemun-hotel-map-link-wrap"><a class="dongdaemun-hotel-map-link" href="#dongdaemun-hotel-map" data-map-hotel="novotel" aria-controls="dongdaemun-hotel-map-canvas">📌 Lihat di Peta</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">LIHAT TARIF</p>
                 <p class="hm-booking-strip__title">Bandingkan hotel ini di situs pemesanan</p>
@@ -293,7 +331,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="skypark-kingstown" aria-labelledby="skypark-kingstown-title">
+          <article class="hm-hotel hm-editorial-row" id="skypark-kingstown" aria-labelledby="skypark-kingstown-title" data-hotel-id="skypark-kingstown">
             <div class="hm-editorial-row__label">
               <h3 id="skypark-kingstown-title">Hotel Skypark Kingstown Dongdaemun</h3>
             </div>
@@ -303,6 +341,7 @@
               <p>Keuntungannya berbeda dari Sotetsu. Anda menerima jalan kaki stasiun sedikit lebih panjang agar berada di tengah kawasan mal.</p>
               <p>Hotel menjual kamar standar serta kategori Deluxe Twin, Triple, Residence, dan Family. Untuk tiga orang, jangan memesan hanya berdasarkan kata “twin”. Buka rincian kamar yang tepat dan pastikan kapasitas yang diizinkan serta susunan tempat tidur.</p>
               <p>Hotel ini paling mudah dianggap sepadan ketika belanja bukan sekadar hiburan dekat hotel, tetapi kegiatan yang akan Anda ulangi selama menginap.</p>
+              <p class="dongdaemun-hotel-map-link-wrap"><a class="dongdaemun-hotel-map-link" href="#dongdaemun-hotel-map" data-map-hotel="skypark-kingstown" aria-controls="dongdaemun-hotel-map-canvas">📌 Lihat di Peta</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">LIHAT TARIF</p>
                 <p class="hm-booking-strip__title">Bandingkan hotel ini di situs pemesanan</p>
@@ -314,7 +353,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="nine-tree" aria-labelledby="nine-tree-title">
+          <article class="hm-hotel hm-editorial-row" id="nine-tree" aria-labelledby="nine-tree-title" data-hotel-id="nine-tree">
             <div class="hm-editorial-row__label">
               <h3 id="nine-tree-title">Nine Tree by Parnas Seoul Dongdaemun</h3>
             </div>
@@ -324,6 +363,7 @@
               <p>Keluarga memiliki pilihan lain: Family Room seluas 21.4 m² memiliki <strong>satu tempat tidur double dan satu tempat tidur susun untuk tiga tamu</strong>. Hotel juga mencantumkan kategori Quadruple khusus, bukan sekadar menambahkan orang keempat.</p>
               <p>Tersedia pula fasilitas cuci berbayar koin dan penitipan bagasi mandiri.</p>
               <p>Family Room dan Triple memenuhi kebutuhan berbeda. Orang tua dengan anak mungkin menyukai tempat tidur susun. Tiga orang dewasa yang ingin tempat tidur terpisah sebaiknya langsung mempertimbangkan Triple. Jangan biarkan kata “Family” menentukan pilihan Anda.</p>
+              <p class="dongdaemun-hotel-map-link-wrap"><a class="dongdaemun-hotel-map-link" href="#dongdaemun-hotel-map" data-map-hotel="nine-tree" aria-controls="dongdaemun-hotel-map-canvas">📌 Lihat di Peta</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">LIHAT TARIF</p>
                 <p class="hm-booking-strip__title">Bandingkan hotel ini di situs pemesanan</p>
@@ -335,7 +375,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="toyoko-inn-ii" aria-labelledby="toyoko-inn-ii-title">
+          <article class="hm-hotel hm-editorial-row" id="toyoko-inn-ii" aria-labelledby="toyoko-inn-ii-title" data-hotel-id="toyoko-inn-ii">
             <div class="hm-editorial-row__label">
               <h3 id="toyoko-inn-ii-title">Toyoko Inn Seoul Dongdaemun II</h3>
             </div>
@@ -344,6 +384,7 @@
               <p>Lokasinya sekitar <strong>satu menit berjalan kaki dari Pintu Keluar 4 Dongdaemun History &amp; Culture Park</strong>, dan sarapan termasuk. Daftar resmi saat ini berpusat pada penginapan sederhana bergaya Single, Double, dan Twin, bukan suite keluarga besar.</p>
               <p>Untuk pelancong solo atau dua orang yang akan menghabiskan sebagian besar hari di luar, itu mungkin cukup.</p>
               <p>Ini bukan tempat untuk dipesan karena Anda ingin kolam renang, lounge besar, dapur, atau tata ruang keluarga khusus. Jika fasilitas itu penting, kesederhanaan yang minim kerepotan tidak lagi menjadi keuntungan.</p>
+              <p class="dongdaemun-hotel-map-link-wrap"><a class="dongdaemun-hotel-map-link" href="#dongdaemun-hotel-map" data-map-hotel="toyoko-inn-ii" aria-controls="dongdaemun-hotel-map-canvas">📌 Lihat di Peta</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">LIHAT TARIF</p>
                 <p class="hm-booking-strip__title">Bandingkan hotel ini di situs pemesanan</p>
@@ -355,7 +396,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="summit" aria-labelledby="summit-title">
+          <article class="hm-hotel hm-editorial-row" id="summit" aria-labelledby="summit-title" data-hotel-id="summit">
             <div class="hm-editorial-row__label">
               <h3 id="summit-title">The Summit Hotel Seoul Dongdaemun</h3>
             </div>
@@ -364,6 +405,7 @@
               <p>Pilihan kamar saat ini mencakup Deluxe Triple dengan <strong>tiga tempat tidur single</strong> dan Royal Twin dengan <strong>dua tempat tidur double</strong>. Ini membuatnya layak diperiksa untuk perjalanan tiga atau empat orang.</p>
               <p>Namun, baca nama kamar dengan teliti. Pilihan yang sama saat ini juga memiliki <strong>Basement Twin tanpa jendela</strong>. Tarif lebih rendah bukan penawaran hemat jika Anda tiba dengan harapan kamar biasa di atas permukaan tanah yang mendapat cahaya siang.</p>
               <p>Ini hotel yang memerlukan lebih banyak perhatian pada layar pemesanan daripada nama hotel.</p>
+              <p class="dongdaemun-hotel-map-link-wrap"><a class="dongdaemun-hotel-map-link" href="#dongdaemun-hotel-map" data-map-hotel="summit" aria-controls="dongdaemun-hotel-map-canvas">📌 Lihat di Peta</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">LIHAT TARIF</p>
                 <p class="hm-booking-strip__title">Bandingkan hotel ini di situs pemesanan</p>
@@ -385,7 +427,7 @@
           <h2 id="dongdaemun-station-hotels-title">Dongdaemun Station dan sisi pasar tradisional</h2>
         </header>
         <div class="hm-hotel-region__list">
-          <article class="hm-hotel hm-editorial-row" id="jw-marriott" aria-labelledby="jw-marriott-title">
+          <article class="hm-hotel hm-editorial-row" id="jw-marriott" aria-labelledby="jw-marriott-title" data-hotel-id="jw-marriott">
             <div class="hm-editorial-row__label">
               <h3 id="jw-marriott-title">JW Marriott Dongdaemun Square Seoul</h3>
             </div>
@@ -394,6 +436,7 @@
               <p>Hotel memiliki kolam dalam ruangan, spa, lounge klub, restoran, pusat kebugaran, fasilitas cuci di lokasi, pembersihan kamar setiap hari, dan tingkat layanan yang diharapkan dari hotel mewah besar.</p>
               <p>Posisinya juga mengarah ke sisi Dongdaemun Station, Heunginjimun, dan pasar tradisional, bukan menjadikan setiap hari berpusat pada DDP.</p>
               <p>Untuk perjalanan belanja ketika hotel hanya tempat untuk tidur, ini biasanya biaya yang tidak diperlukan. Untuk kunjungan khusus ketika Anda ingin pasar di luar dan hotel mewah dengan layanan lengkap di dalam, hotel ini memenuhi peran yang tidak dipenuhi hotel lain di halaman.</p>
+              <p class="dongdaemun-hotel-map-link-wrap"><a class="dongdaemun-hotel-map-link" href="#dongdaemun-hotel-map" data-map-hotel="jw-marriott" aria-controls="dongdaemun-hotel-map-canvas">📌 Lihat di Peta</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">LIHAT TARIF</p>
                 <p class="hm-booking-strip__title">Bandingkan hotel ini di situs pemesanan</p>
@@ -415,13 +458,14 @@
           <h2 id="longer-stay-title">Pilihan berbeda untuk menginap lebih lama</h2>
         </header>
         <div class="hm-prose">
-          <div class="dongdaemun-area" id="mangrove-dongdaemun">
+          <div class="dongdaemun-area" id="mangrove-dongdaemun" data-hotel-id="mangrove-dongdaemun">
             <h3>Mangrove Dongdaemun</h3>
             <p>Mangrove tidak sebaiknya dibandingkan dengan hotel di atas berdasarkan jumlah bintang.</p>
             <p>Ini hunian bersama dengan akomodasi jangka pendek serta ruang bersama besar. Gedung Dongdaemun memiliki kamar pribadi serta <strong>ruang kerja bersama 24 jam, dapur bersama, ruang cuci gratis 24 jam dengan mesin cuci dan pengering, lounge, ruang kebugaran serta relaksasi, dan teras atap</strong>.</p>
             <p>Ini bisa sangat sesuai bagi orang yang menginap lebih lama, bekerja jarak jauh, sesekali memasak, atau ingin menekan biaya cuci pakaian.</p>
             <p>Pengaturan yang sama bisa kurang sesuai bagi orang yang mengharapkan layanan hotel klasik. Dapur bersama berbeda dari dapur kecil di dalam kamar. Fasilitas bersama hanya membantu jika Anda nyaman keluar dari kamar untuk menggunakannya.</p>
             <p>Untuk wisata singkat tiga malam, hotel biasa umumnya lebih sederhana. Untuk pelancong solo yang menetap lebih lama di Seoul, Mangrove layak dibandingkan tersendiri.</p>
+            <p class="dongdaemun-hotel-map-link-wrap"><a class="dongdaemun-hotel-map-link" href="#dongdaemun-hotel-map" data-map-hotel="mangrove-dongdaemun" aria-controls="dongdaemun-hotel-map-canvas">📌 Lihat di Peta</a></p>
             <div class="hm-booking-strip">
               <p class="hm-booking-strip__eyebrow">LIHAT TARIF</p>
               <p class="hm-booking-strip__title">Bandingkan penginapan ini di situs pemesanan</p>
@@ -574,6 +618,7 @@
 
   <script src="../guide-year.js" defer></script>
   <script src="../common.js"></script>
+  <script src="../dongdaemun-hotel-map.js" defer></script>
 <script>
   window.va = window.va || function () {
     (window.vaq = window.vaq || []).push(arguments);

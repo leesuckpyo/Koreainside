@@ -24,6 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400..600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../dongdaemun-hotel-map.css">
   <style>
     body.dongdaemun-page main .hm-hero__copy {
       grid-column: 1 / -1;
@@ -244,13 +245,48 @@
       </div>
     </section>
 
+    <section class="hm-section dongdaemun-hotel-map-section" id="dongdaemun-hotel-map" aria-labelledby="dongdaemun-hotel-map-title" data-map-asset-prefix="../"
+      data-map-copy-default="Les 8 hébergements sont indiqués sur la carte. Sélectionnez un repère ou un nom."
+      data-map-copy-selected="Sélection : {name}. Le repère {number} reste rouge ; les autres sont bleus."
+      data-map-copy-unavailable-selected="Sélection : {name}. La carte NAVER est indisponible, mais le lien vers l’hébergement sur cette page reste actif."
+      data-map-copy-pending-selected="Sélection : {name}. Ce choix s’affichera dès que la carte sera prête."
+      data-map-copy-fallback="Impossible de charger la carte interactive NAVER. Consultez la liste des 8 hébergements, puis réessayez plus tard."
+      data-map-copy-fallback-status="Carte NAVER indisponible. Les noms et les liens vers les hébergements sur cette page restent accessibles."
+      data-map-copy-marker-aria="Sélectionner le repère {number} : {name}">
+      <div class="container">
+        <header class="hm-section__header">
+          <h2 id="dongdaemun-hotel-map-title">Où se trouvent les hébergements à Dongdaemun ?</h2>
+          <p class="hm-section__intro">Sélectionnez un repère ou le nom d’un hébergement pour voir où il se trouve.</p>
+        </header>
+        <div class="dongdaemun-hotel-map-layout">
+          <div class="dongdaemun-hotel-map-shell">
+            <div class="dongdaemun-hotel-map-canvas" id="dongdaemun-hotel-map-canvas" role="region" tabindex="0" aria-label="Carte interactive présentant 8 hébergements à Dongdaemun"></div>
+            <p class="dongdaemun-hotel-map-status" id="dongdaemun-hotel-map-status" role="status" aria-live="polite">Chargement de la carte des hébergements…</p>
+          </div>
+          <aside class="dongdaemun-hotel-map-directory" aria-labelledby="dongdaemun-hotel-map-directory-title">
+            <h3 id="dongdaemun-hotel-map-directory-title">Hébergements sur cette carte</h3>
+            <ol class="dongdaemun-hotel-map-list">
+              <li><button type="button" data-map-hotel="sotetsu" aria-controls="dongdaemun-hotel-map-canvas" aria-pressed="false"><span class="dongdaemun-hotel-map-number" aria-hidden="true">1</span><span>Sotetsu Hotels The Splaisir Seoul Dongdaemun</span></button></li>
+              <li><button type="button" data-map-hotel="novotel" aria-controls="dongdaemun-hotel-map-canvas" aria-pressed="false"><span class="dongdaemun-hotel-map-number" aria-hidden="true">2</span><span>Novotel Ambassador Seoul Dongdaemun Hotels &amp; Residences</span></button></li>
+              <li><button type="button" data-map-hotel="skypark-kingstown" aria-controls="dongdaemun-hotel-map-canvas" aria-pressed="false"><span class="dongdaemun-hotel-map-number" aria-hidden="true">3</span><span>Hotel Skypark Kingstown Dongdaemun</span></button></li>
+              <li><button type="button" data-map-hotel="nine-tree" aria-controls="dongdaemun-hotel-map-canvas" aria-pressed="false"><span class="dongdaemun-hotel-map-number" aria-hidden="true">4</span><span>Nine Tree by Parnas Seoul Dongdaemun</span></button></li>
+              <li><button type="button" data-map-hotel="toyoko-inn-ii" aria-controls="dongdaemun-hotel-map-canvas" aria-pressed="false"><span class="dongdaemun-hotel-map-number" aria-hidden="true">5</span><span>Toyoko Inn Seoul Dongdaemun II</span></button></li>
+              <li><button type="button" data-map-hotel="summit" aria-controls="dongdaemun-hotel-map-canvas" aria-pressed="false"><span class="dongdaemun-hotel-map-number" aria-hidden="true">6</span><span>The Summit Hotel Seoul Dongdaemun</span></button></li>
+              <li><button type="button" data-map-hotel="jw-marriott" aria-controls="dongdaemun-hotel-map-canvas" aria-pressed="false"><span class="dongdaemun-hotel-map-number" aria-hidden="true">7</span><span>JW Marriott Dongdaemun Square Seoul</span></button></li>
+              <li><button type="button" data-map-hotel="mangrove-dongdaemun" aria-controls="dongdaemun-hotel-map-canvas" aria-pressed="false"><span class="dongdaemun-hotel-map-number" aria-hidden="true">8</span><span>Mangrove Dongdaemun</span></button></li>
+            </ol>
+          </aside>
+        </div>
+      </div>
+    </section>
+
     <section class="hm-section hm-section--cream" id="ddp-hotels" aria-labelledby="ddp-hotels-title">
       <div class="container">
         <header class="hm-section__header">
           <h2 id="ddp-hotels-title">Hôtels près de DDP et de Dongdaemun History &amp; Culture Park</h2>
         </header>
         <div class="hm-hotel-region__list">
-          <article class="hm-hotel hm-editorial-row" id="sotetsu" aria-labelledby="sotetsu-title">
+          <article class="hm-hotel hm-editorial-row" id="sotetsu" aria-labelledby="sotetsu-title" data-hotel-id="sotetsu">
             <div class="hm-editorial-row__label">
               <h3 id="sotetsu-title">Sotetsu Hotels The Splaisir Seoul Dongdaemun</h3>
             </div>
@@ -260,6 +296,7 @@
               <p>Le choix des chambres est aussi plus souple que dans un hôtel d’affaires classique prévu pour deux personnes. La Standard Triple offre <strong>28 m² et trois lits simples</strong>, la Deluxe Family Twin associe un grand lit et un lit simple, et la Splaisir Suite de 56 m² peut accueillir un groupe plus nombreux.</p>
               <p>C’est cette combinaison — station, ascenseur, bus d’aéroport et véritables chambres pour trois — qui convient si bien aux séjours consacrés au shopping tardif.</p>
               <p class="hm-affiliate-note">Cette page contient des liens affiliés.</p>
+              <p class="dongdaemun-hotel-map-link-wrap"><a class="dongdaemun-hotel-map-link" href="#dongdaemun-hotel-map" data-map-hotel="sotetsu" aria-controls="dongdaemun-hotel-map-canvas">📌 Voir sur la carte</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">VOIR LES TARIFS</p>
                 <p class="hm-booking-strip__title">Comparer cet hôtel sur les sites de réservation</p>
@@ -271,7 +308,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="novotel" aria-labelledby="novotel-title">
+          <article class="hm-hotel hm-editorial-row" id="novotel" aria-labelledby="novotel-title" data-hotel-id="novotel">
             <div class="hm-editorial-row__label">
               <h3 id="novotel-title">Novotel Ambassador Seoul Dongdaemun Hotels &amp; Residences</h3>
             </div>
@@ -282,6 +319,7 @@
               <p>L’hôtel propose aussi des piscines intérieure et extérieure sur le toit, une Kids Zone, des installations de remise en forme et des logements en résidence en plus des chambres classiques.</p>
               <p>L’arrivée depuis l’aéroport est moins directe que chez Sotetsu. La sortie 12 de Dongdaemun History &amp; Culture Park est à environ trois minutes, mais les indications de l’hôtel pour le bus d’aéroport 6001 laissent encore environ <strong>10 minutes de marche après être descendu du bus</strong>.</p>
               <p>Pour deux personnes qui font du shopping tard, dorment puis repartent le matin, payer pour les équipements d’une résidence peut être inutile. Pour une famille qui utilise son logement comme lieu de vie pendant une semaine, ces équipements peuvent réellement changer le séjour.</p>
+              <p class="dongdaemun-hotel-map-link-wrap"><a class="dongdaemun-hotel-map-link" href="#dongdaemun-hotel-map" data-map-hotel="novotel" aria-controls="dongdaemun-hotel-map-canvas">📌 Voir sur la carte</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">VOIR LES TARIFS</p>
                 <p class="hm-booking-strip__title">Comparer cet hôtel sur les sites de réservation</p>
@@ -293,7 +331,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="skypark-kingstown" aria-labelledby="skypark-kingstown-title">
+          <article class="hm-hotel hm-editorial-row" id="skypark-kingstown" aria-labelledby="skypark-kingstown-title" data-hotel-id="skypark-kingstown">
             <div class="hm-editorial-row__label">
               <h3 id="skypark-kingstown-title">Hotel Skypark Kingstown Dongdaemun</h3>
             </div>
@@ -303,6 +341,7 @@
               <p>L’avantage est différent de celui de Sotetsu : vous acceptez une marche un peu plus longue depuis la station pour loger au milieu des centres commerciaux.</p>
               <p>L’hôtel propose des chambres standard, ainsi que des catégories Deluxe Twin, Triple, Residence et Family. Pour trois personnes, ne vous fiez pas au seul mot « twin » : ouvrez le descriptif exact et vérifiez l’occupation autorisée et la disposition des lits.</p>
               <p>Cet hôtel se justifie surtout si le shopping est une activité à laquelle vous comptez revenir plusieurs fois pendant le séjour, plutôt qu’une simple distraction à proximité.</p>
+              <p class="dongdaemun-hotel-map-link-wrap"><a class="dongdaemun-hotel-map-link" href="#dongdaemun-hotel-map" data-map-hotel="skypark-kingstown" aria-controls="dongdaemun-hotel-map-canvas">📌 Voir sur la carte</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">VOIR LES TARIFS</p>
                 <p class="hm-booking-strip__title">Comparer cet hôtel sur les sites de réservation</p>
@@ -314,7 +353,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="nine-tree" aria-labelledby="nine-tree-title">
+          <article class="hm-hotel hm-editorial-row" id="nine-tree" aria-labelledby="nine-tree-title" data-hotel-id="nine-tree">
             <div class="hm-editorial-row__label">
               <h3 id="nine-tree-title">Nine Tree by Parnas Seoul Dongdaemun</h3>
             </div>
@@ -324,6 +363,7 @@
               <p>Les familles disposent d’une autre option : la Family Room de 21,4 m² comprend <strong>un lit double et un lit superposé pour trois personnes</strong>. L’hôtel propose aussi une catégorie Quadruple dédiée, plutôt que d’adapter après coup une chambre à quatre occupants.</p>
               <p>Il dispose également d’une laverie payante à pièces et d’une consigne à bagages en libre-service.</p>
               <p>La Family Room et la Triple ne répondent pas au même besoin. Des parents avec un enfant peuvent apprécier le lit superposé ; trois adultes souhaitant chacun leur lit devraient regarder directement la Triple. Ne laissez pas le mot « Family » décider à votre place.</p>
+              <p class="dongdaemun-hotel-map-link-wrap"><a class="dongdaemun-hotel-map-link" href="#dongdaemun-hotel-map" data-map-hotel="nine-tree" aria-controls="dongdaemun-hotel-map-canvas">📌 Voir sur la carte</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">VOIR LES TARIFS</p>
                 <p class="hm-booking-strip__title">Comparer cet hôtel sur les sites de réservation</p>
@@ -335,7 +375,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="toyoko-inn-ii" aria-labelledby="toyoko-inn-ii-title">
+          <article class="hm-hotel hm-editorial-row" id="toyoko-inn-ii" aria-labelledby="toyoko-inn-ii-title" data-hotel-id="toyoko-inn-ii">
             <div class="hm-editorial-row__label">
               <h3 id="toyoko-inn-ii-title">Toyoko Inn Seoul Dongdaemun II</h3>
             </div>
@@ -344,6 +384,7 @@
               <p>Il se trouve à environ <strong>une minute à pied de la sortie 4 de Dongdaemun History &amp; Culture Park</strong>, et le petit-déjeuner est compris. L’offre officielle actuelle se concentre sur des chambres Single, Double et Twin simples, plutôt que sur de grandes suites familiales.</p>
               <p>Cela peut suffire pour une personne seule ou un duo qui prévoit de passer l’essentiel de la journée dehors.</p>
               <p>Ne le réservez pas pour une piscine, un grand salon, une cuisine ou une configuration familiale particulière. Si ces équipements comptent pour vous, sa simplicité cesse d’être un avantage.</p>
+              <p class="dongdaemun-hotel-map-link-wrap"><a class="dongdaemun-hotel-map-link" href="#dongdaemun-hotel-map" data-map-hotel="toyoko-inn-ii" aria-controls="dongdaemun-hotel-map-canvas">📌 Voir sur la carte</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">VOIR LES TARIFS</p>
                 <p class="hm-booking-strip__title">Comparer cet hôtel sur les sites de réservation</p>
@@ -355,7 +396,7 @@
               </div>
             </div>
           </article>
-          <article class="hm-hotel hm-editorial-row" id="summit" aria-labelledby="summit-title">
+          <article class="hm-hotel hm-editorial-row" id="summit" aria-labelledby="summit-title" data-hotel-id="summit">
             <div class="hm-editorial-row__label">
               <h3 id="summit-title">The Summit Hotel Seoul Dongdaemun</h3>
             </div>
@@ -364,6 +405,7 @@
               <p>L’offre actuelle comprend une Deluxe Triple avec <strong>trois lits simples</strong> et une Royal Twin avec <strong>deux lits doubles</strong>. C’est donc une option à considérer pour un séjour à trois ou quatre.</p>
               <p>Mais lisez attentivement le nom de la chambre. L’offre actuelle comprend aussi une <strong>Basement Twin en sous-sol sans fenêtre</strong>. Un tarif plus bas n’est pas une bonne affaire si vous vous attendez à une chambre classique au-dessus du sol, avec de la lumière du jour.</p>
               <p>Dans cet hôtel, regardez davantage le détail de la réservation que le nom de l’établissement.</p>
+              <p class="dongdaemun-hotel-map-link-wrap"><a class="dongdaemun-hotel-map-link" href="#dongdaemun-hotel-map" data-map-hotel="summit" aria-controls="dongdaemun-hotel-map-canvas">📌 Voir sur la carte</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">VOIR LES TARIFS</p>
                 <p class="hm-booking-strip__title">Comparer cet hôtel sur les sites de réservation</p>
@@ -385,7 +427,7 @@
           <h2 id="dongdaemun-station-hotels-title">La station Dongdaemun et les marchés traditionnels</h2>
         </header>
         <div class="hm-hotel-region__list">
-          <article class="hm-hotel hm-editorial-row" id="jw-marriott" aria-labelledby="jw-marriott-title">
+          <article class="hm-hotel hm-editorial-row" id="jw-marriott" aria-labelledby="jw-marriott-title" data-hotel-id="jw-marriott">
             <div class="hm-editorial-row__label">
               <h3 id="jw-marriott-title">JW Marriott Dongdaemun Square Seoul</h3>
             </div>
@@ -394,6 +436,7 @@
               <p>L’hôtel dispose d’une piscine intérieure, d’un spa, d’un salon club, de restaurants, d’une salle de sport, d’un service de blanchisserie sur place, d’un ménage quotidien et du niveau de service attendu d’un grand établissement de luxe.</p>
               <p>Son emplacement vous rapproche aussi de la station Dongdaemun, de Heunginjimun et des marchés traditionnels, plutôt que d’organiser chaque journée autour de DDP.</p>
               <p>Pour un séjour shopping où l’hôtel sert seulement à dormir, cette dépense est généralement superflue. Pour un séjour particulier où vous souhaitez les marchés dehors et un hôtel de luxe avec tous les services dedans, il répond à un besoin que les autres hôtels de cette page ne couvrent pas.</p>
+              <p class="dongdaemun-hotel-map-link-wrap"><a class="dongdaemun-hotel-map-link" href="#dongdaemun-hotel-map" data-map-hotel="jw-marriott" aria-controls="dongdaemun-hotel-map-canvas">📌 Voir sur la carte</a></p>
               <div class="hm-booking-strip">
                 <p class="hm-booking-strip__eyebrow">VOIR LES TARIFS</p>
                 <p class="hm-booking-strip__title">Comparer cet hôtel sur les sites de réservation</p>
@@ -415,13 +458,14 @@
           <h2 id="longer-stay-title">Une autre formule pour un séjour plus long</h2>
         </header>
         <div class="hm-prose">
-          <div class="dongdaemun-area" id="mangrove-dongdaemun">
+          <div class="dongdaemun-area" id="mangrove-dongdaemun" data-hotel-id="mangrove-dongdaemun">
             <h3>Mangrove Dongdaemun</h3>
             <p>Ne comparez pas Mangrove aux hôtels précédents sur la seule base des étoiles.</p>
             <p>Cet établissement de coliving propose des séjours courts et de grands espaces communs. Le bâtiment de Dongdaemun associe des chambres privées à <strong>un espace de coworking ouvert 24 h sur 24, des cuisines communes, une laverie gratuite ouverte 24 h sur 24 avec lave-linge et sèche-linge, des salons, des salles de sport et de détente et un toit-terrasse</strong>.</p>
             <p>Cette formule convient bien à un séjour prolongé ou au télétravail, surtout si vous comptez préparer quelques repas ou limiter les frais de laverie.</p>
             <p>Elle peut au contraire décevoir si vous attendez les services d’un hôtel classique. Une cuisine commune n’est pas une kitchenette dans la chambre. Les équipements partagés ne sont utiles que si cela ne vous dérange pas de sortir de votre chambre pour les utiliser.</p>
             <p>Pour trois nuits de visites, un hôtel classique sera généralement plus simple. Pour une personne seule qui s’installe à Séoul plus longtemps, mieux vaut comparer Mangrove séparément.</p>
+            <p class="dongdaemun-hotel-map-link-wrap"><a class="dongdaemun-hotel-map-link" href="#dongdaemun-hotel-map" data-map-hotel="mangrove-dongdaemun" aria-controls="dongdaemun-hotel-map-canvas">📌 Voir sur la carte</a></p>
             <div class="hm-booking-strip">
               <p class="hm-booking-strip__eyebrow">VOIR LES TARIFS</p>
               <p class="hm-booking-strip__title">Comparer cet hébergement sur les sites de réservation</p>
@@ -574,6 +618,7 @@
 
   <script src="../guide-year.js" defer></script>
   <script src="../common.js"></script>
+  <script src="../dongdaemun-hotel-map.js" defer></script>
 <script>
   window.va = window.va || function () {
     (window.vaq = window.vaq || []).push(arguments);
