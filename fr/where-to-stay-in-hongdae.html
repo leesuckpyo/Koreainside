@@ -76,6 +76,66 @@
       color: var(--white);
     }
 
+    .hongdae-detail-page main .hm-booking-strip .hm-ota-button--expedia {
+      border-color: #e7d89a;
+      border-top: 4px solid #f5c518;
+      background: #fffdf3;
+      color: #1f2d5c;
+    }
+
+    .hongdae-detail-page main .hm-booking-strip .hm-ota-button--expedia:hover,
+    .hongdae-detail-page main .hm-booking-strip .hm-ota-button--expedia:focus-visible {
+      border-color: #d8bd43;
+      background: #fff8d8;
+      color: #182447;
+    }
+
+    .hongdae-detail-page main .hm-booking-strip .hm-ota-button--trip {
+      border-color: #b9d8ff;
+      border-top: 4px solid #287dfa;
+      background: #f4f9ff;
+      color: #1756a9;
+    }
+
+    .hongdae-detail-page main .hm-booking-strip .hm-ota-button--trip:hover,
+    .hongdae-detail-page main .hm-booking-strip .hm-ota-button--trip:focus-visible {
+      border-color: #287dfa;
+      background: #e8f3ff;
+      color: #124887;
+    }
+
+    .hongdae-detail-page main .hm-booking-strip .hm-ota-button--agoda {
+      position: relative;
+      overflow: hidden;
+      border-color: #dedede;
+      background: #fff;
+      color: #26364a;
+    }
+
+    .hongdae-detail-page main .hm-booking-strip .hm-ota-button--agoda::before {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      height: 4px;
+      background: linear-gradient(
+        90deg,
+        #5392f9 0 20%,
+        #fdb814 20% 40%,
+        #ec5b24 40% 60%,
+        #75b843 60% 80%,
+        #8e63ce 80% 100%
+      );
+      content: "";
+    }
+
+    .hongdae-detail-page main .hm-booking-strip .hm-ota-button--agoda:hover,
+    .hongdae-detail-page main .hm-booking-strip .hm-ota-button--agoda:focus-visible {
+      border-color: #bfc6cf;
+      background: #f7f9fc;
+      color: #18283d;
+    }
+
     @media (max-width: 620px) {
       .hongdae-detail-page main .hm-booking-strip {
         padding: 16px 0 18px;
