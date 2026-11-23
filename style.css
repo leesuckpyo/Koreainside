@@ -699,6 +699,73 @@ ul, ol {
   outline-offset: 2px;
 }
 
+.site-nav__hongdae {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  min-width: 0;
+}
+
+.site-nav__hongdae-toggle {
+  display: grid;
+  place-items: center;
+  min-width: 44px;
+  min-height: 44px;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--blue-muted);
+  cursor: pointer;
+}
+
+.site-nav__hongdae-toggle::after {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+}
+
+.site-nav__hongdae-toggle[aria-expanded="true"]::after {
+  transform: translateY(2px) rotate(225deg);
+}
+
+.site-nav__hongdae-toggle:hover,
+.site-nav__hongdae-toggle:focus-visible {
+  background: var(--blue-light);
+  color: var(--blue-accent);
+}
+
+.site-nav__hongdae-toggle:focus-visible {
+  outline: 3px solid rgba(26, 86, 219, 0.35);
+  outline-offset: -3px;
+}
+
+.site-nav__hongdae-pages {
+  grid-column: 1 / -1;
+  margin-left: 9px;
+  padding-left: 5px;
+  border-left: 1px solid var(--gray-200);
+}
+
+.site-nav__panel--travel-guides .site-nav__hongdae-pages .site-nav__link {
+  white-space: normal;
+}
+
+@media (min-width: 720px) and (max-width: 1099px) {
+  .site-nav__travel-grid > .site-nav__hongdae {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 1100px) and (hover: hover) and (pointer: fine) {
+  .site-nav__hongdae-toggle {
+    min-width: 38px;
+    min-height: 38px;
+  }
+}
+
 @media (max-width: 1099px) {
   body.body--nav-open {
     overflow: hidden;

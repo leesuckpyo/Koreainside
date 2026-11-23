@@ -5,6 +5,67 @@
     if (language === 'es-mx') return 'es-MX';
     return language.split('-')[0];
   };
+
+  const initializeHongdaeNavigation = (nav) => {
+    const guideLink = nav.querySelector(
+      '[data-nav-section="travel"] .site-nav__travel-grid > a:is([href="hongdae-travel-guide.html"], [href="/hongdae-travel-guide.html"])'
+    );
+    if (!guideLink) return null;
+
+    const group = document.createElement('div');
+    group.className = 'site-nav__hongdae';
+
+    const toggle = document.createElement('button');
+    toggle.type = 'button';
+    toggle.className = 'site-nav__hongdae-toggle';
+    toggle.setAttribute('aria-label', 'Hongdae pages');
+    toggle.setAttribute('aria-controls', 'site-nav-hongdae-pages');
+
+    const pages = document.createElement('ul');
+    pages.id = 'site-nav-hongdae-pages';
+    pages.className = 'site-nav__hongdae-pages';
+    for (const [label, href] of [
+      ['Hongdae Travel Guide', guideLink.getAttribute('href')],
+      ['Hongdae Event Schedule', '/hongdae-events-festivals.html']
+    ]) {
+      const item = document.createElement('li');
+      const link = document.createElement('a');
+      link.className = 'site-nav__link';
+      link.textContent = label;
+      link.href = href;
+      item.append(link);
+      pages.append(item);
+    }
+
+    const setOpen = (isOpen) => {
+      pages.hidden = !isOpen;
+      toggle.setAttribute('aria-expanded', String(isOpen));
+    };
+    setOpen(false);
+    guideLink.before(group);
+    group.append(guideLink, toggle, pages);
+
+    const hoverQuery = window.matchMedia('(min-width: 1100px) and (hover: hover) and (pointer: fine)');
+    toggle.addEventListener('click', () => setOpen(pages.hidden));
+    group.addEventListener('pointerenter', (event) => {
+      if (hoverQuery.matches && event.pointerType === 'mouse') setOpen(true);
+    });
+    group.addEventListener('pointerleave', (event) => {
+      if (hoverQuery.matches && event.pointerType === 'mouse' && !group.contains(document.activeElement)) {
+        setOpen(false);
+      }
+    });
+    group.addEventListener('keydown', (event) => {
+      if (event.key !== 'Escape' || pages.hidden) return;
+      event.preventDefault();
+      event.stopPropagation();
+      setOpen(false);
+      toggle.focus();
+    });
+
+    return () => setOpen(false);
+  };
+
   const initializeCommonNavigation = () => {
   const headers = document.querySelectorAll('[data-common-header]');
   if (!headers.length) return;
@@ -39,11 +100,14 @@
     const nav = header.querySelector('.site-nav');
     const items = Array.from(header.querySelectorAll('.site-nav__item'));
     const triggers = items.map((item) => item.querySelector('.site-nav__trigger')).filter(Boolean);
-    const navLinks = Array.from(header.querySelectorAll('.site-nav__link'));
 
     if (!toggle || !nav) return;
 
+    const closeHongdaeNavigation = language === 'en' ? initializeHongdaeNavigation(nav) : null;
+    const navLinks = Array.from(header.querySelectorAll('.site-nav__link'));
+
     const closeSubmenus = (focusTrigger) => {
+      if (closeHongdaeNavigation) closeHongdaeNavigation();
       items.forEach((item) => {
         const trigger = item.querySelector('.site-nav__trigger');
         const panel = item.querySelector('.site-nav__panel');
@@ -110,7 +174,8 @@
       });
 
       panel.addEventListener('keydown', (event) => {
-        const links = Array.from(panel.querySelectorAll('.site-nav__link'));
+        const links = Array.from(panel.querySelectorAll('.site-nav__link'))
+          .filter((link) => !link.closest('[hidden]'));
         const currentIndex = links.indexOf(document.activeElement);
         if (currentIndex < 0) return;
         let nextIndex = null;
