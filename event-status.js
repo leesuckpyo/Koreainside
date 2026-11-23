@@ -66,14 +66,75 @@
     return events;
   }
 
+  function placeHongdaeEvent(article, container, level, before = null) {
+    const heading = article.firstElementChild;
+    if (heading.localName !== level) {
+      const replacement = document.createElement(level);
+      replacement.textContent = heading.textContent;
+      heading.replaceWith(replacement);
+    }
+    if (article.parentElement !== container) container.insertBefore(article, before);
+  }
+
+  function prepareHongdaeSchedule(root, events, plannedEvents) {
+    const confirmed = root.querySelector('[data-hongdae-confirmed-event]');
+    const planned = root.querySelector('[data-hongdae-planned-event]');
+    const confirmedEvent = events.get(confirmed.dataset.hongdaeConfirmedEvent);
+    const plan = plannedEvents?.find((event) => event.id === planned.dataset.hongdaePlannedEvent);
+    if (!confirmedEvent || !isDate(plan?.plannedDate)) {
+      throw new Error('Hongdae event dates unavailable.');
+    }
+
+    const upcoming = root.querySelector('#upcoming');
+    const current = root.querySelector('#happening-now');
+    const pastPlans = root.querySelector('#past-plans');
+    const upcomingList = upcoming.querySelector('.events-list');
+    const currentList = current.querySelector('.events-list');
+    const pastPlansList = pastPlans.querySelector('.events-list');
+    const archiveHeading = root.querySelector('#archive-2026-heading');
+    const upcomingJump = root.querySelectorAll('[data-hongdae-upcoming-jump]');
+    const confirmedLabel = confirmed.querySelector('[data-hongdae-status]');
+    const plannedLabel = planned.querySelector('[data-hongdae-status]');
+
+    return (today) => {
+      const status = getEventStatus(confirmedEvent, today);
+      const planPassed = today > plan.plannedDate;
+      const planStatus = planPassed ? 'PLANNED DATE PASSED — NOT VERIFIED' : 'PLANNED — NOT CONFIRMED';
+      const focused = document.activeElement;
+
+      current.hidden = status !== 'HAPPENING NOW';
+      pastPlans.hidden = !planPassed;
+      upcoming.hidden = status !== 'UPCOMING' && planPassed;
+      upcomingJump.forEach((element) => { element.hidden = upcoming.hidden; });
+
+      if (status === 'ENDED') {
+        placeHongdaeEvent(confirmed, archiveHeading.parentElement, 'h4', archiveHeading.nextElementSibling);
+      } else if (status === 'HAPPENING NOW') {
+        placeHongdaeEvent(confirmed, currentList, 'h3');
+      } else {
+        placeHongdaeEvent(confirmed, upcomingList, 'h3', upcomingList.firstElementChild);
+      }
+      placeHongdaeEvent(planned, planPassed ? pastPlansList : upcomingList, 'h3');
+
+      if (confirmedLabel.textContent !== status) confirmedLabel.textContent = status;
+      if (plannedLabel.textContent !== planStatus) plannedLabel.textContent = planStatus;
+      if (focused !== document.activeElement && (confirmed.contains(focused) || planned.contains(focused))) {
+        focused.focus();
+      }
+    };
+  }
+
   async function initialize() {
     const badges = Array.from(document.querySelectorAll('.ki-event-status[data-event-id]'));
-    if (!badges.length) return;
+    const hongdaeSchedule = document.querySelector('main[data-hongdae-event-schedule]');
+    if (!badges.length && !hongdaeSchedule) return;
 
     try {
       const response = await fetch('/data/events.json', { cache: 'no-cache' });
       if (!response.ok) throw new Error(`Event data request failed (${response.status}).`);
-      const events = indexEvents(await response.json());
+      const data = await response.json();
+      const events = indexEvents(data);
+      const refreshHongdae = hongdaeSchedule && prepareHongdaeSchedule(hongdaeSchedule, events, data.plannedEvents);
       const matched = [];
       for (const badge of badges) {
         const event = events.get(badge.dataset.eventId);
@@ -83,13 +144,14 @@
           console.warn('[Korea Inside events] Unknown event id:', badge.dataset.eventId);
         }
       }
-      if (!matched.length) return;
+      if (!matched.length && !refreshHongdae) return;
 
       let timer;
       function refresh() {
         clearTimeout(timer);
         const now = new Date();
         const today = getSeoulDate(now);
+        if (refreshHongdae) refreshHongdae(today);
         for (const { badge, event } of matched) {
           const status = getEventStatus(event, today);
           badge.classList.remove(...Object.values(STATUS_CLASSES));
@@ -111,6 +173,7 @@
       document.addEventListener('visibilitychange', function () {
         if (document.visibilityState === 'visible') refresh();
       });
+      if (refreshHongdae) window.addEventListener('pageshow', refresh);
     } catch (error) {
       console.warn('[Korea Inside events] Status unavailable:', error.message);
     }

@@ -133,6 +133,21 @@
       "area": "Myeongdong",
       "start": "2026-09-01",
       "end": "2026-09-30"
+    },
+    {
+      "id": "hongdae-live-club-day-85-2026",
+      "page": "hongdae-events-festivals.html",
+      "area": "Hongdae",
+      "start": "2026-11-27",
+      "end": "2026-11-27"
+    }
+  ],
+  "plannedEvents": [
+    {
+      "id": "hongdae-red-road-countdown-2027",
+      "page": "hongdae-events-festivals.html",
+      "area": "Hongdae",
+      "plannedDate": "2026-12-31"
     }
   ]
 }

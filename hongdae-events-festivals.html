@@ -399,7 +399,7 @@
   </header>
   <!-- GLOBAL_NAV_END -->
 
-  <main id="main-content">
+  <main id="main-content" data-hongdae-event-schedule>
     <section class="hm-hero events-hero">
       <div class="container hm-hero__grid">
         <div class="hm-hero__copy">
@@ -417,13 +417,22 @@
           </div>
           <nav class="hm-jump-links" aria-label="On this page">
             <span class="hm-jump-label">Navigation:</span>
-            <a href="#upcoming">Upcoming &amp; Planned Events</a>
-            <span class="hm-jump-separator" aria-hidden="true">·</span>
+            <a href="#upcoming" data-hongdae-upcoming-jump>Upcoming &amp; Planned Events</a>
+            <span class="hm-jump-separator" aria-hidden="true" data-hongdae-upcoming-jump>·</span>
             <a href="#festival-types">Choose by Interest</a>
             <span class="hm-jump-separator" aria-hidden="true">·</span>
             <a href="#past-festivals">Past Festivals</a>
           </nav>
         </div>
+      </div>
+    </section>
+
+    <section class="hm-section" id="happening-now" aria-labelledby="happening-now-heading" hidden>
+      <div class="container">
+        <header class="hm-section__header">
+          <h2 id="happening-now-heading">Happening Now</h2>
+        </header>
+        <div class="events-list"></div>
       </div>
     </section>
 
@@ -434,10 +443,10 @@
           <p class="hm-section__intro">Event schedules are not interchangeable with confirmed performances. A planned festival may change or be canceled, and a ticketed music event may sell out. Use the event organizer's latest announcement before setting aside time or money.</p>
         </header>
         <div class="events-list">
-          <article class="event-entry" id="live-club-day-85" data-event-record>
+          <article class="event-entry" id="live-club-day-85" data-event-record data-hongdae-confirmed-event="hongdae-live-club-day-85-2026">
             <h3>85th Live Club Day — November 27, 2026</h3>
             <div class="event-meta">
-              <p class="event-status"><strong>Status: SCHEDULED</strong></p>
+              <p class="event-status" aria-live="polite"><strong>Status: <span data-hongdae-status>STATUS NOT VERIFIED</span></strong></p>
               <p><strong>Date:</strong> November 27, 2026</p>
               <p><strong>Area:</strong> Hongdae live-music venues</p>
               <p><strong>Theme:</strong> Independent music across multiple clubs</p>
@@ -448,10 +457,10 @@
             <p class="event-source"><strong>Official/program source:</strong> <a href="https://www.melon.com/musicstory/informView.htm?category=100068&amp;keyword=&amp;mstorySeq=17366&amp;pageIndex=1" target="_blank" rel="noopener noreferrer">https://www.melon.com/musicstory/informView.htm?category=100068&amp;keyword=&amp;mstorySeq=17366&amp;pageIndex=1</a></p>
           </article>
 
-          <article class="event-entry" id="red-road-countdown-2027" data-event-record>
+          <article class="event-entry" id="red-road-countdown-2027" data-event-record data-hongdae-planned-event="hongdae-red-road-countdown-2027">
             <h3>2027 Red Road Countdown — Planned for December 31, 2026</h3>
             <div class="event-meta">
-              <p class="event-status"><strong>Status: PLANNED — NOT CONFIRMED</strong></p>
+              <p class="event-status" aria-live="polite"><strong>Status: <span data-hongdae-status>STATUS NOT VERIFIED</span></strong></p>
               <p><strong>Proposed date:</strong> December 31, 2026</p>
               <p><strong>Listed area:</strong> Red Road R5–R6, Hongdae</p>
               <p><strong>Theme:</strong> New Year's Eve, winter street tourism and a countdown celebration</p>
@@ -638,6 +647,15 @@
       </div>
     </section>
 
+    <section class="hm-section" id="past-plans" aria-labelledby="past-plans-heading" hidden>
+      <div class="container">
+        <header class="hm-section__header">
+          <h2 id="past-plans-heading">Past Plans — Not Verified as Held</h2>
+        </header>
+        <div class="events-list"></div>
+      </div>
+    </section>
+
     <section class="hm-section" id="how-to-use">
       <div class="container">
         <header class="hm-section__header">
@@ -717,5 +735,6 @@
   </footer>
 
   <script src="common.js"></script>
+  <script src="event-status.js" defer></script>
 </body>
 </html>
