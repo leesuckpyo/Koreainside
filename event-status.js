@@ -22,6 +22,22 @@
     'HAPPENING NOW': 'EN COURS',
     ENDED: 'TERMINÉ'
   };
+  const HONGDAE_STATUS_LABELS = {
+    ja: {
+      UPCOMING: '開催予定',
+      'HAPPENING NOW': '開催中',
+      ENDED: '終了',
+      'PLANNED — NOT CONFIRMED': '計画中 — 開催未確定',
+      'PLANNED DATE PASSED — NOT VERIFIED': '計画日経過 — 開催実績未確認'
+    },
+    'zh-TW': {
+      UPCOMING: '即將舉辦',
+      'HAPPENING NOW': '進行中',
+      ENDED: '已結束',
+      'PLANNED — NOT CONFIRMED': '規劃中 — 尚未確認舉辦',
+      'PLANNED DATE PASSED — NOT VERIFIED': '預定日期已過 — 尚未確認實際舉辦'
+    }
+  };
 
   function isDate(value) {
     if (typeof value !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
@@ -95,6 +111,7 @@
     const upcomingJump = root.querySelectorAll('[data-hongdae-upcoming-jump]');
     const confirmedLabel = confirmed.querySelector('[data-hongdae-status]');
     const plannedLabel = planned.querySelector('[data-hongdae-status]');
+    const labels = HONGDAE_STATUS_LABELS[document.documentElement.lang];
 
     return (today) => {
       const status = getEventStatus(confirmedEvent, today);
@@ -116,8 +133,10 @@
       }
       placeHongdaeEvent(planned, planPassed ? pastPlansList : upcomingList, 'h3');
 
-      if (confirmedLabel.textContent !== status) confirmedLabel.textContent = status;
-      if (plannedLabel.textContent !== planStatus) plannedLabel.textContent = planStatus;
+      const confirmedText = labels?.[status] ?? status;
+      const plannedText = labels?.[planStatus] ?? planStatus;
+      if (confirmedLabel.textContent !== confirmedText) confirmedLabel.textContent = confirmedText;
+      if (plannedLabel.textContent !== plannedText) plannedLabel.textContent = plannedText;
       if (focused !== document.activeElement && (confirmed.contains(focused) || planned.contains(focused))) {
         focused.focus();
       }

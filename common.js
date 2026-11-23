@@ -6,10 +6,22 @@
     return language.split('-')[0];
   };
 
-  const initializeHongdaeNavigation = (nav) => {
-    const guideLink = nav.querySelector(
-      '[data-nav-section="travel"] .site-nav__travel-grid > a:is([href="hongdae-travel-guide.html"], [href="/hongdae-travel-guide.html"])'
-    );
+  const HONGDAE_NAVIGATION = {
+    en: { prefix: '', guide: 'Hongdae Travel Guide', events: 'Hongdae Event Schedule', expand: 'Hongdae pages' },
+    ja: { prefix: '/ja', guide: '弘大（ホンデ）観光ガイド', events: '弘大のイベント日程', expand: '弘大のページを開く' },
+    'zh-TW': { prefix: '/zh-tw', guide: '弘大旅遊指南', events: '弘大活動日程', expand: '展開弘大相關頁面' }
+  };
+
+  const initializeHongdaeNavigation = (nav, language) => {
+    const copy = HONGDAE_NAVIGATION[language];
+    if (!copy) return null;
+
+    const guideUrl = `${copy.prefix}/hongdae-travel-guide.html`;
+    const guideLinks = nav.querySelectorAll('[data-nav-section="travel"] .site-nav__travel-grid > a');
+    const guideLink = Array.from(guideLinks).find((link) => {
+      const href = link.getAttribute('href');
+      return href === guideUrl || (language === 'en' && href === 'hongdae-travel-guide.html');
+    });
     if (!guideLink) return null;
 
     const group = document.createElement('div');
@@ -18,15 +30,15 @@
     const toggle = document.createElement('button');
     toggle.type = 'button';
     toggle.className = 'site-nav__hongdae-toggle';
-    toggle.setAttribute('aria-label', 'Hongdae pages');
+    toggle.setAttribute('aria-label', copy.expand);
     toggle.setAttribute('aria-controls', 'site-nav-hongdae-pages');
 
     const pages = document.createElement('ul');
     pages.id = 'site-nav-hongdae-pages';
     pages.className = 'site-nav__hongdae-pages';
     for (const [label, href] of [
-      ['Hongdae Travel Guide', guideLink.getAttribute('href')],
-      ['Hongdae Event Schedule', '/hongdae-events-festivals.html']
+      [copy.guide, guideLink.getAttribute('href')],
+      [copy.events, `${copy.prefix}/hongdae-events-festivals.html`]
     ]) {
       const item = document.createElement('li');
       const link = document.createElement('a');
@@ -103,7 +115,7 @@
 
     if (!toggle || !nav) return;
 
-    const closeHongdaeNavigation = language === 'en' ? initializeHongdaeNavigation(nav) : null;
+    const closeHongdaeNavigation = initializeHongdaeNavigation(nav, language);
     const navLinks = Array.from(header.querySelectorAll('.site-nav__link'));
 
     const closeSubmenus = (focusTrigger) => {
