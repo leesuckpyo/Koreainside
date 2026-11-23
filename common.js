@@ -9,7 +9,9 @@
   const HONGDAE_NAVIGATION = {
     en: { prefix: '', guide: 'Hongdae Travel Guide', events: 'Hongdae Event Schedule', expand: 'Hongdae pages' },
     ja: { prefix: '/ja', guide: '弘大（ホンデ）観光ガイド', events: '弘大のイベント日程', expand: '弘大のページを開く' },
-    'zh-TW': { prefix: '/zh-tw', guide: '弘大旅遊指南', events: '弘大活動日程', expand: '展開弘大相關頁面' }
+    'zh-TW': { prefix: '/zh-tw', guide: '弘大旅遊指南', events: '弘大活動日程', expand: '展開弘大相關頁面' },
+    es: { prefix: '/es', guide: 'Guía de viaje de Hongdae', events: 'Agenda de eventos de Hongdae', expand: 'Abrir las páginas de Hongdae' },
+    'es-MX': { prefix: '/es-mx', guide: 'Guía de viaje de Hongdae', events: 'Agenda de eventos en Hongdae', expand: 'Mostrar páginas de Hongdae' }
   };
 
   const initializeHongdaeNavigation = (nav, language) => {
@@ -17,12 +19,18 @@
     if (!copy) return null;
 
     const guideUrl = `${copy.prefix}/hongdae-travel-guide.html`;
+    const isSpanish = language === 'es' || language === 'es-MX';
     const guideLinks = nav.querySelectorAll('[data-nav-section="travel"] .site-nav__travel-grid > a');
     const guideLink = Array.from(guideLinks).find((link) => {
       const href = link.getAttribute('href');
-      return href === guideUrl || (language === 'en' && href === 'hongdae-travel-guide.html');
+      return href === guideUrl
+        || ((language === 'en' || isSpanish) && href === 'hongdae-travel-guide.html')
+        || (language === 'es' && href === '../hongdae-travel-guide.html');
     });
     if (!guideLink) return null;
+    if (language === 'es' && guideLink.getAttribute('href') === '../hongdae-travel-guide.html') {
+      guideLink.setAttribute('href', guideUrl);
+    }
 
     const group = document.createElement('div');
     group.className = 'site-nav__hongdae';
@@ -37,7 +45,7 @@
     pages.id = 'site-nav-hongdae-pages';
     pages.className = 'site-nav__hongdae-pages';
     for (const [label, href] of [
-      [copy.guide, guideLink.getAttribute('href')],
+      [copy.guide, isSpanish ? guideUrl : guideLink.getAttribute('href')],
       [copy.events, `${copy.prefix}/hongdae-events-festivals.html`]
     ]) {
       const item = document.createElement('li');
