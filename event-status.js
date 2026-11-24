@@ -64,6 +64,20 @@
       ENDED: 'BEENDET',
       'PLANNED — NOT CONFIRMED': 'GEPLANT — NICHT BESTÄTIGT',
       'PLANNED DATE PASSED — NOT VERIFIED': 'GEPLANTER TERMIN VERSTRICHEN — DURCHFÜHRUNG NICHT VERIFIZIERT'
+    },
+    th: {
+      UPCOMING: 'เร็วๆ นี้',
+      'HAPPENING NOW': 'กำลังจัดอยู่',
+      ENDED: 'สิ้นสุดแล้ว',
+      'PLANNED — NOT CONFIRMED': 'อยู่ในแผน — ยังไม่ยืนยันการจัด',
+      'PLANNED DATE PASSED — NOT VERIFIED': 'เลยวันที่วางแผนไว้ — ยังไม่ได้ยืนยันว่าจัดขึ้นจริง'
+    },
+    id: {
+      UPCOMING: 'AKAN DATANG',
+      'HAPPENING NOW': 'SEDANG BERLANGSUNG',
+      ENDED: 'SELESAI',
+      'PLANNED — NOT CONFIRMED': 'DIRENCANAKAN — BELUM DIKONFIRMASI',
+      'PLANNED DATE PASSED — NOT VERIFIED': 'TANGGAL RENCANA TELAH LEWAT — PELAKSANAAN BELUM TERVERIFIKASI'
     }
   };
 
