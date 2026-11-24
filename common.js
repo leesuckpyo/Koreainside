@@ -46,6 +46,12 @@
     toggle.setAttribute('aria-label', copy.expand);
     toggle.setAttribute('aria-controls', 'site-nav-hongdae-pages');
 
+    const label = document.createElement('span');
+    label.className = 'site-nav__hongdae-label';
+    label.setAttribute('aria-hidden', 'true');
+    label.textContent = guideLink.textContent.trim();
+    toggle.append(label);
+
     const pages = document.createElement('ul');
     pages.id = 'site-nav-hongdae-pages';
     pages.className = 'site-nav__hongdae-pages';
@@ -130,6 +136,9 @@
 
     const closeHongdaeNavigation = initializeHongdaeNavigation(nav, language);
     const navLinks = Array.from(header.querySelectorAll('.site-nav__link'));
+    const languageButton = header.querySelector('.language-switcher__button');
+    const panelFocusTargets = (panel) => Array.from(panel.querySelectorAll('.site-nav__link, .site-nav__hongdae-toggle'))
+      .filter((element) => element.getClientRects().length);
 
     const closeSubmenus = (focusTrigger) => {
       if (closeHongdaeNavigation) closeHongdaeNavigation();
@@ -152,9 +161,11 @@
       item.classList.add('is-open');
       trigger.setAttribute('aria-expanded', 'true');
       panel.hidden = false;
-      const links = Array.from(panel.querySelectorAll('.site-nav__link'));
-      if (focusTarget === 'first' && links.length) links[0].focus();
-      if (focusTarget === 'last' && links.length) links[links.length - 1].focus();
+      if (focusTarget) {
+        const targets = panelFocusTargets(panel);
+        const target = focusTarget === 'first' ? targets[0] : targets[targets.length - 1];
+        target?.focus();
+      }
     };
 
     const setMenuOpen = (isOpen, returnFocus) => {
@@ -173,6 +184,14 @@
       const isOpen = toggle.getAttribute('aria-expanded') === 'true';
       setMenuOpen(!isOpen);
     });
+
+    if (languageButton) {
+      const closeNavigation = () => setMenuOpen(false);
+      languageButton.addEventListener('click', closeNavigation);
+      languageButton.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowDown' || event.key === 'ArrowUp') closeNavigation();
+      });
+    }
 
     items.forEach((item, index) => {
       const trigger = item.querySelector('.site-nav__trigger');
@@ -199,8 +218,7 @@
       });
 
       panel.addEventListener('keydown', (event) => {
-        const links = Array.from(panel.querySelectorAll('.site-nav__link'))
-          .filter((link) => !link.closest('[hidden]'));
+        const links = panelFocusTargets(panel);
         const currentIndex = links.indexOf(document.activeElement);
         if (currentIndex < 0) return;
         let nextIndex = null;
@@ -243,7 +261,9 @@
     const resetNavigationState = () => setMenuOpen(false);
 
     resetNavigationState();
-    window.addEventListener('pageshow', resetNavigationState);
+    window.addEventListener('pageshow', (event) => {
+      if (event.persisted) resetNavigationState();
+    });
 
     if (desktopQuery.addEventListener) {
       desktopQuery.addEventListener('change', resetNavigationState);
@@ -519,7 +539,12 @@
       document.addEventListener('keydown', (event) => {
         if (event.key === 'Escape' && !menu.hidden) closeMenu(true);
       });
-      window.addEventListener('pageshow', () => closeMenu(false));
+      switcher.addEventListener('focusout', (event) => {
+        if (event.relatedTarget && !switcher.contains(event.relatedTarget)) closeMenu(false);
+      });
+      window.addEventListener('pageshow', (event) => {
+        if (event.persisted) closeMenu(false);
+      });
     });
   };
 

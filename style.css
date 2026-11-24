@@ -509,6 +509,29 @@ ul, ol {
 
 /* ── Shared public-site navigation ── */
 
+.site-header__inner {
+  max-width: 1440px;
+}
+
+.site-header .language-switcher__button {
+  justify-content: center;
+  width: auto;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 7px 10px;
+}
+
+.site-header .language-switcher__label {
+  display: none;
+}
+
+.site-header .language-switcher__menu {
+  max-height: calc(100vh - var(--header-height) - 8px);
+  max-height: calc(100dvh - var(--header-height) - 8px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
 .site-header__logo {
   order: 1;
   display: inline-flex;
@@ -718,8 +741,13 @@ ul, ol {
   cursor: pointer;
 }
 
+.site-nav__hongdae-label {
+  display: none;
+}
+
 .site-nav__hongdae-toggle::after {
   content: "";
+  flex: none;
   width: 7px;
   height: 7px;
   border-right: 1.5px solid currentColor;
@@ -789,6 +817,33 @@ ul, ol {
     background: var(--white);
   }
 
+  .site-nav__hongdae > .site-nav__link {
+    display: none;
+  }
+
+  .site-nav__hongdae-toggle {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px;
+    color: var(--gray-900);
+    font: inherit;
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.45;
+    text-align: left;
+  }
+
+  .site-nav__hongdae-label {
+    display: inline;
+  }
+
+  .site-nav__panel--travel-guides .site-nav__hongdae-pages .site-nav__link {
+    min-height: 44px;
+  }
+
   .site-nav {
     position: absolute;
     top: 100%;
@@ -800,8 +855,8 @@ ul, ol {
     height: auto;
     max-height: calc(100vh - var(--header-height));
     max-height: calc(100dvh - var(--header-height));
-    overflow-x: hidden;
     overflow-y: auto;
+    overscroll-behavior: contain;
     background: var(--white);
   }
 }
@@ -835,6 +890,8 @@ ul, ol {
   .site-nav {
     display: block;
     position: static;
+    flex: 1 1 auto;
+    min-width: 0;
     padding: 0;
     overflow: visible;
     background: transparent;
@@ -854,18 +911,20 @@ ul, ol {
 
   .site-nav__trigger {
     justify-content: center;
-    width: auto;
-    min-width: 68px;
+    width: 100%;
     min-height: 38px;
     padding: 8px 10px;
     font-size: 0.8125rem;
     text-align: center;
+    white-space: normal;
+    overflow-wrap: anywhere;
   }
 
   .site-nav__trigger::after {
     content: "";
     width: 5px;
     height: 5px;
+    flex: none;
     margin-left: 7px;
     border-right: 1.5px solid currentColor;
     border-bottom: 1.5px solid currentColor;
@@ -893,7 +952,8 @@ ul, ol {
     box-shadow: 0 14px 28px rgba(10, 37, 64, 0.14);
   }
 
-  .site-nav__panel--end {
+  .site-nav__panel--end,
+  .site-nav__item[data-nav-section="maps"] > .site-nav__panel {
     right: 0;
     left: auto;
   }
@@ -953,7 +1013,6 @@ ul, ol {
   }
 
   .site-nav__trigger {
-    min-width: 74px;
     padding-right: 12px;
     padding-left: 12px;
     font-size: 0.875rem;
