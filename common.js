@@ -11,7 +11,11 @@
     ja: { prefix: '/ja', guide: '弘大（ホンデ）観光ガイド', events: '弘大のイベント日程', expand: '弘大のページを開く' },
     'zh-TW': { prefix: '/zh-tw', guide: '弘大旅遊指南', events: '弘大活動日程', expand: '展開弘大相關頁面' },
     es: { prefix: '/es', guide: 'Guía de viaje de Hongdae', events: 'Agenda de eventos de Hongdae', expand: 'Abrir las páginas de Hongdae' },
-    'es-MX': { prefix: '/es-mx', guide: 'Guía de viaje de Hongdae', events: 'Agenda de eventos en Hongdae', expand: 'Mostrar páginas de Hongdae' }
+    'es-MX': { prefix: '/es-mx', guide: 'Guía de viaje de Hongdae', events: 'Agenda de eventos en Hongdae', expand: 'Mostrar páginas de Hongdae' },
+    fr: { prefix: '/fr', guide: 'Guide de Hongdae', events: 'Agenda des événements à Hongdae', expand: 'Afficher les pages de Hongdae' },
+    de: { prefix: '/de', guide: 'Hongdae Reiseführer', events: 'Eventkalender Hongdae', expand: 'Hongdae-Seiten anzeigen' },
+    th: { prefix: '/th', guide: 'คู่มือเที่ยวฮงแด', events: 'ตารางอีเวนต์ฮงแด', expand: 'เปิดหน้าที่เกี่ยวกับฮงแด' },
+    id: { prefix: '/id', guide: 'Panduan Wisata Hongdae', events: 'Jadwal Acara Hongdae', expand: 'Tampilkan halaman Hongdae' }
   };
 
   const initializeHongdaeNavigation = (nav, language) => {
@@ -20,11 +24,12 @@
 
     const guideUrl = `${copy.prefix}/hongdae-travel-guide.html`;
     const isSpanish = language === 'es' || language === 'es-MX';
+    const useLocaleGuideUrl = isSpanish || language === 'id';
     const guideLinks = nav.querySelectorAll('[data-nav-section="travel"] .site-nav__travel-grid > a');
     const guideLink = Array.from(guideLinks).find((link) => {
       const href = link.getAttribute('href');
       return href === guideUrl
-        || ((language === 'en' || isSpanish) && href === 'hongdae-travel-guide.html')
+        || ((language === 'en' || useLocaleGuideUrl) && href === 'hongdae-travel-guide.html')
         || (language === 'es' && href === '../hongdae-travel-guide.html');
     });
     if (!guideLink) return null;
@@ -45,7 +50,7 @@
     pages.id = 'site-nav-hongdae-pages';
     pages.className = 'site-nav__hongdae-pages';
     for (const [label, href] of [
-      [copy.guide, isSpanish ? guideUrl : guideLink.getAttribute('href')],
+      [copy.guide, useLocaleGuideUrl ? guideUrl : guideLink.getAttribute('href')],
       [copy.events, `${copy.prefix}/hongdae-events-festivals.html`]
     ]) {
       const item = document.createElement('li');
