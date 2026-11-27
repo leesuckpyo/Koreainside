@@ -29,6 +29,15 @@
       invalid: 'กรอกวันที่ เวลาเที่ยวบิน และระยะเวลาเดินทางให้ถูกต้อง',
       noTerminal: 'ตรวจสอบ Terminal ขาออกก่อนออกเดินทาง',
       noTransport: 'เลือกวิธีเดินทางและตรวจสอบตารางเวลาก่อนออกเดินทาง'
+    },
+    'zh-TW': {
+      format: 'zh-TW-u-ca-gregory-nu-latn',
+      timezone: 'KST',
+      previousDay: '你需要在航班起飛的前一天就出發前往機場。',
+      earlierDate: '你需要在航班起飛日期之前就出發前往機場。',
+      invalid: '請輸入有效的航班日期、時間與交通時間。',
+      noTerminal: '出發前請確認出發航廈。',
+      noTransport: '請選擇交通方式，並在出發前確認時刻表。'
     }
   };
   const locale = locales[document.documentElement.lang] || locales.en;
