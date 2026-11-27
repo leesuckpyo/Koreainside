@@ -20,6 +20,15 @@
       invalid: '有効なフライトの出発日・時刻と移動時間を入力してください。',
       noTerminal: '出発前に利用するターミナルを確認してください。',
       noTransport: '移動手段を選び、出発前に時刻表を確認してください。'
+    },
+    th: {
+      format: 'th-TH-u-ca-gregory-nu-latn',
+      timezone: 'KST',
+      previousDay: 'ต้องเริ่มเดินทางไปสนามบินตั้งแต่วันก่อนวันออกเดินทางของเที่ยวบิน',
+      earlierDate: 'ต้องเริ่มเดินทางไปสนามบินก่อนวันออกเดินทางของเที่ยวบิน',
+      invalid: 'กรอกวันที่ เวลาเที่ยวบิน และระยะเวลาเดินทางให้ถูกต้อง',
+      noTerminal: 'ตรวจสอบ Terminal ขาออกก่อนออกเดินทาง',
+      noTransport: 'เลือกวิธีเดินทางและตรวจสอบตารางเวลาก่อนออกเดินทาง'
     }
   };
   const locale = locales[document.documentElement.lang] || locales.en;
