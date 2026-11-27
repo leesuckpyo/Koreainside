@@ -56,6 +56,15 @@
       invalid: 'Ingresa una fecha y hora de vuelo válidas y un tiempo de traslado válido.',
       noTerminal: 'Confirma tu terminal de salida antes de salir.',
       noTransport: 'Elige cómo llegar al aeropuerto y revisa el horario del transporte antes de salir.'
+    },
+    de: {
+      format: 'de-DE-u-ca-gregory-nu-latn',
+      timezone: 'KST',
+      previousDay: 'Du musst bereits am Tag vor deinem Flug zum Flughafen aufbrechen.',
+      earlierDate: 'Du musst schon vor dem Abflugdatum zum Flughafen aufbrechen.',
+      invalid: 'Gib ein gültiges Abflugdatum, eine gültige Abflugzeit und eine gültige Fahrtdauer ein.',
+      noTerminal: 'Prüfe vor der Abfahrt dein Abflugterminal.',
+      noTransport: 'Wähle ein Verkehrsmittel und prüfe vor der Abfahrt dessen Fahrplan.'
     }
   };
   const locale = locales[document.documentElement.lang] || locales.en;
