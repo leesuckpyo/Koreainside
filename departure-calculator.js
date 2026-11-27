@@ -47,6 +47,15 @@
       invalid: 'Introduce una fecha y una hora de vuelo válidas y una duración de trayecto válida.',
       noTerminal: 'Confirma tu terminal de salida antes de salir.',
       noTransport: 'Elige el transporte y comprueba su horario antes de salir.'
+    },
+    'es-MX': {
+      format: 'es-MX-u-ca-gregory-nu-latn',
+      timezone: 'KST',
+      previousDay: 'Necesitas salir rumbo al aeropuerto el día anterior a tu vuelo.',
+      earlierDate: 'Necesitas salir rumbo al aeropuerto antes de la fecha de tu vuelo.',
+      invalid: 'Ingresa una fecha y hora de vuelo válidas y un tiempo de traslado válido.',
+      noTerminal: 'Confirma tu terminal de salida antes de salir.',
+      noTransport: 'Elige cómo llegar al aeropuerto y revisa el horario del transporte antes de salir.'
     }
   };
   const locale = locales[document.documentElement.lang] || locales.en;
