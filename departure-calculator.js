@@ -38,6 +38,15 @@
       invalid: '請輸入有效的航班日期、時間與交通時間。',
       noTerminal: '出發前請確認出發航廈。',
       noTransport: '請選擇交通方式，並在出發前確認時刻表。'
+    },
+    es: {
+      format: 'es-ES-u-ca-gregory-nu-latn',
+      timezone: 'KST',
+      previousDay: 'Tienes que iniciar el trayecto al aeropuerto el día anterior al vuelo.',
+      earlierDate: 'Tienes que iniciar el trayecto al aeropuerto antes de la fecha del vuelo.',
+      invalid: 'Introduce una fecha y una hora de vuelo válidas y una duración de trayecto válida.',
+      noTerminal: 'Confirma tu terminal de salida antes de salir.',
+      noTransport: 'Elige el transporte y comprueba su horario antes de salir.'
     }
   };
   const locale = locales[document.documentElement.lang] || locales.en;
