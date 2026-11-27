@@ -11,6 +11,15 @@
       invalid: 'Enter a valid flight date, time and travel duration.',
       noTerminal: 'Confirm your departure terminal before leaving.',
       noTransport: 'Choose your transport and check its timetable before leaving.'
+    },
+    ja: {
+      format: 'ja-JP',
+      timezone: 'KST',
+      previousDay: 'フライトの前日に空港へ向けて出発する必要があります。',
+      earlierDate: 'フライトの出発日より前に空港へ向けて出発する必要があります。',
+      invalid: '有効なフライトの出発日・時刻と移動時間を入力してください。',
+      noTerminal: '出発前に利用するターミナルを確認してください。',
+      noTransport: '移動手段を選び、出発前に時刻表を確認してください。'
     }
   };
   const locale = locales[document.documentElement.lang] || locales.en;
@@ -36,7 +45,7 @@
   const flightYear = form.querySelector('#flight-year');
   const flightHour = form.querySelector('#flight-hour');
   const flightMinute = form.querySelector('#flight-minute');
-  const dateFields = [flightMonth, flightDay, flightYear];
+  const dateFields = [...form.querySelectorAll('.departure-plan__date-fields input, .departure-plan__date-fields select')];
   const timeFields = [flightHour, flightMinute];
   const terminal = form.querySelector('#departure-plan-terminal');
   const allowanceChoice = form.querySelector('#departure-plan-allowance');
