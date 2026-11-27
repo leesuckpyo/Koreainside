@@ -65,6 +65,15 @@
       invalid: 'Gib ein gültiges Abflugdatum, eine gültige Abflugzeit und eine gültige Fahrtdauer ein.',
       noTerminal: 'Prüfe vor der Abfahrt dein Abflugterminal.',
       noTransport: 'Wähle ein Verkehrsmittel und prüfe vor der Abfahrt dessen Fahrplan.'
+    },
+    fr: {
+      format: 'fr-FR-u-ca-gregory-nu-latn',
+      timezone: 'KST',
+      previousDay: 'Vous devez partir pour l’aéroport dès la veille de votre vol.',
+      earlierDate: 'Vous devez partir pour l’aéroport avant la date de votre vol.',
+      invalid: 'Saisissez une date et une heure de vol valides ainsi qu’une durée de trajet valide.',
+      noTerminal: 'Vérifiez votre terminal de départ avant de partir.',
+      noTransport: 'Choisissez votre moyen de transport et vérifiez ses horaires avant de partir.'
     }
   };
   const locale = locales[document.documentElement.lang] || locales.en;
