@@ -74,6 +74,15 @@
       invalid: 'Saisissez une date et une heure de vol valides ainsi qu’une durée de trajet valide.',
       noTerminal: 'Vérifiez votre terminal de départ avant de partir.',
       noTransport: 'Choisissez votre moyen de transport et vérifiez ses horaires avant de partir.'
+    },
+    id: {
+      format: 'id-ID-u-ca-gregory-nu-latn',
+      timezone: 'KST',
+      previousDay: 'Anda perlu berangkat menuju bandara pada hari sebelum penerbangan Anda.',
+      earlierDate: 'Anda perlu berangkat menuju bandara sebelum tanggal keberangkatan penerbangan Anda.',
+      invalid: 'Masukkan tanggal, waktu penerbangan, dan durasi perjalanan yang valid.',
+      noTerminal: 'Pastikan terminal keberangkatan Anda sebelum berangkat.',
+      noTransport: 'Pilih transportasi dan periksa jadwalnya sebelum berangkat.'
     }
   };
   const locale = locales[document.documentElement.lang] || locales.en;
